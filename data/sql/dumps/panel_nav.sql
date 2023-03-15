@@ -1,8 +1,8 @@
-drop table [if exists] panel_nav;
+drop table if exists panel_nav;
 create table panel_nav
 (
 	[from]   text,
-	[foward] text,
+	[forward] text,
 	[back]   text
 );
 
@@ -69,15 +69,15 @@ insert into panel_nav values ('IDV_MANREP9',NULL,'IDV_MANPAN');
 insert into panel_nav values ('IDV_MANREP10',NULL,'IDV_MANPAN');
 insert into panel_nav values ('IDV_STRATMON1',NULL,'IDV_STRATPAN');
 insert into panel_nav values ('IDV_STRATMON2',NULL,'IDV_STRATPAN');
-insert into panel_nav values ('IDV_SCN10PIT',NULL,'IDV_SCN10PT0');
+insert into panel_nav values ('IDV_SCN10PT1',NULL,'IDV_SCN10PT0');
 insert into panel_nav values ('IDV_GRBDRT1','IDV_GRBDRT2','IDV_FH1PTH1');
 insert into panel_nav values ('IDV_GRBDRT2',NULL,'IDV_GRBDRT1');
 insert into panel_nav values ('IDV_VESTPAN1',NULL,'IDV_TM1PAN');
 insert into panel_nav values ('IDV_VESTPAN2',NULL,'IDV_TM1PAN');
 insert into panel_nav values ('IDV_TMCU1',NULL,'IDV_TM2PAN');
-insert into panel_nav values ('IDV_TMCU2',NULL,'IDV_TM3PAN');
-insert into panel_nav values ('IDV_TMCU3',NULL,'IDV_TM4PAN');
-insert into panel_nav values ('IDV_TMCU4',NULL,'IDV_TM5PAN');
+insert into panel_nav values ('IDV_TMCU2',NULL,'IDV_TM5PAN');
+insert into panel_nav values ('IDV_TMCU3',NULL,'IDV_TM3PAN');
+insert into panel_nav values ('IDV_TMCU4',NULL,'IDV_TM4PAN');
 insert into panel_nav values ('IDV_TMCUT',NULL,'IDV_TM3PAN');
 insert into panel_nav values ('IDV_aMINEPAN',NULL,'IDV_QUARSB');
 insert into panel_nav values ('IDV_bMINEPAN',NULL,'IDV_QUARSB');
@@ -88,3 +88,12 @@ insert into panel_nav values ('IDV_EYEC1P',NULL,'IDV_EYEB');
 insert into panel_nav values ('IDV_W4LOCK',NULL,'IDV_WR3');
 insert into panel_nav values ('IDV_PL1P',NULL,'IDV_WALL1IN');
 insert into panel_nav values ('IDV_PL2P',NULL,'IDV_WALL2IN');
+insert into panel_nav values ('IDV_VILDOOR',NULL,'IDV_VIL4');
+insert into panel_nav values ('IDV_GRUB0000',NULL,'IDV_VIL4');
+insert into panel_nav values ('IDV_WOOD0000',NULL,'IDV_VIL4');
+insert into panel_nav values ('IDV_PICK0000',NULL,'IDV_VIL3');
+insert into panel_nav values ('IDV_SHOV0000',NULL,'IDV_VIL3');
+insert into panel_nav values ('IDV_CROW0000',NULL,'IDV_VIL2');
+insert into panel_nav values ('IDV_BUCK0000',NULL,'IDV_VIL2');
+insert into panel_nav values ('IDV_FALTAR',NULL,'IDV_FA1PAN');
+insert into panel_nav values ('IDV_SCN10PIT',NULL,'IDV_SCN10PT1');
