@@ -13,9 +13,9 @@ create table cardinals
 );
 
 insert into cardinals values ('IDV_ORIE',NULL,'IDV_GRNDCNT1',NULL,NULL,NULL,NULL,NULL,NULL);
-insert into cardinals values ('IDV_CTO1',NULL,NULL,NULL,NULL,'IDV_CTO2',NULL,NULL,NULL);
-insert into cardinals values ('IDV_CTO2',NULL,NULL,NULL,NULL,NULL,'IDV_CTO3',NULL,NULL);
-insert into cardinals values ('IDV_CTO3',NULL,NULL,NULL,NULL,'IDV_MANPAN',NULL,'IDV_ctya',NULL);
+insert into cardinals values ('IDV_CTO1','IDV_GRNDCNT1',NULL,NULL,NULL,'IDV_CTO2',NULL,NULL,NULL);
+insert into cardinals values ('IDV_CTO2','IDV_CTO1',NULL,NULL,NULL,NULL,'IDV_CTO3',NULL,NULL);
+insert into cardinals values ('IDV_CTO3',NULL,NULL,'IDV_CTO2',NULL,'IDV_MANPAN',NULL,'IDV_ctya',NULL);
 insert into cardinals values ('IDV_LOCKERR','IDV_LOCKERN',NULL,'IDV_ctyg',NULL,'IDV_LOCKERS',NULL,'IDV_LOCKERW',NULL);
 insert into cardinals values ('IDV_ctya','IDV_ctyd',NULL,'IDV_ctyc',NULL,'IDV_CTO3',NULL,'IDV_ctyb','IDV_ctye');
 insert into cardinals values ('IDV_ctyb','IDV_ctye','IDV_ctyd','IDV_ctya',NULL,NULL,NULL,'IDV_ctyhouse',NULL);
@@ -47,7 +47,7 @@ insert into cardinals values ('IDV_CTYLIB1B','IDV_CTYPEZ4','IDV_CTYLIB1A','IDV_C
 insert into cardinals values ('IDV_CTYLIB2A',NULL,NULL,NULL,'IDV_ctyj',NULL,NULL,NULL,'IDV_CTYLIB2B');
 insert into cardinals values ('IDV_CTYLIB2B',NULL,NULL,NULL,'IDV_CTYLIB2A',NULL,NULL,NULL,NULL);
 insert into cardinals values ('IDV_ctytrade',NULL,NULL,NULL,NULL,'IDV_ctyr',NULL,NULL,NULL);
-insert into cardinals values ('IDV_MANPAN','IDV_CTLIB1A',NULL,NULL,NULL,'IDV_CTO3',NULL,NULL,NULL);
+insert into cardinals values ('IDV_MANPAN','IDV_CTO3',NULL,NULL,NULL,'IDV_CTLIB1A',NULL,NULL,NULL);
 insert into cardinals values ('IDV_STRATPAN',NULL,NULL,NULL,NULL,NULL,'IDV_STRATMON1',NULL,'IDV_STRATMON2');
 insert into cardinals values ('IDV_SCN10PT0','IDV_SCN10PT1',NULL,NULL,NULL,'IDV_GRNDCNT1',NULL,NULL,NULL);
 insert into cardinals values ('IDV_SCN10PT1','IDV_SCN10PIT',NULL,NULL,NULL,'IDV_SCN10PT0',NULL,NULL,NULL);
@@ -57,15 +57,15 @@ insert into cardinals values ('IDV_FH1PAN','IDV_FH1PTH1',NULL,NULL,NULL,NULL,NUL
 insert into cardinals values ('IDV_PATH1','IDV_GRNDCNT1',NULL,NULL,NULL,'IDV_PATH2',NULL,NULL,NULL);
 insert into cardinals values ('IDV_PATH2','IDV_PATH1',NULL,NULL,NULL,'IDV_BOARD',NULL,'IDV_PATH1',NULL);
 insert into cardinals values ('IDV_TM1PAN',NULL,'IDV_TM5PAN',NULL,NULL,NULL,NULL,NULL,'IDV_TM2PAN');
-insert into cardinals values ('IDV_TM2PAN','IDV_TM3PAN','IDV_TM4PAN','IDV_TM5PAN',NULL,'IDV_TM1PAN',NULL,'IDV_TMCU1',NULL);
-insert into cardinals values ('IDV_TM3PAN',NULL,'IDV_TMCUT','IDV_TM4PAN','IDV_TM5PAN','IDV_TM2PAN',NULL,'IDV_TMCU2',NULL);
-insert into cardinals values ('IDV_TM4PAN',NULL,NULL,'IDV_TMCU3',NULL,'IDV_TM5PAN','IDV_TM2PAN','IDV_TM3PAN','IDV_TMCUT');
-insert into cardinals values ('IDV_TM5PAN','IDV_TM4PAN',NULL,'IDV_TMCU4',NULL,'IDV_TM1PAN',NULL,'IDV_TM2PAN','IDV_TM3PAN');
-insert into cardinals values ('IDV_MOON1','IDV_GRNDCNT1',NULL,NULL,NULL,'IDV_MOON2',NULL,NULL,NULL);
-insert into cardinals values ('IDV_MOON2','IDV_MOON1',NULL,NULL,NULL,'IDV_MOON3',NULL,NULL,NULL);
-insert into cardinals values ('IDV_MOON3','IDV_MOON2',NULL,NULL,NULL,'IDV_MOON4',NULL,NULL,NULL);
-insert into cardinals values ('IDV_MOON4','IDV_MOON3',NULL,NULL,NULL,'IDV_MOON5',NULL,NULL,NULL);
-insert into cardinals values ('IDV_MOON5','IDV_MOON4',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert into cardinals values ('IDV_TM2PAN','IDV_TM3PAN','IDV_TM4PAN','IDV_TM5PAN',NULL,'IDV_TM1PAN',NULL,'IDV_TMCU1','IDV_TM3PAN');
+insert into cardinals values ('IDV_TM3PAN',NULL,'IDV_TMCUT','IDV_TM4PAN','IDV_TM5PAN','IDV_TM2PAN',NULL,'IDV_TMCU3',NULL);
+insert into cardinals values ('IDV_TM4PAN',NULL,'IDV_TMCU4',NULL,'IDV_TMCU2','IDV_TM5PAN','IDV_TM2PAN','IDV_TM3PAN','IDV_TMCUT');
+insert into cardinals values ('IDV_TM5PAN','IDV_TM4PAN',NULL,'IDV_TMCU2',NULL,'IDV_TM1PAN',NULL,'IDV_TM2PAN','IDV_TM3PAN');
+insert into cardinals values ('IDV_MOON1','IDV_GRNDCNT1',NULL,NULL,NULL,'IDV_MOON2','IDV_MOONDISK',NULL,NULL);
+insert into cardinals values ('IDV_MOON2','IDV_MOON1',NULL,NULL,'IDV_MOONDISK','IDV_MOON3',NULL,NULL,'IDV_MOONDISK');
+insert into cardinals values ('IDV_MOON3','IDV_MOON2',NULL,NULL,NULL,'IDV_MOON4',NULL,'IDV_MOONDISK',NULL);
+insert into cardinals values ('IDV_MOON4','IDV_MOON3',NULL,NULL,NULL,'IDV_MOON5','IDV_MOONDISK',NULL,NULL);
+insert into cardinals values ('IDV_MOON5','IDV_MOON4',NULL,'IDV_MOONDISK',NULL,NULL,'IDV_MOONDISK',NULL,NULL);
 insert into cardinals values ('IDV_VIL2','IDV_VIL3',NULL,NULL,NULL,'IDV_GRNDCNT1',NULL,'IDV_CROW0000','IDV_BUCK0000');
 insert into cardinals values ('IDV_VIL3','IDV_VIL4',NULL,'IDV_VIL5',NULL,'IDV_VIL2','IDV_SHOV0000','IDV_VIL7','IDV_PICK0000');
 insert into cardinals values ('IDV_VIL4',NULL,NULL,'IDV_GRUB0000',NULL,'IDV_VIL3','IDV_WOOD0000',NULL,'IDV_VILDOOR');
