@@ -6,13 +6,6 @@ create table panel_nav
 	[back]   text
 );
 
-insert into panel_nav values ('IDV_DOORS',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_RBBING',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_TRANSL',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_CHART',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_MLAYOUT',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_TOPMAP',NULL,'IDV_ORIE');
-insert into panel_nav values ('IDV_BOTMAP',NULL,'IDV_ORIE');
 insert into panel_nav values ('IDV_LOCKERN',NULL,'IDV_LOCKERR');
 insert into panel_nav values ('IDV_LOCKERW',NULL,'IDV_LOCKERR');
 insert into panel_nav values ('IDV_LOCKERS',NULL,'IDV_LOCKERR');
@@ -94,13 +87,19 @@ insert into panel_nav values ('IDV_MOONDISK4',NULL,'IDV_MOON4');
 insert into panel_nav values ('IDV_MOONDISK5',NULL,'IDV_MOON4');
 insert into panel_nav values ('IDV_MOONDISK6',NULL,'IDV_MOON5');
 insert into panel_nav values ('IDV_MOONDISK7',NULL,'IDV_MOON5');
+insert into panel_nav values ('IDV_DOORS',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_RBBING',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_TRANSL',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_CHART',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_MLAYOUT',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_TOPMAP',NULL,'IDV_ORIE');
+insert into panel_nav values ('IDV_BOTMAP',NULL,'IDV_ORIE');
 insert into panel_nav values ('IDV_CROW0000',NULL,'IDV_VIL2');
 insert into panel_nav values ('IDV_BUCK0000',NULL,'IDV_VIL2');
 insert into panel_nav values ('IDV_SHOV0000',NULL,'IDV_VIL3');
 insert into panel_nav values ('IDV_PICK0000',NULL,'IDV_VIL3');
 insert into panel_nav values ('IDV_GRUB0000',NULL,'IDV_VIL4');
 insert into panel_nav values ('IDV_WOOD0000',NULL,'IDV_VIL4');
-insert into panel_nav values ('IDV_SIGNPAN',NULL,'IDV_VIL5');
 insert into panel_nav values ('IDV_VILDOOR',NULL,'IDV_VIL4');
 insert into panel_nav values ('IDV_aMINEPAN',NULL,'IDV_QUARSB');
 insert into panel_nav values ('IDV_bMINEPAN',NULL,'IDV_QUARSB');
