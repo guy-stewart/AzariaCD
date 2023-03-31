@@ -107,6 +107,7 @@ insert into panel_nav values ('IDV_bMINEPAN',NULL,'IDV_QUARSB');
 insert into panel_nav values ('IDV_cMINEPAN',NULL,'IDV_QUARSB');
 insert into panel_nav values ('IDV_dMINEPAN',NULL,'IDV_QUARSB');
 insert into panel_nav values ('IDV_eMINEPAN',NULL,'IDV_QUARSB');
+insert into panel_nav values ('IDV_MAPBOX1',NULL,'IDV_N2D2');
 insert into panel_nav values ('IDV_EYEC1P',NULL,'IDV_EYEB');
 insert into panel_nav values ('IDV_W4LOCK',NULL,'IDV_WR3');
 insert into panel_nav values ('IDV_PL1P',NULL,'IDV_WALL1IN');
