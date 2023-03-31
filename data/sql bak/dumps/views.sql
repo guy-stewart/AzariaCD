@@ -200,6 +200,8 @@ insert into views values (4874,'IDV_SHOV0000',1,3,1,1,'smlpanel.vct','SHOV0000')
 insert into views values (4875,'IDV_PICK0000',1,3,1,1,'smlpanel.vct','PICK0000');
 insert into views values (4876,'IDV_GRUB0000',1,0,1,1,'smlpanel.vct','GRUB0000');
 insert into views values (4877,'IDV_WOOD0000',1,3,1,1,'smlpanel.vct','WOOD0000');
+insert into views values (4878,'IDV_SIGNPAN',1,0,1,1,'wdepanel.vct','SIGNPAN');
+insert into views values (4879,'IDV_SIGNPANENG',1,0,1,1,'wdepanel.vct','SIGNPANENG');
 insert into views values (4880,'IDV_VILC',1,2,1,6,'surround.vct','vilc');
 insert into views values (4881,'IDV_VILD',1,2,1,6,'surround.vct','vild');
 insert into views values (4882,'IDV_VILE',1,2,1,6,'surround.vct','vile');

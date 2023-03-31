@@ -65,7 +65,7 @@ insert into cardinals values ('IDV_MOON5','IDV_MOON4',NULL,'IDV_MOONDISK6',NULL,
 insert into cardinals values ('IDV_VIL2','IDV_VIL3',NULL,NULL,NULL,'IDV_GRNDCNT1',NULL,'IDV_CROW0000','IDV_BUCK0000');
 insert into cardinals values ('IDV_VIL3','IDV_VIL4',NULL,'IDV_VIL5',NULL,'IDV_VIL2','IDV_SHOV0000','IDV_VIL7','IDV_PICK0000');
 insert into cardinals values ('IDV_VIL4',NULL,NULL,'IDV_GRUB0000',NULL,'IDV_VIL3','IDV_WOOD0000',NULL,'IDV_VILDOOR');
-insert into cardinals values ('IDV_VIL5',NULL,NULL,'IDV_VIL6',NULL,NULL,NULL,'IDV_VIL3',NULL);
+insert into cardinals values ('IDV_VIL5',NULL,'IDV_SIGNPAN','IDV_VIL6',NULL,NULL,NULL,'IDV_VIL3',NULL);
 insert into cardinals values ('IDV_VIL6',NULL,NULL,NULL,NULL,NULL,NULL,'IDV_VIL5',NULL);
 insert into cardinals values ('IDV_VIL7',NULL,NULL,'IDV_VIL3',NULL,NULL,NULL,'IDV_VIL8','IDV_VIL9');
 insert into cardinals values ('IDV_VIL8','IDV_VIL9',NULL,'IDV_VIL7',NULL,NULL,NULL,NULL,NULL);
