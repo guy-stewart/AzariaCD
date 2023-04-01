@@ -328,7 +328,7 @@ insert into machines values (0x40b,'S04_REDSLIDER_3',0x243,'IDV_ckeycf03',78,103
 insert into machines values (0x40c,'S04_GRNSLIDER_3',0x243,'IDV_ckeycf03',105,103,127,188,0,'M04_SLIDER','IDS_GRN_SLIDE', 0x205, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x40d,'S04_BLUSLIDER_3',0x243,'IDV_ckeycf03',129,103,151,188,0,'M04_SLIDER','IDS_BLU_SLIDE', 0x204, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x400,'S04_VIAL',0x247,'IDV_ckeyvend',130,130,200,200,0,'M04_VIAL','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
-insert into machines values (0x401,'S04_BIN',0x247,'IDV_ckeyvend',121,212,223,285,0,'M04_BIN','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
+insert into machines values (0x401,'S04_BIN',0x247,'IDV_ckeyvend',116,205,223,285,0,'M04_BIN','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x501,'S05_UP',0x501,'IDV_chempan',7,126,28,153,0,'M05_UP','S05_ICON', 0x503, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x502,'S05_DOWN',0x501,'IDV_chempan',7,161,28,191,0,'M05_DOWN','S05_ICON', 0x503, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x503,'S05_ICON',0x501,'IDV_chempan',75,125,125,175,0,'M05_ICON','S05_VIAL', 0x506, 'S05_NUM1', 0x504, 'S05_NUM10', 0x505, 'CHEM_COUNT', 0x14 );
