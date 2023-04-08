@@ -1,0 +1,15 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M24_EYESPELL {
+ label="M24_EYESPELL";
+"M24_EYESPELL_0" -> "M24_EYESPELL_1"[color=red, fontcolor=red, label="DROP(0,IDD_EYESPELL)"];
+"M24_EYESPELL_1" -> "M24_EYESPELL_2"[color=green, fontcolor=green, label="SIGNALi(0,S24_BIGEYE)"];
+"M24_EYESPELL_2" -> "M24_EYESPELL_3"[color=green, fontcolor=green, label="C_ACCEPT(0,IDC_BOMB)"];
+"M24_EYESPELL_3" -> "M24_EYESPELL_4"[color=green, fontcolor=green, label="ASHOW(0,IDS_EYESPELL)"];
+"M24_EYESPELL_4" -> "M24_EYESPELL_50"[color=red, fontcolor=red, label="DROP(0,0)"];
+"M24_EYESPELL_50" -> "M24_EYESPELL_51"[color=green, fontcolor=green, label="VIDEO(0,IDS_EXPLODE1)"];
+"M24_EYESPELL_51" -> "M24_EYESPELL_52"[color=green, fontcolor=green, label="PLAYWAVE(0,SOUND_EXPLODE)"];
+"M24_EYESPELL_52" -> "M24_EYESPELL_53"[color=green, fontcolor=green, label="SHOW(0,0)"];
+"M24_EYESPELL_53" -> "M24_EYESPELL_54"[color=green, fontcolor=green, label="O_ACCEPT(0,IDD_EYESPELL)"];
+"M24_EYESPELL_54" -> "M24_EYESPELL_0"[color=green, fontcolor=green, label="SIGNALi(SIG_BOMB,S24_BIGEYE)"];
+}}

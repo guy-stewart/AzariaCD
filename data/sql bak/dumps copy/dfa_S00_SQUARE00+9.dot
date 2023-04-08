@@ -1,0 +1,14 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M_CLEAR {
+ label="M_CLEAR";
+"M_CLEAR_0" -> "M_CLEAR_5"[color=green, fontcolor=green, label="SHOW(WIP1,(null))"];
+"M_CLEAR_5" -> "M_CLEAR_9"[color=red, fontcolor=red, label="CLICK(0,0)"];
+"M_CLEAR_5" -> "M_CLEAR_9"[color=red, fontcolor=red, label="WAIT(0,0)"];
+"M_CLEAR_9" -> "M_CLEAR_10"[color=green, fontcolor=green, label="SHOW(WIP1,(null))"];
+"M_CLEAR_10" -> "M_CLEAR_20"[color=green, fontcolor=green, label="ASSIGN(WPARM,S00_SQUARE63)"];
+"M_CLEAR_20" -> "M_CLEAR_30"[color=green, fontcolor=green, label="SIGNAL(WPARM,SIG_CLEAR)"];
+"M_CLEAR_30" -> "M_CLEAR_50"[color=green, fontcolor=green, label="SUBI(WPARM,1)"];
+"M_CLEAR_50" -> "M_CLEAR_20"[color=green, fontcolor=green, label="GTEi(WPARM,S00_SQUARE00)"];
+"M_CLEAR_50" -> "M_CLEAR_0"[color=green, fontcolor=green, label="CLEAR(WOBJECT,(null))"];
+}}

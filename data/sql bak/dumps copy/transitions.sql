@@ -976,7 +976,7 @@ insert into transitions values ('M_LISTEN',4,5,'CLICK','0',0x0,'0', 0x0);
 insert into transitions values ('M_LISTEN',5,6,'SENDMSG','WIP2',0x11,'IDV_S_TELETYPE', 0x8);
 insert into transitions values ('M_LISTEN',6,7,'PLAYWAVE','0',0x0,'SOUND_CLICK', 0x5);
 insert into transitions values ('M_LISTEN',7,0,'SHOW','0',0x0,'0', 0x0);
-insert into transitions values ('M_MAPBUTTON',0,1,'SHOW','0',0x0,'IDS_BTN_MAP', 0x1ff);
+insert into transitions values ('M_MAPBUTTON',0,1,'SHOW','0',0x0,'IDS_BTN_MAP', 0x1e1);
 insert into transitions values ('M_MAPBUTTON',1,2,'CLICK','0',0x0,'0', 0x0);
 insert into transitions values ('M_MAPBUTTON',2,3,'PLAYWAVE','0',0x0,'SOUND_POPUP', 0x2);
 insert into transitions values ('M_MAPBUTTON',3,1,'LOADVIEW','0',0x0,'IDV_CONTINENT', 0x60);

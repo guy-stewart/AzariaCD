@@ -1,0 +1,20 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M24_BIGEYE {
+ label="M24_BIGEYE";
+"M24_BIGEYE_0" -> "M24_BIGEYE_1"[color=green, fontcolor=green, label="MOV(WSPRITE,WIP1)"];
+"M24_BIGEYE_1" -> "M24_BIGEYE_2"[color=green, fontcolor=green, label="ASHOW(WSPRITE,V_LOOP)"];
+"M24_BIGEYE_2" -> "M24_BIGEYE_5"[color=green, fontcolor=green, label="ANIMATE(0,V_LOOP)"];
+"M24_BIGEYE_5" -> "M24_BIGEYE_10"[color=red, fontcolor=red, label="WAIT(0,0)"];
+"M24_BIGEYE_5" -> "M24_BIGEYE_0"[color=red, fontcolor=red, label="CLICK((null),(null))"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_50"[color=green, fontcolor=green, label="IFSTATEi(0,S24_EYEPLATE1)"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_50"[color=green, fontcolor=green, label="IFSTATEi(0,S24_EYEPLATE2)"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_50"[color=green, fontcolor=green, label="IFSTATEi(0,S24_EYEPLATE3)"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_50"[color=green, fontcolor=green, label="IFSTATEi(0,S24_EYESPELL1)"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_50"[color=green, fontcolor=green, label="IFSTATEi(0,S24_EYESPELL3)"];
+"M24_BIGEYE_10" -> "M24_BIGEYE_20"[color=green, fontcolor=green, label="EPSILON((null),(null))"];
+"M24_BIGEYE_20" -> "M24_BIGEYE_30"[color=green, fontcolor=green, label="ASHOW(0,IDS_BIGEYE1)"];
+"M24_BIGEYE_30" -> "M24_BIGEYE_30"[color=red, fontcolor=red, label="GRAB(0,IDD_EYEWAND)"];
+"M24_BIGEYE_30" -> "M24_BIGEYE_50"[color=red, fontcolor=red, label="WAIT(0,SIG_BOMB)"];
+"M24_BIGEYE_50" -> "M24_BIGEYE_0"[color=green, fontcolor=green, label="SHOW(0,0)"];
+}}
