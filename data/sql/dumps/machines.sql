@@ -663,3 +663,5 @@ insert into machines values (0x713c,'S00_SQUARE00+7*8+4',0x6000,'IDV_BOARD',865,
 insert into machines values (0x713d,'S00_SQUARE00+7*8+5',0x6000,'IDV_BOARD',865,186,900,222,0,'M_SQUARE','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x713e,'S00_SQUARE00+7*8+6',0x6000,'IDV_BOARD',865,221,900,257,0,'M_SQUARE','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
 insert into machines values (0x713f,'S00_SQUARE00+7*8+7',0x6000,'IDV_BOARD',865,256,900,292,0,'M_SQUARE','', 0x0, '', 0x0, '', 0x0, '', 0x0 );
+insert into machines values (0x23fb,'S24_ROOTBIN',0x2402,'IDV_EYEB',2083,183,2120,220,2,'M_PLANTBIN','IDD_ROOTBLUE', 0x2138, 'IDS_ROOTPLANT', 0x2137, '60', 0x3c, '', 0x0 );
+insert into machines values (0x1237,'S12_ROOTBIN',0x1505,'IDV_TMPLPTH5',1944,207,1994,257,2,'M_PLANTBIN','IDD_ROOTWHITE', 0x2139, 'IDS_ROOTPLANT', 0x2137, '60', 0x3c, '', 0x0 );
