@@ -1,0 +1,18 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M25_RUMBLE {
+ label="M25_RUMBLE";
+"M25_RUMBLE_0" -> "M25_RUMBLE_10"[color=red, fontcolor=red, label="WAIT(0,SIG_INIT)"];
+"M25_RUMBLE_0" -> "M25_RUMBLE_20"[color=red, fontcolor=red, label="DRAGFOCUS(0,FALSE)"];
+"M25_RUMBLE_0" -> "M25_RUMBLE_30"[color=red, fontcolor=red, label="DROP(0,IDD_TELEKINESIS)"];
+"M25_RUMBLE_0" -> "M25_RUMBLE_40"[color=red, fontcolor=red, label="DRAGFOCUS(0,TRUE)"];
+"M25_RUMBLE_10" -> "M25_RUMBLE_0"[color=green, fontcolor=green, label="CLEAR(BPARM,(null))"];
+"M25_RUMBLE_20" -> "M25_RUMBLE_0"[color=green, fontcolor=green, label="SUBI(BPARM,1)"];
+"M25_RUMBLE_30" -> "M25_RUMBLE_50"[color=green, fontcolor=green, label="ADDI(BPARM,1)"];
+"M25_RUMBLE_40" -> "M25_RUMBLE_50"[color=green, fontcolor=green, label="ADDI(BPARM,1)"];
+"M25_RUMBLE_50" -> "M25_RUMBLE_60"[color=green, fontcolor=green, label="GTi(BPARM,1)"];
+"M25_RUMBLE_50" -> "M25_RUMBLE_0"[color=green, fontcolor=green, label="VIDEO(0,IDS_RUMBLE)"];
+"M25_RUMBLE_60" -> "M25_RUMBLE_70"[color=green, fontcolor=green, label="SIGNALi(SIG_OPEN,S25_ROLL)"];
+"M25_RUMBLE_70" -> "M25_RUMBLE_71"[color=red, fontcolor=red, label="CLICK(0,0)"];
+"M25_RUMBLE_71" -> "M25_RUMBLE_70"[color=green, fontcolor=green, label="LOADVIEW(0,IDV_WALL2EN)"];
+}}
