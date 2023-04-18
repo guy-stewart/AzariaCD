@@ -57,7 +57,7 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 
 delete from machines where name = 'S21_MAPOPEN';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
-VALUES ('8467', 'S21_MAPOPEN', '8104', 'IDV_MAPBOX1', '40', '0', '227', '177', '0', 'M_LEVDOOR', 'IDS_MAPOPN', '651', 'IDV_MAPROOM', '8105', '', '0', '', '0');
+VALUES ('8467', 'S21_MAPOPEN', '8104', 'IDV_MAPBOX1', '40', '0', '227', '177', '0', 'M_LEVDOOR', 'IDS_MAPOPN', '651', 'IDV_MAPROOM', '8106', '', '0', '', '0');
 
 delete from  "main"."transitions" where name = 'M_LEVDOOR';
 
@@ -69,6 +69,7 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVDOOR', '1', '3', 'MOV', 'WSPRITE', 'WIP1'),
     ('M_LEVDOOR', '3', '4', 'SHOW', 'WSPRITE', '0'),
     ('M_LEVDOOR', '4', '7', 'WAIT', '0', 'SIG_CLOSE'),
-    ('M_LEVDOOR', '7', '8', 'SHOW', '0', '0'),
-    ('M_LEVDOOR', '8', '0', 'Z_EPSILON', '', '');
-    
+    ('M_LEVDOOR', '4', '5', 'CLICK', '', '0'),
+    ('M_LEVDOOR', '5', '4', 'LOADVIEW', 'WIP2', ''),--if you go through the portal shut the door?
+    ('M_LEVDOOR', '7', '0', 'SHOW', '0', '0');
+  
