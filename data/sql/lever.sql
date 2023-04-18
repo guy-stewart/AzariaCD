@@ -27,13 +27,17 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVER', '3', '4', 'PLAYWAVE', '0', 'SOUND_LEVER'),
     ('M_LEVER', '4', '6', 'ADDI', 'BFRAME', '1'),--door is open - signal S21_MAPOPEN (SIG_OPEN)
     ('M_LEVER', '6', '7', 'SIGNALi', 'SIG_OPEN', 'S21_MAPOPEN'),
-    ('M_LEVER', '7', '8', 'ESTIME', '', '3'), -- sleep 3 seconds.
-    ('M_LEVER', '8', '7', 'IFSTATEi', '60', 'S21_LEVSTOP'),
-    ('M_LEVER', '8', '9', 'Z_EPSILON', '', ''),
-    ('M_LEVER', '9', '10', 'SUBI', 'BFRAME', '1'), --door is closed - signal S21_MAPOPEN (SIG_CLOSE)
-    ('M_LEVER', '10', '11', 'SIGNALi', 'SIG_CLOSE', 'S21_MAPOPEN'),
-    ('M_LEVER', '11', '12', 'PLAYWAVE', '0', 'SOUND_LEVER'),
-    ('M_LEVER', '12', '2', 'SHOW', 'WIP1', '');
+    ('M_LEVER', '7', '8', 'SIGNALi', 'SIG_SHOW', 'S21_ALT_MAPBOX'),  -- the opened machines maybe should signal their alt views :/
+    ('M_LEVER', '8', '9', 'SIGNALi', 'SIG_SHOW', 'S21_ALT_LEVER'),
+    ('M_LEVER', '9', '10', 'ESTIME', '', '3'), -- sleep 3 seconds.
+    ('M_LEVER', '10', '9', 'IFSTATEi', '60', 'S21_LEVSTOP'),
+    ('M_LEVER', '10', '11', 'Z_EPSILON', '', ''),
+    ('M_LEVER', '11', '12', 'SUBI', 'BFRAME', '1'), --door is closed - signal S21_MAPOPEN (SIG_CLOSE)
+    ('M_LEVER', '12', '13', 'SIGNALi', 'SIG_CLOSE', 'S21_MAPOPEN'),
+    ('M_LEVER', '13', '14', 'SIGNALi', 'SIG_HIDE', 'S21_ALT_MAPBOX'),  -- the opened machines maybe should signal their alt views :/
+    ('M_LEVER', '14', '15', 'SIGNALi', 'SIG_HIDE', 'S21_ALT_LEVER'),
+    ('M_LEVER', '15', '16', 'PLAYWAVE', '0', 'SOUND_LEVER'),
+    ('M_LEVER', '16', '2', 'SHOW', 'WIP1', '');
 
 -- sleep only works with WPARM and not an arbitrary number
 -- Ask Guy about clearing DETIME and what that does
@@ -73,3 +77,21 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVDOOR', '5', '4', 'LOADVIEW', 'WIP2', ''),
     ('M_LEVDOOR', '7', '0', 'SHOW', '0', '0');
   
+
+
+delete from machines where name = 'S21_ALT_LEVER';
+delete from machines where name = 'S21_ALT_MAPBOX';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
+VALUES 
+('8468', 'S21_ALT_LEVER', '8101', 'IDV_N2B', '1555', '142', '1645', '223', '0', 'M_STATESCALE', 'IDS_LEVOPNSML', '652', '', '0', '', '0', '', '0'),
+('8469', 'S21_ALT_MAPBOX', '8103', 'IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALE', 'IDS_MAPBOXSML', '653', '', '0', '', '0', '', '0');
+
+delete from  "main"."transitions" where name = 'M_STATESCALE';
+
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") VALUES 
+
+('M_STATESCALE', '0', '1', 'WAIT', '0', 'SIG_SHOW'),
+('M_STATESCALE', '1', '5', 'MOV', 'WSPRITE', 'WIP1'),
+('M_STATESCALE', '5', '10', 'SHOW', 'WSPRITE', '0'),
+('M_STATESCALE', '10', '11', 'WAIT', '0', 'SIG_HIDE'),
+('M_STATESCALE', '11', '0', 'SHOW', '0', '0');
