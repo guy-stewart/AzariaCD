@@ -70,6 +70,6 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVDOOR', '3', '4', 'SHOW', 'WSPRITE', '0'),
     ('M_LEVDOOR', '4', '7', 'WAIT', '0', 'SIG_CLOSE'),
     ('M_LEVDOOR', '4', '5', 'CLICK', '', '0'),
-    ('M_LEVDOOR', '5', '4', 'LOADVIEW', 'WIP2', ''),--if you go through the portal shut the door?
+    ('M_LEVDOOR', '5', '4', 'LOADVIEW', 'WIP2', ''),
     ('M_LEVDOOR', '7', '0', 'SHOW', '0', '0');
   
