@@ -83,7 +83,7 @@ delete from machines where name = 'S21_ALT_LEVER';
 delete from machines where name = 'S21_ALT_MAPBOX';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
-('8468', 'S21_ALT_LEVER', '8101', 'IDV_N2B', '1555', '142', '1645', '223', '0', 'M_STATESCALE', 'IDS_LEVOPNSML', '652', '', '0', '', '0', '', '0'),
+('8468', 'S21_ALT_LEVER', '8101', 'IDV_N2B', '1556', '142', '1565', '147', '0', 'M_STATESCALE', 'IDS_LEVOPNSML', '652', '', '0', '', '0', '', '0'),
 ('8469', 'S21_ALT_MAPBOX', '8103', 'IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALE', 'IDS_MAPBOXSML', '653', '', '0', '', '0', '', '0');
 
 delete from  "main"."transitions" where name = 'M_STATESCALE';
