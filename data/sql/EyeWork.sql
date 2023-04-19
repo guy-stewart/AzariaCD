@@ -24,14 +24,14 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 ('M24_EYEPLATE', '1', '2', 'SIGNALi', '0', 'S24_BIGEYE'),
 ('M24_EYEPLATE', '2', '3', 'C_ACCEPT', '0', 'IDC_BOMB'),
 ('M24_EYEPLATE', '3', '4', 'ASHOW', '0', 'IDS_EYEPLATE'),
-('M24_EYEPLATE', '4', '5', 'SIGNALi', 'SIG_SHOW', 'WIP1'),
-('M24_EYEPLATE', '5', '6', 'SIGNALi', 'SIG_SHOW', 'WIP2'),
+('M24_EYEPLATE', '4', '5', 'SIGNAL','WIP1', 'SIG_SHOW'),
+('M24_EYEPLATE', '5', '6', 'SIGNAL', 'WIP2', 'SIG_SHOW'),
 ('M24_EYEPLATE', '6', '50', 'DROP', '0', '0'),
 ('M24_EYEPLATE', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1'),
 ('M24_EYEPLATE', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE'),
 ('M24_EYEPLATE', '52', '53', 'SHOW', '0', '0'),
-('M24_EYEPLATE', '53', '54', 'SIGNALi', 'SIG_HIDE', 'WIP1'),
-('M24_EYEPLATE', '54', '55', 'SIGNALi', 'SIG_HIDE', 'WIP2'),
+('M24_EYEPLATE', '53', '54', 'SIGNAL', 'WIP1', 'SIG_HIDE'),
+('M24_EYEPLATE', '54', '55', 'SIGNAL', 'WIP2', 'SIG_HIDE'),
 ('M24_EYEPLATE', '55', '56', 'O_ACCEPT', '0', 'IDD_EYEFUSE'),
 ('M24_EYEPLATE', '56', '0', 'SIGNALi', 'SIG_BOMB', 'S24_BIGEYE');
 
