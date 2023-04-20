@@ -24,10 +24,10 @@ delete from machines where name = 'S11_LOGBINB';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
-('4368', 'S11_FIRE', '4353', 'IDV_FA1PAN', '785', '210', '890', '250', '0', 'M11_FIRE', '', '0', '', '0', '', '0', '', '0'),
-('4369', 'S11_GRILL', '4353', 'IDV_FA1PAN', '774', '163', '890', '200', '0', 'M11_GRILL', 'S11_FIRE', '4368', 'S11_ASCENT', '4370', '', '0', '', '0'),
-('4370', 'S11_ASCENT', '4353', 'IDV_FA1PAN', '774', '63', '890', '140', '0', 'M11_ASCENT', '', '0', '', '0', '', '0', '', '0'),
-('4432', 'S11_LOGBINA', '4355', 'IDV_FALTAR', '1200', '37', '2022', '255', '2', 'M_OBJECTBIN', 'IDD_LOG', '4464', '', '0', '', '0', '', '0'),
+('4368', 'S11_FIRE', '4355', 'IDV_FALTAR', '91', '155', '321', '220', '0', 'M11_FIRE', '', '0', '', '0', '', '0', '', '0'),
+('4369', 'S11_GRILL', '4355', 'IDV_FALTAR', '91', '79', '321', '140', '0', 'M11_GRILL', 'S11_FIRE', '4368', 'S11_ASCENT', '4370', '', '0', '', '0'),
+('4370', 'S11_ASCENT', '4355', 'IDV_FALTAR', '91', '0', '321', '70', '0', 'M11_ASCENT', '', '0', '', '0', '', '0', '', '0'),
+--('4432', 'S11_LOGBINA', '4355', 'IDV_FALTAR', '1200', '37', '2022', '255', '2', 'M_OBJECTBIN', 'IDD_LOG', '4464', '', '0', '', '0', '', '0'),
 
 ('4384', 'S11_BAITSTATION', '4356', 'IDV_FH1PAN', '2985', '64', '3200', '300', '0', 'M_BAITSTATION', '', '0', '', '0', '', '0', '', '0'),
 ('4385', 'S11_POLESTANDa', '4356', 'IDV_FH1PAN', '2700', '120', '2750', '300', '0', 'M_POLESTAND', '', '0', '', '0', '', '0', '', '0'),
