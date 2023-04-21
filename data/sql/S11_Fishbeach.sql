@@ -27,9 +27,8 @@ VALUES
 ('4368', 'S11_FIRE', '4355', 'IDV_FALTAR', '122', '165', '290', '210', '0', 'M11_FIRE', '', '0', '', '0', '', '0', '', '0'),
 ('4369', 'S11_GRILL', '4355', 'IDV_FALTAR', '145', '100', '267', '142', '0', 'M11_GRILL', 'S11_FIRE', '4368', 'S11_ASCENT', '4370', '', '0', '', '0'),
 ('4370', 'S11_ASCENT', '4355', 'IDV_FALTAR', '125', '0', '267', '70', '0', 'M11_ASCENT', '', '0', '', '0', '', '0', '', '0'),
---('4432', 'S11_LOGBINA', '4355', 'IDV_FALTAR', '1200', '37', '2022', '255', '2', 'M_OBJECTBIN', 'IDD_LOG', '4464', '', '0', '', '0', '', '0'),
 
-('4384', 'S11_BAITSTATION', '4356', 'IDV_FH1PAN', '2985', '64', '3200', '300', '0', 'M_BAITSTATION', '', '0', '', '0', '', '0', '', '0'),
+
 ('4385', 'S11_POLESTANDa', '4356', 'IDV_FH1PAN', '2700', '120', '2750', '300', '0', 'M_POLESTAND', '', '0', '', '0', '', '0', '', '0'),
 ('4386', 'S11_POLESTANDb', '4356', 'IDV_FH1PAN', '2750', '120', '2800', '300', '0', 'M_POLESTAND', '', '0', '', '0', '', '0', '', '0'),
 ('4387', 'S11_POLESTANDc', '4356', 'IDV_FH1PAN', '2800', '120', '2850', '300', '0', 'M_POLESTAND', '', '0', '', '0', '', '0', '', '0'),
@@ -46,3 +45,44 @@ VALUES
 
 ('4448', 'S11_GRUBBIN0', '4358', 'IDV_GRBDRT2', '20', '8', '262', '218', '2', 'M_OBJECTBIN', 'IDD_BAIT0', '4400', '', '0', '', '0', '', '0'),
 ('4433', 'S11_LOGBINB', '4403', '', '2833', '168', '3126', '265', '2', 'M_OBJECTBIN', 'IDD_LOG', '4464', '', '0', '', '0', '', '0');
+
+
+-- Bait stations combining with fish stations
+
+delete from transitions where name = 'M_FISHSTATION';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") VALUES 
+        ('M_FISHSTATION', '0', '1', 'C_ACCEPT', '0', 'IDC_POLE'),
+        ('M_FISHSTATION', '1', '2', 'SHOW', '0', '0'),
+        ('M_FISHSTATION', '2', '50', 'DRAG', '0', 'IDD_BUCKE'),
+        ('M_FISHSTATION', '2', '3', 'DROP', '0', '0'),
+        ('M_FISHSTATION', '2', '0', 'GRAB', '0', '0'),
+
+        ('M_FISHSTATION', '3', '4', 'IS_A', 'WOBJECT', 'ISA_BAITEDPOLE'),
+        ('M_FISHSTATION', '3', '30', 'Z_EPSILON', '0', '0'), --else get baited
+        ('M_FISHSTATION', '4', '5', 'SHOW', '0', 'IDS_POLE1LCL'), --baited cast
+        ('M_FISHSTATION', '5', '6', 'RAND', 'ADD_CATCH_TIME', 'MIN_CATCH_TIME'),
+        ('M_FISHSTATION', '6', '0', 'GRAB', '0', '0'),
+        ('M_FISHSTATION', '6', '7', 'SYNCPOINT', 'WRAND', 'SYNC_FISH1'),
+        ('M_FISHSTATION', '7', '8', 'PLAYWAVE', '0', 'SOUND_HURT'),
+        ('M_FISHSTATION', '8', '9', 'MOV', 'WPARM', 'WOBJECT'),
+        ('M_FISHSTATION', '9', '11', 'RAND', 'IDD_FISH10-IDD_FISH1', 'IDD_FISH1'),
+        ('M_FISHSTATION', '11', '12', 'MOV', 'WOBJECT', 'WRAND'),
+        ('M_FISHSTATION', '12', '13', 'SHOW', '0', 'IDS_POLE1LCT'),
+        ('M_FISHSTATION', '13', '14', 'GRAB', '0', '0'),
+        ('M_FISHSTATION', '14', '15', 'MOV', 'WOBJECT', 'WPARM'),
+        ('M_FISHSTATION', '15', '16', 'XIM', 'WOBJECT', 'WPARM'),
+        ('M_FISHSTATION', '16', '17', 'SHOW', 'WOBJECT', ''),
+        ('M_FISHSTATION', '17', '0', 'GRAB', '0', '0'),
+
+        ('M_FISHSTATION', '30', '31', 'SHOW', '0', 'IDS_POLE1LCU'),
+        ('M_FISHSTATION', '31',	'32', 'MOV','WPARM','WOBJECT'),
+        ('M_FISHSTATION', '32', '33', 'C_ACCEPT', '0', 'ISA_BAIT'),
+        ('M_FISHSTATION', '33', '34', 'DROP', '0', '0'),
+        ('M_FISHSTATION', '33', '0', 'GRAB', '0', '0'),
+        ('M_FISHSTATION', '34', '35', 'MIX', 'WPARM', 'WOBJECT'),
+        ('M_FISHSTATION', '35', '36', 'SHOW', '0', 'IDS_POLE1B'),
+        ('M_FISHSTATION', '36', '0', 'GRAB', '0', '0'),
+        ('M_FISHSTATION', '50', '2', 'HANDOFF', '0', 'IDD_BUCKF');
+
+
+
