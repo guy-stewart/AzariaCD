@@ -7,6 +7,20 @@ delete from machines where name = 'S25_OPN2';
 delete from machines where name = 'S25_WALLCU1E';
 delete from machines where name = 'S25_WALLCU2E';
 
+delete from machines where name = 'S25_RUMROLL_ALT';
+delete from machines where name = 'S25_SCAT_ALT';
+
+delete from spr_names where name = 'IDS_RUMROLL_ALT_CL';
+delete from spr_names where name = 'IDS_SCAT_ALT_CL';
+delete from spr_names where name = 'IDS_RUMROLL_ALT_OP';
+delete from spr_names where name = 'IDS_SCAT_ALT_OP';
+
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_RUMROLL_ALT_CL', 'rumroll_alt_cl', '9510');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_SCAT_ALT_CL', 'scat_alt_cl', '9511');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_RUMROLL_ALT_OP', 'rumroll_alt_op', '9512');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_SCAT_ALT_OP', 'scat_alt_op', '9513');
+
+
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
 ('9472', 'S25_RUMBLE', '9476', 'IDV_W4LOCK', '374', '96', '574', '275', '2', 'M25_RUMBLE', '', '0', '', '0', '', '0', '', '0'),
@@ -15,7 +29,18 @@ VALUES
 ('9477', 'S25_OPN1', '9478', 'IDV_WALL1IN', '95', '126', '404', '299', '2', 'M25_OPNDOOR', 'IDS_OPN1', '9478', 'IDV_HIDDENR1', '9489', '', '0', '', '0'),
 ('9478', 'S25_OPN2', '9480', 'IDV_WALL2IN', '2717', '138', '3028', '298', '2', 'M25_OPNDOOR', 'IDS_OPN2', '9479', 'IDV_HIDDENR1', '9489', '', '0', '', '0'),
 ('9475', 'S25_WALLCU1E', '9481', 'IDV_PL1P', '162', '70', '476', '158', '2', 'M24_EYETEXT', 'IDS_WALL1CUE', '9476', '', '0', '', '0', '', '0'),
-('9476', 'S25_WALLCU2E', '9488', 'IDV_PL2P', '165', '78', '479', '218', '2', 'M24_EYETEXT', 'IDS_WALL2CUE', '9477', '', '0', '', '0', '', '0');
+('9510', 'S25_WALLCU2E', '9488', 'IDV_PL2P', '165', '78', '479', '218', '2', 'M24_EYETEXT', 'IDS_WALL2CUE', '9477', '', '0', '', '0', '', '0'),
+('9511', 'S25_RUMROLL_ALT', '9475', 'IDV_WR3', '1639', '121', '1642', '125', '0', 'M_STATEDOOR', 'IDS_RUMROLL_ALT_OP','9512','IDS_RUMROLL_ALT_CL','9510', '', '0', '', '0'),
+('9512', 'S25_SCAT_ALT', '9475', 'IDV_WR3', '1533','130', '1642', '135', '0', 'M_STATEDOOR', 'IDS_SCAT_ALT_OP', '9513', 'IDS_SCAT_ALT_CL', '9511', '', '0', '', '0');
+
+delete from  "main"."transitions" where name = 'M_STATEDOOR';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") VALUES 
+('M_STATEDOOR', '0', '1', 'MOV', 'WSPRITE', 'WIP2'), --CLOSED
+('M_STATEDOOR', '1', '2', 'SHOW', 'WSPRITE', '0'),
+('M_STATEDOOR', '2', '3', 'WAIT', '0', 'SIG_OPEN'),
+('M_STATEDOOR', '3', '5', 'MOV', 'WSPRITE', 'WIP1'),
+('M_STATEDOOR', '5', '10', 'SHOW', 'WSPRITE', '0'),
+('M_STATEDOOR', '10', '0', 'WAIT', '0', 'SIG_CLOSE');
 
 
 
@@ -49,7 +74,8 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 VALUES 
 ('M25_ROLL', '0', '1', 'WAIT', '0', 'SIG_OPEN'),
 ('M25_ROLL', '1', '2', 'SHOW', '', 'IDS_ROLL'),
-('M25_ROLL', '2', '0', 'ANIMATE', '', '');
+('M25_ROLL', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S25_RUMROLL_ALT'),
+('M25_ROLL', '3', '0', 'ANIMATE', '', '');
 
 delete from transitions where name = 'M25_SCATTER';
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") 
@@ -74,6 +100,8 @@ VALUES
 --set BPARM to some value 0-10
 ('M25_SCATTER', '71', '72', 'ADDI', 'BFRAME', '1'),
 ('M25_SCATTER', '72', '73', 'ASSIGN', 'BPARM', '0'), --SET BPARM BACK TO 0 - NEW DAMAGE EFFORT
-('M25_SCATTER', '73', '80', 'GTEi', 'BFRAME', '10'), -- DID WE GET TO FRAME 10/11?
+('M25_SCATTER', '73', '74', 'GTEi', 'BFRAME', '10'), -- DID WE GET TO FRAME 10/11?
+('M25_SCATTER', '74', '80', 'SIGNALi', 'SIG_OPEN', 'S25_SCAT_ALT'),
 ('M25_SCATTER', '73', '10', 'Z_EPSILON', '', ''),
-('M25_SCATTER', '80', '10', 'LOADVIEW', '0', 'IDV_WALL1EN');
+('M25_SCATTER', '80', '10', 'LOADVIEW', '0', 'IDV_WALL1EN')
+
