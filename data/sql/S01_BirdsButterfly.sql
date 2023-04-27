@@ -30,10 +30,10 @@ VALUES
 ('M_NATURE', '0', '1', 'WAIT', '0', 'SIG_OPEN'),
 ('M_NATURE', '1', '2', 'ESTIME', '', '4'),
 ('M_NATURE', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSFWD'),
-('M_NATURE', '3', '4', 'ESTIME', '4', '4'),
+('M_NATURE', '3', '4', 'ESTIME', '10', '10'),
 ('M_NATURE', '4', '5', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSBKWD'),
 ('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY'),
-('M_NATURE', '6', '1', 'ESTIME', '', '60'),
+('M_NATURE', '6', '1', 'ESTIME', '', '20'),
 
 
 ('M_TIMEDVPLAY', '0', '1', 'WAIT', '0', 'SIG_OPEN'),
