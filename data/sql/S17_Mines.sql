@@ -72,6 +72,8 @@ delete from machines where name = 'S17_ALT_e_A';
 delete from machines where name = 'S17_ALT_e_B';
 
 
+--Mines start with A in the middle North and go around to the right 
+
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
 ('5950', 'S17_ALT_a_A', '5889', 'IDV_QUARSA', '3155', '157', '3176', '171', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
