@@ -76,16 +76,22 @@ delete from machines where name = 'S17_ALT_e_B';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
-('5950', 'S17_ALT_a_A', '5889', 'IDV_QUARSA', '3155', '157', '3176', '171', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
-('5951', 'S17_ALT_a_B', '5890', 'IDV_QUARSB', '3147', '161', '3185', '188', '0', 'M_STATESCALE', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
-('5952', 'S17_ALT_b_A', '5889', 'IDV_QUARSA', '188', '161', '211', '181', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
-('5953', 'S17_ALT_b_B', '5890', 'IDV_QUARSB', '336', '159', '374', '192', '0', 'M_STATESCALE', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
-('5954', 'S17_ALT_c_A', '5889', 'IDV_QUARSA', '425', '173', '452', '196', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
-('5955', 'S17_ALT_c_B', '5890', 'IDV_QUARSB', '813', '159', '856', '197', '0', 'M_STATESCALE', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
-('5956', 'S17_ALT_d_A', '5889', 'IDV_QUARSA', '2759', '165', '2762', '169', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
-('5957', 'S17_ALT_d_B', '5890', 'IDV_QUARSB', '2229', '182', '2272', '216', '0', 'M_STATESCALE', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
-('5958', 'S17_ALT_e_A', '5889', 'IDV_QUARSA', '2973', '154', '2993', '173', '0', 'M_STATESCALE', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
-('5959', 'S17_ALT_e_B', '5890', 'IDV_QUARSB', '2739', '173', '2773', '199',  '0', 'M_STATESCALE', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0');
+('5950', 'S17_ALT_a_A', '5889', 'IDV_QUARSA', '3155', '157', '3176', '171', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
+('5951', 'S17_ALT_a_B', '5890', 'IDV_QUARSB', '3147', '161', '3185', '188', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
+('5952', 'S17_ALT_b_A', '5889', 'IDV_QUARSA', '188', '161', '211', '181', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
+('5953', 'S17_ALT_b_B', '5890', 'IDV_QUARSB', '336', '159', '374', '192', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
+('5954', 'S17_ALT_c_A', '5889', 'IDV_QUARSA', '425', '173', '452', '196', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
+('5955', 'S17_ALT_c_B', '5890', 'IDV_QUARSB', '813', '159', '856', '197', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
+('5956', 'S17_ALT_d_A', '5889', 'IDV_QUARSA', '2759', '165', '2762', '169', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
+('5957', 'S17_ALT_d_B', '5890', 'IDV_QUARSB', '2229', '182', '2272', '216', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0'),
+('5958', 'S17_ALT_e_A', '5889', 'IDV_QUARSA', '2973', '154', '2993', '173', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '0', '', '0', '', '0', '', '0'),
+('5959', 'S17_ALT_e_B', '5890', 'IDV_QUARSB', '2730', '169', '2773', '199',  '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '0', '', '0', '', '0', '', '0');
 
 
-
+delete from  "main"."transitions" where name = 'M_STATESCALEV';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") 
+VALUES 
+('M_STATESCALEV', '0', '5', 'WAIT', '0', 'SIG_SHOW'),
+('M_STATESCALEV', '5', '10', 'ASHOW', 'WSPRITE', '0'),
+('M_STATESCALEV', '10', '11', 'WAIT', '0', 'SIG_HIDE'),
+('M_STATESCALEV', '11', '0', 'ASHOW', '0', '0');
