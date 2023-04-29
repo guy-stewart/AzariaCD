@@ -31,34 +31,27 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 VALUES 
 ('M_GOPABIN', '0', '1', 'MOV', 'BFRAME', 'WIP3'), -- START WITH A RED GOPA 0 FRAME
 ('M_GOPABIN', '1', '2', 'SHOW', 'WIP1', ''),
-
 ('M_GOPABIN', '2', '20', 'GRAB', '', ''),
 ('M_GOPABIN','2', '3', 'WAIT', '0', 'SIG_RIPEN'),
-
 ('M_GOPABIN', '3', '4', 'ADDI', 'BFRAME', '1'), -- SHOULD NOW BE GREEN GOPA
-('M_GOPABIN', '4', '5', 'ASSIGN', 'WOBJECT', ''),
--- could assign here
--- ('M_GOPABIN', '4', '5', 'EQUALi', 'BFRAME', '0'),
--- ('M_GOPABIN', '5', '6', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
-
-
-
-
------
-('M_GOPABIN', '5', '0', 'GTE', 'BFRAME', 'WIP2'), -- NUMBER OF FRAMES
-('M_GOPABIN','5', '1', 'Z_EPSILON', '', ''),
-
+('M_GOPABIN', '4', '5', 'EQUALi', 'BFRAME', '0'),
+('M_GOPABIN', '5', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
+('M_GOPABIN', '4', '6', 'EQUALi', 'BFRAME', '1'),
+('M_GOPABIN', '6', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAG'),
+('M_GOPABIN', '4', '7', 'EQUALi', 'BFRAME', '2'),
+('M_GOPABIN', '7', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB'),
+('M_GOPABIN', '4', '8', 'EQUALi', 'BFRAME', '3'),
+('M_GOPABIN', '8', '2', 'ASSIGN', 'WOBJECT', ''),
+('M_GOPABIN', '4', '9', 'GTE', 'BFRAME', 'WIP2'), -- NUMBER OF FRAMES
+('M_GOPABIN', '9', '0', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
 ('M_GOPABIN','20', '30', 'EQUALi', 'BFRAME', '0'),
 ('M_GOPABIN', '30', '31', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
 ('M_GOPABIN', '31', '1', 'SHOW', '0', '0'),
-
 ('M_GOPABIN','20', '40', 'EQUALi', 'BFRAME', '1'),
 ('M_GOPABIN', '40', '41',  'ASSIGN', 'WOBJECT', 'IDD_GOPAG'),
 ('M_GOPABIN', '41', '1', 'SHOW', '0', '0'),
-
 ('M_GOPABIN','20', '50', 'EQUALi', 'BFRAME', '2'),
 ('M_GOPABIN', '50', '51', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB'),
 ('M_GOPABIN', '51', '1', 'SHOW', '0', '0'),
-
 ('M_GOPABIN','20', '1', 'Z_EPSILON', '', '');
 
