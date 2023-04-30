@@ -26,3 +26,20 @@ VALUES
 ('M24_BIGEYE', '51', '52', 'SIGNAL','WIP2', 'SIG_HIDE',''),
 ('M24_BIGEYE', '52', '0', 'SIGNAL','WIP3', 'SIG_HIDE','');
 
+delete from machines where name = 'S10_GOPABUSH';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
+VALUES 
+('16002', 'S10_GOPABUSH', '4096', 'IDV_SCN10PT0', '2253', '150', '2322', '200', '0', 'M_GOPABIN', 'IDS_GBANIM', '16001', '4', '', '2', '', '', '');
+
+delete from transitions where name = 'M_NATURE';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2","code") 
+VALUES 
+('M_NATURE', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
+('M_NATURE', '1', '2', 'ESTIME', '', '4',''),
+('M_NATURE', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSFWD',''),
+('M_NATURE', '3', '4', 'ESTIME', '10', '10',''),
+('M_NATURE', '4', '5', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSBKWD',''),
+('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY',''),
+('M_NATURE', '6', '7', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
+('M_NATURE', '7', '8', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
+('M_NATURE', '8', '1', 'ESTIME', '', '20','');
