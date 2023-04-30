@@ -29,7 +29,7 @@ VALUES
 delete from machines where name = 'S10_GOPABUSH';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
-('16002', 'S10_GOPABUSH', '4096', 'IDV_SCN10PT0', '2253', '150', '2322', '200', '0', 'M_GOPABIN', 'IDS_GBANIM', '16001', '4', '', '2', '', '', '');
+('16002', 'S10_GOPABUSH', '4096', 'IDV_SCN10PT0', '2253', '150', '2322', '200', '0', 'M_GOPABIN', 'IDS_GBANIM', '16001', '4', '', '0', '', '', '');
 
 delete from transitions where name = 'M_NATURE';
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2","code") 
@@ -41,5 +41,5 @@ VALUES
 ('M_NATURE', '4', '5', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSBKWD',''),
 ('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY',''),
 ('M_NATURE', '6', '7', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
-('M_NATURE', '7', '8', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
+('M_NATURE', '7', '8', 'SIGNALi', 'SIG_RIPEN', 'S10_GOPABUSH',''),
 ('M_NATURE', '8', '1', 'ESTIME', '', '20','');
