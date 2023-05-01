@@ -10,6 +10,7 @@ delete from objects where object = 'IDD_LUNCHCRUMBS';
 delete from spr_names where name = 'IDS_LUNCHCRUMBS';
 
 delete from machines where name = 'S11_SHOREBIN';
+delete from transitions where name = 'M_TINYFISH';
 
 
 INSERT INTO "main"."objects" ("object", "object_id", "class", "class_id", "icon", "cursor", "actor") 
@@ -40,4 +41,20 @@ VALUES
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
-('4461', 'S11_SHOREBIN', '4360', 'IDV_SHORE', '129', '87', '321', '213', '0', 'M_ANIBIN', 'IDS_FISH', '0', 'IDD_BAIT3', '0', '60', '0', '', '0');
+('4461', 'S11_SHOREBIN', '4360', 'IDV_SHORE', '129', '87', '321', '213', '0', 'M_TINYFISH', 'IDS_FISH', '0', 'IDD_BAIT3', '0', '60', '0', '', '0');
+
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+VALUES 
+('M_TINYFISH', '0', '1', 'O_ACCEPT', '0', 'IDD_LUNCHCRUMBS', ''),
+('M_TINYFISH', '0', '1', 'C_ACCEPT', '0', 'IDC_BAIT', ''),
+('M_TINYFISH', '1', '2', 'DROP', '0', '0', ''),
+('M_TINYFISH', '2', '3', 'MOV', 'WSPRITE', 'WIP1', ''),
+('M_TINYFISH', '3', '5', 'ESTIME', '', '1', ''),
+('M_TINYFISH', '5', '6', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
+('M_TINYFISH', '6', '7', 'ESTIME', '', '4', ''),
+('M_TINYFISH', '6', '7', 'GRAB', 'WIP2', '', ''),
+('M_TINYFISH', '7', '8', 'CLEAR', 'WOBJECT', '', ''),
+('M_TINYFISH', '8', '9', 'CLEAR', 'WPARM', '', ''),
+('M_TINYFISH', '9', '10', 'CLEAR', 'WSPRITE', '', ''),
+('M_TINYFISH', '10', '1', 'ASHOW', '', '', '');
+
