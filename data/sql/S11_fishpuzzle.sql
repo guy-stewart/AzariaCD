@@ -23,7 +23,7 @@ insert into objects values
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
-('IDS_LUNCHCRUMBS', 'LUNCHCRUMBS', '16010'),
+('IDS_LUNCHCRUMBS', 'LUNCHCRUMBS', '16012'),
 ('IDS_RIPPLE', 'ripple', '16011');
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_LUNCHCU', '4361');
