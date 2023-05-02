@@ -6,7 +6,7 @@ delete from machines where name = 'S11_LUNCH';
 delete from machines where name = 'S11_LUNCHCRUMBS';
 
 delete from panel_nav where "from" = 'IDV_LUNCHCU';
-delete from objects where object = 'IDD_LUNCHCRUMBS';
+
 delete from spr_names where name = 'IDS_LUNCHCRUMBS';
 delete from spr_names where name = 'IDS_RIPPLE';
 
@@ -15,9 +15,11 @@ delete from machines where name = 'S11_RIPPLE';
 delete from transitions where name = 'M_TINYFISH';
 delete from transitions where name = 'M_PORTAL';
 
-INSERT INTO "main"."objects" ("object", "object_id", "class", "class_id", "icon", "cursor", "actor") 
-VALUES 
-('IDD_LUNCHCRUMBS', '16010', 'ISA_BAIT', '2', 'LUNCHCRUMBS', 'LUNCHCRUMBS', 'LUNCHCRUMBS');
+delete from objects where object = 'IDD_LUNCHCRUMBS';
+insert into objects values
+('IDD_LUNCHCRUMBS',0x3e8a,'ISA_BAIT',0x7001,'LUNCHCRUMBS','LUNCHCRUMBS','LUNCHCRUMBS');
+
+
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
@@ -49,7 +51,7 @@ VALUES
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_TINYFISH', '0', '2', 'O_ACCEPT', '0', 'IDD_LUNCHCRUMBS', ''),
+--('M_TINYFISH', '0', '2', 'O_ACCEPT', '0', 'IDD_LUNCHCRUMBS', ''),
 ('M_TINYFISH', '0', '2', 'C_ACCEPT', '0', 'ISA_BAIT', ''),
 ('M_TINYFISH', '2', '3', 'DROP', '0', '0', ''),
 ('M_TINYFISH', '3', '4', 'MOV', 'WSPRITE', 'WIP1', ''),
