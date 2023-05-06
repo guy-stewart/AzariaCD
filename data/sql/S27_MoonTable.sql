@@ -86,11 +86,9 @@ VALUES
 ('M_MEMOBJ','2', '3', 'MOV', 'WSPRITE', 'WIP3', ''),
 ('M_MEMOBJ', '3', '4', 'SHOW','WSPRITE', '',''),
 ('M_MEMOBJ', '4', '5', 'ASSIGN', 'BPARM', 'WIP1',''),
-
 --CHECK THE OTHER OBJECT
 ('M_MEMOBJ', '5', '11', 'IFSTATE', '18', 'WIP4',''),
 ('M_MEMOBJ', '5', '18', 'Z_EPSILON', '', '',''),
-
 ('M_MEMOBJ', '11', '12', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE1',''),
 ('M_MEMOBJ', '12', '13', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE2',''),
 ('M_MEMOBJ', '13', '14', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE3',''),
@@ -98,13 +96,11 @@ VALUES
 ('M_MEMOBJ', '15', '16', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE5',''),
 ('M_MEMOBJ', '16', '17', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE6',''),
 ('M_MEMOBJ', '17', '18', 'SIGNALi', 'SIG_SHOW', 'S27_MEMSTONE7',''),
-
 ('M_MEMOBJ', '18', '20', 'GRAB', 'WIP1', '', ''),
 ('M_MEMOBJ', '20', '21', 'CLEAR', 'WOBJECT', '', ''),
 ('M_MEMOBJ', '21', '22', 'CLEAR', 'WPARM', '', ''),
 ('M_MEMOBJ', '22', '23', 'CLEAR', 'WSPRITE', '', ''),
 ('M_MEMOBJ', '23', '30', 'SHOW', '', '', ''),
-
 ('M_MEMOBJ', '30', '31', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE1',''),
 ('M_MEMOBJ', '31', '32', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE2',''),
 ('M_MEMOBJ', '32', '33', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE3',''),
