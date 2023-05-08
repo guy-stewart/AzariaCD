@@ -4,7 +4,7 @@ delete from games;
 delete from idv where name = 'IDV_MEFPAN';
 delete from views where view_name = 'IDV_MEFPAN';
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_MEFPAN', '9802');
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9802', 'IDV_MEFPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 -- the first one is neelp
 --S33_Neelp NEELPQ1
@@ -119,17 +119,52 @@ VALUES
 
 delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 
+
+delete from sounds where name = 'SOUND_RATHEQ1';
+insert into sounds values ('SOUND_RATHEQ1','M6M1A',27); 
+
 -------------------------------------------------------------------
 
-
+delete from machines where name = 'NEELP_COORD';
 delete from machines where name = 'S33_NEELP';
 delete from machines where name = 'S33_NEELP_Q1';
+delete from machines where name = 'S33_MEFPAN_OK';
+delete from machines where name = 'S33_NEELP_alt1';
+delete from machines where name = 'S33_NEELP_alt2';
+
+delete from machines where name = 'S24_RATHE';
+delete from machines where name = 'S24_RATHE_Q1';
+delete from machines where name = 'S24_MEFPAN_OK';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
 VALUES 
 -- ALSO MAKE A MACHINE CALLED A MEF_COORDINATOR WHICH HOLDS QUEST PROGRESS AS TRANSITIONS AND CAN MOVE THE MEFLIN TO NEW POSITIONS
 
-('15500', 'S33_NEELP', '8101', 'IDV_N2B', '140', '100', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY','15001','', '', '', '', '', ''),
-('15501', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '0','M_MEF_TALK','IDS_MYS10000','15040','', '', 'SOUND_NEELPQ1', '26', '', '');
+--NEELP
+('15500', 'NEELP_COORD', '5', 'IDV_OTHERID', '0', '0', '0', '0', '0','MEFLIN_COORD','','','', '', '', '', '', ''),
+('15501', 'S33_NEELP', '8101', 'IDV_N2B', '47', '101', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY','15001','S33_NEELP_Q1', '15502','NEELP_COORD','15500', '', ''),
+('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','15009','10', '10', 'SOUND_NEELPQ1', '26', 'IDS_M1I1ANIM', '15003'),
+('15505', 'S33_MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S33_NEELP_Q1', '15502', 'IDV_N2B','8101','', '', '', ''),
+('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_ANIBIN','IDS_M1SWAYC','','', '', '', '', '', ''),
+('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2573', '152', '2633', '201', '1','M_ANIBIN','IDS_M1SWAYB','','', '', '', '', '', ''),
+
+
+--Rathe
+('15508', 'S24_RATHE', '9218', 'IDV_EYEB', '900', '16', '1200', '200', '0','M_MEF_APPROACH','IDS_M6STIR','15024','S24_RATHE_Q1','15509','','', '', ''),
+('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','15025','10', '10', 'SOUND_RATHEQ1','27', 'IDS_M6P10000','15021'),
+('15510', 'S24_MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S24_RATHE_Q1','15509','IDV_EYEB','9218','', '', '', '');
+
+
+delete from transitions where name = 'MEFLIN_COORD';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
+VALUES 
+('MEFLIN_COORD','0', '5', 'WAIT', '', 'SIG_Q1_GIVEN', ''),
+-- set new files moving specif files into reg
+
+('MEFLIN_COORD','5', '10', 'WAIT', '', 'SIG_Q1_SOLVED', ''),
+('MEFLIN_COORD','10', '15', 'WAIT', '', 'SIG_Q2_GIVEN', ''),
+('MEFLIN_COORD','15', '20', 'WAIT', '', 'SIG_Q2_SOLVED', ''),
+('MEFLIN_COORD','20', '25', 'WAIT', '', 'SIG_Q3_GIVEN', ''),
+('MEFLIN_COORD','25', '30', 'WAIT', '', 'SIG_Q3_SOLVED', '');
 
 delete from transitions where name = 'M_MEF_APPROACH';
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
@@ -137,15 +172,37 @@ VALUES
 ('M_MEF_APPROACH','0', '1', 'MOV', 'WSPRITE', 'WIP1', ''),
 ('M_MEF_APPROACH', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
 ('M_MEF_APPROACH', '2', '3', 'CLICK', '0', '0', ''),
-('M_MEF_APPROACH', '3', '4', 'PLAYWAVE', '', 'SOUND_NEELPQ1', ''), -- plays ok here
-('M_MEF_APPROACH', '4', '5', 'LOADVIEW', '0', 'IDV_MEFPAN', ''),
-('M_MEF_APPROACH', '5', '2', 'SIGNALi', 'SIG_PLAY', 'S33_NEELP_Q1', ''); --signal talking machine with ref to 
+('M_MEF_APPROACH', '3', '4', 'LOADVIEW', '0', 'IDV_MEFPAN', ''),
+
+--above here look for where we should be
+-- pull audio based on COORDINATOR
+('M_MEF_APPROACH', '4', '0', 'SIGNAL', 'WIP2', 'SIG_PLAY', '');--signal talking machine with ref to quest
+
 
 delete from transitions where name = 'M_MEF_TALK';
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
 ('M_MEF_TALK','0','1','WAIT','','SIG_PLAY',''),
-('M_MEF_TALK','1', '2', 'MOV', 'WSPRITE', 'WIP1', ''),
-('M_MEF_TALK', '2', '4', 'ASHOW', 'WSPRITE', '', ''),
---('M_MEF_TALK', '3', '4', 'PLAYWAVE', 'WIP3', '', ''),
-('M_MEF_TALK', '4', '0', 'WAIT', '', '', '');
+('M_MEF_TALK','1', '2', 'MOV', 'WSPRITE', 'WIP1', ''), -- long dialogue loop wip1
+('M_MEF_TALK','2', '3', 'ASHOW',  'WSPRITE', '',  ''),
+('M_MEF_TALK','3', '4', 'PLAYWAVE', 'WIP3', '', ''), -- sound file wip3
+('M_MEF_TALK','4', '7', 'ESTIME', '', '10', ''), -- close durration of talk wip2
+('M_MEF_TALK','7', '8', 'MOV', 'BFRAME', '0',''),
+('M_MEF_TALK','8', '9', 'SHOW', 'WIP4', '', ''), -- closing expression animation wip4
+('M_MEF_TALK','9', '10', 'ANIMATE', '0', '0', ''),
+('M_MEF_TALK','10','11','WAIT','','SIG_CLOSE',''), --wait for a signal to remove 
+('M_MEF_TALK','11','14', 'CLEAR', 'BFRAME', '', ''),
+('M_MEF_TALK','14','15', 'SHOW', '0', '', ''),
+('M_MEF_TALK','15', '0', 'Z_EPSILON', '0', '0', '');
+
+
+delete from transitions where name = 'M_MEFPAN_OK';
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
+VALUES 
+('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', ''),
+('M_MEFPAN_OK','1', '2', 'CLICK', '0', '0', ''),
+('M_MEFPAN_OK', '2', '3', 'SIGNAL', 'SIG_CLOSE', 'WIP1', ''),
+('M_MEFPAN_OK', '3', '4', 'CLEAR', 'WIP1', '', ''),
+('M_MEFPAN_OK', '4', '5', 'LOADVIEW', 'WIP2', '', ''),
+('M_MEFPAN_OK', '5', '0', 'CLEAR', 'WIP2', '', '');
+
