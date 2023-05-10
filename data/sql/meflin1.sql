@@ -56,6 +56,7 @@ delete from spr_names where name = 'IDS_M2P10000';
 delete from spr_names where name = 'IDS_M2S10000';
 delete from spr_names where name = 'IDS_M2S20000';
 delete from spr_names where name = 'IDS_M2T10000';
+delete from spr_names where name = 'IDS_M2FIDDLEsm1';
 
 --RATHE
 --Audio prefix MSM1A
@@ -115,6 +116,7 @@ VALUES
 ('IDS_M2S10000', 'M2S10000', '15015'),
 ('IDS_M2S20000', 'M2S20000', '15016'),
 ('IDS_M2T10000', 'M2T10000', '15017'),
+('IDS_M2FIDDLEsm1', 'M2FIDDLEsm1', '15046'),
 
 ('IDS_M6A10000', 'M6A10000', '15018'),
 ('IDS_M6H10000', 'M6H10000', '15019'),
@@ -211,8 +213,8 @@ VALUES
 
 ('15515', 'S16_PERST', '4869', 'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE','S16_PERST_Q1','IDV_S16_PERST_PAN',''),
 ('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
-('15517', 'S16_PERST_OK', '9805', 'IDV_S16_PERST_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S16_PERST_Q1','IDV_VIL7','','');
--- ('15518', 'S16_PERST_alt1','4096', 'IDV_SCN10PT0', '3001', '130', '3080', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  '');
+('15517', 'S16_PERST_OK', '9805', 'IDV_S16_PERST_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S16_PERST_Q1','IDV_VIL7','',''),
+('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 
 
