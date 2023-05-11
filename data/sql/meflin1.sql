@@ -115,7 +115,7 @@ VALUES
 ('IDS_M2P10000', 'M2P10000', '15014'),
 ('IDS_M2S10000', 'M2S10000', '15015'),
 ('IDS_M2S20000', 'M2S20000', '15016'),
-('IDS_M2T10000', 'M2T10000', '15017'),
+('IDS_M2T10000', 'M2T', '15017'),
 ('IDS_M2FIDDLEsm1', 'M2FIDDLEsm1', '15046'),
 
 ('IDS_M6A10000', 'M6A10000', '15018'),
@@ -139,12 +139,12 @@ VALUES
 
 ('IDS_MYA10000', 'MYA10000', '15035'),
 ('IDS_MYH10000', 'MYH10000', '15036'),
-('IDS_MYI10000', 'MYI10000', '15037'),
+('IDS_MYI10000', 'MYI10000b', '15037'),
 ('IDS_MYJUGGLE', 'MYJUGGLE', '15038'),
 ('IDS_MYP10000', 'MYP10000', '15039'),
 ('IDS_MYS10000', 'MYS10000', '15040'),
 ('IDS_MYS20000', 'MYS20000', '15041'),
-('IDS_MYT10000', 'MYT10000', '15042'),
+('IDS_MYT10000', 'MYT', '15042'),
 ('IDS_MYJUGGLEsm1', 'MYJUGGLEsm1', '15045');
 
 
@@ -205,7 +205,7 @@ VALUES
 --THAOR
 
 ('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE','S10_THAOR_Q1','IDV_S10_THAOR_PAN',''),
-('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYA10000','7','SOUND_THAORQ1', 'IDS_MYS20000'),
+('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
 ('15513', 'S10_THAOR_OK', '9804', 'IDV_S10_THAOR_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S10_THAOR_Q1','IDV_SCN10PT1','',''),
 ('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3001', '130', '3080', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  ''),
 
@@ -251,13 +251,17 @@ delete from transitions where name = 'M_MEF_TALK';
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
 ('M_MEF_TALK','0','1','WAIT','','SIG_PLAY',''),
+
 ('M_MEF_TALK','1', '2', 'MOV', 'WSPRITE', 'WIP1', ''), -- long dialogue loop wip1
 ('M_MEF_TALK','2', '3', 'ASHOW',  'WSPRITE', '',  ''),
 ('M_MEF_TALK','3', '4', 'PLAYWAVE', 'WIP3', '', ''), -- sound file wip3
 ('M_MEF_TALK','4', '7', 'ESTIME', 'WIP2', '', ''), -- close durration of talk wip2
+
 ('M_MEF_TALK','7', '8', 'MOV', 'BFRAME', '0',''),
 ('M_MEF_TALK','8', '9', 'SHOW', 'WIP4', '', ''), -- closing expression animation wip4
 ('M_MEF_TALK','9', '10', 'ANIMATE', '0', '0', ''),
+
+
 ('M_MEF_TALK','10','11','WAIT','','SIG_CLOSE',''), --wait for a signal to remove 
 ('M_MEF_TALK','11','14', 'CLEAR', 'BFRAME', '', ''),
 ('M_MEF_TALK','14','15', 'SHOW', '0', '', ''),
