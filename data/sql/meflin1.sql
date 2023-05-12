@@ -13,6 +13,8 @@ delete from views where view_name = 'IDV_S10_THAOR_PAN';
 delete from idv where name = 'IDV_S16_PERST_PAN';
 delete from views where view_name = 'IDV_S16_PERST_PAN';
 
+delete from idv where name = 'IDV_S09_AMBLE_PAN';
+delete from views where view_name = 'IDV_S09_AMBLE_PAN';
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_MEFPAN', '9802');
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
@@ -26,6 +28,8 @@ INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "loc
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_S16_PERST_PAN', '9805');
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9805', 'IDV_S16_PERST_PAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_S09_AMBLE_PAN', '9806');
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9806', 'IDV_S09_AMBLE_PAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 
 
@@ -106,7 +110,7 @@ VALUES
 ('IDS_M1S2ANIM', 'M1S2ANIM', '15043'),
 ('IDS_M1SWAYB', 'M1SWAYB', '15007'),
 ('IDS_M1SWAYC', 'M1SWAYC', '15008'),
-('IDS_M1T1ANIM', 'MN1T', '15009'),
+('IDS_M1T1ANIM', 'Neelpt', '15009'),
 
 ('IDS_M2A10001', 'M2A10001', '15010'),
 ('IDS_M2FIDDLE', 'M2FIDDLE', '15011'),
@@ -160,6 +164,9 @@ insert into sounds values ('SOUND_THAORQ1','MYM1A',28);
 delete from sounds where name = 'SOUND_PERSTQ1';
 insert into sounds values ('SOUND_PERSTQ1','MPM1A',29); 
 
+delete from sounds where name = 'SOUND_AMBLEQ1';
+insert into sounds values ('SOUND_AMBLEQ1','MSM1A',30); 
+
 -------------------------------------------------------------------
 
 delete from machines where name = 'NEELP_COORD';
@@ -182,6 +189,11 @@ delete from machines where name = 'S16_PERST';
 delete from machines where name = 'S16_PERST_Q1';
 delete from machines where name = 'S16_PERST_OK';
 delete from machines where name = 'S16_PERST_alt1';
+
+delete from machines where name = 'S09_AMBLE';
+delete from machines where name = 'S09_AMBLE_Q1';
+delete from machines where name = 'S09_AMBLE_OK';
+--delete from machines where name = 'S09_AMBLE_alt1';
 
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
@@ -207,7 +219,7 @@ VALUES
 ('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE','S10_THAOR_Q1','IDV_S10_THAOR_PAN',''),
 ('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
 ('15513', 'S10_THAOR_OK', '9804', 'IDV_S10_THAOR_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S10_THAOR_Q1','IDV_SCN10PT1','',''),
-('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3001', '130', '3080', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  ''),
+('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  ''),
 
 --PERST
 
@@ -216,6 +228,12 @@ VALUES
 ('15517', 'S16_PERST_OK', '9805', 'IDV_S16_PERST_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S16_PERST_Q1','IDV_VIL7','',''),
 ('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
+
+-- --AMBLE
+-- ('15519', 'S09_AMBLE', '506', 'IDV_CTO2', '2500', '10', '2700', '150', '0','M_MEF_APPROACH','IDS_MSSQUAT','S09_AMBLE_Q1','IDV_S09_AMBLE_PAN',''),
+-- ('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MST10001','9','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+-- ('15521', 'S09_AMBLE_OK', '9805', 'IDV_S09_AMBLE_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S09_AMBLE_Q1','IDV_CTO2','','');
+-- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 
 
