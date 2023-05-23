@@ -89,7 +89,8 @@ VALUES
 ('S06_MAN_OBJECTS', '21', 'IDD_BAIT9'),
 ('S06_MAN_OBJECTS', '22', 'IDD_STALKER'),
 ('S06_MAN_OBJECTS', '23', 'IDD_ALARM'),
-('S06_MAN_OBJECTS', '24', 'IDD_GASMASK'); 
+('S06_MAN_OBJECTS', '24', 'IDD_GASMASK'),
+('S06_MAN_OBJECTS', '30', 'IDD_MEMFUSE'); 
 
 delete from map where op like 'S06_COMP%';
 INSERT INTO "main"."map" ("op", "key", "value")
@@ -167,9 +168,11 @@ VALUES
 ('S06_COMPONENTB', '23', 'IDD_CHEMV20'),
 ('S06_COMPONENTC', '23', '6'),
 ('S06_COMPONENTA', '24', 'IDD_CHEMV09'),
-('S06_COMPONENTB', '24', 'IDD_CHEMV21'),
-('S06_COMPONENTC', '24', '6');
-
+('S06_COMPONENTB', '24', 'IDD_CHEMV20'),
+('S06_COMPONENTC', '24', '6'),
+('S06_COMPONENTA', '30', 'IDD_CHEMV17'), --memfuse
+('S06_COMPONENTB', '30', 'IDD_CHEMV19'),
+('S06_COMPONENTC', '30', '7');
 delete from map where op like 'S06_CHEM%';
 INSERT INTO "main"."map" ("op", "key", "value")
 VALUES 
