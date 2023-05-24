@@ -16,9 +16,9 @@ delete from machines where name = 'S21_LEVER';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-
-('8465', 'S21_LEVER', '8105', 'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER'),
 ('8466', 'S21_LEVSTOP', '8105', 'IDV_LEVERCU', '295', '210', '360', '260', '1', 'M_LEVSTOP', '','S21_LEVER','',''),
+('8465', 'S21_LEVER', '8105', 'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER'),
+
 ('8467', 'S21_MAPOPEN', '8104', 'IDV_MAPBOX1', '40', '0', '227', '177', '1', 'M_LEVDOOR', 'IDS_MAPOPN','IDV_MAPROOM','','');
 
 
