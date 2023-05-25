@@ -2,22 +2,23 @@ delete from games;
 
 delete from idv where name = 'IDV_LUNCHCU';
 delete from views where view_name = 'IDV_LUNCHCU';
-delete from machines where name = 'S11_LUNCH';
-delete from machines where name = 'S11_LUNCHCRUMBS';
 
 delete from panel_nav where "from" = 'IDV_LUNCHCU';
 
 delete from spr_names where name = 'IDS_LUNCHCRUMBS';
 delete from spr_names where name = 'IDS_RIPPLE';
 
+delete from machines where name = 'S11_LUNCH';
+delete from machines where name = 'S11_LUNCHCRUMBS';
 delete from machines where name = 'S11_SHOREBIN';
 delete from machines where name = 'S11_RIPPLE';
+
 delete from transitions where name = 'M_TINYFISH';
 delete from transitions where name = 'M_PORTAL';
 
 delete from objects where object = 'IDD_LUNCHCRUMBS';
 insert into objects values
-('IDD_LUNCHCRUMBS',0x3e8a,'ISA_BAIT',0x7001,'LUNCHCRUMBS','LUNCHCRUMBS','LUNCHCRUMBS');
+('IDD_LUNCHCRUMBS',0x3e8a,'ISA_BAIT','LUNCHCRUMBS','LUNCHCRUMBS','LUNCHCRUMBS');
 
 
 
@@ -33,11 +34,13 @@ VALUES
 
 INSERT INTO "main"."panel_nav" ("from", "forward", "back") VALUES ('IDV_LUNCHCU', '', 'IDV_FH1PAN');
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
+
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
-('4463', 'S11_LUNCH', '4356', 'IDV_FH1PAN', '2149', '134', '2259', '201', '2', 'M_LUNCHPORTAL', 'IDV_LUNCHCU', '4361', 'IDV_LUNCHCU', '4361', '60', '0', '', '0'),
-('4464', 'S11_LUNCHCRUMBS', '4361', 'IDV_LUNCHCU', '139', '139', '213', '216', '2', 'M_BIN', 'IDD_LUNCHCRUMBS', '16005', '', '', '', '', '', ''),
-('4465', 'S11_RIPPLE', '4356', 'IDV_FH1PAN', '988','265', '1057', '299', '2', 'M_PORTAL', 'IDS_RIPPLE', '16011', 'IDV_SHORE', '', '', '0', '', '0');
+('4465', 'S11_RIPPLE', '4356', 'IDV_FH1PAN', '988', '265', '1057', '299', '2', 'M_PORTAL', 'IDS_RIPPLE', 'IDV_SHORE', '', ''),
+('4464', 'S11_LUNCHCRUMBS', '4361', 'IDV_LUNCHCU', '139', '139', '213', '216', '2', 'M_BIN', 'IDD_LUNCHCRUMBS', '', '', ''),
+('4463', 'S11_LUNCH', '4356', 'IDV_FH1PAN', '2149', '134', '2259', '201', '2', 'M_LUNCHPORTAL', 'IDV_LUNCHCU', 'IDV_LUNCHCU', '60', ''),
+('4461', 'S11_SHOREBIN', '4360', 'IDV_SHORE', '129', '87', '321', '213', '0', 'M_TINYFISH', 'IDS_FISH', 'IDD_BAIT3', '60','');
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
@@ -45,9 +48,6 @@ VALUES
 ('M_LUNCHPORTAL', '1', '0', 'LOADVIEW', '0', 'IDV_LUNCHCU', '');
 
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
-VALUES 
-('4461', 'S11_SHOREBIN', '4360', 'IDV_SHORE', '129', '87', '321', '213', '0', 'M_TINYFISH', 'IDS_FISH', '0', 'IDD_BAIT3', '0', '60', '0', '', '0');
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
@@ -72,3 +72,7 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 ('M_PORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
 ('M_PORTAL', '2', '3', 'CLICK', '0', '0', ''),
 ('M_PORTAL', '3', '1', 'LOADVIEW', '0', 'IDV_SHORE', '');
+
+
+-- INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+-- VALUES ('4460', 'S11_SHORE', '4356', 'IDV_FH1PAN', '980', '219', '1000', '281', '2', 'M_PORTAL', 'IDV_SHORE', 'IDV_SHORE', '60', '');
