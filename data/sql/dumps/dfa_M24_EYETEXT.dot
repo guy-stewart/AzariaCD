@@ -1,0 +1,11 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M24_EYETEXT {
+ label="M24_EYETEXT";
+"M24_EYETEXT_0" -> "M24_EYETEXT_10"[color=red, fontcolor=red, label="DRAG(0,IDD_EYEWAND)"];
+"M24_EYETEXT_0" -> "M24_EYETEXT_20"[color=red, fontcolor=red, label="DRAGFOCUS(0,FALSE)"];
+"M24_EYETEXT_0" -> "M24_EYETEXT_20"[color=red, fontcolor=red, label="WAIT(0,SIG_INIT)"];
+"M24_EYETEXT_10" -> "M24_EYETEXT_11"[color=green, fontcolor=green, label="MOV(WSPRITE,WIP1)"];
+"M24_EYETEXT_11" -> "M24_EYETEXT_0"[color=green, fontcolor=green, label="SHOW(WSPRITE,(null))"];
+"M24_EYETEXT_20" -> "M24_EYETEXT_0"[color=green, fontcolor=green, label="SHOW(0,0)"];
+}}

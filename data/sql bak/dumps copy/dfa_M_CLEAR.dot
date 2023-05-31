@@ -1,0 +1,9 @@
+digraph {
+ node [shape=record];
+subgraph cluster_M_BIN {
+ label="M_BIN";
+"M_BIN_0" -> "M_BIN_1"[color=green, fontcolor=green, label="O_ACCEPT(WIP1,(null))"];
+"M_BIN_1" -> "M_BIN_10"[color=green, fontcolor=green, label="SHOW(WIP2,(null))"];
+"M_BIN_10" -> "M_BIN_10"[color=red, fontcolor=red, label="GRAB(WIP1,(null))"];
+"M_BIN_10" -> "M_BIN_10"[color=red, fontcolor=red, label="DROP(0,0)"];
+}}
