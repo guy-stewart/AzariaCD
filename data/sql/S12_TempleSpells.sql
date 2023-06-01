@@ -37,6 +37,7 @@ delete from machines where [name] like 'S22_%';
 delete from transitions where [name] like 'M22_%';
 
 delete from transitions where [name] like 'M12_ING%';
+delete from transitions where [name] like 'M12_x%';
 
 delete from map where op like 'S12_ing_%';
 delete from map where op like 'S12_NAT%';
@@ -316,27 +317,135 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
 VALUES 
 ('M12_ING_STD','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_STD', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);SUBI(BFRAME,1);MAPi(BFRAME,WIP2);SHOW(WIP3);'),
-
 ('M12_ING_NATA','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NATA', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_A);SHOW(WIP4);'),
-
 ('M12_ING_NATB','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NATB', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_B);SHOW(WIP4);'),
-
 ('M12_ING_NATC','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NATC', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_C);SHOW(WIP4);'),
-
 ('M12_ING_FSH','0', '1','WAIT', '0', 'SIG_SHOW', ''),
-('M12_ING_FSH', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);SHOW(WIP3);'),
-
-
+('M12_ING_FSH', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_D);SHOW(WIP3);'),
 ('M12_ING_NY','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NY', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);SHOW(WIP3);');
 
+---------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------
 
 
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
+('8714', 'S12_SHELF2_CANDLE', '4633', 'IDV_TMCU1', '262', '59', '299', '113', '1', 'M12_xCANDLE', 'IDS_CAN1', '', '', ''),
+('8715', 'S12_SHELF2_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL', '', '', '', ''),
+('8716', 'S12_SHELF2_ING1', '4633', 'IDV_TMCU1', '65', '80', '115', '130', '1', 'M12_xPLANT', 'SCROLL_PLANT1', 'PLANT_FILMSTRIP_MAPPING', 'IDS_PLANTXX', 'S12_aCANDLE'),
+('8717', 'S12_SHELF2_ING2', '4633', 'IDV_TMCU1', '115', '80', '165', '130', '1', 'M12_xPLANT', 'SCROLL_PLANT2', 'PLANT_FILMSTRIP_MAPPING', 'IDS_PLANTXX', 'S12_aCANDLE'),
+('8718', 'S12_SHELF2_ING3', '4633', 'IDV_TMCU1', '165', '80', '215', '130', '1', 'M12_xPLANT', 'SCROLL_PLANT3', 'PLANT_FILMSTRIP_MAPPING', 'IDS_PLANTXX', 'S12_aCANDLE'),
+('8719', 'S12_SHELF2_ING4', '4633', 'IDV_TMCU1', '115', '130', '165', '180', '1', 'M12_xPLANT', 'SCROLL_FISH2', 'FISHASH_FILMSTRIP_MAPPING', 'IDS_FISHXX', 'S12_aCANDLE');
 
+INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+VALUES 
+('M12_xCANDLE', '0', '20', 'CLICK', '0', '0', ''),
+('M12_xCANDLE', '0', '20', 'DRAG', '0', 'IDD_MATCH', ''),
+('M12_xCANDLE', '0', '200', 'DRAG', '0', 'IDD_SCOOPF', ''),
+('M12_xCANDLE', '0', '10', 'WAIT', '0', 'SIG_CLEAR', ''),
+('M12_xCANDLE', '10', '11', 'NEQUALi', 'BPARM', '0', ''),
+('M12_xCANDLE', '10', '0', 'SHOW', '0', '0', ''),
+('M12_xCANDLE', '11', '0', 'SHOW', '0', 'IDS_CANNY1', ''),
+('M12_xCANDLE', '20', '21', 'MOV', 'WSPRITE', 'WIP1', ''),
+('M12_xCANDLE', '21', '22', 'SHOW', 'WSPRITE', '', ''),
+('M12_xCANDLE', '22', '23', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xCANDLE', '23', '24', 'ADDI', 'WPARM', '1', ''),
+('M12_xCANDLE', '24', '25', 'REF_MACHINE', 'WPARM', '', ''),
+('M12_xCANDLE', '25', '26', 'MOV', 'WTEMP1', 'R_WOBJECT', ''),
+('M12_xCANDLE', '26', '0', 'EQUALi', 'WTEMP1', '0', ''),
+('M12_xCANDLE', '26', '30', 'SUBI', 'WTEMP1', 'IDD_SCR001', ''),
+('M12_xCANDLE', '30', '31', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xCANDLE', '31', '32', 'ADDI', 'WPARM', '2', ''),
+('M12_xCANDLE', '32', '40', 'MOV', 'WTEMP2', '0', ''),
+('M12_xCANDLE', '40', '50', 'REF_MACHINE', 'WPARM', '', ''),
+('M12_xCANDLE', '50', '51', 'MOV', 'WOBJECT', 'WTEMP1', ''),
+('M12_xCANDLE', '51', '52', 'MAP', 'WOBJECT', 'R_WIP1', ''),
+('M12_xCANDLE', '52', '60', 'EQUALi', 'WOBJECT', '0', ''),
+('M12_xCANDLE', '52', '53', 'SUBI', 'WOBJECT', '1', ''),
+('M12_xCANDLE', '53', '54', 'MAP', 'WOBJECT', 'R_WIP2', ''),
+('M12_xCANDLE', '54', '0', 'NEQUAL', 'WOBJECT', 'R_WOBJECT', ''),
+('M12_xCANDLE', '54', '60', 'Z_EPSILON', '', '', ''),
+('M12_xCANDLE', '60', '61', 'ADDI', 'WTEMP2', '1', ''),
+('M12_xCANDLE', '61', '70', 'ADDI', 'WPARM', '1', ''),
+('M12_xCANDLE', '70', '40', 'LTi', 'WTEMP2', '6', ''),
+('M12_xCANDLE', '70', '131', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xCANDLE', '131', '132', 'ADDI', 'WPARM', '2', ''),
+('M12_xCANDLE', '132', '140', 'MOV', 'WTEMP2', '0', ''),
+('M12_xCANDLE', '140', '141', 'REF_MACHINE', 'WPARM', '', ''),
+('M12_xCANDLE', '141', '160', 'SIGNAL', 'WPARM', 'SIG_CLEAR', ''),
+('M12_xCANDLE', '160', '161', 'ADDI', 'WTEMP2', '1', ''),
+('M12_xCANDLE', '161', '170', 'ADDI', 'WPARM', '1', ''),
+('M12_xCANDLE', '170', '140', 'LTi', 'WTEMP2', '6', ''),
+('M12_xCANDLE', '170', '180', 'Z_EPSILON', '', '', ''),
+('M12_xCANDLE', '180', '181', 'MOV', 'WTEMP1', 'WTEMP1', ''),
+('M12_xCANDLE', '181', '182', 'MAPi', 'WTEMP1', 'SCROLL_SPELL', ''),
+('M12_xCANDLE', '182', '183', 'ADDI', 'WTEMP1', 'IDS_ENCHANT', ''),
+('M12_xCANDLE', '183', '184', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xCANDLE', '184', '185', 'ADDI', 'WPARM', '3', ''),
+('M12_xCANDLE', '185', '0', 'SIGNAL', 'WPARM', 'SIG_SET', ''),
+('M12_xCANDLE', '200', '201', 'ADDI', 'BPARM', '1', ''),
+('M12_xCANDLE', '201', '202', 'PLAYWAVE', '0', 'SOUND_SLURP', ''),
+('M12_xCANDLE', '202', '0', 'HANDOFF', '0', 'IDD_SCOOPE', ''),
 
---MOV(WPARM,R_WPARM);MAPi(WPARM,WIP2);MAPi(WPARM,WIP3);MOV(BFRAME,WPARM);SHOW(WIP4);
+('M12_xPLANT', '0', '30', 'DROP', '0', '0', ''),
+('M12_xPLANT', '0', '11', 'WAIT', '0', 'SIG_OPEN', ''),
+('M12_xPLANT', '0', '70', 'WAIT', '0', 'SIG_SET', ''),
+('M12_xPLANT', '11', '12', 'MOV', 'BFRAME', 'WTEMP1', ''),
+('M12_xPLANT', '12', '13', 'MAP', 'BFRAME', 'WIP1', ''),
+('M12_xPLANT', '13', '0', 'EQUALi', 'BFRAME', '0', ''),
+('M12_xPLANT', '13', '14', 'MOV', 'WSPRITE', 'WIP3', ''),
+('M12_xPLANT', '14', '15', 'SUBI', 'BFRAME', '1', ''),
+('M12_xPLANT', '15', '20', 'SHOW', 'WSPRITE', '', ''),
+('M12_xPLANT', '20', '30', 'DROP', '0', '0', ''),
+('M12_xPLANT', '20', '21', 'WAIT', '0', 'SIG_CLOSE', ''),
+('M12_xPLANT', '21', '0', 'SHOW', '0', '0', ''),
+('M12_xPLANT', '30', '31', 'CLEAR', 'BFRAME', '', ''),
+('M12_xPLANT', '31', '32', 'ASHOW', 'WOBJECT', '', ''),
+('M12_xPLANT', '32', '40', 'SIGNAL', 'WIP4', 'SIG_CLEAR', ''),
+('M12_xPLANT', '40', '41', 'GRAB', '0', '0', ''),
+('M12_xPLANT', '40', '41', 'WAIT', '0', 'SIG_CLEAR', ''),
+('M12_xPLANT', '41', '42', 'CLEAR', 'BFRAME', '', ''),
+('M12_xPLANT', '42', '43', 'CLEAR', 'WOBJECT', '', ''),
+('M12_xPLANT', '43', '0', 'SHOW', '0', '0', ''),
+('M12_xPLANT', '70', '71', 'MOV', 'WOBJECT', 'WTEMP1', ''),
+('M12_xPLANT', '71', '72', 'VIDEO', 'V_REVERSE', 'IDS_SPEFFECT', ''),
+('M12_xPLANT', '72', '73', 'PLAYWAVE', '0', 'SOUND_POPUP', ''),
+('M12_xPLANT', '73', '40', 'ASHOW', 'WOBJECT', '', ''),
 
+('M12_xSCROLL', '0', '10', 'DROP', '0', '0', ''),
+('M12_xSCROLL', '10', '11', 'SHOW', '0', 'IDS_SCRHUNG', ''),
+('M12_xSCROLL', '11', '12', 'MOV', 'WTEMP1', 'WOBJECT', ''),
+('M12_xSCROLL', '12', '14', 'SUBI', 'WTEMP1', 'IDD_SCR001', ''),
+('M12_xSCROLL', '14', '15', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xSCROLL', '15', '16', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '16', '17', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '17', '18', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '18', '19', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '19', '20', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '20', '21', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '21', '22', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '22', '23', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '23', '24', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '24', '25', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '25', '26', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '26', '30', 'SIGNAL', 'WPARM', 'SIG_OPEN', ''),
+('M12_xSCROLL', '30', '114', 'GRAB', '0', '0', ''),
+('M12_xSCROLL', '114', '115', 'MOV', 'WPARM', 'WTHIS', ''),
+('M12_xSCROLL', '115', '116', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '116', '117', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '117', '118', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '118', '119', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '119', '120', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '120', '121', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '121', '122', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '122', '123', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '123', '124', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '124', '125', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '125', '126', 'ADDI', 'WPARM', '1', ''),
+('M12_xSCROLL', '126', '130', 'SIGNAL', 'WPARM', 'SIG_CLOSE', ''),
+('M12_xSCROLL', '130', '0', 'SHOW', '0', '0', '');
