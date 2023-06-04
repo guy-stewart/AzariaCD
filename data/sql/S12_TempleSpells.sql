@@ -78,7 +78,8 @@ VALUES
 ('S12_ING_A', '1', '2'), --red
 ('S12_ING_B', '1', '1'),--fern
 ('S12_ING_C', '1', '2'),--red
-('S12_ING_D', '1', 'IDD_FISH1A'),
+('S12_ING_D', '1', '1'),
+('S12_ING_DA', '1', 'IDD_FISHASH1'),
 ('S12_ING_NY', '1', '2'),
 ('S12_ING_LOC', '1', '0'),
 ('S12_ING_WRD', '1', '0'),
@@ -88,7 +89,8 @@ VALUES
 ('S12_ING_A', '2', '13'),
 ('S12_ING_B', '2', '13'), --1fern
 ('S12_ING_C', '2', '13'), 
-('S12_ING_D', '2', 'IDD_FISH1A'),
+('S12_ING_D', '2', '1'),
+('S12_ING_DA', '2', 'IDD_FISHASH1'),
 ('S12_ING_NY', '2', '2'),
 ('S12_ING_LOC', '2', '1'),
 ('S12_ING_WRD', '2', '1'),
@@ -98,7 +100,8 @@ VALUES
 ('S12_ING_A', '3', '6'), 
 ('S12_ING_B', '3', ''),
 ('S12_ING_C', '3', '6'), 
-('S12_ING_D', '3', 'IDD_FISH2A'),
+('S12_ING_D', '3', '2'),
+('S12_ING_DA', '3', 'IDD_FISHASH2'),
 ('S12_ING_NY', '3', '1'),
 ('S12_ING_LOC', '3', '2'),
 ('S12_ING_WRD', '3', '2'),
@@ -108,7 +111,8 @@ VALUES
 ('S12_ING_A', '4', '13'), 
 ('S12_ING_B', '4', '0'),
 ('S12_ING_C', '4', '5'),
-('S12_ING_D', '4', 'IDD_FISH3A'),
+('S12_ING_D', '4', '3'),
+('S12_ING_DA', '4', 'IDD_FISHASH3'),
 ('S12_ING_NY', '4', '1'),
 ('S12_ING_LOC', '4', '3'),
 ('S12_ING_WRD', '4', '3'),
@@ -118,7 +122,8 @@ VALUES
 ('S12_ING_A', '5', '5'), 
 ('S12_ING_B', '5', '9'),
 ('S12_ING_C', '5', '5'),
-('S12_ING_D', '5', 'IDD_FISH2A'),
+('S12_ING_D', '5', '2'),
+('S12_ING_DA', '5', 'IDD_FISHASH2'),
 ('S12_ING_NY','5', '2'),
 ('S12_ING_LOC','5', '0'),
 ('S12_ING_WRD', '5', '4'),
@@ -128,7 +133,8 @@ VALUES
 ('S12_ING_A', '6', '5'), 
 ('S12_ING_B', '6', ''),
 ('S12_ING_C', '6', '7'), 
-('S12_ING_D', '6', 'IDD_FISH5A'),
+('S12_ING_D', '6', '5'),
+('S12_ING_DA', '6', 'IDD_FISHASH5'),
 ('S12_ING_NY','6', '2'),
 ('S12_ING_LOC','6', '1'),
 ('S12_ING_WRD', '6', '5'),
@@ -138,7 +144,8 @@ VALUES
 ('S12_ING_A', '7', '8'), 
 ('S12_ING_B', '7', '0'),
 ('S12_ING_C', '7', '8'),
-('S12_ING_D', '7', 'IDD_FIHS6A'),
+('S12_ING_D', '7', '6'),
+('S12_ING_DA', '7', 'IDD_FISHASH6'),
 ('S12_ING_NY','7', '3'),
 ('S12_ING_LOC','7', '2'),
 ('S12_ING_WRD', '7', '6'),
@@ -148,7 +155,8 @@ VALUES
 ('S12_ING_A', '8', '7'), 
 ('S12_ING_B', '8', ''),
 ('S12_ING_C', '8', '9'),
-('S12_ING_D', '8', 'IDD_FISH7A'),
+('S12_ING_D', '8', '7'),
+('S12_ING_DA', '8', 'IDD_FISHASH7'),
 ('S12_ING_NY','8', '3'),
 ('S12_ING_LOC','8', '3'),
 ('S12_ING_WRD', '8', '7'),
@@ -158,7 +166,8 @@ VALUES
 ('S12_ING_A', '9', '10'), 
 ('S12_ING_B', '9', '12'),
 ('S12_ING_C', '9', '10'),
-('S12_ING_D', '9', 'IDD_FISH3A'),
+('S12_ING_D', '9', '3'),
+('S12_ING_DA', '9', 'IDD_FISHASH3'),
 ('S12_ING_NY','9', '3'),
 ('S12_ING_LOC','9', '0'),
 ('S12_ING_WRD', '9', '8'),
@@ -168,7 +177,8 @@ VALUES
 ('S12_ING_A', '10', '9'), 
 ('S12_ING_B', '10', ''),
 ('S12_ING_C', '10', '1'),
-('S12_ING_D', '10', 'IDD_FISH4A'),
+('S12_ING_D', '10', '4'),
+('S12_ING_DA', '10', 'IDD_FISHASH4'),
 ('S12_ING_NY','10', '4'),
 ('S12_ING_LOC','10', '1'),
 ('S12_ING_WRD', '10', '9'),
@@ -178,7 +188,8 @@ VALUES
 ('S12_ING_A', '11', '6'), 
 ('S12_ING_B', '11', '5'),
 ('S12_ING_C', '11', '13'),
-('S12_ING_D', '11', 'IDD_FISH3A'),
+('S12_ING_D', '11', '3'),
+('S12_ING_DA', '11', 'IDD_FISHASH3'),
 ('S12_ING_NY','11', '4'),
 ('S12_ING_LOC','11', '2'),
 ('S12_ING_WRD', '11', '10'),
@@ -188,7 +199,8 @@ VALUES
 ('S12_ING_A', '12', '11'), 
 ('S12_ING_B', '12', ''),
 ('S12_ING_C', '12', '12'),
-('S12_ING_D', '12', 'IDD_FISH2A'),
+('S12_ING_D', '12', '4'),
+('S12_ING_DA', '12', 'IDD_FISHASH4'),
 ('S12_ING_NY','12', '9'),
 ('S12_ING_LOC','12', '3'),
 ('S12_ING_WRD', '12', '11'),
@@ -198,7 +210,8 @@ VALUES
 ('S12_ING_A', '13', '2'), 
 ('S12_ING_B', '13', '14'),  
 ('S12_ING_C', '13', '13'),
-('S12_ING_D', '13', 'IDD_FISH10'),
+('S12_ING_D', '13', '10'),
+('S12_ING_DA', '13', 'IDD_FISHASH10'),
 ('S12_ING_NY','13', '5'),
 ('S12_ING_LOC','13', '0'),
 ('S12_ING_WRD', '13', '12'),
@@ -208,7 +221,8 @@ VALUES
 ('S12_ING_A', '14', '5'), 
 ('S12_ING_B', '14', ''),  
 ('S12_ING_C', '14', '5'),
-('S12_ING_D', '14', 'IDD_FISH4A'),
+('S12_ING_D', '14', '4'),
+('S12_ING_DA', '14', 'IDD_FISHASH4'),
 ('S12_ING_NY','14', '5'),
 ('S12_ING_LOC','14', '1'),
 ('S12_ING_WRD', '14', '13'),
@@ -218,7 +232,8 @@ VALUES
 ('S12_ING_A', '15', ''), 
 ('S12_ING_B', '15', '4'),  
 ('S12_ING_C', '15', ''),
-('S12_ING_D', '15', ''),
+('S12_ING_D', '15', '5'),
+('S12_ING_DA', '15', 'IDD_FISHASH5'),
 ('S12_ING_NY','15', '5'),
 ('S12_ING_LOC','15', '2'),
 ('S12_ING_WRD', '15', '14'),
@@ -228,7 +243,8 @@ VALUES
 ('S12_ING_A', '16', '7'), 
 ('S12_ING_B', '16', ''),  
 ('S12_ING_C', '16', '6'),
-('S12_ING_D', '16', 'IDD_FIHS6A'),
+('S12_ING_D', '16', '6'),
+('S12_ING_DA', '16', 'IDD_FISHASH6'),
 ('S12_ING_NY','16', '6'),
 ('S12_ING_LOC','16', '3'),
 ('S12_ING_WRD', '16', '15'),
@@ -238,7 +254,8 @@ VALUES
 ('S12_ING_A', '17', ''), 
 ('S12_ING_B', '17', '6'),  
 ('S12_ING_C', '17', ''),
-('S12_ING_D', '17', ''),
+('S12_ING_D', '17', '0'),
+('S12_ING_DA', '9', ''),
 ('S12_ING_NY','17', '6'),
 ('S12_ING_LOC','17', '0'),
 ('S12_ING_WRD', '17', '16'),
@@ -248,7 +265,8 @@ VALUES
 ('S12_ING_A', '18', '9'), 
 ('S12_ING_B', '18', '10'),  
 ('S12_ING_C', '18', '8'),
-('S12_ING_D', '18', 'IDD_FISH8A'),
+('S12_ING_D', '18', '8'),
+('S12_ING_DA', '18', 'IDD_FISHASH8'),
 ('S12_ING_NY','18', '6'),
 ('S12_ING_LOC','18', '1'),
 ('S12_ING_WRD', '18', '17'),
@@ -259,6 +277,7 @@ VALUES
 ('S12_ING_B', '19', '13'),  
 ('S12_ING_C', '19', ''),
 ('S12_ING_D', '19', ''),
+('S12_ING_DA', '19', ''),
 ('S12_ING_NY','19', '7'),
 ('S12_ING_LOC','19', '2'),
 ('S12_ING_WRD', '19', '18'),
@@ -268,7 +287,8 @@ VALUES
 ('S12_ING_A', '20', '7'), 
 ('S12_ING_B', '20', '7'),  
 ('S12_ING_C', '20', '7'),
-('S12_ING_D', '20', 'IDD_FISH7A'),
+('S12_ING_D', '20', '7'),
+('S12_ING_DA', '20', 'IDD_FISHASH7'),
 ('S12_ING_NY','20', '8'),
 ('S12_ING_LOC','20', '1'),
 ('S12_ING_WRD', '20', '19'),
@@ -278,7 +298,8 @@ VALUES
 ('S12_ING_A', '21', '13'), 
 ('S12_ING_B', '21', '12'),  
 ('S12_ING_C', '21', '2'),
-('S12_ING_D', '21', 'IDD_FISH9A'),
+('S12_ING_D', '21', '9'),
+('S12_ING_DA', '21', 'IDD_FISHASH9'),
 ('S12_ING_NY','21', '7'),
 ('S12_ING_LOC','21', '1'),
 ('S12_ING_WRD', '21', '20'),
@@ -288,7 +309,8 @@ VALUES
 ('S12_ING_A', '22', '13'), --CHANGE TO NYSTRAM WALL PLANT
 ('S12_ING_B', '22', '13'),  
 ('S12_ING_C', '22', '4'),
-('S12_ING_D', '22', 'IDD_FISH10'),
+('S12_ING_D', '22', '10'),
+('S12_ING_DA', '22', 'IDD_FISHASH10'),
 ('S12_ING_NY','22', '7'),
 ('S12_ING_LOC','22', '3'),
 ('S12_ING_WRD', '22', '21'),
@@ -333,8 +355,8 @@ VALUES
 ('S12_NATURE_REP',9, 'ISA_PLNT_SHYANTHIUS_FLOWER'), 
 ('S12_NATURE_REP',10, 'ISA_PLNT_ITSIUS_BERRY'), 
 ('S12_NATURE_REP',11, 'ISA_PLNT_PAKSIUM_ROOT'),     
-('S12_NATURE_REP',13, 'ISA_PLNT_SPECROOT'),  
-('S12_NATURE_REP',14, 'ISA_PLNT_RIPE_GOPA');
+('S12_NATURE_REP',12, 'ISA_PLNT_SPECROOT'),  
+('S12_NATURE_REP',13, 'ISA_PLNT_RIPE_GOPA');
 
 
 --------------------------------------------------------------------------------------------
@@ -375,7 +397,7 @@ VALUES
 ('M12_ING_NATC','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NATC', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_C);SHOW(WIP4);'),
 ('M12_ING_FSH','0', '1','WAIT', '0', 'SIG_SHOW', ''),
-('M12_ING_FSH', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_D);SHOW(WIP3);'),
+('M12_ING_FSH', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_D);SUBI(BFRAME,1);SHOW(WIP3);'),
 ('M12_ING_NY','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NY', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);SHOW(WIP3);');
 
@@ -391,7 +413,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
 ('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', ''),
-('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_D','IDS_FISHXX', ''),
+('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
 
 
 
@@ -425,21 +447,34 @@ VALUES
         SIGNAL(WIP3,SIG_HIDE);
         SIGNAL(WIP4,SIG_HIDE);
 '),  
-
-
+-------------------------------------------------------------------------------------
 ('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
 ('M12_xPLANT',5,6,'SHOW','WIP3','',''),-- Show the plant outline 
-('M12_xPLANT',6,7,'MOV','WTEMP1','BFRAME','MAPi(WTEMP1,S12_NATURE_REP);'), --WTEMP1 SHOULD NOW BE A CLASS
-('M12_xPLANT',7,0,'C_ACCEPT','0','ISA_PLNT_RIPE_GOPA',''),
-
+('M12_xPLANT',6,0,'Z_EPSILON','','','
+        MOV(WOBJECT,BFRAME);
+        MAPi(WOBJECT,S12_NATURE_REP);
+        C_ACCEPT(WOBJECT);'), --WTEMP1 SHOULD NOW BE A CLASS
 ('M12_xPLANT',0,9,'DROP','0','0',''),
 ('M12_xPLANT',9,10,'SHOW','WOBJECT','0',''),
 ('M12_xPLANT',10, 11, 'GRAB', '0', '0', ''),
 ('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
 ('M12_xPLANT', 12, 13, 'CLEAR', 'WOBJECT', '', ''),
 ('M12_xPLANT', 13, 0, 'SHOW', '0', '0', ''),
-
 ('M12_xPLANT',0,20,'WAIT','','SIG_HIDE',''),-- this crashes if I put the SHOW() in the code here
 ('M12_xPLANT',20,21,'SHOW','0','0',''),
-('M12_xPLANT',21,0,'Z_EPSILON','','','');
-
+('M12_xPLANT',21,0,'Z_EPSILON','','',''),
+-------------------------------------------------------------------------------------
+('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WOBJECT,R_WPARM);MAP(WOBJECT,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
+('M12_xASHSHELF',4,0,'MOV','BFRAME','R_WPARM','
+        MAP(BFRAME,S12_ING_D);
+        O_ACCEPT(WOBJECT);
+        SHOW(WIP3);'),
+('M12_xASHSHELF',0,9,'DROP','0','0',''),
+('M12_xASHSHELF',9,10,'SHOW','WOBJECT','0',''),
+('M12_xASHSHELF',10, 11, 'GRAB', '0', '0', ''),
+('M12_xASHSHELF', 11, 0, 'CLEAR', 'BFRAME', '', '
+        CLEAR(WOBJECT);
+        SHOW();'),
+('M12_xASHSHELF',0,20,'WAIT','','SIG_HIDE',''),
+('M12_xASHSHELF',20,21,'SHOW','0','0',''),
+('M12_xASHSHELF',21,0,'Z_EPSILON','','','');
