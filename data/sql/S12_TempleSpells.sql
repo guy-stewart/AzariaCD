@@ -87,7 +87,7 @@ VALUES
 
 --stalking
 ('S12_ING_A', '2', '13'),
-('S12_ING_B', '2', '13'), --1fern
+('S12_ING_B', '2', '13'), --GOPA
 ('S12_ING_C', '2', '13'), 
 ('S12_ING_D', '2', '1'),
 ('S12_ING_DA', '2', 'IDD_FISHASH1'),
@@ -408,15 +408,12 @@ VALUES
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '262', '59', '299', '113', '1', 'M12_xCANDLE', 'IDS_CAN1', '', '', ''),
+('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'IDS_CANNY1', '', '', ''),
 ('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL',1,'S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLE', ''),
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
 ('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', ''),
 ('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
-
-
-
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4');
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
@@ -431,10 +428,11 @@ VALUES
 --signal ingredients to look themselves up with this wparm
 ('M12_xSCROLL', 12, 20, 'Z_EPSILON', '', '', '
         SIGNAL(WIP2,SIG_SHOW);
+        SIGNAL(WIP3,SIG_SHOW);
 '),
 ('M12_xSCROLL', 20, 21, 'GRAB', '0', '','SHOW();'),
-('M12_xSCROLL', 21, 0, 'SIGNAL', 'WIP2', 'SIG_HIDE',''),
-
+('M12_xSCROLL', 21, 0, 'SIGNAL', 'WIP2', 'SIG_HIDE',' SIGNAL(WIP3,SIG_HIDE);'),
+-------------------------------------------------------------------------------------
 ('M12_xING_MGR',0,0,'WAIT','0','SIG_SHOW', '
         SIGNAL(WIP1,SIG_SHOW);
         SIGNAL(WIP2,SIG_SHOW);   
@@ -453,7 +451,7 @@ VALUES
 ('M12_xPLANT',6,0,'Z_EPSILON','','','
         MOV(WOBJECT,BFRAME);
         MAPi(WOBJECT,S12_NATURE_REP);
-        C_ACCEPT(WOBJECT);'), --WTEMP1 SHOULD NOW BE A CLASS
+        C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
 ('M12_xPLANT',0,9,'DROP','0','0',''),
 ('M12_xPLANT',9,10,'SHOW','WOBJECT','0',''),
 ('M12_xPLANT',10, 11, 'GRAB', '0', '0', ''),
@@ -477,4 +475,23 @@ VALUES
         SHOW();'),
 ('M12_xASHSHELF',0,20,'WAIT','','SIG_HIDE',''),
 ('M12_xASHSHELF',20,21,'SHOW','0','0',''),
-('M12_xASHSHELF',21,0,'Z_EPSILON','','','');
+('M12_xASHSHELF',21,0,'Z_EPSILON','','',''),
+-------------------------------------------------------------------------------------
+-- CANGRN4 245,84,333,164
+-- CANGRN3 244,85,325,170
+-- CANGRN2 250,85,330,166
+-- CANGRN1 241,82,320,160
+
+('M12_xCANDLE', '0', '20', 'DRAG', '0', 'IDD_MATCH', ''),
+
+('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
+
+('M12_xCANDLE', '0', '10', 'WAIT', '0', 'SIG_HIDE', ''),
+('M12_xCANDLE', '10', '0', 'SHOW', '0', '0', ''),
+
+('M12_xCANDLE', '20', '21', 'MOV', 'WSPRITE', 'WIP1', ''),
+('M12_xCANDLE', '21', '0', 'ASHOW', '0', 'IDS_CANNY1', ''),
+
+('M12_xCANDLE', '100', '101', 'ADDI', 'BPARM', '1', ''),
+('M12_xCANDLE', '101', '102', 'PLAYWAVE', '0', 'SOUND_SLURP', ''),
+('M12_xCANDLE', '102', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '');
