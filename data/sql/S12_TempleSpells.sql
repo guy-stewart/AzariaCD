@@ -28,6 +28,7 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 ('IDS_SCR021', 'SCR021', '8737'),
 ('IDS_SCR022', 'SCR022', '8738'),
 
+
 --some new plants
 ('IDS_LEAF', 'LEAF', '8507'),
 ('IDS_FLOWERD', 'FLOWERD', '8508'),
@@ -35,7 +36,14 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 ('IDS_WILDBERRY', 'blueberry2', '8527'),
 ('IDS_ROOTDBL', 'ROOTDBL', '8528');
 
-
+delete from "main"."spr_names"  where [name] like 'IDS_CAN%';
+INSERT INTO "main"."spr_names" ("name", "value", "id") 
+VALUES 
+('IDS_CANGRN1', 'CANGRN1', '4625'),
+('IDS_CANGRN2', 'CANGRN2', '4626'),
+('IDS_CANGRN3', 'CANGRN3', '4627'),
+('IDS_CANGRN4', 'CANGRN4', '4628'),
+('IDS_CANNY1', 'CANFLAME', '4629');
 
 delete from "main"."spr_names"  where [name] like 'IDS_PLANTX%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES 
@@ -408,13 +416,19 @@ VALUES
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'IDS_CANNY1', '', '', ''),
-('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL',1,'S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLE', ''),
+('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED', 'S12_SHELF_1_INGREDIENTS_MGR', ''),
+('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL',1,'S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLELIGHT','S12_SHELF_1_NYSTROMADDED'),
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
 ('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', ''),
 ('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
-('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4');
+('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
+
+('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', '', '', ''),
+('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', '');
+--('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', '', '', '', '');
+
+
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
@@ -427,11 +441,10 @@ VALUES
 ('M12_xSCROLL', 15, 0, 'GRAB', '0', '','SHOW();'), -- change to play a bomp sound
 --signal ingredients to look themselves up with this wparm
 ('M12_xSCROLL', 12, 20, 'Z_EPSILON', '', '', '
-        SIGNAL(WIP2,SIG_SHOW);
-        SIGNAL(WIP3,SIG_SHOW);
+        SIGNAL(WIP2,SIG_SHOW);  
 '),
 ('M12_xSCROLL', 20, 21, 'GRAB', '0', '','SHOW();'),
-('M12_xSCROLL', 21, 0, 'SIGNAL', 'WIP2', 'SIG_HIDE',' SIGNAL(WIP3,SIG_HIDE);'),
+('M12_xSCROLL', 21, 0, 'SIGNAL', 'WIP2', 'SIG_HIDE','SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
 -------------------------------------------------------------------------------------
 ('M12_xING_MGR',0,0,'WAIT','0','SIG_SHOW', '
         SIGNAL(WIP1,SIG_SHOW);
@@ -445,10 +458,34 @@ VALUES
         SIGNAL(WIP3,SIG_HIDE);
         SIGNAL(WIP4,SIG_HIDE);
 '),  
+('M12_xING_MGR',0,9,'WAIT','0','SIG_CHECK', ''),
+--find out how many ingredients to expect filled
+-- assess each again and add them to wparm if the wips are in state 10 (and > 0) - if wparm GEi bparm ritual is good
+('M12_xING_MGR',9,10,'ASSIGN','BPARM',0, ''),
+('M12_xING_MGR',10,11,'REF_MACHINE','WIP1','', 'ADD(BPARM,R_WPARM);'),
+('M12_xING_MGR',11,12,'REF_MACHINE','WIP2','', 'ADD(BPARM,R_WPARM);'),
+('M12_xING_MGR',12,13,'REF_MACHINE','WIP3','', 'ADD(BPARM,R_WPARM);'),
+('M12_xING_MGR',13,19,'REF_MACHINE','WIP4','', 'ADD(BPARM,R_WPARM);'),
+('M12_xING_MGR',19,20,'ASSIGN','WPARM',0, ''),
+('M12_xING_MGR',20,21,'REF_MACHINE','WIP1','', ''),
+('M12_xING_MGR',21,22,'IFSTATE','10','WIP1', 'ADD(WPARM,R_WPARM);'),
+('M12_xING_MGR',21,22,'Z_EPSILON','','', ''),
+('M12_xING_MGR',22,23,'REF_MACHINE','WIP2','', ''),
+('M12_xING_MGR',23,24,'IFSTATE','10','WIP2', 'ADD(WPARM,R_WPARM);'),
+('M12_xING_MGR',23,24,'Z_EPSILON','','', ''),
+('M12_xING_MGR',24,25,'REF_MACHINE','WIP3','', ''),
+('M12_xING_MGR',25,26,'IFSTATE','10','WIP3', 'ADD(WPARM,R_WPARM);'),
+('M12_xING_MGR',25,26,'Z_EPSILON','','', ''),
+('M12_xING_MGR',26,27,'REF_MACHINE','WIP4','', ''),
+('M12_xING_MGR',27,0,'IFSTATE','10','WIP4', 'ADD(WPARM,R_WPARM);'),
+('M12_xING_MGR',27,0,'Z_EPSILON','','', ''),
+
 -------------------------------------------------------------------------------------
 ('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
-('M12_xPLANT',5,6,'SHOW','WIP3','',''),-- Show the plant outline 
-('M12_xPLANT',6,0,'Z_EPSILON','','','
+('M12_xPLANT',5,6,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
+('M12_xPLANT',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0)'), 
+('M12_xPLANT',6,7,'SHOW','WIP3','',''),-- Show the plant outline (BFRAME holds the ing number)
+('M12_xPLANT',7,0,'Z_EPSILON','','','
         MOV(WOBJECT,BFRAME);
         MAPi(WOBJECT,S12_NATURE_REP);
         C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
@@ -463,10 +500,13 @@ VALUES
 ('M12_xPLANT',21,0,'Z_EPSILON','','',''),
 -------------------------------------------------------------------------------------
 ('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WOBJECT,R_WPARM);MAP(WOBJECT,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
-('M12_xASHSHELF',4,0,'MOV','BFRAME','R_WPARM','
+('M12_xASHSHELF',4,5,'MOV','BFRAME','R_WPARM','
         MAP(BFRAME,S12_ING_D);
         O_ACCEPT(WOBJECT);
         SHOW(WIP3);'),
+('M12_xASHSHELF',5,0,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
+('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0)'),      
+
 ('M12_xASHSHELF',0,9,'DROP','0','0',''),
 ('M12_xASHSHELF',9,10,'SHOW','WOBJECT','0',''),
 ('M12_xASHSHELF',10, 11, 'GRAB', '0', '0', ''),
@@ -482,16 +522,28 @@ VALUES
 -- CANGRN2 250,85,330,166
 -- CANGRN1 241,82,320,160
 
+
 ('M12_xCANDLE', '0', '20', 'DRAG', '0', 'IDD_MATCH', ''),
+('M12_xCANDLE', '0', '0', 'CLICK', '0', '0', 'SIGNAL(WIP1,SIG_HIDE);'),
 
 ('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
 
-('M12_xCANDLE', '0', '10', 'WAIT', '0', 'SIG_HIDE', ''),
-('M12_xCANDLE', '10', '0', 'SHOW', '0', '0', ''),
+('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP1', 'SIG_SHOW', ''), --light the candel
+('M12_xCANDLE', '21', '22', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
+('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'PLAYWAVE(SOUND_EXPLODE);'), --FOR TESTING HIDE THE INGREDIENTS - WILL BE NEW SPELL PORTAL
+('M12_xCANDLE', '22', '0', 'Z_EPSION', '', '', ''),
 
-('M12_xCANDLE', '20', '21', 'MOV', 'WSPRITE', 'WIP1', ''),
-('M12_xCANDLE', '21', '0', 'ASHOW', '0', 'IDS_CANNY1', ''),
 
+--get the total amount required for the spell from the map
+-- CANT LIGHT CANDLE IF NOT ENOUGH NYSTORM!
 ('M12_xCANDLE', '100', '101', 'ADDI', 'BPARM', '1', ''),
-('M12_xCANDLE', '101', '102', 'PLAYWAVE', '0', 'SOUND_SLURP', ''),
-('M12_xCANDLE', '102', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '');
+('M12_xCANDLE', '101', '102', 'PLAYWAVE', '0', 'SOUND_SLURP', 'SIGNAL(WIP2,SIG_SHOW);'),
+('M12_xCANDLE', '102', '0', 'HANDOFF', '0', 'IDD_SCOOPE', ''),
+
+-------------------------------------------------------------------------------------
+
+('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);ASHOW(WIP1);'),
+('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);ASHOW(0);'),
+
+('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);SHOW(WIP1);'),
+('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);');
