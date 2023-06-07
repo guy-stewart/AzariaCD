@@ -451,9 +451,9 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
-('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', '', '', ''),
+('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', '', ''),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', ''),
-('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
+('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_ING2', '');
 
 
 
@@ -485,6 +485,14 @@ VALUES
         SIGNAL(WIP3,SIG_HIDE);
         SIGNAL(WIP4,SIG_HIDE);
 '),  
+('M12_xING_MGR', 0,30, 'WAIT', '', 'SIG_CLOSE', '
+        SIGNAL(WIP1,SIG_CLOSE);
+        SIGNAL(WIP2,SIG_CLOSE);   
+        SIGNAL(WIP3,SIG_CLOSE);
+        SIGNAL(WIP4,SIG_CLOSE);
+'),
+
+
 ('M12_xING_MGR',0,9,'WAIT','0','SIG_CHECK', ''),
 --find out how many ingredients to expect filled
 -- assess each again and add them to wparm if the wips are in state 10 (and > 0) - if wparm GEi bparm ritual is good
@@ -516,15 +524,24 @@ VALUES
         MOV(WOBJECT,BFRAME);
         MAPi(WOBJECT,S12_NATURE_REP);
         C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
+
 ('M12_xPLANT',0,9,'DROP','0','0',''),
 ('M12_xPLANT',9,10,'SHOW','WOBJECT','0',''),
 ('M12_xPLANT',10, 11, 'GRAB', '0', '0', ''),
 ('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
 ('M12_xPLANT', 12, 13, 'CLEAR', 'WOBJECT', '', ''),
 ('M12_xPLANT', 13, 0, 'SHOW', '0', '0', ''),
+
 ('M12_xPLANT',0,20,'WAIT','','SIG_HIDE',''),-- this crashes if I put the SHOW() in the code here
 ('M12_xPLANT',20,21,'SHOW','0','0',''),
 ('M12_xPLANT',21,0,'Z_EPSILON','','',''),
+
+('M12_xPLANT',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
+('M12_xPLANT', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW();'),
+('M12_xPLANT', 31, 0, 'Z_EPSILON', '', '', ''),
+
+
+
 -------------------------------------------------------------------------------------
 ('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WOBJECT,R_WPARM);MAP(WOBJECT,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
 ('M12_xASHSHELF',4,5,'MOV','BFRAME','R_WPARM','
@@ -543,6 +560,10 @@ VALUES
 ('M12_xASHSHELF',0,20,'WAIT','','SIG_HIDE',''),
 ('M12_xASHSHELF',20,21,'SHOW','0','0',''),
 ('M12_xASHSHELF',21,0,'Z_EPSILON','','',''),
+
+('M12_xASHSHELF',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
+('M12_xASHSHELF', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW();'),
+('M12_xASHSHELF', 31, 0, 'Z_EPSILON', '', '', ''),
 -------------------------------------------------------------------------------------
 -- CANGRN4 245,84,333,164
 -- CANGRN3 244,85,325,170
@@ -555,14 +576,15 @@ VALUES
 
 ('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
 
--- can't light candle without enough nystrom!
+-- magic candle can't light without enough nystrom!
 ('M12_xCANDLE', '10', '15', 'REF_MACHINE', 'WIP4', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);'),
 ('M12_xCANDLE', '15', '20', 'EQUAL', 'BPARM', 'BFRAME', ''),
 ('M12_xCANDLE', '15', '0', 'Z_EPSILON', '', '', ''),
-('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP1', 'SIG_SHOW', ''), --light the candle
-('M12_xCANDLE', '21', '22', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
-('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'PLAYWAVE(SOUND_EXPLODE);'), 
-('M12_xCANDLE', '22', '0', 'Z_EPSION', '', '', ''),
+
+-- magic candle only lights when the spell is ready
+('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
+('M12_xCANDLE', '21', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);'), 
+('M12_xCANDLE', '21', '0', 'Z_EPSION', '', '', ''),
 
 
 --get the total amount required for the spell from the map
@@ -574,13 +596,21 @@ VALUES
 
 -------------------------------------------------------------------------------------
 
-('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);ASHOW(WIP1);'),
+('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);ASHOW(WIP1);SIGNAL(WIP2,SIG_SHOW);'),
 ('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);ASHOW(0);'),
 
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);SHOW(WIP1);'),
-('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);');
+('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);'),
 
 -------------------------------------------------------------------------------------
-
-
---('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);');
+--remove ingredients
+--play animation
+--present spell
+('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
+('M12_xSPELLPORTAL', '1', '0', 'SIGNAL', 'SIG_CLOSE', 'WIP1', '');
+-- ('M12_xSPELLPORTAL', '2', '3', 'REF_MACHINE', 'WIP2', '', '
+--         MOV(WPARM,R_WPARM);
+--         MAPi(WPARM,S12_SCROLLL_MK);
+--         MOV(WOBJECT,WPARM); 
+-- '),
+-- ('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', '');
