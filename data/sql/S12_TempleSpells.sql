@@ -423,7 +423,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 ('M12_ING_STD','0', '1','WAIT', '0', 'SIG_SHOW', ''),
-('M12_ING_STD', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);SUBI(BFRAME,1);MAPi(BFRAME,WIP2);SHOW(WIP3);'),
+('M12_ING_STD', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAP(BFRAME,WIP2);SHOW(WIP3);'),
 ('M12_ING_NATA','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NATA', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_A);SHOW(WIP4);'),
 ('M12_ING_NATB','0', '1','WAIT', '0', 'SIG_SHOW', ''),
@@ -534,7 +534,7 @@ VALUES
 
 ('M12_xPLANT',0,20,'WAIT','','SIG_HIDE',''),-- this crashes if I put the SHOW() in the code here
 ('M12_xPLANT',20,21,'SHOW','0','0',''),
-('M12_xPLANT',21,0,'Z_EPSILON','','',''),
+('M12_xPLANT',21,0,'Z_EPSILON','','',''), --
 
 ('M12_xPLANT',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
 ('M12_xPLANT', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW();'),
@@ -549,7 +549,7 @@ VALUES
         O_ACCEPT(WOBJECT);
         SHOW(WIP3);'),
 ('M12_xASHSHELF',5,0,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
-('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0)'),      
+('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'),      
 
 ('M12_xASHSHELF',0,9,'DROP','0','0',''),
 ('M12_xASHSHELF',9,10,'SHOW','WOBJECT','0',''),
@@ -584,7 +584,7 @@ VALUES
 -- magic candle only lights when the spell is ready
 ('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
 ('M12_xCANDLE', '21', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);'), 
-('M12_xCANDLE', '21', '0', 'Z_EPSION', '', '', ''),
+('M12_xCANDLE', '21', '0', 'Z_EPSILON', '', '', ''),
 
 
 --get the total amount required for the spell from the map
@@ -607,10 +607,10 @@ VALUES
 --play animation
 --present spell
 ('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xSPELLPORTAL', '1', '0', 'SIGNAL', 'SIG_CLOSE', 'WIP1', '');
--- ('M12_xSPELLPORTAL', '2', '3', 'REF_MACHINE', 'WIP2', '', '
---         MOV(WPARM,R_WPARM);
---         MAPi(WPARM,S12_SCROLLL_MK);
---         MOV(WOBJECT,WPARM); 
--- '),
--- ('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', '');
+('M12_xSPELLPORTAL', '1', '0', 'SIGNAL', 'SIG_CLOSE', 'WIP1', ''),
+('M12_xSPELLPORTAL', '2', '3', 'REF_MACHINE', 'WIP2', '', '
+        MOV(WPARM,R_WPARM);
+        MAPi(WPARM,S12_SCROLLL_MK);
+        MOV(WOBJECT,WPARM); 
+'),
+('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', '');
