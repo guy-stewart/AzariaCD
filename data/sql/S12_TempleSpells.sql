@@ -92,6 +92,8 @@ VALUES
 ('S12_ING_LOC', '1', '0'),
 ('S12_ING_WRD', '1', '0'),
 ('S12_SCROLL', 'IDD_SCR001', '1'),
+('S12_SCROLLL_MK', '1', 'IDD_ENCHANT'),
+
 
 --stalking
 ('S12_ING_A', '2', '13'),
@@ -103,6 +105,8 @@ VALUES
 ('S12_ING_LOC', '2', '1'),
 ('S12_ING_WRD', '2', '1'),
 ('S12_SCROLL', 'IDD_SCR002', '2'),
+('S12_SCROLLL_MK', '2', 'IDD_STALKER'),
+
 
 --Blindness
 ('S12_ING_A', '3', '6'), 
@@ -114,6 +118,7 @@ VALUES
 ('S12_ING_LOC', '3', '2'),
 ('S12_ING_WRD', '3', '2'),
 ('S12_SCROLL', 'IDD_SCR003', '3'),
+('S12_SCROLLL_MK', '3', 'IDD_BLINDNESS'),
 
 --holding
 ('S12_ING_A', '4', '13'), 
@@ -125,6 +130,7 @@ VALUES
 ('S12_ING_LOC', '4', '3'),
 ('S12_ING_WRD', '4', '3'),
 ('S12_SCROLL', 'IDD_SCR004', '4'),
+('S12_SCROLLL_MK', '4', 'IDD_HOLDING'),
 
 --transfer
 ('S12_ING_A', '5', '5'), 
@@ -136,6 +142,7 @@ VALUES
 ('S12_ING_LOC','5', '0'),
 ('S12_ING_WRD', '5', '4'),
 ('S12_SCROLL', 'IDD_SCR005', '5'),
+('S12_SCROLLL_MK', '5', 'IDD_TRANSFER'),
 
 --Slarm
 ('S12_ING_A', '6', '5'), 
@@ -147,6 +154,7 @@ VALUES
 ('S12_ING_LOC','6', '1'),
 ('S12_ING_WRD', '6', '5'),
 ('S12_SCROLL', 'IDD_SCR006', '6'),
+('S12_SCROLLL_MK', '6', 'IDD_ALARM'),
 
 --record
 ('S12_ING_A', '7', '8'), 
@@ -158,6 +166,7 @@ VALUES
 ('S12_ING_LOC','7', '2'),
 ('S12_ING_WRD', '7', '6'),
 ('S12_SCROLL', 'IDD_SCR007', '7'),
+('S12_SCROLLL_MK', '7', 'IDD_RECORDER'),
 
 --telekinesis
 ('S12_ING_A', '8', '7'), 
@@ -169,6 +178,7 @@ VALUES
 ('S12_ING_LOC','8', '3'),
 ('S12_ING_WRD', '8', '7'),
 ('S12_SCROLL', 'IDD_SCR008', '8'),
+('S12_SCROLLL_MK', '8', 'IDD_TELEKINESIS'),
 
 --Explosion
 ('S12_ING_A', '9', '10'), 
@@ -180,6 +190,7 @@ VALUES
 ('S12_ING_LOC','9', '0'),
 ('S12_ING_WRD', '9', '8'),
 ('S12_SCROLL', 'IDD_SCR009', '9'),
+('S12_SCROLLL_MK', '9', 'IDD_EXPLOSION'),
 
 --Lock
 ('S12_ING_A', '10', '9'), 
@@ -191,6 +202,7 @@ VALUES
 ('S12_ING_LOC','10', '1'),
 ('S12_ING_WRD', '10', '9'),
 ('S12_SCROLL', 'IDD_SCR010', '10'),
+('S12_SCROLLL_MK', '10', 'IDD_LOCK'),
 
 --Lock Pick
 ('S12_ING_A', '11', '6'), 
@@ -202,6 +214,7 @@ VALUES
 ('S12_ING_LOC','11', '2'),
 ('S12_ING_WRD', '11', '10'),
 ('S12_SCROLL', 'IDD_SCR011', '11'),
+('S12_SCROLLL_MK', '11', 'IDD_UNLOCK'),
 
 --protection
 ('S12_ING_A', '12', '11'), 
@@ -213,6 +226,7 @@ VALUES
 ('S12_ING_LOC','12', '3'),
 ('S12_ING_WRD', '12', '11'),
 ('S12_SCROLL', 'IDD_SCR012', '12'),
+('S12_SCROLLL_MK', '12', 'IDD_PROTECT'),
 
 --Death
 ('S12_ING_A', '13', '2'), 
@@ -224,6 +238,8 @@ VALUES
 ('S12_ING_LOC','13', '0'),
 ('S12_ING_WRD', '13', '12'),
 ('S12_SCROLL', 'IDD_SCR013', '13'),
+('S12_SCROLLL_MK', '13', 'IDD_DEATH'),
+
 
 --invisibility
 ('S12_ING_A', '14', '5'), 
@@ -235,6 +251,7 @@ VALUES
 ('S12_ING_LOC','14', '1'),
 ('S12_ING_WRD', '14', '13'),
 ('S12_SCROLL', 'IDD_SCR014', '14'),
+('S12_SCROLLL_MK', '14', 'IDD_INVISIBLE'),
 
 --Strength
 ('S12_ING_A', '15', ''), 
@@ -246,6 +263,8 @@ VALUES
 ('S12_ING_LOC','15', '2'),
 ('S12_ING_WRD', '15', '14'),
 ('S12_SCROLL', 'IDD_SCR015', '15'),
+('S12_SCROLLL_MK', '15', 'IDD_STRENGTH'),
+
 
 --banishment
 ('S12_ING_A', '16', '7'), 
@@ -257,6 +276,7 @@ VALUES
 ('S12_ING_LOC','16', '3'),
 ('S12_ING_WRD', '16', '15'),
 ('S12_SCROLL', 'IDD_SCR016', '16'),
+('S12_SCROLLL_MK', '16', 'IDD_BANISHMENT'),
 
 --Perception
 ('S12_ING_A', '17', ''), 
@@ -268,6 +288,7 @@ VALUES
 ('S12_ING_LOC','17', '0'),
 ('S12_ING_WRD', '17', '16'),
 ('S12_SCROLL', 'IDD_SCR017', '17'),
+('S12_SCROLLL_MK', '17', 'IDD_MINDREAD'),
 
 --halucination
 ('S12_ING_A', '18', '9'), 
@@ -279,6 +300,7 @@ VALUES
 ('S12_ING_LOC','18', '1'),
 ('S12_ING_WRD', '18', '17'),
 ('S12_SCROLL', 'IDD_SCR018', '18'),
+('S12_SCROLLL_MK', '18', 'IDD_HALUCINATE'),
 
 --Breath
 ('S12_ING_A', '19', ''), 
@@ -290,6 +312,7 @@ VALUES
 ('S12_ING_LOC','19', '2'),
 ('S12_ING_WRD', '19', '18'),
 ('S12_SCROLL', 'IDD_SCR019', '19'),
+('S12_SCROLLL_MK', '19', 'IDD_NYBREATH'),
 
 --submerge
 ('S12_ING_A', '20', '7'), 
@@ -301,6 +324,7 @@ VALUES
 ('S12_ING_LOC','20', '1'),
 ('S12_ING_WRD', '20', '19'),
 ('S12_SCROLL', 'IDD_SCR020', '20'),
+('S12_SCROLLL_MK', '20', 'IDD_SPELL01'),
 
 --Eyespell 
 ('S12_ING_A', '21', '13'), 
@@ -312,6 +336,7 @@ VALUES
 ('S12_ING_LOC','21', '1'),
 ('S12_ING_WRD', '21', '20'),
 ('S12_SCROLL', 'IDD_SCR021', '21'),
+('S12_SCROLLL_MK', '21', 'IDD_EYESPELL'),
 
 --Memspell (time)
 ('S12_ING_A', '22', '13'), --CHANGE TO NYSTRAM WALL PLANT
@@ -322,7 +347,8 @@ VALUES
 ('S12_ING_NY','22', '7'),
 ('S12_ING_LOC','22', '3'),
 ('S12_ING_WRD', '22', '21'),
-('S12_SCROLL', 'IDD_SCR022', '22');
+('S12_SCROLL', 'IDD_SCR022', '22'),
+('S12_SCROLLL_MK', '22', 'IDD_MEMSPELL');
 
 --- CLASS ENTRY FOR THE SPELL ITEMS
 -- just cuz
@@ -406,6 +432,7 @@ VALUES
 ('M12_ING_NATC', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'CLEAR(BFRAME);MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAPi(BFRAME,S12_ING_C);SHOW(WIP4);'),
 ('M12_ING_FSH','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_FSH', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_D);SUBI(BFRAME,1);SHOW(WIP3);'),
+
 ('M12_ING_NY','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_NY', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);SHOW(WIP3);');
 
@@ -416,7 +443,7 @@ VALUES
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED', 'S12_SHELF_1_INGREDIENTS_MGR', ''),
+('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL'),
 ('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL',1,'S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLELIGHT','S12_SHELF_1_NYSTROMADDED'),
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
@@ -425,8 +452,8 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', '', '', ''),
-('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', '');
---('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', '', '', '', '');
+('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', ''),
+('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
 
 
@@ -523,21 +550,26 @@ VALUES
 -- CANGRN1 241,82,320,160
 
 
-('M12_xCANDLE', '0', '20', 'DRAG', '0', 'IDD_MATCH', ''),
+('M12_xCANDLE', '0', '10', 'DRAG', '0', 'IDD_MATCH', ''),
 ('M12_xCANDLE', '0', '0', 'CLICK', '0', '0', 'SIGNAL(WIP1,SIG_HIDE);'),
 
 ('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
 
-('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP1', 'SIG_SHOW', ''), --light the candel
+-- can't light candle without enough nystrom!
+('M12_xCANDLE', '10', '15', 'REF_MACHINE', 'WIP4', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);'),
+('M12_xCANDLE', '15', '20', 'EQUAL', 'BPARM', 'BFRAME', ''),
+('M12_xCANDLE', '15', '0', 'Z_EPSILON', '', '', ''),
+('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP1', 'SIG_SHOW', ''), --light the candle
 ('M12_xCANDLE', '21', '22', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
-('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'PLAYWAVE(SOUND_EXPLODE);'), --FOR TESTING HIDE THE INGREDIENTS - WILL BE NEW SPELL PORTAL
+('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'PLAYWAVE(SOUND_EXPLODE);'), 
 ('M12_xCANDLE', '22', '0', 'Z_EPSION', '', '', ''),
 
 
 --get the total amount required for the spell from the map
--- CANT LIGHT CANDLE IF NOT ENOUGH NYSTORM!
-('M12_xCANDLE', '100', '101', 'ADDI', 'BPARM', '1', ''),
-('M12_xCANDLE', '101', '102', 'PLAYWAVE', '0', 'SOUND_SLURP', 'SIGNAL(WIP2,SIG_SHOW);'),
+-- magic candle doesn't take more than is needed
+('M12_xCANDLE', '100', '101', 'REF_MACHINE', 'WIP4', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);'),
+('M12_xCANDLE', '101', '102', 'LT', 'BPARM', 'BFRAME', 'ADDI(BPARM,1);PLAYWAVE(SOUND_SLURP);SIGNAL(WIP2,SIG_SHOW);'),
+('M12_xCANDLE', '101', '0', 'Z_EPSILON', '', '', ''),
 ('M12_xCANDLE', '102', '0', 'HANDOFF', '0', 'IDD_SCOOPE', ''),
 
 -------------------------------------------------------------------------------------
@@ -547,3 +579,8 @@ VALUES
 
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);SHOW(WIP1);'),
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);');
+
+-------------------------------------------------------------------------------------
+
+
+--('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);');
