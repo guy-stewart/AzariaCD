@@ -59,13 +59,13 @@ INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", 
 VALUES 
 ('IDD_SCR020', '8736', 'IDC_SCROLL', 'SCR020', 'SCR020', 'SCR020'),
 ('IDD_SCR021', '8737', 'IDC_SCROLL', 'SCR021', 'SCR021', 'SCR021'),
-('IDD_SCR022', '8738', 'IDC_SCROLL', 'SCR022', 'SCR022', 'SCR022');
+('IDD_SCR022', '8738', 'IDC_SCROLL', 'SCR022', 'SCR022', 'SCR022'),
 
--- ('IDD_LEAF', '8507', '', 'LEAF', 'LEAF', 'LEAF'),
--- ('IDD_FLOWERD', '8508', '', 'FLOWERD', 'FLOWERD', 'FLOWERD'),
--- ('IDD_FLOWERR', '8509', '', 'FLOWERR', 'FLOWERR', 'FLOWERR'),
--- ('IDD_WILDBERRY', '8527', '', 'blueberry2', 'blueberry2', 'blueberry2'),
--- ('IDD_ROOTDBL', '8528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
+('IDD_LEAF', '18507', '', 'LEAF', 'LEAF', 'LEAF'),
+('IDD_FLOWERD', '18508', '', 'FLOWERD', 'FLOWERD', 'FLOWERD'),
+('IDD_FLOWERR', '18509', '', 'FLOWERR', 'FLOWERR', 'FLOWERR'),
+('IDD_WILDBERRY', '18527', '', 'blueberry2', 'blueberry2', 'blueberry2'),
+('IDD_ROOTDBL', '18528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
 
 
 delete from machines where [name] like 'S12_%';
