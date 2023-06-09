@@ -453,7 +453,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', '', ''),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', ''),
-('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '109', '84', '185', '150', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_ING2', '');
+('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_ING2', '');
 
 
 
@@ -485,7 +485,7 @@ VALUES
         SIGNAL(WIP3,SIG_HIDE);
         SIGNAL(WIP4,SIG_HIDE);
 '),  
-('M12_xING_MGR', 0,30, 'WAIT', '', 'SIG_CLOSE', '
+('M12_xING_MGR', 0,0, 'WAIT', '', 'SIG_CLOSE', '
         SIGNAL(WIP1,SIG_CLOSE);
         SIGNAL(WIP2,SIG_CLOSE);   
         SIGNAL(WIP3,SIG_CLOSE);
@@ -501,19 +501,13 @@ VALUES
 ('M12_xING_MGR',11,12,'REF_MACHINE','WIP2','', 'ADD(BPARM,R_WPARM);'),
 ('M12_xING_MGR',12,13,'REF_MACHINE','WIP3','', 'ADD(BPARM,R_WPARM);'),
 ('M12_xING_MGR',13,19,'REF_MACHINE','WIP4','', 'ADD(BPARM,R_WPARM);'),
+
 ('M12_xING_MGR',19,20,'ASSIGN','WPARM',0, ''),
-('M12_xING_MGR',20,21,'REF_MACHINE','WIP1','', ''),
-('M12_xING_MGR',21,22,'IFSTATE','10','WIP1', 'ADD(WPARM,R_WPARM);'),
-('M12_xING_MGR',21,22,'Z_EPSILON','','', ''),
-('M12_xING_MGR',22,23,'REF_MACHINE','WIP2','', ''),
-('M12_xING_MGR',23,24,'IFSTATE','10','WIP2', 'ADD(WPARM,R_WPARM);'),
-('M12_xING_MGR',23,24,'Z_EPSILON','','', ''),
-('M12_xING_MGR',24,25,'REF_MACHINE','WIP3','', ''),
-('M12_xING_MGR',25,26,'IFSTATE','10','WIP3', 'ADD(WPARM,R_WPARM);'),
-('M12_xING_MGR',25,26,'Z_EPSILON','','', ''),
-('M12_xING_MGR',26,27,'REF_MACHINE','WIP4','', ''),
-('M12_xING_MGR',27,0,'IFSTATE','10','WIP4', 'ADD(WPARM,R_WPARM);'),
-('M12_xING_MGR',27,0,'Z_EPSILON','','', ''),
+('M12_xING_MGR',20,21,'REF_MACHINE','WIP1','', 'ADD(WPARM,R_BPARM);'),
+('M12_xING_MGR',21,22,'REF_MACHINE','WIP2','', 'ADD(WPARM,R_BPARM);'),
+('M12_xING_MGR',22,23,'REF_MACHINE','WIP3','', 'ADD(WPARM,R_BPARM);'),
+('M12_xING_MGR',23,0,'REF_MACHINE','WIP4','', 'ADD(WPARM,R_BPARM);'),
+
 
 -------------------------------------------------------------------------------------
 ('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
@@ -526,8 +520,9 @@ VALUES
         C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
 
 ('M12_xPLANT',0,9,'DROP','0','0',''),
-('M12_xPLANT',9,10,'SHOW','WOBJECT','0',''),
-('M12_xPLANT',10, 11, 'GRAB', '0', '0', ''),
+('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--BPARM means object is filled
+
+('M12_xPLANT',0, 11, 'GRAB', '0', '0', 'ASSIGN(BPARM,0);'),
 ('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
 ('M12_xPLANT', 12, 13, 'CLEAR', 'WOBJECT', '', ''),
 ('M12_xPLANT', 13, 0, 'SHOW', '0', '0', ''),
@@ -548,15 +543,19 @@ VALUES
         MAP(BFRAME,S12_ING_D);
         O_ACCEPT(WOBJECT);
         SHOW(WIP3);'),
+
 ('M12_xASHSHELF',5,0,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
 ('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'),      
 
 ('M12_xASHSHELF',0,9,'DROP','0','0',''),
-('M12_xASHSHELF',9,10,'SHOW','WOBJECT','0',''),
-('M12_xASHSHELF',10, 11, 'GRAB', '0', '0', ''),
+('M12_xASHSHELF',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),
+
+('M12_xASHSHELF',0, 11, 'GRAB', '0', '0', ''),
 ('M12_xASHSHELF', 11, 0, 'CLEAR', 'BFRAME', '', '
+        ASSIGN(BPARM,0);
         CLEAR(WOBJECT);
         SHOW();'),
+
 ('M12_xASHSHELF',0,20,'WAIT','','SIG_HIDE',''),
 ('M12_xASHSHELF',20,21,'SHOW','0','0',''),
 ('M12_xASHSHELF',21,0,'Z_EPSILON','','',''),
@@ -607,10 +606,15 @@ VALUES
 --play animation
 --present spell
 ('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xSPELLPORTAL', '1', '0', 'SIGNAL', 'SIG_CLOSE', 'WIP1', ''),
+('M12_xSPELLPORTAL', '1', '2', 'SIGNAL', 'SIG_CLOSE', 'WIP1', ''),
 ('M12_xSPELLPORTAL', '2', '3', 'REF_MACHINE', 'WIP2', '', '
         MOV(WPARM,R_WPARM);
         MAPi(WPARM,S12_SCROLLL_MK);
         MOV(WOBJECT,WPARM); 
 '),
-('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', '');
+('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', ''),
+
+('M12_xSPELLPORTAL',0, 11, 'GRAB', '0', '0', ''),
+('M12_xSPELLPORTAL', 11, 0, 'CLEAR', 'BFRAME', '', '
+        CLEAR(WOBJECT);
+        SHOW();');
