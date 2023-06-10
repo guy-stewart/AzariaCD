@@ -574,6 +574,7 @@ VALUES
 ('M12_xASHSHELF', 31, 0, 'Z_EPSILON', '', '', ''),
 -------------------------------------------------------------------------------------
 ('M12_xCANDLE', '0', '10', 'DRAG', '0', 'IDD_MATCH', ''),
+--('M12_xCANDLE', '0', '0', 'ASSIGN', 'BPARM', '0', ''),
 ('M12_xCANDLE', '0', '0', 'CLICK', '0', '0', 'SIGNAL(WIP1,SIG_HIDE);'),
 
 ('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
@@ -588,13 +589,13 @@ VALUES
 ('M12_xCANDLE', '21', '22', 'GTi', 'R_WPARM', '0', ''), 
 ('M12_xCANDLE', '21', '0', 'Z_EPSILON', '', '', ''),
 
-('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);'), 
+('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);ASSIGN(BPARM,0);'), --BPARM GOES TO ZERO AS THE NYSTROM CATCHES FIRE
 ('M12_xCANDLE', '22', '0', 'Z_EPSILON', '', '', ''),
 
 
 --get the total amount required for the spell from the map
 -- magic candle doesn't take more than is needed
-('M12_xCANDLE', '100', '101', 'REF_MACHINE', 'WIP4', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);'),
+('M12_xCANDLE', '100', '101', 'REF_MACHINE', 'WIP4', '0', 'MOV(BFRAME,R_WPARM);MAPi(BFRAME,S12_ING_NY);'),--BFRAME is how much for the spell
 ('M12_xCANDLE', '101', '102', 'LT', 'BPARM', 'BFRAME', 'ADDI(BPARM,1);PLAYWAVE(SOUND_SLURP);SIGNAL(WIP2,SIG_SHOW);'),
 ('M12_xCANDLE', '101', '0', 'Z_EPSILON', '', '', ''),
 ('M12_xCANDLE', '102', '0', 'HANDOFF', '0', 'IDD_SCOOPE', ''),
@@ -608,9 +609,6 @@ VALUES
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);'),
 
 -------------------------------------------------------------------------------------
---remove ingredients
---play animation
---present spell
 ('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
 ('M12_xSPELLPORTAL', '1', '2', 'SIGNAL', 'WIP1', 'SIG_CLOSE', ''),
 ('M12_xSPELLPORTAL', '2', '3', 'VIDEO', '', 'IDS_RAIN', ''),
