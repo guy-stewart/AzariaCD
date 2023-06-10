@@ -23,6 +23,7 @@ delete from "main"."spr_names"  where [name] like 'IDS_LEA%';
 delete from "main"."spr_names"  where [name] like 'IDS_FLOWER%';
 delete from "main"."spr_names"  where [name] like 'IDS_WILD%';
 delete from "main"."spr_names"  where [name] like 'IDS_ROOTDB%';
+delete from "main"."spr_names"  where [name] like 'IDS_RAIN%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES 
 ('IDS_SCR020', 'SCR020', '8736'),
 ('IDS_SCR021', 'SCR021', '8737'),
@@ -34,7 +35,8 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 ('IDS_FLOWERD', 'FLOWERD', '8508'),
 ('IDS_FLOWERR', 'FLOWERR', '8509'),
 ('IDS_WILDBERRY', 'blueberry2', '8527'),
-('IDS_ROOTDBL', 'ROOTDBL', '8528');
+('IDS_ROOTDBL', 'ROOTDBL', '8528'),
+('IDS_RAIN', 'RAIN', '8529');
 
 delete from "main"."spr_names"  where [name] like 'IDS_CAN%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
@@ -146,7 +148,7 @@ VALUES
 
 --Slarm
 ('S12_ING_A', '6', '5'), 
-('S12_ING_B', '6', '3'),
+('S12_ING_B', '6', ''),
 ('S12_ING_C', '6', '7'), 
 ('S12_ING_D', '6', '5'),
 ('S12_ING_DA', '6', 'IDD_FISHASH5'),
@@ -444,7 +446,7 @@ VALUES
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
 ('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL'),
-('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '201', '250', '271', '1', 'M12_xSCROLL',1,'S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLELIGHT','S12_SHELF_1_NYSTROMADDED'),
+('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '200', '250', '230', '1', 'M12_xSCROLL','1','S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLELIGHT','S12_SHELF_1_NYSTROMADDED'),
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
 ('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', ''),
@@ -453,25 +455,28 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', '', ''),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', ''),
-('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_ING2', '');
+('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED');
 
 
 
 INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 
-('M12_xSCROLL',0,5,'C_ACCEPT','0','IDC_SCROLL', ''),
+('M12_xSCROLL',0,5,'cangrab','0','IDC_SCROLL', ''),
+
 ('M12_xSCROLL',5,10,'DROP','0','0',''),
-('M12_xSCROLL', 10, 11, 'SHOW', '', 'IDS_SCRHUNG', 'MOV(WPARM,WOBJECT); MAPi(WPARM,S12_SCROLL);'),
-('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);'), --Now WTEMP1 should be the spells acceptable loc
-('M12_xSCROLL', 12, 15, 'NEQUALi', 'WTEMP1', 1, ''), --force them to take it back
-('M12_xSCROLL', 15, 0, 'GRAB', '0', '','SHOW();'), -- change to play a bomp sound
---signal ingredients to look themselves up with this wparm
-('M12_xSCROLL', 12, 20, 'Z_EPSILON', '', '', '
-        SIGNAL(WIP2,SIG_SHOW);  
-'),
-('M12_xSCROLL', 20, 21, 'GRAB', '0', '','SHOW();'),
-('M12_xSCROLL', 21, 0, 'SIGNAL', 'WIP2', 'SIG_HIDE','SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
+('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);'),
+('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);'),  --Now WTEMP1 should be the spells acceptable loc
+('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);'), --force them to take it back
+('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', ''),
+('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);'),--signal ingredients to look themselves up with this wparm
+
+('M12_xSCROLL', 5, 21, 'GRAB', '0', '',''), 
+('M12_xSCROLL', 21, 22, 'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);'),  --check with ingredients manager to see if items are on the table wparm > 0
+('M12_xSCROLL', 22, 30, 'EQUAL', 'R_WPARM', '0', ''), 
+('M12_xSCROLL', 22, 23, 'Z_EPSILON', '', '', ''), 
+('M12_xSCROLL', 23, 5, 'SHOW', '0', '0', ''), -- conditional grabs are a pain -- maybe you can grab but don't hide objects
+('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
 -------------------------------------------------------------------------------------
 ('M12_xING_MGR',0,0,'WAIT','0','SIG_SHOW', '
         SIGNAL(WIP1,SIG_SHOW);
@@ -490,12 +495,14 @@ VALUES
         SIGNAL(WIP2,SIG_CLOSE);   
         SIGNAL(WIP3,SIG_CLOSE);
         SIGNAL(WIP4,SIG_CLOSE);
+        ASSIGN(BPARM,0);
+        ASSIGN(WPARM,0);
 '),
 
 
 ('M12_xING_MGR',0,9,'WAIT','0','SIG_CHECK', ''),
 --find out how many ingredients to expect filled
--- assess each again and add them to wparm if the wips are in state 10 (and > 0) - if wparm GEi bparm ritual is good
+-- assess each again and add them to wparm if the wips are in  - if wparm==bparm ritual is good
 ('M12_xING_MGR',9,10,'ASSIGN','BPARM',0, ''),
 ('M12_xING_MGR',10,11,'REF_MACHINE','WIP1','', 'ADD(BPARM,R_WPARM);'),
 ('M12_xING_MGR',11,12,'REF_MACHINE','WIP2','', 'ADD(BPARM,R_WPARM);'),
@@ -520,7 +527,7 @@ VALUES
         C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
 
 ('M12_xPLANT',0,9,'DROP','0','0',''),
-('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--BPARM means object is filled
+('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--we have something there
 
 ('M12_xPLANT',0, 11, 'GRAB', '0', '0', 'ASSIGN(BPARM,0);'),
 ('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
@@ -532,26 +539,28 @@ VALUES
 ('M12_xPLANT',21,0,'Z_EPSILON','','',''), --
 
 ('M12_xPLANT',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
-('M12_xPLANT', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW();'),
+('M12_xPLANT', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW(); ASSIGN(BPARM,0); ASSIGN(WPARM,0);'),
 ('M12_xPLANT', 31, 0, 'Z_EPSILON', '', '', ''),
 
 
 
 -------------------------------------------------------------------------------------
-('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WOBJECT,R_WPARM);MAP(WOBJECT,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
+('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WTEMP1,R_WPARM);MAP(WTEMP1,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
 ('M12_xASHSHELF',4,5,'MOV','BFRAME','R_WPARM','
         MAP(BFRAME,S12_ING_D);
-        O_ACCEPT(WOBJECT);
+        O_ACCEPT(WTEMP1);
         SHOW(WIP3);'),
 
 ('M12_xASHSHELF',5,0,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
 ('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'),      
 
 ('M12_xASHSHELF',0,9,'DROP','0','0',''),
-('M12_xASHSHELF',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),
+('M12_xASHSHELF',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--we have something there
 
-('M12_xASHSHELF',0, 11, 'GRAB', '0', '0', ''),
-('M12_xASHSHELF', 11, 0, 'CLEAR', 'BFRAME', '', '
+('M12_xASHSHELF',0, 12, 'GRAB', '0', '0', ''),
+('M12_xASHSHELF',12, 13, 'EQUALi', 'BPARM', '1', ''),
+('M12_xASHSHELF',12, 0, 'Z_EPSILON', '', '', ''),
+('M12_xASHSHELF', 13, 0, 'CLEAR', 'BFRAME', '', '
         ASSIGN(BPARM,0);
         CLEAR(WOBJECT);
         SHOW();'),
@@ -561,15 +570,9 @@ VALUES
 ('M12_xASHSHELF',21,0,'Z_EPSILON','','',''),
 
 ('M12_xASHSHELF',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
-('M12_xASHSHELF', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW();'),
+('M12_xASHSHELF', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW(); ASSIGN(BPARM,0); ASSIGN(WPARM,0);'),
 ('M12_xASHSHELF', 31, 0, 'Z_EPSILON', '', '', ''),
 -------------------------------------------------------------------------------------
--- CANGRN4 245,84,333,164
--- CANGRN3 244,85,325,170
--- CANGRN2 250,85,330,166
--- CANGRN1 241,82,320,160
-
-
 ('M12_xCANDLE', '0', '10', 'DRAG', '0', 'IDD_MATCH', ''),
 ('M12_xCANDLE', '0', '0', 'CLICK', '0', '0', 'SIGNAL(WIP1,SIG_HIDE);'),
 
@@ -582,8 +585,11 @@ VALUES
 
 -- magic candle only lights when the spell is ready
 ('M12_xCANDLE', '20', '21', 'SIGNAL', 'WIP3', 'SIG_CHECK', 'REF_MACHINE(WIP3);'), -- check the ingredients
-('M12_xCANDLE', '21', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);'), 
+('M12_xCANDLE', '21', '22', 'GTi', 'R_WPARM', '0', ''), 
 ('M12_xCANDLE', '21', '0', 'Z_EPSILON', '', '', ''),
+
+('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);'), 
+('M12_xCANDLE', '22', '0', 'Z_EPSILON', '', '', ''),
 
 
 --get the total amount required for the spell from the map
@@ -606,15 +612,24 @@ VALUES
 --play animation
 --present spell
 ('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xSPELLPORTAL', '1', '2', 'SIGNAL', 'SIG_CLOSE', 'WIP1', ''),
-('M12_xSPELLPORTAL', '2', '3', 'REF_MACHINE', 'WIP2', '', '
+('M12_xSPELLPORTAL', '1', '2', 'SIGNAL', 'WIP1', 'SIG_CLOSE', ''),
+('M12_xSPELLPORTAL', '2', '3', 'VIDEO', '', 'IDS_RAIN', ''),
+('M12_xSPELLPORTAL', '3', '4', 'REF_MACHINE', 'WIP2', '', '
         MOV(WPARM,R_WPARM);
         MAPi(WPARM,S12_SCROLLL_MK);
         MOV(WOBJECT,WPARM); 
 '),
-('M12_xSPELLPORTAL', '3', '0', 'ASHOW', 'WOBJECT', '', ''),
+('M12_xSPELLPORTAL', '4', '0', 'ASHOW', 'WOBJECT', '', ''),
 
 ('M12_xSPELLPORTAL',0, 11, 'GRAB', '0', '0', ''),
-('M12_xSPELLPORTAL', 11, 0, 'CLEAR', 'BFRAME', '', '
+('M12_xSPELLPORTAL', 11, 12, 'CLEAR', 'WOBJECT', '', '
         CLEAR(WOBJECT);
-        SHOW();');
+        CLEAR(WPARM);
+        SHOW();
+        SIGNAL(WIP3,SIG_HIDE);
+        SIGNAL(WIP4,SIG_HIDE);
+        '),
+('M12_xSPELLPORTAL', 12, 0, 'SIGNAL', 'WIP1', 'SIG_SHOW', '');
+
+
+
