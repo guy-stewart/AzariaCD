@@ -99,11 +99,11 @@ VALUES
 
 --stalking
 ('S12_ING_A', '2', '13'),
-('S12_ING_B', '2', '13'), --GOPA
-('S12_ING_C', '2', '13'), 
+('S12_ING_B', '2', ''), --GOPA - change back to 3 gopa and 2 scoops
+('S12_ING_C', '2', ''), 
 ('S12_ING_D', '2', '1'),
 ('S12_ING_DA', '2', 'IDD_FISHASH1'),
-('S12_ING_NY', '2', '2'),
+('S12_ING_NY', '2', '1'),
 ('S12_ING_LOC', '2', '1'),
 ('S12_ING_WRD', '2', '1'),
 ('S12_SCROLL', 'IDD_SCR002', '2'),
@@ -453,9 +453,10 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
-('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', '', ''),
+('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', 'S12_SHELF_1_CANDLE', 'S12_SHELF_1_MAGIC'),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', ''),
-('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED');
+('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED'),
+('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '0', '5', '35', '45', '1', 'M12_xMAGIC', '','','','');
 
 
 
@@ -574,7 +575,7 @@ VALUES
 ('M12_xASHSHELF', 31, 0, 'Z_EPSILON', '', '', ''),
 -------------------------------------------------------------------------------------
 ('M12_xCANDLE', '0', '10', 'DRAG', '0', 'IDD_MATCH', ''),
---('M12_xCANDLE', '0', '0', 'ASSIGN', 'BPARM', '0', ''),
+('M12_xCANDLE', '0', '50', 'WAIT', '', 'SIG_EMPTY', ''),
 ('M12_xCANDLE', '0', '0', 'CLICK', '0', '0', 'SIGNAL(WIP1,SIG_HIDE);'),
 
 ('M12_xCANDLE', '0', '100', 'DRAG', '0', 'IDD_SCOOPF', ''),
@@ -592,6 +593,7 @@ VALUES
 ('M12_xCANDLE', '22', '0', 'EQUAL', 'R_WPARM', 'R_BPARM', 'SIGNAL(WIP1,SIG_SHOW);ASSIGN(BPARM,0);'), --BPARM GOES TO ZERO AS THE NYSTROM CATCHES FIRE
 ('M12_xCANDLE', '22', '0', 'Z_EPSILON', '', '', ''),
 
+('M12_xCANDLE', '50', '0', 'Z_EPSILON', '', '', 'ASSIGN(BPARM,0);SIGNAL(WIP2,SIG_HIDE);'),
 
 --get the total amount required for the spell from the map
 -- magic candle doesn't take more than is needed
@@ -602,21 +604,30 @@ VALUES
 
 -------------------------------------------------------------------------------------
 
-('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);ASHOW(WIP1);SIGNAL(WIP2,SIG_SHOW);'),
-('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);ASHOW(0);'),
+('M12_xCANDLELIGHT', '0', '1', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);ASHOW(WIP1);PLAYWAVE(SOUND_FIRE);'), 
+('M12_xCANDLELIGHT', '1', '2', 'SIGNAL', 'WIP4', 'SIG_SHOW', ''), --play magic  and  light wick
+('M12_xCANDLELIGHT', '2', '0', 'SIGNAL', 'WIP2', 'SIG_SHOW', ''),
+
+
+('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);ASHOW(0);SIGNAL(WIP3,SIG_EMPTY;'),
 
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'MOV(WSPRITE,WIP1);SHOW(WIP1);'),
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'CLEAR(WSPRITE);SHOW(0);'),
 
 -------------------------------------------------------------------------------------
+('M12_xMAGIC', 0, 10, 'WAIT', '', 'SIG_SHOW', ''),
+('M12_xMAGIC', 10, 11, 'VIDEO', '', 'IDS_RAIN', ''),
+('M12_xMAGIC', 11, 0, 'Z_EPSILON', '', '', ''),
+
+-------------------------------------------------------------------------------------
 ('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xSPELLPORTAL', '1', '2', 'SIGNAL', 'WIP1', 'SIG_CLOSE', ''),
-('M12_xSPELLPORTAL', '2', '3', 'VIDEO', '', 'IDS_RAIN', ''),
+('M12_xSPELLPORTAL', '1', '3', 'SIGNAL', 'WIP1', 'SIG_CLOSE', ''),
 ('M12_xSPELLPORTAL', '3', '4', 'REF_MACHINE', 'WIP2', '', '
         MOV(WPARM,R_WPARM);
         MAPi(WPARM,S12_SCROLLL_MK);
         MOV(WOBJECT,WPARM); 
 '),
+-- SIGNALi(SIG_SHOW,S12_SHELF_1_MAGIC);
 ('M12_xSPELLPORTAL', '4', '0', 'ASHOW', 'WOBJECT', '', ''),
 
 ('M12_xSPELLPORTAL',0, 11, 'GRAB', '0', '0', ''),
@@ -628,6 +639,8 @@ VALUES
         SIGNAL(WIP4,SIG_HIDE);
         '),
 ('M12_xSPELLPORTAL', 12, 0, 'SIGNAL', 'WIP1', 'SIG_SHOW', '');
+
+
 
 
 
