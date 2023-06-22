@@ -104,7 +104,7 @@ VALUES
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_REC_COMPLETE', '0', '100', 'WAIT','0', 'SIG_COMPLETE', 'ASSIGN(WSPRITE,WIP1);SHOW(WSPRITE);'),
+('M_REC_COMPLETE', '0', '100', 'WAIT','0', 'SIG_COMPLETE', 'ASSIGN(WSPRITE,WIP1);SHOW(WIP1);'),
 ('M_REC_COMPLETE', '100', '0', 'WAIT','0', 'SIG_RESET', 'CLEAR(WSPRITE);SHOW();'),
 
 ('M_REC_COUNTER', '0', '0', 'WAIT','0', 'SIG_COUNT', 'ADDi(WPARM,1);');
