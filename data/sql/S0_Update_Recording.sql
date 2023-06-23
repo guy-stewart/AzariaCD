@@ -42,7 +42,8 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 ('M10_FLOWER','1','30','WAIT','','SIG_OPEN','
     PLAYWAVE(SOUND_BUZZFUZZ);
     SHOW(0,IDS_FLOPN1);
-    ANIMATE();SIGNALi(SIG_COMPLETE,REC_DRYPIT);',''),
+    ANIMATE();
+    SIGNALi(SIG_COMPLETE,REC_DRYPIT);',''),
 ('M10_FLOWER','30','1','GRAB','','IDD_SEED','
     PLAYWAVE(SOUND_BUZZFUZZ);
     SHOW(0,IDS_FLOPN1);
