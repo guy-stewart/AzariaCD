@@ -83,8 +83,8 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 VALUES 
 
 ('30001', 'REC_DRYPIT', '8707', 'IDV_ENCHANTPAN', '25', '50', '50', '70', '3', 'M_RECORD_COMPLETE', 'IDS_REC_DRYPIT', '', '', ''),
-('30002', 'REC_CAVE1', '8707', 'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', '', '', ''),
-('30003', 'REC_CAVE2', '8707', 'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', '', '', ''),
+('30002', 'REC_CAVE2', '8707', 'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', '', '', ''),
+('30003', 'REC_CAVE1', '8707', 'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', '', '', ''),
 ('30004', 'REC_EYEOG', '8707', 'IDV_ENCHANTPAN', '204', '202', '250', '300', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEOG', '', '', ''),
 ('30005', 'REC_HIDNAT', '8707', 'IDV_ENCHANTPAN', '388', '216', '440', '260', '3', 'M_RECORD_COMPLETE', 'IDS_REC_HIDNAT', '', '', ''),
 ('30006', 'REC_MOONTBL', '8707', 'IDV_ENCHANTPAN', '481', '182', '530', '220', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONTBL', '', '', ''),
@@ -105,8 +105,6 @@ VALUES
 ('M_RECORD_COMPLETE', '101', '0', 'Z_EPSILON','', '', 'CLEAR(WSPRITE);SHOW();'),
 
 ('M_RECORD_COUNTER', '0', '0', 'WAIT','0', 'SIG_COUNT', 'ADDi(WPARM,1);');
-
-
 
         -- SIGNALi(SIG_COMPLETE,REC_DRYPIT);
         -- SIGNALi(SIG_COMPLETE,REC_CAVE1);
