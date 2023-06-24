@@ -73,10 +73,10 @@ VALUES
 delete from machines where [name] like 'S12_%';
 delete from machines where [name] like 'S22_%';
 
-delete from transitions where [name] like 'M22_%';
+delete from transitions where [automaton] like 'M22_%';
 
-delete from transitions where [name] like 'M12_ING%';
-delete from transitions where [name] like 'M12_x%';
+delete from transitions where [automaton] like 'M12_ING%';
+delete from transitions where [automaton] like 'M12_x%';
 
 delete from map where op like 'S12_ing_%';
 delete from map where op like 'S12_NAT%';
@@ -422,7 +422,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 --ref SMP_EYEINFO - THEN, R_WTEMP1 HAS THE SCROL DROPPED
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 ('M12_ING_STD','0', '1','WAIT', '0', 'SIG_SHOW', ''),
 ('M12_ING_STD', '1', '0', 'REF_MACHINE', 'WIP1', '0', 'MOV(WPARM,R_WPARM);MOV(BFRAME,WPARM);MAP(BFRAME,WIP2);SHOW(WIP3);'),
@@ -460,25 +460,25 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard") 
 VALUES 
 
-('M12_xSCROLL',0,5,'cangrab','0','IDC_SCROLL', ''),
+('M12_xSCROLL',0,5,'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);MOV(BPARM,R_WPARM);',''), 
 
-('M12_xSCROLL',5,10,'DROP','0','0',''),
-('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);'),
-('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);'),  --Now WTEMP1 should be the spells acceptable loc
-('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);'), --force them to take it back
-('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', ''),
-('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);'),--signal ingredients to look themselves up with this wparm
+('M12_xSCROLL',5,10,'DROP','0','0','',''), 
+('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);',''), 
+('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);',''),   --Now WTEMP1 should be the spells acceptable loc
+('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);',''),  --force them to take it back
+('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', '',''),
+('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
 
-('M12_xSCROLL', 5, 21, 'GRAB', '0', '',''), 
-('M12_xSCROLL', 21, 22, 'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);'),  --check with ingredients manager to see if items are on the table wparm > 0
-('M12_xSCROLL', 22, 30, 'EQUAL', 'R_WPARM', '0', ''), 
-('M12_xSCROLL', 22, 23, 'Z_EPSILON', '', '', ''), 
-('M12_xSCROLL', 23, 5, 'SHOW', '0', '0', ''), -- conditional grabs are a pain -- maybe you can grab but don't hide objects
-('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
+('M12_xSCROLL', 5, 30, 'GRAB', '0', '','','EQUAL(BPARM,0);'),  
+('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);',''); --remove the place holders and snuff the candle, drain nystrom
 -------------------------------------------------------------------------------------
+
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+VALUES 
+
 ('M12_xING_MGR',0,0,'WAIT','0','SIG_SHOW', '
         SIGNAL(WIP1,SIG_SHOW);
         SIGNAL(WIP2,SIG_SHOW);   
@@ -640,6 +640,25 @@ VALUES
         '),
 ('M12_xSPELLPORTAL', 12, 0, 'SIGNAL', 'WIP1', 'SIG_SHOW', '');
 
+
+
+
+-- ('M12_xSCROLL',0,5,'Z_EPSILON','0','IDC_SCROLL', ''),
+
+-- ('M12_xSCROLL',5,10,'DROP','0','0',''),
+-- ('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);'),
+-- ('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);'),  --Now WTEMP1 should be the spells acceptable loc
+-- ('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);'), --force them to take it back
+-- ('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', ''),
+-- ('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);'),--signal ingredients to look themselves up with this wparm
+
+-- ('M12_xSCROLL', 5, 21, 'GRAB', '0', '',''), 
+-- ('M12_xSCROLL', 21, 22, 'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);'),  --check with ingredients manager to see if items are on the table wparm > 0
+
+-- ('M12_xSCROLL', 22, 30, 'EQUAL', 'R_WPARM', '0', ''), 
+-- ('M12_xSCROLL', 22, 23, 'Z_EPSILON', '', '', ''), 
+-- ('M12_xSCROLL', 23, 5, 'SHOW', '0', '0', ''), -- conditional grabs are a pain -- maybe you can grab but don't hide objects
+-- ('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
 
 
 
