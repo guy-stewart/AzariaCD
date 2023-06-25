@@ -447,10 +447,10 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 ('8714', 'S12_SHELF_1_CANDLE', '4633', 'IDV_TMCU1', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL'),
 ('8715', 'S12_SHELF_1_SCROLL', '4633', 'IDV_TMCU1', '132', '200', '250', '230', '1', 'M12_xSCROLL','1','S12_SHELF_1_INGREDIENTS_MGR', 'S12_SHELF_1_CANDLELIGHT','S12_SHELF_1_NYSTROMADDED'),
-('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_NATURE_REP'),
-('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', ''),
-('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', ''),
-('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', ''),
+('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
+('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
+('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
+('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', 'S12_SHELF_1_CANDLE', 'S12_SHELF_1_MAGIC'),
@@ -463,17 +463,17 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard") 
 VALUES 
 
-('M12_xSCROLL',0,5,'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);MOV(BPARM,R_WPARM);',''), 
+('M12_xSCROLL',0,5,'REF_MACHINE', 'WIP2', '0', 'SIGNAL(WIP2,SIG_CHECK);',''), 
 
 ('M12_xSCROLL',5,10,'DROP','0','0','',''), 
 ('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);',''), 
 ('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);',''),   --Now WTEMP1 should be the spells acceptable loc
 ('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);',''),  --force them to take it back
 ('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', '',''),
-('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
+('M12_xSCROLL', 13, 0, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
 
-('M12_xSCROLL', 5, 30, 'GRAB', '0', '','','EQUAL(BPARM,0);'),  
-('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);',''); --remove the place holders and snuff the candle, drain nystrom
+('M12_xSCROLL', 5, 30, 'GRAB', '0', '','','R_WPARM == 0'),  
+('M12_xSCROLL', 30, 0, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);',''); --remove the place holders and snuff the candle, drain nystrom
 -------------------------------------------------------------------------------------
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
@@ -520,7 +520,7 @@ VALUES
 -------------------------------------------------------------------------------------
 ('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
 ('M12_xPLANT',5,6,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
-('M12_xPLANT',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0)'), 
+('M12_xPLANT',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'), 
 ('M12_xPLANT',6,7,'SHOW','WIP3','',''),-- Show the plant outline (BFRAME holds the ing number)
 ('M12_xPLANT',7,0,'Z_EPSILON','','','
         MOV(WOBJECT,BFRAME);
@@ -528,12 +528,12 @@ VALUES
         C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
 
 ('M12_xPLANT',0,9,'DROP','0','0',''),
-('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--we have something there
+('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1); SIGNAL(WIP4,SIG_CHECK);'),--we have something there ... NEW-now check is called with each drop
 
 ('M12_xPLANT',0, 11, 'GRAB', '0', '0', 'ASSIGN(BPARM,0);'),
 ('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
 ('M12_xPLANT', 12, 13, 'CLEAR', 'WOBJECT', '', ''),
-('M12_xPLANT', 13, 0, 'SHOW', '0', '0', ''),
+('M12_xPLANT', 13, 0, 'SHOW', '0', '0', 'SIGNAL(WIP4,SIG_CHECK);'),
 
 ('M12_xPLANT',0,20,'WAIT','','SIG_HIDE',''),-- this crashes if I put the SHOW() in the code here
 ('M12_xPLANT',20,21,'SHOW','0','0',''),
