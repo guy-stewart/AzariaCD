@@ -463,24 +463,16 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard") 
 VALUES 
 
-('M12_xSCROLL',0,'vacant','REF_MACHINE', 'WIP2', '0', '
-SIGNAL(WIP2,SIG_CHECK);
-C_ACCEPT(0,IDC_SCROLL);',''), 
+('M12_xSCROLL',0,5,'REF_MACHINE', 'WIP2', '0', 'SIGNAL(WIP2,SIG_CHECK);',''), 
 
-('M12_xSCROLL','vacant',12,'DROP','0','0','
-MOV(WPARM,WOBJECT);
-MAPi(WPARM,S12_SCROLL);
-MOV(WTEMP1,WPARM);
-MAPi(WTEMP1,S12_ING_LOC);',''), --Now WTEMP1 should be the spells acceptable loc
--- ('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);',''), 
--- ('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);',''),   --Now WTEMP1 should be the spells acceptable loc
-('M12_xSCROLL', 12, 'occupied', 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);',''),  --force them to take it back
-('M12_xSCROLL', 12, 'occupied', 'Z_EPSILON','', '', '
-SHOW(0,IDS_SCRHUNG);
-SIGNAL(WIP2,SIG_SHOW);',''),
---('M12_xSCROLL', 13, 0, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
+('M12_xSCROLL',5,10,'DROP','0','0','',''), 
+('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);',''), 
+('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);',''),   --Now WTEMP1 should be the spells acceptable loc
+('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);',''),  --force them to take it back
+('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', '',''),
+('M12_xSCROLL', 13, 0, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
 
-('M12_xSCROLL', 'occupied', 30, 'GRAB', '0', '','','R_WPARM == 0'),  
+('M12_xSCROLL', 5, 30, 'GRAB', '0', '','',''),  --R_WPARM == 0
 ('M12_xSCROLL', 30, 0, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);',''); --remove the place holders and snuff the candle, drain nystrom
 -------------------------------------------------------------------------------------
 
@@ -526,39 +518,30 @@ VALUES
 
 
 -------------------------------------------------------------------------------------
-('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','
-REF_MACHINE(WIP1);
-MOV(BFRAME,R_WPARM);
-MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
-('M12_xPLANT',5,'Dstate','GT','BFRAME','0','
-ASSIGN(WPARM,1);
-MOV(WOBJECT,BFRAME);
-MAPi(WOBJECT,S12_NATURE_REP);
-O_ACCEPT(WOBJECT);
-C_ACCEPT(WOBJECT);
-SHOW(WIP3);'), --we expect something
+('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
+('M12_xPLANT',5,6,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
 ('M12_xPLANT',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'), 
---('M12_xPLANT',6,7,'SHOW','WIP3','',''),-- Show the plant outline (BFRAME holds the ing number)
---('M12_xPLANT',7,0,'Z_EPSILON','','','
---        MOV(WOBJECT,BFRAME);
---        MAPi(WOBJECT,S12_NATURE_REP);
---        C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
+('M12_xPLANT',6,7,'SHOW','WIP3','',''),-- Show the plant outline (BFRAME holds the ing number)
+('M12_xPLANT',7,0,'Z_EPSILON','','','
+        MOV(WOBJECT,BFRAME);
+        MAPi(WOBJECT,S12_NATURE_REP);
+        C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
 
-('M12_xPLANT','Dstate','Gstate','DROP','0','0','
-SHOW(WOBJECT);
-BPARM=1;
-SIGNAL(WIP4,SIG_CHECK);'), --we have something there ... NEW-now check is called with each drop
-('M12_xPLANT','Dstate',0,'WAIT','','SIG_HIDE','SHOW();'),-- this crashes if I put the SHOW() in the code here
+('M12_xPLANT',0,9,'DROP','0','0',''),
+('M12_xPLANT',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1); SIGNAL(WIP4,SIG_CHECK);'),--we have something there ... NEW-now check is called with each drop
 
-('M12_xPLANT','Gstate', '5', 'GRAB', '0', '0', '
-WOBJECT=0;
-SIGNAL(WIP4,SIG_CHECK);'),
+('M12_xPLANT',0, 11, 'GRAB', '0', '0', 'ASSIGN(BPARM,0);'),
+('M12_xPLANT', 11, 12, 'CLEAR', 'BFRAME', '', ''),
+('M12_xPLANT', 12, 13, 'CLEAR', 'WOBJECT', '', ''),
+('M12_xPLANT', 13, 0, 'SHOW', '0', '0', 'SIGNAL(WIP4,SIG_CHECK);'),
 
-('M12_xPLANT','Gstate',0,'WAIT','','SIG_CLOSE','
-WOBJECT=0;
-ASHOW();
-BPARM=0;
-WPARM=0;'),--SWALLOW UP THE OBJECT
+('M12_xPLANT',0,20,'WAIT','','SIG_HIDE',''),-- this crashes if I put the SHOW() in the code here
+('M12_xPLANT',20,21,'SHOW','0','0',''),
+('M12_xPLANT',21,0,'Z_EPSILON','','',''), --
+
+('M12_xPLANT',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
+('M12_xPLANT', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW(); ASSIGN(BPARM,0); ASSIGN(WPARM,0);'),
+('M12_xPLANT', 31, 0, 'Z_EPSILON', '', '', ''),
 
 
 
@@ -676,6 +659,7 @@ WPARM=0;'),--SWALLOW UP THE OBJECT
 -- ('M12_xSCROLL', 22, 23, 'Z_EPSILON', '', '', ''), 
 -- ('M12_xSCROLL', 23, 5, 'SHOW', '0', '0', ''), -- conditional grabs are a pain -- maybe you can grab but don't hide objects
 -- ('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
+
 
 
 
