@@ -59,12 +59,78 @@ VALUES
 
 ('M_KAMDOOR','0','10','WAIT','','SIG_CHECK','ASSIGN(WPARM,0);',''), --WPARM will need to equal 7 to open the door
 
-('M_KAMDOOR','10','11','REF_MACHINE','S27_MEMSTONE7','','MOV(WTEMP1,R_BPARM);',''),
-('M_KAMDOOR','11','12','REF_MACHINE','S28_DISK7','','MOV(WTEMP2,R_BPARM);',''),
-('M_KAMDOOR','12','20','EQUAL','WTEMP1','WTEMP2','ADD(WPARM,1);',''), -- need to change to go to 20 - A lso have a 0 problem frame 0 vs just initalize 0
-('M_KAMDOOR','12','0','Z_EPSILON','','','',''),
+('M_KAMDOOR','10','20','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE7);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK7);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),
 
-('M_KAMDOOR','20','21','REF_MACHINE','S27_MEMSTONE6','','MOV(WTEMP1,R_BPARM);',''),
-('M_KAMDOOR','21','22','REF_MACHINE','S28_DISK6','','MOV(WTEMP2,R_BPARM);',''),
-('M_KAMDOOR','22','0','EQUAL','WTEMP1','WTEMP2','ADD(WPARM,1);',''),
-('M_KAMDOOR','22','0','Z_EPSILON','','','','');
+('M_KAMDOOR','20','30','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE6);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK6);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),
+ 
+('M_KAMDOOR','30','40','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE5);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK5);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),           
+
+('M_KAMDOOR','40','50','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE4);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK4);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),        
+
+('M_KAMDOOR','50','60','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE3);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK3);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),      
+
+('M_KAMDOOR','60','70','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE2);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK2);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),  
+
+('M_KAMDOOR','70','80','Z_EPSILON','','','
+    REF_MACHINE(S27_MEMSTONE1);
+    MOV(WTEMP1,R_BPARM);
+     if (R_WPARM > 0) { 
+        REF_MACHINE(S28_DISK1);
+        MOV(WTEMP2,R_BPARM);
+            if ((WTEMP1 == WTEMP2)) {
+                ADD(WPARM,1);
+            }}',''),   
+
+('M_KAMDOOR','80','0','Z_EPSILON','','','','');                     
+
+
+
+

@@ -71,7 +71,7 @@ VALUES
 ('M_MEMORY','0','1','WAIT','','SIG_SHOW',''),
 ('M_MEMORY','1','2','RAND','8','0',''),
 ('M_MEMORY','2','3','MOV','BFRAME', 'WRAND',''), -- 
-('M_MEMORY','3','4','SHOW','WIP1', '', 'MOV(BPARM,BFRAME);'),
+('M_MEMORY','3','4','SHOW','WIP1', '', 'MOV(BPARM,BFRAME);ASSIGN(WPARM,1);'),
 ('M_MEMORY','4','5','WAIT','','SIG_HIDE',''),
 ('M_MEMORY', '5', '6', 'CLEAR', 'WSPRITE', '', ''),
 ('M_MEMORY', '6', '0', 'SHOW', '', '', '');
