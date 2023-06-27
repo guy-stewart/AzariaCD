@@ -44,7 +44,7 @@ VALUES
 ('9915', 'S28_DISK6', '4711', 'IDV_MOONDISK6', '41', '0', '320', '235', '0','M_DISKSPIN','S27_MEMSTONE6','','', ''),
 ('9916', 'S28_DISK7', '4712', 'IDV_MOONDISK7', '41', '0', '320', '235', '0','M_DISKSPIN','S27_MEMSTONE7','','', ''),
 
-('9917', 'S28_KAMDOOR', '4705', 'IDV_MOON5', '1508', '132', '1597', '200', '0','M_KAMDOOR','','','', '');
+('9917', 'S28_KAMDOOR', '4705', 'IDV_MOON5', '1508', '132', '1597', '200', '0','M_KAMDOOR','','','','');
 
 delete from transitions where automaton = 'M_DISKSPIN';
 delete from transitions where automaton = 'M_KAMDOOR';
@@ -57,79 +57,93 @@ VALUES
 ('M_DISKSPIN','20','10','CLICK','','','ADD(BFRAME,1);MOV(BPARM,BFRAME);SIGNALi(SIG_CHECK,S28_KAMDOOR);',''),
 
 
-('M_KAMDOOR','0','10','WAIT','','SIG_CHECK','ASSIGN(WPARM,0);',''), --WPARM will need to equal 7 to open the door
+('M_KAMDOOR','0','10','WAIT','','SIG_CHECK','ASSIGN(WPARM,0);
+/*
+    Each change in moon disk rotation checks to see 
+    which frame matches are present across all paired moons/disks.
+    it checks to see if the moons are showing
+    at all first (MEMSTONE(X)- R_WPARM), then 
+    counts matches in WPARM up to the 7 required
+*/
+',''), 
 
 ('M_KAMDOOR','10','20','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE7);
+    REF_MACHINE(0,S27_MEMSTONE7);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK7);
+        REF_MACHINE(0,S28_DISK7);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+             if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),
 
 ('M_KAMDOOR','20','30','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE6);
+    REF_MACHINE(0,S27_MEMSTONE6);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK6);
+        REF_MACHINE(0,S28_DISK6);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+             if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),
  
 ('M_KAMDOOR','30','40','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE5);
+    REF_MACHINE(0,S27_MEMSTONE5);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK5);
+        REF_MACHINE(0,S28_DISK5);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+             if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),           
 
 ('M_KAMDOOR','40','50','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE4);
+    REF_MACHINE(0,S27_MEMSTONE4);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK4);
+        REF_MACHINE(0,S28_DISK4);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+             if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),        
 
 ('M_KAMDOOR','50','60','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE3);
+    REF_MACHINE(0,S27_MEMSTONE3);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK3);
+        REF_MACHINE(0,S28_DISK3);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+             if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),      
 
 ('M_KAMDOOR','60','70','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE2);
+    REF_MACHINE(0,S27_MEMSTONE2);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK2);
+        REF_MACHINE(0,S28_DISK2);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+            if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),  
 
 ('M_KAMDOOR','70','80','Z_EPSILON','','','
-    REF_MACHINE(S27_MEMSTONE1);
+    REF_MACHINE(0,S27_MEMSTONE1);
     MOV(WTEMP1,R_BPARM);
      if (R_WPARM > 0) { 
-        REF_MACHINE(S28_DISK1);
+        REF_MACHINE(0,S28_DISK1);
         MOV(WTEMP2,R_BPARM);
-            if ((WTEMP1 == WTEMP2)) {
+            if (WTEMP1 == (WTEMP2 - 1)) {
                 ADD(WPARM,1);
             }}',''),   
 
-('M_KAMDOOR','80','0','Z_EPSILON','','','','');                     
+('M_KAMDOOR','80','0','Z_EPSILON','','','
+   //Check to see if we have the 7 matches
+    if (WPARM == 7) { 
+           PLAYWAVE(SOUND_BUZZFUZZ);
+           //open kamioza!
+    }
+','');                     
 
 
 
