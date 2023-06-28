@@ -37,9 +37,14 @@ delete from machines where [name] like 'S16_DICEROLL%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
 ('16003', 'S16_DICEDROP_R', '4881', 'IDV_TRAYL', '218', '133', '333', '174', '0','M16_DICEDROP','S16_DICEROLL_R1','S16_DICEROLL_R2','', ''),
+('16004', 'S16_DICEROLL_R1', '4881', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R2','', ''),
+('16005', 'S16_DICEROLL_R2', '4881', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R1','', ''),
 
-('16004', 'S16_DICEROLL_R1', '4881', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','','', ''),
-('16005', 'S16_DICEROLL_R2', '4881', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','','', '');
+('16006', 'S16_DICEDROP_L', '4881', 'IDV_TRAYL', '50', '120', '176', '150', '0','M16_DICEDROP','S16_DICEROLL_L1','S16_DICEROLL_L2','', ''),
+('16007', 'S16_DICEROLL_L1', '4881', 'IDV_TRAYL', '40', '150', '100', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L2','', ''),
+('16008', 'S16_DICEROLL_L2', '4881', 'IDV_TRAYL', '110', '150', '160', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L1','', '');
+
+
 
 delete from transitions where automaton = 'M16_DICEDROP';
 delete from transitions where automaton = 'M16_DICEROLL';
@@ -52,19 +57,27 @@ VALUES
 
 
 ('M16_DICEROLL', '0', '2', 'WAIT', '0', 'SIG_SHOW', '',''),
+
 ('M16_DICEROLL', '2', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
 ('M16_DICEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', '',''),
 ('M16_DICEROLL', '5', '6', 'ESTIME', '', '2', '',''), 
-
 ('M16_DICEROLL','6','7','RAND','6','1','',''),
 ('M16_DICEROLL','7','8','MOV','BFRAME', 'WRAND','
     MAPi(BFRAME,S16_DICE_MAP);
     SHOW(BFRAME);
 ',''),
-('M16_DICEROLL', '8', '0', 'GRAB', '', '', 'CLEAR(WOBJECT);SHOW();','');
+('M16_DICEROLL', '8', '0', 'GRAB', '', 'IDD_SHAKE', ' 
+    SIGNAL(WIP2,SIG_HIDE); 
+    CLEAR(WOBJECT);
+    SHOW();
+',''),
+('M16_DICEROLL', '8', '9', 'WAIT', '0', 'SIG_HIDE', '',''),
+('M16_DICEROLL', '9', '0', 'CLEAR', '', 'WOBJECT', 'SHOW(); 
+','');
 
 
 
+-- A single dice rolling
 
 -- ('M16_DICEROLL', '0', '2', 'O_ACCEPT', '0', 'IDD_SHAKE', '',''),
 -- ('M16_DICEROLL', '2', '3', 'DROP', '0', '0', '',''),
