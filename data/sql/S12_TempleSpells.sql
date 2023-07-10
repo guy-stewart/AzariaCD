@@ -1,5 +1,11 @@
 delete from games;
-
+-- ALTER TABLE states ADD COLUMN [doc] text;
+create table if not exists automatons 
+(   [name]    text,
+    [start]   text,
+    [doc]     text,
+    PRIMARY KEY ([name]) ON CONFLICT REPLACE);
+    
 ------------------------------------RESOURCES
 
 -- introducing 'SIG_BURN' used to burn nystrom. I suggest we keep this as a universal signal for all machines ...
@@ -452,7 +458,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8716', 'S12_SHELF_1_ING1', '4633', 'IDV_TMCU1', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
 ('8717', 'S12_SHELF_1_ING2', '4633', 'IDV_TMCU1', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_B','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
 ('8718', 'S12_SHELF_1_ING3', '4633', 'IDV_TMCU1', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_C','IDS_PLANTXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
-('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xASHSHELF', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
+('8719', 'S12_SHELF_1_ING4', '4633', 'IDV_TMCU1', '117', '130', '165', '180', '1', 'M12_xPLANT', 'S12_SHELF_1_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_1_INGREDIENTS_MGR'),
 ('8720', 'S12_SHELF_1_INGREDIENTS_MGR', '4633', 'IDV_TMCU1', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_1_ING1', 'S12_SHELF_1_ING2', 'S12_SHELF_1_ING3', 'S12_SHELF_1_ING4'),
 
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', 'S12_SHELF_1_CANDLE', 'S12_SHELF_1_MAGIC'),
@@ -461,34 +467,33 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '0', '5', '35', '45', '1', 'M12_xMAGIC', '','','','');
 
 
+delete from transitions where automaton = "M12_xSCROLL";
+
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard") 
 VALUES 
 
-('M12_xSCROLL',0,'vacant','REF_MACHINE', 'WIP2', '0', '
-SIGNAL(WIP2,SIG_CHECK);
-C_ACCEPT(0,IDC_SCROLL);',''), 
+('M12_xSCROLL',0,'vacant','REF_MACHINE', 'WIP2', '0', 'C_ACCEPT(0,IDC_SCROLL);',''), 
 
-('M12_xSCROLL','vacant',12,'DROP','0','0','
-MOV(WPARM,WOBJECT);
-MAPi(WPARM,S12_SCROLL);
-MOV(WTEMP1,WPARM);
-MAPi(WTEMP1,S12_ING_LOC);',''), --Now WTEMP1 should be the spells acceptable loc
--- ('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);',''), 
--- ('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);',''),   --Now WTEMP1 should be the spells acceptable loc
-('M12_xSCROLL', 12, 'occupied', 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);',''),  --force them to take it back
-('M12_xSCROLL', 12, 'occupied', 'Z_EPSILON','', '', '
-SHOW(0,IDS_SCRHUNG);
+('M12_xSCROLL','vacant','occupied','DROP','0','0',
+'SHOW(0,IDS_SCRHUNG);
 SIGNAL(WIP2,SIG_SHOW);',''),
---('M12_xSCROLL', 13, 0, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);',''), --signal ingredients to look themselves up with this wparm
 
-('M12_xSCROLL', 'occupied', 30, 'GRAB', '0', '','','R_WPARM == 0'),  
-('M12_xSCROLL', 30, 0, 'SHOW', '0', '0','
+('M12_xSCROLL', 'occupied', 'vacant', 'GRAB', '0', '',
+'SHOW();
 // remove the place holders and snuff the candle, drain nystrom
 SIGNAL(WIP2,SIG_HIDE);
 SIGNAL(WIP3,SIG_HIDE);
-SIGNAL(WIP4,SIG_HIDE);','');
+SIGNAL(WIP4,SIG_HIDE);',
+'');
 -------------------------------------------------------------------------------------
-
+insert into automatons values ('M12_xING_MGR', '0',
+'used in the temple to hold ingredients for spell making.
+WIP1: The scroll holder
+WIP2: The scroll map
+SIG_SHOW: A scroll was dropped
+SIG_HIDE: The scroll was grabbed
+SIG_CLOSE: The spell is cast
+SIG_CHECK: Check spell ingredients');
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 
@@ -514,93 +519,138 @@ VALUES
 '),
 
 
-('M12_xING_MGR',0,9,'WAIT','0','SIG_CHECK', ''),
 --find out how many ingredients to expect filled
 -- assess each again and add them to wparm if the wips are in  - if wparm==bparm ritual is good
-('M12_xING_MGR',9,10,'ASSIGN','BPARM',0, ''),
-('M12_xING_MGR',10,11,'REF_MACHINE','WIP1','', 'ADD(BPARM,R_WPARM);'),
-('M12_xING_MGR',11,12,'REF_MACHINE','WIP2','', 'ADD(BPARM,R_WPARM);'),
-('M12_xING_MGR',12,13,'REF_MACHINE','WIP3','', 'ADD(BPARM,R_WPARM);'),
-('M12_xING_MGR',13,19,'REF_MACHINE','WIP4','', 'ADD(BPARM,R_WPARM);'),
-
-('M12_xING_MGR',19,20,'ASSIGN','WPARM',0, ''),
-('M12_xING_MGR',20,21,'REF_MACHINE','WIP1','', 'ADD(WPARM,R_BPARM);'),
-('M12_xING_MGR',21,22,'REF_MACHINE','WIP2','', 'ADD(WPARM,R_BPARM);'),
-('M12_xING_MGR',22,23,'REF_MACHINE','WIP3','', 'ADD(WPARM,R_BPARM);'),
-('M12_xING_MGR',23,0,'REF_MACHINE','WIP4','', 'ADD(WPARM,R_BPARM);'),
-
+('M12_xING_MGR',0,0,'WAIT','0','SIG_CHECK',
+'BPARM=0;
+// check all the machines for ready or idle ...
+if (  (IFSTATE(''ready'', WIP1) || IFSTATE(''0'', WIP1))
+   && (IFSTATE(''ready'', WIP2) || IFSTATE(''0'', WIP2))
+   && (IFSTATE(''ready'', WIP3) || IFSTATE(''0'', WIP3))
+   && (IFSTATE(''ready'', WIP4) || IFSTATE(''0'', WIP4))) {
+        WRITE(''winner winner chicken dinner'');
+        BPARM=1;
+        WPARM=1;
+}');
 
 -------------------------------------------------------------------------------------
-('M12_xPLANT',0,5,'WAIT','','SIG_SHOW','
+
+insert into automatons values ('M12_xPLANT', '0',
+'used in the temple to hold ingredients for spell making.
+WIP1: The scroll holder
+WIP2: The scroll map
+SIG_SHOW: A scroll was dropped
+SIG_HIDE: The scroll was grabbed
+SIG_CLOSE: The spell is cast');
+delete from states where [automaton] = 'M12_xPLANT';
+delete from states where [automaton] = 'M12_xASHSHELF';
+insert into states ([automaton],[state],[entry],[exit],[doc]) values
+
+('M12_xPLANT','0','','',
+'IDLE
+Wait here when no scroll
+or ingredient not required 
+for the current scroll spell'),
+
+('M12_xPLANT','show_hint',
+-- onEnter:
+'// find the ingredient
+// from S12_ING_x in wip2
+// and store in it bframe
 REF_MACHINE(WIP1);
-MOV(BFRAME,R_WPARM);
-MAP(BFRAME,WIP2);'), -- go find your frame from S12_ING_A in wip 2
-('M12_xPLANT',5,'Dstate','GT','BFRAME','0','
-ASSIGN(WPARM,1);
-MOV(WOBJECT,BFRAME);
-MAPi(WOBJECT,S12_NATURE_REP);
-O_ACCEPT(WOBJECT);
-C_ACCEPT(WOBJECT);
-SHOW(WIP3);'), --we expect something
-('M12_xPLANT',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'), 
---('M12_xPLANT',6,7,'SHOW','WIP3','',''),-- Show the plant outline (BFRAME holds the ing number)
---('M12_xPLANT',7,0,'Z_EPSILON','','','
---        MOV(WOBJECT,BFRAME);
---        MAPi(WOBJECT,S12_NATURE_REP);
---        C_ACCEPT(WOBJECT);'), --WOBJECT SHOULD NOW BE A CLASS
+BFRAME=R_WOBJECT;
+MAPi(BFRAME,S12_SCROLL);
+MAP(BFRAME,WIP2);
+WACCEPT = BFRAME;
+if (WACCEPT > 0) {
+        SHOW(WIP3); // show hint
+        MAPi(WACCEPT,S12_NATURE_REP);
+        C_ACCEPT(WACCEPT);
+}',
+-- onExit:
+'SHOW();',
+'1. There is a scroll attached
+2. If this ingredient is required
+   then a hint is displayed'),
 
-('M12_xPLANT','Dstate','Gstate','DROP','0','0','
-SHOW(WOBJECT);
-BPARM=1;
-SIGNAL(WIP4,SIG_CHECK);'), --we have something there ... NEW-now check is called with each drop
-('M12_xPLANT','Dstate',0,'WAIT','','SIG_HIDE','SHOW();'),-- this crashes if I put the SHOW() in the code here
+('M12_xPLANT','ready','', '',
+'1. There is a scroll attached
+2. An ingredient is present'),
+------
+('M12_xPLANT','no_scroll','', '',
+'1. There is no scroll attached
+2. An ingredient is present'),
 
-('M12_xPLANT','Gstate', '5', 'GRAB', '0', '0', '
+('M12_xPLANT','hold_if_invalid',
+-- onEnter:
+'// find the ingredient
+// from S12_ING_x in wip2
+// and store in it bframe
+REF_MACHINE(WIP1);
+BFRAME=R_WOBJECT;
+MAPi(BFRAME,S12_SCROLL);
+MAP(BFRAME,WIP2);
+WACCEPT = BFRAME;
+if (WACCEPT > 0) {
+        MAPi(WACCEPT,S12_NATURE_REP);
+        C_ACCEPT(WACCEPT);
+}','',
+'Wait here if the object
+is invalid for the spell');
+
+
+INSERT INTO transitions (automaton,[state],new_state,opcode,param_1,param_2,code,guard,doc) VALUES 
+('M12_xPLANT',0,'show_hint','WAIT','','SIG_SHOW','','',''),
+--('M12_xPLANT',0,'no_scroll','DROP','','','SHOW(WOBJECT);',''),
+
+('M12_xPLANT','show_hint','ready','DROP','0','0','SHOW(WOBJECT);','',''),
+('M12_xPLANT','show_hint',0,'WAIT','','SIG_HIDE','','',''),
+('M12_xPLANT','show_hint',0,'Z_EPSILON','','','','(WACCEPT==0)',''),
+
+('M12_xPLANT','ready', 'show_hint', 'GRAB', '0', '0', 'WOBJECT=0;','',''),
+
+('M12_xPLANT','ready', 'no_scroll', 'WAIT', '0', 'SIG_HIDE', '','',''),
+
+('M12_xPLANT','ready',0,'WAIT','','SIG_CLOSE','
 WOBJECT=0;
-SIGNAL(WIP4,SIG_CHECK);'),
+ASHOW();','','consume the object'),
 
-('M12_xPLANT','Gstate',0,'WAIT','','SIG_CLOSE','
-WOBJECT=0;
-ASHOW();
-BPARM=0;
-WPARM=0;'),--SWALLOW UP THE OBJECT
+('M12_xPLANT','no_scroll', 'hold_if_invalid', 'WAIT', '0', 'SIG_SHOW', '','',''),
+('M12_xPLANT','no_scroll', '0', 'GRAB', '0', '0',
+'WOBJECT=0;
+SHOW();','','');
 
+INSERT INTO transitions (automaton,[state],new_state,opcode,param_1,param_2,code,guard,doc) VALUES 
+
+-- ('M12_xPLANT','hold_if_invalid', 'test', 'Z_EPSILON', '0','','','',''),
+('M12_xPLANT','hold_if_invalid', 'ready', 'IS_A', 'WOBJECT','WACCEPT','','',''),
+-- ('M12_xPLANT','test', 'invalid', 'Z_EPSILON', '','','','',''),
+
+('M12_xPLANT','hold_if_invalid', 'show_hint', 'GRAB', '','','','',''),
+('M12_xPLANT','hold_if_invalid', 'no_scroll', 'WAIT', '','SIG_HIDE','','','');
 
 
 -------------------------------------------------------------------------------------
-('M12_xASHSHELF',0,4,'WAIT','','SIG_SHOW','REF_MACHINE(WIP1);MOV(WTEMP1,R_WPARM);MAP(WTEMP1,WIP2);'), -- go find your fishash from S12_ING_DA in wip 2
-('M12_xASHSHELF',4,5,'MOV','BFRAME','R_WPARM','
-        MAP(BFRAME,S12_ING_D);
-        O_ACCEPT(WTEMP1);
-        SHOW(WIP3);'),
+insert into automatons values ('M12_xCANDLE', '0',
+' The candle casts the spell.
+WIP1: CANDLELIGHT
+WIP2: NYSTROMADDED
+WIP3: INGREDIENTS_MGR
+WIP4: SCROLL holder
+SIG_EMPTY: From candlelight when candle burns out
+');
+insert into states ([automaton],[state],[entry],[exit],[doc]) values
+('M12_xCANDLE','0','',
+'REF_MACHINE(WIP4);    // ... the scroll holder
+BFRAME=R_WOBJECT;       // ... the scroll 
+MAPi(BFRAME,S12_SCROLL); // ... the spell id
+MAPi(BFRAME,S12_ING_NY);   // ... the spell cost
+','');
 
-('M12_xASHSHELF',5,0,'GT','BFRAME','0','ASSIGN(WPARM,1);'), --we expect something
-('M12_xASHSHELF',5,0,'Z_EPSILON','','','ASSIGN(WPARM,0);'),      
-
-('M12_xASHSHELF',0,9,'DROP','0','0',''),
-('M12_xASHSHELF',9,0,'SHOW','WOBJECT','0','ASSIGN(BPARM,1);'),--we have something there
-
-('M12_xASHSHELF',0, 12, 'GRAB', '0', '0', ''),
-('M12_xASHSHELF',12, 13, 'EQUALi', 'BPARM', '1', ''),
-('M12_xASHSHELF',12, 0, 'Z_EPSILON', '', '', ''),
-('M12_xASHSHELF', 13, 0, 'CLEAR', 'BFRAME', '', '
-        ASSIGN(BPARM,0);
-        CLEAR(WOBJECT);
-        SHOW();'),
-
-('M12_xASHSHELF',0,20,'WAIT','','SIG_HIDE',''),
-('M12_xASHSHELF',20,21,'SHOW','0','0',''),
-('M12_xASHSHELF',21,0,'Z_EPSILON','','',''),
-
-('M12_xASHSHELF',0,30,'WAIT','','SIG_CLOSE',''),--SWALLOW UP THE OBJECT
-('M12_xASHSHELF', 30, 31, 'ASSIGN', 'WOBJECT', '0', 'CLEAR(WOBJECT);ASHOW(); ASSIGN(BPARM,0); ASSIGN(WPARM,0);'),
-('M12_xASHSHELF', 31, 0, 'Z_EPSILON', '', '', ''),
--------------------------------------------------------------------------------------
+INSERT INTO transitions (automaton,[state],new_state,opcode,param_1,param_2,code) VALUES 
 
 ('M12_xCANDLE', '0', '0', 'DRAG', '0', 'IDD_MATCH', '
-REF_MACHINE(WIP4);         // WIP4 is the scroll
-MOV(BFRAME,R_WPARM);       // R_WPARM is the spell id
-MAPi(BFRAME,S12_ING_NY);   // BFRAME is the cost for the spell
+
 // magic candle can''t light without enough nystrom!
 if (BPARM == BFRAME) {
     // check to see if the spell is ready
@@ -614,14 +664,9 @@ if (BPARM == BFRAME) {
 }
 '),
 ('M12_xCANDLE', '0', '0', 'DRAG', '0', 'IDD_SCOOPF', '
-/*      WIP4 is the scroll
-        R_WPARM is the spell id (??)
-        BFRAME is how much for the spell
-        BPARM is how much stored in the candle
+/*   BFRAME is how much for the spell
+     BPARM is how much stored in the candle
 */
-REF_MACHINE(WIP4);       // WIP4 is the scroll
-MOV(BFRAME,R_WPARM);     // R_WPARM is the spell id (??)
-MAPi(BFRAME,S12_ING_NY); // BFRAME is how much for the spell
 if (BPARM < BFRAME) {    // BPARM is how much stored in the candle
     ADDI(BPARM,1);
     PLAYWAVE(SOUND_SLURP);
@@ -644,7 +689,7 @@ SIGNAL(WIP2, SIG_SHOW);'),
 ('M12_xCANDLELIGHT', '0', '0', 'WAIT', '', 'SIG_HIDE', '
 CLEAR(WSPRITE);
 ASHOW(0);
-SIGNAL(WIP3,SIG_EMPTY;'),
+SIGNAL(WIP3,SIG_EMPTY);'),
 
 -- WIP4 is the scroll
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'SHOW();'),
@@ -668,45 +713,19 @@ HANDOFF(0,IDD_SCOOPE);'),
 ('M12_xMAGIC', 11, 0, 'Z_EPSILON', '', '', ''),
 
 -------------------------------------------------------------------------------------
-('M12_xSPELLPORTAL', '0', '1', 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xSPELLPORTAL', '1', '3', 'SIGNAL', 'WIP1', 'SIG_CLOSE', ''),
-('M12_xSPELLPORTAL', '3', '4', 'REF_MACHINE', 'WIP2', '', '
-        MOV(WPARM,R_WPARM);
-        MAPi(WPARM,S12_SCROLLL_MK);
-        MOV(WOBJECT,WPARM); 
+('M12_xSPELLPORTAL', '0', 'ready', 'WAIT', '', 'SIG_SHOW', '
+SIGNAL(WIP1, SIG_CLOSE);
+REF_MACHINE(WIP2);
+WOBJECT=R_WOBJECT;
+MAPi(WOBJECT,S12_SCROLL);
+MAPi(WOBJECT,S12_SCROLLL_MK);
+ASHOW(WOBJECT);
 '),
--- SIGNALi(SIG_SHOW,S12_SHELF_1_MAGIC);
-('M12_xSPELLPORTAL', '4', '0', 'ASHOW', 'WOBJECT', '', ''),
 
-('M12_xSPELLPORTAL',0, 11, 'GRAB', '0', '0', ''),
-('M12_xSPELLPORTAL', 11, 12, 'CLEAR', 'WOBJECT', '', '
-        CLEAR(WOBJECT);
-        CLEAR(WPARM);
-        SHOW();
-        SIGNAL(WIP3,SIG_HIDE);
-        SIGNAL(WIP4,SIG_HIDE);
-        '),
-('M12_xSPELLPORTAL', 12, 0, 'SIGNAL', 'WIP1', 'SIG_SHOW', '');
-
-
-
-
--- ('M12_xSCROLL',0,5,'Z_EPSILON','0','IDC_SCROLL', ''),
-
--- ('M12_xSCROLL',5,10,'DROP','0','0',''),
--- ('M12_xSCROLL', 10, 11, 'MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S12_SCROLL);'),
--- ('M12_xSCROLL', 11, 12, 'MOV', 'WTEMP1', 'WPARM', 'MAPi(WTEMP1,S12_ING_LOC);'),  --Now WTEMP1 should be the spells acceptable loc
--- ('M12_xSCROLL', 12, 0, 'NEQUAL', 'WTEMP1','WIP1', 'PLAYWAVE(SOUND_HURT);'), --force them to take it back
--- ('M12_xSCROLL', 12, 13, 'Z_EPSILON','', '', ''),
--- ('M12_xSCROLL', 13, 5, 'SHOW','', 'IDS_SCRHUNG', 'SIGNAL(WIP2,SIG_SHOW);'),--signal ingredients to look themselves up with this wparm
-
--- ('M12_xSCROLL', 5, 21, 'GRAB', '0', '',''), 
--- ('M12_xSCROLL', 21, 22, 'SIGNAL', 'WIP2', 'SIG_CHECK', 'REF_MACHINE(WIP2);'),  --check with ingredients manager to see if items are on the table wparm > 0
-
--- ('M12_xSCROLL', 22, 30, 'EQUAL', 'R_WPARM', '0', ''), 
--- ('M12_xSCROLL', 22, 23, 'Z_EPSILON', '', '', ''), 
--- ('M12_xSCROLL', 23, 5, 'SHOW', '0', '0', ''), -- conditional grabs are a pain -- maybe you can grab but don't hide objects
--- ('M12_xSCROLL', 30, 5, 'SHOW', '0', '0','SIGNAL(WIP2,SIG_HIDE);SIGNAL(WIP3,SIG_HIDE); SIGNAL(WIP4,SIG_HIDE);'), --remove the place holders and snuff the candle, drain nystrom
-
-
+('M12_xSPELLPORTAL','ready','0','GRAB','','',
+'WOBJECT=0;
+SHOW();
+SIGNAL(WIP3,SIG_HIDE);
+SIGNAL(WIP4,SIG_HIDE);
+SIGNAL(WIP1,SIG_SHOW);');
 

@@ -51,7 +51,7 @@ VALUES
 delete from transitions where [automaton] like 'M16_POTT%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
-
+--Need to add sparkle above the pottery when filled!
 ('M16_POTTERYDROP', '0', '1', 'ACCEPT', 'WIP2', '', '',''),
 ('M16_POTTERYDROP', '1', 'waitForDrop', 'MOV', 'WSPRITE', 'WIP1', 'SHOW(WSPRITE);', ''),
 ('M16_POTTERYDROP', 'waitForDrop', 'containTalisman', 'DROP', '0', '0', 'ASSIGN(WPARM,1);',''),
