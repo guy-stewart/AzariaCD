@@ -16,10 +16,15 @@ insert into objects values
 ('IDD_SANDROCK2',40008,'IDC_NULL','sandrock2','sandrock2','sandrock2'),
 ('IDD_SANDROCK3',40009,'IDC_NULL','sandrock3','sandrock3','sandrock3');
 
-delete from spr_names where [name] like 'IDS_SANDDIRTGRSDK%';
-delete from spr_names where [name] like 'IDS_SANDROCK%';
-delete from spr_names where [name] like 'IDS_SANDWALL%';
+delete from sounds where [name] like 'SOUND_DIG%';
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_DIG', 'dig', '0');
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_CHIMES', 'chimes', '0');
 
+
+delete from spr_names where [name] like 'IDS_SANDDIRTGRS%';
+delete from spr_names where [name] like 'IDS_SAND%';
+
+insert into spr_names values ('IDS_SANDDIRTGRS','sanddirtgrs','40004');
 insert into spr_names values ('IDS_SANDDIRTGRSDK','sanddirtgrsdk','40006');
 insert into spr_names values ('IDS_SANDROCK1','sandrock1','40007');
 insert into spr_names values ('IDS_SANDROCK2','sandrock2','40008');
@@ -27,6 +32,11 @@ insert into spr_names values ('IDS_SANDROCK3','sandrock3','40009');
 insert into spr_names values ('IDS_SANDWALL1','sandwall1','40010');
 insert into spr_names values ('IDS_SANDWALL2','sandwall2','40011');
 insert into spr_names values ('IDS_SANDWALL3','sandwall3','40012');
+insert into spr_names values ('IDS_SANDPILE1','dig1','40013');
+insert into spr_names values ('IDS_SANDPILE2','dig2','40014');
+insert into spr_names values ('IDS_SANDPILE3','dig3','40015');
+insert into spr_names values ('IDS_SANDSTRIKE','strike','40016');
+
 
 delete from map where op like 'S00_HID%';
 
@@ -67,6 +77,33 @@ VALUES
 ('S00_HIDINGPLACE', '21', 'S00_HIDDEN_21'),
 ('S00_HIDINGPLACE', '22', 'S00_HIDDEN_22');
 
+delete from isa where [class] like 'ISA_TOOL_%';
+INSERT INTO "main"."isa" ("class", "member")
+VALUES 
+('ISA_TOOL_DIGGER', 'IDD_SHOVEL'),
+('ISA_TOOL_STRIKER', 'IDD_PICK'),
+('ISA_TOOL_PRYER', 'IDD_CROWBAR');
+
+delete from objects where object = 'IDD_SHOVEL';
+delete from objects where object = 'IDD_PICK';
+delete from objects where object = 'IDD_CROWBAR';
+INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES
+('IDD_SHOVEL', '4469', 'ISA_TOOL_DIGGER', 'shovelb', 'shovelb', 'shovelb'),
+('IDD_PICK', '4463', 'ISA_TOOL_STRIKER', 'PICK', 'PICK', 'PICK'),
+('IDD_CROWBAR', '9488', 'ISA_TOOL_PRYER', 'Crowbar', 'Crowbar', 'Crowbar');
+
+--some new panel views
+delete from idv where [name] like 'IDV_CU_%';
+delete from views where [view_name] like 'IDV_CU_%';
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_GRASSPATCH1', '40001');
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_DIRTPATCH1', '40002');
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_DIRTPATCH2', '40003');
+
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
+('40001', 'IDV_CU_GRASSPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'grasspatchcu'),
+('40002', 'IDV_CU_DIRTPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu'),
+('40003', 'IDV_CU_DIRTPATCH2', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu2');
+
 
 --clean up false start - rename and keep coordinates
 delete from machines where [name] like 'S30_PATHDIG%';
@@ -81,30 +118,36 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 VALUES  
 ('40000', 'S00_HIDER', '4392', 'IDV_PATH2', '1', '1', '2', '1', '2', 'M_HIDER', '10', '22', '', ''),
 --Digging - 
-('40001', 'S00_HIDDEN_1', '4392', 'IDV_PATH2', '2348', '179', '2425', '230', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRS', '10', ''),
-('40002', 'S00_HIDDEN_2', '4703', 'IDV_MOON3', '2599', '174', '2675', '225', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTMOON', '10', ''),
-('40003', 'S00_HIDDEN_3', '4704', 'IDV_MOON4', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRS', '10', ''),
-('40004', 'S00_HIDDEN_4', '551', 'IDV_ctyh', '1953', '207', '2025', '250', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRT3', '10', ''),
-('40005', 'S00_HIDDEN_5', '9475', 'IDV_WR3', '274', '202', '375', '300', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRT', '10', ''),
-('40006', 'S00_HIDDEN_6', '507', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRT3', '10', ''),
-('40007', 'S00_HIDDEN_7', '4866', 'IDV_VIL4', '1985', '203', '2060', '224', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRS', '10', ''),
-('40008', 'S00_HIDDEN_8', '5381', 'IDV_TMPLPTH5', '1899', '239', '1940', '250', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRS', '10', ''),
-('40009', 'S00_HIDDEN_9', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRS', '10', ''),
-('40010', 'S00_HIDDEN_10', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRSDK', '10', ''),
-('40011', 'S00_HIDDEN_11', '4096', 'IDV_SCN10PT0', '622', '181', '700', '220', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRSDK', '10', ''),
-('40012', 'S00_HIDDEN_12', '4353', 'IDV_FA1PAN', '1424', '204', '1480', '240', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRSDK', '10', ''),
-('40013', 'S00_HIDDEN_13', '4353', 'IDV_FA1PAN', '2853', '208', '2920', '240', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRSDK', '10', ''),
-('40014', 'S00_HIDDEN_14', '4354', 'IDV_FH1PTH1', '238', '262', '290', '320', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDDIRTGRSDK', '10', ''),
---Rock Prying - need crowbar
-('40015', 'S00_HIDDEN_15', '4096', 'IDV_SCN10PT0', '492', '198', '560', '230', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDROCK1', '10', ''),
-('40016', 'S00_HIDDEN_16', '508', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDROCK3', '10', ''),
-('40017', 'S00_HIDDEN_17', '506', 'IDV_CTO1', '2285', '223', '2330', '270', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDROCK3', '10', ''),
---pick - need pickaxe
-('40018', 'S00_HIDDEN_18', '9218', 'IDV_EYEB', '2464', '100', '2536', '170', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDWALL1', '10', ''),
-('40019', 'S00_HIDDEN_19', '9218', 'IDV_EYEB', '881', '95', '950', '150', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDWALL2', '10', ''),
-('40020', 'S00_HIDDEN_20', '9474', 'IDV_WR2', '2578', '46', '2660', '150', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDWALL3', '10', ''),
-('40021', 'S00_HIDDEN_21', '9475', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDWALL3', '10', ''),
-('40022', 'S00_HIDDEN_22', '4705', 'IDV_MOON5', '2355', '89', '2455', '150', '2', 'M_DIGGABLE', 'IDV_SHORE', 'IDS_SANDWALL2', '10', ''),
+('40001', 'S00_HIDDEN_1', '4392', 'IDV_PATH2', '2348', '179', '2425', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40002', 'S00_HIDDEN_2', '4703', 'IDV_MOON3', '2599', '174', '2675', '225', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
+('40022', 'S00_HIDDEN_3', '4705', 'IDV_MOON5', '2355', '89', '2455', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
+('40018', 'S00_HIDDEN_4', '9218', 'IDV_EYEB', '2464', '100', '2536', '170', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL1', 'ISA_TOOL_STRIKER', ''),
+
+('40005', 'S00_HIDDEN_5', '9475', 'IDV_WR3', '274', '202', '375', '300', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
+('40006', 'S00_HIDDEN_6', '507', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
+('40007', 'S00_HIDDEN_7', '4866', 'IDV_VIL4', '1985', '203', '2060', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40008', 'S00_HIDDEN_8', '5381', 'IDV_TMPLPTH5', '1899', '239', '1940', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40019', 'S00_HIDDEN_9', '9218', 'IDV_EYEB', '881', '95', '950', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
+('40020', 'S00_HIDDEN_10', '9474', 'IDV_WR2', '2578', '46', '2660', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
+ 
+('40011', 'S00_HIDDEN_11', '4096', 'IDV_SCN10PT0', '622', '181', '700', '220', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+('40012', 'S00_HIDDEN_12', '4353', 'IDV_FA1PAN', '1424', '204', '1480', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+('40013', 'S00_HIDDEN_13', '4353', 'IDV_FA1PAN', '2853', '208', '2920', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+('40014', 'S00_HIDDEN_14', '4354', 'IDV_FH1PTH1', '238', '262', '290', '320', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+
+('40015', 'S00_HIDDEN_15', '4096', 'IDV_SCN10PT0', '492', '198', '560', '230', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+('40016', 'S00_HIDDEN_16', '508', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK3', 'ISA_TOOL_PRYER', ''),
+('40017', 'S00_HIDDEN_17', '506', 'IDV_CTO1', '2285', '223', '2330', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK3', 'ISA_TOOL_PRYER', ''),
+('40004', 'S00_HIDDEN_18', '551', 'IDV_ctyh', '1953', '207', '2025', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
+
+
+('40021', 'S00_HIDDEN_21', '9475', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
+('40003', 'S00_HIDDEN_22', '4704', 'IDV_MOON4', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40009', 'S00_HIDDEN_19', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+
+
+
 
 ('40023', 'S00_HIDEBUTTON', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDEBUTTON', 'S00_HIDER', '', '', '');
 
@@ -125,37 +168,42 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- of the next machines(hiding places) to 22
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
-    ASSIGN(WTEMP1,WIP1);
-    ASSIGN(WTEMP2,1);
+  
+    ASSIGN(WTEMP2,0);
     RAND(WIP1,1);
     MOV(WPARM,WRAND); // WPARM will be referenced as the first item to hide
-    RAND(2,1);
-    MOV(BPARM,WRAND);  // BPARM starting poing for locations
-    MAP(BPARM,S00_HIDINGPLACE);
-    SIGNAL(BPARM,SIG_OPEN); // Signal first hidden spot
+    
+    RAND(3,1);
+    ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
+    MOV(WTEMP1,BPARM);
+    MAPi(WTEMP1,S00_HIDINGPLACE);
+    SIGNAL(WTEMP1,SIG_OPEN); // Signal first hidden spot
     WRITE(''FIRST ITEM HIDDEN'');
   ', '', ''),
 
---WTEMP1 -> total number of items to hide 10 let's say
+--WIP1 -> total number of items to hide 10 let's say
 --WTEMP2 -> count of items hid
 
-('M_HIDER', 'topOLoop', 'objectSelected', 'LTE', 'WTEMP2', 'WTEMP1', '  
+('M_HIDER', 'topOLoop', 'objectSelected', 'LTE', 'WTEMP2', 'WIP1', '  
             RAND(2,1); 
             ADD(BPARM,WRAND);
-            MAP(BPARM,S00_HIDINGPLACE); 
+            MOV(WTEMP1,BPARM);
+            MAPi(WTEMP1,S00_HIDINGPLACE); 
     
-            if(WPARM < WTEMP1){
+            //Set wparm to represent the object pointer
+            //X+1 or 1 if we started in the middle
+            if(WPARM < WIP1){
                 ADD(WPARM,1);
                 ADD(WTEMP2,1);
              }
-            if(WPARM >= WTEMP1){ c
+            if(WPARM >= WIP1){ 
                 ASSIGN(WPARM,1); 
                 ADD(WTEMP2,1);
              }
 ', '', ''),
 
-('M_HIDER', 'objectSelected', 'topOLoop', 'LTE', 'WTEMP2', 'WTEMP1', '
-        SIGNAL(BPARM,SIG_OPEN); 
+('M_HIDER', 'objectSelected', 'topOLoop', 'LTE', 'WTEMP2', 'WIP1', '
+        SIGNAL(WTEMP1,SIG_OPEN); 
         WRITE(''NEXT ITEM HIDDEN'');    
 ', '', ''),
 ('M_HIDER', 'objectSelected', 'stopped', 'Z_EPSILON', '', '', '
@@ -170,14 +218,45 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     REF_MACHINE(S00_HIDER);
     MOV(WOBJECT,R_WPARM);
 ', '', ''),
-('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'MAP', 'WOBJECT', 'S00_HIDDENITEM', '
+('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'MAPi', 'WOBJECT', 'S00_HIDDENITEM', '
     // WOBJECT is now the object to hide
 ', '', ''),
 ('M_DIGGABLE', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
-    SHOW(0,WSPRITE);
+        SHOW(WSPRITE);
 ', '', ''),
-('M_DIGGABLE', 'coverActive', 'zoomCover', 'CLICK', '0', '0', '
-    LOADVIEW(WIP1);
+('M_DIGGABLE', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
+('M_DIGGABLE', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE2);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+
+
 ', '', ''),
-('M_DIGGABLE', 'zoomCover', '0', 'Z_EPSILON', '', '', '', '', ''); --Stop here for testing but will add shovel,pick,crowbar usage
+('M_DIGGABLE', 'secondWhack', 'thirdWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE3);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+', '', ''),
+('M_DIGGABLE', 'thirdWhack', 'moveMe', 'DRAG', '', '', '
+         PLAYWAVE(SOUND_DIG);
+', '', ''),
+('M_DIGGABLE', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD', 75, '
+        PLAYWAVE(SOUND_CHIMES);
+        SHOW(WOBJECT);
+', '', ''),
+('M_DIGGABLE', 'displayItem', 'determinedItem', 'GRAB', '', '', '', '', ''); --Stop here for testing but will add shovel,pick,crowbar usage
 
