@@ -60,7 +60,7 @@ insert into controls (view, id, [type],[image],image_selected,x,y,border,[values
 ' This is a test string
       line two
       line three
-and this is line FOUR.','', 'IDS_FONTTNR12', 0xFF8888), 
+and this is line FOUR.','', 'IDS_FONTTNB18', 0xFF8888), 
 ('IDV_CTLTEST1', 2, 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50,  60, 0, '','','',0),
 ('IDV_CTLTEST1', 3, 'BUTTON',   'IDS_BTN_DOWN',     'IDS_BTN_OK_HI',       50, 110, 0, '','','',0),
 ('IDV_CTLTEST1', 4, 'CHECKBOX', 'IDS_BTN_VILCULT',  'IDS_BTN_VILCULT_HI',  50, 160, 0, '','','',0),

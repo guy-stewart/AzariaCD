@@ -223,9 +223,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     REF_MACHINE(S00_HIDER);
     MOV(WOBJECT,R_WPARM);
 ', '', ''),
-('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'MAPi', 'WOBJECT', 'S00_HIDDENITEM', '
-    // WOBJECT is now the object to hide
-', '', ''),
+('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'MAPi', 'WOBJECT', 'S00_HIDDENITEM', '', '', ''),
 ('M_DIGGABLE', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
         SHOW(WSPRITE);
 ', '', ''),
@@ -264,11 +262,10 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_THUMP);
          }   
 ', '', ''),
-('M_DIGGABLE', 'thirdWhack', 'moveMe', 'DRAG', '', '', '
-', '', ''),
+('M_DIGGABLE', 'thirdWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
 ('M_DIGGABLE', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(WOBJECT);
 ', '', ''),
-('M_DIGGABLE', 'displayItem', 'determinedItem', 'GRAB', '', '', '', '', ''); --Stop here for testing but will add shovel,pick,crowbar usage
-
+('M_DIGGABLE', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
+('M_DIGGABLE', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');
