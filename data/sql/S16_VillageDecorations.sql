@@ -78,7 +78,7 @@ delete from transitions where [automaton] like 'M16_POTT%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 --Need to add sparkle above the pottery when filled!
-('M16_POTTERY', '0', '0', 'MOV', 'WSPRITE', 'WIP1', 'SHOW(WSPRITE);', ''),
+('M16_POTTERY', '0', '1', 'MOV', 'WSPRITE', 'WIP1', 'SHOW(WSPRITE);',''),
 
 
 ('M16_POTTERYDROP', '0', 'waitForDrop', 'ACCEPT', 'WIP2', '', '',''),
@@ -86,32 +86,41 @@ VALUES
     ASSIGN(WPARM,1);
     PLAYWAVE(SOUND_CLINK);
     ',''),
-('M16_POTTERYDROP', 'containTalisman','showSparkle', 'SIGNAL', 'WIP3', 'SIG_CHECK', '',''),    
+('M16_POTTERYDROP', 'containTalisman','showSparkle', 'Z_EPSILON', '', '', '
+    SIGNAL(WIP3,SIG_CHECK); 
+',''),    
 ('M16_POTTERYDROP', 'showSparkle','waitForReset', 'ASHOW', '0', 'IDS_SPARKLE', '',''),
-('M16_POTTERYDROP', 'waitForReset','waitForDrop', 'WAIT', '0', 'SIG_RESET', 'ASHOW();',''),
+('M16_POTTERYDROP', 'waitForReset','waitForDrop', 'WAIT', '0', 'SIG_RESET', 'ASHOW();ASSIGN(WPARM,0);',''),
 
-('M16_POTTERYCHECK', '0', '0', 'WAIT', '0', 'SIG_CHECK', '
+
+
+
+('M16_POTTERYCHECK', '0', 'validate', 'WAIT', '0', 'SIG_CHECK', '
     ASSIGN(WPARM,0);
-    REF_MACHINE(S16_POTTERY1);
+    REF_MACHINE(S16_POTTERYDROP1);
     ADD(WPARM,R_WPARM);
-    REF_MACHINE(S16_POTTERY2);
+    REF_MACHINE(S16_POTTERYDROP2);
     ADD(WPARM,R_WPARM);
-    REF_MACHINE(S16_POTTERY3);
+    REF_MACHINE(S16_POTTERYDROP3);
     ADD(WPARM,R_WPARM);
-    REF_MACHINE(S16_POTTERY4);
+    REF_MACHINE(S16_POTTERYDROP4);
     ADD(WPARM,R_WPARM);
-    REF_MACHINE(S16_POTTERY5);
+    REF_MACHINE(S16_POTTERYDROP5);
     ADD(WPARM,R_WPARM);
-    REF_MACHINE(S16_POTTERY6);
+    REF_MACHINE(S16_POTTERYDROP6);
     ADD(WPARM,R_WPARM);
     //Check to see if we have the 6 required talismen
-    if(WPARM == 6){
-          PLAYWAVE(SOUND_CHIMES);
-          SIGNALi(S16_POTTERY1,SIG_RESET);
-          SIGNALi(S16_POTTERY2,SIG_RESET);
-          SIGNALi(S16_POTTERY3,SIG_RESET);
-          SIGNALi(S16_POTTERY4,SIG_RESET);
-          SIGNALi(S16_POTTERY5,SIG_RESET);
-          SIGNALi(S16_POTTERY6,SIG_RESET);
-          }
+    ',''),
+('M16_POTTERYCHECK', 'validate', 'success', 'EQUAL', 'WPARM', '6', '',''),
+('M16_POTTERYCHECK', 'validate', '0', 'Z_EPSILON', '', '', '',''),
+('M16_POTTERYCHECK', 'success', '0', 'Z_EPSILON', '', '', '
+        PLAYWAVE(SOUND_CHIMES);
+        SIGNAL(S16_POTTERYDROP1,SIG_RESET);
+        SIGNAL(S16_POTTERYDROP2,SIG_RESET);
+        SIGNAL(S16_POTTERYDROP3,SIG_RESET);
+        SIGNAL(S16_POTTERYDROP4,SIG_RESET);
+        SIGNAL(S16_POTTERYDROP5,SIG_RESET);
+        SIGNAL(S16_POTTERYDROP6,SIG_RESET);    
 ','');
+
+
