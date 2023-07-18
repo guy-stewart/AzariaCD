@@ -177,24 +177,28 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
   
-    ASSIGN(WTEMP2,0);
-    RAND(WIP1,1);
+  
+    RAND(WIP1,1);  // a random number between 1 and 10
     MOV(WPARM,WRAND); // WPARM will be referenced as the first item to hide
     
-    RAND(3,1); //10 was 3
+    RAND(3,1); //The machine to start at
     ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
     MOV(WTEMP1,BPARM);
     MAPi(WTEMP1,S00_HIDINGPLACE);
     SIGNAL(WTEMP1,SIG_OPEN); // Signal first hidden spot
+    ASSIGN(WTEMP2,1); //Count the first item
     WRITE(''FIRST ITEM HIDDEN'');
+     
   ', '', ''),
 
 --WIP1 -> total number of items to hide 10 let's say
 --WTEMP2 -> count of items hid
 
 ('M_HIDER', 'topOLoop', 'objectSelected', 'LTE', 'WTEMP2', 'WIP1', '  
+            
             RAND(2,1); 
-            ADD(BPARM,WRAND);
+            ADD(BPARM,WRAND); //Location
+            
             MOV(WTEMP1,BPARM);
             MAPi(WTEMP1,S00_HIDINGPLACE); 
     

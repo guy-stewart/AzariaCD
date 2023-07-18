@@ -1,5 +1,9 @@
 delete from games;
 
+delete from sounds where [name] like 'SOUND_STONERUB%';
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_STONERUB', 'stonerub', '0');
+
+
 delete from "main"."cardinals" where [from] like 'IDV_MOON%';
 --needed to reverse order of moondisks to match 1 being closesest to the planet
 --which is represented by the building 
@@ -54,7 +58,7 @@ VALUES
 ('M_DISKSPIN','5','10','SHOW','','IDS_MOONSPIN','',''),
 ('M_DISKSPIN','10','20','LTE','BFRAME','7','',''),
 ('M_DISKSPIN','10','0','Z_EPSILON','','','ADD(BFRAME,1);',''),
-('M_DISKSPIN','20','10','CLICK','','','ADD(BFRAME,1);MOV(BPARM,BFRAME);SIGNALi(SIG_CHECK,S28_KAMDOOR);',''),
+('M_DISKSPIN','20','10','CLICK','','','PLAYWAVE(SOUND_STONERUB);ADD(BFRAME,1);MOV(BPARM,BFRAME);SIGNALi(SIG_CHECK,S28_KAMDOOR);',''),
 
 
 ('M_KAMDOOR','0','10','WAIT','','SIG_CHECK','ASSIGN(WPARM,0);
@@ -137,14 +141,14 @@ VALUES
                 ADD(WPARM,1);
             }}',''),   
 
-('M_KAMDOOR','80','0','Z_EPSILON','','','
-   //Check to see if we have the 7 matches
-    if (WPARM == 7) { 
-           PLAYWAVE(SOUND_BUZZFUZZ);
-           //open kamioza!
-    }
-','');                     
+('M_KAMDOOR','80','81','EQUAL','WPARM','7','',''),                   
+('M_KAMDOOR','81','0','PLAYWAVE','0','SOUND_CHIMES','',''),
+('M_KAMDOOR','80','0','Z_EPSILON','','','',''); 
 
 
-
-
+-- ('M_KAMDOOR','80','0','Z_EPSILON','','','
+--    //Check to see if we have the 7 matches
+--     if (WPARM == 7) { 
+--            PLAYWAVE(SOUND_BUZZFUZZ);
+--            //open kamioza!
+--     }
