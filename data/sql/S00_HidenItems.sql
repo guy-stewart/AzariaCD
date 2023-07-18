@@ -27,6 +27,7 @@ INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_THUMP', 'THUM
 delete from spr_names where [name] like 'IDS_SANDDIRTGRS%';
 delete from spr_names where [name] like 'IDS_SAND%';
 
+insert into spr_names values ('IDS_SANDDIRT','sanddirt','40500');
 insert into spr_names values ('IDS_SANDDIRTGRS','sanddirtgrs','40004');
 insert into spr_names values ('IDS_SANDDIRTGRSDK','sanddirtgrsdk','40006');
 insert into spr_names values ('IDS_SANDROCK1','sandrock1','40007');
@@ -121,6 +122,7 @@ delete from machines where [name] like 'S00_HIDE%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES  
 ('40000', 'S00_HIDER', '4392', 'IDV_PATH2', '1', '1', '2', '1', '2', 'M_HIDER', '10', '22', '', ''),
+('40025', 'S00_HIDECHECK', '4392', 'IDV_PATH2', '0', '0', '0', '0', '2', 'M_OLIEOLIE', '10', '22', '', ''),
 --Digging - Striking - Plying
 ('40001', 'S00_HIDDEN_1', '4392', 'IDV_PATH2', '2348', '179', '2425', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40002', 'S00_HIDDEN_2', '4703', 'IDV_MOON3', '2599', '174', '2675', '225', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
@@ -147,23 +149,24 @@ VALUES
 
 
 ('40021', 'S00_HIDDEN_21', '9475', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
-('40003', 'S00_HIDDEN_22', '4704', 'IDV_MOON4', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40003', 'S00_HIDDEN_22', '4704', 'IDV_WR3', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40009', 'S00_HIDDEN_19', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
+('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 
 
 
--- added to bard
---('40023', 'S00_HIDEBUTTON', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDEBUTTON', 'S00_HIDER', '', '', '');
+
+('40023', 'S00_HIDEFINDER', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDELIST', 'S00_HIDECHECK', '', '', '');
 
 
 
 delete from transitions where [automaton] like 'M_HIDE%';
 delete from transitions where [automaton] like 'M_DIGGABLE%';
+delete from transitions where [automaton] like 'M_OLIE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 
-('M_HIDEBUTTON', '0', '0', 'CLICK', '', '', '
-    SIGNAL(WIP1,SIG_OPEN);
+('M_HIDELIST', '0', '0', 'CLICK', '', '', '
+    SIGNAL(WIP1,SIG_CHECK);
 ', '', ''),
 
 
@@ -178,7 +181,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     RAND(WIP1,1);
     MOV(WPARM,WRAND); // WPARM will be referenced as the first item to hide
     
-    RAND(3,1);
+    RAND(3,1); //10 was 3
     ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
     MOV(WTEMP1,BPARM);
     MAPi(WTEMP1,S00_HIDINGPLACE);
@@ -268,4 +271,77 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
         SHOW(WOBJECT);
 ', '', ''),
 ('M_DIGGABLE', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
-('M_DIGGABLE', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');
+('M_DIGGABLE', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', ''),
+
+
+('M_OLIEOLIE', '0', '1', 'WAIT', '', 'SIG_CHECK', '', '', ''),
+('M_OLIEOLIE', '1', '0', 'Z_EPSILON', '', '', '
+if ( (IFSTATE(firstWhack, S00_HIDDEN_1)) ){WRITE("Place 1 IDV_PATH2");}
+
+      if( (IFSTATE(firstWhack, S00_HIDDEN_2)) ){
+         WRITE("Place 2 IDV_MOON3");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_3)) ){
+         WRITE("Place 3 IDV_MOON5");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_4 )) ){
+         WRITE("Place 4 IDV_EYEB");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_5 )) ){
+         WRITE("Place 5 IDV_WR3");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_6 )) ){
+         WRITE("Place 6 IDV_CTO1");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_7 )) ){
+         WRITE("Place 7 IDV_VIL4");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_8 )) ){
+         WRITE("Place 8 IDV_TMPLPTH5");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_9)) ){
+         WRITE("Place 9 IDV_EYEB");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_10 )) ){
+         WRITE("Place 10 IDV_WR2");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_11 )) ){
+         WRITE("Place 11 IDV_SCN10PT0");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_12 )) ){
+         WRITE("Place 12 IDV_FA1PAN");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_13 )) ){
+         WRITE("Place 13 IDV_FA1PAN");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_14 )) ){
+         WRITE("Place 14 IDV_FH1PTH1");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_15 )) ){
+         WRITE("Place 15 IDV_SCN10PT0");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_16 )) ){
+         WRITE("Place 16 IDV_CTO3");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_17 )) ){
+         WRITE("Place 17 IDV_CTO2");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_18 )) ){
+         WRITE("Place 18 IDV_ctyh");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_19 )) ){
+         WRITE("Place 19 IDV_TMPLPTH5");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_20 )) ){
+         WRITE("Place 20nIDV_SCN10PT0");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_21 )) ){
+         WRITE("Place 21 IDV_WR3");
+      }
+      if( (IFSTATE(firstWhack, S00_HIDDEN_22 )) ){
+         WRITE("Place 22 IDV_WR3");
+      }
+
+', '', '');
+
+
