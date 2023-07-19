@@ -4,64 +4,6 @@ delete from games;
 delete from sounds where name = 'SOUND_CARDEJECT';
 delete from sounds where name = 'SOUND_RATCHET';
 
---ANIMATED MACHINE PARTS
-delete from spr_names where name = 'IDS_CARDANI';
-delete from spr_names where name = 'IDS_MACHANI';
-delete from spr_names where name = 'IDS_TEMPEJEC';
-
-delete from spr_names where name = 'IDS_TEMPLATE31';
-delete from spr_names where name = 'IDS_TEMPLATE32';
-delete from spr_names where name = 'IDS_TEMPLATE33';
-delete from spr_names where name = 'IDS_TEMPLATE34';
-delete from spr_names where name = 'IDS_TEMPLATE35';
-delete from spr_names where name = 'IDS_TEMPLATE40';
-
---CARDS
-delete from spr_names where name = 'IDS_CARD00';
-delete from spr_names where name = 'IDS_CARD01';
-delete from spr_names where name = 'IDS_CARD02';
-delete from spr_names where name = 'IDS_CARD03';
-delete from spr_names where name = 'IDS_CARD04';
-delete from spr_names where name = 'IDS_CARD05';
-delete from spr_names where name = 'IDS_CARD06';
-delete from spr_names where name = 'IDS_CARD07';
-delete from spr_names where name = 'IDS_CARD08';
-delete from spr_names where name = 'IDS_CARD09';
-delete from spr_names where name = 'IDS_CARD10';
-delete from spr_names where name = 'IDS_CARD11';
-delete from spr_names where name = 'IDS_CARD12';
-delete from spr_names where name = 'IDS_CARD13';
-delete from spr_names where name = 'IDS_CARD14';
-delete from spr_names where name = 'IDS_CARD15';
-delete from spr_names where name = 'IDS_CARD16';
-delete from spr_names where name = 'IDS_CARD17';
-delete from spr_names where name = 'IDS_CARD18';
-delete from spr_names where name = 'IDS_CARD19';
-delete from spr_names where name = 'IDS_CARD20';
-delete from spr_names where name = 'IDS_CARD21';
-delete from spr_names where name = 'IDS_CARD22';
-delete from spr_names where name = 'IDS_CARD23';
-delete from spr_names where name = 'IDS_CARD24';
-delete from spr_names where name = 'IDS_CARD25';
-delete from spr_names where name = 'IDS_CARD26';
-delete from spr_names where name = 'IDS_CARD27';
-delete from spr_names where name = 'IDS_CARD28';
-delete from spr_names where name = 'IDS_CARD29';
-delete from spr_names where name = 'IDS_CARD30';
-
-delete from spr_names where name = 'IDS_HAMMER';
-delete from spr_names where name = 'IDS_VIAL2';
-delete from spr_names where name = 'IDS_CLOCK';
-delete from spr_names where name = 'IDS_LAVA';
-delete from spr_names where name = 'IDS_LAMP';
-delete from spr_names where name = 'IDS_VASE';
-delete from spr_names where name = 'IDS_STATUE';
-delete from spr_names where name = 'IDS_PORTRAIT';
-delete from spr_names where name = 'IDS_FAN';
-delete from spr_names where name = 'IDS_GASMASK';
-delete from spr_names where name = 'IDS_VIAL3';
-
-
 delete from map where op like 'S06_MAN%';
 INSERT INTO "main"."map" ("op", "key", "value")
 VALUES 
@@ -329,7 +271,6 @@ VALUES
 ('IDS_GASMASK', 'GASMASK', '1443'),
 ('IDS_VIAL3', 'VIAL3', '1444');
 
-
 delete from objects where object = 'IDD_VIAL1';
 delete from objects where object = 'IDD_HAMMER';
 delete from objects where object = 'IDD_VIAL2';
@@ -398,9 +339,9 @@ delete from machines where [name] like 'S06_CARD_EJECT%';
 delete from machines where [name] like 'S06_TEMPL_EJECT%';
 delete from machines where [name] like 'S06_CYCLE%';
 delete from machines where [name] like 'S06_PEZ%';
-delete from transitions where [name] like 'M06_EJECT%';
-delete from transitions where [name] like 'M06_TEMPL%';
-delete from transitions where [name] like 'M06_CYCLE%';
+delete from transitions where [automaton] like 'M06_EJECT%';
+delete from transitions where [automaton] like 'M06_TEMPL%';
+delete from transitions where [automaton] like 'M06_CYCLE%';
 
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
@@ -480,61 +421,100 @@ VALUES
 
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
 ('M06_EJECT_CARD_BTN','0', '0', 'CLICK', '', '', 'PLAYWAVE(SOUND_CLICK);SIGNAL(WIP1, SIG_EJECT);'),
 ------------------------------
-('M06_EJECT_CARD_ANIM','0', '5', 'WAIT', '', 'SIG_EJECT', ''),
-('M06_EJECT_CARD_ANIM','5', '7', 'SHOW', '0', 'IDS_CARDANI', 'ANIMATE(0);PLAYWAVE(SOUND_CARDEJECT);'),
-('M06_EJECT_CARD_ANIM','7', '11', 'MOV', 'WOBJECT', 'IDD_CARD01', 'REF_MACHINE(WIP1);'),
-('M06_EJECT_CARD_ANIM','11', '20', 'MOV', 'WOBJECT', 'R_WPARM', 'MAPi(WOBJECT,S06_CARD_INDEX);'),
-('M06_EJECT_CARD_ANIM', '20', '0', 'GRAB', 'WOBJECT', '', 'CLEAR(WSPRITE); SHOW(0);'), --    
-------------------------------
-('M06_CYCLE_TEMPL_UP_BTN','0', '0', 'CLICK', '', '', 'PLAYWAVE(SOUND_CLICK); SIGNAL(WIP1,SIG_INC1);'),
-------------------------------
-('M06_CYCLE_TEMPL_DN_BTN','0', '0', 'CLICK', '', '', 'PLAYWAVE(SOUND_CLICK); SIGNAL(WIP1,SIG_DEC1);'),
-------------------------------
-('M06_CYCLE_TEMPL_ANIM','0', '1', 'WAIT', '', 'SIG_INC1', 'SHOW(0,IDS_MACHANI);ANIMATE();PLAYWAVE(SOUND_RATCHET);SIGNAL(WIP1,SIG_INC1);'),
-('M06_CYCLE_TEMPL_ANIM','0', '1', 'WAIT', '', 'SIG_DEC1', 'SHOW(0,IDS_MACHANI);ANIMATE(0,V_REVERSE);PLAYWAVE(SOUND_RATCHET); SIGNAL(WIP1,SIG_DEC1);'),
-('M06_CYCLE_TEMPL_ANIM','1', '0', 'Z_EPSILON', '', '', ''),
-------------------------------
-('M06_CYCLE_VIEW','0', '1', 'ASSIGN', 'WPARM', '0', ''),
-('M06_CYCLE_VIEW','1', '2', 'MOV', 'WOBJECT', 'WPARM', 'MAPi(WOBJECT,S06_MAN_OBJECTS);ASHOW(WOBJECT); SIGNAL(WIP1,SIG_DEC1);SIGNAL(WIP2,SIG_DEC1);SIGNAL(WIP3,SIG_DEC1);'),
-('M06_CYCLE_VIEW','2', '10', 'WAIT', '', 'SIG_INC1', ' ADDI(WPARM,1);'),
-('M06_CYCLE_VIEW','2', '20', 'WAIT', '', 'SIG_DEC1', ' SUBI(WPARM,1);'),
-('M06_CYCLE_VIEW','2', '30', 'WAIT', '', 'SIG_SHOW', 'REF_MACHINE(WIP4);'),
+('M06_EJECT_CARD_ANIM','0', '20', 'WAIT', '', 'SIG_EJECT','
+SHOW(0,IDS_CARDANI);
+ANIMATE(0);
+PLAYWAVE(SOUND_CARDEJECT);
+REF_MACHINE(WIP1);
+W_OBJECT=R_WPARM;
+MAPi(WOBJECT,S06_CARD_INDEX);'),
 
---fix
-('M06_CYCLE_VIEW','10', '2', 'GTEi', 'WPARM', '24', 'ASSIGN(WPARM,24);'), 
-('M06_CYCLE_VIEW','10', '11', 'MOV', 'WOBJECT', 'WPARM', 'MAPi(WOBJECT,S06_MAN_OBJECTS);ASHOW(WOBJECT);SIGNAL(WIP1,SIG_INC1);SIGNAL(WIP2,SIG_INC1);SIGNAL(WIP3,SIG_INC1);'),
-('M06_CYCLE_VIEW','11', '2', 'Z_EPSILON', '', '', ''),
-(
-'M06_CYCLE_VIEW','20', '2', 'LTi', 'WPARM', '0', 'ASSIGN(WPARM,0);'),
-('M06_CYCLE_VIEW','20', '21', 'Z_EPSILON', '', '', ''),
-('M06_CYCLE_VIEW','21', '2', 'MOV', 'WOBJECT', 'WPARM', 'MAPi(WOBJECT,S06_MAN_OBJECTS);ASHOW(WOBJECT); SIGNAL(WIP1,SIG_DEC1);SIGNAL(WIP2,SIG_DEC1);SIGNAL(WIP3,SIG_DEC1);'),
-('M06_CYCLE_VIEW','30', '31', 'MOV', 'WPARM', 'R_WPARM', ''),
-('M06_CYCLE_VIEW','31', '2', 'MOV', 'WOBJECT', 'R_WPARM', 'MAPi(WOBJECT,S06_MAN_OBJECTS);ASHOW(WOBJECT);'), 
+('M06_EJECT_CARD_ANIM', '20', '0', 'GRAB', 'WOBJECT', '', 'CLEAR(WSPRITE); SHOW(0);'),
 ------------------------------
+('M06_CYCLE_TEMPL_UP_BTN','0', '0', 'CLICK', '', '',
+'PLAYWAVE(SOUND_CLICK);
+SIGNAL(WIP1,SIG_INC1);'),
+------------------------------
+('M06_CYCLE_TEMPL_DN_BTN','0', '0', 'CLICK', '', '',
+'PLAYWAVE(SOUND_CLICK);
+SIGNAL(WIP1,SIG_DEC1);'),
+------------------------------
+('M06_CYCLE_TEMPL_ANIM','0', '0', 'WAIT', '', 'SIG_INC1', 
+'SHOW(0,IDS_MACHANI);
+ANIMATE();
+PLAYWAVE(SOUND_RATCHET);
+SIGNAL(WIP1,SIG_INC1);'),
+('M06_CYCLE_TEMPL_ANIM','0', '0', 'WAIT', '', 'SIG_DEC1',
+'SHOW(0,IDS_MACHANI);
+ANIMATE(0,V_REVERSE);
+PLAYWAVE(SOUND_RATCHET);
+SIGNAL(WIP1,SIG_DEC1);'),
+------------------------------
+('M06_CYCLE_VIEW','0', '1', 'Z_EPSILON','','',
+'WPARM=0;
+SIGNAL(WIP1,SIG_DEC1);
+SIGNAL(WIP2,SIG_DEC1);
+SIGNAL(WIP3,SIG_DEC1);'),
+('M06_CYCLE_VIEW','1', '2', 'Z_EPSILON','','',
+'WOBJECT=WPARM;
+MAPi(WOBJECT,S06_MAN_OBJECTS);
+ASHOW(WOBJECT);
+'),
+('M06_CYCLE_VIEW','2', '1', 'WAIT', '', 'SIG_INC1',
+'WPARM = WPARM + 1;
+if (WPARM > 24) {WPARM=0;}
+SIGNAL(WIP1,SIG_INC1);
+SIGNAL(WIP2,SIG_INC1);
+SIGNAL(WIP3,SIG_INC1);'),
+('M06_CYCLE_VIEW','2', '1', 'WAIT', '', 'SIG_DEC1',
+'SUBI(WPARM,1);
+if (WPARM<0) {WPARM=24;}
+SIGNAL(WIP1,SIG_DEC1);
+SIGNAL(WIP2,SIG_DEC1);
+SIGNAL(WIP3,SIG_DEC1);'),
+('M06_CYCLE_VIEW','2', '1', 'WAIT', '', 'SIG_SHOW',
+'REF_MACHINE(WIP4);
+WPARM=R_WPARM;'),
+ 
+--  M06_CYCLE_COMP1  ----------------------------
+('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_INC1', ''),
+('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_DEC1', ''), 
+('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_SHOW', ''),
 
-('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_INC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'),
-('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_DEC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'), 
-('M06_CYCLE_COMP1','0', '10', 'WAIT', '', 'SIG_SHOW', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'), 
-('M06_CYCLE_COMP1','10', '11', 'MOV', 'WTEMP1', 'BFRAME', ' MAPi(WTEMP1,S06_COMPONENTA);'),  
-('M06_CYCLE_COMP1','11', '12', 'MOV', 'WTEMP2', 'WTEMP1', 'MAPi(WTEMP2,S06_CHEMFILMSTRIP);'), 
-('M06_CYCLE_COMP1','12', '0', 'MOV', 'BFRAME', 'WTEMP2', 'SHOW(0,IDS_CHEMS);'),
+('M06_CYCLE_COMP1','10', '0', 'Z_EPSILON','','',
+'REF_MACHINE(WIP1);
+BFRAME = R_WPARM;
+MAPi(BFRAME,S06_COMPONENTA);
+MAPi(BFRAME,S06_CHEMFILMSTRIP);
+SHOW(0,IDS_CHEMS);'),
 
-('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_INC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'),
-('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_DEC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'),
-('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_SHOW', 'ASSIGN(BFRAME,6);REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'), 
-('M06_CYCLE_COMP2','10', '11', 'MOV', 'WTEMP1', 'BFRAME', ' MAPi(WTEMP1,S06_COMPONENTB);'),  
-('M06_CYCLE_COMP2','11', '12', 'MOV', 'WTEMP2', 'WTEMP1', 'MAPi(WTEMP2,S06_CHEMFILMSTRIP);'),
-('M06_CYCLE_COMP2','12', '0', 'MOV', 'BFRAME', 'WTEMP2', 'SHOW(0,IDS_CHEMS);'),
+--  M06_CYCLE_COMP2  ----------------------------
+('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_INC1', ''),
+('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_DEC1', ''), 
+('M06_CYCLE_COMP2','0', '10', 'WAIT', '', 'SIG_SHOW', ''),
 
-('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_INC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'),
-('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_DEC1', 'REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'),
-('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_SHOW', 'ASSIGN(BFRAME,6);REF_MACHINE(WIP1);MOV(BFRAME,R_WPARM);'), 
-('M06_CYCLE_COMP3','10', '11', 'MOV', 'WTEMP1', 'BFRAME', ' MAPi(WTEMP1,S06_COMPONENTC);'),  
-('M06_CYCLE_COMP3','11', '0', 'MOV', 'BFRAME', 'WTEMP1', 'SUBI(BFRAME,1);SHOW(0,IDS_VIALCNT);'),
+('M06_CYCLE_COMP2','10', '0', 'Z_EPSILON','','',
+'REF_MACHINE(WIP1);
+BFRAME = R_WPARM;
+MAPi(BFRAME,S06_COMPONENTB);
+MAPi(BFRAME,S06_CHEMFILMSTRIP);
+SHOW(0,IDS_CHEMS);'),
+
+--  M06_CYCLE_COMP3  ----------------------------
+('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_INC1', ''),
+('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_DEC1', ''), 
+('M06_CYCLE_COMP3','0', '10', 'WAIT', '', 'SIG_SHOW', ''),
+
+('M06_CYCLE_COMP3','10', '0', 'Z_EPSILON','','',
+'REF_MACHINE(WIP1);
+BFRAME = R_WPARM;
+MAPi(BFRAME,S06_COMPONENTC);
+MAPi(BFRAME,S06_CHEMFILMSTRIP);
+SHOW(0,IDS_VIALCNT);'),
 
 -----------------------------
 ('M06_TEMPL_EJECT_BTN','0', '0', 'CLICK', '', '', 'PLAYWAVE(SOUND_CLICK);SIGNAL(WIP1, SIG_EJECT);'),
@@ -547,4 +527,3 @@ VALUES
 ('M06_EJECT_TEMPL_ANIM','30', '31', 'SHOW', '0', 'IDS_TEMPEJEC', 'ANIMATE(0,V_REVERSE);PLAYWAVE(SOUND_CARDEJECT);'),
 ('M06_EJECT_TEMPL_ANIM','31', '32','MOV', 'WPARM', 'WOBJECT', 'MAPi(WPARM,S06_TEMP_INDEX);'), --0-35
 ('M06_EJECT_TEMPL_ANIM','32', '0','SIGNAL', 'WIP4', 'SIG_SHOW', 'SIGNAL(WIP1,SIG_SHOW);SIGNAL(WIP2,SIG_SHOW);SIGNAL(WIP3,SIG_SHOW);');
-

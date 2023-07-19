@@ -143,8 +143,9 @@ VALUES
             }}',''),   
 
 ('M_KAMDOOR','80','81','EQUAL','WPARM','7','',''),                   
-('M_KAMDOOR','81','0','PLAYWAVE','0','SOUND_CHIMES','
-    SHOW(0,IDS_KAMDOOR);
+('M_KAMDOOR','81','0','Z_EPSILON','0','','
+    PLAYWAVE(SOUND_CHIMES);
+    SHOW(IDS_KAMDOOR);
     ANIMATE();
 ',''),
 ('M_KAMDOOR','80','0','Z_EPSILON','','','',''); 
