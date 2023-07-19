@@ -27,6 +27,7 @@ INSERT INTO "main"."panel_nav" ("from", "forward", "back") VALUES ('IDV_MOONDISK
 
 delete from spr_names where name = 'IDS_MOONSPIN';
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MOONSPIN','moonspin','1634');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_KAMDOOR','kamdoor','1635');
 
 delete from machines where name = 'S28_DISK1';
 delete from machines where name = 'S28_DISK2';
@@ -48,7 +49,7 @@ VALUES
 ('9915', 'S28_DISK6', '4711', 'IDV_MOONDISK6', '41', '0', '320', '235', '0','M_DISKSPIN','S27_MEMSTONE6','','', ''),
 ('9916', 'S28_DISK7', '4712', 'IDV_MOONDISK7', '41', '0', '320', '235', '0','M_DISKSPIN','S27_MEMSTONE7','','', ''),
 
-('9917', 'S28_KAMDOOR', '4705', 'IDV_MOON5', '1508', '132', '1597', '200', '0','M_KAMDOOR','','','','');
+('9917', 'S28_KAMDOOR', '4705', 'IDV_MOON5', '1491', '120', '1597', '200', '0','M_KAMDOOR','','','','');
 
 delete from transitions where automaton = 'M_DISKSPIN';
 delete from transitions where automaton = 'M_KAMDOOR';
@@ -142,7 +143,10 @@ VALUES
             }}',''),   
 
 ('M_KAMDOOR','80','81','EQUAL','WPARM','7','',''),                   
-('M_KAMDOOR','81','0','PLAYWAVE','0','SOUND_CHIMES','',''),
+('M_KAMDOOR','81','0','PLAYWAVE','0','SOUND_CHIMES','
+    SHOW(0,IDS_KAMDOON);
+    ANIMATE();
+',''),
 ('M_KAMDOOR','80','0','Z_EPSILON','','','',''); 
 
 
