@@ -33,8 +33,9 @@ VALUES
  
 
 
-delete from machines where [name] like 'S16_DICE%';
-
+delete from machines where [name] like 'S16_DICEDROP%';
+delete from machines where [name] like 'S16_DICEROLL%';
+delete from machines where [name] like 'S16_DICESTAK%';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
@@ -50,7 +51,9 @@ VALUES
 ('16010', 'S16_DICESTAKING_L', '4881', 'IDV_TRAYL', '77', '35', '186', '123', '0','M16_DICESTAKE','','','', '');
 
 
-delete from transitions where [automaton] like 'M16_DICE%';
+delete from transitions where [automaton] like 'M16_DICEDROP%';
+delete from transitions where [automaton] like 'M16_DICEROLL%';
+delete from transitions where [automaton] like 'M16_DICEST%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
