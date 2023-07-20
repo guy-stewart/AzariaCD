@@ -26,7 +26,7 @@ delete from machines where [name] like 'S16_SHOV%';
 delete from machines where [name] like 'S16_PICK%';
 delete from machines where [name] like 'S16_GRUB%';
 delete from machines where [name] like 'S16_WOOD%';
-delete from machines where [name] like 'S16_DICE%';
+delete from machines where [name] like 'S16_DICE_%';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
