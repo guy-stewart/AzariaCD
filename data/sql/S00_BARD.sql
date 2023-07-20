@@ -30,4 +30,4 @@ VALUES
 ('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY',''),
 ('M_NATURE', '6', '7', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
 ('M_NATURE', '7', '8', 'SIGNALi', 'SIG_RIPEN', 'S10_GOPABUSH',''),
-('M_NATURE', '8', '1', 'ESTIME', '', '120','');
+('M_NATURE', '8', '1', 'ESTIME', '', '300','');
