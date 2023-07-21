@@ -60,7 +60,7 @@ VALUES
 ('M16_DICEDROP', '0', '2', 'O_ACCEPT', '0', 'IDD_SHAKE', '',''),
 ('M16_DICEDROP', '2', '0', 'DRAG', '0', '0', 'PLAYWAVE(SOUND_DICESHAKE);',''),
 ('M16_DICEDROP', '2', '3', 'DROP', '0', '0', 'SIGNAL(WIP1,SIG_SHOW);',''),
-('M16_DICEDROP', '3', '0', 'ESTIME', '', '.5', 'SIGNAL(WIP2,SIG_SHOW);',''), 
+('M16_DICEDROP', '3', '0', 'ESTIME', '', '1', 'SIGNAL(WIP2,SIG_SHOW);',''), 
 
 
 ('M16_DICEROLL', '0', '2', 'WAIT', '0', 'SIG_SHOW', 'PLAYWAVE(SOUND_DICEROLL);',''),
