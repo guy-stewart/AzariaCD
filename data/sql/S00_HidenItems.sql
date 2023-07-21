@@ -29,6 +29,8 @@ delete from spr_names where [name] like 'IDS_SAND%';
 
 insert into spr_names values ('IDS_SANDDIRT','sanddirt','40500');
 insert into spr_names values ('IDS_SANDDIRTGRS','sanddirtgrs','40004');
+insert into spr_names values ('IDS_SANDDIRT3','sanddirt3','40003');
+insert into spr_names values ('IDS_SANDDIRTMOON','sanddirtMoon','40005');
 insert into spr_names values ('IDS_SANDDIRTGRSDK','sanddirtgrsdk','40006');
 insert into spr_names values ('IDS_SANDROCK1','sandrock1','40007');
 insert into spr_names values ('IDS_SANDROCK2','sandrock2','40008');
@@ -176,49 +178,31 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- of the next machines(hiding places) to 22
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
-  
-  
-    RAND(WIP1,1);  // a random number between 1 and 10
-    MOV(WPARM,WRAND); // WPARM will be referenced as the first item to hide
-    
+    ASSIGN(WPARM,1);
     RAND(3,1); //The machine to start at
     ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
     MOV(WTEMP1,BPARM);
     MAPi(WTEMP1,S00_HIDINGPLACE);
     SIGNAL(WTEMP1,SIG_OPEN); // Signal first hidden spot
-    ASSIGN(WTEMP2,1); //Count the first item
-    WRITE(''FIRST ITEM HIDDEN'');
-     
+    WRITE(''FIRST ITEM HIDDEN''); 
   ', '', ''),
 
 --WIP1 -> total number of items to hide 10 let's say
---WTEMP2 -> count of items hid
 
-('M_HIDER', 'topOLoop', 'objectSelected', 'LTE', 'WTEMP2', 'WIP1', '  
-            
-            RAND(2,1); 
-            ADD(BPARM,WRAND); //Location
-            
-            MOV(WTEMP1,BPARM);
-            MAPi(WTEMP1,S00_HIDINGPLACE); 
-    
+('M_HIDER', 'topOLoop', 'objectHidden', 'LTE', 'WPARM', 'WIP1', '  
             //Set wparm to represent the object pointer
-            //X+1 or 1 if we started in the middle
-            if(WPARM < WIP1){
-                ADD(WPARM,1);
-                ADD(WTEMP2,1);
-             }
-            if(WPARM >= WIP1){ 
-                ASSIGN(WPARM,1); 
-                ADD(WTEMP2,1);
-             }
+            ADD(WPARM,1); // the new item is old one +1
+           
+            //climb up the list to find a new hiding place  
+            RAND(3,1); //Location increases by 1,2 or 3
+            ADD(BPARM,WRAND); 
+            MAP(BPARM,S00_HIDINGPLACE); //get the new hider machine into BPARM 
+            SIGNAL(BPARM,SIG_OPEN); 
+            WRITE(''NEXT ITEM HIDDEN''); 
 ', '', ''),
 
-('M_HIDER', 'objectSelected', 'topOLoop', 'LTE', 'WTEMP2', 'WIP1', '
-        SIGNAL(WTEMP1,SIG_OPEN); 
-        WRITE(''NEXT ITEM HIDDEN'');    
-', '', ''),
-('M_HIDER', 'objectSelected', 'stopped', 'Z_EPSILON', '', '', '
+('M_HIDER', 'objectHidden', 'topOLoop', 'LT', 'WPARM', 'WIP1', '', '', ''),
+('M_HIDER', 'objectHidden', 'stopped', 'Z_EPSILON', '', '', '
      WRITE(''Finished Hiding Items'');   
 ', '', ''),
 ('M_HIDER', 'stopped', '0', 'WAIT', '', 'SIG_OPEN', '', '', ''),
