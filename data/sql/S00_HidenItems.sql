@@ -187,7 +187,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     WRITE(''FIRST ITEM HIDDEN''); 
   ', '', ''),
 
---WIP1 -> total number of items to hide 10 let's say
+
 
 ('M_HIDER', 'topOLoop', 'objectHidden', 'LTE', 'WPARM', 'WIP1', '  
             //Set wparm to represent the object pointer
