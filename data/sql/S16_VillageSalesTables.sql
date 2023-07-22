@@ -122,7 +122,7 @@ VALUES
 ',''),
 
 
-('M16_PAYGRAB', '0', 'open_bin', 'WAIT', 'SIGNAL', 'SIG_OPEN', 'REF_MACHINE(WIP2);',''),
+('M16_PAYGRAB', '0', 'open_bin', 'WAIT', '0', 'SIG_OPEN', 'REF_MACHINE(WIP2);',''),
 ('M16_PAYGRAB', 'open_bin', '0', 'GRAB', 'WIP1', '', '
     if(R_WPARM != R_BPARM){
         SUB(LKARMA,4);
@@ -131,5 +131,5 @@ VALUES
     SIGNAL(WIP3,SIG_OFF);
     SIGNAL(WIP2,SIG_OFF);
 ',''),
-('M16_PAYGRAB', 'open_bin', '0', 'WAIT', 'SIGNAL', 'SIG_CLOSE', '','');
+('M16_PAYGRAB', 'open_bin', '0', 'WAIT', '0', 'SIG_CLOSE', '','');
 
