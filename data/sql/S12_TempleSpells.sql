@@ -661,7 +661,6 @@ if (BPARM == BFRAME) {
                 BPARM = 0; // --BPARM GOES TO ZERO AS THE NYSTROM CATCHES FIRE
         }
     }
-}
 '),
 ('M12_xCANDLE', '0', '0', 'DRAG', '0', 'IDD_SCOOPF', '
 /*   BFRAME is how much for the spell
@@ -709,7 +708,7 @@ HANDOFF(0,IDD_SCOOPE);'),
 
 -------------------------------------------------------------------------------------
 ('M12_xMAGIC', 0, 10, 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xMAGIC', 10, 11, 'VIDEO', '', 'IDS_RAIN', ''),
+('M12_xMAGIC', 10, 11, 'VIDEO', '', 'IDS_EXPLOA', ''),
 ('M12_xMAGIC', 11, 0, 'Z_EPSILON', '', '', ''),
 
 -------------------------------------------------------------------------------------
