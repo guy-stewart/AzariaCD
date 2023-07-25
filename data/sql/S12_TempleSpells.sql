@@ -464,7 +464,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', 'S12_SHELF_1_CANDLE', 'S12_SHELF_1_MAGIC'),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', 'S12_SHELF_1_SCROLL'),
 ('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED'),
-('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '0', '5', '35', '45', '1', 'M12_xMAGIC', '','','','');
+('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','','');
 
 
 delete from transitions where automaton = "M12_xSCROLL";
@@ -708,7 +708,7 @@ HANDOFF(0,IDD_SCOOPE);'),
 
 -------------------------------------------------------------------------------------
 ('M12_xMAGIC', 0, 10, 'WAIT', '', 'SIG_SHOW', ''),
-('M12_xMAGIC', 10, 11, 'VIDEO', '', 'IDS_EXPLOA', ''),
+('M12_xMAGIC', 10, 11, 'VIDEO', '', 'IDS_SPEFFECT', ''),
 ('M12_xMAGIC', 11, 0, 'Z_EPSILON', '', '', ''),
 
 -------------------------------------------------------------------------------------

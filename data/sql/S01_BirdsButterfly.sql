@@ -12,6 +12,13 @@ delete from machines where name = 'S03_BIRDSFWD';
 delete from machines where name = 'S03_BIRDSBKWD';
 delete from machines where name = 'S01_NATURE';
 
+delete from machines where name = 'S11_LOGBINB';
+insert into machines
+([id],[name],[view_name],[left],[top],[right],[bottom],
+[local_visible],[dfa_name], [wip1_name],[wip2_name],[wip3_name],[wip4_name]) values
+(0x1151,'S11_LOGBINB','IDV_TMPLPTH5',726,206,837,262,2,'M_OBJECTBIN','IDD_LOG','','','');
+
+
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name","wip4_name") 
 VALUES 
 ('4664', 'S12_BUTTERFLY', '5380', 'IDV_TMPLPTH4', '3190', '0', '3200', '300',  '2', 'M_TIMEDVPLAY', 'IDS_BFLY', '', '', ''),
@@ -19,13 +26,13 @@ VALUES
 ('216', 'S03_BIRDSBKWD', '5633', 'IDV_GRNDCNT1', '1920', '2', '2100', '300',  '2', 'M_VPLAY3', 'IDS_BIRDSBKWD','', '', ''),
 ('217', 'S01_NATURE', '5633', 'IDV_GRNDCNT1', '417', '45', '420', '50',  '2', 'M_NATURE', '', '', '', '');
 
-delete from transitions where name = 'M_NATURE';
-delete from transitions where name = 'M_TIMEDVPLAY';
-delete from transitions where name = 'M_VPLAY2';
-delete from transitions where name = 'M_VPLAY3';
-delete from transitions where name = 'M_ANIPORTAL';
+delete from transitions where automaton = 'M_NATURE';
+delete from transitions where automaton = 'M_TIMEDVPLAY';
+delete from transitions where automaton = 'M_VPLAY2';
+delete from transitions where automaton = 'M_VPLAY3';
+delete from transitions where automaton = 'M_ANIPORTAL';
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 ('M_NATURE', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
 ('M_NATURE', '1', '2', 'ESTIME', '', '4',''),
@@ -51,7 +58,7 @@ VALUES
 
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
  VALUES 
  ('M_ANIPORTAL', '0', '1', 'MOV', 'WSPRITE', 'WIP1',''),
  ('M_ANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
