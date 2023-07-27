@@ -1,4 +1,9 @@
 delete from games;
+
+
+delete from sounds where name like 'SOUND_PICKA%';
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_PICKAXE', 'pickaxe', '0');
+
 delete from machines where name = 'S25_RUMBLE';
 delete from machines where name = 'S25_ROLL';
 delete from machines where name = 'S25_SCATTER';
@@ -77,32 +82,46 @@ VALUES
 ('M25_ROLL', '3', '0', 'ANIMATE', '', '', '', '', '');
 
 delete from transitions where automaton = 'M25_SCATTER';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code", "guard") 
 VALUES 
 
-('M25_SCATTER', '0', '2', 'MOV', 'BFRAME', '0'),
-('M25_SCATTER',  '2', '3', 'ASSIGN', 'WSPRITE', 'IDS_SCATTER'),
-('M25_SCATTER', '3', '4', 'SHOW', 'WSPRITE', ''),
-('M25_SCATTER', '4', '10', 'C_ACCEPT', '0', 'IDC_BOMB'),
-('M25_SCATTER', '10', '50', 'DROP', '0', '0'),
-('M25_SCATTER', '10', '60', 'DRAG', '0', 'IDD_PICK'),
-('M25_SCATTER', '10', '60', 'DRAG', '0', 'IDD_SHOVEL'),
-('M25_SCATTER', '10', '73', 'CLICK', '0', '0'),
-('M25_SCATTER', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1'),
-('M25_SCATTER', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE'),
-('M25_SCATTER', '52', '70', 'ADDI', 'BPARM', '20'), -- ADD DAMAGE
-('M25_SCATTER', '60', '61', 'PLAYWAVE', '0', 'SOUND_POP'),
-('M25_SCATTER', '61', '70', 'ADDI', 'BPARM', '1'), -- ADD DAMAGE
+('M25_SCATTER', '0', 'notscattered', 'MOV', 'BFRAME', '0', '
+    ASSIGN(WSPRITE,IDS_SCATTER);
+    SHOW(WSPRITE);
+', ''),
+('M25_SCATTER', 'notscattered', 'bombed', 'DROP', 'IDD_BOMB2', '0', '', ''),
+('M25_SCATTER', 'notscattered', 'axed', 'DRAG', '0', 'IDD_PICK', '', ''),
+('M25_SCATTER', 'notscattered', 'axed', 'DRAG', '0', 'IDD_SHOVEL', '', ''),
+
+('M25_SCATTER', 'bombed', 'checkDamage', 'VIDEO', '0', 'IDS_EXPLODE1', '
+    //add damage
+    PLAYWAVE(SOUND_EXPLODE);
+    ADDI(BPARM,20);
+', ''),
+
+('M25_SCATTER', 'axed', 'checkDamage', 'PLAYWAVE', '0', 'SOUND_PICKAXE', '
+      ADDI(BPARM,1);
+', ''),
+
 --Check---
-('M25_SCATTER', '70', '71', 'GTEi', 'BPARM', '20'), -- DAMAGE REQUIRED TO MOVE A FRAME
-('M25_SCATTER', '70', '10', 'Z_EPSILON', '', ''),
---set BPARM to some value 0-10
-('M25_SCATTER', '71', '72', 'ADDI', 'BFRAME', '1'),
-('M25_SCATTER', '72', '73', 'ASSIGN', 'BPARM', '0'), --SET BPARM BACK TO 0 - NEW DAMAGE EFFORT
-('M25_SCATTER', '73', '74', 'GTEi', 'BFRAME', '10'), -- DID WE GET TO FRAME 10/11?
-('M25_SCATTER', '74', '80', 'SIGNALi', 'SIG_OPEN', 'S25_SCAT_ALT'),
-('M25_SCATTER', '73', '10', 'Z_EPSILON', '', ''),
-('M25_SCATTER', '80', '10', 'LOADVIEW', '0', 'IDV_WALL1EN');
+('M25_SCATTER', 'checkDamage', 'advanceFrame', 'GTEi', 'BPARM', '20', '', ''), -- DAMAGE REQUIRED TO MOVE A FRAME
+('M25_SCATTER', 'checkDamage', 'notscattered', 'Z_EPSILON', '', '', '', ''),
+
+('M25_SCATTER', 'advanceFrame', 'checkIfComplete', 'ADDI', 'BFRAME', '1', '
+    ASSIGN(BPARM,0);
+', ''),
+
+('M25_SCATTER', 'checkIfComplete', 'scattered', 'GTEi', 'BFRAME', '10', '
+    SIGNALi(SIG_OPEN,S25_SCAT_ALT);
+', ''), 
+('M25_SCATTER', 'checkIfComplete', 'notscattered', 'Z_EPSILON', '', '', '', ''),
+('M25_SCATTER', 'scattered', 'allowAccess', 'CLICK', '', '', '
+    LOADVIEW(0,IDV_WALL1EN);
+', ''),
+('M25_SCATTER', 'allowAccess', 'scattered', 'CLICK', '', '', '
+    LOADVIEW(0,IDV_WALL1EN);
+', '');
+
 
 ------------CAVES COMPLETION
 --M25_OPNDOOR
@@ -118,6 +137,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 
 delete from transitions where automaton = 'M25_OPNDOOR';
+delete from transitions where automaton = 'M25_EXITDOOR';
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code], [guard]) values
 ('M25_OPNDOOR','0','10','C_ACCEPT','0','IDC_BOMB','',''),
 ('M25_OPNDOOR','10','40','DROP','0','0','',''),
