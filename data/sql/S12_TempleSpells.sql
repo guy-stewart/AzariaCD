@@ -65,6 +65,15 @@ delete from objects where [object] like 'IDD_FLOWER%';
 delete from objects where [object] like 'IDD_WILD%';
 delete from objects where [object] like 'IDD_ROOTDB%';
 
+---- a change to a spell in objects
+delete from delete from "main"."objects" where [object] like 'IDD_WETB%';
+
+INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES 
+('IDD_WETBREATH', '30628', 'IDC_SPELL', 'water', 'water', 'water');
+
+
+
+
 INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") 
 VALUES 
 ('IDD_SCR020', '8736', 'IDC_SCROLL', 'SCR020', 'SCR020', 'SCR020'),
@@ -334,7 +343,7 @@ VALUES
 ('S12_ING_LOC','20', '1'),
 ('S12_ING_WRD', '20', '19'),
 ('S12_SCROLL', 'IDD_SCR020', '20'),
-('S12_SCROLLL_MK', '20', 'IDD_SPELL01'),
+('S12_SCROLLL_MK', '20', 'IDD_WETBREATH'),
 
 --Eyespell 
 ('S12_ING_A', '21', '13'), 
@@ -727,4 +736,5 @@ SHOW();
 SIGNAL(WIP3,SIG_HIDE);
 SIGNAL(WIP4,SIG_HIDE);
 SIGNAL(WIP1,SIG_SHOW);');
+
 

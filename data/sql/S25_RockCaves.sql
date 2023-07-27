@@ -34,48 +34,47 @@ VALUES
 ('9512', 'S25_SCAT_ALT', '9475', 'IDV_WR3', '1533','130', '1642', '135', '0', 'M_STATEDOOR', 'IDS_SCAT_ALT_OP', 'IDS_SCAT_ALT_CL','', '');
 
 delete from  "main"."transitions" where automaton = 'M_STATEDOOR';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") VALUES 
-('M_STATEDOOR', '0', '1', 'MOV', 'WSPRITE', 'WIP2'), --CLOSED
-('M_STATEDOOR', '1', '2', 'SHOW', 'WSPRITE', '0'),
-('M_STATEDOOR', '2', '3', 'WAIT', '0', 'SIG_OPEN'),
-('M_STATEDOOR', '3', '5', 'MOV', 'WSPRITE', 'WIP1'),
-('M_STATEDOOR', '5', '10', 'SHOW', 'WSPRITE', '0'),
-('M_STATEDOOR', '10', '0', 'WAIT', '0', 'SIG_CLOSE');
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+('M_STATEDOOR', '0', '1', 'MOV', 'WSPRITE', 'WIP2', '', '', ''), --CLOSED
+('M_STATEDOOR', '1', '2', 'SHOW', 'WSPRITE', '0', '', '', ''),
+('M_STATEDOOR', '2', '3', 'WAIT', '0', 'SIG_OPEN', '', '', ''),
+('M_STATEDOOR', '3', '5', 'MOV', 'WSPRITE', 'WIP1', '', '', ''),
+('M_STATEDOOR', '5', '10', 'SHOW', 'WSPRITE', '0', '', '', ''),
+('M_STATEDOOR', '10', '0', 'WAIT', '0', 'SIG_CLOSE', '', '', '');
 
 
 
 -- TRANSITIONS FOR SCENE 25
 delete from transitions where automaton = 'M25_RUMBLE';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2")
-VALUES 
-('M25_RUMBLE', '0', '1', 'ASSIGN', 'BFRAME', '1'),
-('M25_RUMBLE',  '1', '2', 'ASSIGN', 'WSPRITE', 'IDS_RUMBLE'),
-('M25_RUMBLE', '2', '3', 'SHOW', 'WSPRITE', ''),
-('M25_RUMBLE', '3', '20', 'DRAGFOCUS', '0', 'FALSE'),
-('M25_RUMBLE', '3', '40', 'DRAGFOCUS', '0', 'TRUE'),
-('M25_RUMBLE', '3', '30', 'DROP', '0', 'IDD_TELEKINESIS'),
-('M25_RUMBLE', '3', '10', 'WAIT', '0', 'SIG_INIT'),
-('M25_RUMBLE', '10', '3', 'CLEAR', 'BPARM', ''), 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES  
+('M25_RUMBLE', '0', '1', 'ASSIGN', 'BFRAME', '1', '', '', ''), 
+('M25_RUMBLE',  '1', '2', 'ASSIGN', 'WSPRITE', 'IDS_RUMBLE', '', '', ''), 
+('M25_RUMBLE', '2', '3', 'SHOW', 'WSPRITE', '', '', '', ''), 
+('M25_RUMBLE', '3', '20', 'DRAGFOCUS', '0', 'FALSE', '', '', ''), 
+('M25_RUMBLE', '3', '40', 'DRAGFOCUS', '0', 'TRUE', '', '', ''), 
+('M25_RUMBLE', '3', '30', 'DROP', '0', 'IDD_TELEKINESIS', '', '', ''), 
+('M25_RUMBLE', '3', '10', 'WAIT', '0', 'SIG_INIT', '', '', ''), 
+('M25_RUMBLE', '10', '3', 'CLEAR', 'BPARM', '', '', '', ''), 
 
-('M25_RUMBLE', '20', '3', 'SUBI', 'BPARM', '1'),
-('M25_RUMBLE', '30', '50', 'ADDI', 'BPARM', '1'),
-('M25_RUMBLE', '40', '50', 'ADDI', 'BPARM', '1'),
-('M25_RUMBLE', '50', '60', 'GTi', 'BPARM', '1'),
-('M25_RUMBLE', '50', '0', 'VIDEO', '0', 'IDS_RUMBLE'),
+('M25_RUMBLE', '20', '3', 'SUBI', 'BPARM', '1', '', '', ''), 
+('M25_RUMBLE', '30', '50', 'ADDI', 'BPARM', '1', '', '', ''), 
+('M25_RUMBLE', '40', '50', 'ADDI', 'BPARM', '1', '', '', ''), 
+('M25_RUMBLE', '50', '60', 'GTi', 'BPARM', '1', '', '', ''), 
+('M25_RUMBLE', '50', '0', 'VIDEO', '0', 'IDS_RUMBLE', '', '', ''), 
 
-('M25_RUMBLE',  '60', '61', 'ASSIGN', 'WSPRITE', '0'),
-('M25_RUMBLE', '61', '62', 'SHOW', 'WSPRITE', ''),
-('M25_RUMBLE', '62', '70', 'SIGNALi', 'SIG_OPEN', 'S25_ROLL'),
-('M25_RUMBLE', '70', '71', 'CLICK', '0', '0'),
-('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN');
+('M25_RUMBLE',  '60', '61', 'ASSIGN', 'WSPRITE', '0', '', '', ''), 
+('M25_RUMBLE', '61', '62', 'SHOW', 'WSPRITE', '', '', '', ''), 
+('M25_RUMBLE', '62', '70', 'SIGNALi', 'SIG_OPEN', 'S25_ROLL', '', '', ''), 
+('M25_RUMBLE', '70', '71', 'CLICK', '0', '0', '', '', ''), 
+('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN', '', '', '');
 
 delete from transitions where automaton = 'M25_ROLL';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc")
 VALUES 
-('M25_ROLL', '0', '1', 'WAIT', '0', 'SIG_OPEN'),
-('M25_ROLL', '1', '2', 'SHOW', '', 'IDS_ROLL'),
-('M25_ROLL', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S25_RUMROLL_ALT'),
-('M25_ROLL', '3', '0', 'ANIMATE', '', '');
+('M25_ROLL', '0', '1', 'WAIT', '0', 'SIG_OPEN', '', '', ''),
+('M25_ROLL', '1', '2', 'SHOW', '', 'IDS_ROLL', '', '', ''),
+('M25_ROLL', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S25_RUMROLL_ALT', '', '', ''),
+('M25_ROLL', '3', '0', 'ANIMATE', '', '', '', '', '');
 
 delete from transitions where automaton = 'M25_SCATTER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") 
@@ -135,15 +134,19 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 
 -------------------
 --adding hidden room items to grab 
-
+delete from "main"."machines" where [name] like 'S25_aHID%';
+delete from "main"."machines" where [name] like 'S25_dHID%';
+delete from "main"."machines" where [name] like 'S25_cHID%';
+delete from "main"."machines" where [name] like 'S25_2aHID%';
+delete from "main"."machines" where [name] like 'S25_2cHID%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('9491', 'S25_aHIDDENSCROLL', '9489', 'IDV_HIDDENR1', '2583', '223', '2620', '300', '2', 'M_PLANTBIN', 'IDD_SCR022', 'IDS_HR1SA', '60', ''), --seeing eye
-('9494', 'S25_dHIDDENSCROLL', '9489', 'IDV_HIDDENR1', '613', '203', '665', '258', '2', 'M_PLANTBIN', 'IDD_SCR019', 'IDS_HR1SD', '60', ''),
+('9494', 'S25_dHIDDENSCROLL', '9489', 'IDV_HIDDENR1', '613', '203', '665', '258', '2', 'M_PLANTBIN', 'IDD_SCR019', 'IDS_HR1SD', '60', ''), -- breath -->nybreath
 ('9496', 'S25_aHIDDENTEMP', '9489', 'IDV_HIDDENR1', '2638', '217', '2690', '270', '2', 'M_PLANTBIN', 'IDD_TEMPLATE_24', 'IDS_HR1TA', '60', ''), -- gas mask
 ('9498', 'S25_cHIDDENTEMP', '9489', 'IDV_HIDDENR1', '820', '208', '871', '260', '2', 'M_PLANTBIN', 'IDD_TEMPLATE_25', 'IDS_HR1TC', '60', ''), -- eye fuse
 
 ('9499', 'S25_2aHIDDENSCROLL', '9490', 'IDV_HIDDENR2', '2509', '210', '2559', '264', '2', 'M_PLANTBIN', 'IDD_SCR021', 'IDS_HR2SA', '60', ''), --time
-('9501', 'S25_2cHIDDENSCROLL', '9490', 'IDV_HIDDENR2', '232', '212', '282', '264', '2', 'M_PLANTBIN', 'IDD_ROOTWHITE', 'IDS_HR2SC', '60', ''),
+('9501', 'S25_2cHIDDENSCROLL', '9490', 'IDV_HIDDENR2', '232', '212', '282', '264', '2', 'M_PLANTBIN', 'IDD_SCR020', 'IDS_HR2SC', '60', ''), -- submerge
 ('9502', 'S25_2aHIDDENTEMP', '9490', 'IDV_HIDDENR2', '2323', '210', '2373', '262', '2', 'M_PLANTBIN', 'IDD_TEMPLATE_30', 'IDS_HR2TA', '60', ''), --MEMFUSE
-('9504', 'S25_2cHIDDENTEMP', '9490', 'IDV_HIDDENR2', '393', '224', '443', '276', '2', 'M_PLANTBIN', 'IDD_ROOTWHITE', 'IDS_HR2TC', '60', '');
+('9504', 'S25_2cHIDDENTEMP', '9490', 'IDV_HIDDENR2', '393', '224', '443', '276', '2', 'M_PLANTBIN', 'IDD_TEMPLATE_17', 'IDS_HR2TC', '60', ''); -- A FAN
