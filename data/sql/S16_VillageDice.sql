@@ -159,7 +159,10 @@ VALUES
 ('M16_BLOBHOLE', '0', '2', 'O_ACCEPT', '0', 'IDD_BLOBBALL', '',''),
 ('M16_BLOBHOLE', '2', '0', 'DROP', '0', '0', 'SHOW();',''),
 
-('M16_BLOBHOLDER', '0', 'ballpresent', 'SHOW', '0', 'IDD_BLOBBALL', 'ACCEPT(IDD_BLOBBALL);',''),
+('M16_BLOBHOLDER', '0', 'ballpresent', 'ACCEPT', '', 'IDD_BLOBBALL', '
+    MOV(WOBJECT,IDD_BLOBBALL);
+    SHOW(WOBJECT);
+',''),
 ('M16_BLOBHOLDER', 'ballpresent', 'ballempty', 'GRAB', '', 'IDD_BLOBBALL', 'SHOW();',''),
 ('M16_BLOBHOLDER', 'ballempty', '0', 'DROP', '', '', '',''),
 ('M16_BLOBHOLDER', 'ballempty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
