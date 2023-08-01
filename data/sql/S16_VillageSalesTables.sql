@@ -26,7 +26,12 @@ delete from machines where [name] like 'S16_SHOV%';
 delete from machines where [name] like 'S16_PICK%';
 delete from machines where [name] like 'S16_GRUB%';
 delete from machines where [name] like 'S16_WOOD%';
-delete from machines where [name] like 'S16_DICE_%';
+delete from machines where [name] like 'S16_DICEBUY_%';
+
+delete from machines where [name] like 'S16_DICE_BUY%';
+delete from machines where [name] like 'S16_DICE_STAMP%';
+delete from machines where [name] like 'S16_DICE_PAY%';
+delete from machines where [name] like 'S16_DICE_COMBO%';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
@@ -54,12 +59,12 @@ VALUES
 ('16076', 'S16_WOOD_STAMP','4877', 'IDV_WOOD0000',160,0,296,234, '0','M16_PAYSTAMP','IDS_STAMP','S16_WOOD_PAY','S16_WOOD_GRAB', ''),
 ('16077', 'S16_WOOD_PAY',  '4877', 'IDV_WOOD0000',324,185,399,272, '0','M16_PAYBUCKET','IDS_NYBUCKET_GLOW',2,'S16_WOOD_STAMP', ''),
 
-('16108', 'S16_DICE_GRAB', '4885', 'IDV_DICE0000',20,72,127,209, '0','M16_PAYGRAB','IDD_DICE','S16_DICE_PAY','S16_DICE_STAMP',''),
-('16109', 'S16_DICE_STAMP','4885', 'IDV_DICE0000',160,0,296,234, '0','M16_PAYSTAMP','IDS_STAMP','S16_DICE_PAY','S16_DICE_GRAB', ''),
-('16110', 'S16_DICE_PAY',  '4885', 'IDV_DICE0000',324,185,399,272, '0','M16_PAYBUCKET','IDS_NYBUCKET_GLOW',2,'S16_DICE_STAMP', ''),
+('16108', 'S16_DICEBUY_GRAB', '4885', 'IDV_DICE0000',20,72,127,209, '0','M16_PAYGRAB','IDD_DICE','S16_DICEBUY_PAY','S16_DICEBUY_STAMP',''),
+('16109', 'S16_DICEBUY_STAMP','4885', 'IDV_DICE0000',160,0,296,234, '0','M16_PAYSTAMP','IDS_STAMP','S16_DICEBUY_PAY','S16_DICEBUY_GRAB', ''),
+('16110', 'S16_DICEBUY_PAY',  '4885', 'IDV_DICE0000',324,185,399,272, '0','M16_PAYBUCKET','IDS_NYBUCKET_GLOW',2,'S16_DICEBUY_STAMP', ''),
 
-('16100', 'S16_DICE_COMBO1', '4885', 'IDV_DICE0000',300,40,350,90, '0','M16_COMBINER','IDD_DICE','IDD_SHAKE','S16_DICE_COMBO2', ''),
-('16102', 'S16_DICE_COMBO2', '4885', 'IDV_DICE0000',350,40,390,90, '0','M16_COMBINER','IDD_DICE','IDD_SHAKE','S16_DICE_COMBO1', '');
+('16100', 'S16_DICEBUY_COMBO1', '4885', 'IDV_DICE0000',300,40,350,90, '0','M16_COMBINER','IDD_DICE','IDD_SHAKE','S16_DICEBUY_COMBO2', ''),
+('16102', 'S16_DICEBUY_COMBO2', '4885', 'IDV_DICE0000',350,40,390,90, '0','M16_COMBINER','IDD_DICE','IDD_SHAKE','S16_DICEBUY_COMBO1', '');
 
 delete from transitions where [automaton] like 'M16_PAY%';
 delete from transitions where [automaton] like 'M16_COMBI%';
@@ -92,9 +97,9 @@ VALUES
 
 
 
-('M16_PAYSTAMP', '0', 'startframe', 'ASSIGN', 'BFRAME', '1', '',''),
+('M16_PAYSTAMP', '0', 'startframe', 'ASSIGN', 'BFRAME', '1', 'CLEAR(WSPRITE);',''),
 ('M16_PAYSTAMP', 'startframe', 'waiting', 'SHOW', 'WIP1', '', '',''),
-('M16_PAYSTAMP', 'waiting', 'readyToPay', 'CLICK', '', '', 'SHOW(WSPRITE);ANIMATE(); SIGNAL(WIP2,SIG_ON);SIGNAL(WIP3,SIG_OPEN);PLAYWAVE(0,SOUND_CHAIN);',''),
+('M16_PAYSTAMP', 'waiting', 'readyToPay', 'CLICK', '', '', 'SHOW(WSPRITE); ANIMATE(); SIGNAL(WIP2,SIG_ON);SIGNAL(WIP3,SIG_OPEN);PLAYWAVE(0,SOUND_CHAIN);',''),
 ('M16_PAYSTAMP', 'readyToPay', '0', 'WAIT', '0', 'SIG_OFF', '',''),
 ('M16_PAYSTAMP', 'readyToPay', 'waiting', 'CLICK', '', '', 'SHOW(WSPRITE);ANIMATE(0,V_REVERSE);SIGNAL(WIP2,SIG_OFF);SIGNAL(WIP3,SIG_CLOSE);PLAYWAVE(0,SOUND_CHAIN);',''),
 
@@ -104,7 +109,7 @@ VALUES
     ASHOW(WSPRITE);
     /* BPARM = what you payed
     WPARM = Total owed 
-    l*/
+    */
     ASSIGN(BPARM,0); 
     ASSIGN(WPARM,WIP2);
 ',''),
@@ -113,7 +118,10 @@ VALUES
     PLAYWAVE(0,SOUND_SPIT);
     ADDI(BPARM,1); 
 ',''),
-('M16_PAYBUCKET', 'accept_pay', '0', 'WAIT', 'SIGNAL', 'SIG_OFF', 'SHOW();',''),
+('M16_PAYBUCKET', 'accept_pay', '0', 'WAIT', '0', 'SIG_OFF', '
+    CLEAR(WSPRITE);
+    SHOW();
+    ',''),
 ('M16_PAYBUCKET', 'check_scoop', 'paid_in_full', 'EQUAL', 'BPARM', 'WPARM', '',''),
 ('M16_PAYBUCKET', 'check_scoop', 'accept_pay', 'Z_EPSILON', '', '', '',''),
 ('M16_PAYBUCKET', 'paid_in_full', '0', 'Z_EPSILON', '', '', '
