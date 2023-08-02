@@ -125,6 +125,6 @@ delete from  "main"."transitions" where automaton = 'M_STATESCALEV';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 ('M_STATESCALEV', '0', '5', 'WAIT', '0', 'SIG_SHOW','','',''),
-('M_STATESCALEV', '5', '10', 'ASHOW', 'WSPRITE', '0','','',''),
+('M_STATESCALEV', '5', '10', 'ASHOW', 'WIP1', '0','','',''),
 ('M_STATESCALEV', '10', '11', 'WAIT', '0', 'SIG_HIDE','','',''),
 ('M_STATESCALEV', '11', '0', 'ASHOW', '0', '0','','','');
