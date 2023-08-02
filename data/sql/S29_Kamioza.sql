@@ -16,8 +16,8 @@ delete from "main"."machines" where [name] like 'S29_KAM%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
 ('9920', 'S29_KAMALTAR', '9801', 'IDV_KAMIOZA', '3129', '180', '3186', '200', '0','M_KAMALTAR','S29_KAMRAIN','','', ''),
-('9921', 'S29_KAMRAIN',  '9801', 'IDV_KAMIOZA', '3010', '20', '55', '300', '0','M_KAMRAIN','','','', ''),
-('9922', 'S29_KAMREACH',  '9750', 'IDV_KAMIOZAREACH', '0', '0', '400', '300', '0','M_KAMREACH','','','', '');
+('9921', 'S29_KAMRAIN',  '9801', 'IDV_KAMIOZA', '3010', '20', '55', '300', '0','M_KAMRAIN','','','', '');
+-- ('9922', 'S29_KAMREACH',  '9750', 'IDV_KAMIOZAREACH', '0', '0', '400', '300', '0','M_KAMREACH','','','', '');
 
 
 delete from transitions where [automaton] like 'M_KAM%';
@@ -32,10 +32,8 @@ VALUES
 ',''),
 
 ('M_KAMRAIN','0','1','WAIT','','SIG_SHOW','',''),
-('M_KAMRAIN','1','0','VIDEO', '', 'IDS_RAIN', '
-    LOADVIEW(S29_KAMIOZAREACH);
-',''),
+('M_KAMRAIN','1','2','VIDEO', '', 'IDS_RAIN', '',''),
+('M_KAMRAIN','2','0','Z_EPSILON', '', '', '','');
 
-
-('M_KAMREACH','0','1','Z_EPSILON', '', '', '',''),
-('M_KAMREACH','1','0','VIDEO', '', 'IDS_REACH', '','');
+-- ('M_KAMREACH','0','1','Z_EPSILON', '', '', '',''),
+-- ('M_KAMREACH','1','0','VIDEO', '', 'IDS_REACH', '','');
