@@ -60,8 +60,8 @@ delete from "main"."machines" where [name] like 'S25_OPN%';
 delete from "main"."machines" where [name] like 'S25_EXIT%';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('9477', 'S25_OPN1', '9478', 'IDV_WALL1IN', '95', '126', '404', '299', '2', 'M25_OPNDOOR', 'IDS_OPN1', 'IDV_HIDDENR1', 'REC_CAVE1', ''),
-('9478', 'S25_OPN2', '9480', 'IDV_WALL2IN', '2717', '138', '3028', '298', '2', 'M25_OPNDOOR', 'IDS_OPN2', 'IDV_HIDDENR2', 'REC_CAVE2', ''),
+('9477', 'S25_OPN1', '9478', 'IDV_WALL1IN', '95', '126', '404', '299', '2', 'M25_OPNDOOR', 'IDS_OPN1', 'IDV_HIDDENR1', 'REC_CAVE2', ''),
+('9478', 'S25_OPN2', '9480', 'IDV_WALL2IN', '2717', '138', '3028', '298', '2', 'M25_OPNDOOR', 'IDS_OPN2', 'IDV_HIDDENR2', 'REC_CAVE1', ''),
 
 ('9482', 'S25_EXIT1', '9489', 'IDV_HIDDENR1', '1264', '138', '1473', '288', '2', 'M25_EXITDOOR', 'IDV_WALL1IN', '', '', ''),
 ('9483', 'S25_EXIT2', '9490', 'IDV_HIDDENR2', '1579', '136', '1795', '289', '2', 'M25_EXITDOOR', 'IDV_WALL2IN', '', '', '');
