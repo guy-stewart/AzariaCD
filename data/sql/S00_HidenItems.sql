@@ -134,6 +134,7 @@ VALUES
 ('40005', 'S00_HIDDEN_5', '9475', 'IDV_WR3', '274', '202', '375', '300', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
 
 ('40017', 'S00_HIDDEN_6', '506', 'IDV_CTO1', '2285', '223', '2330', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+
 ('40007', 'S00_HIDDEN_7', '4866', 'IDV_VIL4', '1985', '203', '2060', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40008', 'S00_HIDDEN_8', '5381', 'IDV_TMPLPTH5', '1899', '239', '1940', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40019', 'S00_HIDDEN_9', '9218', 'IDV_EYEB', '881', '95', '950', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
@@ -146,6 +147,7 @@ VALUES
 
 ('40015', 'S00_HIDDEN_15', '4096', 'IDV_SCN10PT0', '492', '198', '560', '230', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
 ('40016', 'S00_HIDDEN_16', '508', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+
 ('40006', 'S00_HIDDEN_17', '507', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
 ('40004', 'S00_HIDDEN_18', '551', 'IDV_ctyh', '1953', '207', '2025', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
 
@@ -179,25 +181,24 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
     ASSIGN(WPARM,1);
-    RAND(3,1); //The machine to start at
+    RAND(2,1); //The machine to start at
     ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
     MOV(WTEMP1,BPARM);
     MAPi(WTEMP1,S00_HIDINGPLACE);
     SIGNAL(WTEMP1,SIG_OPEN); // Signal first hidden spot
     WRITE(''FIRST ITEM HIDDEN''); 
   ', '', ''),
-
-
-
 ('M_HIDER', 'topOLoop', 'objectHidden', 'LTE', 'WPARM', 'WIP1', '  
             //Set wparm to represent the object pointer
             ADD(WPARM,1); // the new item is old one +1
            
             //climb up the list to find a new hiding place  
-            RAND(3,1); //Location increases by 1,2 or 3
-            ADD(BPARM,WRAND); 
-            MAP(BPARM,S00_HIDINGPLACE); //get the new hider machine into BPARM 
-            SIGNAL(BPARM,SIG_OPEN); 
+            RAND(2,1); //Location increases by 1 or 2
+            MOV(WTEMP2,BPARM);
+            ADD(WTEMP2,WRAND); 
+            ASSIGN(BPARM,WTEMP2);
+            MAPi(WTEMP2,S00_HIDINGPLACE);  //get the new hider machine into BPARM 
+            SIGNAL(WTEMP2,SIG_OPEN); 
             WRITE(''NEXT ITEM HIDDEN''); 
 ', '', ''),
 

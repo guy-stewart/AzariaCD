@@ -29,6 +29,7 @@ delete from machines where [name] like 'S16_WOOD%';
 delete from machines where [name] like 'S16_DICEBUY_%';
 
 delete from machines where [name] like 'S16_DICE_BUY%';
+delete from machines where [name] like 'S16_DICE_GRAB%';
 delete from machines where [name] like 'S16_DICE_STAMP%';
 delete from machines where [name] like 'S16_DICE_PAY%';
 delete from machines where [name] like 'S16_DICE_COMBO%';
@@ -55,7 +56,7 @@ VALUES
 ('16073', 'S16_GRUB_STAMP','4876', 'IDV_GRUB0000',160,0,296,234, '0','M16_PAYSTAMP','IDS_STAMP','S16_GRUB_PAY','S16_GRUB_GRAB', ''),
 ('16074', 'S16_GRUB_PAY',  '4876', 'IDV_GRUB0000',324,185,399,272, '0','M16_PAYBUCKET','IDS_NYBUCKET_GLOW',1,'S16_GRUB_STAMP', ''),
 
-('16075', 'S16_WOOD_GRAB', '4877', 'IDV_WOOD0000',20,72,127,209, '0','M16_PAYGRAB','IDD_BAIT0','S16_WOOD_PAY','S16_WOOD_STAMP',''),
+('16075', 'S16_WOOD_GRAB', '4877', 'IDV_WOOD0000',20,72,127,209, '0','M16_PAYGRAB','IDD_LOG','S16_WOOD_PAY','S16_WOOD_STAMP',''),
 ('16076', 'S16_WOOD_STAMP','4877', 'IDV_WOOD0000',160,0,296,234, '0','M16_PAYSTAMP','IDS_STAMP','S16_WOOD_PAY','S16_WOOD_GRAB', ''),
 ('16077', 'S16_WOOD_PAY',  '4877', 'IDV_WOOD0000',324,185,399,272, '0','M16_PAYBUCKET','IDS_NYBUCKET_GLOW',2,'S16_WOOD_STAMP', ''),
 
