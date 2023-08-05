@@ -3,12 +3,12 @@ delete from games;
 delete from transitions where [automaton] like 'M_BARD%';
 --The Bard is attached to the ID and loaded at startup
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
-('M_BARD', '0', '10', 'ASSIGN', 'DETIME', '1000', '', '', ''),
+('M_BARD', '0', '10', 'ASSIGN', 'DETIME', '1500', '', '', ''),
 
 ('M_BARD', '10', 'hideStuff', 'Z_EPSILON', '', '', '', '', ''),
 
 ('M_BARD', '20', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
-('M_BARD', 'FWcountdown', 'summonFoulWind', 'ESTIME', '0', '500', '', '', ''),
+('M_BARD', 'FWcountdown', 'summonFoulWind', 'ESTIME', '0', '1500', '', '', ''),
 ('M_BARD', 'summonFoulWind', 'FWcountdown', 'SIGNALi', '0', 'S17_aFOULWIND', '', '', ''),
 --inserting hiding stuff and and other one off signals then go to timed loop
 ('M_BARD', 'hideStuff', 'kickOffNature', 'SIGNALi', 'SIG_OPEN', 'S00_HIDER', '', '', ''),
