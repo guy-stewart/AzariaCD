@@ -134,7 +134,8 @@ VALUES
 ('M16_PAYGRAB', '0', 'open_bin', 'WAIT', '0', 'SIG_OPEN', 'REF_MACHINE(WIP2);',''),
 ('M16_PAYGRAB', 'open_bin', '0', 'GRAB', 'WIP1', '', '
     if(R_WPARM != R_BPARM){
-        SUB(LKARMA,4);
+        ADDI(LKARMA,1);
+        SIGNAL(SID_HALO,SIG_ADD);
         PLAYWAVE(0,SOUND_CLUNK);
     }
     SIGNAL(WIP3,SIG_OFF);
