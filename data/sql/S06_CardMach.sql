@@ -4,6 +4,8 @@ delete from games;
 delete from sounds where name = 'SOUND_CARDEJECT';
 delete from sounds where name = 'SOUND_RATCHET';
 
+delete from spr_names where name = 'IDS_ALARM';
+
 delete from map where op like 'S06_MAN%';
 INSERT INTO "main"."map" ("op", "key", "value")
 VALUES 
@@ -26,12 +28,12 @@ VALUES
 ('S06_MAN_OBJECTS', '16', 'IDD_PORTRAIT'),
 ('S06_MAN_OBJECTS', '17', 'IDD_FAN'),
 ('S06_MAN_OBJECTS', '18', 'IDD_HOLDING'),
-('S06_MAN_OBJECTS', '19', 'IDD_VIAL3'),
-('S06_MAN_OBJECTS', '20', 'IDD_BAIT8'),
-('S06_MAN_OBJECTS', '21', 'IDD_BAIT9'),
+('S06_MAN_OBJECTS', '19', 'IDD_DICE'),
+('S06_MAN_OBJECTS', '20', 'IDD_BAIT5'),
+('S06_MAN_OBJECTS', '21', 'IDD_SICKLE'),
 ('S06_MAN_OBJECTS', '22', 'IDD_STALKER'),
 ('S06_MAN_OBJECTS', '23', 'IDD_ALARM'),
-('S06_MAN_OBJECTS', '24', 'IDD_GASMASK'),
+('S06_MAN_OBJECTS', '24', 'IDD_H2OMASK'),
 ('S06_MAN_OBJECTS', '30', 'IDD_MEMFUSE'); 
 
 delete from map where op like 'S06_COMP%';
@@ -269,7 +271,12 @@ VALUES
 ('IDS_PORTRAIT', 'PORTRAIT', '1441'),
 ('IDS_FAN', 'FAN', '1442'),
 ('IDS_GASMASK', 'GASMASK', '1443'),
-('IDS_VIAL3', 'VIAL3', '1444');
+('IDS_VIAL3', 'VIAL3', '1444'),
+
+
+('IDS_ALARMRED', 'ALMRED', '30401'),
+('IDS_ALARMGRN', 'ALMGRN', '30402'),
+('IDS_ALARMOFF', 'ALMOFF', '30403');
 
 delete from objects where object = 'IDD_VIAL1';
 delete from objects where object = 'IDD_HAMMER';
@@ -282,7 +289,11 @@ delete from objects where object = 'IDD_STATUE';
 delete from objects where object = 'IDD_PORTRAIT';
 delete from objects where object = 'IDD_FAN';
 delete from objects where object = 'IDD_GASMASK';
+delete from objects where object = 'IDD_H2OMASK';
+delete from objects where object = 'IDD_NYSMASK';
 delete from objects where object = 'IDD_VIAL3';
+delete from objects where object = 'IDD_POLESML';
+delete from objects where object = 'IDD_ALARM';
 
 delete from objects where [object] like 'IDD_CARD%';
 insert into objects ([object],[object_id],[class],[icon],[cursor],[actor]) values
@@ -327,11 +338,11 @@ insert into objects ([object],[object_id],[class],[icon],[cursor],[actor]) value
 ('IDD_STATUE',0x437,'IDC_STATUE','STATUE','STATUE','STATUE'),
 ('IDD_PORTRAIT',0x438,'IDC_NULL','PORT','PORT','PORT'),
 ('IDD_FAN',0x439,'IDC_NULL','FAN','FAN','FAN'),
-('IDD_GASMASK',0x440,'IDC_NULL','H20MASK','H20MASK','H20MASK'),
+('IDD_H2OMASK',0x440,'IDC_NULL','H2OMASK','H2OMASK','H2OMASK'),
+('IDD_NYSMASK',4396,'IDC_NULL','NYSMASK','NYSMASK','NYSMASK'),
 ('IDD_VIAL3',0x441,'IDC_NULL','VIAL3','VIAL3','VIAL3'),
-('IDD_VIAL1',0x442,'IDC_NULL','VIAL1','VIAL1','VIAL1');
-
-
+('IDD_VIAL1',0x442,'IDC_NULL','VIAL1','VIAL1','VIAL1'),
+('IDD_ALARM',30614,'IDC_NULL','ALMOFF','ALMOFF','ALMOFF');
 
 ------------------ Machines and DFAs below
 
@@ -462,17 +473,17 @@ SIGNAL(WIP3,SIG_DEC1);'),
 ('M06_CYCLE_VIEW','1', '2', 'Z_EPSILON','','',
 'WOBJECT=WPARM;
 MAPi(WOBJECT,S06_MAN_OBJECTS);
-ASHOW(WOBJECT);
+ASHOW(WOBJECT,CURSOR);
 '),
 ('M06_CYCLE_VIEW','2', '1', 'WAIT', '', 'SIG_INC1',
 'WPARM = WPARM + 1;
-if (WPARM > 24) {WPARM=0;}
+if (WPARM > 23) {WPARM=0;}
 SIGNAL(WIP1,SIG_INC1);
 SIGNAL(WIP2,SIG_INC1);
 SIGNAL(WIP3,SIG_INC1);'),
 ('M06_CYCLE_VIEW','2', '1', 'WAIT', '', 'SIG_DEC1',
 'SUBI(WPARM,1);
-if (WPARM<0) {WPARM=24;}
+if (WPARM<0) {WPARM=23;}
 SIGNAL(WIP1,SIG_DEC1);
 SIGNAL(WIP2,SIG_DEC1);
 SIGNAL(WIP3,SIG_DEC1);'),

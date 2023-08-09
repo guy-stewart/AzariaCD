@@ -28,7 +28,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M10_DRYPIT', '21', '25', 'GTEi', 'BPARM', '1', '
     PLAYWAVE(SOUND_SLURP);
     SUBI(BPARM,1);
-    HANDOFF(0,IDD_SCOOPF);', '', ''),
+    HANDOFF(0,IDD_SCOOPF);
+    ADDI(LKARMA,1);
+    SIGNAL(SID_HALO,SIG_ADD);', '', ''),
 ('M10_DRYPIT', '21', '10', 'Z_EPSILON', '0', '', '', '', ''),
 ('M10_DRYPIT', '25', '0', 'EQUALi', 'BPARM', 'MAX_DRYPIT-1', 'SIGNALi(SIG_CLOSE,S10_FLOWER);', '', ''),
 ('M10_DRYPIT', '25', '0', 'Z_EPSILON', '', '', '', '', ''),

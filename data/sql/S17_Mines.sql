@@ -63,6 +63,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     SIGNAL(WIP3,SIG_SHOW);
     SIGNAL(WIP4,SIG_SHOW);
     ASHOW(WOBJECT);
+    ADDI(LKARMA,1);
+    SIGNAL(SID_HALO,SIG_ADD);
 ', '', ''),
 
 ('M17_LOCKSOCKET', 'citlockshown', 'citclicklocked', 'CLICK', '0', '0', '', '', ''),
@@ -84,6 +86,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     SIGNAL(WIP3,SIG_SHOW);
     SIGNAL(WIP4,SIG_SHOW);
     ASHOW(WOBJECT);
+    ADDI(LKARMA,1);
+    SIGNAL(SID_HALO,SIG_ADD);
 ', '', ''),
 
 ('M17_LOCKSOCKET', 'villockshown', 'vilclicklocked', 'CLICK', '0', '0', '', '', ''),
