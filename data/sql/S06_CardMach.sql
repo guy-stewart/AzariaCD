@@ -4,7 +4,7 @@ delete from games;
 delete from sounds where name = 'SOUND_CARDEJECT';
 delete from sounds where name = 'SOUND_RATCHET';
 
-delete from spr_names where name = 'IDS_ALARM';
+delete from spr_names where [name] like 'IDS_ALARM%';
 
 delete from map where op like 'S06_MAN%';
 INSERT INTO "main"."map" ("op", "key", "value")
