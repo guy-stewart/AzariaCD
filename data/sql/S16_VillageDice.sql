@@ -103,21 +103,21 @@ insert into objects values
 ('IDD_BLOBBALL',25010,'IDC_NULL','blobball','blobball','blobball');
 
 delete from spr_names where [name] like 'IDS_BLOBFILL%';
-insert into spr_names values ('IDS_BLOBFILL1','blob1','25011');
-insert into spr_names values ('IDS_BLOBFILL2','blob2','25012');
-insert into spr_names values ('IDS_BLOBFILL3','blob3','25013');
-insert into spr_names values ('IDS_BLOBFILL4','blob4','25014');
-insert into spr_names values ('IDS_BLOBFILL5','blob5','25015');
+insert into spr_names values ('IDS_BLOBFILL1','blob_1','25011');
+insert into spr_names values ('IDS_BLOBFILL2','blob_2','25012');
+insert into spr_names values ('IDS_BLOBFILL3','blob_3','25013');
+insert into spr_names values ('IDS_BLOBFILL4','blob_4','25014');
+insert into spr_names values ('IDS_BLOBFILL5','blob_5','25015');
 
 delete from machines where [name] like 'S16_BLOB%';
 delete from machines where [name] like 'S16_DIEDROP%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('16021', 'S16_BLOBFILL1', '4880', 'IDV_TRAYR',135,117,167,137, '0','M16_BLOBDROP','IDS_BLOBFILL1','','', ''),
-('16022', 'S16_BLOBFILL2', '4880', 'IDV_TRAYR',167,117,199,137, '0','M16_BLOBDROP','IDS_BLOBFILL2','','', ''),
-('16023', 'S16_BLOBFILL3', '4880', 'IDV_TRAYR',199,117,231,137, '0','M16_BLOBDROP','IDS_BLOBFILL3','','', ''),
-('16024', 'S16_BLOBFILL4', '4880', 'IDV_TRAYR',231,118,263,137, '0','M16_BLOBDROP','IDS_BLOBFILL4','','', ''),
-('16025', 'S16_BLOBFILL5', '4880', 'IDV_TRAYR',263,118,296,137, '0','M16_BLOBDROP','IDS_BLOBFILL5','','', ''),
+('16021', 'S16_BLOBFILL1', '4880', 'IDV_TRAYR',140,118,167,137, '0','M16_BLOBDROP','IDS_BLOBFILL1','','', ''),
+('16022', 'S16_BLOBFILL2', '4880', 'IDV_TRAYR',171,118,199,137, '0','M16_BLOBDROP','IDS_BLOBFILL2','','', ''),
+('16023', 'S16_BLOBFILL3', '4880', 'IDV_TRAYR',202,118,231,137, '0','M16_BLOBDROP','IDS_BLOBFILL3','','', ''),
+('16024', 'S16_BLOBFILL4', '4880', 'IDV_TRAYR',232,119,263,137, '0','M16_BLOBDROP','IDS_BLOBFILL4','','', ''),
+('16025', 'S16_BLOBFILL5', '4880', 'IDV_TRAYR',263,119,296,137, '0','M16_BLOBDROP','IDS_BLOBFILL5','','', ''),
 ('16026', 'S16_BLOBFILL6', '4880', 'IDV_TRAYR',195,136,234,151, '0','M16_BLOBHOLE','','','', ''),
 ('16027', 'S16_DIEDROP', '4880', 'IDV_TRAYR',175,160,266,252, '0','M16_DIEROLL','IDS_DICE','','', ''),
 
@@ -129,6 +129,7 @@ VALUES
 ('16035', 'S16_BLOBHOLD6', '4880', 'IDV_TRAYR',0,150,25,175,'0','M16_BLOBHOLDER','','','', ''),
 ('16036', 'S16_BLOBHOLD7', '4880', 'IDV_TRAYR',0,175,25,200,'0','M16_BLOBHOLDER','','','', ''),
 ('16037', 'S16_BLOBHOLD8', '4880', 'IDV_TRAYR',0,200,25,225,'0','M16_BLOBHOLDER','','','', ''),
+('16038', 'S16_BLOBHOLD17', '4880', 'IDV_TRAYR',0,225,25,250,'0','M16_BLOBHOLDER_E','','','', ''),
 
 ('16040', 'S16_BLOBHOLD9',  '4880', 'IDV_TRAYR',375,25,400,50,'0','M16_BLOBHOLDER','','','', ''),
 ('16041', 'S16_BLOBHOLD10', '4880', 'IDV_TRAYR',375,50,400,75,'0','M16_BLOBHOLDER','','','', ''),
@@ -138,7 +139,7 @@ VALUES
 ('16045', 'S16_BLOBHOLD14', '4880', 'IDV_TRAYR',375,150,400,175,'0','M16_BLOBHOLDER','','','', ''),
 ('16046', 'S16_BLOBHOLD15', '4880', 'IDV_TRAYR',375,175,400,200,'0','M16_BLOBHOLDER','','','', ''),
 ('16047', 'S16_BLOBHOLD16', '4880', 'IDV_TRAYR',375,200,400,225,'0','M16_BLOBHOLDER','','','', ''),
-
+('16048', 'S16_BLOBHOLD18', '4880', 'IDV_TRAYR',375,225,400,250,'0','M16_BLOBHOLDER_E','','','', ''),
 
 ('16050', 'S16_BLOBRESET', '4880', 'IDV_TRAYR',270,157,300,192,'0','M16_BLOBRESET','','','', '');
 
@@ -167,6 +168,17 @@ VALUES
 ('M16_BLOBHOLDER', 'ballempty', '0', 'DROP', '', '', '',''),
 ('M16_BLOBHOLDER', 'ballempty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
 ('M16_BLOBHOLDER', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+
+--empty blob holder
+('M16_BLOBHOLDER_E', '0', 'ballempty', 'ACCEPT', '', 'IDD_BLOBBALL', '',''),
+('M16_BLOBHOLDER_E', 'ballempty', 'ballholding', 'DROP', '', '','
+    MOV(WOBJECT,IDD_BLOBBALL);
+    SHOW(WOBJECT); 
+',''),
+('M16_BLOBHOLDER_E', 'ballholding', 'ballempty', 'GRAB', '', 'IDD_BLOBBALL', 'SHOW();',''),
+('M16_BLOBHOLDER_E', 'ballempty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
+('M16_BLOBHOLDER_E', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+
 
 
 ('M16_BLOBRESET', '0', '0', 'CLICK', '0', '', '

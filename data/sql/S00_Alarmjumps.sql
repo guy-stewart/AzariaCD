@@ -30,7 +30,7 @@ VALUES
     MOV(WPARM,LVIEW);
 ', '', ''),
 ('M_ALARM', 'alarmWhite', '0', 'GRAB', '0', '0', 'SHOW();', '', ''),
-('M_ALARM', 'alarmWhite', 'alarmGreen', 'ESTIME', '0', '4', '
+('M_ALARM', 'alarmWhite', 'alarmGreen', 'ESTIME', '0', '2', '
     MOV(WSPRITE,IDS_ALARMGRN);
     SHOW(WSPRITE);
 ', '', ''),

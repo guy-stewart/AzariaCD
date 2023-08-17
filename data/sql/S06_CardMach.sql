@@ -23,9 +23,9 @@ VALUES
 ('S06_MAN_OBJECTS', '11', 'IDD_CLOCK'),
 ('S06_MAN_OBJECTS', '12', 'IDD_LAVA'), 
 ('S06_MAN_OBJECTS', '13', 'IDD_LAMP'),
-('S06_MAN_OBJECTS', '14', 'IDD_VASE'),
-('S06_MAN_OBJECTS', '15', 'IDD_STATUE'),
-('S06_MAN_OBJECTS', '16', 'IDD_PORTRAIT'),
+('S06_MAN_OBJECTS', '14', 'IDD_BOMB1'),
+('S06_MAN_OBJECTS', '15', 'IDD_LIGHTER'),
+('S06_MAN_OBJECTS', '16', 'IDD_SHAKE'),
 ('S06_MAN_OBJECTS', '17', 'IDD_FAN'),
 ('S06_MAN_OBJECTS', '18', 'IDD_HOLDING'),
 ('S06_MAN_OBJECTS', '19', 'IDD_DICE'),
@@ -210,6 +210,7 @@ VALUES
 ('S06_TEMP_INDEX','IDD_TEMPLATE_28','28'),
 ('S06_TEMP_INDEX','IDD_TEMPLATE_29','29'),
 ('S06_TEMP_INDEX','IDD_TEMPLATE_30','30'),
+--No cards to match these
 ('S06_TEMP_INDEX','IDD_TEMPLAT_31','31'),
 ('S06_TEMP_INDEX','IDD_TEMPLATE_32','32'),
 ('S06_TEMP_INDEX','IDD_TEMPLATE_33','33'),
@@ -270,7 +271,6 @@ VALUES
 ('IDS_STATUE', 'STATUE', '1440'),
 ('IDS_PORTRAIT', 'PORTRAIT', '1441'),
 ('IDS_FAN', 'FAN', '1442'),
-('IDS_GASMASK', 'GASMASK', '1443'),
 ('IDS_VIAL3', 'VIAL3', '1444'),
 
 
@@ -294,6 +294,7 @@ delete from objects where object = 'IDD_NYSMASK';
 delete from objects where object = 'IDD_VIAL3';
 delete from objects where object = 'IDD_POLESML';
 delete from objects where object = 'IDD_ALARM';
+delete from objects where object = 'IDD_LIGHTER';
 
 delete from objects where [object] like 'IDD_CARD%';
 insert into objects ([object],[object_id],[class],[icon],[cursor],[actor]) values
@@ -342,8 +343,8 @@ insert into objects ([object],[object_id],[class],[icon],[cursor],[actor]) value
 ('IDD_NYSMASK',4396,'IDC_NULL','NYSMASK','NYSMASK','NYSMASK'),
 ('IDD_VIAL3',0x441,'IDC_NULL','VIAL3','VIAL3','VIAL3'),
 ('IDD_VIAL1',0x442,'IDC_NULL','VIAL1','VIAL1','VIAL1'),
-('IDD_ALARM',30614,'IDC_NULL','ALMOFF','ALMOFF','ALMOFF');
-
+('IDD_ALARM',30614,'IDC_NULL','ALMOFF','ALMOFF','ALMOFF'),
+('IDD_LIGHTER',40100,'IDC_NULL','lighter','lighter','lighter');
 ------------------ Machines and DFAs below
 
 delete from machines where [name] like 'S06_CARD_EJECT%';
