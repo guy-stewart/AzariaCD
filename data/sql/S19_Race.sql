@@ -7,6 +7,11 @@ insert into objects values
 ('IDD_PLAYER_W',40200,'IDC_NULL','player_w','player_w','player_w'),
 ('IDD_PLAYER_B',40201,'IDC_NULL','player_b','player_b','player_b');
 
+delete from isa where [class] like 'ISA_PLAYTOKEN%';
+INSERT INTO "main"."isa" ("class", "member")
+VALUES 
+('ISA_PLAYTOKEN', 'IDD_PLAYER_W'),
+('ISA_PLAYTOKEN', 'IDD_PLAYER_B');
 
 delete from views where view_name = 'IDV_RACEPAN';
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
@@ -159,12 +164,11 @@ delete from transitions where [automaton] like 'M19_SQUARE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
-('M19_SQUARE', '0', 'squareempty', 'ACCEPT', '', 'IDD_PLAYER_W','',''),
+('M19_SQUARE', '0', 'squareempty', 'C_ACCEPT', '', 'ISA_PLAYTOKEN','',''),
 ('M19_SQUARE', 'squareempty', 'squareholding', 'DROP', '', '','
-    MOV(WOBJECT,IDD_PLAYER_W);
     SHOW(WOBJECT); 
 ',''),
-('M19_SQUARE', 'squareholding', 'squareempty', 'GRAB', '', 'IDD_PLAYER_W', 'SHOW();',''),
+('M19_SQUARE', 'squareholding', 'squareempty', 'GRAB', '', '', 'SHOW();',''),
 ('M19_SQUARE', 'squareempty', 'resetting', 'WAIT', '','SIG_RESET', '',''),
 ('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '','');
 
