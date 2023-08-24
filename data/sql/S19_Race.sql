@@ -1,6 +1,11 @@
 delete from games;
 
 
+delete from spr_names where [name] like 'IDS_TOPSPIN%';
+delete from spr_names where [name] like 'IDS_BOTSPIN%';
+insert into spr_names values ('IDS_TOPSPIN','tspin','40600');
+insert into spr_names values ('IDS_BOTSPIN','bspin','40601');
+
 delete from objects where object = 'IDD_PLAYER_W';
 delete from objects where object = 'IDD_PLAYER_B';
 insert into objects values
@@ -13,6 +18,23 @@ VALUES
 ('ISA_PLAYTOKEN', 'IDD_PLAYER_W'),
 ('ISA_PLAYTOKEN', 'IDD_PLAYER_B');
 
+delete from map where op like 'S19_%';
+INSERT INTO "main"."map" ("op", "key", "value")
+VALUES 
+('S19_BOTSPIN_MAP',1,9), 
+('S19_BOTSPIN_MAP',2,17), 
+('S19_BOTSPIN_MAP',3,25), 
+('S19_BOTSPIN_MAP',4,34), 
+('S19_BOTSPIN_MAP',5,47), 
+('S19_BOTSPIN_MAP',6,57),
+('S19_BOTSPIN_MAP',7,64),
+('S19_BOTSPIN_MAP',8,72),
+
+('S19_TOPSPIN_MAP',1,1), 
+('S19_TOPSPIN_MAP',2,11), 
+('S19_TOPSPIN_MAP',3,28);
+
+
 delete from views where view_name = 'IDV_RACEPAN';
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
@@ -22,7 +44,11 @@ delete from machines where [name] like 'S19_DIEDROP%';
 delete from machines where [name] like 'sq_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES
-('40200', 'S19_DIEDROP', '40101', 'IDV_RACEPAN',497,138,604,245, '0','M16_DIEROLL','IDS_DICE','','', ''),
+('40200', 'S19_DIEDROP', '40101', 'IDV_RACEPAN',497,144,604,260, '0','M16_DIEROLL','IDS_DICE','','', ''),
+('40350', 'spinner_bottom', '40101', 'IDV_RACEPAN',435,0,600,133,'0','M19_BOTSPIN','IDS_BOTSPIN','8','S19_BOTSPIN_MAP',''),
+('40351', 'spinner_top', '40101', 'IDV_RACEPAN',435,0,600,133,'0','M19_TOPSPIN','IDS_TOPSPIN','3','S19_TOPSPIN_MAP',''),
+
+
 
 ('40201', 'sq_1_t', '40101', 'IDV_RACEPAN',240,217,253,235,'0','M19_SQUARE','','','',''),
 ('40202', 'sq_1_b', '40101', 'IDV_RACEPAN',240,237,253,256,'0','M19_SQUARE','','','',''),
@@ -160,7 +186,7 @@ VALUES
 
 
 
-delete from transitions where [automaton] like 'M19_SQUARE%';
+delete from transitions where [automaton] like 'M19_%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
@@ -170,32 +196,18 @@ VALUES
 ',''),
 ('M19_SQUARE', 'squareholding', 'squareempty', 'GRAB', '', '', 'SHOW();',''),
 ('M19_SQUARE', 'squareempty', 'resetting', 'WAIT', '','SIG_RESET', '',''),
-('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '','');
+('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+('M19_SPIN', '0', 'loaded', 'MOV', 'WSPRITE', 'WIP1', '', '', ''),
+('M19_SPIN', 'loaded', 'waiting', 'WAIT', '0', 'SIG_SPIN', '', '', ''),
+('M19_SPIN', 'waiting', 'spinning', 'ASHOW', 'WSPRITE', 'V_LOOP', '', '', ''),
+('M19_SPIN', 'spinning', 'picking', 'ESTIME', '', '2', '',''),
+('M19_SPIN', 'picking', 'lookup', 'RAND', 'WIP2','1','',''),
+('M19_SPIN','lookup','showframe','MOV','BFRAME', 'WRAND','
+    MAPi(BFRAME,WIP3);
+    SHOW(BFRAME);',''),
+('M19_BOTSPIN', 'showframe', 'loaded', 'Z_EPSILON', '','','','');  
 
 
 
