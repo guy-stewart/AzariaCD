@@ -5,6 +5,7 @@ delete from spr_names where [name] like 'IDS_TOPSPIN%';
 delete from spr_names where [name] like 'IDS_BOTSPIN%';
 insert into spr_names values ('IDS_TOPSPIN','tspin','40600');
 insert into spr_names values ('IDS_BOTSPIN','bspin','40601');
+insert into spr_names values ('IDS_TOPSPINFST','tspinfast','40602');
 
 delete from objects where object = 'IDD_PLAYER_W';
 delete from objects where object = 'IDD_PLAYER_B';
@@ -21,18 +22,23 @@ VALUES
 delete from map where op like 'S19_%';
 INSERT INTO "main"."map" ("op", "key", "value")
 VALUES 
-('S19_BOTSPIN_MAP',1,9), 
-('S19_BOTSPIN_MAP',2,17), 
-('S19_BOTSPIN_MAP',3,25), 
-('S19_BOTSPIN_MAP',4,34), 
-('S19_BOTSPIN_MAP',5,47), 
-('S19_BOTSPIN_MAP',6,57),
-('S19_BOTSPIN_MAP',7,64),
-('S19_BOTSPIN_MAP',8,72),
+('S19_BOTSPIN_MAP',1,2), 
+('S19_BOTSPIN_MAP',2,5), 
+('S19_BOTSPIN_MAP',3,8), 
+('S19_BOTSPIN_MAP',4,11), 
+('S19_BOTSPIN_MAP',5,14), 
+('S19_BOTSPIN_MAP',6,17),
+('S19_BOTSPIN_MAP',7,20),
+('S19_BOTSPIN_MAP',8,24),
 
 ('S19_TOPSPIN_MAP',1,1), 
-('S19_TOPSPIN_MAP',2,11), 
-('S19_TOPSPIN_MAP',3,28);
+('S19_TOPSPIN_MAP',2,4), 
+('S19_TOPSPIN_MAP',3,7),
+('S19_TOPSPIN_MAP',4,2),
+('S19_TOPSPIN_MAP',5,6),
+('S19_TOPSPIN_MAP',6,8),
+('S19_TOPSPIN_MAP',7,3),
+('S19_TOPSPIN_MAP',8,4);
 
 
 delete from views where view_name = 'IDV_RACEPAN';
@@ -40,13 +46,20 @@ INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "loc
 VALUES 
 ('40101', 'IDV_RACEPAN', '1', '0', '1', '1', 'wdepanel.vct', 'RACEPAN');
 
-delete from machines where [name] like 'S19_DIEDROP%';
+delete from machines where [name] like 'S19_%';
+delete from machines where [name] like 'spinner%';
 delete from machines where [name] like 'sq_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES
 ('40200', 'S19_DIEDROP', '40101', 'IDV_RACEPAN',497,144,604,260, '0','M16_DIEROLL','IDS_DICE','','', ''),
-('40350', 'spinner_bottom', '40101', 'IDV_RACEPAN',435,0,600,133,'0','M19_BOTSPIN','IDS_BOTSPIN','8','S19_BOTSPIN_MAP',''),
-('40351', 'spinner_top', '40101', 'IDV_RACEPAN',435,0,600,133,'0','M19_TOPSPIN','IDS_TOPSPIN','3','S19_TOPSPIN_MAP',''),
+
+('40350', 'S19_SPINNER_BUTTON', '40101', 'IDV_RACEPAN',557,41,589,72,'0','M19_BUTTON','S19_SPINNER_BOTTOM_PICK','S19_SPINNER_BOTTOM_SPIN','S19_SPINNER_TOP_PICK','S19_SPINNER_TOP_SPIN'),
+
+('40351', 'S19_SPINNER_TOP_SPIN', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_SPIN','IDS_TOPSPIN','','',''),
+('40352', 'S19_SPINNER_TOP_PICK', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_PICK','IDS_TOPSPIN',3,'S19_TOPSPIN_MAP',''),
+('40353', 'S19_SPINNER_BOTTOM_SPIN', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_SPIN','IDS_BOTSPIN','','',''),
+('40354', 'S19_SPINNER_BOTTOM_PICK', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP',''),
+
 
 
 
@@ -199,18 +212,33 @@ VALUES
 ('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
 
 
-('M19_SPIN', '0', 'loaded', 'MOV', 'WSPRITE', 'WIP1', '', '', ''),
-('M19_SPIN', 'loaded', 'waiting', 'WAIT', '0', 'SIG_SPIN', '', '', ''),
-('M19_SPIN', 'waiting', 'spinning', 'ASHOW', 'WSPRITE', 'V_LOOP', '', '', ''),
-('M19_SPIN', 'spinning', 'picking', 'ESTIME', '', '2', '',''),
-('M19_SPIN', 'picking', 'lookup', 'RAND', 'WIP2','1','',''),
-('M19_SPIN','lookup','showframe','MOV','BFRAME', 'WRAND','
-    MAPi(BFRAME,WIP3);
-    SHOW(BFRAME);',''),
-('M19_BOTSPIN', 'showframe', 'loaded', 'Z_EPSILON', '','','','');  
+('M19_PICK', '0', '1', 'MOV', 'WSPRITE', 'WIP1', '
+    ASSIGN(WTEMP1,0);
+', ''),
+('M19_PICK', '1', '2', 'RAND','8','1','',''),
+('M19_PICK','2','3','MOV','WTEMP1','WRAND','
+    MAPi(WTEMP1,WIP3);
+    MOV(BFRAME,WTEMP1);
+    SHOW(WSPRITE);
+',''),
+('M19_PICK', '3', '0', 'WAIT', '0', 'SIG_SPIN', '', ''),
 
 
 
+('M19_SPIN', '0', '1','WAIT', '0', 'SIG_SPIN', '', ''),
+('M19_SPIN', '1', '2', 'ASHOW', 'WIP1', 'V_LOOP','', ''),
+('M19_SPIN', '2', '3', 'ESTIME', '', '3', '',''),
+('M19_SPIN', '3', '4', 'CLEAR', 'WSPRITE', '', '',''),
+('M19_SPIN', '4', '0', 'SHOW', '0', '0', '',''),
+
+
+('M19_BUTTON', '0', '1','CLICK', '0', '', '
+    SIGNAL(WIP4, SIG_SPIN);
+    SIGNAL(WIP3, SIG_SPIN);
+     SIGNAL(WIP2, SIG_SPIN);
+     SIGNAL(WIP1, SIG_SPIN);
+', ''),
+('M19_BUTTON', '1', '0', 'Z_EPSILON', '', '', '','');
 
 
 
