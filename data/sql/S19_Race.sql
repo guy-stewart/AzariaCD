@@ -4,6 +4,7 @@ delete from games;
 delete from spr_names where [name] like 'IDS_TOPSPIN%';
 delete from spr_names where [name] like 'IDS_BOTSPIN%';
 delete from sounds where [name] like 'SOUND_SPIN%';
+
 insert into spr_names values ('IDS_TOPSPIN','tspin','40600');
 insert into spr_names values ('IDS_BOTSPIN','bspin','40601');
 insert into spr_names values ('IDS_TOPSPINFST','tspinfast','40602');
@@ -71,7 +72,70 @@ VALUES
 ('S19_COLOR_MAP',6,'BROWN_SQUARE'),
 ('S19_COLOR_MAP',7,'BROWN_SQUARE'),
 ('S19_COLOR_MAP',3,'VIOLET_SQUARE'),
-('S19_COLOR_MAP',4,'VIOLET_SQUARE');
+('S19_COLOR_MAP',4,'VIOLET_SQUARE'),
+
+('S19_SQUARE_MAP',1,'BLANK'),
+('S19_SQUARE_MAP',2,'BLANK'),
+('S19_SQUARE_MAP',3,'BLANK'),
+('S19_SQUARE_MAP',4,'BLANK'),
+('S19_SQUARE_MAP',5,'BLANK'),
+('S19_SQUARE_MAP',6,'BLANK'),
+('S19_SQUARE_MAP',7,'BLANK'),
+('S19_SQUARE_MAP',8,'BLANK'),
+('S19_SQUARE_MAP',9,'BLANK'),
+('S19_SQUARE_MAP',10,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',11,'BLANK'),
+('S19_SQUARE_MAP',12,'BLANK'),
+('S19_SQUARE_MAP',13,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',14,'BLANK'),
+('S19_SQUARE_MAP',15,'BLANK'),
+('S19_SQUARE_MAP',16,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',17,'BLANK'),
+('S19_SQUARE_MAP',18,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',19,'BLANK'),
+('S19_SQUARE_MAP',20,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',21,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',22,'BLANK'),
+('S19_SQUARE_MAP',23,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',24,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',25,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',26,'BLANK'),
+('S19_SQUARE_MAP',27,'BLANK'),
+('S19_SQUARE_MAP',28,'BLANK'),
+('S19_SQUARE_MAP',29,'BLANK'),
+('S19_SQUARE_MAP',30,'BLANK'),
+('S19_SQUARE_MAP',31,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',32,'BLANK'),
+('S19_SQUARE_MAP',33,'BLANK'),
+('S19_SQUARE_MAP',34,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',35,'BLANK'),
+('S19_SQUARE_MAP',36,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',37,'BLANK'),
+('S19_SQUARE_MAP',38,'BLANK'),
+('S19_SQUARE_MAP',39,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',40,'BLANK'),
+('S19_SQUARE_MAP',41,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',42,'BLANK'),
+('S19_SQUARE_MAP',43,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',44,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',45,'BLANK'),
+('S19_SQUARE_MAP',46,'GREEN_SQUARE'),
+('S19_SQUARE_MAP',47,'BLANK'),
+('S19_SQUARE_MAP',48,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',49,'GREEN_SQUARE'),
+('S19_SQUARE_MAP',50,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',51,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',52,'BLANK'),
+('S19_SQUARE_MAP',53,'GREEN_SQUARE'),
+('S19_SQUARE_MAP',54,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',55,'BROWN_SQUARE'),
+('S19_SQUARE_MAP',56,'BLANK'),
+('S19_SQUARE_MAP',57,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',58,'GREEN_SQUARE'),
+('S19_SQUARE_MAP',59,'BLANK'),
+('S19_SQUARE_MAP',60,'VIOLET_SQUARE'),
+('S19_SQUARE_MAP',61,'GREEN_SQUARE'),
+('S19_SQUARE_MAP',62,'BROWN_SQUARE');
 
 
 delete from views where view_name = 'IDV_RACEPAN';
@@ -92,13 +156,14 @@ VALUES
 ('40353', 'S19_SPINNER_BOTTOM_SPIN', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_SPIN','IDS_BOTSPIN','','',''),
 ('40354', 'S19_SPINNER_BOTTOM_PICK', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP',''),
 
-('40355', 'S19_SPELLCASTER', '40101', 'IDV_RACEPAN',8,208,20,225,'0','M19_SPELLCASTER','S19_SPINNER_TOP_PICK','S19_SPINNER_BOTTOM_PICK','',''),
+('40355', 'S19_SPELLCASTER', '40101', 'IDV_RACEPAN',8,208,20,225,'0','M19_SPELLCASTER','S19_SPINNER_TOP_PICK','S19_SPINNER_BOTTOM_PICK','S19_COLOR_MAP','S19_EVENT_MAP'),
 
 ('40356', 'S19_PLAYERWATCHER', '40101', 'IDV_RACEPAN',1,200,5,205,'0','M19_PLAYERWATCHER','','','',''),
 
 
 
-
+--did not need to put the colors here - squares don't need to pass their color anywhere - map is used
+-- this is better if we want to vary the squares
 ('40201', 'sq_1_t', '40101', 'IDV_RACEPAN',240,217,253,235,'0','M19_SQUARE','','SIG_1T','',''),
 ('40202', 'sq_1_b', '40101', 'IDV_RACEPAN',240,237,253,256,'0','M19_SQUARE','','SIG_1B','',''),
 ('40203', 'sq_2_t', '40101', 'IDV_RACEPAN',212,217,226,235,'0','M19_SQUARE','','SIG_2T','',''),
@@ -179,16 +244,12 @@ VALUES
 ('40280', 'sq_39_b','40101', 'IDV_RACEPAN',291,94,305,112,'0','M19_SQUARE','BROWN_SQUARE','SIG_39B','',''),
 ('40281', 'sq_40_t','40101', 'IDV_RACEPAN',320,74,333,91,'0','M19_SQUARE','','SIG_40T','',''),
 ('40282', 'sq_40_b','40101', 'IDV_RACEPAN',320,94,333,111,'0','M19_SQUARE','','SIG_40B','',''),
-
 ('40283', 'sq_41_t','40101', 'IDV_RACEPAN',345,75,358,91,'0','M19_SQUARE','VIOLET_SQUARE', 'SIG_41T','',''),
 ('40284', 'sq_41_b','40101', 'IDV_RACEPAN',344,95,359,112,'0','M19_SQUARE','VIOLET_SQUARE','SIG_41B','',''),
-
 ('40285', 'sq_42_t','40101', 'IDV_RACEPAN',371,81,390,95,'0','M19_SQUARE','','SIG_42T','',''),
 ('40286', 'sq_42_b','40101', 'IDV_RACEPAN',371,97,390,110,'0','M19_SQUARE','','SIG_42B','',''),
-
 ('40287', 'sq_43_t','40101', 'IDV_RACEPAN',370,115,388,134,'0','M19_SQUARE','BROWN_SQUARE','SIG_43T','',''),
 ('40288', 'sq_43_b','40101', 'IDV_RACEPAN',392,115,407,134,'0','M19_SQUARE','BROWN_SQUARE','SIG_43B','',''),
-
 ('40289', 'sq_44_t','40101', 'IDV_RACEPAN',370,142,388,159,'0','M19_SQUARE','VIOLET_SQUARE','SIG_44T','',''),
 ('40290', 'sq_44_b','40101', 'IDV_RACEPAN',390,142,408,159,'0','M19_SQUARE','VIOLET_SQUARE','SIG_44B','',''),
 ('40291', 'sq_45_t','40101', 'IDV_RACEPAN',386,163,404,176,'0','M19_SQUARE','','SIG_45T','',''),
@@ -219,10 +280,8 @@ VALUES
 ('40316', 'sq_57_b','40101', 'IDV_RACEPAN',312,49,325,67,'0','M19_SQUARE','VIOLET_SQUARE','SIG_57B','',''),
 ('40317', 'sq_58_t','40101', 'IDV_RACEPAN',286,29,299,47,'0','M19_SQUARE','GREEN_SQUARE','SIG_58T','',''),
 ('40318', 'sq_58_b','40101', 'IDV_RACEPAN',286,49,299,67,'0','M19_SQUARE','GREEN_SQUARE','SIG_58B','',''),
-
 ('40319', 'sq_59_t','40101', 'IDV_RACEPAN',263,29,276,47,'0','M19_SQUARE','','SIG_59T','',''),
 ('40320', 'sq_59_b','40101', 'IDV_RACEPAN',263,49,276,67,'0','M19_SQUARE','','SIG_59B','',''),
-
 ('40321', 'sq_60_t','40101', 'IDV_RACEPAN',236,29,249,47,'0','M19_SQUARE','VIOLET_SQUARE','SIG_60T','',''),
 ('40322', 'sq_60_b','40101', 'IDV_RACEPAN',236,49,249,67,'0','M19_SQUARE','VIOLET_SQUARE','SIG_60B','',''),
 ('40323', 'sq_61_t','40101', 'IDV_RACEPAN',209,29,221,47,'0','M19_SQUARE','GREEN_SQUARE','SIG_61T','',''),
@@ -241,16 +300,33 @@ VALUES
 
 ------------------------------------------------------------
 
-('M19_SPELLCASTER', '0', 'collectingTop', 'WAIT', '0', 'SIG_START', '', ''),
-('M19_SPELLCASTER', 'collectingTop', 'collectingBot', 'REF_MACHINE', 'WIP1','', '
+('M19_SPELLCASTER', '0', 'collectingColor', 'WAIT', '0', 'SIG_START', '', ''),
+('M19_SPELLCASTER', 'collectingColor', 'collectingEvent', 'REF_MACHINE', 'WIP1','', '
     //Top spinner frame
-    WPARM=R_WPARM;
-    
+    WTEMP1=R_WPARM;
+    MOV(WPARM,WTEMP1);
+    //color to attack violet,green, or brown square
+    MAPi(WPARM,WIP3);
 ', ''),
-('M19_SPELLCASTER', 'collectingBot', '3', 'REF_MACHINE', 'WIP2','', '
+('M19_SPELLCASTER', 'collectingEvent', 'findVictimOne', 'REF_MACHINE', 'WIP2','', '
     //Bottom spinner frame
-    BPARM=R_WPARM;
+    WTEMP2=R_WPARM;
+    MOV(BPARM,WTEMP2);
+    //event or spell to cast
+    MAPi(BPARM,WIP4);
 ', ''),
+('M19_SPELLCASTER', 'findVictimOne', '0', 'REF_MACHINE', '0', 'S19_PLAYERWATCHER', '
+    //R_WPARM is the squre theyre on,
+    //R_BPARM is either player object
+    //map the square theyre on to a color , then if it matches WPARM execute the event in BPARM
+    MOV(WTEMP1,R_WPARM);
+    MAPi(WTEMP1,S19_SQUARE_MAP); //
+    if(WTEMP1 == WPARM){PLAYWAVE(SOUND_CHIMES);}', ''),
+       
+
+
+
+
 
 
 ('M19_SQUARE', '0', 'squareempty', 'C_ACCEPT', '', 'ISA_PLAYTOKEN','ASSIGN(BPARM,0);CLEAR(WOBJECT);',''),
@@ -391,18 +467,14 @@ VALUES
 ('M19_PLAYERWATCHER', '1', '0', 'PLAYWAVE', '0', 'SOUND_CLICK', '',''),
 
 -- The bottom spinner, as the final spinner, should signal the spell to be cast 
--- a machine called spell caster is watching the board and gets
+-- a machine called spell caster gets
 -- the signal.  Spell caster looks at the picker which should have the mapped 
 -- result in WPARM in terms of frame shown
 -- spell caster will map the frames to colors and spells via the event and color map
 -- then needs to hit every relevant square where there is a player sitting
 -- with the spell.  
 -- 
--- Ok maybe like this: each square when landed upon, signals the playerwatcher with SIG_SquareNumber
--- then the player watcher looks at that square, references it and sets the appropriate registers
--- The squares know their color - spell caster goes to each square and sees if 
--- the state is squareholding, then gets the color and decides if it should apply the spell
--- How does spell caster know who owns the token?
+
 
 
 
@@ -411,7 +483,7 @@ VALUES
 
 
 
----------------SPINNERS Below
+---------------SPINNERS Below - but don't talk to them, they're pretty dumb
 
 
 ('M19_PICK', '0', 'setup', 'MOV', 'WSPRITE', 'WIP1', '
@@ -430,8 +502,12 @@ VALUES
 ('M19_SPIN', '0', '1','WAIT', '0', 'SIG_SPIN', 'PLAYWAVE(SOUND_SPIN);', ''),
 ('M19_SPIN', '1', '2', 'ASHOW', 'WIP1', 'V_LOOP','', ''),
 ('M19_SPIN', '2', '3', 'ESTIME', '', '4', '',''),
-('M19_SPIN', '3', '4', 'CLEAR', 'WSPRITE', '', '',''),
-('M19_SPIN', '4', '0', 'SHOW', '0', '0', '',''),
+('M19_SPIN', '3', 'reveal', 'CLEAR', 'WSPRITE', '', '',''),
+('M19_SPIN', 'reveal', '0', 'SHOW', '0', '0', '
+    if(WIP1 == IDS_BOTSPIN){
+        SIGNALi(SIG_START,S19_SPELLCASTER);
+    }
+',''),
 
 
 ('M19_BUTTON', '0', '1','CLICK', '0', '', '

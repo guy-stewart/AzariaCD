@@ -10,6 +10,8 @@ insert into spr_names values ('IDS_DICE_4','dice_4','25004');
 insert into spr_names values ('IDS_DICE_5','dice_5','25005');
 insert into spr_names values ('IDS_DICE_6','dice_6','25006');
 insert into spr_names values ('IDS_DICESHAKE','diceshake','25008');
+delete from sounds where [name] like 'SOUND_ONEDIEROLL%';
+insert into sounds values ('SOUND_ONEDIEROLL', 'diceroll',0);
 
 delete from objects where object = 'IDD_DICE';
 delete from objects where object = 'IDD_SHAKE';
@@ -211,7 +213,7 @@ VALUES
 ('M16_DIEROLL', '0', '2', 'O_ACCEPT', '0', 'IDD_DICE', '',''),
 ('M16_DIEROLL', '2', '3', 'DROP', '0', '0', '',''),
 ('M16_DIEROLL', '3', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
-('M16_DIEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', '',''),
+('M16_DIEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', 'PLAYWAVE(SOUND_ONEDIEROLL);',''),
 ('M16_DIEROLL', '5', '6', 'ESTIME', '', '2', '',''), 
 
 ('M16_DIEROLL','6','7','RAND','6','1','',''),
