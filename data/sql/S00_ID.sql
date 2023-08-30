@@ -1,20 +1,5 @@
 delete from games;
 
--- #define LKARMA      10 bad karma points
--- #define LSTRENGTH   
--- #define LWISDOM     up to 40 points 
--- #define LENERGY     up to 24 
--- #define LSEX        
--- #define LWEALTH     
--- #define LVIEW       
-
--- #define OKARMA      
--- #define OSTRENGTH   
--- #define OWISDOM     
--- #define OENERGY     
--- #define OSEX        
--- #define OWEALTH     
--- #define OVIEW       
 
 --Remove outdated sprites from spr_names
 delete from "main"."spr_names" where "name" like 'IDS_F4%';
@@ -24,6 +9,12 @@ delete from "main"."spr_names" where "name" like 'IDS_M4%';
 delete from "main"."spr_names" where "name" like 'IDS_M0%';
 delete from "main"."spr_names" where "name" like 'IDS_M5%';
 
+delete from "main"."spr_names" where "name" like 'IDS_M1EX';
+delete from "main"."spr_names" where "name" like 'IDS_M2EX';
+delete from "main"."spr_names" where "name" like 'IDS_M3EX';
+delete from "main"."spr_names" where "name" like 'IDS_F1EX';
+delete from "main"."spr_names" where "name" like 'IDS_F2EX';
+delete from "main"."spr_names" where "name" like 'IDS_F3EX';
 --add the death sprites for ids
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_F1EX', 'f1ex', '250');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_F2EX', 'f2ex', '251');
@@ -32,92 +23,7 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M1EX', 'm1ex
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M2EX', 'm2ex', '254');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M3EX', 'm3ex', '255');
 
-delete from "main"."machines" where [name] like 'SID_%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('64', 'SID_HALO', '3', 'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
-('65', 'SID_SPELL', '3', 'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
-('66', 'SID_ID', '3', 'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
 
-('68', 'SID_AURA', '3', 'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
-
-
-('56', 'SID_DEC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
-('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', '');
-
-
---Making a test view ------------------
-------------------------------------------------------
-delete from "main"."idv" where [name] like 'IDV_TESTPAN%';
-INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_TESTPAN', '40100');
-delete from "main"."views" where [view_name] like 'IDV_TESTPAN%';
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('40100', 'IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
-
-delete from "main"."machines" where [name] like 'S0_TEST%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('40110', 'S0_TEST_1', '40100', 'IDV_TESTPAN', '40', '70', '110', '135',  '0', 'M_TEST1', '', '', '', ''),
-('40111', 'S0_TEST_2', '40100', 'IDV_TESTPAN', '40', '148', '110', '212', '0', 'M_TEST2', '', '', '', ''),
-('40112', 'S0_TEST_3', '40100', 'IDV_TESTPAN', '40', '212', '110', '290', '0', 'M_TEST3', '', '', '', ''),
-('40113', 'S0_TEST_4', '40100', 'IDV_TESTPAN', '150', '70', '210', '135',  '0', 'M_TEST4', '', '', '', ''),
-('40114', 'S0_TEST_5', '40100', 'IDV_TESTPAN', '150', '148', '210', '212', '0', 'M_TEST5', '', '', '', ''),
-('40115', 'S0_TEST_6', '40100', 'IDV_TESTPAN', '150', '212', '210', '290', '0', 'M_TEST6', '', '', '', ''),
-('40116', 'S0_TEST_7', '40100', 'IDV_TESTPAN', '250', '70', '310', '135',  '0', 'M_TEST7', '', '', '', ''),
-('40117', 'S0_TEST_8', '40100', 'IDV_TESTPAN', '250', '148', '310', '212', '0', 'M_TEST8', '', '', '', ''),
-('40118', 'S0_TEST_9', '40100', 'IDV_TESTPAN', '250', '212', '310', '290', '0', 'M_TEST9', '', '', '', '');
-
-delete from "main"."machines" where [name] like 'SID_ID%';
-delete from "main"."machines" where [name] like 'SID_HALO%';
-delete from "main"."machines" where [name] like 'SID_AURA%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('64', 'SID_HALO', '3', 'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
-('66', 'SID_ID', '3', 'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
-('68', 'SID_AURA', '3', 'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', '');
-
-
-delete from "main"."transitions" where [automaton] like 'M_TEST%';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
-VALUES 
-('M_TEST1', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LENERGY,4);
-    SIGNAL(SID_AURA,SIG_ADD);
-', '', ''),
-('M_TEST2', '0', '0', 'CLICK', '0', '0', '
-    ADDI(LENERGY,1);
-    SIGNAL(SID_AURA,SIG_ADD);
-    ', '', ''),
-('M_TEST3', '0', '0', 'CLICK', '0', '0', '
-    SUBI(LENERGY,1);
-    SIGNAL(SID_AURA,SIG_SUB);
-    ', '', ''),
-('M_TEST4', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LKARMA,0);
-    SIGNAL(SID_HALO,SIG_ADD);
-', '', ''),
-('M_TEST5', '0', '0', 'CLICK', '0', '0', '
-    ADDI(LKARMA,1);
-    SIGNAL(SID_HALO,SIG_ADD);
-    ', '', ''),
-('M_TEST6', '0', '0', 'CLICK', '0', '0', '
-    SUBI(LKARMA,1);
-    SIGNAL(SID_HALO,SIG_SUB);
-    ', '', ''),
-('M_TEST7', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LWISDOM,2);
-    SIGNALi(0,SID_ID);
-', '', ''),
-('M_TEST8', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LWISDOM,25);
-    SIGNALi(0,SID_ID);
-', '', ''),
-('M_TEST9', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LWISDOM,40);
-    ASSIGN(LSEX,1);
-    SIGNALi(0,SID_ID);
-', '', '');
-------------------------------------------------------
 ------------------------------------------------------
 -- Adding map usage to auras to ensure the proper sprite
 delete from "main"."spr_names" where [name] like 'IDS_AURA%';
@@ -243,6 +149,20 @@ VALUES
 ('M3','wave','IDS_M3WAVE'),
 ('M3','dead','IDS_M3EX');
 
+
+
+delete from "main"."machines" where [name] like 'SID_%';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('64', 'SID_HALO', '3', 'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
+('65', 'SID_SPELL', '3', 'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
+('66', 'SID_ID', '3', 'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
+('68', 'SID_AURA', '3', 'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
+('56', 'SID_DEC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
+('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', '');
+
+
+
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
@@ -310,7 +230,7 @@ VALUES
 ', '', '');
 
 
-delete from "main"."transitions" where [automaton] like 'M_ID%';
+delete from "main"."transitions" where [automaton] = 'M_ID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 ('M_ID', '0', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
@@ -329,30 +249,29 @@ VALUES
 
 ('M_ID', '2', 'setId', 'EQUALi', 'LSEX', '1', '
     if(LWISDOM >= 30){
-       ASSIGN(WTEMP1,F3);
+       ASSIGN(WPARM,F3);
     }
      if(LWISDOM >= 20 && LWISDOM < 31){
-        ASSIGN(WTEMP1,F2);
+        ASSIGN(WPARM,F2);
     }
     if(LWISDOM < 20){
-       ASSIGN(WTEMP1,F1);
+       ASSIGN(WPARM,F1);
     }
 ', '', ''), 
 ('M_ID', '2', 'setId', 'NEQUALi', 'LSEX', '1', '
-
     if(LWISDOM >= 30){
-       ASSIGN(WTEMP1,M3);
+       ASSIGN(WPARM,M3);
     }
     if(LWISDOM >= 20 && LWISDOM < 31){
-        ASSIGN(WTEMP1,M2);
+        ASSIGN(WPARM,M2);
     }
     if(LWISDOM < 20){
-       ASSIGN(WTEMP1,M1);
+       ASSIGN(WPARM,M1);
     }
 ', '', ''), 
 
 ('M_ID', 'setId', '0', 'ASSIGN', 'WSPRITE', 'happy', '
-    MAP(WSPRITE,WTEMP1);
+    MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
     SHOW(WSPRITE);
 ', '', ''),
@@ -372,12 +291,12 @@ VALUES
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '', '', ''),
 
 ('M_ID', 'playForward', '0', 'ASSIGN', 'BFRAME', '0', '
-    MAP(WSPRITE,WTEMP1);
+    MAP(WSPRITE,WPARM);
     SHOW(WSPRITE);
     ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK
 ', '', ''),
-('M_ID', 'playOnce', '0', 'MAP', 'WSPRITE', 'WTEMP1', '
-    ASSIGN(BFRAME,0);
+('M_ID', 'playOnce', '0', 'ASSIGN', 'BFRAME', '0', '
+    MAP(WSPRITE,WPARM);
     SHOW(WSPRITE);
     ANIMATE(0,0);
 ', '', ''),
@@ -386,6 +305,34 @@ VALUES
 ('M_ID', '101', '0', 'SIGNAL', 'WIP4', 'SIG_CLEAR', '', '', '');
 
 
+delete from "main"."transitions" where [automaton] like 'M_IDSPELL%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
+VALUES 
+
+('M_IDSPELL',0,100,'DROP','0','0', '', '', ''),
+('M_IDSPELL',1,2,'SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
+('M_IDSPELL',2,3,'PLAYWAVE','0','SOUND_POPUP', '', '', ''),
+('M_IDSPELL',3,4,'ASHOW','WOBJECT','', '', '', ''),
+('M_IDSPELL',4,100,'DROP','0','0', '', '', ''),
+('M_IDSPELL',4,10,'GRAB','0','0', '', '', ''),
+('M_IDSPELL',4,20,'WAIT','0','SIG_BURST', '', '', ''),
+('M_IDSPELL',4,2,'WAIT','0','0', '', '', ''),
+('M_IDSPELL',10,12,'EQUALi','WVIEWID','0', '', '', ''),
+('M_IDSPELL',10,11,'LOADVIEW','WVIEWID','', '', '', ''),
+('M_IDSPELL',11,12,'CLEAR','WVIEWID','', '', '', ''),
+('M_IDSPELL',12,13,'SHOW','0','0', '', '', ''),
+('M_IDSPELL',13,0,'SPELL_ME','WOBJECT','SIG_CLEAR', '', '', ''),
+('M_IDSPELL',20,21,'CLEAR','WOBJECT','', '', '', ''),
+('M_IDSPELL',21,22,'SHOW','0','0', '', '', ''),
+('M_IDSPELL',22,0,'VIDEO','0','IDS_SMBURST', '', '', ''),
+('M_IDSPELL',100,101,'CLEAR','WVIEWID','', '', '', ''),
+('M_IDSPELL',101,102,'IS_A','WOBJECT','IDC_BOMB', '', '', ''),
+('M_IDSPELL',101,120,'IS_A','WOBJECT','IDC_SCROLL', '', '', ''),
+('M_IDSPELL',101,1,'Z_EPSILON','0','0', '', '', ''),
+('M_IDSPELL',102,0,'SPELL_ME','0','SIG_BOMB', '', '', ''),
+('M_IDSPELL',120,121,'MOV','WTEMP1','WOBJECT', '', '', ''),
+('M_IDSPELL',121,122,'MOV','WVIEWID','LVIEW', '', '', ''),
+('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', '');
 
 
 
@@ -393,10 +340,72 @@ VALUES
 
 
 
+--Making a test view ------------------
+------------------------------------------------------
+------------------------------------------------------
+
+delete from "main"."idv" where [name] like 'IDV_TESTPAN%';
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_TESTPAN', '40100');
+delete from "main"."views" where [view_name] like 'IDV_TESTPAN%';
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('40100', 'IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
+
+delete from "main"."machines" where [name] like 'S0_TEST%';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('40110', 'S0_TEST_1', '40100', 'IDV_TESTPAN', '40', '70', '110', '135',  '0', 'M_TEST1', '', '', '', ''),
+('40111', 'S0_TEST_2', '40100', 'IDV_TESTPAN', '40', '148', '110', '212', '0', 'M_TEST2', '', '', '', ''),
+('40112', 'S0_TEST_3', '40100', 'IDV_TESTPAN', '40', '212', '110', '290', '0', 'M_TEST3', '', '', '', ''),
+('40113', 'S0_TEST_4', '40100', 'IDV_TESTPAN', '150', '70', '210', '135',  '0', 'M_TEST4', '', '', '', ''),
+('40114', 'S0_TEST_5', '40100', 'IDV_TESTPAN', '150', '148', '210', '212', '0', 'M_TEST5', '', '', '', ''),
+('40115', 'S0_TEST_6', '40100', 'IDV_TESTPAN', '150', '212', '210', '290', '0', 'M_TEST6', '', '', '', ''),
+('40116', 'S0_TEST_7', '40100', 'IDV_TESTPAN', '250', '70', '310', '135',  '0', 'M_TEST7', '', '', '', ''),
+('40117', 'S0_TEST_8', '40100', 'IDV_TESTPAN', '250', '148', '310', '212', '0', 'M_TEST8', '', '', '', ''),
+('40118', 'S0_TEST_9', '40100', 'IDV_TESTPAN', '250', '212', '310', '290', '0', 'M_TEST9', '', '', '', '');
 
 
 
-
+delete from "main"."transitions" where [automaton] like 'M_TEST%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
+VALUES 
+('M_TEST1', '0', '0', 'CLICK', '0', '0', '
+    ASSIGN(LENERGY,4);
+    SIGNAL(SID_AURA,SIG_ADD);
+', '', ''),
+('M_TEST2', '0', '0', 'CLICK', '0', '0', '
+    ADDI(LENERGY,1);
+    SIGNAL(SID_AURA,SIG_ADD);
+    ', '', ''),
+('M_TEST3', '0', '0', 'CLICK', '0', '0', '
+    SUBI(LENERGY,1);
+    SIGNAL(SID_AURA,SIG_SUB);
+    ', '', ''),
+('M_TEST4', '0', '0', 'CLICK', '0', '0', '
+    ASSIGN(LKARMA,0);
+    SIGNAL(SID_HALO,SIG_ADD);
+', '', ''),
+('M_TEST5', '0', '0', 'CLICK', '0', '0', '
+    ADDI(LKARMA,1);
+    SIGNAL(SID_HALO,SIG_ADD);
+    ', '', ''),
+('M_TEST6', '0', '0', 'CLICK', '0', '0', '
+    SUBI(LKARMA,1);
+    SIGNAL(SID_HALO,SIG_SUB);
+    ', '', ''),
+('M_TEST7', '0', '0', 'CLICK', '0', '0', '
+    ASSIGN(LWISDOM,2);
+    SIGNALi(0,SID_ID);
+', '', ''),
+('M_TEST8', '0', '0', 'CLICK', '0', '0', '
+    ASSIGN(LWISDOM,25);
+    SIGNALi(0,SID_ID);
+', '', ''),
+('M_TEST9', '0', '0', 'CLICK', '0', '0', '
+    ASSIGN(LWISDOM,40);
+    ASSIGN(LSEX,1);
+    SIGNALi(0,SID_ID);
+', '', '');
+------------------------------------------------------
 
 
 
@@ -454,7 +463,23 @@ VALUES
 -- ('M_ID', '100', '101', 'SHOW', '0', '0', '', '', ''),
 -- ('M_ID', '101', '0', 'SIGNAL', 'WIP4', 'SIG_CLEAR', '', '', '');
 
+------------
 
+-- #define LKARMA      10 bad karma points
+-- #define LSTRENGTH   
+-- #define LWISDOM     up to 40 points 
+-- #define LENERGY     up to 24 
+-- #define LSEX        
+-- #define LWEALTH     
+-- #define LVIEW       
+
+-- #define OKARMA      
+-- #define OSTRENGTH   
+-- #define OWISDOM     
+-- #define OENERGY     
+-- #define OSEX        
+-- #define OWEALTH     
+-- #define OVIEW       
 
 
 

@@ -151,10 +151,10 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 VALUES
 ('40200', 'S19_DIEDROP', '40101', 'IDV_RACEPAN',497,144,604,260, '0','M16_DIEROLL','IDS_DICE','','', ''),
 ('40350', 'S19_SPINNER_BUTTON', '40101', 'IDV_RACEPAN',557,41,589,72,'0','M19_BUTTON','S19_SPINNER_BOTTOM_PICK','S19_SPINNER_BOTTOM_SPIN','S19_SPINNER_TOP_PICK','S19_SPINNER_TOP_SPIN'),
-('40351', 'S19_SPINNER_TOP_SPIN', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_SPIN','IDS_TOPSPIN','','',''),
-('40352', 'S19_SPINNER_TOP_PICK', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_PICK','IDS_TOPSPIN',3,'S19_TOPSPIN_MAP',''),
-('40353', 'S19_SPINNER_BOTTOM_SPIN', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_SPIN','IDS_BOTSPIN','','',''),
-('40354', 'S19_SPINNER_BOTTOM_PICK', '40101', 'IDV_RACEPAN',435,0,552,45,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP',''),
+('40351', 'S19_SPINNER_TOP_SPIN', '40101', 'IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_TOPSPIN','','',''),
+('40352', 'S19_SPINNER_TOP_PICK', '40101', 'IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_TOPSPIN',3,'S19_TOPSPIN_MAP',''),
+('40353', 'S19_SPINNER_BOTTOM_SPIN', '40101', 'IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_BOTSPIN','','',''),
+('40354', 'S19_SPINNER_BOTTOM_PICK', '40101', 'IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP',''),
 
 ('40355', 'S19_SPELLCASTER', '40101', 'IDV_RACEPAN',8,208,20,225,'0','M19_SPELLCASTER','S19_SPINNER_TOP_PICK','S19_SPINNER_BOTTOM_PICK','S19_COLOR_MAP','S19_EVENT_MAP'),
 
@@ -266,10 +266,10 @@ VALUES
 ('40302', 'sq_50_b','40101', 'IDV_RACEPAN',458,93,477,110,'0','M19_SQUARE','VIOLET_SQUARE','SIG_50B','',''),
 ('40303', 'sq_51_t','40101', 'IDV_RACEPAN',437,69,455,85,'0','M19_SQUARE','BROWN_SQUARE','SIG_51T','',''),
 ('40304', 'sq_51_b','40101', 'IDV_RACEPAN',457,69,475,85,'0','M19_SQUARE','BROWN_SQUARE','SIG_51B','',''),
-('40305', 'sq_52_t','40101', 'IDV_RACEPAN',438,32,456,48,'0','M19_SQUARE','','SIG_52T','',''),
-('40306', 'sq_52_b','40101', 'IDV_RACEPAN',438,48,456,64,'0','M19_SQUARE','','SIG_52B','',''),
-('40307', 'sq_53_t','40101', 'IDV_RACEPAN',417,29,430,48,'0','M19_SQUARE','GREEN_SQUARE','SIG_53T','',''),
-('40308', 'sq_53_b','40101', 'IDV_RACEPAN',417,49,430,67,'0','M19_SQUARE','GREEN_SQUARE','SIG_53B','',''),
+('40305', 'sq_52_t','40101', 'IDV_RACEPAN',434,35,450,47,'0','M19_SQUARE','','SIG_52T','',''),
+('40306', 'sq_52_b','40101', 'IDV_RACEPAN',434,50,452,63,'0','M19_SQUARE','','SIG_52B','',''),
+('40307', 'sq_53_t','40101', 'IDV_RACEPAN',414,29,430,44,'0','M19_SQUARE','GREEN_SQUARE','SIG_53T','',''),
+('40308', 'sq_53_b','40101', 'IDV_RACEPAN',414,49,430,61,'0','M19_SQUARE','GREEN_SQUARE','SIG_53B','',''),
 ('40309', 'sq_54_t','40101', 'IDV_RACEPAN',391,29,404,47,'0','M19_SQUARE','VIOLET_SQUARE','SIG_54T','',''),
 ('40310', 'sq_54_b','40101', 'IDV_RACEPAN',391,49,404,67,'0','M19_SQUARE','VIOLET_SQUARE','SIG_54B','',''),
 ('40311', 'sq_55_t','40101', 'IDV_RACEPAN',365,29,378,47,'0','M19_SQUARE','BROWN_SQUARE','SIG_55T','',''),
@@ -315,18 +315,42 @@ VALUES
     //event or spell to cast
     MAPi(BPARM,WIP4);
 ', ''),
-('M19_SPELLCASTER', 'findVictimOne', '0', 'REF_MACHINE', '0', 'S19_PLAYERWATCHER', '
+('M19_SPELLCASTER', 'findVictimOne', 'castspell', 'REF_MACHINE', '0', 'S19_PLAYERWATCHER', '
     //R_WPARM is the squre theyre on,
     //R_BPARM is either player object
     //map the square theyre on to a color , then if it matches WPARM execute the event in BPARM
     MOV(WTEMP1,R_WPARM);
-    MAPi(WTEMP1,S19_SQUARE_MAP); //
-    if(WTEMP1 == WPARM){PLAYWAVE(SOUND_CHIMES);}', ''),
-       
-
-
-
-
+    MAPi(WTEMP1,S19_SQUARE_MAP);', ''),
+('M19_SPELLCASTER', 'castspell', 'pickspell', 'EQUAL', 'WTEMP1', 'WPARM', '', ''),   
+('M19_SPELLCASTER', 'castspell', '0', 'Z_EPSILON', '0', '', '', ''), 
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb1', '
+    SIGNAL(SID_ID,SIG_BOMB);
+    SUBI(LENERGY,1);
+    SIGNAL(SID_AURA,SIG_SUB);
+', ''),        
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb2', '
+    SIGNAL(SID_ID,SIG_BOMB);
+    SUBI(LENERGY,2);
+    SIGNAL(SID_AURA,SIG_SUB);
+', ''), 
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb3', '
+    SIGNAL(SID_ID,SIG_BOMB);
+    SUBI(LENERGY,3);
+    SIGNAL(SID_AURA,SIG_SUB);
+', ''), 
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'wealth', '
+    SIGNAL(SID_ID,SIG_HAPPY);
+    ADDI(LWEALTH,10);
+', ''), 
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'banish', '
+    LOADVIEW(IDV_BANISH);
+', ''), 
+('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'gopa', '
+    ADDI(LENERGY,5);
+    SIGNAL(SID_AURA,SIG_ADD);
+', ''), 
+('M19_SPELLCASTER', 'pickspell', '0', 'Z_EPSILON', '', '', '', ''), 
+('M19_SPELLCASTER', 'done', '0', 'Z_EPSILON', '', '', '', ''),
 
 
 ('M19_SQUARE', '0', 'squareempty', 'C_ACCEPT', '', 'ISA_PLAYTOKEN','ASSIGN(BPARM,0);CLEAR(WOBJECT);',''),
@@ -473,7 +497,8 @@ VALUES
 -- spell caster will map the frames to colors and spells via the event and color map
 -- then needs to hit every relevant square where there is a player sitting
 -- with the spell.  
--- 
+-- The squares now signal to report their latest holding to the playerwatcher so that
+-- the spellcaster can just check the playerwatcher to find victims
 
 
 
