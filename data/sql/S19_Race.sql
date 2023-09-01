@@ -3,11 +3,13 @@ delete from games;
 
 delete from spr_names where [name] like 'IDS_TOPSPIN%';
 delete from spr_names where [name] like 'IDS_BOTSPIN%';
+delete from spr_names where [name] like 'IDS_SPITTOON';
 delete from sounds where [name] like 'SOUND_SPIN%';
 
 insert into spr_names values ('IDS_TOPSPIN','tspin','40600');
 insert into spr_names values ('IDS_BOTSPIN','bspin','40601');
 insert into spr_names values ('IDS_TOPSPINFST','tspinfast','40602');
+insert into spr_names values ('IDS_SPITTOON','spittoon','40610');
 insert into sounds values ('SOUND_SPIN', 'spin',0);
 
 delete from objects where object = 'IDD_PLAYER_W';
@@ -31,6 +33,42 @@ VALUES
 ('BROWN_SQUARE', 2),
 ('GREEN_SQUARE', 3);
 
+delete from "main"."constants" where name = 'bomb1';
+delete from "main"."constants" where name = 'frozen';
+delete from "main"."constants" where name = 'banish';
+delete from "main"."constants" where name = 'gopa';
+delete from "main"."constants" where name = 'bomb3';
+delete from "main"."constants" where name = 'back5';
+delete from "main"."constants" where name = 'bomb2';
+delete from "main"."constants" where name = 'wealth';
+
+INSERT INTO "main"."constants" ("name", "value") 
+VALUES 
+('bomb1', 1),
+('frozen', 2),
+('banish', 3),
+('gopa', 4),
+('bomb3', 5),
+('back5', 6),
+('bomb2', 7),
+('wealth', 8);
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO "main"."constants" ("name", "value") 
+VALUES 
+('VIOLET_SQUARE', 1),
+('BROWN_SQUARE', 2),
+('GREEN_SQUARE', 3);
 
 delete from map where op like 'S19_%';
 INSERT INTO "main"."map" ("op", "key", "value")
@@ -56,14 +94,14 @@ VALUES
 --KEY is the frame, value is the spell or color landed
 -- frozen could be the loose a turn spell
 -- 
-('S19_EVENT_MAP',2,'bomb1'),
-('S19_EVENT_MAP',5,'frozen'), --loose turn
-('S19_EVENT_MAP',8,'banish'),
+('S19_EVENT_MAP',2, 'bomb1'),
+('S19_EVENT_MAP',5, 'frozen'), 
+('S19_EVENT_MAP',8, 'banish'),
 ('S19_EVENT_MAP',11,'gopa'),
 ('S19_EVENT_MAP',14,'bomb3'),
 ('S19_EVENT_MAP',17,'back5'),
 ('S19_EVENT_MAP',20,'bomb2'),
-('S19_EVENT_MAP',0,'wealth'),
+('S19_EVENT_MAP',0, 'wealth'),
 
 ('S19_COLOR_MAP',1,'GREEN_SQUARE'),
 ('S19_COLOR_MAP',4,'VIOLET_SQUARE'), 
@@ -160,10 +198,15 @@ VALUES
 
 ('40356', 'S19_PLAYERWATCHER', '40101', 'IDV_RACEPAN',1,200,5,205,'0','M19_PLAYERWATCHER','','','',''),
 
+('40357', 'S19_PAYRESET', '40101', 'IDV_RACEPAN',9,217,69,287,'0','M19_PAYBUCKET','IDS_SPITTOON',2,'', ''),
 
 
 --did not need to put the colors here - squares don't need to pass their color anywhere - map is used
 -- this is better if we want to vary the squares
+('40330', 'sq_0_b', '40101', 'IDV_RACEPAN',264,237,281,256,'0','M19_HOLDER','','IDD_PLAYER_B','',''),
+('40331', 'sq_0_t', '40101', 'IDV_RACEPAN',264,221,281,236,'0','M19_HOLDER','','IDD_PLAYER_W','',''),
+('40331', 'S19_DICEHOLD', '40101', 'IDV_RACEPAN',293,232,346,278,'0','M19_DICEHOLD','','','',''),
+
 ('40201', 'sq_1_t', '40101', 'IDV_RACEPAN',240,217,253,235,'0','M19_SQUARE','','SIG_1T','',''),
 ('40202', 'sq_1_b', '40101', 'IDV_RACEPAN',240,237,253,256,'0','M19_SQUARE','','SIG_1B','',''),
 ('40203', 'sq_2_t', '40101', 'IDV_RACEPAN',212,217,226,235,'0','M19_SQUARE','','SIG_2T','',''),
@@ -194,8 +237,8 @@ VALUES
 ('40228', 'sq_14_b', '40101', 'IDV_RACEPAN',290,196,303,214,'0','M19_SQUARE','','SIG_14B','',''),
 ('40229', 'sq_15_t', '40101', 'IDV_RACEPAN',319,179,337,192,'0','M19_SQUARE','','SIG_15T','',''),
 ('40230', 'sq_15_b', '40101', 'IDV_RACEPAN',319,196,337,208,'0','M19_SQUARE','','SIG_15B','',''),
-('40231', 'sq_16_t','40101', 'IDV_RACEPAN',316,159,334,172,'0','M19_SQUARE','VIOLET_SQUARE','SIG_16T','',''),
-('40232', 'sq_16_b','40101', 'IDV_RACEPAN',336,159,336,159,'0','M19_SQUARE','VIOLET_SQUARE','SIG_16B','',''),
+('40231', 'sq_16_t','40101', 'IDV_RACEPAN',316,155,332,172,'0','M19_SQUARE','VIOLET_SQUARE','SIG_16T','',''),
+('40232', 'sq_16_b','40101', 'IDV_RACEPAN',338,155,354,172,'0','M19_SQUARE','VIOLET_SQUARE','SIG_16B','',''),
 ('40233', 'sq_17_t','40101', 'IDV_RACEPAN',317,119,335,132,'0','M19_SQUARE','','SIG_17T','',''),
 ('40234', 'sq_17_b','40101', 'IDV_RACEPAN',317,135,335,148,'0','M19_SQUARE','','SIG_17B','',''),
 ('40235', 'sq_18_t','40101', 'IDV_RACEPAN',297,116,312,131,'0','M19_SQUARE','BROWN_SQUARE','SIG_18T','',''),
@@ -343,7 +386,7 @@ VALUES
     ADDI(LWEALTH,10);
 ', ''), 
 ('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'banish', '
-    LOADVIEW(IDV_BANISH);
+    LOADVIEW(0,IDV_BANISH);
 ', ''), 
 ('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'gopa', '
     ADDI(LENERGY,5);
@@ -362,6 +405,54 @@ VALUES
 ('M19_SQUARE', 'squareholding', 'squareempty', 'GRAB', '', '', 'SHOW();',''),
 ('M19_SQUARE', 'squareempty', 'resetting', 'WAIT', '','SIG_RESET', '',''),
 ('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+
+
+('M19_HOLDER', '0', 'present', 'ACCEPT', '', 'WIP2', '
+    MOV(WOBJECT,WIP2);
+    SHOW(WOBJECT);
+',''),
+('M19_HOLDER', 'present', 'empty', 'GRAB', '', 'IDD_PLAYER_B', 'SHOW();','WIP2 == IDD_PLAYER_B'),
+('M19_HOLDER', 'present', 'empty', 'GRAB', '', 'IDD_PLAYER_W', 'SHOW();','WIP2 == IDD_PLAYER_W'),
+('M19_HOLDER', 'empty', '0', 'DROP', '', '', '',''),
+('M19_HOLDER', 'empty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
+('M19_HOLDER', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+
+('M19_DICEHOLD', '0', 'presentdie', 'WAIT', '', 'SIG_RESET', '
+     MOV(WOBJECT,IDD_DICE);
+     SHOW(WOBJECT);
+',''),
+('M19_DICEHOLD', 'presentdie', '0', 'GRAB', '', 'IDD_DICE', '
+    SHOW();
+',''),
+
+('M19_PAYBUCKET', '0', 'setup', 'MOV','BFRAME','0', '
+    ASSIGN(WSPRITE,WIP1);
+    SHOW(WSPRITE);
+    /* BPARM = what you payed
+    WPARM = Total owed 
+    */
+    ASSIGN(BPARM,0); 
+    ASSIGN(WPARM,WIP2);
+',''),
+('M19_PAYBUCKET', 'setup', 'accept_pay', 'CLICK', '', '', '
+    ADDI(BFRAME,1);
+',''),
+('M19_PAYBUCKET', 'accept_pay', 'check_scoop', 'DRAG', 'IDD_SCOOPF', '', '
+    HANDOFF(0,IDD_SCOOPE);
+    PLAYWAVE(0,SOUND_SPIT);
+    ADDI(BPARM,1); 
+',''),
+('M19_PAYBUCKET', 'check_scoop', 'paid_in_full', 'EQUAL', 'BPARM', 'WPARM', '',''),
+('M19_PAYBUCKET', 'check_scoop', 'accept_pay', 'Z_EPSILON', '', '', '',''),
+('M19_PAYBUCKET', 'paid_in_full', '0', 'Z_EPSILON', '', '', '
+    PLAYWAVE(0,SOUND_LEVER);
+    SIGNAL(sq_0_t,SIG_RESET);
+    SIGNAL(sq_0_b,SIG_RESET);
+     SIGNAL(S19_DICEHOLD,SIG_RESET);
+    SUBI(BFRAME,1);
+',''),
+
+
 
 --playerwatcher - the last square machine to signal will set state (need to differentiate by BPARM for multiplayer)
 ('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_1T', 'MOV(WPARM,1);REF_MACHINE(0,sq_1_t);MOV(BPARM,R_BPARM);',''),

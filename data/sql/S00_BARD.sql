@@ -7,7 +7,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ('M_BARD', '10', 'hideStuff', 'Z_EPSILON', '', '', '', '', ''),
 
-('M_BARD', '20', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
+('M_BARD', '10', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
 ('M_BARD', 'FWcountdown', 'summonFoulWind', 'ESTIME', '0', '1500', '', '', ''),
 ('M_BARD', 'summonFoulWind', 'FWcountdown', 'SIGNALi', '0', 'S17_aFOULWIND', '', '', ''),
 --inserting hiding stuff and and other one off signals then go to timed loop
