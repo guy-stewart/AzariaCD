@@ -197,7 +197,6 @@ VALUES
 
 delete from "main"."transitions" where [automaton] like 'M_PED%';
 delete from "main"."transitions" where [automaton] like 'M_HALO%';
--- This one definately has to be re-done
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc")
 VALUES 
 --('M_HALO', '0', '1', 'ASHOW', '0', 'IDS_HALO00', '', '', '');
