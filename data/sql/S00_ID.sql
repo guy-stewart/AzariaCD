@@ -161,7 +161,13 @@ VALUES
 ('56', 'SID_DEC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
 ('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', '');
 
-
+delete from "main"."machines" where [name] like 'SOD_%';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
+('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
+('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', ''),
 
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 

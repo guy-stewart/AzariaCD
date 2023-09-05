@@ -3,15 +3,24 @@ delete from games;
 -- ASSETS:
 delete from spr_names where name = 'IDS_LEVANI';
 delete from spr_names where name = 'IDS_MAPOPN';
+delete from spr_names where [name] like 'IDS_DIARY1%';
 delete from sounds where name = 'SOUND_LEVER';
 
+insert into spr_names values ('IDS_DIARY1_BIN','DIARY1_BIN',0);
 insert into spr_names values ('IDS_LEVANI','levani',0);
 insert into sounds values ('SOUND_LEVER', 'lever',0);
 insert into spr_names values ('IDS_MAPOPN','MAPOPN',0);
 
+delete from objects where [object] like 'IDD_DIARY1%';
+insert into objects values
+('IDD_DIARY1',40401,'IDC_NULL','DIARY1','DIARY1','DIARY1');
+
+
+
 delete from machines where name = 'S21_MAPOPEN';
 delete from machines where name = 'S21_LEVSTOP';
 delete from machines where name = 'S21_LEVER';
+
 
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
@@ -35,8 +44,8 @@ M_LEVER:                                              /                     \
 */
 
 
-delete from  "main"."transitions" where name = 'M_LEVER';
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2","code")
+delete from  "main"."transitions" where automaton = 'M_LEVER';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code")
  VALUES 
     ('M_LEVER', '0', '1', 'MOV', 'BFRAME', '0',''),
     ('M_LEVER', '1', '2', 'SHOW', 'WIP1', '',''),
@@ -57,8 +66,8 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVER', '16', '2', 'SHOW', 'WIP1', '','');
 
 
-delete from  "main"."transitions" where name = 'M_LEVSTOP';
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
+delete from  "main"."transitions" where automaton = 'M_LEVSTOP';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
  VALUES 
     ('M_LEVSTOP', '0', '10', 'O_ACCEPT', '0', 'IDD_ROCK',''),
     ('M_LEVSTOP', '10', '30', 'DROP', '0', '0',''),
@@ -69,9 +78,9 @@ INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param
     ('M_LEVSTOP', '70', '10', 'SHOW', '0', '0','');
 
 
-delete from  "main"."transitions" where name = 'M_LEVDOOR';
+delete from  "main"."transitions" where automaton = 'M_LEVDOOR';
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES     
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES     
    
     ('M_LEVDOOR', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
     ('M_LEVDOOR', '1', '3', 'MOV', 'WSPRITE', 'WIP1',''),
@@ -90,9 +99,9 @@ VALUES
 ('8468', 'S21_ALT_LEVER', '8101', 'IDV_N2B', '1556', '142', '1565', '147', '0', 'M_STATESCALE', 'IDS_LEVOPNSML','','',''),
 ('8469', 'S21_ALT_MAPBOX', '8103', 'IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALE', 'IDS_MAPBOXSML','','','');
 
-delete from  "main"."transitions" where name = 'M_STATESCALE';
+delete from  "main"."transitions" where automaton = 'M_STATESCALE';
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES 
 
 ('M_STATESCALE', '0', '1', 'WAIT', '0', 'SIG_SHOW',''),
 ('M_STATESCALE', '1', '5', 'MOV', 'WSPRITE', 'WIP1',''),
@@ -108,6 +117,7 @@ INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", 
 delete from  "main"."machines" where name = 'S21_ROCKBIN1';
 delete from  "main"."machines" where name = 'S21_MAPBIN';
 delete from  "main"."machines" where name = 'S21_MAPTEXT';
+delete from  "main"."machines" where name = 'S21_DIARY1BIN';
 delete from machines where [name] like 'S21_m1B%';
 delete from machines where [name] like 'S21_m2B%';
 delete from machines where [name] like 'S21_m3B%';
@@ -116,6 +126,7 @@ delete from machines where [name] like 'S21_m4B%';
 delete from machines where [name] like 'S21_m5B%';
 delete from machines where [name] like 'S21_p%';
 delete from machines where [name] like 'S21_o%';
+
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
  VALUES 
@@ -143,5 +154,6 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
     --8471 ->
 
    ('8471', 'S21_MAPBIN', '8106', 'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
-   ('8472', 'S21_MAPTEXT', '8106', 'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', '');
+   ('8472', 'S21_MAPTEXT', '8106', 'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
+   ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '251', '197', '300','', '225', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', '');
    
