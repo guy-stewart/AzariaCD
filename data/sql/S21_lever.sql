@@ -155,5 +155,4 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
    ('8471', 'S21_MAPBIN', '8106', 'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
    ('8472', 'S21_MAPTEXT', '8106', 'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
-   ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '1109', '161', '1195','', '266', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', '');
---    ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '251', '197', '300','', '225', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', '');
+  ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '251', '197', '300','225', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', '');

@@ -174,9 +174,10 @@ insert into map ([op],[key],[value]) values
 ('CARD_COST','IDD_CARD28','10'),
 ('CARD_COST','IDD_CARD29','2'),
 ('CARD_COST','IDD_CARD30','4'),
-('CARD_CHEM1','IDD_CARD00','IDD_CHEMV00'),
-('CARD_CHEM1','IDD_CARD01','IDD_CHEMV00'),
-('CARD_CHEM1','IDD_CARD02','IDD_CHEMV01'),
+
+('CARD_CHEM1','IDD_CARD00','IDD_CHEMV01'),
+('CARD_CHEM1','IDD_CARD01','IDD_CHEMV02'),
+('CARD_CHEM1','IDD_CARD02','IDD_CHEMV03'),
 ('CARD_CHEM1','IDD_CARD03','IDD_CHEMV07'),
 ('CARD_CHEM1','IDD_CARD04','IDD_CHEMV08'),
 ('CARD_CHEM1','IDD_CARD05','IDD_CHEMV09'),
@@ -205,6 +206,7 @@ insert into map ([op],[key],[value]) values
 ('CARD_CHEM1','IDD_CARD28','IDD_CHEMV06'),
 ('CARD_CHEM1','IDD_CARD29','IDD_CHEMV05'),
 ('CARD_CHEM1','IDD_CARD30','IDD_CHEMV09'),
+
 ('CARD_CHEM2','IDD_CARD00','IDD_CHEMV02'),
 ('CARD_CHEM2','IDD_CARD01','IDD_CHEMV19'),
 ('CARD_CHEM2','IDD_CARD02','IDD_CHEMV19'),
@@ -237,8 +239,8 @@ insert into map ([op],[key],[value]) values
 ('CARD_CHEM2','IDD_CARD29','IDD_CHEMV19'),
 ('CARD_CHEM2','IDD_CARD30','IDD_CHEMV04');
 
-delete from transitions where name like 'M08_%';
-insert into transitions ([name], [state], [new_state], [opcode], [param_1], [param_2], [code]) values
+delete from transitions where automaton like 'M08_%';
+insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code]) values
 ('M08_BEEM','0','1','CLICK','0','0', ''),
 ('M08_BEEM','0','1','WAIT','0','0', ''),
 ('M08_BEEM','1','0','VIDEO','0','IDS_BEAMER', ''),
