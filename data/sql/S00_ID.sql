@@ -12,18 +12,82 @@ delete from "main"."spr_names" where "name" like 'IDS_M5%';
 delete from "main"."spr_names" where "name" like 'IDS_M1EX';
 delete from "main"."spr_names" where "name" like 'IDS_M2EX';
 delete from "main"."spr_names" where "name" like 'IDS_M3EX';
-delete from "main"."spr_names" where "name" like 'IDS_F1EX';
-delete from "main"."spr_names" where "name" like 'IDS_F2EX';
-delete from "main"."spr_names" where "name" like 'IDS_F3EX';
+
+delete from "main"."spr_names" where "name" like 'IDS_F1%';
+delete from "main"."spr_names" where "name" like 'IDS_F2%';
+delete from "main"."spr_names" where "name" like 'IDS_F3%';
+
+
+--KEEP THE LATEST FRESH
+delete from "main"."spr_names" where "name" like 'IDS_FID1%';
+delete from "main"."spr_names" where "name" like 'IDS_FID2%';
+delete from "main"."spr_names" where "name" like 'IDS_FID3%';
+delete from "main"."spr_names" where "name" like 'IDS_MID1%';
+delete from "main"."spr_names" where "name" like 'IDS_MID2%';
+delete from "main"."spr_names" where "name" like 'IDS_MID3%';
+
 --add the death sprites for ids
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_F1EX', 'f1ex', '250');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_F2EX', 'f2ex', '251');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_F3EX', 'f3ex', '252');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M1EX', 'm1ex', '253');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M2EX', 'm2ex', '254');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_M3EX', 'm3ex', '255');
+
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1EX', 'm1ex', '253');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2EX', 'm2ex', '254');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3EX', 'm3ex', '255');
+
+--fix female and male id sprites - all caps separate from other sprites (moons and meflins...)
+--Feminine sprites
+
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1EX', 'f1ex', '250');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1HAPPY', 'F1HAP', '272');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1HURT', 'F1HUR', '273');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1KISS', 'F1KIS', '274');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1MAD', 'F1MAD', '275');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1SAD', 'F1SAD', '276');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1STRESS', 'F1STR', '278');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1SUPRISED', 'F1SUP', '277');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID1WAVE', 'F1WAV', '279');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2EX', 'f2ex', '251');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2HAPPY', 'F2HAP', '288');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2HURT', 'F2HUR', '289');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2KISS', 'F2KIS', '290');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2MAD', 'F2MAD', '291');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2SAD', 'F2SAD', '292');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2STRESS', 'F2STR', '294');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2SUPRISED', 'F2SUP', '293');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID2WAVE', 'F2WAV', '295');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3EX', 'f3ex', '252');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3HAPPY', 'F3HAP', '304');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3HURT', 'F3HUR', '305');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3KISS', 'F3KIS', '306');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3MAD', 'F3MAD', '307');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3SAD', 'f3sad', '308');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3STRESS', 'F3STR', '310');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3SUPRISED', 'F3SUP', '309');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3WAVE', 'F3WAV', '311');
 
 
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1HAPPY', 'm1hap', '368');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MIDM1HURT', 'M1HURT', '369');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1KISS', 'M1KISS', '370');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1MAD', 'M1MAD', '371');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SAD', 'M1SAD', '372');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SUPRISED', 'M1SUP', '373');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1STRESS', 'M1STRESS', '374');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1WAVE', 'M1WAV', '375');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2HAPPY', 'M2HAP', '384');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2HURT', 'M2HURT', '385');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2KISS', 'M2KISS', '386');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2MAD', 'M2MAD', '387');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2SAD', 'M2SAD', '388');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2SUPRISED', 'M2SUP', '389');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2STRESS', 'M2STRESS', '390');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2WAVE', 'M2WAV', '391');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3HAPPY', 'M3HAP', '400');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3HURT', 'M3HURT', '401');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3KISS', 'M3KISS', '402');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3MAD', 'M3MAD', '403');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3SAD', 'M3SAD', '404');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3SUPRISED', 'M3SUP', '405');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3STRESS', 'M3STRESS', '406');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3WAVE', 'M3WAV', '407');
 ------------------------------------------------------
 -- Adding map usage to auras to ensure the proper sprite
 delete from "main"."spr_names" where [name] like 'IDS_AURA%';
@@ -89,65 +153,65 @@ VALUES
 ('S00_KARMA_MAP',4,'IDS_HALO04'), 
 ('S00_KARMA_MAP',5,'IDS_HALO05'),
 
-('F1','happy','IDS_F1HAPPY'),
-('F1','hurt' ,'IDS_F1HURT'),
-('F1','kiss','IDS_F1KISS'),
-('F1','mad','IDS_F1MAD'),
-('F1','sad','IDS_F1SAD'),
-('F1','stress','IDS_F1STRESS'),
-('F1','surprised','IDS_F1SURPRISED'),
-('F1','wave','IDS_F1WAVE'),
-('F1','dead','IDS_F1EX'),
+('F1','happy','IDS_FID1HAPPY'),
+('F1','hurt' ,'IDS_FID1HURT'),
+('F1','kiss','IDS_FID1KISS'),
+('F1','mad','IDS_FID1MAD'),
+('F1','sad','IDS_FID1SAD'),
+('F1','stress','IDS_FID1STRESS'),
+('F1','surprised','IDS_FID1SURPRISED'),
+('F1','wave','IDS_FID1WAVE'),
+('F1','dead','IDS_FID1EX'),
 
-('F2','happy','IDS_F2HAPPY'),
-('F2','hurt' ,'IDS_F2HURT'),
-('F2','kiss','IDS_F1KISS'),
-('F2','mad','IDS_F2MAD'),
-('F2','sad','IDS_F2SAD'),
-('F2','stress','IDS_F2STRESS'),
-('F2','surprised','IDS_F2SURPRISED'),
-('F2','wave','IDS_F2WAVE'),
-('F2','dead','IDS_F2EX'),
+('F2','happy','IDS_FID2HAPPY'),
+('F2','hurt' ,'IDS_FID2HURT'),
+('F2','kiss','IDS_FID1KISS'),
+('F2','mad','IDS_FID2MAD'),
+('F2','sad','IDS_FID2SAD'),
+('F2','stress','IDS_FID2STRESS'),
+('F2','surprised','IDS_FID2SURPRISED'),
+('F2','wave','IDS_FID2WAVE'),
+('F2','dead','IDS_FID2EX'),
 
-('F3','happy','IDS_F3HAPPY'),
-('F3','hurt' ,'IDS_F3HURT'),
-('F3','kiss','IDS_F3KISS'),
-('F3','mad','IDS_F3MAD'),
-('F3','sad','IDS_F3SAD'),
-('F3','stress','IDS_F3STRESS'),
-('F3','surprised','IDS_F3SURPRISED'),
-('F3','wave','IDS_F3WAVE'),
-('F3','dead','IDS_F3EX'),
+('F3','happy','IDS_FID3HAPPY'),
+('F3','hurt' ,'IDS_FID3HURT'),
+('F3','kiss','IDS_FID3KISS'),
+('F3','mad','IDS_FID3MAD'),
+('F3','sad','IDS_FID3SAD'),
+('F3','stress','IDS_FID3STRESS'),
+('F3','surprised','IDS_FID3SURPRISED'),
+('F3','wave','IDS_FID3WAVE'),
+('F3','dead','IDS_FID3EX'),
 
-('M1','happy','IDS_M1HAPPY'),
-('M1','hurt' ,'IDS_M1HURT'),
-('M1','kiss','IDS_M1KISS'),
-('M1','mad','IDS_M1MAD'),
-('M1','sad','IDS_M1SAD'),
-('M1','stress','IDS_M1STRESS'),
-('M1','surprised','IDS_M1SURPRISED'),
-('M1','wave','IDS_M1WAVE'),
-('M1','dead','IDS_M1EX'),
+('M1','happy','IDS_MID1HAPPY'),
+('M1','hurt' ,'IDS_MID1HURT'),
+('M1','kiss','IDS_MID1KISS'),
+('M1','mad','IDS_MID1MAD'),
+('M1','sad','IDS_MID1SAD'),
+('M1','stress','IDS_MID1STRESS'),
+('M1','surprised','IDS_MID1SURPRISED'),
+('M1','wave','IDS_MID1WAVE'),
+('M1','dead','IDS_MID1EX'),
 
-('M2','happy','IDS_M2HAPPY'),
-('M2','hurt' ,'IDS_M2HURT'),
-('M2','kiss','IDS_M1KISS'),
-('M2','mad','IDS_M2MAD'),
-('M2','sad','IDS_M2SAD'),
-('M2','stress','IDS_M2STRESS'),
-('M2','surprised','IDS_M2SURPRISED'),
-('M2','wave','IDS_M2WAVE'),
-('M2','dead','IDS_M2EX'),
+('M2','happy','IDS_MID2HAPPY'),
+('M2','hurt' ,'IDS_MID2HURT'),
+('M2','kiss','IDS_MID1KISS'),
+('M2','mad','IDS_MID2MAD'),
+('M2','sad','IDS_MID2SAD'),
+('M2','stress','IDS_MID2STRESS'),
+('M2','surprised','IDS_MID2SURPRISED'),
+('M2','wave','IDS_MID2WAVE'),
+('M2','dead','IDS_MID2EX'),
 
-('M3','happy','IDS_M3HAPPY'),
-('M3','hurt' ,'IDS_M3HURT'),
-('M3','kiss','IDS_M3KISS'),
-('M3','mad','IDS_M3MAD'),
-('M3','sad','IDS_M3SAD'),
-('M3','stress','IDS_M3STRESS'),
-('M3','surprised','IDS_M3SURPRISED'),
-('M3','wave','IDS_M3WAVE'),
-('M3','dead','IDS_M3EX');
+('M3','happy','IDS_MID3HAPPY'),
+('M3','hurt' ,'IDS_MID3HURT'),
+('M3','kiss','IDS_MID3KISS'),
+('M3','mad','IDS_MID3MAD'),
+('M3','sad','IDS_MID3SAD'),
+('M3','stress','IDS_MID3STRESS'),
+('M3','surprised','IDS_MID3SURPRISED'),
+('M3','wave','IDS_MID3WAVE'),
+('M3','dead','IDS_MID3EX');
 
 
 
@@ -167,7 +231,7 @@ VALUES
 ('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
 ('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
-('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', ''),
+('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', '');
 
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
@@ -238,21 +302,21 @@ VALUES
 delete from "main"."transitions" where [automaton] = 'M_ID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_ID', '0', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
-('M_ID', '0', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
-('M_ID', '0', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
-('M_ID', '0', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
-('M_ID', '0', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
-('M_ID', '0', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
-('M_ID', '0', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
-('M_ID', '0', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
-('M_ID', '0', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
-('M_ID', '0', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
-('M_ID', '0', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
-('M_ID', '0', '2', 'WAIT', '0', '0', '', '', ''),
+('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
+('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
+('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
+('M_ID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
+('M_ID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
+('M_ID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
+('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
+('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
+('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
+('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
+('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
+('M_ID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
 
 
-('M_ID', '2', 'setId', 'EQUALi', 'LSEX', '1', '
+('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '
     if(LWISDOM >= 30){
        ASSIGN(WPARM,F3);
     }
@@ -263,7 +327,7 @@ VALUES
        ASSIGN(WPARM,F1);
     }
 ', '', ''), 
-('M_ID', '2', 'setId', 'NEQUALi', 'LSEX', '1', '
+('M_ID', '0', 'setId', 'NEQUALi', 'LSEX', '1', '
     if(LWISDOM >= 30){
        ASSIGN(WPARM,M3);
     }
@@ -275,7 +339,7 @@ VALUES
     }
 ', '', ''), 
 
-('M_ID', 'setId', '0', 'ASSIGN', 'WSPRITE', 'happy', '
+('M_ID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
     MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
     SHOW(WSPRITE);
@@ -295,12 +359,12 @@ VALUES
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '', '', ''),
 
-('M_ID', 'playForward', '0', 'ASSIGN', 'BFRAME', '0', '
+('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
     SHOW(WSPRITE);
     ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK
 ', '', ''),
-('M_ID', 'playOnce', '0', 'ASSIGN', 'BFRAME', '0', '
+('M_ID', 'playOnce', 'sitting', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
     SHOW(WSPRITE);
     ANIMATE(0,0);
