@@ -3,6 +3,14 @@ delete from games;
 
 ----RESOURCES 
 
+delete from idv where [name] like 'IDV_SPELLP%';
+delete from views where [view_name] like 'IDV_SPELLP%';
+INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_SPELLPAN', '8706');
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('8706', 'IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+
+--This is a progress recorder that shows players what they've accomplished
+-- when then drop the enchanted stone on their eyes
 
 delete from "main"."spr_names"  where [name] like 'IDS_REC_%';
 
@@ -61,9 +69,18 @@ VALUES
        '),
 ('M_EYEINFO', '100', '130', 'IS_A', 'WOBJECT', 'ISA_ENCHANTEDSTONE', 
         'MOV(WPARM,WOBJECT);
-        MOV(WVIEWID,LVIEW);
-        
-        '),       
+        MOV(WVIEWID,LVIEW);    
+        '),   
+--This is where everything else would get mapped        
+ -- Not working yet for control
+ -- meflintext(''meflin_198'', ?instructions);
+ -- write(''instructions'');
+('M_EYEINFO', '100', '130', 'IS_A', 'WOBJECT', 'IDC_NULL', '
+        MOV(WPARM,WOBJECT);
+        MOV(WVIEWID,LVIEW);   
+        '),   
+
+------------------------------------------------
 ('M_EYEINFO', '100', '0', 'Z_EPSILON', '0', '0', ''),
 
 ('M_EYEINFO', '120', '0', 'LOADVIEW', '0', 'IDV_SPELLPAN', ''),
@@ -106,17 +123,14 @@ VALUES
 
 ('M_RECORD_COUNTER', '0', '0', 'WAIT','0', 'SIG_COUNT', 'ADDi(WPARM,1);');
 
-        -- SIGNALi(SIG_COMPLETE,REC_DRYPIT);
-        -- SIGNALi(SIG_COMPLETE,REC_CAVE1);
-        -- SIGNALi(SIG_COMPLETE,REC_CAVE2);
-        -- SIGNALi(SIG_COMPLETE,REC_EYEOG);
 
-        -- SIGNALi(SIG_COMPLETE,REC_HIDNAT);
-        -- SIGNALi(SIG_COMPLETE,REC_MOONTBL);
-        
-        -- SIGNALi(SIG_COMPLETE,REC_MOONDSK);
-        -- SIGNALi(SIG_COMPLETE,REC_EYESPELL);
-        -- SIGNALi(SIG_COMPLETE,REC_EYEFUSE);
-        -- SIGNALi(SIG_COMPLETE,REC_MEMFUSE);
-        -- SIGNALi(SIG_COMPLETE,REC_MEMSPELL);
-        -- SIGNALi(SIG_COMPLETE,REC_KAMIOZA);
+
+
+
+
+
+
+
+
+
+

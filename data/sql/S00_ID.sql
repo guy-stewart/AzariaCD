@@ -229,7 +229,7 @@ delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
-('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+--('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
 ('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', '');
 
@@ -302,18 +302,6 @@ VALUES
 delete from "main"."transitions" where [automaton] = 'M_ID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
-('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
-('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
-('M_ID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
-('M_ID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
-('M_ID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
-('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
-('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
-('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
-('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
-('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
-('M_ID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
 
 
 ('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '
@@ -345,6 +333,18 @@ VALUES
     SHOW(WSPRITE);
 ', '', ''),
 
+('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
+('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
+('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
+('M_ID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
+('M_ID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
+('M_ID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
+('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
+('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
+('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
+('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
+('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
+('M_ID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
 
 ('M_ID', '20', 'playForward', 'ASSIGN', 'WSPRITE', 'happy', '', '', ''),
 ('M_ID', '21', 'playForward', 'ASSIGN', 'WSPRITE', 'hurt', '', '', ''),
