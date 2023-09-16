@@ -163,15 +163,23 @@ VALUES
 
 delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 
+delete from sounds where name = 'SOUND_NEELPI1';
+insert into sounds values ('SOUND_NEELPI1','NEELPI1',31); 
 
 delete from sounds where name = 'SOUND_RATHEQ1';
 insert into sounds values ('SOUND_RATHEQ1','M6M1A',27); 
+delete from sounds where name = 'SOUND_RATHEI1';
+insert into sounds values ('SOUND_RATHEI1','M6M1I',32); 
 
 delete from sounds where name = 'SOUND_THAORQ1';
 insert into sounds values ('SOUND_THAORQ1','MYM1A',28); 
+delete from sounds where name = 'SOUND_THAORI1';
+insert into sounds values ('SOUND_THAORI1','MYM1I',33); 
 
 delete from sounds where name = 'SOUND_PERSTQ1';
 insert into sounds values ('SOUND_PERSTQ1','MPM1A',29); 
+delete from sounds where name = 'SOUND_PERSTI1';
+insert into sounds values ('SOUND_PERSTI1','MPM1I',34); 
 
 delete from sounds where name = 'SOUND_AMBLEQ1';
 insert into sounds values ('SOUND_AMBLEQ1','MSM1A',30); 
@@ -216,6 +224,7 @@ VALUES
 ('15501', 'S33_NEELP', '8101', 'IDV_N2B', '47', '101', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
 --there will be a machine for every speach 
 ('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
+('15532', 'NEELP_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
 
 ('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_ANIBIN','IDS_M1SWAYC','', '', ''),
 ('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_ANIBIN','IDS_M1SWAYB','',  '', ''),
@@ -225,11 +234,14 @@ VALUES
 ('15503', 'RATHE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15508', 'S24_RATHE', '9218', 'IDV_EYEA', '1065', '30', '1260', '150', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
 ('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6T10000'),
+('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_RATHEI1', 'IDS_M1I1ANIM'),
 
 --THAOR
 ('15510', 'THAOR_COORD', '5', 'IDV_OTHERID', '2', '2', '2', '2', '0','MEFLIN_COORD','','','',''),
 ('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
 ('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
+('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_THAORI1', 'IDS_M1I1ANIM'),
+
 
 ('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  ''),
 
@@ -237,6 +249,8 @@ VALUES
 ('15517', 'PERST_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15515', 'S16_PERST', '4869', 'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
 ('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
+('15535', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_PERSTI1', 'IDS_M1I1ANIM'),
+
 
 ('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  ''),
 
@@ -275,24 +289,45 @@ VALUES
 
 --keeps the most recently engaged quest and location
 
-('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);ASSIGN(WTEMP1,IDV_N2B);'),
+('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);'),
 ('M_MEFCURRENT','quest1', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,2);'), 
+('M_MEFCURRENT','0', 'quest1p', 'WAIT', '', 'SIG_Q1P', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_I1);'),
+('M_MEFCURRENT','quest1p', '0', 'Z_EPSILON', '', '', ''), 
+('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_Q2);'), 
 ('M_MEFCURRENT','quest2', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,3);'), 
+('M_MEFCURRENT','0', 'quest2p', 'WAIT', '', 'SIG_Q2P', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_I2);'),
+('M_MEFCURRENT','quest2p', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_Q3);'), 
 ('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);ASSIGN(WTEMP1,IDV_EYEA);'), 
+('M_MEFCURRENT','0', 'quest3p', 'WAIT', '', 'SIG_Q3P', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_I3);'), 
+('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
+
+('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);'), 
 ('M_MEFCURRENT','quest4', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,5);'), 
+('M_MEFCURRENT','0', 'quest4p', 'WAIT', '', 'SIG_Q4P', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,RATHE_I1);'), 
+('M_MEFCURRENT','quest4p', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,RATHE_Q2);'), 
 ('M_MEFCURRENT','quest5', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,S10_THAOR_Q1);ASSIGN(WTEMP1,IDV_SCN10PT1);'), 
+('M_MEFCURRENT','0', 'quest5p', 'WAIT', '', 'SIG_Q5P', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,RATHE_I2);'), 
+('M_MEFCURRENT','quest5p', '0', 'Z_EPSILON', '', '', ''),
+
+('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,S10_THAOR_Q1);'), 
 ('M_MEFCURRENT','quest6', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,7);'), 
+('M_MEFCURRENT','0', 'quest6p', 'WAIT', '', 'SIG_Q6P', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,THAOR_I1);'), 
+('M_MEFCURRENT','quest6p', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,THAOR_Q2);'), 
 ('M_MEFCURRENT','quest7', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,S16_PERST_Q1);ASSIGN(WTEMP1,IDV_VIL7);'), 
+('M_MEFCURRENT','0', 'quest7p', 'WAIT', '', 'SIG_Q7P', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,THAOR_I2);'), 
+('M_MEFCURRENT','quest7p', '0', 'Z_EPSILON', '', '', ''),
+
+('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,S16_PERST_Q1);'), 
 ('M_MEFCURRENT','quest8', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,9);'),
-('M_MEFCURRENT','quest9', '0', 'Z_EPSILON', '', '', '');
+('M_MEFCURRENT','0', 'quest8p', 'WAIT', '', 'SIG_Q8P', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,PERST_I1);'), 
+('M_MEFCURRENT','quest8p', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,PERST_Q2);'),
+('M_MEFCURRENT','quest9', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCURRENT','0', 'quest9p', 'WAIT', '', 'SIG_Q9P', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,PERST_I2);'),
+('M_MEFCURRENT','quest9p', '0', 'Z_EPSILON', '', '', '');
 
 delete from transitions where automaton =  'M_MEF_APPROACH';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
@@ -304,7 +339,8 @@ VALUES
     ASSIGN(WPARM,WIP2);//the active mefs coord
 '),
 ('M_MEF_APPROACH', 'setup', 'chillin', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
-('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', ''),
+('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', '
+CLEAR(WPARM);CLEAR(BPARM);'),
 --we need to know who and where, which we can get from the calling machine somehow then
 --here look for how far into the quest by ref wip3 the coordinator
 -- then signal the right speach
@@ -315,18 +351,23 @@ VALUES
             //Tell the outside world where we at
             //WTEMP1 will be machine, WTemp2 is wording
             if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1); mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
-            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
-            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
-            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
           
     }
-   // if(IFSTATE(Q1Pending,WIP3)){}
+    if(IFSTATE(Q1Pending,WIP3)){
+            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1P); mefQuest("1",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
+            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4P); mefQuest("4",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
+            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6P); mefQuest("6",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
+            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8P); mefQuest("8",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
+    }
     if(IFSTATE(Q1Solved,WIP3)){
         SIGNAL(WIP3,SIG_Q2_START); ///--------------The second question and pending interogative to any Meflin
-        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
-        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
-        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
-        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
         
     }
    // if(IFSTATE(Q2Pending,WIP3)){}
@@ -347,7 +388,7 @@ VALUES
     if(IFSTATE(Q3Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q3_GIVEN);}
     if(IFSTATE(Q2Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2P); SIGNAL(WPARM,SIG_PLAY);}
     if(IFSTATE(Q2Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q2_GIVEN);}
-    if(IFSTATE(Q1Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q1P); SIGNAL(WPARM,SIG_PLAY);}
+    if(IFSTATE(Q1Pending,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q1P); SIGNAL(BPARM,SIG_PLAY);}
     if(IFSTATE(Q1Started,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q1S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q1_GIVEN);}
    
 ');
@@ -385,7 +426,9 @@ delete from transitions where automaton =  'M_MEFPAN_OK';
 delete from transitions where automaton =  'M_MEFPAN_WAITER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
-('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', ''),
+('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', '
+    CLEAR(WPARM);
+'),
 
 ('M_MEFPAN_OK','1', '2', 'CLICK', '0', '0', '
     REF_MACHINE(MEFCURRENT);
@@ -434,7 +477,7 @@ VALUES
       if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
         if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
 '),
-('M_MEFPAN_WAITER', 'Q2S', 'waiting', 'Z_EPSILON', '', '', ''),
+('M_MEFPAN_WAITER', 'Q1P', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
 ('M_MEFPAN_WAITER', 'waiting', 'Q2S', 'WAIT', '0', 'SIG_Q2S', '
     REF_MACHINE(WTEMP1);
