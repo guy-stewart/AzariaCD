@@ -1,5 +1,5 @@
 delete from games;
-drop table games;
+--drop table games;
 
 ------------------------------------RESOURCES
 delete from idv where name = 'IDV_MEFPAN';
@@ -18,20 +18,32 @@ delete from idv where name = 'IDV_S09_AMBLE_PAN';
 delete from views where view_name = 'IDV_S09_AMBLE_PAN';
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_MEFPAN', '9802');
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+
 
 delete from "main"."constants" where name = 'NEELP_COORD';
 delete from "main"."constants" where name = 'RATHE_COORD';
 delete from "main"."constants" where name = 'THAOR_COORD';
 delete from "main"."constants" where name = 'PERST_COORD';
-INSERT INTO "main"."constants" ("name", "value") 
-VALUES 
-('NEELP_COORD', 1),
-('RATHE_COORD', 2),
-('THAOR_COORD', 3),
-('PERST_COORD', 4);
+-- INSERT INTO "main"."constants" ("name", "value") 
+-- VALUES 
+-- ('NEELP_COORD', 1),
+-- ('RATHE_COORD', 2),
+-- ('THAOR_COORD', 3),
+-- ('PERST_COORD', 4);
 
 --IDV_S10_THAOR_PAN
+
+delete from spr_names where name = 'IDS_PARCHPANBK';
+INSERT INTO "main"."spr_names" ("name", "value", "id") 
+VALUES 
+('IDS_PARCHPANBK', 'parchpanbk', '40620');
+delete from controls where id = 'ID_MEFTEXT';
+insert into controls values
+('IDV_MEFPAN','ID_MEFTEXT','LABEL','IDS_PARCHPANBK','',90, 50, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
+--('IDV_MEFPAN','ID_MYLABEL2','LABEL','CLISTBXL','',120, 30, 0,'default text','', 'IDS_FONTTNB16', 0x010101,'');
+
 
 -- the first one is neelp
 --S33_Neelp NEELPQ1
@@ -193,6 +205,7 @@ delete from machines where name = 'S09_AMBLE_OK';
 --delete from machines where name = 'S09_AMBLE_alt1';
 delete from machines where name = 'MEFCURRENT';
 delete from machines where name = 'MEFPAN_OK';
+delete from machines where name = 'MEFPAN_WAITER';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
@@ -230,8 +243,10 @@ VALUES
 ----Machines to serve them all
 
 ('15513', 'MEFCURRENT', '9802', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
-('15517', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','','');
 
+('15520', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
+('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '10', '20', '30', '50', '1','M_MEFPAN_WAITER','','','',''),
+('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','','');
 
 
 -- --AMBLE
@@ -259,25 +274,24 @@ VALUES
 ('MEFLIN_COORD','Q3Solved', '0','Z_EPSILON', '','', ''),
 
 --keeps the most recently engaged quest and location
---could also assign database pointer here too then use that along with coord to pick 
--- which files to play
-('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(WPARM,S33_NEELP_Q1);ASSIGN(BPARM,IDV_N2B);'),
+
+('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);ASSIGN(WTEMP1,IDV_N2B);'),
 ('M_MEFCURRENT','quest1', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(WPARM,2);'), 
+('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,2);'), 
 ('M_MEFCURRENT','quest2', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(WPARM,3);'), 
+('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,3);'), 
 ('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(WPARM,S24_RATHE_Q1);ASSIGN(BPARM,IDV_EYEA);'), 
+('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);ASSIGN(WTEMP1,IDV_EYEA);'), 
 ('M_MEFCURRENT','quest4', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(WPARM,5);'), 
+('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,5);'), 
 ('M_MEFCURRENT','quest5', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(WPARM,S10_THAOR_Q1);ASSIGN(BPARM,IDV_SCN10PT1);'), 
+('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,S10_THAOR_Q1);ASSIGN(WTEMP1,IDV_SCN10PT1);'), 
 ('M_MEFCURRENT','quest6', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(WPARM,7);'), 
+('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,7);'), 
 ('M_MEFCURRENT','quest7', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(WPARM,S16_PERST_Q1);ASSIGN(BPARM,IDV_VIL7);'), 
+('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,S16_PERST_Q1);ASSIGN(WTEMP1,IDV_VIL7);'), 
 ('M_MEFCURRENT','quest8', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(WPARM,9);'),
+('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,9);'),
 ('M_MEFCURRENT','quest9', '0', 'Z_EPSILON', '', '', '');
 
 delete from transitions where automaton =  'M_MEF_APPROACH';
@@ -290,46 +304,53 @@ VALUES
     ASSIGN(WPARM,WIP2);//the active mefs coord
 '),
 ('M_MEF_APPROACH', 'setup', 'chillin', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
-('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', 'LOADVIEW(0,IDV_MEFPAN);'),
+('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', ''),
 --we need to know who and where, which we can get from the calling machine somehow then
 --here look for how far into the quest by ref wip3 the coordinator
 -- then signal the right speach
 ('M_MEF_APPROACH', 'mef_bothered', 'mef_response', 'REF_MACHINE', '0', 'WIP3', '
     if(IFSTATE(0,WIP3)){
         //Tell the active meflins coordinator
-        SIGNAL(WIP3,SIG_Q1_START);
+        SIGNAL(WIP3,SIG_Q1_START); ///--------------The first question and pending interogative to any Meflin
             //Tell the outside world where we at
             //WTEMP1 will be machine, WTemp2 is wording
-            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1); mefQuest("1",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-    };
-    if(IFSTATE(Q1Pending,WIP3)){
-      //if Q1 is pending then we need to do the alt answers or recognize a winning item
-    };
+            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1); mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
+            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+          
+    }
+   // if(IFSTATE(Q1Pending,WIP3)){}
     if(IFSTATE(Q1Solved,WIP3)){
-        SIGNAL(WIP3,SIG_Q2_START);
-        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-    };
-    if(IFSTATE(Q2Pending,WIP3)){
-        //if Q2 is pending then we need to do the alt answers or recognize a winning item
-    };
+        SIGNAL(WIP3,SIG_Q2_START); ///--------------The second question and pending interogative to any Meflin
+        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+        
+    }
+   // if(IFSTATE(Q2Pending,WIP3)){}
     if(IFSTATE(Q2Solved,WIP3)){
         //Here only Neelp has a third quest
-        SIGNAL(WIP3,SIG_Q3_START);
-         if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3); mefQuest("3",?BPARM,?WTEMP1,?WTEMP2,?WTEMP3,?WPARM);}
-    };
-    if(IFSTATE(Q3Pending,WIP3)){
-       //if Q2 is pending then we need to do the alt answers or recognize a winning item
-    };
+        SIGNAL(WIP3,SIG_Q3_START);   ///--------------The question question to any Meflin (just Neelp for now)
+         if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3); mefQuest("3",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+         
+    }
+   // if(IFSTATE(Q3Pending,WIP3)){//if Q2 is pending then we need to do the alt answers or recognize a winning item}
 '),
 --WTEMP1 Holds the right machine to play and the machines take care of how to play that way
 --each could use a different player if needed
-('M_MEF_APPROACH', 'mef_response', '0', 'SIGNAL', 'BPARM', 'SIG_PLAY', '');
+('M_MEF_APPROACH', 'mef_response', 'chillin', 'Z_EPSILON', '', '', '
+    
+    //Advance the individual meflin state WIP3 to pending states and play the machines
+    if(IFSTATE(Q3Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3P); SIGNAL(WPARM,SIG_PLAY);}
+    if(IFSTATE(Q3Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q3_GIVEN);}
+    if(IFSTATE(Q2Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2P); SIGNAL(WPARM,SIG_PLAY);}
+    if(IFSTATE(Q2Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q2_GIVEN);}
+    if(IFSTATE(Q1Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q1P); SIGNAL(WPARM,SIG_PLAY);}
+    if(IFSTATE(Q1Started,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q1S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q1_GIVEN);}
+   
+');
 
 
 
@@ -361,20 +382,82 @@ VALUES
 -- which includes where
 
 delete from transitions where automaton =  'M_MEFPAN_OK';
+delete from transitions where automaton =  'M_MEFPAN_WAITER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
-('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', '
-    //GET THE ACTIVE MEFLIN
-     REF_MACHINE(MEFCURRENT);
-'),
+('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', ''),
 
 ('M_MEFPAN_OK','1', '2', 'CLICK', '0', '0', '
-    PLAYWAVE(SOUND_POPUP); 
-    SIGNAL(SIG_CLOSE,WIP1);
     REF_MACHINE(MEFCURRENT);
-    MOV(BPARM,R_BPARM);
+    PLAYWAVE(SOUND_POPUP);
+    MOV(WPARM,R_WPARM);
+    SIGNAL(WPARM,SIG_CLOSE);
+    SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
 '),
-('M_MEFPAN_OK', '2', '0', 'LOADVIEW', 'BPARM', '', '');
+('M_MEFPAN_OK', '2', '1', 'Z_EPSILON', '', '', ''),
 
 
 
+('M_MEFPAN_VIEWCAP', '0', '1', 'WAIT', '0', 'SIG_VIEWCAP', ''),
+('M_MEFPAN_VIEWCAP', '0', '2', 'WAIT', '0', 'SIG_VIEWRETURN', ''),
+('M_MEFPAN_VIEWCAP', '1', '0', 'Z_EPSILON', '', '', '
+      MOV(WPARM,LVIEW);
+'),
+('M_MEFPAN_VIEWCAP', '2', '0', 'Z_EPSILON', '', '', '
+      LOADVIEW(WPARM);
+'),
+
+
+--The waiter needs to be the local player of the words on the mefpan
+-- It get's signaled and puts the right text on the screen through local access to 
+
+('M_MEFPAN_WAITER','0', 'waiting', 'Z_EPSILON', '', '', '
+    REF_MACHINE(MEFCURRENT); //what mef are we hittin up
+     PLAYWAVE(SOUND_POPUP);
+     CLEAR(WPARM);
+ '),
+----
+
+('M_MEFPAN_WAITER', 'waiting', 'Q1S', 'WAIT', '0', 'SIG_Q1S', '
+   
+    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+'),
+('M_MEFPAN_WAITER', 'Q1S', 'waiting', 'Z_EPSILON', '', '', ''),
+-----
+
+('M_MEFPAN_WAITER', 'waiting', 'Q1P', 'WAIT', '0', 'SIG_Q1P', '
+    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+'),
+('M_MEFPAN_WAITER', 'Q2S', 'waiting', 'Z_EPSILON', '', '', ''),
+-----
+('M_MEFPAN_WAITER', 'waiting', 'Q2S', 'WAIT', '0', 'SIG_Q2S', '
+    REF_MACHINE(WTEMP1);
+    SETTEXT(ID_MEFTEXT,R_WTEMP1);
+'),
+('M_MEFPAN_WAITER', 'Q2S', 'waiting', 'Z_EPSILON', '', '', ''),
+-----
+
+('M_MEFPAN_WAITER', 'waiting', 'Q2P', 'WAIT', '0', 'SIG_Q2P', '
+    REF_MACHINE(WTEMP1);
+    SETTEXT(ID_MEFTEXT,R_WTEMP3); 
+'),
+('M_MEFPAN_WAITER', 'Q2P', 'waiting', 'Z_EPSILON', '', '', ''),
+-----
+
+('M_MEFPAN_WAITER', 'waiting', 'Q3S', 'WAIT', '0', 'SIG_Q3S', '
+    REF_MACHINE(WTEMP1);
+    SETTEXT(ID_MEFTEXT,R_WTEMP1);
+'),
+('M_MEFPAN_WAITER', 'Q3S', 'waiting', 'Z_EPSILON', '', '', ''),
+
+
+('M_MEFPAN_WAITER', 'setNeelp', 'neelpQ3p', 'WAIT', '0', 'SIG_Q1P', '
+    REF_MACHINE(WTEMP1);
+    SETTEXT(ID_MEFTEXT,R_WTEMP3); 
+');

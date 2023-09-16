@@ -19,14 +19,15 @@ insert into controls values
 ('IDV_MEFLINTEXT','ID_MYLABEL','LABEL','CLISTBXL','',120, 30, 0,'default text','', 'IDS_FONTTNB16', 0x010101,'');
 
 delete from views where view_name = 'IDV_MEFLINTEXT';
-insert into views ([view_id],[view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
-(6588,'IDV_MEFLINTEXT',1,3,1,1,'wdepanel.vct','PARCHPAN');
+-- insert into views ([view_id],[view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
+---- (6588,'IDV_MEFLINTEXT',1,3,1,1,'wdepanel.vct','PARCHPAN');
 
 
 delete from machines where view_name = 'IDV_MEFLINTEXT';
-insert into machines values (0,'SXX_TESTMACHINE',0,'IDV_MEFLINTEXT',30,120,30+64,120+64,0,'m_mefltext','','','','' );
+--insert into machines values (0,'SXX_TESTMACHINE',0,'IDV_MEFLINTEXT',30,120,30+64,120+64,0,'m_mefltext','','','','' );
 
 delete from transitions where [automaton] = 'm_mefltext';
+
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code], [guard]) values
 ('m_mefltext','0','A','Z_EPSILON','','','SHOW(IDS_BTN_OK);SETTEXT(ID_MYLABEL, "startup text");',''),
 ('m_mefltext','A','B','CLICK','','','SETTEXT(ID_MYLABEL,"[A] This Is Some New Text");',''),
