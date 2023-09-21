@@ -22,19 +22,6 @@ INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "loc
 VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 
-delete from "main"."constants" where name = 'NEELP_COORD';
-delete from "main"."constants" where name = 'RATHE_COORD';
-delete from "main"."constants" where name = 'THAOR_COORD';
-delete from "main"."constants" where name = 'PERST_COORD';
--- INSERT INTO "main"."constants" ("name", "value") 
--- VALUES 
--- ('NEELP_COORD', 1),
--- ('RATHE_COORD', 2),
--- ('THAOR_COORD', 3),
--- ('PERST_COORD', 4);
-
---IDV_S10_THAOR_PAN
-
 delete from spr_names where name = 'IDS_PARCHPANBK';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
@@ -107,6 +94,7 @@ delete from spr_names where name = 'IDS_MYS20000';
 delete from spr_names where name = 'IDS_MYT10000';
 delete from spr_names where name = 'IDS_MYJUGGLEsm1';
 
+delete from spr_names where name = 'IDS_GVIAL';
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
@@ -158,28 +146,88 @@ VALUES
 ('IDS_MYS10000', 'MYS10000', '15040'),
 ('IDS_MYS20000', 'MYS20000', '15041'),
 ('IDS_MYT10000', 'MYT', '15042'),
-('IDS_MYJUGGLEsm1', 'MYJUGGLEsm1', '15045');
+('IDS_MYJUGGLEsm1', 'MYJUGGLEsm1', '15045'),
 
+('IDS_GVIAL', 'GVIAL', '15046');
+
+delete from objects where [object] like 'IDD_GVIAL%';
+insert into objects values
+('IDD_GVIAL','','IDC_NULL','GVIAL','GVIAL','GVIAL');
 
 delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 
 delete from sounds where name = 'SOUND_NEELPI1';
 insert into sounds values ('SOUND_NEELPI1','NEELPI1',31); 
+delete from sounds where name = 'SOUND_NEELPS1';
+insert into sounds values ('SOUND_NEELPS1','NEELPS1',40); 
+delete from sounds where name = 'SOUND_NEELPFSH';
+insert into sounds values ('SOUND_NEELPFSH','NEELPFSH',41); 
+delete from sounds where name = 'SOUND_NEELPBMB';
+insert into sounds values ('SOUND_NEELPBMB','NEELPBMB',42); 
+delete from sounds where name = 'SOUND_NEELPPLN';
+insert into sounds values ('SOUND_NEELPPLN','NEELPPLN',43); 
+delete from sounds where name = 'SOUND_NEELPGOP';
+insert into sounds values ('SOUND_NEELPGOP','NEELPGOP',44); 
+delete from sounds where name = 'SOUND_NEELPMAG';
+insert into sounds values ('SOUND_NEELPMAG','NEELPMAG',45); 
+delete from sounds where name = 'SOUND_NEELPBAT';
+insert into sounds values ('SOUND_NEELPBAT','NEELPBAT',46); 
+delete from sounds where name = 'SOUND_NEELPGS2';
+insert into sounds values ('SOUND_NEELPGS2','NEELPGS2',47); 
+delete from sounds where name = 'SOUND_NEELPGS3';
+insert into sounds values ('SOUND_NEELPGS3','NEELPGS3',48); 
 
 delete from sounds where name = 'SOUND_RATHEQ1';
 insert into sounds values ('SOUND_RATHEQ1','M6M1A',27); 
 delete from sounds where name = 'SOUND_RATHEI1';
 insert into sounds values ('SOUND_RATHEI1','M6M1I',32); 
+delete from sounds where name = 'SOUND_M6G1S';
+insert into sounds values ('SOUND_M6G1S','M6G1S',50); 
+delete from sounds where name = 'SOUND_M6G2S';
+insert into sounds values ('SOUND_M6G2S','M6G2S',51); 
+delete from sounds where name = 'SOUND_M6VBOMB';
+insert into sounds values ('SOUND_M6VBOMB','M6VBOMB',52); 
+delete from sounds where name = 'SOUND_M6VLOTS';
+insert into sounds values ('SOUND_M6VLOTS','M6VLOTS',53); 
+delete from sounds where name = 'SOUND_M6VNOT';
+insert into sounds values ('SOUND_M6VNOT','M6VNOT',54); 
+delete from sounds where name = 'SOUND_M6VMAGC';
+insert into sounds values ('SOUND_M6VMAGC','M6VMAGC',55); 
 
 delete from sounds where name = 'SOUND_THAORQ1';
 insert into sounds values ('SOUND_THAORQ1','MYM1A',28); 
 delete from sounds where name = 'SOUND_THAORI1';
 insert into sounds values ('SOUND_THAORI1','MYM1I',33); 
+delete from sounds where name = 'SOUND_MYM1S';
+insert into sounds values ('SOUND_MYM1S','MYM1S',56); 
+delete from sounds where name = 'SOUND_MYG2S';
+insert into sounds values ('SOUND_MYG2S','MYG2S',57); 
+delete from sounds where name = 'SOUND_MYVSPELL';
+insert into sounds values ('SOUND_MYVSPELL','MYVSPELL',58); 
+delete from sounds where name = 'SOUND_MYG2U';
+insert into sounds values ('SOUND_MYG2U','MYG2U',59); 
+delete from sounds where name = 'SOUND_MYVNOT';
+insert into sounds values ('SOUND_MYVNOT','MYVNOT',60); 
 
 delete from sounds where name = 'SOUND_PERSTQ1';
 insert into sounds values ('SOUND_PERSTQ1','MPM1A',29); 
 delete from sounds where name = 'SOUND_PERSTI1';
 insert into sounds values ('SOUND_PERSTI1','MPM1I',34); 
+delete from sounds where name = 'SOUND_MPVTHANK';
+insert into sounds values ('SOUND_MPVTHANK','MPVTHANK',61); 
+delete from sounds where name = 'SOUND_MPM2S';
+insert into sounds values ('SOUND_MPM2S','MPM2S',62); 
+delete from sounds where name = 'SOUND_MPVBAIT';
+insert into sounds values ('SOUND_MPVBAIT','MPVBAIT',63); 
+delete from sounds where name = 'SOUND_MPVFISH';
+insert into sounds values ('SOUND_MPVFISH','MPVFISH',64); 
+delete from sounds where name = 'SOUND_MPVBOMB';
+insert into sounds values ('SOUND_MPVBOMB','MPVBOMB',65); 
+delete from sounds where name = 'SOUND_MPVLOTS';
+insert into sounds values ('SOUND_MPVLOTS','MPVLOTS',66); 
+
+
+
 
 delete from sounds where name = 'SOUND_AMBLEQ1';
 insert into sounds values ('SOUND_AMBLEQ1','MSM1A',30); 
@@ -234,13 +282,13 @@ VALUES
 ('15503', 'RATHE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15508', 'S24_RATHE', '9218', 'IDV_EYEA', '1065', '30', '1260', '150', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
 ('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6T10000'),
-('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_RATHEI1', 'IDS_M1I1ANIM'),
+('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
 
 --THAOR
 ('15510', 'THAOR_COORD', '5', 'IDV_OTHERID', '2', '2', '2', '2', '0','MEFLIN_COORD','','','',''),
 ('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
 ('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
-('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_THAORI1', 'IDS_M1I1ANIM'),
+('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
 
 
 ('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_ANIBIN','IDS_MYJUGGLEsm1','', '',  ''),
@@ -249,7 +297,7 @@ VALUES
 ('15517', 'PERST_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15515', 'S16_PERST', '4869', 'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
 ('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
-('15535', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_PERSTI1', 'IDS_M1I1ANIM'),
+('15535', 'PERST_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
 
 
 ('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  ''),
@@ -259,9 +307,12 @@ VALUES
 ('15513', 'MEFCURRENT', '9802', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
 
 ('15520', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
-('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '10', '20', '30', '50', '1','M_MEFPAN_WAITER','','','',''),
-('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','','');
+('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '276', '236', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
+('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','',''),
 
+('15540', 'MEFPAN_PRIZE_A', '9802', 'IDV_MEFPAN', '545', '75', '613', '135', '1','M_MEFPAN_PRIZE','a','','',''),
+('15541', 'MEFPAN_PRIZE_B', '9802', 'IDV_MEFPAN', '545', '144', '613', '200', '1','M_MEFPAN_PRIZE','b','','',''),
+('15542', 'MEFPAN_PRIZE_C', '9802', 'IDV_MEFPAN', '545', '205', '613', '270', '1','M_MEFPAN_PRIZE','c','','','');
 
 -- --AMBLE
 -- ('15519', 'S09_AMBLE', '506', 'IDV_CTO2', '2500', '10', '2700', '150', '0','M_MEF_APPROACH','IDS_MSSQUAT','S09_AMBLE_Q1','IDV_S09_AMBLE_PAN',''),
@@ -287,7 +338,7 @@ VALUES
 ('MEFLIN_COORD','Q3Pending', 'Q3Solved','WAIT', '','SIG_Q3_SOLVED', ''),
 ('MEFLIN_COORD','Q3Solved', '0','Z_EPSILON', '','', ''),
 
---keeps the most recently engaged quest and location
+--keeps the most recently engaged quest 
 
 ('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);'),
 ('M_MEFCURRENT','quest1', '0', 'Z_EPSILON', '', '', ''), 
@@ -350,31 +401,31 @@ CLEAR(WPARM);CLEAR(BPARM);'),
         SIGNAL(WIP3,SIG_Q1_START); ///--------------The first question and pending interogative to any Meflin
             //Tell the outside world where we at
             //WTEMP1 will be machine, WTemp2 is wording
-            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1); mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
-            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
-            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
-            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WPARM,?WTEMP3);}
+            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1); mefQuest("1",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);}
+            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4); mefQuest("4",?BPARM,?WPARM,?WOBJECT,?WPARM,?WTEMP3);}
+            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6); mefQuest("6",?BPARM,?WPARM,?WOBJECT,?WPARM,?WTEMP3);}
+            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8); mefQuest("8",?BPARM,?WPARM,?WOBJECT,?WPARM,?WTEMP3);}
           
     }
     if(IFSTATE(Q1Pending,WIP3)){
-            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1P); mefQuest("1",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
-            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4P); mefQuest("4",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
-            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6P); mefQuest("6",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
-            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8P); mefQuest("8",?WTEMP3,?WTEMP1,?WTEMP2,?BPARM,?WPARM);}
+            if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q1P); mefQuest("1",?WTEMP3,?WTEMP1,?WOBJECT,?BPARM,?WPARM);}
+            if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q4P); mefQuest("4",?WTEMP3,?WTEMP1,?WOBJECT,?BPARM,?WPARM);}
+            if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q6P); mefQuest("6",?WTEMP3,?WTEMP1,?WOBJECT,?BPARM,?WPARM);}
+            if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q8P); mefQuest("8",?WTEMP3,?WTEMP1,?WOBJECT,?BPARM,?WPARM);}
     }
     if(IFSTATE(Q1Solved,WIP3)){
         SIGNAL(WIP3,SIG_Q2_START); ///--------------The second question and pending interogative to any Meflin
-        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
-        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
-        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
-        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q2); mefQuest("2",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 2){SIGNAL(MEFCURRENT,SIG_Q5); mefQuest("5",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 3){SIGNAL(MEFCURRENT,SIG_Q7); mefQuest("7",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);}
+        if(WIP2 == 4){SIGNAL(MEFCURRENT,SIG_Q9); mefQuest("9",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);}
         
     }
    // if(IFSTATE(Q2Pending,WIP3)){}
     if(IFSTATE(Q2Solved,WIP3)){
         //Here only Neelp has a third quest
         SIGNAL(WIP3,SIG_Q3_START);   ///--------------The question question to any Meflin (just Neelp for now)
-         if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3); mefQuest("3",?BPARM,?WTEMP1,?WTEMP2,?WPARM,?WTEMP3);}
+         if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3); mefQuest("3",?BPARM,?WTEMP1,?WOBJECT,?WPARM,?WTEMP3);}
          
     }
    // if(IFSTATE(Q3Pending,WIP3)){//if Q2 is pending then we need to do the alt answers or recognize a winning item}
@@ -386,6 +437,7 @@ CLEAR(WPARM);CLEAR(BPARM);'),
     //Advance the individual meflin state WIP3 to pending states and play the machines
     if(IFSTATE(Q3Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3P); SIGNAL(WPARM,SIG_PLAY);}
     if(IFSTATE(Q3Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q3_GIVEN);}
+    
     if(IFSTATE(Q2Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2P); SIGNAL(WPARM,SIG_PLAY);}
     if(IFSTATE(Q2Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q2S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q2_GIVEN);}
     if(IFSTATE(Q1Pending,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q1P); SIGNAL(BPARM,SIG_PLAY);}
@@ -403,25 +455,183 @@ VALUES
 ('M_MEF_TALK','1', '2', 'MOV', 'WSPRITE', 'WIP1', ''), -- long dialogue loop wip1
 ('M_MEF_TALK','2', '3', 'ASHOW',  'WSPRITE', '',  ''),
 ('M_MEF_TALK','3', '4', 'PLAYWAVE', 'WIP3', '', ''), -- sound file wip3
-('M_MEF_TALK','4', '7', 'ESTIME', 'WIP2', '', ''), -- close durration of talk wip2
+('M_MEF_TALK','4', 'chatting', 'ESTIME', 'WIP2', '', ''), -- close durration of talk wip2
 
-('M_MEF_TALK','7', '8', 'MOV', 'BFRAME', '0',''),
-('M_MEF_TALK','8', '9', 'SHOW', 'WIP4', '', ''), -- closing expression animation wip4
-('M_MEF_TALK','9', '10', 'ANIMATE', '0', '0', ''),
+('M_MEF_TALK','chatting', 'talkDone', 'MOV', 'BFRAME', '0','
+    SHOW(WIP4); //expression file
+    ANIMATE(0);
+'),
+ --wait for a signal to remove 
+('M_MEF_TALK','talkDone','closed','WAIT','','SIG_CLOSE','
+    CLEAR(WSPRITE);
+    SHOW(0);
+'),
+('M_MEF_TALK','closed', '0', 'Z_EPSILON', '0', '0', ''),
+-- Examine and react to items -------------------------
+('M_MEF_TALK','talkDone', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
+    REF_MACHINE(SOD_SPELL);
+    MOV(WOBJECT,R_WOBJECT);
+'),
+('M_MEF_TALK','droppedItem', 'selectMeflin', 'REF_MACHINE', 'MEFCURRENT', '', '
+     CLEAR(WSPRITE);
+     CLEAR(WPARM);
+     CLEAR(WTEMP2);
+     CLEAR(WSPRITE);
+     CLEAR(BPARM);
+'),
+('M_MEF_TALK','selectMeflin', 'neelpCheck', 'EQUAL', 'R_BPARM', 'S33_NEELP', ''),
+('M_MEF_TALK','selectMeflin', 'ratheCheck', 'EQUAL', 'R_BPARM', 'S24_RATHE', ''),
+('M_MEF_TALK','selectMeflin', 'thaorCheck', 'EQUAL', 'R_BPARM', 'S10_THAOR', ''),
+('M_MEF_TALK','selectMeflin', 'perstCheck', 'EQUAL', 'R_BPARM', 'S16_PERST', ''),
+ -------------------------
+('M_MEF_TALK', 'neelpCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
+    'if(R_BPARM == S33_NEELP){ //-----NEELP------------------------------------------
+        if(R_WPARM == NEELP_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == NEELP_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == NEELP_I3){mefResp(?WTEMP4,"3",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+            if(WPARM == WOBJECT){
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M1T1ANIM); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+            }
+            
+            if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_GOPA) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
+            //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_GOPA)){mefResp("1",?WTEM1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M1T1ANIM); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+             }   
+        }           
+'),
+('M_MEF_TALK', 'ratheCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
+    'if(R_BPARM == S24_RATHE){ //-----RATHE------------------------------------------
+        if(R_WPARM == RATHE_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == RATHE_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+            if(WPARM == WOBJECT){
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M6T10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+            }
+            
+            if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
+            //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M6T10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+             }   
+        }
+'),
+('M_MEF_TALK', 'thaorCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
+    'if(R_BPARM == S10_THAOR){ //-----THAOR------------------------------------------
+        if(R_WPARM == THAOR_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == THAOR_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+            if(WPARM == WOBJECT){
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_MYT10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+            }
+            
+            if(IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
+            //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_MYT10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+             }   
+        }
+'),
+('M_MEF_TALK', 'perstCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
+    'if(R_BPARM == S16_PERST){ //-----PERST------------------------------------------
+        if(R_WPARM == PERST_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == PERST_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+            if(WPARM == WOBJECT){
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M2T10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+            }
+            
+             if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
+            //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
+                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
+                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
+                MOV(WSPRITE,IDS_M2T10000); //talking reply
+                ASHOW(WSPRITE);
+                PLAYWAVE(WTEMP2);
+             }   
+        }
+'),
+('M_MEF_TALK','finishAprasal', 'givePrize', 'ESTIME', '4', '','
+    SHOW(BFRAME);
+    MOV(BFRAME,20); //may need frame 10 here
+    ANIMATE(0);
+'),
+('M_MEF_TALK','givePrize', 'talkDone', 'Z_EPSILON',  '', '',  '');
 
 
-('M_MEF_TALK','10','11','WAIT','','SIG_CLOSE',''), --wait for a signal to remove 
-('M_MEF_TALK','11','14', 'CLEAR', 'WSPRITE', '', ''),
-('M_MEF_TALK','14','15', 'SHOW', '0', '', ''),
-('M_MEF_TALK','15', '0', 'Z_EPSILON', '0', '0', '');
 
---SO what im doing now is - trying to get the single ok button to know
--- which WVIEWID to show when clicked - since all the meflin share the same mefpanel now
--- so it has to get it from some tiny ref machine that has it as an active parameter
--- Im trying to use mefcurrent for this - so I have to signal mefcurrent to start or 
--- give mefcurrent the wView maybe - mefcurrent is just the latest meflin the player is talking to
--- which includes where
 
+
+delete from transitions where automaton = 'M_MEFPAN_PRIZE';
 delete from transitions where automaton =  'M_MEFPAN_OK';
 delete from transitions where automaton =  'M_MEFPAN_WAITER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
@@ -436,17 +646,22 @@ VALUES
     MOV(WPARM,R_WPARM);
     SIGNAL(WPARM,SIG_CLOSE);
     SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
+    SIGNAL(MEFPAN_WAITER,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_B,SIG_RESET);
 '),
 ('M_MEFPAN_OK', '2', '1', 'Z_EPSILON', '', '', ''),
 
 
-
-('M_MEFPAN_VIEWCAP', '0', '1', 'WAIT', '0', 'SIG_VIEWCAP', ''),
-('M_MEFPAN_VIEWCAP', '0', '2', 'WAIT', '0', 'SIG_VIEWRETURN', ''),
-('M_MEFPAN_VIEWCAP', '1', '0', 'Z_EPSILON', '', '', '
+('M_MEFPAN_VIEWCAP', '0', 'waiting', 'ASSIGN', 'BPARM', '0', ''),
+('M_MEFPAN_VIEWCAP', 'waiting', 'viewGrabbed', 'WAIT', '0', 'SIG_VIEWCAP', ''),
+('M_MEFPAN_VIEWCAP', 'waiting', 'viewReloaded', 'WAIT', '0', 'SIG_VIEWRETURN', ''),
+('M_MEFPAN_VIEWCAP', 'viewGrabbed', 'waiting', 'Z_EPSILON', '', '', '
+      MOV(BPARM,1); // A Meflin is presently up
       MOV(WPARM,LVIEW);
 '),
-('M_MEFPAN_VIEWCAP', '2', '0', 'Z_EPSILON', '', '', '
+('M_MEFPAN_VIEWCAP', 'viewReloaded', 'waiting', 'Z_EPSILON', '', '', '
+      MOV(BPARM,0);// A Meflin is no longer there
       LOADVIEW(WPARM);
 '),
 
@@ -460,22 +675,35 @@ VALUES
      CLEAR(WPARM);
  '),
 ----
+('M_MEFPAN_WAITER', 'waiting', '0', 'GRAB', 'WOBJECT', '', 'SHOW(0);'),
 
+('M_MEFPAN_WAITER', 'waiting', 'showPrizeText', 'WAIT', '0', 'SIG_PRIZETEXT', '
+    REF_MACHINE(MEFCURRENT); //what mef are we hittin up
+    REF_MACHINE(R_WPARM); //R_WPARM is the active mef machine
+    SETTEXT(ID_MEFTEXT,R_BPARM); //prize text
+   
+'),
+('M_MEFPAN_WAITER', 'showPrizeText', '0', 'Z_EPSILON', '', '', ''),
+-----
 ('M_MEFPAN_WAITER', 'waiting', 'Q1S', 'WAIT', '0', 'SIG_Q1S', '
    
-    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
-     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
-      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
-        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+       
+        //Add any objects being offered here
+        SHOW(WOBJECT);
 '),
 ('M_MEFPAN_WAITER', 'Q1S', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
 
 ('M_MEFPAN_WAITER', 'waiting', 'Q1P', 'WAIT', '0', 'SIG_Q1P', '
-    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
-     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
-      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
-        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WTEMP2,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+    if(R_BPARM == S33_NEELP){mefQuest("1",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+     if(R_BPARM == S24_RATHE){mefQuest("4",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+      if(R_BPARM == S10_THAOR){mefQuest("6",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+        if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
+  
 '),
 ('M_MEFPAN_WAITER', 'Q1P', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
@@ -503,4 +731,23 @@ VALUES
 ('M_MEFPAN_WAITER', 'setNeelp', 'neelpQ3p', 'WAIT', '0', 'SIG_Q1P', '
     REF_MACHINE(WTEMP1);
     SETTEXT(ID_MEFTEXT,R_WTEMP3); 
+'),
+
+
+-----------------------------------------
+
+
+('M_MEFPAN_PRIZE', '0', 'setup', 'Z_EPSILON', '', '', ''),
+('M_MEFPAN_PRIZE', 'setup', 'pickPrize', 'WAIT', '0', 'SIG_SHOWPRIZE', '
+    REF_MACHINE(MEFCURRENT);
+    REF_MACHINE(R_WPARM); 
+    MOV(WPARM,R_WPARM); // Should be the cacheid
+    mefPrize(WPARM,WIP1,?WOBJECT);
+'),
+('M_MEFPAN_PRIZE', 'pickPrize', 'showPrize', 'ASHOW', 'WOBJECT', '', ''),
+('M_MEFPAN_PRIZE', 'showPrize', '0', 'GRAB', '', '', '
+    SHOW(0);
+'),
+('M_MEFPAN_PRIZE', 'showPrize', '0', 'WAIT', '0', 'SIG_RESET', '
+    SHOW(0);
 ');

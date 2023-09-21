@@ -230,6 +230,7 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 VALUES 
 ('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
 --('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
 ('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', '');
 
@@ -375,6 +376,7 @@ VALUES
 
 
 delete from "main"."transitions" where [automaton] like 'M_IDSPELL%';
+delete from "main"."transitions" where [automaton] like 'M_O_IDSPELL%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
@@ -401,10 +403,28 @@ VALUES
 ('M_IDSPELL',102,0,'SPELL_ME','0','SIG_BOMB', '', '', ''),
 ('M_IDSPELL',120,121,'MOV','WTEMP1','WOBJECT', '', '', ''),
 ('M_IDSPELL',121,122,'MOV','WVIEWID','LVIEW', '', '', ''),
-('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', '');
+('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', ''),
+
+
+('M_O_IDSPELL', '0', '1', 'DROP', '0', '0', '
+    REF_MACHINE(MEFPAN_VIEWCAP);
+    if(R_BPARM == 1){  //Theres a meflin up
+        REF_MACHINE(MEFCURRENT); //Who is it?
+        MOV(WPARM,R_WPARM);
+        SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
+    }
+', '', ''),
+('M_O_IDSPELL', '1', '0', 'Z_EPSILON', '', '', '
+    REF_MACHINE(MEFPAN_VIEWCAP);
+    if(R_BPARM == 0){  //no meflin
+        SPELL_YOU(WOBJECT);
+    }
+', '', '');
 
 
 
+-- ('M_O_IDSPELL', '0', '1', 'DROP', '0', '0', '', '', ''),
+-- ('M_O_IDSPELL', '1', '0', 'SPELL_YOU', 'WOBJECT', '', '', '', '');
 
 
 
