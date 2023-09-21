@@ -522,8 +522,8 @@ VALUES
 '),
 ('M_MEF_TALK', 'ratheCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
     'if(R_BPARM == S24_RATHE){ //-----RATHE------------------------------------------
-        if(R_WPARM == RATHE_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-        if(R_WPARM == RATHE_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == RATHE_I1){mefResp(?WTEMP4,"4",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == RATHE_I2){mefResp(?WTEMP4,"5",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
             if(WPARM == WOBJECT){
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -537,11 +537,11 @@ VALUES
             
             if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("4",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("4",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("4",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("4",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("4",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -556,8 +556,8 @@ VALUES
 '),
 ('M_MEF_TALK', 'thaorCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
     'if(R_BPARM == S10_THAOR){ //-----THAOR------------------------------------------
-        if(R_WPARM == THAOR_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-        if(R_WPARM == THAOR_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == THAOR_I1){mefResp(?WTEMP4,"6",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == THAOR_I2){mefResp(?WTEMP4,"7",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
             if(WPARM == WOBJECT){
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -571,9 +571,9 @@ VALUES
             
             if(IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("3",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("3",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("3",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -588,8 +588,8 @@ VALUES
 '),
 ('M_MEF_TALK', 'perstCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
     'if(R_BPARM == S16_PERST){ //-----PERST------------------------------------------
-        if(R_WPARM == PERST_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-        if(R_WPARM == PERST_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == PERST_I1){mefResp(?WTEMP4,"8",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == PERST_I2){mefResp(?WTEMP4,"9",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
             if(WPARM == WOBJECT){
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -603,11 +603,11 @@ VALUES
             
              if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("2",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("2",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("2",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("2",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("2",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
