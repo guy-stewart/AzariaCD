@@ -19,7 +19,7 @@ delete from views where view_name = 'IDV_S09_AMBLE_PAN';
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_MEFPAN', '9802');
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('9802', 'IDV_MEFPAN', '1', '1', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+VALUES ('9802', 'IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 
 delete from spr_names where name = 'IDS_PARCHPANBK';
@@ -215,6 +215,8 @@ delete from sounds where name = 'SOUND_PERSTI1';
 insert into sounds values ('SOUND_PERSTI1','MPM1I',34); 
 delete from sounds where name = 'SOUND_MPVTHANK';
 insert into sounds values ('SOUND_MPVTHANK','MPVTHANK',61); 
+delete from sounds where name = 'SOUND_MPM1S';
+insert into sounds values ('SOUND_MPM1S','MPM1S',69); 
 delete from sounds where name = 'SOUND_MPM2S';
 insert into sounds values ('SOUND_MPM2S','MPM2S',62); 
 delete from sounds where name = 'SOUND_MPVBAIT';
@@ -535,9 +537,9 @@ VALUES
                 PLAYWAVE(WTEMP2);
             }
             
-            if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
+            if(IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT) || IS_A(WOBJECT,IDC_GOPA)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("4",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("4",?WTEM1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
            if(IS_A(WOBJECT,IDC_BOMB)){mefResp("4",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
            if(IS_A(WOBJECT,IDC_PLANT)){mefResp("4",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
            if(IS_A(WOBJECT,IDC_SPELL)){mefResp("4",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
@@ -680,7 +682,9 @@ VALUES
 ('M_MEFPAN_WAITER', 'waiting', 'showPrizeText', 'WAIT', '0', 'SIG_PRIZETEXT', '
     REF_MACHINE(MEFCURRENT); //what mef are we hittin up
     REF_MACHINE(R_WPARM); //R_WPARM is the active mef machine
-    SETTEXT(ID_MEFTEXT,R_BPARM); //prize text
+   CLEAR(BPARM);
+   MOV(BPARM,R_BPARM);
+   SETTEXT(ID_MEFTEXT,BPARM); //prize text
    
 '),
 ('M_MEFPAN_WAITER', 'showPrizeText', '0', 'Z_EPSILON', '', '', ''),
@@ -707,6 +711,8 @@ VALUES
 '),
 ('M_MEFPAN_WAITER', 'Q1P', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
+--this stuff is waiting to be filled out with look ups for the 2nd and 3rd(for neelp) quests
+
 ('M_MEFPAN_WAITER', 'waiting', 'Q2S', 'WAIT', '0', 'SIG_Q2S', '
     REF_MACHINE(WTEMP1);
     SETTEXT(ID_MEFTEXT,R_WTEMP1);
@@ -728,13 +734,11 @@ VALUES
 ('M_MEFPAN_WAITER', 'Q3S', 'waiting', 'Z_EPSILON', '', '', ''),
 
 
-('M_MEFPAN_WAITER', 'setNeelp', 'neelpQ3p', 'WAIT', '0', 'SIG_Q1P', '
+('M_MEFPAN_WAITER', 'setNeelp', 'Q3p', 'WAIT', '0', 'SIG_Q1P', '
     REF_MACHINE(WTEMP1);
     SETTEXT(ID_MEFTEXT,R_WTEMP3); 
 '),
-
-
------------------------------------------
+----------------------------------------------------------------------------------------
 
 
 ('M_MEFPAN_PRIZE', '0', 'setup', 'Z_EPSILON', '', '', ''),
