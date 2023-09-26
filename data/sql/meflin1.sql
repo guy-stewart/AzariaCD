@@ -158,10 +158,14 @@ delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 
 delete from sounds where name = 'SOUND_NEELPQ2';
 insert into sounds values ('SOUND_NEELPQ2','NEELPGQ2',71); 
+delete from sounds where name = 'SOUND_NEELPGQ3';
+insert into sounds values ('SOUND_NEELPQ3','NEELPGQ3',72); 
 delete from sounds where name = 'SOUND_NEELPI1';
 insert into sounds values ('SOUND_NEELPI1','NEELPI1',31); 
 delete from sounds where name = 'SOUND_NEELPI2';
-insert into sounds values ('SOUND_NEELPI2','NEELPGI2',72); 
+insert into sounds values ('SOUND_NEELPI2','NEELPGI2',73); 
+delete from sounds where name = 'SOUND_NEELPI3';
+insert into sounds values ('SOUND_NEELPI3','NEELPGI3',74); 
 delete from sounds where name = 'SOUND_NEELPS1';
 insert into sounds values ('SOUND_NEELPS1','NEELPS1',40); 
 delete from sounds where name = 'SOUND_NEELPFSH';
@@ -287,13 +291,16 @@ VALUES
 
 ('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEV','IDS_M1SWAYC','', '', ''),
 ('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
-
 --NEELP GOES TO THE BEACH
 ('15545', 'S11_NEELP', '4353', 'IDV_FA1PAN', '452', '74', '650', '200', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
 ('15546', 'S11_NEELP_Q2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
 ('15547', 'NEELP_I2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
---copy the altview from above and add to beach
-
+('15548', 'S11_NEELP_alt1', '8102', 'IDV_FH1PTH1', '158', '100', '200', '200', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+--NEELP GOES TO THE GAME ARCADE
+('15549', 'S30_NEELP_Q3', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
+('15550', 'NEELP_I3', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
+('15552', 'S30_NEELP', '4392', 'IDV_PATH2', '907', '84', '1070', '273', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+('15551', 'S30_NEELP_alt1', '4391', 'IDV_PATH1', '1252', '136', '1299', '200','1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 
 --Rathe
 ('15503', 'RATHE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
@@ -362,7 +369,7 @@ VALUES
 ('MEFLIN_COORD','Q3Pending', 'Q3Solved','WAIT', '','SIG_Q3_SOLVED', ''),
 
 
--- THE SHOW COORDINATOR shows and hides the different meflin 
+-- THE SHOW COORDINATOR starts the show from a new game
 ('M_MEFPAN_SHOW_COORD','0', 'allBrandNew','Z_EPSILON', '', '', '
     SIGNAL(S33_NEELP,SIG_SHOW); SIGNAL(S33_NEELP_alt1,SIG_SHOW); SIGNAL(S33_NEELP_alt2,SIG_SHOW);
     SIGNAL(S24_RATHE,SIG_SHOW);
@@ -382,10 +389,10 @@ VALUES
 ('M_MEFCURRENT','quest2', '0', 'Z_EPSILON', '', '', ''), 
 ('M_MEFCURRENT','0', 'quest2p', 'WAIT', '', 'SIG_Q2P', 'ASSIGN(BPARM,S11_NEELP);ASSIGN(WPARM,NEELP_I2);'),
 ('M_MEFCURRENT','quest2p', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S00_NEELP);ASSIGN(WPARM,S00_NEELP_Q3);'), 
+('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S30_NEELP);ASSIGN(WPARM,S30_NEELP_Q3);'), 
 ('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest3p', 'WAIT', '', 'SIG_Q3P', 'ASSIGN(BPARM,S00_NEELP);ASSIGN(WPARM,NEELP_I3);'), 
-('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
+('M_MEFCURRENT','0', 'quest3p', 'WAIT', '', 'SIG_Q3P', 'ASSIGN(BPARM,S30_NEELP);ASSIGN(WPARM,NEELP_I3);'), 
+('M_MEFCURRENT','quest3p', '0', 'Z_EPSILON', '', '', ''), 
 
 ('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);'), 
 ('M_MEFCURRENT','quest4', '0', 'Z_EPSILON', '', '', ''),
@@ -469,7 +476,10 @@ CLEAR(WPARM);CLEAR(BPARM);'),
         SIGNAL(WIP3,SIG_Q3_START);  
          if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3); mefQuest("3",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP1);}
     }
-   // if(IFSTATE(Q3Pending,WIP3)){//if Q2 is pending then we need to do the alt answers or recognize a winning item}
+    if(IFSTATE(Q3Pending,WIP3)){
+         WRITE("Q3Pending State found");
+         if(WIP2 == 1){SIGNAL(MEFCURRENT,SIG_Q3P); mefQuest("3",?WTEMP1,?WTEMP1,?WOBJECT,?BPARM,?WPARM);}
+    }
 '),
 -- the state below checks in reverse order
 -- wip3 is the specific callings mef coord
@@ -477,8 +487,8 @@ CLEAR(WPARM);CLEAR(BPARM);'),
     
     //Advance the individual meflin state WIP3 to pending states and play the machines
    //--Q3
-    if(IFSTATE(Q3Pending,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3P); SIGNAL(WPARM,SIG_PLAY);}
-    if(IFSTATE(Q3Started,WIP3)){ SIGNAL(MEFPAN_WAITER,SIG_Q3S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q3_GIVEN);}
+    if(IFSTATE(Q3Pending,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q3P); SIGNAL(BPARM,SIG_PLAY);}
+    if(IFSTATE(Q3Started,WIP3)){  SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q3S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q3_GIVEN);}
     //--Q2
     if(IFSTATE(Q2Pending,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q2P); SIGNAL(BPARM,SIG_PLAY);}
     if(IFSTATE(Q2Started,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q2S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q2_GIVEN);}
@@ -504,7 +514,7 @@ PLAYWAVE(WIP3);
 
 ('M_MEF_TALK','chatting', 'talkDone', 'MOV', 'BFRAME', '0','
     SHOW(WIP4); //expression file
-    ANIMATE(10);
+   // ANIMATE(10);
 '),
  --wait for a signal to remove 
 ('M_MEF_TALK','startPlayingTalkFile','closed','WAIT','','SIG_CLOSE','
@@ -530,12 +540,13 @@ PLAYWAVE(WIP3);
 '),
 ('M_MEF_TALK','selectMeflin', 'neelpCheck', 'EQUAL', 'R_BPARM', 'S33_NEELP', ''),
 ('M_MEF_TALK','selectMeflin', 'neelpCheck', 'EQUAL', 'R_BPARM', 'S11_NEELP', ''),
+('M_MEF_TALK','selectMeflin', 'neelpCheck', 'EQUAL', 'R_BPARM', 'S30_NEELP', ''),
 ('M_MEF_TALK','selectMeflin', 'ratheCheck', 'EQUAL', 'R_BPARM', 'S24_RATHE', ''),
 ('M_MEF_TALK','selectMeflin', 'thaorCheck', 'EQUAL', 'R_BPARM', 'S10_THAOR', ''),
 ('M_MEF_TALK','selectMeflin', 'perstCheck', 'EQUAL', 'R_BPARM', 'S16_PERST', ''),
  -------------------------
 ('M_MEF_TALK', 'neelpCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
-    'if(R_BPARM == S33_NEELP || R_BPARM == S11_NEELP){ //-----NEELP------------------------------------------
+    'if(R_BPARM == S33_NEELP || R_BPARM == S11_NEELP || R_BPARM == S30_NEELP){ //-----NEELP------------------------------------------
         if(R_WPARM == NEELP_I1){mefResp(?WTEMP4,"1",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
         if(R_WPARM == NEELP_I2){mefResp(?WTEMP4,"2",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
         if(R_WPARM == NEELP_I3){mefResp(?WTEMP4,"3",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
@@ -546,10 +557,20 @@ PLAYWAVE(WIP3);
                 SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
                 SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
                 //Signal the quest solved - the new start happens whith the next approach
-                SIGNAL(NEELP_COORD,SIG_Q1_SOLVED);
-
-                SIGNAL(S33_NEELP,SIG_VANISH); SIGNAL(S33_NEELP_alt1,SIG_HIDE); SIGNAL(S33_NEELP_alt2,SIG_HIDE);
-                SIGNAL(S11_NEELP,SIG_SHOW);
+                     if(R_BPARM == S33_NEELP){
+                        SIGNAL(NEELP_COORD,SIG_Q1_SOLVED);
+                        SIGNAL(S33_NEELP,SIG_VANISH); SIGNAL(S33_NEELP_alt1,SIG_HIDE); SIGNAL(S33_NEELP_alt2,SIG_HIDE);
+                        SIGNAL(S11_NEELP,SIG_SHOW);SIGNAL(S11_NEELP_alt1,SIG_SHOW);
+                     }
+                    if(R_BPARM == S11_NEELP){
+                        SIGNAL(NEELP_COORD,SIG_Q2_SOLVED);
+                        SIGNAL(S11_NEELP,SIG_VANISH); SIGNAL(S11_NEELP_alt1,SIG_HIDE);
+                        SIGNAL(S30_NEELP,SIG_SHOW);SIGNAL(S30_NEELP_alt1,SIG_SHOW);
+                    }
+                    if(R_BPARM == S30_NEELP){
+                        SIGNAL(NEELP_COORD,SIG_Q3_SOLVED);
+                        SIGNAL(S30_NEELP,SIG_VANISH); SIGNAL(S30_NEELP_alt1,SIG_HIDE);
+                    }
              //--------------
                 MOV(WSPRITE,IDS_M1T1ANIM); //talking reply
                 ASHOW(WSPRITE);
@@ -679,7 +700,12 @@ PLAYWAVE(WIP3);
 ('M_MEF_TALK','finishAprasal', 'givePrize', 'ESTIME', '4', '','
     SHOW(BFRAME);
     MOV(BFRAME,10); //may need frame 10 here
-    ANIMATE(0);
+   // ANIMATE(0);
+'),
+('M_MEF_TALK','finishAprasal','closed','WAIT','','SIG_CLOSE','
+    STOPWAVE();
+    CLEAR(WSPRITE);
+    SHOW();
 '),
 ('M_MEF_TALK','givePrize', 'talkDone', 'Z_EPSILON',  '', '',  '');
 
@@ -783,16 +809,18 @@ VALUES
 -----
 
 ('M_MEFPAN_WAITER', 'waiting', 'Q3S', 'WAIT', '0', 'SIG_Q3S', '
-    REF_MACHINE(WTEMP1);
-    SETTEXT(ID_MEFTEXT,R_WTEMP1);
+   CLEAR(WOBJECT);
+   CLEAR(WPARM);
+   if(R_BPARM == S30_NEELP){mefQuest("3",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
+   SHOW(WOBJECT);
 '),
 ('M_MEFPAN_WAITER', 'Q3S', 'waiting', 'Z_EPSILON', '', '', ''),
+-----
 
-
-('M_MEFPAN_WAITER', 'setNeelp', 'Q3p', 'WAIT', '0', 'SIG_Q1P', '
-    REF_MACHINE(WTEMP1);
-    SETTEXT(ID_MEFTEXT,R_WTEMP3); 
+('M_MEFPAN_WAITER', 'waiting', 'Q3P', 'WAIT', '0', 'SIG_Q3P', '
+   if(R_BPARM == S30_NEELP){mefQuest("3",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WTEMP3);}
 '),
+('M_MEFPAN_WAITER', 'Q3P', 'waiting', 'Z_EPSILON', '', '', ''),
 ----------------------------------------------------------------------------------------
 
 
