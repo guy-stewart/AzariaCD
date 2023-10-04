@@ -839,7 +839,7 @@ VALUES
         if(R_BPARM == S16_PERST){mefQuest("8",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
        
         //Add any objects being offered here
-        SHOW(WOBJECT);
+        ASHOW(WOBJECT);
 '),
 ('M_MEFPAN_WAITER', 'Q1S', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
@@ -860,7 +860,7 @@ VALUES
        if(R_BPARM == S12_PERST){mefQuest("9",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
        if(R_BPARM == S25_RATHE){mefQuest("5",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
         if(R_BPARM == S19_THAOR){mefQuest("7",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
-        SHOW(WOBJECT);
+        ASHOW(WOBJECT);
 '),
 ('M_MEFPAN_WAITER', 'Q2S', 'waiting', 'Z_EPSILON', '', '', ''),
 -----
@@ -878,7 +878,7 @@ VALUES
    CLEAR(WOBJECT);
    CLEAR(WPARM);
    if(R_BPARM == S30_NEELP){mefQuest("3",?BPARM,?WPARM,?WOBJECT,?WTEMP1,?WTEMP3);SETTEXT(ID_MEFTEXT,WPARM);}
-   SHOW(WOBJECT);
+   ASHOW(WOBJECT);
 '),
 ('M_MEFPAN_WAITER', 'Q3S', 'waiting', 'Z_EPSILON', '', '', ''),
 -----

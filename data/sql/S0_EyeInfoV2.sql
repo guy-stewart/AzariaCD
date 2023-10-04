@@ -5,9 +5,11 @@ delete from games;
 
 delete from idv where [name] like 'IDV_SPELLP%';
 delete from views where [view_name] like 'IDV_SPELLP%';
+
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_SPELLPAN', '8706');
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('8706', 'IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+VALUES 
+('8706', 'IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 --This is a progress recorder that shows players what they've accomplished
 -- when then drop the enchanted stone on their eyes
@@ -50,14 +52,21 @@ VALUES
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_EYEINFO', '0', '100', 'DROP', '0', '0', 'PLAYWAVE(SOUND_POPUP);ASHOW(WOBJECT);CLEAR(WVIEWID);'),
-('M_EYEINFO', '0', '10', 'GRAB', '0', '0', ''),
-('M_EYEINFO', '10', '0', 'LOADVIEW', 'WVIEWID', '', 'CLEAR(WVIEWID);SHOW(0);'),
+('M_EYEINFO', '0', '100', 'DROP', '0', '0', '
+PLAYWAVE(SOUND_POPUP);ASHOW(WOBJECT);
+MOV(BPARM,LVIEW);
+'),
+('M_EYEINFO', '0', 'replacedView', 'GRAB', '0', '0', '
+      SHOW(0);
+'),
+('M_EYEINFO', 'replacedView', '0', 'Z_EPSILON', '0', '0', '
+        LOADVIEW(BPARM);
+'),
+
 
 ('M_EYEINFO', '100', '120', 'IS_A', 'WOBJECT', 'IDC_SCROLL', 
-        'MOV(WPARM,WOBJECT);
+       'MOV(WPARM,WOBJECT);
         MAPi(WPARM,S12_SCROLL);
-        MOV(WVIEWID,LVIEW);
         SIGNALi(SIG_SHOW,S12_SHIELD);
         SIGNALi(SIG_SHOW,S12_WORD);
         SIGNALi(SIG_SHOW,S12_ING1);
@@ -68,23 +77,27 @@ VALUES
        
        '),
 ('M_EYEINFO', '100', '130', 'IS_A', 'WOBJECT', 'ISA_ENCHANTEDSTONE', 
+        'MOV(WPARM,WOBJECT);      
+        '), 
+('M_EYEINFO', '100', '0', 'IS_A', 'WOBJECT', 'ISA_DIARY', 
         'MOV(WPARM,WOBJECT);
-        MOV(WVIEWID,LVIEW);    
-        '),   
+        SIGNAL(PARCHBIG_WAITER,SIG_DIARY1);
+        '),           
 --This is where everything else would get mapped        
- -- Not working yet for control
- -- meflintext(''meflin_198'', ?instructions);
- -- write(''instructions'');
-('M_EYEINFO', '100', '130', 'IS_A', 'WOBJECT', 'IDC_NULL', '
+
+('M_EYEINFO', '100', '0', 'IS_A', 'WOBJECT', 'IDC_NULL', '
         MOV(WPARM,WOBJECT);
-        MOV(WVIEWID,LVIEW);   
-        '),   
+'),   
 
 ------------------------------------------------
 ('M_EYEINFO', '100', '0', 'Z_EPSILON', '0', '0', ''),
 
 ('M_EYEINFO', '120', '0', 'LOADVIEW', '0', 'IDV_SPELLPAN', ''),
 ('M_EYEINFO', '130', '0', 'LOADVIEW', '0', 'IDV_ENCHANTPAN', '');
+
+
+
+
 
 delete from transitions where [automaton] like 'M_RECYCLE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES 
