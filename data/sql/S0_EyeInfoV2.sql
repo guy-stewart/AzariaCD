@@ -178,15 +178,18 @@ MOV(BPARM,LVIEW);
         '), 
 ('M_EYEINFO', 'checkObject', '0', 'IS_A', 'WOBJECT', 'ISA_DIARY', 
         'MOV(WPARM,WOBJECT);
-        if(WOBJECT == IDD_DIARY1 || WOBJECT == IDD_DIARY2){
+        if((WOBJECT == IDD_DIARY1 )|| (WOBJECT == IDD_DIARY2)){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
         }
         '),           
      
 
-('M_EYEINFO', 'checkObject', '0', 'IS_A', 'WOBJECT', 'IDC_NULL', '
-        MOV(WPARM,WOBJECT);
-        SIGNAL(OBJECT_WAITER,SIG_OBJECT);
+('M_EYEINFO', 'checkObject', '0', 'Z_EPSILON', '', '', '
+       
+       if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT)){
+                MOV(WPARM,WOBJECT);
+                SIGNAL(OBJECT_WAITER,SIG_OBJECT);
+                }
 '),   
 
 ('M_EYEINFO', 'checkObject', '0', 'Z_EPSILON', '0', '0', ''),
