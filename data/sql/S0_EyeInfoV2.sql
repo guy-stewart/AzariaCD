@@ -5,11 +5,12 @@ delete from games;
 
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
+delete from views where [view_name] like 'IDV_PARCHNYSTROM%';
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
 ('8710', 'IDV_PARCHBIG', '1', '0', '1', '2', 'wdepanel.vct', 'parchbig'),
-('8711', 'IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan');
-
+('8711', 'IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan'),
+('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom');
 
 delete from spr_names where name = 'IDS_PARCHBIGBK';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
@@ -20,10 +21,11 @@ VALUES
 
 delete from controls where id = 'ID_PARCHBIGTXT';
 delete from controls where id = 'ID_PARCHSMALLTXT';
+delete from controls where id = 'ID_PARCHNYSTROM';
 insert into controls values
 ('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
-('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
-
+('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
+('IDV_PARCHNYSTROM','ID_PARCHNYSTROM','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
 
 
 delete from idv where [name] like 'IDV_SPELLP%';
