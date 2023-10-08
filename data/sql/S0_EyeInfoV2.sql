@@ -13,19 +13,21 @@ VALUES
 ('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom');
 
 delete from spr_names where name = 'IDS_PARCHBIGBK';
+delete from spr_names where name = 'IDS_PARCHPANNYBK';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
-('IDS_PARCHBIGBK', 'parchbigbk', '40650');
+('IDS_PARCHBIGBK', 'parchbigbk', '40650'),
+('IDS_PARCHPANNYBK', 'parchpanbk', '40652');
 --can use parchpanbk as control background
 
 
 delete from controls where id = 'ID_PARCHBIGTXT';
-delete from controls where id = 'ID_PARCHSMALLTXT';
-delete from controls where id = 'ID_PARCHNYSTROM';
+delete from controls where [id] like 'ID_PARCHSMALLTXT%';
+delete from controls where id = 'ID_PARCHNYSTROMTXT';
 insert into controls values
 ('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
 ('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
-('IDV_PARCHNYSTROM','ID_PARCHNYSTROM','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
+('IDV_PARCHNYSTROM','ID_PARCHNYSTROMTXT','LABEL','IDS_PARCHPANNYBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
 
 
 delete from idv where [name] like 'IDV_SPELLP%';
@@ -113,16 +115,21 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 -- Machines for OBJECT Entries
 
-delete from machines where name = 'NIRET_DIARY_WAITER';
+delete from machines where [name] like 'NIRET_DIARY_WAITER';
+delete from machines where [name] like 'OBJECT_WAITER';
+delete from machines where [name] like 'NYSTROM_WAITER';
+
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('15570', 'NIRET_DIARY_WAITER', '8710', 'IDV_PARCHBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHBIG','SIG_DIARY','ID_PARCHBIGTXT',''),
-('15571', 'OBJECT_WAITER', '8710', 'IDV_PARCHSMALL', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHSMALL','SIG_OBJECT','ID_PARCHSMALLTXT','');
+('15571', 'OBJECT_WAITER', '8711', 'IDV_PARCHSMALL', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHSMALL','SIG_OBJECT','ID_PARCHSMALLTXT',''),
+('15572', 'NYSTROM_WAITER', '8712', 'IDV_PARCHNYSTROM', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHNYSTROM','SIG_NYSTROM','ID_PARCHNYSTROMTXT','');
 
 
 
 delete from transitions where automaton =  'M_DIARY_WAITER';
 delete from transitions where automaton =  'M_GENERAL_WAITER';
+delete from transitions where automaton =  'M_NY_WAITER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
 
@@ -131,14 +138,34 @@ VALUES
         CLEAR(WPARM);
 '),
 ----
-('M_GENERAL_WAITER', 'waiting', 'showDiary', 'WAIT', '0', 'WIP2', '
-        predicate objectInfo(object,control,content);
-        objectInfo(R_WPARM,?BPARM,?WPARM);
-        LOADVIEW(WIP1);
-        SETTEXT(WIP3,WPARM);
+('M_GENERAL_WAITER', 'waiting', 'showText', 'WAIT', '0', 'WIP2', '
+        predicate objectInfo(object,view,control,content);
+        objectInfo(R_WPARM,?BPARM,?WPARM, ?WTEMP1);
+        LOADVIEW(BPARM);
+        SETTEXT(WPARM,WTEMP1);
        
 '),
-('M_GENERAL_WAITER', 'showDiary', '0', 'Z_EPSILON', '', '', '');
+('M_GENERAL_WAITER', 'showText', '0', 'Z_EPSILON', '', '', '
+        CLEAR(WTEMP1);
+        CLEAR(BPARM);
+        CLEAR(WPARM);
+');
+
+----------
+
+-- ('M_NY_WAITER','0', 'waiting', 'Z_EPSILON', '', '', '
+--         REF_MACHINE(SMP_EYEINFO);
+--         CLEAR(WPARM);
+-- '),
+
+-- ('M_NY_WAITER', 'waiting', 'showText', 'WAIT', '0', 'WIP2', '
+--         predicate objectInfo(object,view,control,content);
+--         objectInfo(R_WPARM,?BPARM,?WPARM, ?WTEMP1);
+--         LOADVIEW(BPARM);
+--         SETTEXT(WPARM,WTEMP1);
+       
+-- '),
+-- ('M_NY_WAITER', 'showText', '0', 'Z_EPSILON', '', '', '');
 
 -----------------------------------------------------------------
 ------------- DROP ON EYE AND CHECK
@@ -188,6 +215,11 @@ MOV(BPARM,LVIEW);
 
 ('M_EYEINFO', 'checkObject', '0', 'Z_EPSILON', '', '', '
        
+if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
+                MOV(WPARM,WOBJECT);
+                SIGNAL(NYSTROM_WAITER,SIG_NYSTROM);
+                }
+
        if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT)){
                 MOV(WPARM,WOBJECT);
                 SIGNAL(OBJECT_WAITER,SIG_OBJECT);
