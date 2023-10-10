@@ -14,7 +14,9 @@ insert into objects values
 
 ('IDD_SANDROCK1',40007,'IDC_NULL','sandrock1','sandrock1','sandrock1'),
 ('IDD_SANDROCK2',40008,'IDC_NULL','sandrock2','sandrock2','sandrock2'),
-('IDD_SANDROCK3',40009,'IDC_NULL','sandrock3','sandrock3','sandrock3');
+('IDD_SANDROCK3',40009,'IDC_NULL','sandrock3','sandrock3','sandrock3'),
+('IDD_SANDDIRTBIG',40010,'IDC_NULL','sanddirtbig','sanddirtbig','sanddirtbig');
+
 
 delete from sounds where [name] like 'SOUND_DIG%';
 delete from sounds where [name] like 'SOUND_CHIMES%';
@@ -30,6 +32,7 @@ delete from spr_names where [name] like 'IDS_SAND%';
 insert into spr_names values ('IDS_SANDDIRT','sanddirt','40500');
 insert into spr_names values ('IDS_SANDDIRTGRS','sanddirtgrs','40004');
 insert into spr_names values ('IDS_SANDDIRT3','sanddirt3','40003');
+insert into spr_names values ('IDS_SANDDIRTBIG','sanddirtbig','40022');
 insert into spr_names values ('IDS_SANDDIRTMOON','sanddirtMoon','40005');
 insert into spr_names values ('IDS_SANDDIRTGRSDK','sanddirtgrsdk','40006');
 insert into spr_names values ('IDS_SANDROCK1','sandrock1','40007');
@@ -222,7 +225,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGGABLE', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
 ('M_DIGGABLE', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
-            SHOW(0,IDS_SANDPILE2);
+            SHOW(0,IDS_SANDPILE1);
             ANIMATE();
             PLAYWAVE(SOUND_DIG);
          }   
@@ -239,6 +242,23 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M_DIGGABLE', 'secondWhack', 'thirdWhack', 'DRAG', '', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE2);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+           if(WIP3 == ISA_TOOL_PRYER){
+            SHOW(0,IDS_SANDFLIP);
+            ANIMATE();
+            PLAYWAVE(SOUND_THUMP);
+         }   
+', '', ''),
+('M_DIGGABLE', 'thirdWhack', 'fourthWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE3);
             ANIMATE();
             PLAYWAVE(SOUND_DIG);
@@ -254,7 +274,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_THUMP);
          }   
 ', '', ''),
-('M_DIGGABLE', 'thirdWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
+('M_DIGGABLE', 'fourthWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
 ('M_DIGGABLE', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(WOBJECT);
