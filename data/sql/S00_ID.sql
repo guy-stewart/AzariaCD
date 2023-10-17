@@ -229,8 +229,7 @@ delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
---('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
-
+('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
 ('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', '');
 
@@ -355,7 +354,7 @@ VALUES
 ('M_ID', '25', 'playForward', 'ASSIGN', 'WSPRITE', 'surprised', '', '', ''),
 ('M_ID', '26', 'playForward', 'ASSIGN', 'WSPRITE', 'stress', '', '', ''),
 ('M_ID', '27', 'playForward', 'ASSIGN', 'WSPRITE', 'wave', '', '', ''),
-('M_ID', '30', 'playOnce', 'ASSIGN', 'WSPRITE', 'dead', '', '', ''),
+('M_ID', '30', 'playDead', 'ASSIGN', 'WSPRITE', 'dead', '', '', ''),
 
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '', '', ''),
@@ -367,43 +366,56 @@ VALUES
 ', '', ''),
 ('M_ID', 'playOnce', 'sitting', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
-    SHOW(WSPRITE);
+    SHOW(0,WSPRITE);
     ANIMATE(0,0);
 ', '', ''),
-
+('M_ID', 'playDead', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+    MAP(WSPRITE,WPARM);
+    SHOW(0,WSPRITE);
+    VIDEO(0,WSPRITE);
+    ANIMATE(0,0);
+', '', ''),
 ('M_ID', '100', '101', 'SHOW', '0', '0', '', '', ''),
 ('M_ID', '101', '0', 'SIGNAL', 'WIP4', 'SIG_CLEAR', '', '', '');
 
 
 delete from "main"."transitions" where [automaton] like 'M_IDSPELL%';
 delete from "main"."transitions" where [automaton] like 'M_O_IDSPELL%';
+delete from "main"."transitions" where [automaton] like 'M_ACTIVE_SPELLTARGET%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-('M_IDSPELL',0,100,'DROP','0','0', '', '', ''),
-('M_IDSPELL',1,2,'SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
-('M_IDSPELL',2,3,'PLAYWAVE','0','SOUND_POPUP', '', '', ''),
-('M_IDSPELL',3,4,'ASHOW','WOBJECT','', '', '', ''),
-('M_IDSPELL',4,100,'DROP','0','0', '', '', ''),
-('M_IDSPELL',4,10,'GRAB','0','0', '', '', ''),
-('M_IDSPELL',4,20,'WAIT','0','SIG_BURST', '', '', ''),
-('M_IDSPELL',4,2,'WAIT','0','0', '', '', ''),
-('M_IDSPELL',10,12,'EQUALi','WVIEWID','0', '', '', ''),
-('M_IDSPELL',10,11,'LOADVIEW','WVIEWID','', '', '', ''),
-('M_IDSPELL',11,12,'CLEAR','WVIEWID','', '', '', ''),
-('M_IDSPELL',12,13,'SHOW','0','0', '', '', ''),
-('M_IDSPELL',13,0,'SPELL_ME','WOBJECT','SIG_CLEAR', '', '', ''),
-('M_IDSPELL',20,21,'CLEAR','WOBJECT','', '', '', ''),
-('M_IDSPELL',21,22,'SHOW','0','0', '', '', ''),
-('M_IDSPELL',22,0,'VIDEO','0','IDS_SMBURST', '', '', ''),
-('M_IDSPELL',100,101,'CLEAR','WVIEWID','', '', '', ''),
-('M_IDSPELL',101,102,'IS_A','WOBJECT','IDC_BOMB', '', '', ''),
-('M_IDSPELL',101,120,'IS_A','WOBJECT','IDC_SCROLL', '', '', ''),
-('M_IDSPELL',101,1,'Z_EPSILON','0','0', '', '', ''),
-('M_IDSPELL',102,0,'SPELL_ME','0','SIG_BOMB', '', '', ''),
-('M_IDSPELL',120,121,'MOV','WTEMP1','WOBJECT', '', '', ''),
-('M_IDSPELL',121,122,'MOV','WVIEWID','LVIEW', '', '', ''),
-('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', ''),
+('M_IDSPELL','0','checkObject','DROP','0','0', '
+   
+    CLEAR(WVIEWID);
+    SHOW(WOBJECT);
+', '', ''),
+('M_IDSPELL','0','0','WAIT','0','SIG_CLEAR', '
+    SHOW();
+', '', ''),
+('M_IDSPELL','benign','0','GRAB','0','0', '
+    SHOW();
+', '', ''),
+('M_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
+('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
+('M_IDSPELL','checkObject','benign','Z_EPSILON','0','0', '', '', ''),
+
+('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', '', '', ''),
+('M_IDSPELL','itsAspell','0','Z_EPSILON','','', '
+    if(WOBJECT == IDD_PROTECT){SHOW();SIGNAL(PROTECT_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_NYBREATH){SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_WETBREATH){SHOW();SIGNAL(WETBREATH_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_TELEKINESIS){SHOW();SIGNAL(TELEKINESIS_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_INVISIBLE){SHOW();SIGNAL(INVISIBLE_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_ENCHANT){SHOW(WOBJECT);SIGNAL(ENCHANT_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_HOLDING){SHOW(WOBJECT);SIGNAL(HOLDING_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_STALKER){SHOW(WOBJECT);SIGNAL(STALKING_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_TRANSFER){SHOW();SIGNAL(TRANSFER_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_DEATH){SHOW();SIGNAL(DEATH_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_BANISHMENT){SHOW();SIGNAL(BANISHMENT_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_BLINDNESS){SHOW();SIGNAL(BLINDNESS_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_HALUCINATE){SHOW();SIGNAL(HALUCINATE_ACTIVE,SIG_START);}
+', '', ''),
 
 
 ('M_O_IDSPELL', '0', '1', 'DROP', '0', '0', '
@@ -497,6 +509,30 @@ VALUES
 ------------------------------------------------------
 
 
+-- ('M_IDSPELL',0,100,'DROP','0','0', '', '', ''),
+-- ('M_IDSPELL',1,2,'SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
+-- ('M_IDSPELL',2,3,'PLAYWAVE','0','SOUND_POPUP', '', '', ''),
+-- ('M_IDSPELL',3,4,'ASHOW','WOBJECT','', '', '', ''),
+-- ('M_IDSPELL',4,100,'DROP','0','0', '', '', ''),
+-- ('M_IDSPELL',4,10,'GRAB','0','0', '', '', ''),
+-- ('M_IDSPELL',4,20,'WAIT','0','SIG_BURST', '', '', ''),
+-- ('M_IDSPELL',4,2,'WAIT','0','0', '', '', ''),
+-- ('M_IDSPELL',10,12,'EQUALi','WVIEWID','0', '', '', ''),
+-- ('M_IDSPELL',10,11,'LOADVIEW','WVIEWID','', '', '', ''),
+-- ('M_IDSPELL',11,12,'CLEAR','WVIEWID','', '', '', ''),
+-- ('M_IDSPELL',12,13,'SHOW','0','0', '', '', ''),
+-- ('M_IDSPELL',13,0,'SPELL_ME','WOBJECT','SIG_CLEAR', '', '', ''),
+-- ('M_IDSPELL',20,21,'CLEAR','WOBJECT','', '', '', ''),
+-- ('M_IDSPELL',21,22,'SHOW','0','0', '', '', ''),
+-- ('M_IDSPELL',22,0,'VIDEO','0','IDS_SMBURST', '', '', ''),
+-- ('M_IDSPELL',100,101,'CLEAR','WVIEWID','', '', '', ''),
+-- ('M_IDSPELL',101,102,'IS_A','WOBJECT','IDC_BOMB', '', '', ''),
+-- ('M_IDSPELL',101,120,'IS_A','WOBJECT','IDC_SCROLL', '', '', ''),
+-- ('M_IDSPELL',101,1,'Z_EPSILON','0','0', '', '', ''),
+-- ('M_IDSPELL',102,0,'SPELL_ME','0','SIG_BOMB', '', '', ''),
+-- ('M_IDSPELL',120,121,'MOV','WTEMP1','WOBJECT', '', '', ''),
+-- ('M_IDSPELL',121,122,'MOV','WVIEWID','LVIEW', '', '', ''),
+-- ('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', ''),
 
 
 
