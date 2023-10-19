@@ -153,11 +153,14 @@ VALUES
 -- Timed
 
 ('70022', 'BLINDNESS_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
-('70023', 'BLINDNESS_GATE', '1', 'IDV_BLINDVIEW', '2200', '100', '3000', '200', '3', 'M_BLINDVIEW', '', '', '', ''),
+('70023', 'BLINDNESS_GATE', '70100', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
 ('70024', 'BLINDNESS_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'BLINDNESS_ACTIVE', '', ''),
 
 ('70025', 'HALUCINATE_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
 ('70026', 'HALUCINATE_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'HALUCINATE_ACTIVE', '', '');
+
+--------------------
+-- object spells - ARE JUST OBJECTS - ALARM, LOCK, UNLOCK, EXPLODE...
 
 
 delete from "main"."transitions" where [automaton] like 'M_DEFENSESPELL%';

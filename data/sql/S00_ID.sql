@@ -223,19 +223,28 @@ VALUES
 ('66', 'SID_ID', '3', 'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
 ('68', 'SID_AURA', '3', 'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
 ('56', 'SID_DEC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
-('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', '');
+('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
+--58 - 63 avail
+('58', 'SID_DEC_ENERGY', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', ''),
+('58', 'SID_INC_ENERGY', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', '');
 
 delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
-('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
-('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '112', '100', '3', 'M_O_AURA', '', '', '', ''),
-('73', 'SOD_PED', '5', 'IDV_OTHERID', '0', '129', '99', '173', '3', 'M_O_PED', '', '', '', '');
+('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '10', '50', '80', '110', '3', 'M_O_IDSPELL', '', '', '', ''),
+('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
+
 
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
+('M_DEC_ENERG', '0', 'drain', 'WAIT', '0', '0', '', '', ''),
+('M_DEC_ENERG', 'drain', '0', 'Z_EPSILON', '0', '0', '
+    SUBI(LENERGY,1);
+    SIGNAL(SID_AURA,SIG_SUB);
+', '', ''),
+
 ('M_AURA', '0', 'energyBoost', 'Z_EPSILON', '0', '0', '', '', ''),
 ('M_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
@@ -375,8 +384,10 @@ VALUES
     VIDEO(0,WSPRITE);
     ANIMATE(0,0);
 ', '', ''),
-('M_ID', '100', '101', 'SHOW', '0', '0', '', '', ''),
-('M_ID', '101', '0', 'SIGNAL', 'WIP4', 'SIG_CLEAR', '', '', '');
+('M_ID', '100', 'empty', 'SHOW', '0', '0', '
+    SIGNAL(WIP4,SIG_CLEAR);
+', '', ''),
+('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
 
 
 delete from "main"."transitions" where [automaton] like 'M_IDSPELL%';
@@ -386,7 +397,6 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 
 ('M_IDSPELL','0','checkObject','DROP','0','0', '
-   
     CLEAR(WVIEWID);
     SHOW(WOBJECT);
 ', '', ''),
@@ -418,25 +428,57 @@ VALUES
 ', '', ''),
 
 
-('M_O_IDSPELL', '0', '1', 'DROP', '0', '0', '
+--!!If this is added to the database after meflin1 we have problems 
+-- receiving the drop 
+-- will work to resolve by giving the meflin their own drop target
+-- for now do: sqlite3 kamioza.db < S00_ID.sql then
+--             sqlite3 kamioza.db < meflin1.sql
+--
+
+('M_O_IDSPELL', '0', 'postProcessObject', 'DROP', '0', '0', '
     REF_MACHINE(MEFPAN_VIEWCAP);
+    MOV(BPARM,R_BPARM);
     if(R_BPARM == 1){  //Theres a meflin up
         REF_MACHINE(MEFCURRENT); //Who is it?
         MOV(WPARM,R_WPARM);
         SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
+        SHOW();
     }
 ', '', ''),
-('M_O_IDSPELL', '1', '0', 'Z_EPSILON', '', '', '
-    REF_MACHINE(MEFPAN_VIEWCAP);
-    if(R_BPARM == 0){  //no meflin
-        SPELL_YOU(WOBJECT);
-    }
+('M_O_IDSPELL', 'postProcessObject', 'checkObject', 'NEQUAL', 'BPARM', '1', '
+      
+', '', ''),
+('M_O_IDSPELL', 'postProcessObject', '0', 'Z_EPSILON', '', '', '', '', ''),
+
+('M_O_IDSPELL','0','cleared','WAIT','0','SIG_CLEAR', '
+    SHOW();
+', '', ''),
+('M_O_IDSPELL','benign','0','GRAB','0','0', '
+    SHOW();
+', '', ''),
+('M_O_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
+('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
+('M_O_IDSPELL','checkObject','benign','Z_EPSILON','0','0', '
+    SHOW(WOBJECT);
+', '', ''),
+('M_O_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', '', '', ''),
+('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
+        SHOW();
+        if(WOBJECT == IDD_PROTECT){SHOW();SIGNAL(PROTECT_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_NYBREATH){SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_WETBREATH){SHOW();SIGNAL(WETBREATH_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_TELEKINESIS){SHOW();SIGNAL(TELEKINESIS_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_INVISIBLE){SHOW();SIGNAL(INVISIBLE_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_ENCHANT){SHOW(WOBJECT);SIGNAL(ENCHANT_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_HOLDING){SHOW(WOBJECT);SIGNAL(HOLDING_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_STALKER){SHOW(WOBJECT);SIGNAL(STALKING_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_TRANSFER){SHOW();SIGNAL(TRANSFER_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_DEATH){SHOW();SIGNAL(DEATH_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_BANISHMENT){SHOW();SIGNAL(BANISHMENT_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_BLINDNESS){SHOW();SIGNAL(BLINDNESS_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_HALUCINATE){SHOW();SIGNAL(HALUCINATE_ACTIVE,SIG_START);}
 ', '', '');
 
-
-
--- ('M_O_IDSPELL', '0', '1', 'DROP', '0', '0', '', '', ''),
--- ('M_O_IDSPELL', '1', '0', 'SPELL_YOU', 'WOBJECT', '', '', '', '');
 
 
 
@@ -605,6 +647,4 @@ VALUES
 -- #define OSEX        
 -- #define OWEALTH     
 -- #define OVIEW       
-
-
 

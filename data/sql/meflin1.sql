@@ -287,6 +287,7 @@ delete from machines where name = 'MEFPAN_PRIZE_A';
 delete from machines where name = 'MEFPAN_PRIZE_B';
 delete from machines where name = 'MEFPAN_PRIZE_C';
 delete from machines where name = 'MEF_SHOW_COORDINATOR';
+delete from machines where name = 'MEF_DROPTARGET';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
@@ -296,67 +297,67 @@ VALUES
 ('15500', 'NEELP_COORD', '5', 'IDV_OTHERID', '0', '0', '0', '0', '0','MEFLIN_COORD','','','',''),
 
 ('15501', 'S33_NEELP', '8101', 'IDV_N2B', '47', '101', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
-('15532', 'NEELP_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
+('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
+('15532', 'NEELP_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
 
 ('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEV','IDS_M1SWAYC','', '', ''),
 ('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --NEELP GOES TO THE BEACH
 ('15545', 'S11_NEELP', '4353', 'IDV_FA1PAN', '452', '74', '650', '200', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('15546', 'S11_NEELP_Q2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
-('15547', 'NEELP_I2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
+('15546', 'S11_NEELP_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
+('15547', 'NEELP_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
 ('15548', 'S11_NEELP_alt1', '8102', 'IDV_FH1PTH1', '158', '100', '200', '200', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --NEELP GOES TO THE GAME ARCADE
-('15549', 'S30_NEELP_Q3', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
-('15550', 'NEELP_I3', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
+('15549', 'S30_NEELP_Q3', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
+('15550', 'NEELP_I3', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
 ('15552', 'S30_NEELP', '4392', 'IDV_PATH2', '907', '84', '1070', '273', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
 ('15551', 'S30_NEELP_alt1', '4391', 'IDV_PATH1', '1252', '136', '1299', '200','1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --------------------------------------
 --Rathe
 ('15503', 'RATHE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15508', 'S24_RATHE', '9218', 'IDV_EYEA', '1065', '30', '1260', '150', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
-('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
+('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
+('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
 --Rathe Goes to the desert hills
 ('15558', 'S25_RATHE', '9474', 'IDV_WR2', '3020', '100', '3156', '234', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('15559', 'S25_RATHE_Q2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
-('15560', 'RATHE_I2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
+('15559', 'S25_RATHE_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
+('15560', 'RATHE_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
 
 
 -------------------------------------
 --THAOR
 ('15510', 'THAOR_COORD', '5', 'IDV_OTHERID', '2', '2', '2', '2', '0','MEFLIN_COORD','','','',''),
 ('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
-('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
+('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
+('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
 ('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 --Thaor goes to the Hidden Nature
 ('15561', 'S19_THAOR', '4353', 'IDV_NAT1b', '2399', '80', '2581', '233', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('15562', 'S19_THAOR_Q2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
-('15563', 'THAOR_I2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
+('15562', 'S19_THAOR_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
+('15563', 'THAOR_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
 ('15564', 'S19_THAOR_alt1','4096', 'IDV_NAT1a', '2947', '100', '3019', '185', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 
 -------------------------------------
 --PERST
 ('15517', 'PERST_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
 ('15515', 'S16_PERST', '4869', 'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
-('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
-('15535', 'PERST_I1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
+('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
+('15535', 'PERST_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
 ('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_STATESCALEV','IDS_M2FIDDLEsm1','', '',  ''),
 
 --Perst goes to the dock
 -- tmplpth9 1481 68
 
 ('15555', 'S12_PERST', '4353', 'IDV_TMPLPTH9', '1481', '68', '1637', '200', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
-('15556', 'S12_PERST_Q2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
-('15557', 'PERST_I2', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
+('15556', 'S12_PERST_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
+('15557', 'PERST_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
 
 
 
 -------------------------------------
 -- --AMBLE
 -- ('15519', 'S09_AMBLE', '506', 'IDV_CTO2', '2500', '10', '2700', '150', '0','M_MEF_APPROACH','IDS_MSSQUAT','S09_AMBLE_Q1','IDV_S09_AMBLE_PAN',''),
--- ('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEF_TALK','IDS_MST10001','9','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+-- ('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','9','SOUND_AMBLEQ1', 'IDS_MSI10001'),
 -- ('15521', 'S09_AMBLE_OK', '9805', 'IDV_S09_AMBLE_PAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','S09_AMBLE_Q1','IDV_CTO2','','');
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
@@ -372,13 +373,15 @@ VALUES
 ('15541', 'MEFPAN_PRIZE_B', '9802', 'IDV_MEFPAN', '545', '144', '613', '200', '1','M_MEFPAN_PRIZE','b','','',''),
 ('15542', 'MEFPAN_PRIZE_C', '9802', 'IDV_MEFPAN', '545', '205', '613', '270', '1','M_MEFPAN_PRIZE','c','','',''),
 
-('15543', 'MEF_SHOW_COORDINATOR', '9802', 'IDV_MEFPAN', '0', '0', '2', '2', '1','M_MEFPAN_SHOW_COORD','','','','');
+('15543', 'MEF_SHOW_COORDINATOR', '9802', 'IDV_MEFPAN', '0', '0', '2', '2', '1','M_MEFPAN_SHOW_COORD','','','',''),
 
+('15575', 'MEF_DROPTARGET', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEFLIN_DROP','','','','');
 
 
 delete from transitions where automaton =  'M_MEFCURRENT';
 delete from transitions where automaton =  'MEFLIN_COORD';
 delete from transitions where automaton =  'M_MEFPAN_SHOW_COORD';
+delete from transitions where automaton =  'M_MEFLIN_DROP';
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
@@ -405,7 +408,19 @@ VALUES
     SIGNAL(S16_PERST,SIG_SHOW);SIGNAL(S16_PERST_alt1,SIG_SHOW);
 '),
 
-
+--This is here in case machines overlap
+('M_MEFLIN_DROP', '0', 'postProcessObject', 'DROP', '0', '0', '
+    REF_MACHINE(MEFPAN_VIEWCAP);
+    MOV(BPARM,R_BPARM);
+    if(BPARM == 1){  //Theres a meflin up
+        WRITE("MEFLIN INSPECTION");
+        REF_MACHINE(MEFCURRENT); //Who is it?
+        MOV(WPARM,R_WPARM);
+        SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
+        SHOW();
+    }
+'),
+('M_MEFLIN_DROP', 'postProcessObject', '0', 'Z_EPSILON', '', '', ''),
 
 --keeps the most recently engaged quest 
 
@@ -466,7 +481,7 @@ VALUES
     SHOW(0);
 '),
 ('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', '
-CLEAR(WPARM);CLEAR(BPARM);'),
+CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);'),
 --WIP2 = fixed number for a meflin
 --WIP3 = specific meflin coordinator
 --BPARM becomes the specific primary quest machine to play from the DB or for interogs/pendings too
@@ -559,7 +574,8 @@ PLAYWAVE(WIP3);
 ('M_MEF_TALK','closed', '0', 'Z_EPSILON', '0', '0', ''),
 -- Examine and react to items -------------------------
 ('M_MEF_TALK','talkDone', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
-    REF_MACHINE(SOD_SPELL);
+   // REF_MACHINE(SOD_SPELL);
+    REF_MACHINE(MEF_DROPTARGET);
     MOV(WOBJECT,R_WOBJECT);
 '),
 ('M_MEF_TALK','droppedItem', 'selectMeflin', 'REF_MACHINE', 'MEFCURRENT', '', '
@@ -611,12 +627,12 @@ PLAYWAVE(WIP3);
             
             if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_GOPA) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_GOPA)){mefResp("1",?WTEM1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("1",?WTEMP1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("1",?WTEMP1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("1",?WTEMP1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_GOPA)){mefResp("1",?WTEMP1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("1",?WTEMP1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("1",?WTEMP1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -655,11 +671,11 @@ PLAYWAVE(WIP3);
             
             if(IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT) || IS_A(WOBJECT,IDC_GOPA)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("4",?WTEM1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("4",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("4",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("4",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("4",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("4",?WTEMP1,?WTEM4,"GOPA",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("4",?WTEMP1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("4",?WTEMP1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("4",?WTEMP1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("4",?WTEMP1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -698,9 +714,9 @@ PLAYWAVE(WIP3);
             
             if(IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("3",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("3",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("3",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("3",?WTEMP1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("3",?WTEMP1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("3",?WTEMP1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -739,11 +755,11 @@ PLAYWAVE(WIP3);
             
              if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
             //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
-           if(IS_A(WOBJECT,IDC_FISH)){mefResp("2",?WTEM1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("2",?WTEM1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("2",?WTEM1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("2",?WTEM1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("2",?WTEM1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_FISH)){mefResp("2",?WTEMP1,?WTEM4,"FISH",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BOMB)){mefResp("2",?WTEMP1,?WTEM4,"BOMB",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_PLANT)){mefResp("2",?WTEMP1,?WTEM4,"PLANT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("2",?WTEMP1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("2",?WTEMP1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -788,6 +804,7 @@ VALUES
     SIGNAL(R_WPARM,SIG_CLOSE);
 
     SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
+    SIGNAL(SOD_ID,SIG_SHOW);
     SIGNAL(MEFPAN_WAITER,SIG_RESET);
 
     SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);
