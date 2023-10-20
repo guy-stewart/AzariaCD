@@ -80,11 +80,11 @@ VALUES
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('5895', 'S17_aFOULWIND', '5893', 'IDV_aCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_aCV1bPAN', '', '', ''),
-('5895', 'S17_bFOULWIND', '5893', 'IDV_bCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_bCV1bPAN', '', '', ''),
-('5895', 'S17_cFOULWIND', '5893', 'IDV_cCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_cCV1bPAN', '', '', ''),
-('5895', 'S17_dFOULWIND', '5893', 'IDV_dCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_dCV1bPAN', '', '', ''),
-('5895', 'S17_eFOULWIND', '5893', 'IDV_eCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_eCV1bPAN', '', '', '');
+('5942', 'S17_aFOULWIND', '5893', 'IDV_aCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_aCV1bPAN', 'IDV_aCV1aPAN', 'NYBREATH_TIMER', ''),
+('5943', 'S17_bFOULWIND', '5893', 'IDV_bCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_bCV1bPAN', 'IDV_bCV1aPAN', 'NYBREATH_TIMER', ''),
+('5944', 'S17_cFOULWIND', '5893', 'IDV_cCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_cCV1bPAN', 'IDV_cCV1aPAN', 'NYBREATH_TIMER', ''),
+('5945', 'S17_dFOULWIND', '5893', 'IDV_dCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_dCV1bPAN', 'IDV_dCV1aPAN', 'NYBREATH_TIMER', ''),
+('5945', 'S17_eFOULWIND', '5893', 'IDV_eCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_eCV1bPAN', 'IDV_eCV1aPAN', 'NYBREATH_TIMER', '');
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
@@ -105,6 +105,7 @@ delete from  "main"."transitions" where automaton = 'M17_LOCKSOCKET';
 delete from "main"."transitions" where [automaton] like 'M17_LOCKBURN%';
 delete from  "main"."transitions" where automaton = 'M17_FOULWIND';
 delete from "main"."transitions" where [automaton] like 'M17_MINE%';
+delete from "main"."transitions" where [automaton] like 'M17_DOORWAY%';
 delete from  "main"."transitions" where automaton = 'M_STATESCALEV';
 --foul winds from beta
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
@@ -117,13 +118,22 @@ VALUES
 ('M17_MINE', '3', '4', 'PLAYWAVE', '0', 'SOUND_SPIT', '', '', ''),
 ('M17_MINE', '4', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '', '', ''),
 
-('M17_FOULWIND', '0', '1', 'WAIT', '0', 'SIG_START', '', '', ''),
-('M17_FOULWIND', '1', '2', 'PLAYWAVE', '0', 'SOUND_BURBLE', '', '', ''),
-('M17_FOULWIND', '2', '4', 'ESTIME', '0', '5', '', '', ''),
-('M17_FOULWIND', '4', '0', 'NEQUALi', 'LVIEW', 'WIP1', '', '', ''),
-('M17_FOULWIND', '4', '0', 'SIGNALi', '0', 'SID_DEC_ENERGY', '
-    WRITE("I PAIN YOU!");
+('M17_FOULWIND', '0', 'loopTop', 'WAIT', '0', 'SIG_START', '', '', ''),
+('M17_FOULWIND', 'loopTop', 'bottomOfLoop', 'ESTIME', '0', '5', '
+    //TODO need to look for protection spell nybreath and fan
+    if (  (IFSTATE(0, WIP3) || IFSTATE(spellStopped, WIP3)) ){
+        WRITE("fair game no protection");
+        PLAYWAVE(SOUND_BURBLE);
+        SIGNAL(SID_DEC_ENERGY,SIG_DEC); 
+    }
 ', '', ''),
+('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP1', '', '', ''),
+('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP2', '', '', ''),
+('M17_FOULWIND', 'bottomOfLoop', '0', 'Z_EPSILON', '', '', '', '', ''),
+
+
+
+
 
 ('M17_DOORWAY', '0', 'caveNoLockEntry', 'CLICK', '0', '0', '', '', ''),
 ('M17_DOORWAY', '0', 'Lock', 'WAIT', '0', 'SIG_CLOSE', '', '', ''),
@@ -132,14 +142,14 @@ VALUES
 ('M17_DOORWAY', 'forcefieldUp', 'keyUsed', 'WAIT', '0', 'SIG_ENTER_1', '', '', ''),
 ('M17_DOORWAY', 'LockBombed', '0', 'SIGNAL', 'WIP2', 'SIG_OFF', '', '', ''),
 ('M17_DOORWAY', 'caveNoLockEntry', '0', 'LOADVIEW', 'WIP1', '', '
-    WRITE("SIGNAL THE FOUL WIND");
+    WRITE("No Lock entry - SIGNAL THE FOUL WIND");
     SIGNAL(WIP3,SIG_START);
 ', '', ''),
 ('M17_DOORWAY', 'keyUsed', 'tempOpen', 'SIGNAL', 'WIP2', 'SIG_OFF', '', '', ''),
 ('M17_DOORWAY', 'tempOpen', 'letInOne', 'CLICK', '0', '0', '', '', ''),
 ('M17_DOORWAY', 'tempOpen', 'Lock', 'WAIT', '0', 'SIG_CLOSE', '', '', ''),
 ('M17_DOORWAY', 'letInOne', 'Lock', 'LOADVIEW', 'WIP1', '', '
-   WRITE("SIGNAL THE FOUL WIND");
+   WRITE("unlocked SIGNAL THE FOUL WIND");
    SIGNAL(WIP3,SIG_START);
 ', '', ''),
 
@@ -206,3 +216,12 @@ VALUES
 ('M_STATESCALEV', '10', '11', 'WAIT', '0', 'SIG_HIDE','','',''),
 ('M_STATESCALEV', '11', '0', 'ASHOW', '0', '0','','','');
 
+
+
+-- ('M17_FOULWIND', '0', '1', 'WAIT', '0', 'SIG_START', '', '', ''),
+-- ('M17_FOULWIND', '1', '2', 'PLAYWAVE', '0', 'SOUND_BURBLE', '', '', ''),
+-- ('M17_FOULWIND', '2', '4', 'ESTIME', '0', '5', '', '', ''),
+-- ('M17_FOULWIND', '4', '0', 'NEQUALi', 'LVIEW', 'WIP1', '', '', ''),
+-- ('M17_FOULWIND', '4', '0', 'SIGNALi', 'SIG_DEC', 'SID_DEC_ENERGY', '
+--     WRITE("I PAIN YOU!");
+-- ', '', ''),

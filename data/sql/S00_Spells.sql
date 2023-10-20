@@ -80,7 +80,13 @@ VALUES
 ('IDD_SPELx07', '30605', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
 ('IDD_SPELx08', '30606', 'IDC_SPELL', 'Spelx08', 'Spelx08', 'Spelx08'),
 ('IDD_SPELx09', '30607', 'IDC_SPELL', 'Spelx09', 'Spelx09', 'Spelx09'),
-('IDD_SPELx10', '30608', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10');
+('IDD_SPELx10', '30608', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10'),
+
+
+('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
+
+
+
 
 delete from spr_names where [name] like 'IDS_PROTECT_TINY%';
 delete from spr_names where [name] like 'IDS_NYS_TINY%';
@@ -117,19 +123,19 @@ VALUES
 --------------------
 --Defensive Spells
 ('70000', 'PROTECT_ACTIVE', '1', 'IDV_MAIN_PANEL', '118', '57', '120', '65', '3', 'M_DEFENSESPELL', 'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
-('70001', 'PROTECT_TIMER', '1', 'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '30', 'PROTECT_ACTIVE', '', ''),
+('70001', 'PROTECT_TIMER', '1', 'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '10', 'PROTECT_ACTIVE', '', ''),
 
 ('70002', 'WETBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '135','59', '145', '65', '3', 'M_DEFENSESPELL', 'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
-('70003', 'WETBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '20', 'WETBREATH_ACTIVE', '', ''),
+('70003', 'WETBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '2', 'WETBREATH_ACTIVE', '', ''),
 
 ('70004', 'NYBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '154','59', '165', '65', '3', 'M_DEFENSESPELL', 'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
-('70005', 'NYBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '10', 'NYBREATH_ACTIVE', '', ''),
+('70005', 'NYBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '1', 'NYBREATH_ACTIVE', '', ''),
 
 ('70006', 'TELEKINESIS_ACTIVE', '1', 'IDV_MAIN_PANEL', '169','59', '175', '65', '3', 'M_DEFENSESPELL', 'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('70007', 'TELEKINESIS_TIMER', '1', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '30', 'TELEKINESIS_ACTIVE', '', ''),
+('70007', 'TELEKINESIS_TIMER', '1', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '10', 'TELEKINESIS_ACTIVE', '', ''),
 
 ('70008', 'INVISIBLE_ACTIVE', '1', 'IDV_MAIN_PANEL', '103','56', '114', '65', '3', 'M_DEFENSESPELL', 'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
-('70009', 'INVISIBLE_TIMER', '1', 'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '30', 'INVISIBLE_ACTIVE', '', ''),
+('70009', 'INVISIBLE_TIMER', '1', 'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '10', 'INVISIBLE_ACTIVE', '', ''),
 
 --------------------
 -- attack spells
@@ -150,6 +156,7 @@ VALUES
 ('70016', 'TRANSFER_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'TRANSFER', 'NO_TIMER', '', ''),
 ('70018', 'DEATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'DEATH', 'NO_TIMER', '', ''),
 ('70020', 'BANISHMENT_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'BANISHMENT', 'NO_TIMER', '', ''),
+('70027', 'GOPA_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
 -- Timed
 
 ('70022', 'BLINDNESS_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
@@ -186,6 +193,11 @@ VALUES
 
 ('M_SPELLTIMER', '0', 'timerStarted', 'WAIT', '0', 'SIG_START','
   WPARM = LWISDOM*WIP1;
+  if ( WIP2 == NYBREATH_ACTIVE ){
+    WPARM = 12;
+  }
+  
+
 ', '', ''),
 ('M_SPELLTIMER', 'timerStarted', 'timerDone', 'ESTIME', '', 'WPARM','', '', ''),
 ('M_SPELLTIMER', 'timerDone', 'spellStopped', 'SIGNAL', 'WIP2', 'SIG_STOP','', '', ''),
@@ -248,6 +260,10 @@ VALUES
             MOV(WPARM,IDV_BANISH);
             LOADVIEW(WPARM);
             SUBI(LKARMA,2);
+        }
+         if(WIP1 == GOPA){
+            ADDI(LENERGY,1);
+            SIGNAL(SID_AURA,SIG_ADD);
         }
 ', '', ''),
 

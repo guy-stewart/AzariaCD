@@ -239,8 +239,8 @@ VALUES
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_DEC_ENERG', '0', 'drain', 'WAIT', '0', '0', '', '', ''),
-('M_DEC_ENERG', 'drain', '0', 'Z_EPSILON', '0', '0', '
+('M_DEC_ENERGY', '0', 'drain', 'WAIT', '', 'SIG_DEC', '', '', ''),
+('M_DEC_ENERGY', 'drain', '0', 'Z_EPSILON', '0', '0', '
     SUBI(LENERGY,1);
     SIGNAL(SID_AURA,SIG_SUB);
 ', '', ''),
@@ -261,16 +261,20 @@ VALUES
         SIGNALi(0,SID_ID);
 ', '', ''),
 ('M_AURA', 'energyDrain', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
-        if(LENERGY <= 0){
+        if(LENERGY <= 1){
              ASSIGN(LENERGY,1);
-             //Maybe death
        }      
        ASSIGN(BPARM,LENERGY);
         MOV(WSPRITE,BPARM);
         MAPi(WSPRITE,S00_AURA_MAP);
         SHOW(WSPRITE);
         ANIMATE(WPARM);
-        SIGNALi(0,SID_ID);
+       // SIGNALi(0,SID_ID);
+        
+        if(LENERGY <= 1){
+             ASSIGN(LENERGY,1);
+             SIGNAL(SID_ID,SIG_DEAD);
+       }   
 ', '', '');
 
 
@@ -383,6 +387,11 @@ VALUES
     SHOW(0,WSPRITE);
     VIDEO(0,WSPRITE);
     ANIMATE(0,0);
+    ASSIGN(LENERGY,1);
+    ASSIGN(LWEALTH,1);
+    SUBI(LWEALTH,1);
+    SIGNAL(SMP_VIAL,SIG_DRAIN);
+    LOADVIEW(IDV_VIL8);
 ', '', ''),
 ('M_ID', '100', 'empty', 'SHOW', '0', '0', '
     SIGNAL(WIP4,SIG_CLEAR);
@@ -425,6 +434,7 @@ VALUES
     if(WOBJECT == IDD_BANISHMENT){SHOW();SIGNAL(BANISHMENT_ACTIVE,SIG_START);}
     if(WOBJECT == IDD_BLINDNESS){SHOW();SIGNAL(BLINDNESS_ACTIVE,SIG_START);}
     if(WOBJECT == IDD_HALUCINATE){SHOW();SIGNAL(HALUCINATE_ACTIVE,SIG_START);}
+    if(WOBJECT == IDD_GVIAL){SHOW();SIGNAL(GOPA_ACTIVE,SIG_START);}
 ', '', ''),
 
 
@@ -477,6 +487,7 @@ VALUES
         if(WOBJECT == IDD_BANISHMENT){SHOW();SIGNAL(BANISHMENT_ACTIVE,SIG_START);}
         if(WOBJECT == IDD_BLINDNESS){SHOW();SIGNAL(BLINDNESS_ACTIVE,SIG_START);}
         if(WOBJECT == IDD_HALUCINATE){SHOW();SIGNAL(HALUCINATE_ACTIVE,SIG_START);}
+        if(WOBJECT == IDD_GVIAL){SHOW();SIGNAL(GOPA_ACTIVE,SIG_START);}
 ', '', '');
 
 
