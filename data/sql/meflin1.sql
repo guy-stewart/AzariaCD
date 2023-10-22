@@ -366,7 +366,7 @@ VALUES
 ('15513', 'MEFCURRENT', '9802', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
 
 ('15520', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
-('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '276', '236', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
+('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '276', '200', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
 ('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','',''),
 
 ('15540', 'MEFPAN_PRIZE_A', '9802', 'IDV_MEFPAN', '545', '75', '613', '135', '1','M_MEFPAN_PRIZE','a','','',''),
