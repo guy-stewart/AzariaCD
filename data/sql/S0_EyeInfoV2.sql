@@ -6,11 +6,13 @@ delete from games;
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
 delete from views where [view_name] like 'IDV_PARCHNYSTROM%';
+delete from views where [view_name] like 'IDV_TECHPAN%';
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
 ('8710', 'IDV_PARCHBIG', '1', '0', '1', '2', 'wdepanel.vct', 'parchbig'),
 ('8711', 'IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan'),
-('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom');
+('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom'),
+('8713', 'IDV_TECHPAN', '1', '0', '1', '2', 'wdepanel.vct', 'techpan1');
 
 delete from spr_names where name = 'IDS_PARCHBIGBK';
 delete from spr_names where name = 'IDS_PARCHPANNYBK';
