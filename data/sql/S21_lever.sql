@@ -11,9 +11,6 @@ insert into spr_names values ('IDS_LEVANI','levani',0);
 insert into sounds values ('SOUND_LEVER', 'lever',0);
 insert into spr_names values ('IDS_MAPOPN','MAPOPN',0);
 
-delete from objects where [object] like 'IDD_DIARY1%';
-insert into objects values
-('IDD_DIARY1',40401,'IDC_NULL','DIARY1','DIARY1','DIARY1');
 
 
 

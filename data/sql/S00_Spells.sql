@@ -196,6 +196,9 @@ VALUES
   if ( WIP2 == NYBREATH_ACTIVE ){
     WPARM = 12;
   }
+  if ( WIP2 == TELEKINESIS_ACTIVE ){
+    WPARM = LKARMA*WIP1;
+  }
   
 
 ', '', ''),
