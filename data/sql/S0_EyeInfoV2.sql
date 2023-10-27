@@ -17,22 +17,27 @@ VALUES
 ('8710', 'IDV_PARCHBIG', '1', '0', '1', '2', 'wdepanel.vct', 'parchbig'),
 ('8711', 'IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan'),
 ('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom'),
-('8713', 'IDV_TECHPAN', '1', '0', '1', '2', 'wdepanel.vct', 'techpan1');
+('8713', 'IDV_TECHPAN', '1', '0', '1', '2', 'wdepanel.vct', 'techpan1'),
+('8721', 'IDV_TECHPANBIG', '1', '0', '1', '2', 'wdepanel.vct', 'techpanbig');
 
 delete from spr_names where name = 'IDS_PARCHBIGBK';
 delete from spr_names where name = 'IDS_PARCHPANNYBK';
+delete from spr_names where name = 'IDS_TECHPANBIGBK';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
 ('IDS_PARCHBIGBK', 'parchbigbk', '40650'),
-('IDS_PARCHPANNYBK', 'parchpanbk', '40652');
+('IDS_PARCHPANNYBK', 'parchpanbk', '40652'),
+('IDS_TECHPANBIGBK', 'techpanbigbk', '40653');
 --can use parchpanbk as control background
 
 
 delete from controls where id = 'ID_PARCHBIGTXT';
+delete from controls where id = 'ID_TECHBIGTXT';
 delete from controls where [id] like 'ID_PARCHSMALLTXT%';
 delete from controls where id = 'ID_PARCHNYSTROMTXT';
 insert into controls values
 ('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
+('IDV_TECHPANBIG','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB16',0xe2ebb2,''),
 ('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
 ('IDV_PARCHNYSTROM','ID_PARCHNYSTROMTXT','LABEL','IDS_PARCHPANNYBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
 
@@ -123,12 +128,14 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- Machines for OBJECT Entries
 
 delete from machines where [name] like 'NIRET_DIARY_WAITER';
+delete from machines where [name] like 'ETNOC_DIARY_WAITER';
 delete from machines where [name] like 'OBJECT_WAITER';
 delete from machines where [name] like 'NYSTROM_WAITER';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('15570', 'NIRET_DIARY_WAITER', '8710', 'IDV_PARCHBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHBIG','SIG_DIARY','ID_PARCHBIGTXT',''),
+('15573', 'ETNOC_DIARY_WAITER', '8721', 'IDV_TECHPANBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_TECHPANBIG','SIG_DIARY','ID_TECHBIGTXT',''),
 ('15571', 'OBJECT_WAITER', '8711', 'IDV_PARCHSMALL', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHSMALL','SIG_OBJECT','ID_PARCHSMALLTXT',''),
 ('15572', 'NYSTROM_WAITER', '8712', 'IDV_PARCHNYSTROM', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHNYSTROM','SIG_NYSTROM','ID_PARCHNYSTROMTXT','');
 
@@ -214,8 +221,11 @@ MOV(BPARM,LVIEW);
         '), 
 ('M_EYEINFO', 'checkObject', '0', 'IS_A', 'WOBJECT', 'ISA_DIARY', 
         'MOV(WPARM,WOBJECT);
-        if((WOBJECT == IDD_DIARY1 )|| (WOBJECT == IDD_DIARY2)){
+        if((WOBJECT == IDD_DIARY1 )){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
+        }
+        if((WOBJECT == IDD_DIARY2 )){
+                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
         }
         '),           
      
@@ -228,7 +238,7 @@ if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
                 }
 
        if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT)){
-                MOV(WPAdata/sql/S0_EyeInfoV2.sqlRM,WOBJECT);
+                MOV(WPARM,WOBJECT);
                 SIGNAL(OBJECT_WAITER,SIG_OBJECT);
                 }
 '),   
