@@ -6,6 +6,11 @@ delete from games;
 -- uncovering racepan
 -- scientific diary
 
+INSERT INTO "main"."spr_names" ("name", "value", "id") 
+VALUES 
+('IDS_DIARY3_BIN', 'DIARY3_BIN', '0');
+
+
 delete from views where [view_name] like 'IDV_NAT1%';
 INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
@@ -39,14 +44,17 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 -- The race pan track covered in diggables
 delete from machines where [name] like 'S19_COVER%';
+delete from machines where [name] like 'S19_DIARY%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES  
 ('16202', 'S19_COVER1', '8452', 'IDV_NAT1D', '2636', '238', '2670', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 ('16203', 'S19_COVER2', '8452', 'IDV_NAT1D', '2848', '231', '2870', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 ('16204', 'S19_COVER3', '8452', 'IDV_NAT1D', '2762', '222', '2800', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 --('16206', 'S19_COVERBIG', '8452', 'IDV_NAT1D', '2696', '176', '2861', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTBIG', 'ISA_TOOL_DIGGER', ''),
-('16205', 'S19_RACEGATE', '8452', 'IDV_NAT1D', '2710', '112', '2955', '225', '2', 'M_RACEGATE', 'IDV_RACEPAN', '', '', '');
+('16205', 'S19_RACEGATE', '8452', 'IDV_NAT1D', '2710', '112', '2955', '225', '2', 'M_RACEGATE', 'IDV_RACEPAN', '', '', ''),
+('16206', 'S19_DIARYBIN', '8471', 'IDV_RUBBLECU', '149', '226', '181', '247', '2',  'M_PLANTBIN', 'IDD_DIARY3', 'IDS_DIARY3_BIN', '60', '');
 
+ 
 
 delete from transitions where [automaton] like 'M_DIG_UNCOVER%';
 delete from transitions where [automaton] like 'M_RACEGATE%';

@@ -108,7 +108,7 @@ delete from isa where [class] like 'ISA_DIARY%';
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_ENCHANTEDSTONE', 'IDD_ENCSTONE');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY1');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY2');
-
+INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY3');
 
 delete from idv where [name] like 'IDV_ENCHANTP%';
 delete from views where [view_name] like 'IDV_ENCHANTP%';
@@ -225,6 +225,9 @@ MOV(BPARM,LVIEW);
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
         }
         if((WOBJECT == IDD_DIARY2 )){
+                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
+        }
+         if((WOBJECT == IDD_DIARY3 )){
                  SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
         }
         '),           
