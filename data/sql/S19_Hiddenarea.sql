@@ -5,7 +5,7 @@ delete from games;
 --hidden items 
 -- uncovering racepan
 -- scientific diary
-
+delete from "main"."constants" where name = 'IDS_DIARY3_BIN';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
 ('IDS_DIARY3_BIN', 'DIARY3_BIN', '0');
@@ -45,6 +45,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- The race pan track covered in diggables
 delete from machines where [name] like 'S19_COVER%';
 delete from machines where [name] like 'S19_DIARY%';
+delete from machines where [name] like 'S19_RACEGATE%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES  
 ('16202', 'S19_COVER1', '8452', 'IDV_NAT1D', '2636', '238', '2670', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
@@ -58,6 +59,7 @@ VALUES
 
 delete from transitions where [automaton] like 'M_DIG_UNCOVER%';
 delete from transitions where [automaton] like 'M_RACEGATE%';
+delete from transitions where [automaton] like 'M_CONTLOCKED%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 
 ('M_DIG_UNCOVER', '0', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
