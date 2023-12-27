@@ -13,8 +13,8 @@ delete from machines where name = 'S11_LUNCHCRUMBS';
 delete from machines where name = 'S11_SHOREBIN';
 delete from machines where name = 'S11_RIPPLE';
 
-delete from transitions where name = 'M_TINYFISH';
-delete from transitions where name = 'M_PORTAL';
+delete from transitions where automaton = 'M_TINYFISH';
+
 
 delete from objects where object = 'IDD_LUNCHCRUMBS';
 insert into objects values
@@ -37,19 +37,19 @@ INSERT INTO "main"."panel_nav" ("from", "forward", "back") VALUES ('IDV_LUNCHCU'
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
-('4465', 'S11_RIPPLE', '4356', 'IDV_FH1PAN', '988', '265', '1057', '299', '2', 'M_PORTAL', 'IDS_RIPPLE', 'IDV_SHORE', '', ''),
+('4465', 'S11_RIPPLE', '4356', 'IDV_FH1PAN', '988', '265', '1057', '299', '2', 'M_QANIPORTAL', 'IDS_RIPPLE', '', 'IDV_SHORE', ''),
 ('4464', 'S11_LUNCHCRUMBS', '4361', 'IDV_LUNCHCU', '139', '139', '213', '216', '2', 'M_BIN', 'IDD_LUNCHCRUMBS', '', '', ''),
 ('4463', 'S11_LUNCH', '4356', 'IDV_FH1PAN', '2149', '134', '2259', '201', '2', 'M_LUNCHPORTAL', 'IDV_LUNCHCU', 'IDV_LUNCHCU', '60', ''),
 ('4461', 'S11_SHOREBIN', '4360', 'IDV_SHORE', '129', '87', '321', '213', '0', 'M_TINYFISH', 'IDS_FISH', 'IDD_BAIT3', '60','');
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 ('M_LUNCHPORTAL', '0', '1', 'CLICK', '0', '0', ''),
 ('M_LUNCHPORTAL', '1', '0', 'LOADVIEW', '0', 'IDV_LUNCHCU', '');
 
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 --('M_TINYFISH', '0', '2', 'O_ACCEPT', '0', 'IDD_LUNCHCRUMBS', ''),
 ('M_TINYFISH', '0', '2', 'C_ACCEPT', '0', 'ISA_BAIT', ''),
@@ -66,13 +66,3 @@ VALUES
 ('M_TINYFISH', '10', '2', 'ASHOW', '', '', '');
 
 
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2", "code")
- VALUES 
-('M_PORTAL', '0', '1', 'MOV', 'WSPRITE', 'WIP1', ''),
-('M_PORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
-('M_PORTAL', '2', '3', 'CLICK', '0', '0', ''),
-('M_PORTAL', '3', '1', 'LOADVIEW', '0', 'IDV_SHORE', '');
-
-
--- INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
--- VALUES ('4460', 'S11_SHORE', '4356', 'IDV_FH1PAN', '980', '219', '1000', '281', '2', 'M_PORTAL', 'IDV_SHORE', 'IDV_SHORE', '60', '');

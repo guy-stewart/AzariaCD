@@ -63,5 +63,5 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ('M_ANIPORTAL', '0', '1', 'MOV', 'WSPRITE', 'WIP1',''),
  ('M_ANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
  ('M_ANIPORTAL', '2', '3', 'CLICK', '0', '0',''),
- ('M_ANIPORTAL', '3', '4', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE',''),
- ('M_ANIPORTAL', '4', '1', 'LOADVIEW', '0', 'IDV_GRNDCNT1','');
+ ('M_ANIPORTAL', '3', '4', 'SIGNALi', 'SIG_OPEN', 'WIP2',''),
+ ('M_ANIPORTAL', '4', '1', 'LOADVIEW', '0', 'WIP3','');
