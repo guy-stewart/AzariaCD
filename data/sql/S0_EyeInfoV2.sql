@@ -6,7 +6,8 @@ delete from objects where [object] like 'IDD_DIARY%';
 insert into objects values
 ('IDD_DIARY1',40401,'IDC_NULL','DIARY1','DIARY1','DIARY1'),
 ('IDD_DIARY2',40402,'IDC_NULL','DIARY2','DIARY2','DIARY2'),
-('IDD_DIARY3',40403,'IDC_NULL','DIARY3','DIARY3','DIARY3');
+('IDD_DIARY3',40403,'IDC_NULL','DIARY3','DIARY3','DIARY3'),
+('IDD_DIARY4',40404,'IDC_NULL','DIARY4','DIARY4','DIARY4');
 
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
@@ -109,6 +110,8 @@ INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_ENCHANTEDSTONE', 'IDD_
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY1');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY2');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY3');
+INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY4');
+
 
 delete from idv where [name] like 'IDV_ENCHANTP%';
 delete from views where [view_name] like 'IDV_ENCHANTP%';
@@ -228,6 +231,9 @@ MOV(BPARM,LVIEW);
                  SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
         }
          if((WOBJECT == IDD_DIARY3 )){
+                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
+        }
+         if((WOBJECT == IDD_DIARY4 )){
                  SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
         }
         '),           
