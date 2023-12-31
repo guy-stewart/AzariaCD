@@ -60,9 +60,9 @@ VALUES
 ('S00_HIDDENITEM', '5', 'IDD_POTTALIS5'),
 ('S00_HIDDENITEM', '6', 'IDD_POTTALIS6'),
 ('S00_HIDDENITEM', '7', 'IDD_ENCSTONE'),
-('S00_HIDDENITEM', '8', 'IDD_AMULET'),
+('S00_HIDDENITEM', '8', 'IDD_DEATH'),
 ('S00_HIDDENITEM', '9', 'IDD_RUBY'),
-('S00_HIDDENITEM', '10', 'IDD_FISHASH9'),
+('S00_HIDDENITEM', '10', 'IDD_TRANSFER'),
 
 ('S00_HIDINGPLACE', '1', 'S00_HIDDEN_1'), 
 ('S00_HIDINGPLACE', '2', 'S00_HIDDEN_2'),
@@ -114,12 +114,6 @@ INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "loc
 ('40002', 'IDV_CU_DIRTPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu'),
 ('40003', 'IDV_CU_DIRTPATCH2', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu2');
 
-
---clean up false start - rename and keep coordinates
-delete from machines where [name] like 'S30_PATHDIG%';
-delete from machines where [name] like 'S31_MOONDIG%';
-delete from machines where [name] like 'S04_CITYDIG%';
-delete from machines where [name] like 'S25_SANDDIG%';
 
 
 delete from machines where [name] like 'S00_HIDDEN%';

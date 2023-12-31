@@ -123,7 +123,7 @@ delete from machines where [name] like 'S21_m4B%';
 delete from machines where [name] like 'S21_m5B%';
 delete from machines where [name] like 'S21_p%';
 delete from machines where [name] like 'S21_o%';
-
+delete from machines where [name] like 'S21_H%';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
  VALUES 
@@ -152,4 +152,96 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
    ('8471', 'S21_MAPBIN', '8106', 'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
    ('8472', 'S21_MAPTEXT', '8106', 'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
-  ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', '');
+  ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', ''),
+
+  ('40011', 'S21_HIDDEN_01', '8103', 'IDV_N2D2', '3097', '193', '3194', '230', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
+
+delete from machines where [name] like 'SMP_MAPBUTTONH%';
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('18', 'SMP_MAPBUTTON', '1', 'IDV_MAIN_PANEL', '155', '18', '191', '53', '3', 'M_MAPBUTTON', '', '', '', '');
+
+delete from transitions where [automaton] like 'M_MAPBUTTON%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+('M_MAPBUTTON', '0', '1', 'O_ACCEPT', '0', 'IDD_MAPBTN', '
+   CLEAR(WOBJECT);
+   SHOW();
+', '', ''),
+('M_MAPBUTTON', '1', 'mapPresent', 'DROP', '0', 'IDD_MAPBTN', '
+   SHOW(WOBJECT);
+', '', ''),
+('M_MAPBUTTON', 'mapPresent', 'requested', 'CLICK', '0', '0', '
+   PLAYWAVE(SOUND_POPUP);
+', '', ''),
+('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', '0', 'IDV_CONTINENT', '', '', ''),
+('M_MAPBUTTON', 'mapPresent', 'empty', 'GRAB', '0', '', '', '', '');
+
+
+
+delete from transitions where [automaton] like 'M_DIGDIRECT%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+
+
+('M_DIGDIRECT', '0', 'determinedItem', 'MOV', 'WOBJECT', 'WIP1', '', '', ''),
+('M_DIGDIRECT', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
+        SHOW(WSPRITE);
+', '', ''),
+('M_DIGDIRECT', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
+('M_DIGDIRECT', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE1);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+          if(WIP3 == ISA_TOOL_PRYER){
+            SHOW(0,IDS_SANDWOBBLE);
+            ANIMATE();
+            PLAYWAVE(SOUND_THUMP);
+         }   
+', '', ''),
+('M_DIGDIRECT', 'secondWhack', 'thirdWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE2);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+           if(WIP3 == ISA_TOOL_PRYER){
+            SHOW(0,IDS_SANDFLIP);
+            ANIMATE();
+            PLAYWAVE(SOUND_THUMP);
+         }   
+', '', ''),
+('M_DIGDIRECT', 'thirdWhack', 'fourthWhack', 'DRAG', '', '', '
+        if(WIP3 == ISA_TOOL_DIGGER){
+            SHOW(0,IDS_SANDPILE3);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+         if(WIP3 == ISA_TOOL_STRIKER){
+            SHOW(0,IDS_SANDSTRIKE);
+            ANIMATE();
+            PLAYWAVE(SOUND_DIG);
+         }   
+           if(WIP3 == ISA_TOOL_PRYER){
+            SHOW(0,IDS_SANDFLIP);
+            ANIMATE();
+            PLAYWAVE(SOUND_THUMP);
+         }   
+', '', ''),
+('M_DIGDIRECT', 'fourthWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
+('M_DIGDIRECT', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
+        PLAYWAVE(SOUND_CHIMES);
+        SHOW(WOBJECT);
+', '', ''),
+('M_DIGDIRECT', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
+('M_DIGDIRECT', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');

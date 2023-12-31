@@ -19,6 +19,11 @@ insert into objects values
 ('IDD_DICE',25007,'IDC_NULL','die','die','die'),
 ('IDD_SHAKE',25008,'IDC_NULL','diceshake','diceshake','diceshake');
 
+delete from sounds where name like 'SOUND_SUCK%';
+delete from sounds where name like 'SOUND_QSUCK%';
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_SUCK', 'suck', '0');
+INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_QSUCK', 'qsuck', '0');
+
 delete from sounds where name like 'SOUND_DICE%';
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_DICEROLL', 'dice_06', '0');
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_DICESHAKE', 'diceshake', '0');
@@ -152,7 +157,9 @@ delete from transitions where [automaton] like 'M16_BLOB%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 ('M16_BLOBDROP', '0', '2', 'O_ACCEPT', '0', 'IDD_BLOBBALL', '',''),
-('M16_BLOBDROP', '2', '3', 'DROP', '0', '0', '',''),
+('M16_BLOBDROP', '2', '3', 'DROP', '0', '0', '
+    PLAYWAVE(SOUND_SUCK);
+',''),
 ('M16_BLOBDROP', '3', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
 ('M16_BLOBDROP', '4', '0', 'SHOW', 'WSPRITE', '', '',''),
 ('M16_BLOBDROP', '2', '0', 'GRAB', 'WOBJECT', '', 'SHOW();',''),
@@ -160,7 +167,7 @@ VALUES
 ('M16_BLOBDROP', '5', '0', 'Z_EPSILON', '', '', '',''),
 
 ('M16_BLOBHOLE', '0', '2', 'O_ACCEPT', '0', 'IDD_BLOBBALL', '',''),
-('M16_BLOBHOLE', '2', '0', 'DROP', '0', '0', 'SHOW();',''),
+('M16_BLOBHOLE', '2', '0', 'DROP', '0', '0', 'SHOW();PLAYWAVE(SOUND_QSUCK);',''),
 
 ('M16_BLOBHOLDER', '0', 'ballpresent', 'ACCEPT', '', 'IDD_BLOBBALL', '
     MOV(WOBJECT,IDD_BLOBBALL);

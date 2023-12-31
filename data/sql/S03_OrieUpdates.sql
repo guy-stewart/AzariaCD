@@ -18,7 +18,7 @@ delete from machines where [name] like 'S03_DOORANIM';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('226', 'S03_DIARYBIN', '200', 'IDV_ORIE', '946', '86', '999', '142', '2', 'M_BIN', 'IDD_DIARY2', '', '', ''),
-('214', 'S03_DOORANIM', '200', 'IDV_ORIE', '305', '55', '406', '260', '0', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_GRNDCNT1', '');
+('214', 'S03_DOORANIM', '200', 'IDV_ORIE', '305', '55', '406', '260', '0', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', '');
 
 delete from triggers where [to] like 'IDV_DOORS%';
 delete from triggers where [to] like 'IDV_TECHPAN%';
@@ -34,3 +34,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ('M_QANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
  ('M_QANIPORTAL', '2', '3', 'CLICK', '0', '0',''),
  ('M_QANIPORTAL', '3', '1', 'LOADVIEW', '0', 'WIP3','');
+
+delete from cardinals where [from] like 'IDV_N2A%';
+INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest")
+VALUES ('IDV_N2A', '', '', 'IDV_N2B', '', '', '', 'IDV_ORIE', '');
