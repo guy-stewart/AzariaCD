@@ -3,7 +3,7 @@ delete from machines where [name] like 'S12_MATCHMAKER_%';
 
 insert into machines ([name],[view_name],[left],[top],[right],[bottom],[local_visible],[dfa_name], [wip1_name],[wip2_name],[wip3_name],[wip4_name]) values
 ('S12_MATCHMAKER_1','IDV_TM1PAN',542,14,542+64,14+48,2,'M_MATCHMAKER','','','',''),
-('S12_MATCHMAKER_2','IDV_TM1PAN',903,14,903+64,14+48,2,'M_MATCHMAKER','','','',''),
+('S12_MATCHMAKER_2','IDV_TM1PAN',910,14,903+64,14+48,2,'M_MATCHMAKER','','','',''),
 ('S12_MATCHMAKER_3','IDV_TM1PAN',2196,14,2196+64,14+48,2,'M_MATCHMAKER','','','',''),
 ('S12_MATCHMAKER_4','IDV_TM1PAN',2549,14,2549+64,14+48,2,'M_MATCHMAKER','','','','');
 

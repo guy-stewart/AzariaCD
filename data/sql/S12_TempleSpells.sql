@@ -32,6 +32,8 @@ delete from "main"."spr_names"  where [name] like 'IDS_FLOWER%';
 delete from "main"."spr_names"  where [name] like 'IDS_WILD%';
 delete from "main"."spr_names"  where [name] like 'IDS_ROOTDB%';
 delete from "main"."spr_names"  where [name] like 'IDS_RAIN%';
+delete from "main"."spr_names"  where [name] like 'IDS_ROSEBUSH%';
+delete from "main"."spr_names"  where [name] like 'IDS_FLOWERPLANT%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES 
 ('IDS_SCR020', 'SCR020', '8736'),
 ('IDS_SCR021', 'SCR021', '8737'),
@@ -53,7 +55,11 @@ VALUES
 ('IDS_CANGRN2', 'CANGRN2', '4626'),
 ('IDS_CANGRN3', 'CANGRN3', '4627'),
 ('IDS_CANGRN4', 'CANGRN4', '4628'),
-('IDS_CANNY1', 'CANFLAME', '4629');
+('IDS_CANNY1', 'CANFLAME', '4629'),
+
+('IDS_ROSEBUSH', 'roseBush', '4660'),
+('IDS_FLOWERPLANT', 'flowerplant', '4661');
+
 
 delete from "main"."spr_names"  where [name] like 'IDS_PLANTX%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES 
@@ -64,14 +70,16 @@ delete from objects where [object] like 'IDD_LEA%';
 delete from objects where [object] like 'IDD_FLOWER%';
 delete from objects where [object] like 'IDD_WILD%';
 delete from objects where [object] like 'IDD_ROOTDB%';
+delete from objects where [object] like 'IDD_ROSEBUSH%';
+delete from objects where [object] like 'IDD_FLOWERPLANT%';
 
 ---- a change to a spell in objects
-delete from delete from "main"."objects" where [object] like 'IDD_WETB%';
+delete from "main"."objects" where [object] like 'IDD_WETB%';
 
 INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES 
-('IDD_WETBREATH', '30628', 'IDC_SPELL', 'water', 'water', 'water');
-
-
+('IDD_WETBREATH', '30628', 'IDC_SPELL', 'water', 'water', 'water'),
+('IDD_ROSEBUSH', '40628', 'IDC_NULL', 'roseBush', 'roseBush', 'roseBush'),
+('IDD_FLOWERPLANT', '40629', 'IDC_NULL', 'flowerplant', 'flowerplant', 'flowerplant');
 
 
 INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") 
@@ -79,7 +87,6 @@ VALUES
 ('IDD_SCR020', '8736', 'IDC_SCROLL', 'SCR020', 'SCR020', 'SCR020'),
 ('IDD_SCR021', '8737', 'IDC_SCROLL', 'SCR021', 'SCR021', 'SCR021'),
 ('IDD_SCR022', '8738', 'IDC_SCROLL', 'SCR022', 'SCR022', 'SCR022'),
-
 ('IDD_LEAF', '18507', '', 'LEAF', 'LEAF', 'LEAF'),
 ('IDD_FLOWERD', '18508', '', 'FLOWERD', 'FLOWERD', 'FLOWERD'),
 ('IDD_FLOWERR', '18509', '', 'FLOWERR', 'FLOWERR', 'FLOWERR'),
@@ -87,7 +94,7 @@ VALUES
 ('IDD_ROOTDBL', '18528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
 
 
-delete from machines where [name] like 'S12_%';
+delete from machines where [name] like 'S12_%'; 
 delete from machines where [name] like 'S22_%';
 
 delete from transitions where [automaton] like 'M22_%';
@@ -383,7 +390,6 @@ VALUES
 ('ISA_PLNT_THINIUS_SPORE', 'IDD_OMUSHSPT'),
 ('ISA_PLNT_GORDIUS_SPORE', 'IDD_YMUSHSPT'),
 ('ISA_PLNT_BRUSHERBIUS_FLOWER', 'IDD_FLOWERD'),
-('ISA_PLNT_CARTONIST_FLOWER', 'IDD_FLOWERD'),
 ('ISA_PLNT_CARTONIST_FLOWER', 'IDD_WFLWRSPT'),
 ('ISA_PLNT_CARTONIST_FLOWER', 'IDD_YFLWRSPT'),
 ('ISA_PLNT_CARTONIST_FLOWER', 'IDD_PFLWRSPT'),
@@ -437,6 +443,25 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8713', 'S12_NYST', '8705', 'IDV_SPELLPAN', '302', '231', '259', '280', '2', 'M12_ING_NY', 'SMP_EYEINFO', 'S12_ING_NY', 'IDS_VIALSCRL', '');
 
 --ref SMP_EYEINFO - THEN, R_WTEMP1 HAS THE SCROL DROPPED
+
+--these get dropped above (moving here from s12_scrolls.sql)
+insert into machines
+([name],[view_name],[left],[top],[right],[bottom],[local_visible],
+ [dfa_name], [wip1_name]) values
+
+('S12_SCR001','IDV_TMCUT', 30,100, 60,187,2,'M_OBJECTBIN','IDD_SCR001'),
+('S12_SCR002','IDV_TMCUT', 60,100, 90,187,2,'M_OBJECTBIN','IDD_SCR002'),
+('S12_SCR003','IDV_TMCUT', 90,100,120,187,2,'M_OBJECTBIN','IDD_SCR003'),
+('S12_SCR004','IDV_TMCUT',130,100,160,187,2,'M_OBJECTBIN','IDD_SCR004'),
+('S12_SCR005','IDV_TMCUT',160,100,190,187,2,'M_OBJECTBIN','IDD_SCR005'),
+('S12_SCR006','IDV_TMCUT',190,100,220,187,2,'M_OBJECTBIN','IDD_SCR006'),
+('S12_SCR007','IDV_TMCUT',260,100,290,187,2,'M_OBJECTBIN','IDD_SCR007'),
+('S12_SCR008','IDV_TMCUT',330,100,360,187,2,'M_OBJECTBIN','IDD_SCR008'),
+('S12_SCR009','IDV_TMCUT',366,100,396,187,2,'M_OBJECTBIN','IDD_SCR009'),
+('S12_SCR010','IDV_TMCUT',400,100,430,187,2,'M_OBJECTBIN','IDD_SCR010'),
+('S12_SCR011','IDV_TMCUT',435,100,465,187,2,'M_OBJECTBIN','IDD_SCR011'),
+('S12_SCR012','IDV_TMCUT',500,100,530,187,2,'M_OBJECTBIN','IDD_SCR012'),
+('S12_SCR013','IDV_TMCUT',570,100,600,187,2,'M_OBJECTBIN','IDD_SCR013');
 
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
