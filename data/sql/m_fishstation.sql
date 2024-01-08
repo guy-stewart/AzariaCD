@@ -17,25 +17,48 @@ RAND(ADD_CATCH_TIME,MIN_CATCH_TIME);'),
 'SHOW(IDS_POLE1LCU);
 MOV(WPARM,WOBJECT);
 C_ACCEPT(0,ISA_BAIT);'),
-
 ('M_FISHSTATION','pole','0','GRAB','0','0', ''),
-('M_FISHSTATION','pole','branch','DROP','0','0',
-'MIX(WPARM,WOBJECT);
-SHOW(IDS_POLE1B);'),
-
+('M_FISHSTATION','pole','branch','DROP','0','0','
+        MOV(WTEMP1,WOBJECT);
+        MIX(WPARM,WOBJECT); 
+        MAP(WTEMP1,BAIT_POWER);
+        SHOW(IDS_POLE1B);
+'),
 ('M_FISHSTATION','baited_pole','0','GRAB','0','0', ''),
 ('M_FISHSTATION','baited_pole','fish_on','SYNCPOINT','WRAND','SYNC_FISH1',
-'PLAYWAVE(0,SOUND_HURT);
-MOV(WPARM,WOBJECT);
-RAND(10,1); 
-MOV(WOBJECT,WRAND);
-MAP(WOBJECT,FISH_CAUGHT);
-SHOW(IDS_POLE1LCT);'),
+    'PLAYWAVE(0,SOUND_HURT);
+    MOV(WPARM,WOBJECT);
+      if(WTEMP1 < 6 ){
+        RAND(5,1); 
+        MOV(WOBJECT,WRAND);
+        MAP(WOBJECT,FISH_CAUGHT);
+      }
+    if(WTEMP1 >= 6 ){
+        RAND(10,6); 
+        MOV(WOBJECT,WRAND);
+        MAP(WOBJECT,FISH_CAUGHT);
+    }
+    SHOW(IDS_POLE1LCT);'),
 
 ('M_FISHSTATION','fish_on','branch','GRAB','0','0',
 'MOV(WOBJECT,IDD_POLE1);
 SHOW(IDS_POLE1LCU);');
 
+
+delete from map where op = 'BAIT_POWER';
+insert into map ([op],[key],[value]) values 
+('BAIT_POWER','IDD_BAIT1' , 1),
+('BAIT_POWER','IDD_BAIT2' , 2),
+('BAIT_POWER','IDD_BAIT3' , 3),
+('BAIT_POWER','IDD_BAIT4' , 4),
+('BAIT_POWER','IDD_BAIT5' , 5),
+('BAIT_POWER','IDD_BAIT6' , 6),
+('BAIT_POWER','IDD_BAIT7' , 7),
+('BAIT_POWER','IDD_BAIT8' , 8),
+('BAIT_POWER','IDD_BAIT9' , 9),
+('BAIT_POWER','IDD_BAIT10',10);
+
+delete from map where op = 'FISH_CAUGHT';
 insert into map ([op],[key],[value]) values 
 ('FISH_CAUGHT', '1','IDD_FISH1'),
 ('FISH_CAUGHT', '2','IDD_FISH2'),

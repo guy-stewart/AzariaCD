@@ -1,6 +1,15 @@
 delete from games;
 --drop table games;
 
+
+--When running this, there seems to be a conflict somewhere with 
+-- items being dropped on the meflin quits working 
+-- The machines get relayered most likely EyeWorkV2 may fix
+-- Also Thaor's second showing get's wiped out by something
+
+
+
+
 ------------------------------------RESOURCES
 delete from idv where name = 'IDV_MEFPAN';
 delete from views where view_name = 'IDV_MEFPAN';
@@ -272,6 +281,7 @@ delete from machines where [name] LIKE 'S30_NEELP%';
 delete from machines where [name] LIKE 'S25_RATHE%';
 delete from machines where [name] LIKE 'S24_RATHE%';
 delete from machines where [name] LIKE 'S10_THAOR%';
+delete from machines where [name] LIKE 'S19_THAOR%';
 delete from machines where [name] LIKE 'S16_PERST%';
 delete from machines where [name] LIKE 'S12_PERST%';
 
