@@ -7,7 +7,7 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 ('M_FISHSTATION','0','vacant','C_ACCEPT','0','IDC_POLE', 
 'SHOW();'),
 
-('M_FISHSTATION','vacant','vacant','DRAG','0','IDD_BUCKE', 'HANDOFF(0,IDD_BUCKF);'),
+('M_FISHSTATION','vacant','vacant','DRAG','IDD_BUCKE','','HANDOFF(IDD_BUCKF);'),
 ('M_FISHSTATION','vacant','branch','DROP','0','0', ''),
 
 ('M_FISHSTATION','branch','baited_pole','IS_A','WOBJECT','ISA_BAITEDPOLE',
