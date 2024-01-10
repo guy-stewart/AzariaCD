@@ -27,10 +27,10 @@ VALUES
 --Waiting on triggers to be fixed
 delete from triggers where [from] = 'IDV_TMPLPTH9';
 delete from triggers where [from] = 'IDV_LAKEB1';
-INSERT INTO "main"."triggers" ("from", "left", "top", "right", "bottom", "to", "facing", "code") 
-VALUES 
-('IDV_TMPLPTH9', '2620', '126', '3148', '278','IDV_LAKEB1', '354', ''),
-('IDV_LAKEB1', '1268', '9', '1696', '224','IDV_TMPLPTH9', '166', '');
+-- INSERT INTO "main"."triggers" ("from", "left", "top", "right", "bottom", "to", "facing", "code") 
+-- VALUES 
+-- ('IDV_TMPLPTH9', '2620', '126', '3148', '278','IDV_LAKEB1', '354', ''),
+-- ('IDV_LAKEB1', '1268', '9', '1696', '224','IDV_TMPLPTH9', '166', '');
 
 
 

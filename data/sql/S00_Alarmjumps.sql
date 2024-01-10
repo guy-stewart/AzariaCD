@@ -42,11 +42,13 @@ VALUES
 ('M_ALARM', 'alarmRed', 'alarmWhite', 'CLICK', '0', '', '
     MOV(WSPRITE,IDS_ALARMOFF);
     SHOW(WSPRITE);
+     SIGNAL(MEFPAN_CLOSER,SIG_SET);
     LOADVIEW(WPARM);
 ', '', ''),
  ('M_ALARM', 'alarmGreen', 'alarmWhite', 'CLICK', '0', '', '
     MOV(WSPRITE,IDS_ALARMOFF);
     SHOW(WSPRITE);
+    SIGNAL(MEFPAN_CLOSER,SIG_SET);
     LOADVIEW(WPARM);
 ', '', '');
 

@@ -123,19 +123,19 @@ VALUES
 --------------------
 --Defensive Spells
 ('70000', 'PROTECT_ACTIVE', '1', 'IDV_MAIN_PANEL', '118', '57', '120', '65', '3', 'M_DEFENSESPELL', 'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
-('70001', 'PROTECT_TIMER', '1', 'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '10', 'PROTECT_ACTIVE', '', ''),
+('70001', 'PROTECT_TIMER', '1', 'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '30', 'PROTECT_ACTIVE', '', ''),
 
 ('70002', 'WETBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '135','59', '145', '65', '3', 'M_DEFENSESPELL', 'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
-('70003', 'WETBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '2', 'WETBREATH_ACTIVE', '', ''),
+('70003', 'WETBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '30', 'WETBREATH_ACTIVE', '', ''),
 
 ('70004', 'NYBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '154','59', '165', '65', '3', 'M_DEFENSESPELL', 'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
-('70005', 'NYBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '1', 'NYBREATH_ACTIVE', '', ''),
+('70005', 'NYBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '15', 'NYBREATH_ACTIVE', '', ''),
 
 ('70006', 'TELEKINESIS_ACTIVE', '1', 'IDV_MAIN_PANEL', '169','59', '175', '65', '3', 'M_DEFENSESPELL', 'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('70007', 'TELEKINESIS_TIMER', '1', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '10', 'TELEKINESIS_ACTIVE', '', ''),
+('70007', 'TELEKINESIS_TIMER', '1', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '15', 'TELEKINESIS_ACTIVE', '', ''),
 
 ('70008', 'INVISIBLE_ACTIVE', '1', 'IDV_MAIN_PANEL', '103','56', '114', '65', '3', 'M_DEFENSESPELL', 'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
-('70009', 'INVISIBLE_TIMER', '1', 'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '10', 'INVISIBLE_ACTIVE', '', ''),
+('70009', 'INVISIBLE_TIMER', '1', 'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '30', 'INVISIBLE_ACTIVE', '', ''),
 
 --------------------
 -- attack spells
@@ -143,13 +143,13 @@ VALUES
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
 ('70010', 'ENCHANT_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', '', ''),
-('70011', 'ENCHANT_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'ENCHANT_ACTIVE', '', ''),
+('70011', 'ENCHANT_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
 
 ('70012', 'HOLDING_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', '', ''),
-('70013', 'HOLDING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'HOLDING_ACTIVE', '', ''),
+('70013', 'HOLDING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
 
 ('70014', 'STALKING_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', '', ''),
-('70015', 'STALKING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'STALKING_ACTIVE', '', ''),
+('70015', 'STALKING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
 
 -- attack spells
 -- Instant
@@ -161,10 +161,10 @@ VALUES
 
 ('70022', 'BLINDNESS_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
 ('70023', 'BLINDNESS_GATE', '70100', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
-('70024', 'BLINDNESS_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'BLINDNESS_ACTIVE', '', ''),
+('70024', 'BLINDNESS_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '30', 'BLINDNESS_ACTIVE', '', ''),
 
 ('70025', 'HALUCINATE_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
-('70026', 'HALUCINATE_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '10', 'HALUCINATE_ACTIVE', '', '');
+('70026', 'HALUCINATE_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', '');
 
 --------------------
 -- object spells - ARE JUST OBJECTS - ALARM, LOCK, UNLOCK, EXPLODE...
@@ -192,15 +192,10 @@ VALUES
 --------------------
 
 ('M_SPELLTIMER', '0', 'timerStarted', 'WAIT', '0', 'SIG_START','
-  WPARM = LWISDOM*WIP1;
+  WPARM = WIP1;
   if ( WIP2 == NYBREATH_ACTIVE ){
     WPARM = 12;
   }
-  if ( WIP2 == TELEKINESIS_ACTIVE ){
-    WPARM = LKARMA*WIP1;
-  }
-  
-
 ', '', ''),
 ('M_SPELLTIMER', 'timerStarted', 'timerDone', 'ESTIME', '', 'WPARM','', '', ''),
 ('M_SPELLTIMER', 'timerDone', 'spellStopped', 'SIGNAL', 'WIP2', 'SIG_STOP','', '', ''),

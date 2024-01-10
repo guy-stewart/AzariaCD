@@ -7,6 +7,8 @@ delete from games;
 -- The machines get relayered most likely EyeWorkV2 may fix
 -- Also Thaor's second showing get's wiped out by something
 
+--- !! Update - after running this script, Run S00_ID.sql to
+-- fix meflin machine layering  -- machine Z should fix :)
 
 
 
@@ -291,6 +293,8 @@ delete from machines where name = 'S09_AMBLE_OK';
 --delete from machines where name = 'S09_AMBLE_alt1';
 delete from machines where name = 'MEFCURRENT';
 delete from machines where name = 'MEFPAN_OK';
+--if they choose another route than the OK button
+delete from machines where name = 'MEFPAN_CLOSER';
 delete from machines where name = 'MEFPAN_WAITER';
 delete from machines where name = 'MEFPAN_VIEWCAP';
 delete from machines where name = 'MEFPAN_PRIZE_A';
@@ -376,6 +380,7 @@ VALUES
 ('15513', 'MEFCURRENT', '9802', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
 
 ('15520', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
+('15523', 'MEFPAN_CLOSER',  '5', 'IDV_OTHERID', '0', '0', '1', '1', '1','M_MEFCLOSER','','','',''),
 ('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '276', '200', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
 ('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','',''),
 
@@ -800,14 +805,39 @@ PLAYWAVE(WIP3);
 
 delete from transitions where automaton = 'M_MEFPAN_PRIZE';
 delete from transitions where automaton =  'M_MEFPAN_OK';
+delete from transitions where automaton =  'M_MEFCLOSER';
 delete from transitions where automaton =  'M_MEFPAN_VIEWCAP';
 delete from transitions where automaton =  'M_MEFPAN_WAITER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
+
+
+
+('M_MEFCLOSER','0', 'MefShowCheck', 'WAIT', 'SIG_SET', '', '
+  REF_MACHINE(MEFPAN_VIEWCAP);
+  MOV(BPARM,R_BPARM);
+'),
+('M_MEFCLOSER','MefShowCheck', 'MefShowing', 'EQUALi', 'R_BPARM', '1', ''),
+('M_MEFCLOSER','MefShowCheck', '0', 'Z_EPSILON', '', '', ''),
+('M_MEFCLOSER','MefShowing', 'MefClosing', '', '', '', '
+    REF_MACHINE(MEFCURRENT);
+    PLAYWAVE(SOUND_POPUP);
+    SIGNAL(R_WPARM,SIG_CLOSE);
+     SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
+    SIGNAL(SOD_ID,SIG_SHOW);
+    SIGNAL(MEFPAN_WAITER,SIG_RESET);
+
+    SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_B,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_C,SIG_RESET);
+'),
+('M_MEFCLOSER','MefClosing', '0', 'Z_EPSILON', '', '', ''),
+
+
+
 ('M_MEFPAN_OK', '0', '1', 'SHOW', '0', 'IDS_BTN_OK', '
     CLEAR(WPARM);
 '),
-
 ('M_MEFPAN_OK','1', '2', 'CLICK', '0', '0', '
     REF_MACHINE(MEFCURRENT);
     PLAYWAVE(SOUND_POPUP);

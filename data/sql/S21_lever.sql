@@ -171,6 +171,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    SHOW(WOBJECT);
 ', '', ''),
 ('M_MAPBUTTON', 'mapPresent', 'requested', 'CLICK', '0', '0', '
+     SIGNAL(MEFPAN_CLOSER,SIG_SET);
    PLAYWAVE(SOUND_POPUP);
 ', '', ''),
 ('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', '0', 'IDV_CONTINENT', '', '', ''),
