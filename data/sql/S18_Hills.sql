@@ -10,6 +10,7 @@ delete from games;
 delete from spr_names where [name] like 'IDS_TREESTUMP%';
 insert into spr_names values ('IDS_TREESTUMP','TREESTUMP','40611');
 
+delete from idv where name like 'IDV_HILLS%';
 delete from views where view_name like 'IDV_HILLS%';
 delete from cardinals where 'from' like 'IDV_HILLS%';
 delete from panel_nav where 'from' like 'IDV_HILLS%';

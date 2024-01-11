@@ -87,6 +87,12 @@ VALUES
 ('S00_HIDINGPLACE', '21', 'S00_HIDDEN_21'),
 ('S00_HIDINGPLACE', '22', 'S00_HIDDEN_22');
 
+
+
+This was dumb of me to wipe out all of the tools everywhere
+don't run until fix like
+--delete from isa where [member] like 'IDD_SPADE%';
+
 delete from isa where [class] like 'ISA_TOOL_%';
 INSERT INTO "main"."isa" ("class", "member")
 VALUES 
