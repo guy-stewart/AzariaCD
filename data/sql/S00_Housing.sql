@@ -94,6 +94,29 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('50006', 'S00_CITYGOPA', '50000', 'IDV_CHS1', '2957', '186', '3045', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
 ('50007', 'S00_VILGOPA', '50003', 'IDV_VHS1', '2546', '181', '2631', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', '');
 
+delete from objectInfo where [object] like 'IDD_GOPASEED%';
+INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES 
+('IDD_GOPASEED', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
+Gopa is grown from its seed stage by only watering once per week.
+After it sprouts Gopa requires daily water until fruit shows up.
+
+After 3 days, Gopas first fruit (green) may be seen and it is time to
+start irrigating with Nystrom. Typical plants, at this stage, take 
+2 scoop of nystrom daily. 
+
+After a few Nystrom applications, 
+the fruits should change from green, to red 
+and finally to blue. Gopa will keep bearing green fruit after 
+harvesting, if watering is continued.
+
+');
+-- Gopa does not grow wild as it has evolved to require specific
+-- care during the torrential rainy season.  Gopa is only good in
+-- its blue stage and must be meticulously cared for as it is used in
+-- many spells and for the production of a revival drink by the same 
+-- name.
+
+-- one day is 86400 seconds so for a daily task we can use this
 
 delete from transitions where [automaton] like 'M_NEWGOPA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
@@ -107,16 +130,19 @@ VALUES
             ANIMATE();
          }   
 ',''),
-('M_NEWGOPA', 'digging', 'holeDug', 'ESTIME', '', '3', '',''),
+('M_NEWGOPA', 'digging', 'holeDug', 'ESTIME', '', '3', '
+            O_ACCEPT(IDD_GOPASEED);
+',''),
 ('M_NEWGOPA', 'holeDug', 'firstPlanted', 'DROP', '', 'IDD_GOPASEED', '
             PLAYWAVE(SOUND_SUCK);
             SHOW();
 ',''),
 ('M_NEWGOPA', 'firstPlanted', 'needsWater', 'ESTIME', '', '1', '
-       MOV(BFRAME,3);
-       SHOW(0,IDS_GPDIRTANIM);
+            MOV(BFRAME,3);
+            SHOW(0,IDS_GPDIRTANIM);
+             O_ACCEPT(IDD_BUCKF);
 ',''),
-('M_NEWGOPA', 'needsWater', 'watered', 'DRAG', '0', 'IDD_BUCKF IDD_BUCKE', '
+('M_NEWGOPA', 'needsWater', 'watered', 'DRAG', '0', 'IDD_BUCKF', '
             HANDOFF(IDD_BUCKE);
             MOV(BFRAME,1);
             SHOW(0,IDS_GPDIRTANIM);
@@ -132,33 +158,48 @@ VALUES
             MOV(BFRAME,2);
             SHOW(0,IDS_GPDIRTANIM);
 ',''),
-('M_NEWGOPA', 'sproutedNeedsWater', 'sproutWatered', 'DRAG', '0', 'IDD_BUCKF IDD_BUCKE', '
+('M_NEWGOPA', 'sproutedNeedsWater', 'sproutWatered', 'DRAG', '0', 'IDD_BUCKF', '
             HANDOFF(IDD_BUCKE);
             MOV(BFRAME,0);
             SHOW(0,IDS_GPDIRTANIM);
             PLAYWAVE(SOUND_SPLASH);
             BPARM = BPARM + 1;
 ',''),
-('M_NEWGOPA', 'sproutWatered', 'immaturePlant', 'EQUALi', 'BPARM', '3', '
+('M_NEWGOPA', 'sproutWatered', 'immaturePlant', 'EQUALi', 'BPARM', '6', '
             MOV(BFRAME,0);
             SHOW(0,IDS_GPANIM);
 ',''),
 ('M_NEWGOPA', 'sproutWatered', 'freshSprout', 'Z_EPSILON', '', '', '',''),
-('M_NEWGOPA', 'immaturePlant', 'greenBerry',  'DRAG', '0', 'IDD_BUCKF IDD_BUCKE', '
+('M_NEWGOPA', 'immaturePlant', 'greenBerry',  'DRAG', '0', 'IDD_BUCKF', '
             HANDOFF(IDD_BUCKE);
             PLAYWAVE(SOUND_SPLASH);
             MOV(BFRAME,1);
+            ASSIGN(WOBJECT,IDD_GOPAG);
             SHOW(0,IDS_GPANIM);
 ',''),
 ('M_NEWGOPA', 'greenBerry', 'redBerry',  'DRAG', '0', 'IDD_SCOOPF', '
             HANDOFF(IDD_SCOOPE);
             PLAYWAVE(SOUND_SPIT);
             MOV(BFRAME,2);
+            ASSIGN(WOBJECT,IDD_GOPAR);
+            SHOW(0,IDS_GPANIM);
+',''),
+('M_NEWGOPA', 'greenBerry', 'immaturePlant', 'GRAB', '0', '', '
+            MOV(BFRAME,0);
             SHOW(0,IDS_GPANIM);
 ',''),
 ('M_NEWGOPA', 'redBerry', 'blueBerry',  'DRAG', '0', 'IDD_SCOOPF', '
             HANDOFF(IDD_SCOOPE);
             PLAYWAVE(SOUND_SPIT);
             MOV(BFRAME,3);
+            ASSIGN(WOBJECT,IDD_GOPAB);
+            SHOW(0,IDS_GPANIM);
+',''),
+('M_NEWGOPA', 'redBerry', 'immaturePlant', 'GRAB', '0', '', '
+            MOV(BFRAME,0);
+            SHOW(0,IDS_GPANIM);
+',''),
+('M_NEWGOPA', 'blueBerry', 'immaturePlant', 'GRAB', '0', '', '
+            MOV(BFRAME,0);
             SHOW(0,IDS_GPANIM);
 ','');
