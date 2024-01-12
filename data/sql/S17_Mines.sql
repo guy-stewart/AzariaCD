@@ -77,14 +77,45 @@ VALUES
 ('5914', 'S17_dDOORWAY', '5900', 'IDV_dMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_dCV1aPAN', 'S17_dFFIELD1', 'S17_dFOULWIND', ''),
 ('5922', 'S17_eDOORWAY', '5903', 'IDV_eMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_eCV1aPAN', 'S17_eFFIELD1', 'S17_eFOULWIND', '');
 
+-- EXITING THE MINES
+
+--fixing the cardinals
+delete from cardinals where [from] like 'IDV_%CV1%';
+INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES 
+ ('IDV_aCV1aPAN', 'IDV_aCV1bPAN', '', '', '', '', '', '', ''),
+ ('IDV_aCV1bPAN', '', '', '', '', 'IDV_aCV1aPAN', '', '', ''),
+ ('IDV_bCV1aPAN', 'IDV_bCV1bPAN', '', '', '', '', '', '', ''),
+ ('IDV_bCV1bPAN', '', '', '', '', 'IDV_bCV1aPAN', '', '', ''),
+ ('IDV_cCV1aPAN', 'IDV_cCV1bPAN', '', '', '', '', '', '', ''),
+ ('IDV_cCV1bPAN', '', '', '', '', 'IDV_cCV1aPAN', '', '', ''),
+ ('IDV_dCV1aPAN', '', '', '', '', '', '', '', 'IDV_dCV1bPAN'),
+ ('IDV_dCV1bPAN', '', '', '', 'IDV_dCV1aPAN', '', '', '', ''),
+ ('IDV_eCV1aPAN', '', '', '', '', '', '', '', 'IDV_eCV1bPAN'),
+ ('IDV_eCV1bPAN', '', '', '', 'IDV_eCV1aPAN', '', '', '', '');
+
+delete from triggers where [from] = 'IDV_aCV1aPAN'; --southwest
+delete from triggers where [from] = 'IDV_bCV1aPAN'; --southwest
+delete from triggers where [from] = 'IDV_cCV1aPAN'; --southwest
+delete from triggers where [from] = 'IDV_dCV1aPAN'; --southeast
+delete from triggers where [from] = 'IDV_eCV1aPAN'; --southeast
+INSERT INTO "main"."triggers" ("from", "left", "top", "right", "bottom", "to", "facing", "code") 
+VALUES 
+('IDV_aCV1aPAN', '1625', '8', '2397', '247','IDV_aMINEPAN', '166', 'SIGNAL(S17_aFOULWIND,SIG_CLEAR);'),
+('IDV_bCV1aPAN', '1625', '8', '2397', '247','IDV_bMINEPAN', '166', 'SIGNAL(S17_bFOULWIND,SIG_CLEAR);'),
+('IDV_cCV1aPAN', '1625', '8', '2397', '247','IDV_cMINEPAN', '166', 'SIGNAL(S17_cFOULWIND,SIG_CLEAR);'),
+('IDV_dCV1aPAN', '894', '2', '1507', '275','IDV_dMINEPAN', '166', 'SIGNAL(S17_dFOULWIND,SIG_CLEAR);'),
+('IDV_eCV1aPAN', '894', '2', '1507', '275','IDV_eMINEPAN', '166', 'SIGNAL(S17_eFOULWIND,SIG_CLEAR);');
+
+
+
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('5942', 'S17_aFOULWIND', '5893', 'IDV_aCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_aCV1bPAN', 'IDV_aCV1aPAN', 'NYBREATH_TIMER', ''),
-('5943', 'S17_bFOULWIND', '5893', 'IDV_bCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_bCV1bPAN', 'IDV_bCV1aPAN', 'NYBREATH_TIMER', ''),
-('5944', 'S17_cFOULWIND', '5893', 'IDV_cCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_cCV1bPAN', 'IDV_cCV1aPAN', 'NYBREATH_TIMER', ''),
-('5945', 'S17_dFOULWIND', '5893', 'IDV_dCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_dCV1bPAN', 'IDV_dCV1aPAN', 'NYBREATH_TIMER', ''),
-('5945', 'S17_eFOULWIND', '5893', 'IDV_eCV1bPAN', '0', '0', '0', '0', '2', 'M17_FOULWIND', 'IDV_eCV1bPAN', 'IDV_eCV1aPAN', 'NYBREATH_TIMER', '');
+('5942', 'S17_aFOULWIND', '5893', 'IDV_aCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+('5943', 'S17_bFOULWIND', '5893', 'IDV_bCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+('5944', 'S17_cFOULWIND', '5893', 'IDV_cCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+('5945', 'S17_dFOULWIND', '5893', 'IDV_dCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+('5945', 'S17_eFOULWIND', '5893', 'IDV_eCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH');
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
@@ -94,11 +125,11 @@ VALUES
 ('5913', 'S17_dLOCKBURN', '5900', 'IDV_dMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
 ('5921', 'S17_eLOCKBURN', '5903', 'IDV_eMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
 
-('5894', 'S17_aMINE', '5893', 'IDV_aCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', '', '', '', ''),
-('5902', 'S17_bMINE', '5896', 'IDV_bCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', '', '', '', ''),
-('5910', 'S17_cMINE', '5899', 'IDV_cCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', '', '', '', ''),
-('5918', 'S17_dMINE', '5902', 'IDV_dCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', '', '', '', ''),
-('5926', 'S17_eMINE', '5905', 'IDV_eCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', '', '', '', '');
+('5894', 'S17_aMINE', '5893', 'IDV_aCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_aFOULWIND', '', '', ''),
+('5902', 'S17_bMINE', '5896', 'IDV_bCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_bFOULWIND', '', '', ''),
+('5910', 'S17_cMINE', '5899', 'IDV_cCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_cFOULWIND', '', '', ''),
+('5918', 'S17_dMINE', '5902', 'IDV_dCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_dFOULWIND', '', '', ''),
+('5926', 'S17_eMINE', '5905', 'IDV_eCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_eFOULWIND', '', '', '');
 
 
 delete from  "main"."transitions" where automaton = 'M17_LOCKSOCKET';
@@ -111,25 +142,37 @@ delete from  "main"."transitions" where automaton = 'M_STATESCALEV';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-('M17_MINE', '0', '1', 'DRAG', '0', 'IDD_SCOOPE', '', '', ''),
+('M17_MINE', '0', '1', 'DRAG', '0', 'IDD_SCOOPE', '
+    SIGNAL(WIP1,SIG_START); 
+', '', ''),
 ('M17_MINE', '0', '3', 'DRAG', '0', 'IDD_SCOOPF', '', '', ''),
 ('M17_MINE', '1', '2', 'PLAYWAVE', '0', 'SOUND_SLURP', '', '', ''),
 ('M17_MINE', '2', '0', 'HANDOFF', '0', 'IDD_SCOOPF', '', '', ''),
 ('M17_MINE', '3', '4', 'PLAYWAVE', '0', 'SOUND_SPIT', '', '', ''),
 ('M17_MINE', '4', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '', '', ''),
 
-('M17_FOULWIND', '0', 'loopTop', 'WAIT', '0', 'SIG_START', '', '', ''),
-('M17_FOULWIND', 'loopTop', 'bottomOfLoop', 'ESTIME', '0', '5', '
-    //TODO need to look for protection spell nybreath and fan
-    if (  (IFSTATE(0, WIP3) || IFSTATE(spellStopped, WIP3)) ){
-        WRITE("fair game no protection");
-        PLAYWAVE(SOUND_BURBLE);
-        SIGNAL(SID_DEC_ENERGY,SIG_DEC); 
-    }
-', '', ''),
-('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP1', '', '', ''),
-('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP2', '', '', ''),
-('M17_FOULWIND', 'bottomOfLoop', '0', 'Z_EPSILON', '', '', '', '', ''),
+
+--M_DEATHMANAGER
+--WIP1 = time before pain sets in
+--WIP2 = protection spell that may be active
+--WIP3 = time between pain
+--WIP4 = Entry sound
+
+
+
+
+-- ('M17_FOULWIND', '0', 'loopTop', 'WAIT', '0', 'SIG_START', '', '', ''),
+-- ('M17_FOULWIND', 'loopTop', 'bottomOfLoop', 'ESTIME', '0', '5', '
+--     //TODO need to look for protection spell nybreath and fan
+--     if (  (IFSTATE(0, WIP3) || IFSTATE(spellStopped, WIP3)) ){
+--         WRITE("fair game no protection");
+--         PLAYWAVE(SOUND_BURBLE);
+--         SIGNAL(SID_DEC_ENERGY,SIG_DEC); 
+--     }
+-- ', '', ''),
+-- ('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP1', '', '', ''),
+-- ('M17_FOULWIND', 'bottomOfLoop', 'loopTop', 'EQUALi', 'LVIEW', 'WIP2', '', '', ''),
+-- ('M17_FOULWIND', 'bottomOfLoop', '0', 'Z_EPSILON', '', '', '', '', ''),
 
 
 

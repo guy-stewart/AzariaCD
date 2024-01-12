@@ -161,6 +161,11 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 VALUES 
 ('18', 'SMP_MAPBUTTON', '1', 'IDV_MAIN_PANEL', '155', '18', '191', '53', '3', 'M_MAPBUTTON', '', '', '', '');
 
+
+--Need to create a machine that shuts everything down when someone clicks on the map
+-- Meflin, Lake drowning , Mines poison
+-- just doing here for now
+
 delete from transitions where [automaton] like 'M_MAPBUTTON%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 ('M_MAPBUTTON', '0', '1', 'O_ACCEPT', '0', 'IDD_MAPBTN', '
@@ -171,7 +176,13 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    SHOW(WOBJECT);
 ', '', ''),
 ('M_MAPBUTTON', 'mapPresent', 'requested', 'CLICK', '0', '0', '
-     SIGNAL(MEFPAN_CLOSER,SIG_SET);
+      SIGNAL(MEFPAN_CLOSER,SIG_SET);
+      SIGNAL(S27_DEATHMANAGER,SIG_CLEAR);
+      SIGNAL(S17_aFOULWIND,SIG_CLEAR);
+      SIGNAL(S17_bFOULWIND,SIG_CLEAR);
+      SIGNAL(S17_cFOULWIND,SIG_CLEAR);
+      SIGNAL(S17_dFOULWIND,SIG_CLEAR);
+      SIGNAL(S17_eFOULWIND,SIG_CLEAR);
    PLAYWAVE(SOUND_POPUP);
 ', '', ''),
 ('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', '0', 'IDV_CONTINENT', '', '', ''),
