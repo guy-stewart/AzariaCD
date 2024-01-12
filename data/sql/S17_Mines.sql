@@ -127,9 +127,9 @@ VALUES
 
 ('5894', 'S17_aMINE', '5893', 'IDV_aCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_aFOULWIND', '', '', ''),
 ('5902', 'S17_bMINE', '5896', 'IDV_bCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_bFOULWIND', '', '', ''),
-('5910', 'S17_cMINE', '5899', 'IDV_cCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_cFOULWIND', '', '', ''),
-('5918', 'S17_dMINE', '5902', 'IDV_dCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_dFOULWIND', '', '', ''),
-('5926', 'S17_eMINE', '5905', 'IDV_eCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_eFOULWIND', '', '', '');
+('5910', 'S17_cMINE', '5899', 'IDV_cCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_cFOULWIND', '', '', ''),
+('5918', 'S17_dMINE', '5902', 'IDV_dCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_dFOULWIND', '', '', ''),
+('5926', 'S17_eMINE', '5905', 'IDV_eCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_eFOULWIND', '', '', '');
 
 
 delete from  "main"."transitions" where automaton = 'M17_LOCKSOCKET';
