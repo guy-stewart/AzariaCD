@@ -92,7 +92,36 @@ delete from machines where [name] like 'S00_CITYGOP%';
 delete from machines where [name] like 'S00_VILGOP%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
 ('50006', 'S00_CITYGOPA', '50000', 'IDV_CHS1', '2957', '186', '3045', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
-('50007', 'S00_VILGOPA', '50003', 'IDV_VHS1', '2546', '181', '2631', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', '');
+('50007', 'S00_VILGOPA', '50003', 'IDV_VHS1', '2546', '181', '2631', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
+
+
+
+('50010', 'S00_VIL_SHELFSPOT1', '50003', 'IDV_VHS1', '944', '225', '1045', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50011', 'S00_VIL_SHELFSPOT2', '50003', 'IDV_VHS1', '1045', '225', '1137', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50012', 'S00_VIL_SHELFSPOT3', '50003', 'IDV_VHS1', '1138', '220', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
+
+('50013', 'S00_VIL_SHELFSPOT4', '50003', 'IDV_VHS1', '944', '139', '1045', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50014', 'S00_VIL_SHELFSPOT5', '50003', 'IDV_VHS1', '1045', '139', '1137', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50015', 'S00_VIL_SHELFSPOT6', '50003', 'IDV_VHS1', '1138', '137', '1230', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+
+('50016', 'S00_VIL_SHELFSPOT7', '50003', 'IDV_VHS1', '944', '66', '1045', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50017', 'S00_VIL_SHELFSPOT8', '50003', 'IDV_VHS1', '1045', '63', '1137', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50018', 'S00_VIL_SHELFSPOT9', '50003', 'IDV_VHS1', '1138', '70', '1230', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
+
+
+('50020', 'S00_CIT_SHELFSPOT1', '50000', 'IDV_CHS1', '869', '199', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50021', 'S00_CIT_SHELFSPOT2', '50000', 'IDV_CHS1', '961', '199', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50022', 'S00_CIT_SHELFSPOT3', '50000', 'IDV_CHS1', '1045', '199', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
+
+('50023', 'S00_CIT_SHELFSPOT4', '50000', 'IDV_CHS1', '869', '150', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50024', 'S00_CIT_SHELFSPOT5', '50000', 'IDV_CHS1', '961', '150', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50025', 'S00_CIT_SHELFSPOT6', '50000', 'IDV_CHS1', '1045', '150', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
+
+('50026', 'S00_CIT_SHELFSPOT7', '50000', 'IDV_CHS1', '869', '101', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50027', 'S00_CIT_SHELFSPOT8', '50000', 'IDV_CHS1', '961', '101', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
+('50028', 'S00_CIT_SHELFSPOT9', '50000', 'IDV_CHS1', '1045', '101', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', '');
+
+
 
 delete from objectInfo where [object] like 'IDD_GOPASEED%';
 INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES 
@@ -202,4 +231,8 @@ VALUES
 ('M_NEWGOPA', 'blueBerry', 'immaturePlant', 'GRAB', '0', '', '
             MOV(BFRAME,0);
             SHOW(0,IDS_GPANIM);
-','');
+',''),
+
+
+('M_SHELFBIN', '0', '1', 'DROP', '0', '', 'SHOW(WOBJECT);',''),
+('M_SHELFBIN', '1', '0', 'GRAB', 'WOBJECT', '', 'SHOW();','');
