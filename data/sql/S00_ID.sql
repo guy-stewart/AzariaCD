@@ -416,6 +416,7 @@ VALUES
 ', '', ''),
 ('M_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
+('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
 ('M_IDSPELL','checkObject','benign','Z_EPSILON','0','0', '', '', ''),
 
 ('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', '', '', ''),

@@ -120,11 +120,11 @@ delete from machines where [name] like 'S16_BLOB%';
 delete from machines where [name] like 'S16_DIEDROP%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('16021', 'S16_BLOBFILL1', '4880', 'IDV_TRAYR',140,118,167,137, '0','M16_BLOBDROP','IDS_BLOBFILL1','','', ''),
-('16022', 'S16_BLOBFILL2', '4880', 'IDV_TRAYR',171,118,199,137, '0','M16_BLOBDROP','IDS_BLOBFILL2','','', ''),
+('16021', 'S16_BLOBFILL1', '4880', 'IDV_TRAYR',140,118,167,139, '0','M16_BLOBDROP','IDS_BLOBFILL1','','', ''),
+('16022', 'S16_BLOBFILL2', '4880', 'IDV_TRAYR',171,118,199,139, '0','M16_BLOBDROP','IDS_BLOBFILL2','','', ''),
 ('16023', 'S16_BLOBFILL3', '4880', 'IDV_TRAYR',202,118,231,137, '0','M16_BLOBDROP','IDS_BLOBFILL3','','', ''),
-('16024', 'S16_BLOBFILL4', '4880', 'IDV_TRAYR',232,119,263,137, '0','M16_BLOBDROP','IDS_BLOBFILL4','','', ''),
-('16025', 'S16_BLOBFILL5', '4880', 'IDV_TRAYR',263,119,296,137, '0','M16_BLOBDROP','IDS_BLOBFILL5','','', ''),
+('16024', 'S16_BLOBFILL4', '4880', 'IDV_TRAYR',232,119,263,139, '0','M16_BLOBDROP','IDS_BLOBFILL4','','', ''),
+('16025', 'S16_BLOBFILL5', '4880', 'IDV_TRAYR',263,119,296,139, '0','M16_BLOBDROP','IDS_BLOBFILL5','','', ''),
 ('16026', 'S16_BLOBFILL6', '4880', 'IDV_TRAYR',195,136,234,151, '0','M16_BLOBHOLE','','','', ''),
 ('16027', 'S16_DIEDROP', '4880', 'IDV_TRAYR',175,160,266,252, '0','M16_DIEROLL','IDS_DICE','','', ''),
 
