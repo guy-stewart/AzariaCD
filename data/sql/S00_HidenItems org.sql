@@ -64,50 +64,41 @@ VALUES
 ('S00_HIDDENITEM', '9', 'IDD_RUBY'),
 ('S00_HIDDENITEM', '10', 'IDD_TRANSFER'),
 
-('S00_HIDINGPLACE', 1, 'S00_HIDDEN_1'), 
-('S00_HIDINGPLACE', 2, 'S00_HIDDEN_2'),
-('S00_HIDINGPLACE', 3, 'S00_HIDDEN_3'),
-('S00_HIDINGPLACE', 4, 'S00_HIDDEN_4'),
-('S00_HIDINGPLACE', 5, 'S00_HIDDEN_5'),
-('S00_HIDINGPLACE', 6, 'S00_HIDDEN_6'),
-('S00_HIDINGPLACE', 7, 'S00_HIDDEN_7'),
-('S00_HIDINGPLACE', 8, 'S00_HIDDEN_8'),
-('S00_HIDINGPLACE', 9, 'S00_HIDDEN_9'),
-('S00_HIDINGPLACE', 10, 'S00_HIDDEN_10'),
-('S00_HIDINGPLACE', 11, 'S00_HIDDEN_11'),
-('S00_HIDINGPLACE', 12, 'S00_HIDDEN_12'),
-('S00_HIDINGPLACE', 13, 'S00_HIDDEN_13'),
-('S00_HIDINGPLACE', 14, 'S00_HIDDEN_14'),
-('S00_HIDINGPLACE', 15, 'S00_HIDDEN_15'),
-('S00_HIDINGPLACE', 16, 'S00_HIDDEN_16'),
-('S00_HIDINGPLACE', 17, 'S00_HIDDEN_17'),
-('S00_HIDINGPLACE', 18, 'S00_HIDDEN_18'),
-('S00_HIDINGPLACE', 19, 'S00_HIDDEN_19'),
-('S00_HIDINGPLACE', 20, 'S00_HIDDEN_20'),
-('S00_HIDINGPLACE', 21, 'S00_HIDDEN_21'),
-('S00_HIDINGPLACE', 22, 'S00_HIDDEN_22'),
---these are being added to ensure if the machine 
---picked a 3 for each of 10 random picks (HIGHLY UNLIKELY)
-('S00_HIDINGPLACE', 23, 'S00_HIDDEN_23'),
-('S00_HIDINGPLACE', 24, 'S00_HIDDEN_24'),
-('S00_HIDINGPLACE', 25, 'S00_HIDDEN_25'),
-('S00_HIDINGPLACE', 26, 'S00_HIDDEN_26'),
-('S00_HIDINGPLACE', 27, 'S00_HIDDEN_27'),
-('S00_HIDINGPLACE', 28, 'S00_HIDDEN_28'),
-('S00_HIDINGPLACE', 29, 'S00_HIDDEN_29'),
-('S00_HIDINGPLACE', 30, 'S00_HIDDEN_30');
+('S00_HIDINGPLACE', '1', 'S00_HIDDEN_1'), 
+('S00_HIDINGPLACE', '2', 'S00_HIDDEN_2'),
+('S00_HIDINGPLACE', '3', 'S00_HIDDEN_3'),
+('S00_HIDINGPLACE', '4', 'S00_HIDDEN_4'),
+('S00_HIDINGPLACE', '5', 'S00_HIDDEN_5'),
+('S00_HIDINGPLACE', '6', 'S00_HIDDEN_6'),
+('S00_HIDINGPLACE', '7', 'S00_HIDDEN_7'),
+('S00_HIDINGPLACE', '8', 'S00_HIDDEN_8'),
+('S00_HIDINGPLACE', '9', 'S00_HIDDEN_9'),
+('S00_HIDINGPLACE', '10', 'S00_HIDDEN_10'),
+('S00_HIDINGPLACE', '11', 'S00_HIDDEN_11'),
+('S00_HIDINGPLACE', '12', 'S00_HIDDEN_12'),
+('S00_HIDINGPLACE', '13', 'S00_HIDDEN_13'),
+('S00_HIDINGPLACE', '14', 'S00_HIDDEN_14'),
+('S00_HIDINGPLACE', '15', 'S00_HIDDEN_15'),
+('S00_HIDINGPLACE', '16', 'S00_HIDDEN_16'),
+('S00_HIDINGPLACE', '17', 'S00_HIDDEN_17'),
+('S00_HIDINGPLACE', '18', 'S00_HIDDEN_18'),
+('S00_HIDINGPLACE', '19', 'S00_HIDDEN_19'),
+('S00_HIDINGPLACE', '20', 'S00_HIDDEN_20'),
+('S00_HIDINGPLACE', '21', 'S00_HIDDEN_21'),
+('S00_HIDINGPLACE', '22', 'S00_HIDDEN_22');
 
 
---This was dumb of me to wipe out all of the tools everywhere
---don't run until fix like
+
+This was dumb of me to wipe out all of the tools everywhere
+don't run until fix like
 --delete from isa where [member] like 'IDD_SPADE%';
 
--- delete from isa where [class] like 'ISA_TOOL_%';
--- INSERT INTO "main"."isa" ("class", "member")
--- VALUES 
--- ('ISA_TOOL_DIGGER', 'IDD_SHOVEL'),
--- ('ISA_TOOL_STRIKER', 'IDD_PICK'),
--- ('ISA_TOOL_PRYER', 'IDD_CROWBAR');
+delete from isa where [class] like 'ISA_TOOL_%';
+INSERT INTO "main"."isa" ("class", "member")
+VALUES 
+('ISA_TOOL_DIGGER', 'IDD_SHOVEL'),
+('ISA_TOOL_STRIKER', 'IDD_PICK'),
+('ISA_TOOL_PRYER', 'IDD_CROWBAR');
 
 delete from objects where object = 'IDD_SHOVEL';
 delete from objects where object = 'IDD_PICK';
@@ -169,14 +160,7 @@ VALUES
 ('40009', 'S00_HIDDEN_19', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 
-('40023', 'S00_HIDDEN_23', '4391', 'IDV_PATH2', '693', '208', '750', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40024', 'S00_HIDDEN_24', '4391', 'IDV_PATH2', '2065', '214', '2165', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40025', 'S00_HIDDEN_25','4703', 'IDV_MOON5', '300', '205', '380', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
-('40026', 'S00_HIDDEN_26',  '5381', 'IDV_TMPLPTH5', '2279', '215', '2350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40027', 'S00_HIDDEN_27', '5381', 'IDV_TMPLPTH5', '1197', '224', '1290', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40028', 'S00_HIDDEN_28', '5382', 'IDV_TMPLPTH9', '2018', '245', '2100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40029', 'S00_HIDDEN_29', '4868', 'IDV_VIL6', '3180', '172', '3220', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40030', 'S00_HIDDEN_30', '4868', 'IDV_VIL6', '2134', '222', '2220', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+
 
 
 ('40023', 'S00_HIDEFINDER', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDELIST', 'S00_HIDECHECK', '', '', '');
@@ -199,52 +183,29 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- of the next machines(hiding places) to 22
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
-      want('%')~ 
-      want(1). 
-      want(2).
-      want(3).
-      want(4).
-      want(5).
-      want(6).
-      want(7).
-      want(8).
-      want(9).
-      want(10).
-      ASSIGN(WTEMP3,0);
-      ASSIGN(WTEMP2,0);
-      RAND(3,1); 
-      ASSIGN(BPARM,WRAND);  
-
-', '', ''),
-('M_HIDER', 'topOLoop', 'numberCheck', 'ZEPSILON', '', '', '
-         RAND(10,1);
-         ASSIGN(WTEMP1,WRAND);
-         if (want(WTEMP1)) {
-            want(WTEMP1)~   
-            ASSIGN(WPARM,WTEMP1);
-            ADD(WTEMP3,1);
-         } else {
-            ASSIGN(WPARM,0);
-         }
-  ', '', ''),      
-
-('M_HIDER', 'numberCheck', 'hideItem', 'GTE', '1', 'WPARM', '', '', ''),
---
-('M_HIDER', 'numberCheck', 'topOLoop', 'ZEPSILON', '', '', '', '', ''),
-
-('M_HIDER', 'hideItem', 'objectHidden', 'ZEPSILON', '', '', '   
-         MOV(WTEMP2,BPARM);
-         MAPi(WTEMP2,S00_HIDINGPLACE); 
-         SIGNAL(WTEMP2,SIG_OPEN); 
-         WRITE(''NEXT ITEM HIDDEN''); 
-         RAND(3,1); 
-         MOV(BPARM, WTEMP2);
-         ADD(WTEMP2,WRAND); 
-         ASSIGN(BPARM,WTEMP2);
+    ASSIGN(WPARM,1);
+    RAND(2,1); //The machine to start at
+    ASSIGN(BPARM,WRAND);  // BPARM starting point for locations
+    MOV(WTEMP1,BPARM);
+    MAPi(WTEMP1,S00_HIDINGPLACE);
+    SIGNAL(WTEMP1,SIG_OPEN); // Signal first hidden spot
+    WRITE(''FIRST ITEM HIDDEN''); 
+  ', '', ''),
+('M_HIDER', 'topOLoop', 'objectHidden', 'LTE', 'WPARM', 'WIP1', '  
+            //Set wparm to represent the object pointer
+            ADD(WPARM,1); // the new item is old one +1
+           
+            //climb up the list to find a new hiding place  
+            RAND(2,1); //Location increases by 1 or 2
+            MOV(WTEMP2,BPARM);
+            ADD(WTEMP2,WRAND); 
+            ASSIGN(BPARM,WTEMP2);
+            MAPi(WTEMP2,S00_HIDINGPLACE);  //get the new hider machine into BPARM 
+            SIGNAL(WTEMP2,SIG_OPEN); 
+            WRITE(''NEXT ITEM HIDDEN''); 
 ', '', ''),
 
-  --we need a seperate counter instead of LTE(WPARM,WIP1)!
-('M_HIDER', 'objectHidden', 'topOLoop', 'LT', '10', 'WTEMP3', '', '', ''),
+('M_HIDER', 'objectHidden', 'topOLoop', 'LT', 'WPARM', 'WIP1', '', '', ''),
 ('M_HIDER', 'objectHidden', 'stopped', 'Z_EPSILON', '', '', '
      WRITE(''Finished Hiding Items'');   
 ', '', ''),
