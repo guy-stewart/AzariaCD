@@ -199,7 +199,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- of the next machines(hiding places) to 22
 
 ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
-      want('%')~ 
+      want("%")~ 
       want(1). 
       want(2).
       want(3).
@@ -214,11 +214,14 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
       ASSIGN(WTEMP2,0);
       RAND(3,1); 
       ASSIGN(BPARM,WRAND);  
-
 ', '', ''),
-('M_HIDER', 'topOLoop', 'numberCheck', 'ZEPSILON', '', '', '
+('M_HIDER', 'topOLoop', '0', 'GT', 'WTEMP3', 9, '
+ WRITE('' should be done ''); 
+', '', ''),
+('M_HIDER', 'topOLoop', 'numberCheck', 'Z_EPSILON', '', '', '
          RAND(10,1);
          ASSIGN(WTEMP1,WRAND);
+         WRITE(''Check to see if we want WTEMP1 ''); 
          if (want(WTEMP1)) {
             want(WTEMP1)~   
             ASSIGN(WPARM,WTEMP1);
@@ -228,27 +231,35 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
          }
   ', '', ''),      
 
-('M_HIDER', 'numberCheck', 'hideItem', 'GTE', '1', 'WPARM', '', '', ''),
---
-('M_HIDER', 'numberCheck', 'topOLoop', 'ZEPSILON', '', '', '', '', ''),
+('M_HIDER', 'numberCheck', 'hideItem', 'GTEi', 'WPARM', 1, '
+ WRITE('' lets hide this ''); 
+', '', ''),
 
-('M_HIDER', 'hideItem', 'objectHidden', 'ZEPSILON', '', '', '   
+--WE'RE GOING TO GET THIS ALOT - NO CHECKING HERE TO SEE IF WE'RE DONE??
+('M_HIDER', 'numberCheck', 'topOLoop', 'Z_EPSILON', '', '', '
+ WRITE('' GOT ONE WE DONT WANT ''); 
+', '', ''),
+
+('M_HIDER', 'hideItem', 'objectHidden', 'Z_EPSILON', '', '', '   
+         WRITE(''HIDING ITEM ''); 
          MOV(WTEMP2,BPARM);
          MAPi(WTEMP2,S00_HIDINGPLACE); 
          SIGNAL(WTEMP2,SIG_OPEN); 
-         WRITE(''NEXT ITEM HIDDEN''); 
          RAND(3,1); 
-         MOV(BPARM, WTEMP2);
-         ADD(WTEMP2,WRAND); 
-         ASSIGN(BPARM,WTEMP2);
+        //I want to update BPARM by adding 1,2 or 3
+        ASSIGN(WTEMP2,BPARM);
+        ADD(WTEMP2,WRAND); 
+        ASSIGN(BPARM,WTEMP2); //BPARM is now again The new hiding machine
 ', '', ''),
 
   --we need a seperate counter instead of LTE(WPARM,WIP1)!
-('M_HIDER', 'objectHidden', 'topOLoop', 'LT', '10', 'WTEMP3', '', '', ''),
+('M_HIDER', 'objectHidden', 'topOLoop', 'LTEi', 'WTEMP3', 10, '
+        WRITE(''Checking to see if we hid all 10  ''); 
+', '', ''),
 ('M_HIDER', 'objectHidden', 'stopped', 'Z_EPSILON', '', '', '
      WRITE(''Finished Hiding Items'');   
 ', '', ''),
-('M_HIDER', 'stopped', '0', 'WAIT', '', 'SIG_OPEN', '', '', ''),
+('M_HIDER', 'stopped', '0', 'Z_EPSILON', '', '', '', '', ''),
 
 
 
