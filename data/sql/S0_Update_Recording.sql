@@ -4,8 +4,8 @@ delete from games;
 ------------DRYPIT COMPLETION
 delete from machines where name = 'S10_DRYPIT';
 delete from machines where name = 'S10_FLOWER';
-insert into machines values (0x1000,'S10_DRYPIT',0x1002,'IDV_SCN10PIT',30,205,379,300,0,'M10_DRYPIT','', '', '', '' );
-insert into machines values (0x1001,'S10_FLOWER',0x1002,'IDV_SCN10PIT',90,0,273,127,0,'M10_FLOWER','', '', '', '' );
+insert into machines values (0x1000,'S10_DRYPIT',0x1002,'IDV_SCN10PIT',30,205,379,300,0,'M10_DRYPIT','', '', '', '','' );
+insert into machines values (0x1001,'S10_FLOWER',0x1002,'IDV_SCN10PIT',90,0,273,127,0,'M10_FLOWER','', '', '', '','' );
 
 delete from transitions where automaton = 'M10_DRYPIT';
 delete from transitions where automaton = 'M10_FLOWER';
@@ -69,8 +69,8 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 delete from transitions where automaton = 'M25_OPNDOOR';
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code], [guard]) values
-('M25_OPNDOOR','0','10','C_ACCEPT','0','IDC_BOMB','',''),
-('M25_OPNDOOR','10','40','DROP','0','0','',''),
+('M25_OPNDOOR','0','10','Z_EPSILON','','','',''),
+('M25_OPNDOOR','10','40','DROP','IDC_BOMB','','',''),
 ('M25_OPNDOOR','40','50','Z_EPSILON','','','',''),
 ('M25_OPNDOOR','50','51','VIDEO','0','IDS_EXPLODE1','',''),
 ('M25_OPNDOOR','51','52','PLAYWAVE','0','SOUND_EXPLODE','SIGNAL(WIP3,SIG_COMPLETE);',''),
@@ -113,8 +113,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ------------MOON ALTAR TABLE 
 
-('M_MEMOBJ','0','1','O_ACCEPT','WIP1','','',''),
-('M_MEMOBJ','1','2','DROP','0','','',''),
+('M_MEMOBJ','0','1','Z_EPSILON','','','',''),
+('M_MEMOBJ','1','2','DROP','WIP1','','',''),
 ('M_MEMOBJ','11','12','SIGNALi','SIG_SHOW','S27_MEMSTONE1','',''),
 ('M_MEMOBJ','12','13','SIGNALi','SIG_SHOW','S27_MEMSTONE2','',''),
 ('M_MEMOBJ','13','14','SIGNALi','SIG_SHOW','S27_MEMSTONE3','',''),

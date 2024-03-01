@@ -272,8 +272,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGGABLE', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
         SHOW(WSPRITE);
 ', '', ''),
-('M_DIGGABLE', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
-('M_DIGGABLE', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
+('M_DIGGABLE', 'coverActive', 'firstWhack', 'Z_EPSILON', '', '', '', '', ''),
+('M_DIGGABLE', 'firstWhack', 'secondWhack', 'DRAG', 'WIP3', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE1);
             ANIMATE();
@@ -290,7 +290,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_THUMP);
          }   
 ', '', ''),
-('M_DIGGABLE', 'secondWhack', 'thirdWhack', 'DRAG', '', '', '
+('M_DIGGABLE', 'secondWhack', 'thirdWhack', 'DRAG', 'WIP3', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE2);
             ANIMATE();
@@ -307,7 +307,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_THUMP);
          }   
 ', '', ''),
-('M_DIGGABLE', 'thirdWhack', 'fourthWhack', 'DRAG', '', '', '
+('M_DIGGABLE', 'thirdWhack', 'fourthWhack', 'DRAG', 'WIP3', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE3);
             ANIMATE();
@@ -324,7 +324,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_THUMP);
          }   
 ', '', ''),
-('M_DIGGABLE', 'fourthWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
+('M_DIGGABLE', 'fourthWhack', 'moveMe', 'DRAG', 'WIP3', '', '', '', ''),
 ('M_DIGGABLE', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(WOBJECT);

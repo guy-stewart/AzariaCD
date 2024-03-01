@@ -12,9 +12,7 @@ delete from transitions where [automaton] like 'M_MATCHMAKER';
 insert into transitions 
     ([automaton],[state],[new_state],[opcode],[param_1],[param_2],[code],[guard])
     values
-        ('M_MATCHMAKER',0,'BURNING','ASHOW','IDS_CANNY1','V_LOOP',
-        'ACCEPT(IDD_LOG);',''),
-        ('M_MATCHMAKER','BURNING','BURNING','DRAG','IDD_LOG','',
-'PLAYWAVE(SOUND_FIRE);
-HANDOFF(IDD_MATCH);','');
+        ('M_MATCHMAKER',0,'BURNING','ASHOW','IDS_CANNY1','V_LOOP','',''),
+        ('M_MATCHMAKER','BURNING','BURNING','DRAG','IDD_LOG','','PLAYWAVE(SOUND_FIRE);
+        HANDOFF(IDD_MATCH);','');
 

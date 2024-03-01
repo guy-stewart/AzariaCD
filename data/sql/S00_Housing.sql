@@ -151,8 +151,8 @@ delete from transitions where [automaton] like 'M_NEWGOPA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
-('M_NEWGOPA', '0', 'setup', 'C_ACCEPT', 'WIP1', '','',''),
-('M_NEWGOPA', 'setup', 'digging', 'DRAG', '', '', '
+('M_NEWGOPA', '0', 'setup', 'Z_EPSILON', '', '','',''),
+('M_NEWGOPA', 'setup', 'digging', 'DRAG', 'WIP1', '', '
     if(WIP1 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILEGOPA);
             PLAYWAVE(SOUND_DIG);
@@ -160,18 +160,16 @@ VALUES
          }   
 ',''),
 ('M_NEWGOPA', 'digging', 'holeDug', 'ESTIME', '', '3', '
-            O_ACCEPT(IDD_GOPASEED);
 ',''),
-('M_NEWGOPA', 'holeDug', 'firstPlanted', 'DROP', '', 'IDD_GOPASEED', '
+('M_NEWGOPA', 'holeDug', 'firstPlanted', 'DROP', 'IDD_GOPASEED', '', '
             PLAYWAVE(SOUND_SUCK);
             SHOW();
 ',''),
 ('M_NEWGOPA', 'firstPlanted', 'needsWater', 'ESTIME', '', '1', '
             MOV(BFRAME,3);
             SHOW(0,IDS_GPDIRTANIM);
-             O_ACCEPT(IDD_BUCKF);
 ',''),
-('M_NEWGOPA', 'needsWater', 'watered', 'DRAG', '0', 'IDD_BUCKF', '
+('M_NEWGOPA', 'needsWater', 'watered', 'DRAG', 'IDD_BUCKF', '', '
             HANDOFF(IDD_BUCKE);
             MOV(BFRAME,1);
             SHOW(0,IDS_GPDIRTANIM);
@@ -179,7 +177,7 @@ VALUES
 ',''),
 ('M_NEWGOPA', 'watered', 'freshSprout', 'ESTIME', '', '5', '
             MOV(BFRAME,0);
-             PLAYWAVE(SOUND_HURT);
+            PLAYWAVE(SOUND_HURT);
             SHOW(0,IDS_GPDIRTANIM);
             BPARM = 0;
 ',''),
@@ -187,7 +185,7 @@ VALUES
             MOV(BFRAME,2);
             SHOW(0,IDS_GPDIRTANIM);
 ',''),
-('M_NEWGOPA', 'sproutedNeedsWater', 'sproutWatered', 'DRAG', '0', 'IDD_BUCKF', '
+('M_NEWGOPA', 'sproutedNeedsWater', 'sproutWatered', 'DRAG', 'IDD_BUCKF', '', '
             HANDOFF(IDD_BUCKE);
             MOV(BFRAME,0);
             SHOW(0,IDS_GPDIRTANIM);
@@ -199,14 +197,14 @@ VALUES
             SHOW(0,IDS_GPANIM);
 ',''),
 ('M_NEWGOPA', 'sproutWatered', 'freshSprout', 'Z_EPSILON', '', '', '',''),
-('M_NEWGOPA', 'immaturePlant', 'greenBerry',  'DRAG', '0', 'IDD_BUCKF', '
+('M_NEWGOPA', 'immaturePlant', 'greenBerry',  'DRAG', 'IDD_BUCKF', '', '
             HANDOFF(IDD_BUCKE);
             PLAYWAVE(SOUND_SPLASH);
             MOV(BFRAME,1);
             ASSIGN(WOBJECT,IDD_GOPAG);
             SHOW(0,IDS_GPANIM);
 ',''),
-('M_NEWGOPA', 'greenBerry', 'redBerry',  'DRAG', '0', 'IDD_SCOOPF', '
+('M_NEWGOPA', 'greenBerry', 'redBerry',  'DRAG', 'IDD_SCOOPF', '', '
             HANDOFF(IDD_SCOOPE);
             PLAYWAVE(SOUND_SPIT);
             MOV(BFRAME,2);
@@ -217,7 +215,7 @@ VALUES
             MOV(BFRAME,0);
             SHOW(0,IDS_GPANIM);
 ',''),
-('M_NEWGOPA', 'redBerry', 'blueBerry',  'DRAG', '0', 'IDD_SCOOPF', '
+('M_NEWGOPA', 'redBerry', 'blueBerry',  'DRAG', 'IDD_SCOOPF', '', '
             HANDOFF(IDD_SCOOPE);
             PLAYWAVE(SOUND_SPIT);
             MOV(BFRAME,3);
@@ -234,5 +232,5 @@ VALUES
 ',''),
 
 
-('M_SHELFBIN', '0', '1', 'DROP', '0', '', 'SHOW(WOBJECT);',''),
+('M_SHELFBIN', '0', '1', 'DROP', '', '', 'SHOW(WOBJECT);',''),
 ('M_SHELFBIN', '1', '0', 'GRAB', 'WOBJECT', '', 'SHOW();','');

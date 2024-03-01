@@ -4,21 +4,20 @@
 delete from transitions where [automaton]='M_FISHSTATION';
 
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code]) values
-('M_FISHSTATION','0','vacant','C_ACCEPT','0','IDC_POLE', 
+('M_FISHSTATION','0','vacant','Z_EPSILON','','', 
 'SHOW();'),
 
 ('M_FISHSTATION','vacant','vacant','DRAG','IDD_BUCKE','','HANDOFF(IDD_BUCKF);'),
-('M_FISHSTATION','vacant','branch','DROP','0','0', ''),
+('M_FISHSTATION','vacant','branch','DROP','IDC_POLE','', ''),
 
 ('M_FISHSTATION','branch','baited_pole','IS_A','WOBJECT','ISA_BAITEDPOLE',
 'SHOW(IDS_POLE1LCL);
 RAND(ADD_CATCH_TIME,MIN_CATCH_TIME);'),
 ('M_FISHSTATION','branch','pole','Z_EPSILON','','',
 'SHOW(IDS_POLE1LCU);
-MOV(WPARM,WOBJECT);
-C_ACCEPT(0,ISA_BAIT);'),
+MOV(WPARM,WOBJECT);'),
 ('M_FISHSTATION','pole','0','GRAB','0','0', ''),
-('M_FISHSTATION','pole','branch','DROP','0','0','
+('M_FISHSTATION','pole','branch','DROP','ISA_BAIT','','
         MOV(WTEMP1,WOBJECT);
         MIX(WPARM,WOBJECT); 
         MAP(WTEMP1,BAIT_POWER);

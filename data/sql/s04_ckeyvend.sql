@@ -39,9 +39,9 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 ('M04_BIN','1','0','GRAB','','', 'SHOW(0,0);'),
 
 -- [0] start state, init the class acceptor
-('M04_KEYCLAMP','0','VACANT','C_ACCEPT','0','IDC_KEY', ''),
+('M04_KEYCLAMP','0','VACANT','Z_EPSILON','','', ''),
 -- [1] wait for a dropped key then configure the sliders
-('M04_KEYCLAMP','VACANT','OCCUPIED','DROP','0','0', '
+('M04_KEYCLAMP','VACANT','OCCUPIED','DROP','IDC_KEY','', '
 WPARM = WOBJECT;
 MAP(WPARM, KEY);
 SIGNAL(WIP1, SIG_SHOW);

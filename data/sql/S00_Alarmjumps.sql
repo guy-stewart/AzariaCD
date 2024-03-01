@@ -22,10 +22,10 @@ VALUES
 delete from "main"."transitions" where [automaton] like 'M_ALARM%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_ALARM', '0', 'ready', 'O_ACCEPT', '0', 'IDD_ALARM', '
+('M_ALARM', '0', 'ready', 'Z_EPSILON', '', '', '
     ASSIGN(WPARM,0); //WILL BE LVIEW VALUE
 ', '', ''),
-('M_ALARM', 'ready', 'alarmWhite', 'DROP', '0', '0', '
+('M_ALARM', 'ready', 'alarmWhite', 'DROP', 'IDD_ALARM', '', '
     SHOW(WOBJECT);
     MOV(WPARM,LVIEW);
 ', '', ''),
