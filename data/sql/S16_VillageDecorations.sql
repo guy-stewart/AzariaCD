@@ -97,6 +97,7 @@ VALUES
 
 ('M16_POTTERYCHECK', '0', 'validate', 'WAIT', '0', 'SIG_CHECK', '
     ASSIGN(WPARM,0);
+    ASSIGN(BPARM,0);
     REF_MACHINE(S16_POTTERYDROP1);
     ADD(WPARM,R_WPARM);
     REF_MACHINE(S16_POTTERYDROP2);
@@ -114,6 +115,12 @@ VALUES
 ('M16_POTTERYCHECK', 'validate', 'success', 'EQUAL', 'WPARM', '6', '',''),
 ('M16_POTTERYCHECK', 'validate', '0', 'Z_EPSILON', '', '', '',''),
 ('M16_POTTERYCHECK', 'success', '0', 'Z_EPSILON', '', '', '
+       //If this works we can set BPARM to 1
+       //To mean that the spell has been accomplished
+       //We can signal Hider which will ref bparm and 
+       //point to a new map of spells to hide
+        ASSIGN(BPARM,1);
+        SIGNAL(S00_HIDER,SIG_OPEN);
         PLAYWAVE(SOUND_CHIMES);
         SIGNAL(S16_POTTERYDROP1,SIG_RESET);
         SIGNAL(S16_POTTERYDROP2,SIG_RESET);

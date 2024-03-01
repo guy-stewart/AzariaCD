@@ -64,6 +64,18 @@ VALUES
 ('S00_HIDDENITEM', '9', 'IDD_RUBY'),
 ('S00_HIDDENITEM', '10', 'IDD_TRANSFER'),
 
+--AFTER POTTERY COMPLETE HIDDEN ITEMS BECOME SPELLS/BOMBS
+('S00_HIDDENSPELL', '1', 'IDD_BOMB2'), 
+('S00_HIDDENSPELL', '2', 'IDD_BOMB1'),
+('S00_HIDDENSPELL', '3', 'IDD_BANISH'),
+('S00_HIDDENSPELL', '4', 'IDD_BANISH'),
+('S00_HIDDENSPELL', '5', 'IDD_DEATH'),
+('S00_HIDDENSPELL', '6', 'IDD_DEATH'),
+('S00_HIDDENSPELL', '7', 'IDD_ENCSTONE'),
+('S00_HIDDENSPELL', '8', 'IDD_PROTECT'),
+('S00_HIDDENSPELL', '9', 'IDD_NYBREATH'),
+('S00_HIDDENSPELL', '10','IDD_GVIAL'),
+
 ('S00_HIDINGPLACE', 1, 'S00_HIDDEN_1'), 
 ('S00_HIDINGPLACE', 2, 'S00_HIDDEN_2'),
 ('S00_HIDINGPLACE', 3, 'S00_HIDDEN_3'),
@@ -268,7 +280,10 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     REF_MACHINE(S00_HIDER);
     MOV(WOBJECT,R_WPARM);
 ', '', ''),
-('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'MAPi', 'WOBJECT', 'S00_HIDDENITEM', '', '', ''),
+('M_DIGGABLE', 'fixinToHideItem', 'determinedItem', 'REF_MACHINE', 'S16_POTTERYCHECK', '', '
+    if(R_BPARM > 0){ MAPi(WOBJECT,S00_HIDDENSPELL);}
+    if(R_BPARM == 0){ MAPi(WOBJECT,S00_HIDDENITEM);}
+', '', ''),
 ('M_DIGGABLE', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
         SHOW(WSPRITE);
 ', '', ''),
