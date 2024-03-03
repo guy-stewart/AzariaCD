@@ -1,6 +1,6 @@
 
 
-delete from machines where [name] like '0x120%';
+delete from machines where [name] like 'S12_SCR00%';
 
 insert into machines
 ([name],[view_name],[left],[top],[right],[bottom],[local_visible],

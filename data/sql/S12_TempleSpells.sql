@@ -93,8 +93,13 @@ VALUES
 ('IDD_WILDBERRY', '18527', '', 'blueberry2', 'blueberry2', 'blueberry2'),
 ('IDD_ROOTDBL', '18528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
 
+This was done by me originally and was bad form! should not re-run til I fix
+delete from machines where [name] like 'S12_S%'; 
+delete from machines where [name] like 'S12_WOR%'; 
+delete from machines where [name] like 'S12_ING%'; 
+delete from machines where [name] like 'S12_NYS%'; 
 
-delete from machines where [name] like 'S12_%'; 
+
 delete from machines where [name] like 'S22_%';
 
 delete from transitions where [automaton] like 'M22_%';
