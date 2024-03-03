@@ -46,16 +46,16 @@ SHOW(IDS_POLE1LCU);');
 
 delete from map where op = 'BAIT_POWER';
 insert into map ([op],[key],[value]) values 
-('BAIT_POWER','IDD_BAIT1' , 1),
-('BAIT_POWER','IDD_BAIT2' , 2),
-('BAIT_POWER','IDD_BAIT3' , 3),
-('BAIT_POWER','IDD_BAIT4' , 4),
-('BAIT_POWER','IDD_BAIT5' , 5),
-('BAIT_POWER','IDD_BAIT6' , 6),
-('BAIT_POWER','IDD_BAIT7' , 7),
-('BAIT_POWER','IDD_BAIT8' , 8),
-('BAIT_POWER','IDD_BAIT9' , 9),
-('BAIT_POWER','IDD_BAIT10',10);
+('BAIT_POWER','IDD_BAIT0' , 1),
+('BAIT_POWER','IDD_BAIT1' , 2),
+('BAIT_POWER','IDD_BAIT2' , 3),
+('BAIT_POWER','IDD_BAIT3' , 4),
+('BAIT_POWER','IDD_BAIT4' , 5),
+('BAIT_POWER','IDD_BAIT5' , 6),
+('BAIT_POWER','IDD_BAIT6' , 7),
+('BAIT_POWER','IDD_BAIT7' , 8),
+('BAIT_POWER','IDD_BAIT8' , 9),
+('BAIT_POWER','IDD_BAIT9',10);
 
 delete from map where op = 'FISH_CAUGHT';
 insert into map ([op],[key],[value]) values 
