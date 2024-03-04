@@ -77,10 +77,10 @@ VALUES
 
 
 
- ('M11_GRILL', '0', 'emptyGrill', 'C_ACCEPT', '0', 'IDC_FISH', '
+ ('M11_GRILL', '0', 'emptyGrill', 'Z_EPSILON', '0', '', '
     REF_MACHINE(WIP1);
  ', '', ''),
- ('M11_GRILL', 'emptyGrill', 'fishOnGrill', 'DROP', '0', '0', '
+ ('M11_GRILL', 'emptyGrill', 'fishOnGrill', 'DROP', 'IDC_FISH', '', '
     SHOW(WOBJECT);
     ANIMATE(0,V_LOOP);
  ', '', ''),
