@@ -38,6 +38,12 @@ delete from machines where name = 'S17_bMINE';
 delete from machines where name = 'S17_cMINE';
 delete from machines where name = 'S17_dMINE';
 delete from machines where name = 'S17_eMINE';
+ 
+delete from machines where [name] like  'S17_aFF%';
+delete from machines where [name] like  'S17_bFF%';
+delete from machines where [name] like  'S17_cFF%';
+delete from machines where [name] like  'S17_dFF%';
+delete from machines where [name] like  'S17_eFF%';
 
 delete from machines where name = 'S17_aFOULWIND';
 delete from machines where name = 'S17_bFOULWIND';
