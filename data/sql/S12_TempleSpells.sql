@@ -1,4 +1,5 @@
 delete from games;
+
 -- ALTER TABLE states ADD COLUMN [doc] text;
 create table if not exists automatons 
 (   [name]    text,
@@ -48,7 +49,9 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 ('IDS_ROOTDBL', 'ROOTDBL', '8528'),
 ('IDS_RAIN', 'RAIN', '8529');
 
-delete from "main"."spr_names"  where [name] like 'IDS_CAN%';
+
+delete from "main"."spr_names"  where [name] like 'IDS_CANGR%';
+delete from "main"."spr_names"  where [name] like 'IDS_CANNY%';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
 ('IDS_CANGRN1', 'CANGRN1', '4625'),
@@ -93,8 +96,10 @@ VALUES
 ('IDD_WILDBERRY', '18527', '', 'blueberry2', 'blueberry2', 'blueberry2'),
 ('IDD_ROOTDBL', '18528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
 
-This was done by me originally and was bad form! should not re-run til I fix
-delete from machines where [name] like 'S12_S%'; 
+
+delete from machines where [name] like 'S12_SCR%'; 
+delete from machines where [name] like 'S12_SHI%'; 
+delete from machines where [name] like 'S12_SHELF_%'; 
 delete from machines where [name] like 'S12_WOR%'; 
 delete from machines where [name] like 'S12_ING%'; 
 delete from machines where [name] like 'S12_NYS%'; 
@@ -503,7 +508,52 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 ('8721', 'S12_SHELF_1_CANDLELIGHT', '4633', 'IDV_TMCU1', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_1_SPELLPORTAL', 'S12_SHELF_1_CANDLE', 'S12_SHELF_1_MAGIC'),
 ('8722', 'S12_SHELF_1_NYSTROMADDED', '4633', 'IDV_TMCU1', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN1', '', '', 'S12_SHELF_1_SCROLL'),
 ('8723', 'S12_SHELF_1_SPELLPORTAL', '4633', 'IDV_TMCU1', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_1_INGREDIENTS_MGR','S12_SHELF_1_SCROLL', 'S12_SHELF_1_CANDLELIGHT', 'S12_SHELF_1_NYSTROMADDED'),
-('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','','');
+('8724', 'S12_SHELF_1_MAGIC', '4633', 'IDV_TMCU1', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','',''),
+
+------------
+--todo re-test scr005??
+('8734', 'S12_SHELF_2_CANDLE', '4640', 'IDV_TMCU2', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_2_CANDLELIGHT', 'S12_SHELF_2_NYSTROMADDED', 'S12_SHELF_2_INGREDIENTS_MGR','S12_SHELF_2_SCROLL'),
+('8735', 'S12_SHELF_2_SCROLL', '4640', 'IDV_TMCU2', '132', '200', '250', '230', '1', 'M12_xSCROLL','1','S12_SHELF_2_INGREDIENTS_MGR', 'S12_SHELF_2_CANDLELIGHT','S12_SHELF_2_NYSTROMADDED'),
+('8736', 'S12_SHELF_2_ING1', '4640', 'IDV_TMCU2', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_2_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_SHELF_2_INGREDIENTS_MGR'),
+('8737', 'S12_SHELF_2_ING2', '4640', 'IDV_TMCU2', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_2_SCROLL', 'S12_ING_B','IDS_PLANTXX', 'S12_SHELF_2_INGREDIENTS_MGR'),
+('8738', 'S12_SHELF_2_ING3', '4640', 'IDV_TMCU2', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_2_SCROLL', 'S12_ING_C','IDS_PLANTXX', 'S12_SHELF_2_INGREDIENTS_MGR'),
+('8739', 'S12_SHELF_2_ING4', '4640', 'IDV_TMCU2', '117', '130', '165', '180', '1', 'M12_xPLANT', 'S12_SHELF_2_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_2_INGREDIENTS_MGR'),
+('8740', 'S12_SHELF_2_INGREDIENTS_MGR', '4640', 'IDV_TMCU2', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_2_ING1', 'S12_SHELF_2_ING2', 'S12_SHELF_2_ING3', 'S12_SHELF_2_ING4'),
+
+('8741', 'S12_SHELF_2_CANDLELIGHT', '4640', 'IDV_TMCU2', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_2_SPELLPORTAL', 'S12_SHELF_2_CANDLE', 'S12_SHELF_2_MAGIC'),
+('8742', 'S12_SHELF_2_NYSTROMADDED', '4640', 'IDV_TMCU2', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN2', '', '', 'S12_SHELF_2_SCROLL'),
+('8743', 'S12_SHELF_2_SPELLPORTAL', '4640', 'IDV_TMCU2', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_2_INGREDIENTS_MGR','S12_SHELF_2_SCROLL', 'S12_SHELF_2_CANDLELIGHT', 'S12_SHELF_2_NYSTROMADDED'),
+('8744', 'S12_SHELF_2_MAGIC', '4640', 'IDV_TMCU2', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','',''),
+
+------------
+
+('8754', 'S12_SHELF_3_CANDLE', '4640', 'IDV_TMCU3', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_3_CANDLELIGHT', 'S12_SHELF_3_NYSTROMADDED', 'S12_SHELF_3_INGREDIENTS_MGR','S12_SHELF_3_SCROLL'),
+('8755', 'S12_SHELF_3_SCROLL', '4640', 'IDV_TMCU3', '132', '200', '250', '230', '1', 'M12_xSCROLL','1','S12_SHELF_3_INGREDIENTS_MGR', 'S12_SHELF_3_CANDLELIGHT','S12_SHELF_3_NYSTROMADDED'),
+('8756', 'S12_SHELF_3_ING1', '4640', 'IDV_TMCU3', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_3_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_SHELF_3_INGREDIENTS_MGR'),
+('8757', 'S12_SHELF_3_ING2', '4640', 'IDV_TMCU3', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_3_SCROLL', 'S12_ING_B','IDS_PLANTXX', 'S12_SHELF_3_INGREDIENTS_MGR'),
+('8758', 'S12_SHELF_3_ING3', '4640', 'IDV_TMCU3', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_3_SCROLL', 'S12_ING_C','IDS_PLANTXX', 'S12_SHELF_3_INGREDIENTS_MGR'),
+('8759', 'S12_SHELF_3_ING4', '4640', 'IDV_TMCU3', '117', '130', '165', '180', '1', 'M12_xPLANT', 'S12_SHELF_3_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_3_INGREDIENTS_MGR'),
+('8760', 'S12_SHELF_3_INGREDIENTS_MGR', '4640', 'IDV_TMCU3', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_3_ING1', 'S12_SHELF_3_ING2', 'S12_SHELF_3_ING3', 'S12_SHELF_3_ING4'),
+
+('8761', 'S12_SHELF_3_CANDLELIGHT', '4640', 'IDV_TMCU3', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_3_SPELLPORTAL', 'S12_SHELF_3_CANDLE', 'S12_SHELF_3_MAGIC'),
+('8762', 'S12_SHELF_3_NYSTROMADDED', '4640', 'IDV_TMCU3', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN3', '', '', 'S12_SHELF_3_SCROLL'),
+('8763', 'S12_SHELF_3_SPELLPORTAL', '4640', 'IDV_TMCU3', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_3_INGREDIENTS_MGR','S12_SHELF_3_SCROLL', 'S12_SHELF_3_CANDLELIGHT', 'S12_SHELF_3_NYSTROMADDED'),
+('8764', 'S12_SHELF_3_MAGIC', '4640', 'IDV_TMCU3', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','',''),
+
+------------
+
+('8774', 'S12_SHELF_4_CANDLE', '4640', 'IDV_TMCU4', '272', '59', '299', '113', '1', 'M12_xCANDLE', 'S12_SHELF_4_CANDLELIGHT', 'S12_SHELF_4_NYSTROMADDED', 'S12_SHELF_4_INGREDIENTS_MGR','S12_SHELF_4_SCROLL'),
+('8775', 'S12_SHELF_4_SCROLL', '4640', 'IDV_TMCU4', '132', '200', '250', '230', '1', 'M12_xSCROLL','1','S12_SHELF_4_INGREDIENTS_MGR', 'S12_SHELF_4_CANDLELIGHT','S12_SHELF_4_NYSTROMADDED'),
+('8776', 'S12_SHELF_4_ING1', '4640', 'IDV_TMCU4', '55', '80', '116', '141', '1', 'M12_xPLANT', 'S12_SHELF_4_SCROLL', 'S12_ING_A','IDS_PLANTXX', 'S12_SHELF_4_INGREDIENTS_MGR'),
+('8777', 'S12_SHELF_4_ING2', '4640', 'IDV_TMCU4', '117', '80', '178', '141', '1', 'M12_xPLANT', 'S12_SHELF_4_SCROLL', 'S12_ING_B','IDS_PLANTXX', 'S12_SHELF_4_INGREDIENTS_MGR'),
+('8778', 'S12_SHELF_4_ING3', '4640', 'IDV_TMCU4', '179', '80', '240', '141', '1', 'M12_xPLANT', 'S12_SHELF_4_SCROLL', 'S12_ING_C','IDS_PLANTXX', 'S12_SHELF_4_INGREDIENTS_MGR'),
+('8779', 'S12_SHELF_4_ING4', '4640', 'IDV_TMCU4', '117', '130', '165', '180', '1', 'M12_xPLANT', 'S12_SHELF_4_SCROLL', 'S12_ING_DA','IDS_FISHXX', 'S12_SHELF_4_INGREDIENTS_MGR'),
+('8780', 'S12_SHELF_4_INGREDIENTS_MGR', '4640', 'IDV_TMCU4', '10', '10', '12', '14', '1', 'M12_xING_MGR', 'S12_SHELF_4_ING1', 'S12_SHELF_4_ING2', 'S12_SHELF_4_ING3', 'S12_SHELF_4_ING4'),
+
+('8781', 'S12_SHELF_4_CANDLELIGHT', '4640', 'IDV_TMCU4', '272', '59', '299', '113','1', 'M12_xCANDLELIGHT', 'IDS_CANNY1', 'S12_SHELF_4_SPELLPORTAL', 'S12_SHELF_4_CANDLE', 'S12_SHELF_4_MAGIC'),
+('8782', 'S12_SHELF_4_NYSTROMADDED', '4640', 'IDV_TMCU4', '242','79','320','160', '1', 'M12_xNYSTROMADDED', 'IDS_CANGRN4', '', '', 'S12_SHELF_4_SCROLL'),
+('8783', 'S12_SHELF_4_SPELLPORTAL', '4640', 'IDV_TMCU4', '107', '25', '167', '85', '1', 'M12_xSPELLPORTAL', 'S12_SHELF_4_INGREDIENTS_MGR','S12_SHELF_4_SCROLL', 'S12_SHELF_4_CANDLELIGHT', 'S12_SHELF_4_NYSTROMADDED'),
+('8784', 'S12_SHELF_4_MAGIC', '4640', 'IDV_TMCU4', '90', '10', '135', '45', '1', 'M12_xMAGIC', '','','','');
 
 
 delete from transitions where automaton = "M12_xSCROLL";
@@ -688,7 +738,7 @@ MAPi(BFRAME,S12_ING_NY);   // ... the spell cost
 
 INSERT INTO transitions (automaton,[state],new_state,opcode,param_1,param_2,code) VALUES 
 
-('M12_xCANDLE', '0', '0', 'DRAG', '0', 'IDD_MATCH', '
+('M12_xCANDLE', '0', '0', 'DRAG', 'IDD_MATCH', '', '
 
 // magic candle can''t light without enough nystrom!
 if (BPARM == BFRAME) {
@@ -701,7 +751,7 @@ if (BPARM == BFRAME) {
         }
     }
 '),
-('M12_xCANDLE', '0', '0', 'DRAG', '0', 'IDD_SCOOPF', '
+('M12_xCANDLE', '0', '0', 'DRAG', 'IDD_SCOOPF', '', '
 /*   BFRAME is how much for the spell
      BPARM is how much stored in the candle
 */
@@ -731,7 +781,7 @@ SIGNAL(WIP3,SIG_EMPTY);'),
 
 -- WIP4 is the scroll
 ('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_HIDE', 'SHOW();'),
-('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'SHOW(IDS_CANGRN1);'),
+('M12_xNYSTROMADDED', '0', '0', 'WAIT', '', 'SIG_SHOW', 'SHOW(WIP1);'),
 
 --get the total amount required for the spell from the map
 -- magic candle doesn't take more than is needed
