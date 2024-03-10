@@ -81,8 +81,8 @@ VALUES
 ('M16_POTTERY', '0', '1', 'MOV', 'WSPRITE', 'WIP1', 'SHOW(WSPRITE);',''),
 
 
-('M16_POTTERYDROP', '0', 'waitForDrop', 'ACCEPT', 'WIP2', '', '',''),
-('M16_POTTERYDROP', 'waitForDrop', 'containTalisman', 'DROP', '0', '0', '
+('M16_POTTERYDROP', '0', 'waitForDrop', 'Z_EPSILON', '', '', '',''),
+('M16_POTTERYDROP', 'waitForDrop', 'containTalisman', 'DROP', 'WIP2', '', '
     ASSIGN(WPARM,1);
     PLAYWAVE(SOUND_CLINK);
     ',''),

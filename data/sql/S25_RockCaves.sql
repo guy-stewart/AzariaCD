@@ -139,8 +139,8 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 delete from transitions where automaton = 'M25_OPNDOOR';
 delete from transitions where automaton = 'M25_EXITDOOR';
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code], [guard]) values
-('M25_OPNDOOR','0','10','C_ACCEPT','0','IDC_BOMB','',''),
-('M25_OPNDOOR','10','40','DROP','0','0','',''),
+('M25_OPNDOOR','0','10','Z_EPSILON','','','',''),
+('M25_OPNDOOR','10','40','DROP','IDC_BOMB, IDD_EXPLOSION','0','',''),
 ('M25_OPNDOOR','40','50','Z_EPSILON','','','',''),
 ('M25_OPNDOOR','50','51','VIDEO','0','IDS_EXPLODE1','',''),
 ('M25_OPNDOOR','51','52','PLAYWAVE','0','SOUND_EXPLODE','SIGNAL(WIP3,SIG_COMPLETE);',''),

@@ -82,8 +82,8 @@ VALUES
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
-('M_MEMOBJ', '0', '1', 'O_ACCEPT', 'WIP1', '',''),
-('M_MEMOBJ', '1', '2', 'DROP', '0','',''),
+('M_MEMOBJ', '0', '1', 'Z_EPSILON', '', '',''),
+('M_MEMOBJ', '1', '2', 'DROP', 'WIP1','',''),
 ('M_MEMOBJ','2', '3', 'MOV', 'WSPRITE', 'WIP3', ''),
 ('M_MEMOBJ', '3', '4', 'SHOW','WSPRITE', '',''),
 ('M_MEMOBJ', '4', '5', 'ASSIGN', 'BPARM', 'WIP1',''),

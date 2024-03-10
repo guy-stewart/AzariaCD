@@ -406,8 +406,8 @@ VALUES
 
 
 
-('M19_SQUARE', '0', 'squareempty', 'C_ACCEPT', '', 'ISA_PLAYTOKEN','ASSIGN(BPARM,0);CLEAR(WOBJECT);',''),
-('M19_SQUARE', 'squareempty', 'squareholding', 'DROP', '', '','
+('M19_SQUARE', '0', 'squareempty', 'Z_EPSILON', '', '','ASSIGN(BPARM,0);CLEAR(WOBJECT);',''),
+('M19_SQUARE', 'squareempty', 'squareholding', 'DROP', 'ISA_PLAYTOKEN', '','
     SHOW(WOBJECT);
     MOV(BPARM,WOBJECT);
     SIGNALi(WIP2,S19_PLAYERWATCHER); 

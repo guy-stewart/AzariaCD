@@ -25,9 +25,9 @@ insert into transitions ([name], [state], [new_state], [opcode], [param_1], [par
 ('M02_DN10','1','0','IFSTATE','M02_LOCKED','WIP_S02_LOCK',''),
 ('M02_DN10','1','0','Z_EPSILON','','','SIGNAL(WIP_S02_VIAL, SIG_DEC10);'),
 
-('M02_LOCK','0','1','C_ACCEPT','','IDC_KEY',''),
+('M02_LOCK','0','1','Z_EPSILON','','',''),
 -- 1: unlocked state:
-('M02_LOCK','1','2','DROP','','',''),
+('M02_LOCK','1','2','DROP','IDC_KEY','',''),
 -- Keyed state (OnEntry)
 ('M02_LOCK','2','9','Z_EPSILON','','','
     PLAYWAVE(SOUND_LEVER);

@@ -75,12 +75,12 @@ VALUES
 
 
 
-('M16_COMBINER', '0', 'ready', 'O_ACCEPT', '0', 'IDD_DICE', '
+('M16_COMBINER', '0', 'ready', 'Z_EPSILON', '', '', '
     SHOW();
     ASSIGN(WPARM,0);
     REF_MACHINE(WIP3);
 ',''),
-('M16_COMBINER', 'ready', 'holding', 'DROP', '0', '0', '
+('M16_COMBINER', 'ready', 'holding', 'DROP', 'IDD_DICE', '', '
         if(R_WPARM == 1){
             ASSIGN(WPARM,2);
             ASSIGN(WOBJECT,WIP2);

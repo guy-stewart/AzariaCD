@@ -65,8 +65,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIG_UNCOVER', '0', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
         SHOW(WSPRITE);
 ', '', ''),
-('M_DIG_UNCOVER', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
-('M_DIG_UNCOVER', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
+('M_DIG_UNCOVER', 'coverActive', 'firstWhack', 'Z_EPSILON', '', '', '', '', ''),
+('M_DIG_UNCOVER', 'firstWhack', 'secondWhack', 'DRAG','WIP3', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE1);
             PLAYWAVE(SOUND_DIG);

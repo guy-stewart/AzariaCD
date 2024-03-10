@@ -22,9 +22,9 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 -- Closed / Occupied
 ('M02_BIN','LOCKED_OCCUPIED','OPEN_OCCUPIED','WAIT','','SIG_OPEN',''),
 
-('M02_LOCK','0','UNLOCKED','C_ACCEPT','','IDC_KEY',''),
+('M02_LOCK','0','UNLOCKED','Z_EPSILON','','',''),
 -- 1: unlocked state:
-('M02_LOCK','UNLOCKED','2','DROP','','',''),
+('M02_LOCK','UNLOCKED','2','DROP','IDC_KEY','',''),
 -- Keyed state (OnEntry)
 ('M02_LOCK','2','M02_KEYED','Z_EPSILON','','','
     PLAYWAVE(SOUND_LEVER);

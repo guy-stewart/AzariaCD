@@ -66,8 +66,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 delete from  "main"."transitions" where automaton = 'M_LEVSTOP';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
  VALUES 
-    ('M_LEVSTOP', '0', '10', 'O_ACCEPT', '0', 'IDD_ROCK',''),
-    ('M_LEVSTOP', '10', '30', 'DROP', '0', '0',''),
+    ('M_LEVSTOP', '0', '10', 'Z_EPSILON', '', '',''),
+    ('M_LEVSTOP', '10', '30', 'DROP', 'IDD_ROCK', '',''),
     ('M_LEVSTOP', '30', '40', 'SHOW', 'WOBJECT', '',''),
     ('M_LEVSTOP', '40', '50', 'PLAYWAVE', '0', 'SOUND_CLICK',''),
     ('M_LEVSTOP', '50', '60', 'SIGNAL', 'WIP2', '',''),
@@ -168,11 +168,11 @@ VALUES
 
 delete from transitions where [automaton] like 'M_MAPBUTTON%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
-('M_MAPBUTTON', '0', '1', 'O_ACCEPT', '0', 'IDD_MAPBTN', '
+('M_MAPBUTTON', '0', '1', 'Z_EPSILON', '', '', '
    CLEAR(WOBJECT);
    SHOW();
 ', '', ''),
-('M_MAPBUTTON', '1', 'mapPresent', 'DROP', '0', 'IDD_MAPBTN', '
+('M_MAPBUTTON', '1', 'mapPresent', 'DROP', 'IDD_MAPBTN', '', '
    SHOW(WOBJECT);
 ', '', ''),
 ('M_MAPBUTTON', 'mapPresent', 'requested', 'CLICK', '0', '0', '
@@ -198,8 +198,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGDIRECT', 'determinedItem', 'coverActive', 'MOV', 'WSPRITE', 'WIP2', '
         SHOW(WSPRITE);
 ', '', ''),
-('M_DIGDIRECT', 'coverActive', 'firstWhack', 'C_ACCEPT', 'WIP3', '', '', '', ''),
-('M_DIGDIRECT', 'firstWhack', 'secondWhack', 'DRAG', '', '', '
+('M_DIGDIRECT', 'coverActive', 'firstWhack', 'Z_EPSILON', '', '', '', '', ''),
+('M_DIGDIRECT', 'firstWhack', 'secondWhack', 'DRAG', 'WIP3', '', '
         if(WIP3 == ISA_TOOL_DIGGER){
             SHOW(0,IDS_SANDPILE1);
             ANIMATE();

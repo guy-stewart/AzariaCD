@@ -1,5 +1,5 @@
 
-delete from games;
+drop table if exists games;
 
 delete from spr_names where [name] like 'IDS_PLAQ%';
 
@@ -322,8 +322,8 @@ main :- card_objects(idd_card04,SPELL),
 ('M08_BIN','105','0','GRAB','','', 'SHOW();'),
 
 -- CARDHOLD(WIP1=S08_HOPPERxx):
-('M08_CARDHOLD','0','10','C_ACCEPT','0','IDC_CARD',''),
-('M08_CARDHOLD','10','20','DROP','0','0','
+('M08_CARDHOLD','0','10','Z_EPSILON','0','',''),
+('M08_CARDHOLD','10','20','DROP','IDC_CARD','','
     SHOW(0,IDS_CARDANI);
     ANIMATE(0,V_REVERSE);
     PLAYWAVE(0,SOUND_CARDEJECT);
@@ -352,8 +352,8 @@ main :- card_objects(idd_card04,SPELL),
 '),
 
 -- CHEMHOLD(WIP1=CARDHOLD)
-('M08_CHEMHOLD1','0','10','C_ACCEPT','0','IDC_CHEM',''),
-('M08_CHEMHOLD1','10','20','DROP','','','
+('M08_CHEMHOLD1','0','10','Z_EPSILON','','',''),
+('M08_CHEMHOLD1','10','20','DROP','IDC_CHEM','','
     SHOW(WOBJECT);'),
 ('M08_CHEMHOLD1','20','30','GRAB','','',''),
 ('M08_CHEMHOLD1','20','30','WAIT','','SIG_CLEAR',''),

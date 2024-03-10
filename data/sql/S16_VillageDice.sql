@@ -64,9 +64,9 @@ delete from transitions where [automaton] like 'M16_DICEST%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
-('M16_DICEDROP', '0', '2', 'O_ACCEPT', '0', 'IDD_SHAKE', '',''),
-('M16_DICEDROP', '2', '0', 'DRAG', '0', '0', 'PLAYWAVE(SOUND_DICESHAKE);',''),
-('M16_DICEDROP', '2', '3', 'DROP', '0', '0', 'SIGNAL(WIP1,SIG_SHOW);',''),
+('M16_DICEDROP', '0', '2', 'Z_EPSILON', '', '', '',''),
+('M16_DICEDROP', '2', '0', 'DRAG', 'IDD_SHAKE', '', 'PLAYWAVE(SOUND_DICESHAKE);',''),
+('M16_DICEDROP', '2', '3', 'DROP', 'IDD_SHAKE', '', 'SIGNAL(WIP1,SIG_SHOW);',''),
 ('M16_DICEDROP', '3', '0', 'ESTIME', '', '1', 'SIGNAL(WIP2,SIG_SHOW);',''), 
 
 
@@ -156,8 +156,8 @@ VALUES
 delete from transitions where [automaton] like 'M16_BLOB%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
-('M16_BLOBDROP', '0', '2', 'O_ACCEPT', '0', 'IDD_BLOBBALL', '',''),
-('M16_BLOBDROP', '2', '3', 'DROP', '0', '0', '
+('M16_BLOBDROP', '0', '2', 'Z_EPSILON', '', '', '',''),
+('M16_BLOBDROP', '2', '3', 'DROP', 'IDD_BLOBBALL', '', '
     PLAYWAVE(SOUND_SUCK);
 ',''),
 ('M16_BLOBDROP', '3', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
@@ -166,21 +166,21 @@ VALUES
 ('M16_BLOBDROP', '2', '5', 'WAIT', '', 'SIG_RESET', 'SHOW();',''),
 ('M16_BLOBDROP', '5', '0', 'Z_EPSILON', '', '', '',''),
 
-('M16_BLOBHOLE', '0', '2', 'O_ACCEPT', '0', 'IDD_BLOBBALL', '',''),
-('M16_BLOBHOLE', '2', '0', 'DROP', '0', '0', 'SHOW();PLAYWAVE(SOUND_QSUCK);',''),
+('M16_BLOBHOLE', '0', '2', 'Z_EPSILON', '', '', '',''),
+('M16_BLOBHOLE', '2', '0', 'DROP', 'IDD_BLOBBALL', '0', 'SHOW();PLAYWAVE(SOUND_QSUCK);',''),
 
-('M16_BLOBHOLDER', '0', 'ballpresent', 'ACCEPT', '', 'IDD_BLOBBALL', '
+('M16_BLOBHOLDER', '0', 'ballpresent', 'Z_EPSILON', '', '', '
     MOV(WOBJECT,IDD_BLOBBALL);
     SHOW(WOBJECT);
 ',''),
 ('M16_BLOBHOLDER', 'ballpresent', 'ballempty', 'GRAB', '', 'IDD_BLOBBALL', 'SHOW();',''),
-('M16_BLOBHOLDER', 'ballempty', '0', 'DROP', '', '', '',''),
+('M16_BLOBHOLDER', 'ballempty', '0', 'DROP', 'IDD_BLOBBALL', '', '',''),
 ('M16_BLOBHOLDER', 'ballempty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
 ('M16_BLOBHOLDER', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
 
 --empty blob holder
-('M16_BLOBHOLDER_E', '0', 'ballempty', 'ACCEPT', '', 'IDD_BLOBBALL', '',''),
-('M16_BLOBHOLDER_E', 'ballempty', 'ballholding', 'DROP', '', '','
+('M16_BLOBHOLDER_E', '0', 'ballempty', 'Z_EPSILON', '', '', '',''),
+('M16_BLOBHOLDER_E', 'ballempty', 'ballholding', 'DROP', 'IDD_BLOBBALL', '','
     MOV(WOBJECT,IDD_BLOBBALL);
     SHOW(WOBJECT); 
 ',''),
@@ -217,8 +217,8 @@ VALUES
 delete from transitions where [automaton] like 'M16_DIE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
-('M16_DIEROLL', '0', '2', 'O_ACCEPT', '0', 'IDD_DICE', '',''),
-('M16_DIEROLL', '2', '3', 'DROP', '0', '0', '',''),
+('M16_DIEROLL', '0', '2', 'Z_EPSILON', '', '', '',''),
+('M16_DIEROLL', '2', '3', 'DROP', 'IDD_DICE', '', '',''),
 ('M16_DIEROLL', '3', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
 ('M16_DIEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', 'PLAYWAVE(SOUND_ONEDIEROLL);',''),
 ('M16_DIEROLL', '5', '6', 'ESTIME', '', '2', '',''), 

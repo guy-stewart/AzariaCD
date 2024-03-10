@@ -561,9 +561,9 @@ delete from transitions where automaton = "M12_xSCROLL";
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard") 
 VALUES 
 
-('M12_xSCROLL',0,'vacant','REF_MACHINE', 'WIP2', '0', 'C_ACCEPT(0,IDC_SCROLL);',''), 
+('M12_xSCROLL',0,'vacant','REF_MACHINE', 'WIP2', '0', 'Z_EPSILON',''), 
 
-('M12_xSCROLL','vacant','occupied','DROP','0','0',
+('M12_xSCROLL','vacant','occupied','DROP','IDC_SCROLL','',
 'SHOW(0,IDS_SCRHUNG);
 SIGNAL(WIP2,SIG_SHOW);',''),
 

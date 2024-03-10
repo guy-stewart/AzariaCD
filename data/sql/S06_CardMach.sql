@@ -355,8 +355,8 @@ SHOW(0,IDS_VIALCNT);'),
 -----------------------------
 ('M06_TEMPL_EJECT_BTN','0', '0', 'CLICK', '', '', 'PLAYWAVE(SOUND_CLICK);SIGNAL(WIP1, SIG_EJECT);'),
 ------------------------------
-('M06_EJECT_TEMPL_ANIM','0', '1', 'C_ACCEPT', '', 'IDC_TEMPLATE', ''),  
-('M06_EJECT_TEMPL_ANIM','1', '30', 'DROP', '', '', ''),
+('M06_EJECT_TEMPL_ANIM','0', '1', 'Z_EPSILON', '', '', ''),  
+('M06_EJECT_TEMPL_ANIM','1', '30', 'DROP', 'IDC_TEMPLATE', '', ''),
 ('M06_EJECT_TEMPL_ANIM','1', '5', 'WAIT', '', 'SIG_EJECT', ''),
 ('M06_EJECT_TEMPL_ANIM','5', '20', 'SHOW', '0', 'IDS_TEMPEJEC', 'ANIMATE(0);PLAYWAVE(SOUND_CARDEJECT);'),
 ('M06_EJECT_TEMPL_ANIM', '20', '0', 'GRAB', '0', '0', 'CLEAR(WOBJECT); CLEAR(WSPRITE); SHOW(0);'),
