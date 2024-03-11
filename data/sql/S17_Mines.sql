@@ -188,7 +188,10 @@ VALUES
 ('M17_DOORWAY', '0', 'Lock', 'WAIT', '0', 'SIG_CLOSE', '', '', ''),
 ('M17_DOORWAY', 'Lock', 'forcefieldUp', 'SIGNAL', 'WIP2', 'SIG_ON', '', '', ''),
 ('M17_DOORWAY', 'forcefieldUp', 'LockBombed', 'WAIT', '0', 'SIG_OPEN', '', '', ''),
-('M17_DOORWAY', 'forcefieldUp', 'keyUsed', 'WAIT', '0', 'SIG_ENTER_1', '', '', ''),
+('M17_DOORWAY', 'forcefieldUp', 'keyUsed', 'WAIT', '0', 'SIG_ENTER_1','
+    ADDI(LWISDOM,1);
+    SIGNALi(0,SID_ID);
+', '', ''),
 ('M17_DOORWAY', 'LockBombed', '0', 'SIGNAL', 'WIP2', 'SIG_OFF', '', '', ''),
 ('M17_DOORWAY', 'caveNoLockEntry', '0', 'LOADVIEW', 'WIP1', '', '
     WRITE("No Lock entry - SIGNAL THE FOUL WIND");
@@ -225,7 +228,7 @@ VALUES
     SIGNAL(WIP3,SIG_SHOW);
     SIGNAL(WIP4,SIG_SHOW);
     ASHOW(WOBJECT);
-    ADDI(LKARMA,1);
+    ADDI(LKARMA,2);
     SIGNAL(SID_HALO,SIG_ADD);
 ', '', ''),
 
@@ -248,7 +251,7 @@ VALUES
     SIGNAL(WIP3,SIG_SHOW);
     SIGNAL(WIP4,SIG_SHOW);
     ASHOW(WOBJECT);
-    ADDI(LKARMA,1);
+    ADDI(LKARMA,2);
     SIGNAL(SID_HALO,SIG_ADD);
 ', '', ''),
 

@@ -562,6 +562,28 @@ VALUES
 ------------------------------------------------------
 
 
+
+-- Things that you do that should add to your wisdom (SID_ID,  ASSIGN(LWISDOM,40);SUBI(LWISDOM,2); SIGNALi(0,SID_ID);)
+-- because the id is checked for replacement - takes no parameter -- state goes to 0
+--     get special resource
+--     move a puzzle forward
+--     solving a puzzle
+--     purchasing something
+--     making a spell
+
+-- Things that impact your karma (SID_HALO,  SUBI(LKARMA,1); SIGNAL(SID_HALO,SIG_ADD);)
+--     stealing
+--     hurting 
+--     healing
+--     killing
+
+-- things that impact your energy (SID_AURA)  ADDI(LENERGY,1); SIGNAL(SID_AURA,SIG_ADD);
+--     this is done..
+
+
+
+
+
 -- ('M_IDSPELL',0,100,'DROP','0','0', '', '', ''),
 -- ('M_IDSPELL',1,2,'SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
 -- ('M_IDSPELL',2,3,'PLAYWAVE','0','SOUND_POPUP', '', '', ''),

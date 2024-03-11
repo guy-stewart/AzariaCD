@@ -39,7 +39,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     ADDI(BPARM,1);
     HANDOFF(0,IDD_SCOOPE);', '', ''),
 ('M10_DRYPIT', '31', '10', 'Z_EPSILON', '', '', '', '', ''),
-('M10_DRYPIT', '35', '0', 'EQUALi', 'BPARM', 'MAX_DRYPIT', 'SIGNALi(SIG_OPEN,S10_FLOWER);', '', ''),
+('M10_DRYPIT', '35', '0', 'EQUALi', 'BPARM', 'MAX_DRYPIT', 'SIGNALi(SIG_OPEN,S10_FLOWER);ADDI(LWISDOM,2); SIGNALi(0,SID_ID);', '', ''),
 ('M10_DRYPIT', '35', '0', 'Z_EPSILON', '', '', '', '', ''),
 
 
@@ -53,6 +53,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     PLAYWAVE(SOUND_BUZZFUZZ);
     SHOW(0,IDS_FLOPN1);
     ANIMATE(0,V_REVERSE);
+    ADDI(LWISDOM,5); SIGNALi(0,SID_ID);
     SIGNALi(SIG_CLOSE,S10_DRYPIT);', '', ''),
 ('M10_FLOWER', '30', '1', 'WAIT', '', 'SIG_CLOSE', '
     PLAYWAVE(SOUND_BUZZFUZZ);

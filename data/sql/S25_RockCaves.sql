@@ -4,7 +4,7 @@ delete from games;
 delete from sounds where name like 'SOUND_PICKA%';
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_PICKAXE', 'pickaxe', '0');
 
-delete from machines where name = 'S25_RUMBLE';
+delete from machines where [name] like 'S25_RUMBLE%';
 delete from machines where name = 'S25_ROLL';
 delete from machines where name = 'S25_SCATTER';
 delete from machines where name = 'S25_OPN1';
@@ -28,7 +28,8 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_SCAT_ALT_OP'
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('9472', 'S25_RUMBLE', '9476', 'IDV_W4LOCK', '374', '96', '574', '275', '2', 'M25_RUMBLE', '', '', '', ''),
+('9472', 'S25_RUMBLE', '9476', 'IDV_W4LOCK', '374', '96', '507', '200', '2', 'M25_RUMBLE', '', '', '', ''),
+('9300', 'S25_RUMBLEPRY', '9476', 'IDV_W4LOCK', '508', '201', '580', '275', '2', 'M25_RUMBLEPRY', '', '', '', ''),
 ('9473', 'S25_ROLL', '9476', 'IDV_W4LOCK', '274', '96', '516', '180', '2',   'M25_ROLL',  '', '', '', ''),
 ('9474', 'S25_SCATTER', '9476', 'IDV_W4LOCK', '25', '75', '326', '180', '2', 'M25_SCATTER',  '', '', '', ''),
 ('9477', 'S25_OPN1', '9478', 'IDV_WALL1IN', '95', '126', '404', '299', '2',  'M25_OPNDOOR', 'IDS_OPN1','IDV_HIDDENR1','',''),
@@ -50,14 +51,16 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 
 -- TRANSITIONS FOR SCENE 25
-delete from transitions where automaton = 'M25_RUMBLE';
+delete from transitions where [automaton] like 'M25_RUMBLE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES  
 ('M25_RUMBLE', '0', '1', 'ASSIGN', 'BFRAME', '1', '', '', ''), 
 ('M25_RUMBLE',  '1', '2', 'ASSIGN', 'WSPRITE', 'IDS_RUMBLE', '', '', ''), 
 ('M25_RUMBLE', '2', '3', 'SHOW', 'WSPRITE', '', '', '', ''), 
-('M25_RUMBLE', '3', '20', 'DRAGFOCUS', '0', 'FALSE', '', '', ''), 
-('M25_RUMBLE', '3', '40', 'DRAGFOCUS', '0', 'TRUE', '', '', ''), 
-('M25_RUMBLE', '3', '30', 'DROP', '0', 'IDD_TELEKINESIS', '', '', ''), 
+
+
+('M25_RUMBLE', '3', '40', 'WAIT','0', 'SIG_PRY', '', '', ''), 
+
+('M25_RUMBLE', '3', '30', 'DROP', 'IDD_TELEKINESIS, IDD_STRENGTH', '', '', '', ''), 
 ('M25_RUMBLE', '3', '10', 'WAIT', '0', 'SIG_INIT', '', '', ''), 
 ('M25_RUMBLE', '10', '3', 'CLEAR', 'BPARM', '', '', '', ''), 
 
@@ -71,7 +74,18 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M25_RUMBLE', '61', '62', 'SHOW', 'WSPRITE', '', '', '', ''), 
 ('M25_RUMBLE', '62', '70', 'SIGNALi', 'SIG_OPEN', 'S25_ROLL', '', '', ''), 
 ('M25_RUMBLE', '70', '71', 'CLICK', '0', '0', '', '', ''), 
-('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN', '', '', '');
+('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN', '', '', ''),
+
+('M25_RUMBLEPRY', '0', 'prying', 'DRAG', 'IDD_CROWBAR, IDD_SHOVEL, IDD_PICK', '', '
+    ASSIGN(BPARM,0);
+', '', ''), 
+('M25_RUMBLEPRY', 'prying', 'rest', 'LTE', 'BPARM', '5', '
+   ADDi(BPARM,1);
+', '', ''),
+
+('M25_RUMBLEPRY', 'rest', 'prying', 'CLICK', '', '', '
+     SIGNALi(SIG_PRY,S25_RUMBLE);
+', '', '');
 
 delete from transitions where automaton = 'M25_ROLL';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc")

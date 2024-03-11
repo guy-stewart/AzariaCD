@@ -67,7 +67,7 @@ delete from  "main"."transitions" where automaton = 'M_LEVSTOP';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
  VALUES 
     ('M_LEVSTOP', '0', '10', 'Z_EPSILON', '', '',''),
-    ('M_LEVSTOP', '10', '30', 'DROP', 'IDD_ROCK', '',''),
+    ('M_LEVSTOP', '10', '30', 'DROP', 'IDD_ROCK', '','ADDI(LWISDOM,1); SIGNALi(0,SID_ID);'),
     ('M_LEVSTOP', '30', '40', 'SHOW', 'WOBJECT', '',''),
     ('M_LEVSTOP', '40', '50', 'PLAYWAVE', '0', 'SOUND_CLICK',''),
     ('M_LEVSTOP', '50', '60', 'SIGNAL', 'WIP2', '',''),
@@ -174,6 +174,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M_MAPBUTTON', '1', 'mapPresent', 'DROP', 'IDD_MAPBTN', '', '
    SHOW(WOBJECT);
+   ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
 ', '', ''),
 ('M_MAPBUTTON', 'mapPresent', 'requested', 'CLICK', '0', '0', '
       SIGNAL(MEFPAN_CLOSER,SIG_SET);
@@ -254,6 +255,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGDIRECT', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(WOBJECT);
+        ADDI(LWISDOM,1); 
+        SIGNALi(0,SID_ID);
 ', '', ''),
 ('M_DIGDIRECT', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
 ('M_DIGDIRECT', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');

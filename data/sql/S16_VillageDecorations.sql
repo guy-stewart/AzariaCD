@@ -85,6 +85,8 @@ VALUES
 ('M16_POTTERYDROP', 'waitForDrop', 'containTalisman', 'DROP', 'WIP2', '', '
     ASSIGN(WPARM,1);
     PLAYWAVE(SOUND_CLINK);
+    ADDI(LWISDOM,1);
+    SIGNALi(0,SID_ID);
     ',''),
 ('M16_POTTERYDROP', 'containTalisman','showSparkle', 'Z_EPSILON', '', '', '
     SIGNAL(WIP3,SIG_CHECK); 
@@ -122,6 +124,8 @@ VALUES
         ASSIGN(BPARM,1);
         SIGNAL(S00_HIDER,SIG_OPEN);
         PLAYWAVE(SOUND_CHIMES);
+        ADDI(LWISDOM,2);
+        SIGNALi(0,SID_ID);
         SIGNAL(S16_POTTERYDROP1,SIG_RESET);
         SIGNAL(S16_POTTERYDROP2,SIG_RESET);
         SIGNAL(S16_POTTERYDROP3,SIG_RESET);

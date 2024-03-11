@@ -35,7 +35,11 @@ delete from transitions where [automaton] like 'M_SIGNTRANS%';
 delete from transitions where [automaton] like 'M_PORTAL%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc")
  VALUES 
-('M_SIGNTRANS', '0', 'portalOpen', 'DRAG', '0', 'IDD_EYEWAND', 'LOADVIEW(IDV_SIGNPANENG);', '', ''),
+('M_SIGNTRANS', '0', 'portalOpen', 'DRAG', '0', 'IDD_EYEWAND', 
+'LOADVIEW(IDV_SIGNPANENG);
+ ADDI(LWISDOM,2);
+ SIGNALi(0,SID_ID);
+', '', ''),
 ('M_SIGNTRANS', 'portalOpen', '0', 'Z_EPSILON', '0', '', '', '', ''),
 
 ('M_PORTAL', '0', 'portal', 'CLICK', '', '', 'LOADVIEW(WIP1);', '', ''),

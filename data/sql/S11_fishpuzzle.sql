@@ -58,7 +58,10 @@ VALUES
 ('M_TINYFISH', '4', '5', 'ESTIME', '', '1', ''),
 ('M_TINYFISH', '5', '6', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
 ('M_TINYFISH', '6', '7', 'ESTIME', '', '4', ''), -- these 2 the same
-('M_TINYFISH', '6', '7', 'GRAB', 'WIP2', '', ''),
+('M_TINYFISH', '6', '7', 'GRAB', 'WIP2', '', '
+    ADDI(LWISDOM,3);
+    SIGNALi(0,SID_ID);
+'),
 
 ('M_TINYFISH', '7', '8', 'CLEAR', 'WOBJECT', '', ''),
 ('M_TINYFISH', '8', '9', 'CLEAR', 'WPARM', '', ''),

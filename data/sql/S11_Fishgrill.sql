@@ -34,6 +34,8 @@ VALUES
    CLEAR(WPARM);
    CLEAR(WSPRITE);
    SHOW();
+   ADDI(LWISDOM,2);
+   SIGNALi(0,SID_ID);
  ', '', ''),
  
 
@@ -98,6 +100,8 @@ VALUES
     MAP_OBJ(0,OP_BURN);
     SHOW(IDS_FISHASH);
     PLAYWAVE(SOUND_FIRE); 
+    ADDI(LWISDOM,2);
+    SIGNALi(0,SID_ID);
     //Cast off soul
     SIGNAL(WIP2,SIG_BURNED);
  ', '', ''),

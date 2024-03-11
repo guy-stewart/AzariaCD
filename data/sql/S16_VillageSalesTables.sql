@@ -123,7 +123,10 @@ VALUES
     CLEAR(WSPRITE);
     SHOW();
     ',''),
-('M16_PAYBUCKET', 'check_scoop', 'paid_in_full', 'EQUAL', 'BPARM', 'WPARM', '',''),
+('M16_PAYBUCKET', 'check_scoop', 'paid_in_full', 'EQUAL', 'BPARM', 'WPARM', '
+    ADDI(LWISDOM,1);
+    SIGNALi(0,SID_ID);
+',''),
 ('M16_PAYBUCKET', 'check_scoop', 'accept_pay', 'Z_EPSILON', '', '', '',''),
 ('M16_PAYBUCKET', 'paid_in_full', '0', 'Z_EPSILON', '', '', '
     PLAYWAVE(0,SOUND_LEVER);

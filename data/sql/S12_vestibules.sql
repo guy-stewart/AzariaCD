@@ -98,7 +98,11 @@ VALUES
 ('M12_SHELF', 'holding', 'processed', 'WAIT', '', 'SIG_SHOW', '
      SHOW();
      MOV(WOBJECT,WIP4);
-     SHOW(WOBJECT);'),
+     SHOW(WOBJECT);
+     ADDI(LWISDOM,2);
+     SIGNALi(0,SID_ID);
+     '),
+     
 
 ('M12_SHELF','processed','empty','GRAB', '', '', '
 SHOW();
@@ -120,7 +124,10 @@ SHOW();
     SHOW();
     MAP(WPARM,S12_FISHSPELL);
     MOV(WOBJECT,WPARM);
-    SHOW(WOBJECT);'),
+    SHOW(WOBJECT);
+    ADDI(LWISDOM,2);
+    SIGNALi(0,SID_ID);
+    '),
 
 ('M12_MAPSHELF','processed','empty','GRAB', '', '', '
 SHOW();

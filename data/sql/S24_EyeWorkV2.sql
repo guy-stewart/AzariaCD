@@ -30,63 +30,63 @@ VALUES
 ('9222', 'S24_BIGEYE', '9219', 'IDV_EYEC1P', '295', '60', '368', '112', '0', 'M24_BIGEYE', 'IDS_BIGEYE1', 'S24_ALTa_EYESPELL2','S24_ALTb_EYESPELL2','');
 
 delete from  "main"."transitions" where automaton = 'M24_EYEPLATE';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") VALUES 
-('M24_EYEPLATE', '0', '1', 'DROP', 'IDD_EYEFUSE', ''),
-('M24_EYEPLATE', '1', '2', 'SIGNALi', '0', 'S24_BIGEYE'),
-('M24_EYEPLATE', '2', '3', 'Z_EPSILON', '', ''),  
-('M24_EYEPLATE', '3', '4', 'ASHOW', '0', 'IDS_EYEPLATE'),
-('M24_EYEPLATE', '4', '5', 'SIGNAL','WIP1', 'SIG_SHOW'),
-('M24_EYEPLATE', '5', '6', 'SIGNAL', 'WIP2', 'SIG_SHOW'),
-('M24_EYEPLATE', '6', '50', 'DROP', 'IDC_BOMB', '0'),
-('M24_EYEPLATE', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1'),
-('M24_EYEPLATE', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE'),
-('M24_EYEPLATE', '52', '53', 'SHOW', '0', '0'),
-('M24_EYEPLATE', '53', '54', 'SIGNAL', 'WIP1', 'SIG_HIDE'),
-('M24_EYEPLATE', '54', '55', 'SIGNAL', 'WIP2', 'SIG_HIDE'),
-('M24_EYEPLATE', '55', '56', 'Z_EPSILON', '', ''),    --IDD_EYEFUSE
-('M24_EYEPLATE', '56', '0', 'SIGNALi', 'SIG_BOMB', 'S24_BIGEYE');
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code") VALUES 
+('M24_EYEPLATE', '0', '1', 'DROP', 'IDD_EYEFUSE', '', 'ADDI(LWISDOM,2); SIGNALi(0,SID_ID);'),
+('M24_EYEPLATE', '1', '2', 'SIGNALi', '0', 'S24_BIGEYE', ''),
+('M24_EYEPLATE', '2', '3', 'Z_EPSILON', '', '', ''),  
+('M24_EYEPLATE', '3', '4', 'ASHOW', '0', 'IDS_EYEPLATE', ''),
+('M24_EYEPLATE', '4', '5', 'SIGNAL','WIP1', 'SIG_SHOW', ''),
+('M24_EYEPLATE', '5', '6', 'SIGNAL', 'WIP2', 'SIG_SHOW', ''),
+('M24_EYEPLATE', '6', '50', 'DROP', 'IDC_BOMB', '', 'SUBI(LKARMA,1); SIGNAL(SID_HALO,SIG_ADD);'),
+('M24_EYEPLATE', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', ''),
+('M24_EYEPLATE', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE', ''),
+('M24_EYEPLATE', '52', '53', 'SHOW', '0', '0', ''),
+('M24_EYEPLATE', '53', '54', 'SIGNAL', 'WIP1', 'SIG_HIDE', ''),
+('M24_EYEPLATE', '54', '55', 'SIGNAL', 'WIP2', 'SIG_HIDE', ''),
+('M24_EYEPLATE', '55', '56', 'Z_EPSILON', '', '', ''),    --IDD_EYEFUSE
+('M24_EYEPLATE', '56', '0', 'SIGNALi', 'SIG_BOMB', 'S24_BIGEYE', '');
 
 delete from  "main"."transitions" where automaton = 'M24_EYESPELL';
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2")
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code")
 VALUES 
-('M24_EYESPELL', '0', '1', 'DROP', 'IDD_EYESPELL', ''),
-('M24_EYESPELL', '1', '2', 'SIGNALi', '0', 'S24_BIGEYE'),
-('M24_EYESPELL', '2', '3', 'Z_EPSILON', '', ''),     --IDC_BOMB
-('M24_EYESPELL', '3', '4', 'ASHOW', '0', 'IDS_EYESPELL'),
-('M24_EYESPELL', '4', '5', 'SIGNAL','WIP1', 'SIG_SHOW'),
-('M24_EYESPELL', '5', '6', 'SIGNAL', 'WIP2', 'SIG_SHOW'),
-('M24_EYESPELL', '6', '50', 'DROP', 'IDC_BOMB', ''), -- should be 50 but don't think bombing spells works here
-('M24_EYESPELL', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1'),
-('M24_EYESPELL', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE'),
-('M24_EYESPELL', '52', '53', 'SHOW', '0', '0'),
-('M24_EYESPELL', '53', '54', 'SIGNAL', 'WIP1', 'SIG_HIDE'),
-('M24_EYESPELL', '54', '55', 'SIGNAL', 'WIP2', 'SIG_HIDE'),
-('M24_EYESPELL', '55', '56', 'Z_EPSILON', '', ''),   --IDD_EYESELL
-('M24_EYESPELL', '56', '0', 'SIGNALi', 'SIG_BOMB', 'S24_BIGEYE');
+('M24_EYESPELL', '0', '1', 'DROP', 'IDD_EYESPELL', '', 'ADDI(LWISDOM,2); SIGNALi(0,SID_ID);'),
+('M24_EYESPELL', '1', '2', 'SIGNALi', '0', 'S24_BIGEYE', ''),
+('M24_EYESPELL', '2', '3', 'Z_EPSILON', '', '', ''),     --IDC_BOMB
+('M24_EYESPELL', '3', '4', 'ASHOW', '0', 'IDS_EYESPELL', ''),
+('M24_EYESPELL', '4', '5', 'SIGNAL','WIP1', 'SIG_SHOW', ''),
+('M24_EYESPELL', '5', '6', 'SIGNAL', 'WIP2', 'SIG_SHOW', ''),
+('M24_EYESPELL', '6', '50', 'DROP', 'IDC_BOMB', '', 'SUBI(LKARMA,1); SIGNAL(SID_HALO,SIG_ADD);'), -- should be 50 but don't think bombing spells works here
+('M24_EYESPELL', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', ''),
+('M24_EYESPELL', '51', '52', 'PLAYWAVE', '0', 'SOUND_EXPLODE', ''),
+('M24_EYESPELL', '52', '53', 'SHOW', '0', '0', ''),
+('M24_EYESPELL', '53', '54', 'SIGNAL', 'WIP1', 'SIG_HIDE', ''),
+('M24_EYESPELL', '54', '55', 'SIGNAL', 'WIP2', 'SIG_HIDE', ''),
+('M24_EYESPELL', '55', '56', 'Z_EPSILON', '', '', ''),   --IDD_EYESELL
+('M24_EYESPELL', '56', '0', 'SIGNALi', 'SIG_BOMB', 'S24_BIGEYE', '');
 
 
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2") 
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M24_BIGEYE', '0', '1', 'MOV', 'WSPRITE', 'WIP1'),
-('M24_BIGEYE', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP'),
-('M24_BIGEYE', '2', '5', 'ANIMATE', '0', 'V_LOOP'),
-('M24_BIGEYE', '5', '6', 'SIGNAL','WIP2', 'SIG_SHOW'),
-('M24_BIGEYE', '6', '7', 'SIGNAL','WIP3', 'SIG_SHOW'),
-('M24_BIGEYE', '7', '0', 'CLICK', '', ''),
-('M24_BIGEYE', '7', '10', 'WAIT', '0', '0'),
-('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE1'),
-('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE2'),
-('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE3'),
-('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYESPELL1'),
-('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYESPELL3'),
-('M24_BIGEYE', '10', '20', 'Z_EPSILON', '', ''),
+('M24_BIGEYE', '0', '1', 'MOV', 'WSPRITE', 'WIP1', ''),
+('M24_BIGEYE', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP', ''),
+('M24_BIGEYE', '2', '5', 'ANIMATE', '0', 'V_LOOP', ''),
+('M24_BIGEYE', '5', '6', 'SIGNAL','WIP2', 'SIG_SHOW', ''),
+('M24_BIGEYE', '6', '7', 'SIGNAL','WIP3', 'SIG_SHOW', ''),
+('M24_BIGEYE', '7', '0', 'CLICK', '', '', ''),
+('M24_BIGEYE', '7', '10', 'WAIT', '0', '0', ''),
+('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE1', ''),
+('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE2', ''),
+('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYEPLATE3', ''),
+('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYESPELL1', ''),
+('M24_BIGEYE', '10', '50', 'IFSTATEi', '0', 'S24_EYESPELL3', ''),
+('M24_BIGEYE', '10', '20', 'Z_EPSILON', '', '', ''),
 
-('M24_BIGEYE', '20', '30', 'ASHOW', '0', 'IDS_BIGEYE1'),
-('M24_BIGEYE', '30', '30', 'GRAB', '0', 'IDD_EYEWAND'),
-('M24_BIGEYE', '30', '50', 'WAIT', '0', 'SIG_BOMB'),
-('M24_BIGEYE', '50', '51', 'SHOW', '0', '0'),
-('M24_BIGEYE', '51', '52', 'SIGNAL','WIP2', 'SIG_HIDE'),
-('M24_BIGEYE', '52', '0', 'SIGNAL','WIP3', 'SIG_HIDE');
+('M24_BIGEYE', '20', '30', 'ASHOW', '0', 'IDS_BIGEYE1', ''),
+('M24_BIGEYE', '30', '30', 'GRAB', '0', 'IDD_EYEWAND', 'ADDI(LWISDOM,2); SIGNALi(0,SID_ID);'),
+('M24_BIGEYE', '30', '50', 'WAIT', '0', 'SIG_BOMB', ''),
+('M24_BIGEYE', '50', '51', 'SHOW', '0', '0', ''),
+('M24_BIGEYE', '51', '52', 'SIGNAL','WIP2', 'SIG_HIDE', ''),
+('M24_BIGEYE', '52', '0', 'SIGNAL','WIP3', 'SIG_HIDE', '');
 
 
 --eyea from left to right
