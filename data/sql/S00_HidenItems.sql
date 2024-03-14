@@ -107,7 +107,14 @@ VALUES
 ('S00_HIDINGPLACE', 27, 'S00_HIDDEN_27'),
 ('S00_HIDINGPLACE', 28, 'S00_HIDDEN_28'),
 ('S00_HIDINGPLACE', 29, 'S00_HIDDEN_29'),
-('S00_HIDINGPLACE', 30, 'S00_HIDDEN_30');
+('S00_HIDINGPLACE', 30, 'S00_HIDDEN_30'),
+
+('S00_HIDINGPLACE', 31, 'S00_HIDDEN_31'),
+('S00_HIDINGPLACE', 32, 'S00_HIDDEN_32'),
+('S00_HIDINGPLACE', 33, 'S00_HIDDEN_33'),
+('S00_HIDINGPLACE', 34, 'S00_HIDDEN_34'),
+('S00_HIDINGPLACE', 35, 'S00_HIDDEN_35');
+
 
 
 --This was dumb of me to wipe out all of the tools everywhere
@@ -173,11 +180,11 @@ VALUES
 ('40016', 'S00_HIDDEN_16', '508', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
 
 ('40006', 'S00_HIDDEN_17', '507', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
-('40004', 'S00_HIDDEN_18', '551', 'IDV_ctyh', '1953', '207', '2025', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
+('40004', 'S00_HIDDEN_18', '551', 'IDV_ctyh', '2807', '207', '2900', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
 
 
 ('40021', 'S00_HIDDEN_21', '9475', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
-('40003', 'S00_HIDDEN_22', '4704', 'IDV_WR3', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40003', 'S00_HIDDEN_22', '4704', 'IDV_WR3', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
 ('40009', 'S00_HIDDEN_19', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 
@@ -189,6 +196,13 @@ VALUES
 ('40028', 'S00_HIDDEN_28', '5382', 'IDV_TMPLPTH9', '2018', '245', '2100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40029', 'S00_HIDDEN_29', '4868', 'IDV_VIL6', '3180', '172', '3220', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 ('40030', 'S00_HIDDEN_30', '4868', 'IDV_VIL6', '2134', '222', '2220', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+
+--Highly unlikely hiding places - just in case
+('40031', 'S00_HIDDEN_26',  '5381', 'IDV_TMPLPTH5', '1279', '215', '1350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40032', 'S00_HIDDEN_27', '5381', 'IDV_TMPLPTH5', '1000', '224', '1190', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40033', 'S00_HIDDEN_28', '5382', 'IDV_TMPLPTH9', '1018', '245', '1100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40034', 'S00_HIDDEN_29', '4868', 'IDV_VIL6', '3080', '172', '3120', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('40035', 'S00_HIDDEN_30', '4868', 'IDV_VIL6', '2034', '222', '2020', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 
 
 ('40023', 'S00_HIDEFINDER', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDELIST', 'S00_HIDECHECK', '', '', '');
@@ -257,8 +271,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
          MOV(WTEMP2,BPARM);
          MAPi(WTEMP2,S00_HIDINGPLACE); 
          SIGNAL(WTEMP2,SIG_OPEN); 
-         RAND(3,1); 
-        //I want to update BPARM by adding 1,2 or 3
+         RAND(4,1); 
+        //I want to update BPARM by adding 1,2, 3 or 4
         ASSIGN(WTEMP2,BPARM);
         ADD(WTEMP2,WRAND); 
         ASSIGN(BPARM,WTEMP2); //BPARM is now again The new hiding machine
@@ -417,7 +431,29 @@ if ( (IFSTATE(firstWhack, S00_HIDDEN_1)) ){WRITE("Place 1 IDV_PATH2");}
       if( (IFSTATE(firstWhack, S00_HIDDEN_22 )) ){
          WRITE("Place 22 IDV_WR3");
       }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_23 )) ){
+         WRITE("Place 23 IDV_PATH2");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_24 )) ){
+         WRITE("Place 24 IDV_PATH2");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_25 )) ){
+         WRITE("Place 25 IDV_MOON5");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_26 )) ){
+         WRITE("Place 26 IDV_TMPLPTH5");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_27 )) ){
+         WRITE("Place 27 IDV_TMPLPTH5");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_28 )) ){
+         WRITE("Place 28 IDV_TMPLPTH9");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_29 )) ){
+         WRITE("Place 29 IDV_VIL6");
+      }
+       if( (IFSTATE(firstWhack, S00_HIDDEN_30 )) ){
+         WRITE("Place 30 IDV_VIL6");
+      }
 
 ', '', '');
-
-
