@@ -230,7 +230,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_HIDER', 'topOLoop', '0', 'GT', 'WTEMP3', 9, '
  WRITE('' should be done ''); 
 ', '', ''),
-('M_HIDER', 'topOLoop', 'numberCheck', 'Z_EPSILON', '', '', '
+('M_HIDER', 'topOLoop', 'numberCheck','Z_EPSILON', '', '', '
          RAND(10,1);
          ASSIGN(WTEMP1,WRAND);
          WRITE(''Check to see if we want WTEMP1 ''); 
@@ -248,11 +248,11 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 
 --WE'RE GOING TO GET THIS ALOT - NO CHECKING HERE TO SEE IF WE'RE DONE??
-('M_HIDER', 'numberCheck', 'topOLoop', 'Z_EPSILON', '', '', '
+('M_HIDER', 'numberCheck', 'topOLoop','Z_EPSILON', '', '', '
  WRITE('' GOT ONE WE DONT WANT ''); 
 ', '', ''),
 
-('M_HIDER', 'hideItem', 'objectHidden', 'Z_EPSILON', '', '', '   
+('M_HIDER', 'hideItem', 'objectHidden','Z_EPSILON', '', '', '   
          WRITE(''HIDING ITEM ''); 
          MOV(WTEMP2,BPARM);
          MAPi(WTEMP2,S00_HIDINGPLACE); 
@@ -268,10 +268,10 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_HIDER', 'objectHidden', 'topOLoop', 'LTEi', 'WTEMP3', 10, '
         WRITE(''Checking to see if we hid all 10  ''); 
 ', '', ''),
-('M_HIDER', 'objectHidden', 'stopped', 'Z_EPSILON', '', '', '
+('M_HIDER', 'objectHidden', 'stopped','Z_EPSILON', '', '', '
      WRITE(''Finished Hiding Items'');   
 ', '', ''),
-('M_HIDER', 'stopped', '0', 'Z_EPSILON', '', '', '', '', ''),
+('M_HIDER', 'stopped', '0','Z_EPSILON', '', '', '', '', ''),
 
 
 
@@ -343,6 +343,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGGABLE', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(WOBJECT);
+        ADDI(LWISDOM,1); 
+        SIGNALi(0,SID_ID);
 ', '', ''),
 ('M_DIGGABLE', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
 ('M_DIGGABLE', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', ''),

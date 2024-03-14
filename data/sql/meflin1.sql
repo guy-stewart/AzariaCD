@@ -945,10 +945,11 @@ VALUES
 ('M_MEFPAN_WAITER', 'waiting', 'showPrizeText', 'WAIT', '0', 'SIG_PRIZETEXT', '
     REF_MACHINE(MEFCURRENT); //what mef are we hittin up
     REF_MACHINE(R_WPARM); //R_WPARM is the active mef machine
-   CLEAR(BPARM);
-   MOV(BPARM,R_BPARM);
-   SETTEXT(ID_MEFTEXT,BPARM); //prize text
-   
+    CLEAR(BPARM);
+    MOV(BPARM,R_BPARM);
+    SETTEXT(ID_MEFTEXT,BPARM); //prize text
+    ADDI(LWISDOM,1); 
+    SIGNALi(0,SID_ID);
 '),
 ('M_MEFPAN_WAITER', 'showPrizeText', '0', 'Z_EPSILON', '', '', ''),
 -----

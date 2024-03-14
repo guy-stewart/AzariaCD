@@ -318,7 +318,10 @@ main :- card_objects(idd_card04,SPELL),
     SIGNAL(WIP4, SIG_CLEAR);
     MOV(WOBJECT,WPARM);
     MAPi(WOBJECT,CARD_OBJECTS);
-    ASHOW(WOBJECT);'),
+    ASHOW(WOBJECT);
+    ADDI(LWISDOM,1); 
+    SIGNALi(0,SID_ID);
+    '),
 ('M08_BIN','105','0','GRAB','','', 'SHOW();'),
 
 -- CARDHOLD(WIP1=S08_HOPPERxx):

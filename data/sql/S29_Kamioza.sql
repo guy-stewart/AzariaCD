@@ -23,11 +23,16 @@ VALUES
 delete from transitions where [automaton] like 'M_KAM%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
-('M_KAMALTAR','0','5','ACCEPT','','IDD_SEED','',''),
-('M_KAMALTAR','5','10','DROP','','','',''),
+('M_KAMALTAR','0','5','Z_EPSILON','','','',''),
+('M_KAMALTAR','5','10','DROP','IDD_SEED','','
+    ADDI(LWISDOM,10); 
+    SIGNALi(0,SID_ID);
+',''),
 ('M_KAMALTAR','10','20','ASHOW','WOBJECT','','',''),
 ('M_KAMALTAR', '20','21','SIGNAL', 'WIP1', 'SIG_SHOW', '',''),
 ('M_KAMALTAR','21','0','GRAB','','','
+    SUBI(LWISDOM,10); 
+    SIGNALi(0,SID_ID);
     SHOW();
 ',''),
 

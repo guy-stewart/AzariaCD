@@ -177,6 +177,8 @@ ASSIGN(WPARM,0);
     PLAYWAVE(SOUND_CHIMES);
     SHOW(IDS_KAMDOOR);
     ANIMATE();
+    ADDI(LWISDOM,5); 
+    SIGNALi(0,SID_ID);																						
     //show alt views and allow entry
 ',''),
 ('M_KAMDOOR','showDoors','allowEntry','Z_EPSILON','','','

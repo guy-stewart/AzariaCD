@@ -55,24 +55,31 @@ delete from transitions where [automaton] like 'M25_RUMBLE%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES  
 ('M25_RUMBLE', '0', '1', 'ASSIGN', 'BFRAME', '1', '', '', ''), 
 ('M25_RUMBLE',  '1', '2', 'ASSIGN', 'WSPRITE', 'IDS_RUMBLE', '', '', ''), 
-('M25_RUMBLE', '2', '3', 'SHOW', 'WSPRITE', '', '', '', ''), 
+('M25_RUMBLE', '2', 'steady', 'SHOW', 'WSPRITE', '', '', '', ''), 
 
 
-('M25_RUMBLE', '3', '40', 'WAIT','0', 'SIG_PRY', '', '', ''), 
+('M25_RUMBLE', 'steady', 'minorForce', 'WAIT','0', 'SIG_PRY', '', '', ''), 
+('M25_RUMBLE', 'steady', 'minorForce', 'DROP','IDC_BOMB,  IDD_EXPLOSION', '', '
+    VIDEO(0,IDS_EXPLODE1);
+    PLAYWAVE(SOUND_EXPLODE);
+', '', ''), 
+('M25_RUMBLE', 'steady', 'majorForce', 'DROP', 'IDD_TELEKINESIS, IDD_STRENGTH', '', '', '', ''), 
+('M25_RUMBLE', 'steady', 'reinitialized', 'WAIT', '0', 'SIG_INIT', '', '', ''), 
 
-('M25_RUMBLE', '3', '30', 'DROP', 'IDD_TELEKINESIS, IDD_STRENGTH', '', '', '', ''), 
-('M25_RUMBLE', '3', '10', 'WAIT', '0', 'SIG_INIT', '', '', ''), 
-('M25_RUMBLE', '10', '3', 'CLEAR', 'BPARM', '', '', '', ''), 
+('M25_RUMBLE', 'reinitialized', 'steady', 'CLEAR', 'BPARM', '', '', '', ''), 
 
-('M25_RUMBLE', '20', '3', 'SUBI', 'BPARM', '1', '', '', ''), 
-('M25_RUMBLE', '30', '50', 'ADDI', 'BPARM', '1', '', '', ''), 
-('M25_RUMBLE', '40', '50', 'ADDI', 'BPARM', '1', '', '', ''), 
-('M25_RUMBLE', '50', '60', 'GTi', 'BPARM', '1', '', '', ''), 
-('M25_RUMBLE', '50', '0', 'VIDEO', '0', 'IDS_RUMBLE', '', '', ''), 
+('M25_RUMBLE', 'majorForce', 'forceCheck', 'ADDI', 'BPARM', '10', '', '', ''), 
+('M25_RUMBLE', 'minorForce', 'forceCheck', 'ADDI', 'BPARM', '1', '', '', ''), 
 
-('M25_RUMBLE',  '60', '61', 'ASSIGN', 'WSPRITE', '0', '', '', ''), 
+('M25_RUMBLE', 'forceCheck', 'startOpen', 'GTi', 'BPARM', '7', '', '', ''), 
+('M25_RUMBLE', 'forceCheck', '0', 'Z_EPSILON', '', '', 'VIDEO(0,IDS_RUMBLE);', '', ''), 
+
+('M25_RUMBLE',  'startOpen', '61', 'ASSIGN', 'WSPRITE', '0', '', '', ''), 
 ('M25_RUMBLE', '61', '62', 'SHOW', 'WSPRITE', '', '', '', ''), 
-('M25_RUMBLE', '62', '70', 'SIGNALi', 'SIG_OPEN', 'S25_ROLL', '', '', ''), 
+('M25_RUMBLE', '62', '70', 'SIGNALi', 'SIG_OPEN', 'S25_ROLL', '
+   ADDI(LWISDOM,2); 
+   SIGNALi(0,SID_ID);
+', '', ''), 
 ('M25_RUMBLE', '70', '71', 'CLICK', '0', '0', '', '', ''), 
 ('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN', '', '', ''),
 
@@ -103,7 +110,7 @@ VALUES
     ASSIGN(WSPRITE,IDS_SCATTER);
     SHOW(WSPRITE);
 ', ''),
-('M25_SCATTER', 'notscattered', 'bombed', 'DROP', 'IDD_BOMB2', '0', '', ''),
+('M25_SCATTER', 'notscattered', 'bombed', 'DROP', 'IDC_BOMB,  IDD_EXPLOSION', '0', '', ''),
 ('M25_SCATTER', 'notscattered', 'axed', 'DRAG', '0', 'IDD_PICK', '', ''),
 ('M25_SCATTER', 'notscattered', 'axed', 'DRAG', '0', 'IDD_SHOVEL', '', ''),
 
@@ -127,6 +134,8 @@ VALUES
 
 ('M25_SCATTER', 'checkIfComplete', 'scattered', 'GTEi', 'BFRAME', '10', '
     SIGNALi(SIG_OPEN,S25_SCAT_ALT);
+    ADDI(LWISDOM,2); 
+    SIGNALi(0,SID_ID);
 ', ''), 
 ('M25_SCATTER', 'checkIfComplete', 'notscattered', 'Z_EPSILON', '', '', '', ''),
 ('M25_SCATTER', 'scattered', 'allowAccess', 'CLICK', '', '', '
@@ -157,7 +166,11 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 ('M25_OPNDOOR','10','40','DROP','IDC_BOMB, IDD_EXPLOSION','0','',''),
 ('M25_OPNDOOR','40','50','Z_EPSILON','','','',''),
 ('M25_OPNDOOR','50','51','VIDEO','0','IDS_EXPLODE1','',''),
-('M25_OPNDOOR','51','52','PLAYWAVE','0','SOUND_EXPLODE','SIGNAL(WIP3,SIG_COMPLETE);',''),
+('M25_OPNDOOR','51','52','PLAYWAVE','0','SOUND_EXPLODE','
+        SIGNAL(WIP3,SIG_COMPLETE);
+        ADDI(LWISDOM,3); 
+        SIGNALi(0,SID_ID);
+',''),
 ('M25_OPNDOOR','52','53','MOV','WSPRITE','WIP1','',''),
 ('M25_OPNDOOR','53','70','SHOW','WSPRITE','','',''),
 ('M25_OPNDOOR','70','71','CLICK','0','0','',''),

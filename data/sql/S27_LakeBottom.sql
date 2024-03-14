@@ -88,9 +88,12 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 ('M_CLAM', '0', '1', 'MOV', 'BFRAME', '0', ''),
 ('M_CLAM', '1', '2', 'SHOW', 'WIP1', '', ''),
-('M_CLAM',  '2', '3', 'DRAG', '0', 'IDD_TICKLELEAF', ''),
+('M_CLAM',  '2', '3', 'DRAG', 'IDD_TICKLELEAF, IDD_BAIT1', '', ''),
 ('M_CLAM', '3', '4', 'ESTIME', '', '3', ''),
-('M_CLAM', '4', '5', 'ADDI', 'BFRAME', '1', ''),
+('M_CLAM', '4', '5', 'ADDI', 'BFRAME', '1', '
+    ADDI(LWISDOM,1); 
+    SIGNALi(0,SID_ID);
+'),
 ('M_CLAM', '5', '0', 'GRAB', '', 'IDD_EMERALD', '');
 
 

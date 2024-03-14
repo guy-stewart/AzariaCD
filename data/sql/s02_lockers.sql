@@ -30,7 +30,9 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
     PLAYWAVE(SOUND_LEVER);
     SIGNAL(WIP1,SIG_OPEN);
     O_ACCEPT(WOBJECT);
-    SHOW(0,IDS_LOCKWKEY);'),
+    SHOW(0,IDS_LOCKWKEY);
+    ADDI(LWISDOM,2); 
+    SIGNALi(0,SID_ID);'),
 -- Keyed state:
 ('M02_LOCK','M02_KEYED','10','GRAB','','','
     CLEAR(WOBJECT);
