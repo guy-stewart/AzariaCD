@@ -17,9 +17,11 @@ delete from games;
 -- lock, unlock,explosion,alarm,recorder?
 
 --Here we centralize all the spells for whatever purpose
+
 delete from objects where class = 'IDC_SPELL';
 
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor")
+
+INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") 
 VALUES 
 
 --the 13 scroll spells
@@ -80,10 +82,10 @@ VALUES
 ('IDD_SPELx07', '30605', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
 ('IDD_SPELx08', '30606', 'IDC_SPELL', 'Spelx08', 'Spelx08', 'Spelx08'),
 ('IDD_SPELx09', '30607', 'IDC_SPELL', 'Spelx09', 'Spelx09', 'Spelx09'),
-('IDD_SPELx10', '30608', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10'),
+('IDD_SPELx10', '30608', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10');
 
-
-('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
+-- TODO SHOULD THIS BEA A SPELL?? I DON'T THINK SO
+--('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
 
 
 
@@ -179,7 +181,7 @@ delete from "main"."transitions" where [automaton] like 'M_BLINDVIEW%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-('M_DEFENSESPELL','0','turntOn','WAIT','0','SIG_START', '
+('M_DEFENSESPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
     SHOW(WIP1);
     SIGNAL(WIP2,SIG_START);
 ', '', ''),
@@ -203,7 +205,7 @@ VALUES
 
 --------------------
 
-('M_VIEWSPELL','0','turntOn','WAIT','0','SIG_START', '
+('M_VIEWSPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
     //start the timer
     SIGNAL(WIP2,SIG_START);
      MOV(WPARM,LVIEW);
@@ -234,7 +236,7 @@ VALUES
 
 --------------------
 
-('M_INSTANTATTACK','0','spellcast','WAIT','0','SIG_START', '', '', ''),
+('M_INSTANTATTACK','0','spellcast','WAIT','0','SIG_SPELLME', '', '', ''),
 ('M_INSTANTATTACK','spellcast','impact','Z_EPSILON','','', '
         if(WIP1 == TRANSFER){
             //this should read the other players stas and take them
@@ -270,7 +272,7 @@ VALUES
 
 --------------------
 
-('M_ATTACKSPELL','0','turntOn','WAIT','0','SIG_START', '
+('M_ATTACKSPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
     //start the timer
     SIGNAL(WIP2,SIG_START);
 ', '', ''),

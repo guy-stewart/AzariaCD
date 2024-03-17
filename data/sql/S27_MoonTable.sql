@@ -105,7 +105,10 @@ VALUES
 ('M_MEMOBJ', '20', '21', 'CLEAR', 'WOBJECT', '', ''),
 ('M_MEMOBJ', '21', '22', 'CLEAR', 'WPARM', '', ''),
 ('M_MEMOBJ', '22', '23', 'CLEAR', 'WSPRITE', '', ''),
-('M_MEMOBJ', '23', '30', 'SHOW', '', '', ''),
+('M_MEMOBJ', '23', '30', 'SHOW', '', '', '
+    ADDI(LKARMA,2);
+    SIGNAL(SID_HALO,SIG_ADD);
+'),
 ('M_MEMOBJ', '30', '31', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE1',''),
 ('M_MEMOBJ', '31', '32', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE2',''),
 ('M_MEMOBJ', '32', '33', 'SIGNALi', 'SIG_HIDE', 'S27_MEMSTONE3',''),

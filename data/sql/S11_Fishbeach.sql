@@ -42,9 +42,9 @@ VALUES
 ('4402', 'S11_FISHSTATIONf', '4356', 'IDV_FH1PAN', '1800', '110', '1900', '300', '0', 'M_FISHSTATION', '', '', '',  ''),
 
 ('4448', 'S11_GRUBBIN0', '4358', 'IDV_GRBDRT2', '20', '8', '262', '218', '2', 'M_OBJECTBIN', 'IDD_BAIT0', '', '',  ''),
-('4433', 'S11_LOGBINB', '4403', '', '2833', '168', '3126', '265', '2', 'M_OBJECTBIN', 'IDD_LOG',  '',  '',  ''),
+--('4433', 'S11_LOGBINB', '4403', '', '2833', '168', '3126', '265', '2', 'M_OBJECTBIN', 'IDD_LOG',  '',  '',  ''),
 
-('4450', 'S11_SHOREBIN', '4403', '', '2833', '168', '3126', '265', '2', 'M_OBJECTBIN', 'IDD_LOG',  '', '',  '');
+('4450', 'S11_SHOREBIN', '4356', 'IDV_FH1PAN', '2833', '168', '3126', '265', '2', 'M_OBJECTBIN', 'IDD_LOG',  '', '',  '');
 
 -- Bait stations combining with fish stations
 

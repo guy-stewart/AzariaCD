@@ -313,6 +313,7 @@ delete from machines where name = 'MEFPAN_PRIZE_B';
 delete from machines where name = 'MEFPAN_PRIZE_C';
 delete from machines where name = 'MEF_SHOW_COORDINATOR';
 delete from machines where name = 'MEF_DROPTARGET';
+delete from machines where name = 'CHAR_DROPTARGET';
 
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
@@ -404,13 +405,14 @@ VALUES
 
 ('15543', 'MEF_SHOW_COORDINATOR', '9802', 'IDV_MEFPAN', '0', '0', '2', '2', '1','M_MEFPAN_SHOW_COORD','','','',''),
 
-('15575', 'MEF_DROPTARGET', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_MEFLIN_DROP','','','','');
+('15575', 'CHAR_DROPTARGET', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_CHARACTER_DROP','','','','');
 
 
 delete from transitions where automaton =  'M_MEFCURRENT';
 delete from transitions where automaton =  'MEFLIN_COORD';
 delete from transitions where automaton =  'M_MEFPAN_SHOW_COORD';
 delete from transitions where automaton =  'M_MEFLIN_DROP';
+delete from transitions where automaton =  'M_CHARACTER_DROP';
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
@@ -439,18 +441,28 @@ VALUES
 '),
 
 --This is here in case machines overlap
-('M_MEFLIN_DROP', '0', 'postProcessObject', 'DROP', '0', '0', '
+('M_CHARACTER_DROP', 0, 'postProcessObject', 'DROP', '0', '0', '
+    SHOW(WOBJECT);
     REF_MACHINE(MEFPAN_VIEWCAP);
     MOV(BPARM,R_BPARM);
-    if(BPARM == 1){  //Theres a meflin up
+    if(BPARM == 1){  
         WRITE("MEFLIN INSPECTION");
         REF_MACHINE(MEFCURRENT); //Who is it?
         MOV(WPARM,R_WPARM);
         SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
         SHOW();
     }
+    if(BPARM == 0){ 
+        SHOW();
+        SIGNAL(SOD_SPELL,SIG_DROP);
+    }
 '),
-('M_MEFLIN_DROP', 'postProcessObject', '0', 'Z_EPSILON', '', '', ''),
+('M_CHARACTER_DROP', 'postProcessObject', 'clear', 'GRAB', '', '', '
+    CLEAR(WOBJECT);
+    SHOW();
+'),
+('M_CHARACTER_DROP', 'clear', 0, 'Z_EPSILON', '', '', ''),
+('M_CHARACTER_DROP', 'postProcessObject', '0', 'Z_EPSILON', '', '', ''),
 
 --keeps the most recently engaged quest 
 
@@ -614,7 +626,7 @@ PLAYWAVE(WIP3);
 -- Examine and react to items -------------------------
 ('M_MEF_TALK','talkDone', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
    // REF_MACHINE(SOD_SPELL);
-    REF_MACHINE(MEF_DROPTARGET);
+    REF_MACHINE(CHAR_DROPTARGET);
     MOV(WOBJECT,R_WOBJECT);
 '),
 ('M_MEF_TALK','droppedItem', 'selectMeflin', 'REF_MACHINE', 'MEFCURRENT', '', '

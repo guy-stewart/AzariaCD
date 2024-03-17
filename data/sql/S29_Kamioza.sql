@@ -33,6 +33,8 @@ VALUES
 ('M_KAMALTAR','21','0','GRAB','','','
     SUBI(LWISDOM,10); 
     SIGNALi(0,SID_ID);
+    ADDI(LKARMA,2);
+    SIGNAL(SID_HALO,SIG_ADD);
     SHOW();
 ',''),
 

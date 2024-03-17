@@ -1,4 +1,3 @@
-
 drop table if exists games;
 delete from constants where name = 'M02_LOCKED';
 delete from constants where name = 'M02_KEYED';
@@ -29,7 +28,9 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 ('M02_LOCK','2','M02_KEYED','Z_EPSILON','','','
     PLAYWAVE(SOUND_LEVER);
     SIGNAL(WIP1,SIG_OPEN);
-    O_ACCEPT(WOBJECT);
+    // O_ACCEPT(WOBJECT);
+     // set WPARM for use in DROP(WPARM)
+    WPARM=WOBJECT;
     SHOW(0,IDS_LOCKWKEY);
     ADDI(LWISDOM,2); 
     SIGNALi(0,SID_ID);'),
