@@ -283,6 +283,10 @@ VALUES
 ('M_O_AURA', '0', 'energyBoost', 'Z_EPSILON', '0', '0', '', '', ''),
 ('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_O_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
+('M_O_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
+  WRITE("Clear the aura");  
+  SHOW(0);
+', '', ''),
 ('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', '0', '', '', ''),
 ('M_O_AURA', 'energyBoost', '1', 'ASSIGN', 'WPARM', '', '
        if(OENERGY > (MAX_AURAS - 1)){
@@ -429,7 +433,8 @@ VALUES
     SIGNAL(SMP_VIAL,SIG_DRAIN);
     LOADVIEW(IDV_VIL8);
 ', '', ''),
-('M_ID', '100', 'empty', 'SHOW', '0', '0', '
+('M_ID', '100', 'empty', 'Z_EPSILON', '', '', '
+    SHOW(0);
     SIGNAL(WIP4,SIG_CLEAR);
 ', '', ''),
 ('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
@@ -441,23 +446,27 @@ delete from "main"."transitions" where [automaton] like 'M_ACTIVE_SPELLTARGET%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-('M_IDSPELL','0','checkObject','DROP','0','0', '
+('M_IDSPELL','0','checkObject','DROP','','', '
     CLEAR(WVIEWID);
-    SHOW(WOBJECT);
+    WRITE("Item Dropped on ID");
 ', '', ''),
-('M_IDSPELL','0','checkObject','SPELL_ME','WOBJECT','', '', '', ''),
+--SPELL_ME not working and causing some issues
+--('M_IDSPELL','0','checkObject','SPELL_ME','WOBJECT','', '', '', ''),
+--('M_IDSPELL','0','checkObject','SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
 ('M_IDSPELL','0','0','WAIT','0','SIG_CLEAR', '
-    SHOW();
-', '', ''),
-('M_IDSPELL','benign','0','GRAB','0','0', '
     SHOW();
 ', '', ''),
 ('M_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
-('M_IDSPELL','checkObject','benign','Z_EPSILON','0','0', '', '', ''),
-
-('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', '', '', ''),
+('M_IDSPELL','checkObject','nothingImportant','Z_EPSILON','0','0', '
+    SHOW(WOBJECT);
+', '', ''),
+('M_IDSPELL','nothingImportant','0','GRAB','','', '
+    CLEAR(WOBJECT);
+    SHOW();
+', '', ''),
+('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', 'WRITE("ITS A BOMB");', '', ''),
 ('M_IDSPELL','itsAspell','0','Z_EPSILON','','', '
     if(WOBJECT == IDD_PROTECT){SHOW();SIGNAL(PROTECT_ACTIVE,SIG_SPELLME);}
     if(WOBJECT == IDD_NYBREATH){SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_SPELLME);}
@@ -476,8 +485,6 @@ VALUES
 ', '', ''),
 
 
-
-
 ('M_O_IDSPELL', '0', 'postProcessObject', 'WAIT', '', 'SIG_DROP', '
     REF_MACHINE(MEFPAN_VIEWCAP);
     MOV(BPARM,R_BPARM);
@@ -493,6 +500,7 @@ VALUES
             //Deduct for all the bad or good things local player can drop 
                 ADDI(LKARMA,1); 
                 SIGNAL(SID_HALO,SIG_ADD);
+        //Assuming this would create the spell over on the other player
         SPELL_YOU(WOBJECT);
         SHOW();
     } 

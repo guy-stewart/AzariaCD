@@ -40,6 +40,7 @@ VALUES
 --lockpick
 ('IDD_PROTECT', '30620', 'IDC_SPELL', 'protect', 'protect', 'protect'),
 ('IDD_DEATH', '30621', 'IDC_SPELL', 'skull', 'skull', 'skull'), -- we need a different one here
+('IDD_REVIAL', '12603', 'IDC_SPELL', 'revial', 'revial', 'revial'),
 --------------------------------------
 --------------------------------------
 
@@ -59,7 +60,7 @@ VALUES
 ('IDD_STRENGTH', '30623', 'IDC_SPELL', 'muscle', 'muscle', 'muscle'),
 ('IDD_LOCK', '30618', 'IDC_SPELL', 'radio', 'radio', 'radio'), -- using fish spell general
 ('IDD_RECORDER', '30615', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
-('IDD_UNLOCK', '30619', 'IDC_SPELL', 'Spelx01', 'Spelx01', 'Spelx01'),
+('IDD_UNLOCK', '30619', 'IDC_SPELL', 'radio', 'radio', 'radio'),
 
  -- these atom spells equate to their fish? 
  -- These are cool but what do they mean?
