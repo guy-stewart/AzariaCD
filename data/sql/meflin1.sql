@@ -42,6 +42,12 @@ VALUES ('9803', 'IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
        ('4890', 'IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib'),
        ('4891', 'IDV_VILLIBA', '1', '2', '1', '6', 'surround.vct', 'villiba');
 
+delete from cardinals where [from] = 'IDV_VIL6';
+delete from cardinals where [from] = 'IDV_VHB3';
+INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES 
+('IDV_VIL6', '', 'IDV_TRAYL', 'IDV_TRAYR', '', '', 'IDV_VHB3', 'IDV_VIL5', ''),
+('IDV_VHB3', '', '', 'IDV_VIL6', '', '', '', '', '');
+
 delete from spr_names where name = 'IDS_PARCHPANBK';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
@@ -383,8 +389,8 @@ VALUES
 -------------------------------------
 -- --AMBLE
 ('15901', 'AMBLE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
-('15900', 'S09_AMBLE_DESK', '4890', 'IDV_VILLIB', '864', '190', '1000', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
-('15519', 'S09_AMBLE', '4890', 'IDV_VILLIB', '864', '50', '1000', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
+('15900', 'S09_AMBLE_DESK', '4902', 'IDV_VHB3', '2653', '180', '2699', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
+('15519', 'S09_AMBLE', '4902', 'IDV_VHB3', '2653', '40', '2753', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
 
 ('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','5','SOUND_AMBLEQ1', 'IDS_MSI10001'),
 ('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','2', 'SOUND_AMBLEI1', 'MSI10001'),
