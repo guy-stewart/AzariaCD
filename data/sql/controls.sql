@@ -69,3 +69,8 @@ and this is line FOUR.','', 'IDS_FONTTNB18', 0xFF8888),
 delete from views where view_name = 'IDV_CTLTEST1';
 insert into views ([view_id],[view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
 (6587,'IDV_CTLTEST1',1,3,1,1,'wdepanel.vct','spacebak');
+
+delete from views where view_name = 'IDV_CFGPLAYER2';
+insert into `views` (`Z`, `backgroundAudio`, `behavior_id`, `locator_view`, `portal_filename`, `surface_filename`, `view_id`, `view_name`) 
+values 
+('1', '0', '10', '1', 'wdepanel.vct', 'cultmen', '34', 'IDV_CFGPLAYER2')

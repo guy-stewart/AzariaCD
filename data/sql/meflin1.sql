@@ -294,6 +294,7 @@ delete from machines where [name] LIKE 'NEELP%';
 delete from machines where [name] LIKE 'RATHE%';
 delete from machines where [name] LIKE 'THAOR%';
 delete from machines where [name] LIKE 'PERST%';
+delete from machines where [name] LIKE 'AMBLE%';
 delete from machines where [name] LIKE 'S33_NEELP%';
 delete from machines where [name] LIKE 'S11_NEELP%';
 delete from machines where [name] LIKE 'S30_NEELP%';
@@ -303,7 +304,6 @@ delete from machines where [name] LIKE 'S10_THAOR%';
 delete from machines where [name] LIKE 'S19_THAOR%';
 delete from machines where [name] LIKE 'S16_PERST%';
 delete from machines where [name] LIKE 'S12_PERST%';
-
 delete from machines where [name] LIKE 'S09_AMBLE%';
 
 
@@ -392,8 +392,8 @@ VALUES
 ('15900', 'S09_AMBLE_DESK', '4902', 'IDV_VHB3', '2653', '180', '2699', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
 ('15519', 'S09_AMBLE', '4902', 'IDV_VHB3', '2653', '40', '2753', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
 
-('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','5','SOUND_AMBLEQ1', 'IDS_MSI10001'),
-('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','2', 'SOUND_AMBLEI1', 'MSI10001'),
+('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','7','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','3', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 ----Machines to serve them all
@@ -832,7 +832,7 @@ PLAYWAVE(WIP3);
 '),
 ('M_MEF_TALK', 'ambleCheck', 'finishAprasal', 'Z_EPSILON', '0', '0', 
     'if(R_BPARM == S09_AMBLE) { //-----AMBLE------------------------------------------
-        if(R_WPARM == AMBLE_I1){mefResp(?WTEMP4,"8",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
+        if(R_WPARM == AMBLE_I1){mefResp(?WTEMP4,"10",?WPARM,?WTEMP1,?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
             if(WPARM == WOBJECT){
                 MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
                 SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
@@ -842,31 +842,10 @@ PLAYWAVE(WIP3);
                 MOV(WSPRITE,IDS_MST1001); //talking reply
                 ASHOW(WSPRITE);
                 PLAYWAVE(WTEMP2);
-                    if(R_BPARM == S16_PERST){
-                        SIGNAL(PERST_COORD,SIG_Q1_SOLVED);
-                        SIGNAL(S16_PERST,SIG_VANISH); SIGNAL(S16_PERST_alt1,SIG_HIDE); 
-                        SIGNAL(S12_PERST,SIG_SHOW);
-                     }
-                     if(R_BPARM == S12_PERST){
-                        SIGNAL(PERST_COORD,SIG_Q2_SOLVED);
-                        SIGNAL(S12_PERST,SIG_VANISH);
-                     }
+                
+                 //Amble never ends
             }
             
-             if(IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_PLANT) || IS_A(WOBJECT,IDC_SPELL)|| IS_A(WOBJECT,IDC_BAIT)){
-            //alternatives here                                         SOUND   TEXT   CACHE   ANIMATE  
-           if(IS_A(WOBJECT,IDC_SPELL)){mefResp("2",?WTEMP1,?WTEM4,"SPELL",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-           if(IS_A(WOBJECT,IDC_BAIT)){mefResp("2",?WTEMP1,?WTEM4,"BAIT",?WTEMP2,?BPARM,?WTEMP3,?BFRAME);}
-                MOV(WPARM,WTEMP3); // Move the prize cache id in so the prize boxes can get it
-                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
-                SIGNAL(MEFPAN_WAITER,SIG_PRIZETEXT);
-                SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
-                SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
-                SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
-                MOV(WSPRITE,IDS_M2T10000); //talking reply
-                ASHOW(WSPRITE);
-                PLAYWAVE(WTEMP2);
-             }   
         }
 '),
 ('M_MEF_TALK','finishAprasal', 'givePrize', 'ESTIME', '4', '','

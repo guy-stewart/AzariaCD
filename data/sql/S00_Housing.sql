@@ -85,7 +85,7 @@ delete from spr_names where name = 'IDS_GPDIRTANIM';
 delete from spr_names where name = 'IDS_SANDPILEGOPA';
 insert into spr_names values ('IDS_GPANIM','GPANIM','50006');
 insert into spr_names values ('IDS_GPDIRTANIM','gopadirtanim','50007');
-insert into spr_names values ('IDS_SANDPILEGOPA','sandpileGopa','50008');
+insert into spr_names values ('IDS_SANDPILEGOPA','sandpilegopa','50008');
 
 
 delete from machines where [name] like 'S00_CITYGOP%';
