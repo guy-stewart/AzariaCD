@@ -106,6 +106,7 @@ delete from spr_names where name = 'IDS_MSS20001';
 delete from spr_names where name = 'IDS_MSSQUAT';
 delete from spr_names where name = 'IDS_MST1001';
 delete from spr_names where name = 'IDS_MST10001';
+delete from spr_names where name = 'IDS_MST01';
 delete from spr_names where name = 'IDS_MSDESK';
 
 --THAOR Audio prefix MY(G and M)
@@ -156,13 +157,15 @@ VALUES
 
 ('IDS_MSA10001', 'MSA10001', '15026'),
 ('IDS_MSH10001', 'MSH10001', '15027'),
+('IDS_MSH1001', 'MSH10001', '15049'),
 ('IDS_MSI10001', 'MSI10001', '15028'),
 ('IDS_MSP10001', 'MSP10001', '15029'),
 ('IDS_MSS10001', 'MSS10001', '15030'),
 ('IDS_MSS20001', 'MSS20001', '15031'),
 ('IDS_MSSQUAT', 'MSSQUAT', '15032'),
 ('IDS_MST1001', 'MST1001', '15033'),
-('IDS_MST10001', 'MST10001', '15034'),
+('IDS_MST10001', 'MST01', '15034'),
+('IDS_MST01', 'MST01', '15048'),
 ('IDS_MSDESK', 'desk', '15044'),
 
 ('IDS_MYA10000', 'MYA10000', '15035'),
@@ -392,8 +395,8 @@ VALUES
 ('15900', 'S09_AMBLE_DESK', '4902', 'IDV_VHB3', '2653', '180', '2699', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
 ('15519', 'S09_AMBLE', '4902', 'IDV_VHB3', '2653', '40', '2753', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
 
-('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','7','SOUND_AMBLEQ1', 'IDS_MSI10001'),
-('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST10001','3', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
+('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 ----Machines to serve them all
@@ -839,7 +842,7 @@ PLAYWAVE(WIP3);
                 SIGNAL(MEFPAN_PRIZE_A,SIG_SHOWPRIZE);
                 SIGNAL(MEFPAN_PRIZE_B,SIG_SHOWPRIZE);
                 SIGNAL(MEFPAN_PRIZE_C,SIG_SHOWPRIZE);
-                MOV(WSPRITE,IDS_MST1001); //talking reply
+                MOV(WSPRITE,IDS_MST01); //talking reply
                 ASHOW(WSPRITE);
                 PLAYWAVE(WTEMP2);
                 
