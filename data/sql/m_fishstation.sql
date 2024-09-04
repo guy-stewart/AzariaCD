@@ -1,4 +1,4 @@
-
+delete from games;
 
 
 delete from transitions where [automaton]='M_FISHSTATION';

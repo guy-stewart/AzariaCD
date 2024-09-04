@@ -3,8 +3,6 @@ delete from games;
 delete from sounds where name like 'SOUND_SPLASH%';
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_SPLASH', 'splash', '0');
 
-
-
 delete from machines where name = 'S11_FIRE';
 delete from machines where name = 'S11_GRILL';
 delete from machines where name = 'S11_ASCENT';
@@ -15,11 +13,8 @@ VALUES
 ('4369', 'S11_GRILL', '4355', 'IDV_FALTAR', '145', '100', '267', '142', '0', 'M11_GRILL', 'S11_FIRE', 'S11_ASCENT', '', ''),
 ('4370', 'S11_ASCENT', '4355', 'IDV_FALTAR', '175', '40', '267', '100', '0', 'M11_ASCENT', '', '', '', '');
 
-
-
 -- transitions for the fish grill machines
 delete from transitions where [automaton] like 'M11_%';
-
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
@@ -76,9 +71,6 @@ VALUES
     STOPWAVE();
  ', '', ''),
  
-
-
-
  ('M11_GRILL', '0', 'emptyGrill', 'Z_EPSILON', '0', '', '
     REF_MACHINE(WIP1);
  ', '', ''),
@@ -109,5 +101,3 @@ VALUES
  ('M11_GRILL', 'burned', 'takenAsh', 'GRAB', '0', '0', '', '', ''),
  
  ('M11_GRILL', 'takenAsh', 'emptyGrill', 'SHOW', '0', '0', '', '', '');
-
-

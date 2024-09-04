@@ -123,6 +123,14 @@ delete from spr_names where name = 'IDS_MYJUGGLEsm1';
 
 delete from spr_names where name = 'IDS_GVIAL';
 
+
+delete from transitions where [automaton] like 'M_STATESCALEZ%';
+
+
+
+
+
+
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
 ('IDS_M1SWAY', 'M1SWAY', '15001'),
@@ -335,8 +343,8 @@ VALUES
 ('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
 ('15532', 'NEELP_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
 
-('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEV','IDS_M1SWAYC','', '', ''),
-('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
+('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
 --NEELP GOES TO THE BEACH
 ('15545', 'S11_NEELP', '4353', 'IDV_FA1PAN', '452', '74', '650', '200', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
 ('15546', 'S11_NEELP_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
@@ -522,6 +530,17 @@ VALUES
 ('M_MEFCURRENT','0', 'quest10p', 'WAIT', '', 'SIG_Q10P', 'ASSIGN(BPARM,S09_AMBLE);ASSIGN(WPARM,AMBLE_I1);'), 
 ('M_MEFCURRENT','quest10p', '0', 'Z_EPSILON', '', '', '');
 
+
+
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
+VALUES 
+
+('M_STATESCALEZ', '0', 'signaled', 'WAIT', '0', 'SIG_SHOW', ''),
+('M_STATESCALEZ', 'signaled', 'shown', 'ASHOW', 'WIP1', '0', ''),
+('M_STATESCALEZ', 'shown', 'zoomed', 'CLICK', '', '0', ''),
+('M_STATESCALEZ', 'zoomed', 'signaled', 'LOADVIEW', 'WIP2', '0', ''),
+('M_STATESCALEZ', 'shown', 'signalledOff', 'WAIT', '0', 'SIG_HIDE', ''),
+('M_STATESCALEZ', 'signalledOff', '0', 'ASHOW', '0', '0', '');
 
 
 delete from transitions where automaton =  'M_MEF_APPROACH';
