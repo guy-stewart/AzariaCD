@@ -1,4 +1,4 @@
-delete from games;
+drop table if exists games;
 
 delete from sounds where name like 'SOUND_SPLASH%';
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_SPLASH', 'splash', '0');
