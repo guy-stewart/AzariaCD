@@ -1,0 +1,32 @@
+// https_put()
+// /Rooms'
+//response = https_put(url, postdata);
+/*
+*/
+uri = "us-atl-3b185468.colyseus.cloud";
+resourcePath = "/Rooms";
+requestBody = "";
+response = https_get(uri+resourcePath);
+write(response);
+//Room Types
+data_array = json_element(response, "rooms");
+write(data_array);
+write('BEGIN json_iter('+data_array+')');
+for (json_iter(data_array, ?roomtypes)) {
+    write("room types:"+roomtypes);
+}
+write('END json_iter');
+
+roomsbytype = json_element(response, "roomsByType");
+write(roomsbytype); 
+azariaroom = json_element(roomsbytype, "AzariaRoom");
+write("Number of Azaria rooms: "+ azariaroom); 
+write('////roomsById'); //We're gonna read it like an array because it should be
+roomobjects =  json_element(response, "roomsById");
+write("room objects: "+ roomobjects); 
+write('BEGIN json_iter('+roomobjects+')');
+for (json_iter(roomobjects, ?room)) {
+    roomid = json_element(room, "roomId");
+    write(roomid);
+}    
+write('END json_iter');

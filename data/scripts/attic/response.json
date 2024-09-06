@@ -1,0 +1,26 @@
+{
+    "8RaO2zC7-BestPlayers": {
+        "clients": 0,
+        "createdAt": "2023-12-27T01:38:38.600Z",
+        "locked": false,
+        "maxClients": 50,
+        "name": "AzariaRoom",
+        "private": false,
+        "processId": "fZbpRLsoJ",
+        "publicAddress": "us-atl-3b185468.colyseus.cloud",
+        "roomId": "8RaO2zC7-BestPlayers",
+        "unlisted": false
+    },
+    "Z9VhOBnzLCoolPeople": {
+        "clients": 0,
+        "createdAt": "2023-12-28T17:47:31.272Z",
+        "locked": false,
+        "maxClients": 50,
+        "name": "AzariaRoom",
+        "private": false,
+        "processId": "fZbpRLsoJ",
+        "publicAddress": "us-atl-3b185468.colyseus.cloud",
+        "roomId": "Z9VhOBnzLCoolPeople",
+        "unlisted": false
+    }
+}

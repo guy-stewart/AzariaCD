@@ -1,0 +1,3 @@
+response = https_get2('iometics.info/stun');
+write("hyperstun response:");
+write(response);
