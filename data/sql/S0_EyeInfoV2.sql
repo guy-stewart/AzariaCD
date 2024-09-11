@@ -1,6 +1,8 @@
 
 delete from games;
 
+
+
 ----RESOURCES 
 delete from objects where [object] like 'IDD_DIARY%';
 insert into objects values
@@ -256,7 +258,7 @@ if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
                 SIGNAL(NYSTROM_WAITER,SIG_NYSTROM);
                 }
 
-       if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT)){
+       if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT) || IS_A(WOBJECT,IDC_TOKEN)){
                 MOV(WPARM,WOBJECT);
                 SIGNAL(OBJECT_WAITER,SIG_OBJECT);
                 }
@@ -271,76 +273,5 @@ if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
 
 
 
---------------------Database Entries for Object text info display ( diarys and objects )
-
-
-
---drop table if exists objectInfo;
-
--- 'id' is used by the card index cartridge on the card disbursement machine in the city.
--- create table objectInfo (object text, control text, content text);
--- insert into objectInfo values
--- ( 'IDD_DIARY1', 'ID_PARCHBIGTXT' ,'
---         I leave this here in case something happens
---         46 Zan, 192978
-        
---         I Onam, archiologist of Niret 
---         have  found the sacred map of our forefathers
---         that grants power over the sky.
-        
---         Although their language still comfounds me!
-
---         Now, I shall continue the quest, spurred on 
---         by our great discovery of a promise written in stone.
---         I speak, of cours, of the stone rubbing unearthed 
---         outside of Etnoc - that hideous city of great 
---         sadness and tragedy.
-
---         It is the Niret way of spirit that makes us so 
---         much better than those of Etnoc.
-
---         ....to take the seed of Azaria and plant it
---          on the altar of seven moons.
-        
---         I imagine the seed as some relic that existed 
---         before the rains... I must find it! Something that
---         contains this seed.
-
---         I shall now see for myself and fill my spirit with joy - 
---         Searching for some seed to plant on some altar!'),
-
--- ( 'IDD_DIARY2', 'IDV_PARCHBIG' ,'Placeholder1'),
--- ( 'IDD_DIARY3', 'IDV_PARCHBIG' ,'Placeholder2'),
--- ( 'IDD_DIARY4', 'IDV_PARCHBIG' ,'Placeholder3'),
--- ( 'IDD_BLOBBALL', 'IDV_PARCHSMALL' ,'
-
---        The object of Blob ball is to get rid of all your balls first.
---        Pick a side and roll a die. place your ball in the number
---        corresponding to the number rolled.  If you roll a six, that is 
---        great because your ball gets sucked away. 
-       
---        At any point, you can pass your turn to the other player 
---        If you roll a number which already has a ball in it, 
---        you take it and the other player takes over.
--- '),
--- ( 'IDD_EMERALD', 'IDV_PARCHSMALL' ,'
---        The Emerald of Light! 
---        Rathe will be ecstatic.
--- '),
--- ( 'IDD_RUBY', 'IDV_PARCHSMALL' ,'
---         This is a Ruby. It may have some
---         value to somebody. It may not.
--- ');
-
-
-
-
-
-
-
-
-
-
-
-
+--------------------Database Entries for Object text info display ( diarys and objects ) - now in S0EyeInfoData.sql
 
