@@ -1,5 +1,8 @@
 
 setsleep(1);
+get(IDD_NYBREATH);
+drop(SID_SPELL);
+
 warp(IDV_QUARSA);
 warp(S17_aCLOCKBIN);
 warp(S17_ALT_d_A);
@@ -24,6 +27,9 @@ warp(S17_bDOORWAY);
 
 grab(S17_bDOORWAY);
 // warp(S17_bFOULWIND);
+
+get(IDD_NYBREATH);
+drop(SID_SPELL);
 warp(S17_bMINE);
 
 replay(refill);
