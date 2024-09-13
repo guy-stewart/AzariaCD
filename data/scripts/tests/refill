@@ -8,7 +8,13 @@ if (got() == IDD_SCOOPF) { drag(SMP_VIAL);}
 
 write('got ', got());
 while (got() == IDD_SCOOPE) {
+    drop(SMP_RECYCLE);
+    get(IDD_NYBREATH);
+    drop(SID_SPELL);
+    drop(SMP_RECYCLE);
+    get(IDD_SCOOPE);
     drag(S17_bMINE);
     drag(SMP_VIAL);
     write('got ', got());
 }
+warp(IDV_QUARSA);
