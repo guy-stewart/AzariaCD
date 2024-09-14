@@ -1,4 +1,4 @@
-delete from games;
+
 -- create a map of these quests
 -- map should have quest id and description
 -- Create a waiter -- signal in quest begin and quest complete 
@@ -37,9 +37,9 @@ VALUES
 -- Add the view
 delete from views where [view_name] like 'IDV_QUESTPAN%';
 
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('2400', 'IDV_QUESTPAN', '1', '0', '1', '2', 'wdepanel.vct', 'spacepanbig');
+('IDV_QUESTPAN', '1', '0', '1', '2', 'wdepanel.vct', 'spacepanbig');
 
 delete from map where op like 'S00_QUEST%';
 INSERT INTO "main"."map" ("op", "key", "value")
@@ -84,44 +84,44 @@ insert into controls values
 --ADD 15 OR SO MACHINES ONTO QUESTPAN - EACH ONE WILL USE A STANDARD MACHINE
 delete from machines where [name] like 'QL_%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('2300',  'QL_POS1', '2400', 'IDV_QUESTPAN', '120', '140', '500',  '75', '1','M_QUEST_WAITER','ID_QLPOS1','','',''),
-('2301',  'QL_POS2', '2400', 'IDV_QUESTPAN', '120', '180', '500', '100', '1','M_QUEST_WAITER','ID_QLPOS2','','',''),
-('2302',  'QL_POS3', '2400', 'IDV_QUESTPAN', '120', '220', '500', '125', '1','M_QUEST_WAITER','ID_QLPOS3','','',''),
-('2303',  'QL_POS4', '2400', 'IDV_QUESTPAN', '120', '260', '500', '150', '1','M_QUEST_WAITER','ID_QLPOS4','','',''),
-('2304',  'QL_POS5', '2400', 'IDV_QUESTPAN', '120', '300', '500', '175', '1','M_QUEST_WAITER','ID_QLPOS5','','',''),
-('2305',  'QL_POS6', '2400', 'IDV_QUESTPAN', '120', '340', '500', '200', '1','M_QUEST_WAITER','ID_QLPOS6','','',''),
-('2306',  'QL_POS7', '2400', 'IDV_QUESTPAN', '120', '380', '500', '225', '1','M_QUEST_WAITER','ID_QLPOS7','','',''),
-('2307',  'QL_POS8', '2400', 'IDV_QUESTPAN', '120', '420', '500', '250', '1','M_QUEST_WAITER','ID_QLPOS8','','',''),
-('2308',  'QL_POS9', '2400', 'IDV_QUESTPAN', '120', '460', '500', '275', '1','M_QUEST_WAITER','ID_QLPOS9','','',''),
-('2309', 'QL_POS10', '2400', 'IDV_QUESTPAN', '120', '500', '500', '300', '1','M_QUEST_WAITER','ID_QLPOS10','','',''),
-('2310', 'QL_POS11', '2400', 'IDV_QUESTPAN', '120', '540', '500', '325', '1','M_QUEST_WAITER','ID_QLPOS11','','',''),
-('2311', 'QL_POS12', '2400', 'IDV_QUESTPAN', '120', '580', '500', '350', '1','M_QUEST_WAITER','ID_QLPOS12','','',''),
-('2312', 'QL_POS13', '2400', 'IDV_QUESTPAN', '120', '620', '500', '375', '1','M_QUEST_WAITER','ID_QLPOS13','','',''),
-('2313', 'QL_POS14', '2400', 'IDV_QUESTPAN', '120', '660', '500', '400', '1','M_QUEST_WAITER','ID_QLPOS14','','',''),
-('2314', 'QL_POS15', '2400', 'IDV_QUESTPAN', '120', '700', '500', '425', '1','M_QUEST_WAITER','ID_QLPOS15','','',''),
-('2315', 'QL_POS16', '2400', 'IDV_QUESTPAN', '120', '740', '500', '450', '1','M_QUEST_WAITER','ID_QLPOS16','','',''),
+( 'QL_POS1', 'IDV_QUESTPAN', '120', '140', '500',  '75', '1','M_QUEST_WAITER','ID_QLPOS1','','',''),
+( 'QL_POS2', 'IDV_QUESTPAN', '120', '180', '500', '100', '1','M_QUEST_WAITER','ID_QLPOS2','','',''),
+( 'QL_POS3', 'IDV_QUESTPAN', '120', '220', '500', '125', '1','M_QUEST_WAITER','ID_QLPOS3','','',''),
+( 'QL_POS4', 'IDV_QUESTPAN', '120', '260', '500', '150', '1','M_QUEST_WAITER','ID_QLPOS4','','',''),
+( 'QL_POS5', 'IDV_QUESTPAN', '120', '300', '500', '175', '1','M_QUEST_WAITER','ID_QLPOS5','','',''),
+( 'QL_POS6', 'IDV_QUESTPAN', '120', '340', '500', '200', '1','M_QUEST_WAITER','ID_QLPOS6','','',''),
+( 'QL_POS7', 'IDV_QUESTPAN', '120', '380', '500', '225', '1','M_QUEST_WAITER','ID_QLPOS7','','',''),
+( 'QL_POS8', 'IDV_QUESTPAN', '120', '420', '500', '250', '1','M_QUEST_WAITER','ID_QLPOS8','','',''),
+( 'QL_POS9', 'IDV_QUESTPAN', '120', '460', '500', '275', '1','M_QUEST_WAITER','ID_QLPOS9','','',''),
+('QL_POS10', 'IDV_QUESTPAN', '120', '500', '500', '300', '1','M_QUEST_WAITER','ID_QLPOS10','','',''),
+('QL_POS11', 'IDV_QUESTPAN', '120', '540', '500', '325', '1','M_QUEST_WAITER','ID_QLPOS11','','',''),
+('QL_POS12', 'IDV_QUESTPAN', '120', '580', '500', '350', '1','M_QUEST_WAITER','ID_QLPOS12','','',''),
+('QL_POS13', 'IDV_QUESTPAN', '120', '620', '500', '375', '1','M_QUEST_WAITER','ID_QLPOS13','','',''),
+('QL_POS14', 'IDV_QUESTPAN', '120', '660', '500', '400', '1','M_QUEST_WAITER','ID_QLPOS14','','',''),
+('QL_POS15', 'IDV_QUESTPAN', '120', '700', '500', '425', '1','M_QUEST_WAITER','ID_QLPOS15','','',''),
+('QL_POS16', 'IDV_QUESTPAN', '120', '740', '500', '450', '1','M_QUEST_WAITER','ID_QLPOS16','','',''),
 
-('2316', 'QL_MANAGER', '2400', 'IDV_QUESTPAN', '10', '10', '20', '20', '1','M_QUEST_MANAGER','','','',''),
+('QL_MANAGER', 'IDV_QUESTPAN', '10', '10', '20', '20', '1','M_QUEST_MANAGER','','','',''),
 
 --RECORD WHAT/WHERE EACH QUEST IS PUT
-('2320',  'QL_1RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2321',  'QL_2RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2322',  'QL_3RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2323',  'QL_4RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2324',  'QL_5RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2325',  'QL_6RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2326',  'QL_7RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2327',  'QL_8RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2328',  'QL_9RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2329', 'QL_10RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2330', 'QL_11RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2331', 'QL_12RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2332', 'QL_13RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2333', 'QL_14RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2334', 'QL_15RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
-('2334', 'QL_16RECORDER', '2400', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','','');
+( 'QL_1RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_2RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_3RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_4RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_5RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_6RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_7RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_8RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+( 'QL_9RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_10RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_11RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_12RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_13RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_14RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_15RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','',''),
+('QL_16RECORDER', 'IDV_QUESTPAN', '20', '10', '30', '15', '1','M_QUEST_RECORDER','','','','');
 
 
 delete from transitions where automaton like 'M_QUEST_%';
