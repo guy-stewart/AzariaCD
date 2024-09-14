@@ -315,36 +315,23 @@ VALUES
 ('M_QUEST_WAITER', 'dimText', '0', 'Z_EPSILON', '', '', '');
 
 
+delete from "main"."machines" where [name] like 'S0_QL_BTN%';
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('S0_QL_BTN', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', '');
 
 
+delete from "main"."transitions" where [automaton] like 'M_QLBTN%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
+VALUES 
+('M_QLBTN', '0', 'open', 'CLICK', '', '', '
+    MOV(WPARM,LVIEW);
+    LOADVIEW(IDV_QUESTPAN);
+', '', ''),
+('M_QLBTN', 'open', 'closed', 'CLICK', '', '', '
+    LOADVIEW(WPARM);
+', '', ''),
+('M_QLBTN', 'closed', '0', 'Z_EPSILON', '', '', '
+', '', '');
 
 
-
-
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q2_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q3_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q4_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q5_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q6_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q7_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q8_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q9_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q10_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q11_START', ''),
--- ('M_QUEST_MANAGER','waiting',  'startposted','WAIT', '', 'Q12_START', ''),
-
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q1_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q2_END', '
---     //has to find which row Q2 is in
--- '),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q3_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q4_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q5_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q6_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q7_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q8_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q9_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q10_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q11_END', ''),
--- ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q12_END', ''),
--- ('M_QUEST_MANAGER','waiting',  '0','Z_EPSILON', '', 'Q12_END', ''),
