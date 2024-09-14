@@ -27,6 +27,8 @@
 -- - [ ] Find the enchanted stone for Perst
 -- - [ ] Manufacture an item for Perst
 
+--QL_glow 409,8
+
 -- Learn more about …
 
 delete from spr_names where name = 'IDS_BLACKBACK';
@@ -298,6 +300,7 @@ VALUES
 '),
 
 ('M_QUEST_WAITER', 'waiting', 'showText', 'WAIT', '0', 'SIG_WRITE_TEXT', '
+         //blink QL_glow here & play sound
          REF_MACHINE(QL_MANAGER);
          ASSIGN(WPARM,R_BPARM);
          WTEMP1 = "[ ]";

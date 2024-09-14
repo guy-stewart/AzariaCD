@@ -13,6 +13,9 @@ delete from games;
 
 
 ------------------------------------RESOURCES
+delete from idv where name = 'IDV_MEFID';
+delete from views where view_name = 'IDV_MEFID';
+
 delete from idv where name = 'IDV_MEFPAN';
 delete from views where view_name = 'IDV_MEFPAN';
 
@@ -33,14 +36,21 @@ delete from views where view_name = 'IDV_VILLIB';
 delete from idv where name = 'IDV_VILLIBA';
 delete from views where view_name = 'IDV_VILLIBA';
 
+
+insert into views values 
+('IDV_MEFID',2,0,0,1,'otherid.vct','you');
+
+
+
 INSERT INTO "main"."idv" ("name", "id") VALUES 
+('IDV_MEFID', '12'),
 ('IDV_MEFPAN', '9802'),
 ('IDV_VILLIBA', '9803'),
 ('IDV_VILLIB', '9804');
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('9803', 'IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
-       ('4890', 'IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib'),
-       ('4891', 'IDV_VILLIBA', '1', '2', '1', '6', 'surround.vct', 'villiba');
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
+       ('IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib'),
+       ('IDV_VILLIBA', '1', '2', '1', '6', 'surround.vct', 'villiba');
 
 delete from cardinals where [from] = 'IDV_VIL6';
 delete from cardinals where [from] = 'IDV_VHB3';
@@ -49,9 +59,9 @@ INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast
 ('IDV_VHB3', '', '', 'IDV_VIL6', '', '', '', '', '');
 
 delete from spr_names where name = 'IDS_PARCHPANBK';
-INSERT INTO "main"."spr_names" ("name", "value", "id") 
+INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
-('IDS_PARCHPANBK', 'parchpanbk', '40620');
+('IDS_PARCHPANBK', 'parchpanbk');
 delete from controls where id = 'ID_MEFTEXT';
 insert into controls values
 ('IDV_MEFPAN','ID_MEFTEXT','LABEL','IDS_PARCHPANBK','',90, 50, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
@@ -131,66 +141,66 @@ delete from transitions where [automaton] like 'M_STATESCALEZ%';
 
 
 
-INSERT INTO "main"."spr_names" ("name", "value", "id") 
+INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
-('IDS_M1SWAY', 'M1SWAY', '15001'),
-('IDS_M1A1ANIM', 'M1A1ANIM', '15002'),
-('IDS_M1I1ANIM', 'M1I1ANIM', '15003'),
-('IDS_M1J1ANIM', 'M1J1ANIM', '15004'),
-('IDS_M1P1ANIM', 'M1P1ANIM', '15005'),
-('IDS_M1S1ANIM', 'M1S1ANIM', '15006'),
-('IDS_M1S2ANIM', 'M1S2ANIM', '15043'),
-('IDS_M1SWAYB', 'M1SWAYB', '15007'),
-('IDS_M1SWAYC', 'M1SWAYC', '15008'),
-('IDS_M1T1ANIM', 'Neelpt', '15009'),
+('IDS_M1SWAY', 'M1SWAY'),
+('IDS_M1A1ANIM', 'M1A1ANIM'),
+('IDS_M1I1ANIM', 'M1I1ANIM'),
+('IDS_M1J1ANIM', 'M1J1ANIM'),
+('IDS_M1P1ANIM', 'M1P1ANIM'),
+('IDS_M1S1ANIM', 'M1S1ANIM'),
+('IDS_M1S2ANIM', 'M1S2ANIM'),
+('IDS_M1SWAYB', 'M1SWAYB'),
+('IDS_M1SWAYC', 'M1SWAYC'),
+('IDS_M1T1ANIM', 'Neelpt'),
 
-('IDS_M2A10001', 'M2A10001', '15010'),
-('IDS_M2FIDDLE', 'M2FIDDLE', '15011'),
-('IDS_M2H10000', 'M2H10000', '15012'),
-('IDS_M2I10000', 'M2I10000', '15013'),
-('IDS_M2P10000', 'M2P10000', '15014'),
-('IDS_M2S10000', 'M2S10000', '15015'),
-('IDS_M2S20000', 'M2S20000', '15016'),
-('IDS_M2T10000', 'M2T', '15017'),
-('IDS_M2FIDDLEsm1', 'M2FIDDLEsm1', '15046'),
+('IDS_M2A10001', 'M2A10001'),
+('IDS_M2FIDDLE', 'M2FIDDLE'),
+('IDS_M2H10000', 'M2H10000'),
+('IDS_M2I10000', 'M2I10000'),
+('IDS_M2P10000', 'M2P10000'),
+('IDS_M2S10000', 'M2S10000'),
+('IDS_M2S20000', 'M2S20000'),
+('IDS_M2T10000', 'M2T'),
+('IDS_M2FIDDLEsm1', 'M2FIDDLEsm1'),
 
-('IDS_M6A10000', 'M6A10000', '15018'),
-('IDS_M6H10000', 'M6H10000', '15019'),
-('IDS_M6I10000', 'M6I10000', '15020'),
-('IDS_M6P10000', 'M6P10000', '15021'),
-('IDS_M6S10000', 'M6S10000', '15022'),
-('IDS_M6S20000', 'M6S20000', '15023'),
-('IDS_M6STIR', 'M6STIR', '15024'),
-('IDS_M6T10000', 'M6T', '15025'),
+('IDS_M6A10000', 'M6A10000'),
+('IDS_M6H10000', 'M6H10000'),
+('IDS_M6I10000', 'M6I10000'),
+('IDS_M6P10000', 'M6P10000'),
+('IDS_M6S10000', 'M6S10000'),
+('IDS_M6S20000', 'M6S20000'),
+('IDS_M6STIR', 'M6STIR'),
+('IDS_M6T10000', 'M6T'),
 
-('IDS_MSA10001', 'MSA10001', '15026'),
-('IDS_MSH10001', 'MSH10001', '15027'),
-('IDS_MSH1001', 'MSH10001', '15049'),
-('IDS_MSI10001', 'MSI10001', '15028'),
-('IDS_MSP10001', 'MSP10001', '15029'),
-('IDS_MSS10001', 'MSS10001', '15030'),
-('IDS_MSS20001', 'MSS20001', '15031'),
-('IDS_MSSQUAT', 'MSSQUAT', '15032'),
-('IDS_MST1001', 'MST1001', '15033'),
-('IDS_MST10001', 'MST01', '15034'),
-('IDS_MST01', 'MST01', '15048'),
-('IDS_MSDESK', 'desk', '15044'),
+('IDS_MSA10001', 'MSA10001'),
+('IDS_MSH10001', 'MSH10001'),
+('IDS_MSH1001', 'MSH10001'),
+('IDS_MSI10001', 'MSI10001'),
+('IDS_MSP10001', 'MSP10001'),
+('IDS_MSS10001', 'MSS10001'),
+('IDS_MSS20001', 'MSS20001'),
+('IDS_MSSQUAT', 'MSSQUAT'),
+('IDS_MST1001', 'MST1001'),
+('IDS_MST10001', 'MST01'),
+('IDS_MST01', 'MST01'),
+('IDS_MSDESK', 'desk'),
 
-('IDS_MYA10000', 'MYA10000', '15035'),
-('IDS_MYH10000', 'MYH10000', '15036'),
-('IDS_MYI10000', 'MYI10000b', '15037'),
-('IDS_MYJUGGLE', 'MYJUGGLE', '15038'),
-('IDS_MYP10000', 'MYP10000', '15039'),
-('IDS_MYS10000', 'MYS10000', '15040'),
-('IDS_MYS20000', 'MYS20000', '15041'),
-('IDS_MYT10000', 'MYT', '15042'),
-('IDS_MYJUGGLEsm1', 'MYJUGGLEsm1', '15045'),
+('IDS_MYA10000', 'MYA10000'),
+('IDS_MYH10000', 'MYH10000'),
+('IDS_MYI10000', 'MYI10000b'),
+('IDS_MYJUGGLE', 'MYJUGGLE'),
+('IDS_MYP10000', 'MYP10000'),
+('IDS_MYS10000', 'MYS10000'),
+('IDS_MYS20000', 'MYS20000'),
+('IDS_MYT10000', 'MYT'),
+('IDS_MYJUGGLEsm1', 'MYJUGGLEsm1'),
 
-('IDS_GVIAL', 'GVIAL', '15046');
+('IDS_GVIAL', 'GVIAL');
 
 delete from objects where [object] like 'IDD_GVIAL%';
 insert into objects values
-('IDD_GVIAL','','IDC_NULL','GVIAL','GVIAL','GVIAL');
+('IDD_GVIAL','IDC_NULL','GVIAL','GVIAL','GVIAL');
 
 delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 
@@ -332,97 +342,92 @@ delete from machines where name = 'MEF_SHOW_COORDINATOR';
 delete from machines where name = 'MEF_DROPTARGET';
 delete from machines where name = 'CHAR_DROPTARGET';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 -- ALSO MAKE A MACHINE CALLED A MEF_COORDINATOR WHICH HOLDS QUEST PROGRESS AS TRANSITIONS AND CAN MOVE THE MEFLIN TO NEW POSITIONS
 
 --NEELP
-('15500', 'NEELP_COORD', '5', 'IDV_OTHERID', '0', '0', '0', '0', '0','MEFLIN_COORD','','','',''),
+('NEELP_COORD', 'IDV_MEFID', '0', '0', '0', '0', '0','MEFLIN_COORD','','','',''),
+('S33_NEELP', 'IDV_N2B', '47', '101', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+('S33_NEELP_Q1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
+('NEELP_I1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
 
-('15501', 'S33_NEELP', '8101', 'IDV_N2B', '47', '101', '300', '300', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('15502', 'S33_NEELP_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
-('15532', 'NEELP_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
-
-('15506', 'S33_NEELP_alt1', '8100', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
-('15507', 'S33_NEELP_alt2', '8102', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
+('S33_NEELP_alt1', 'IDV_N2A', '696', '139', '761', '214', '1','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
+('S33_NEELP_alt2', 'IDV_N2C', '2607', '140', '2800', '201', '1','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
 --NEELP GOES TO THE BEACH
-('15545', 'S11_NEELP', '4353', 'IDV_FA1PAN', '452', '74', '650', '200', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('15546', 'S11_NEELP_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
-('15547', 'NEELP_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
-('15548', 'S11_NEELP_alt1', '8102', 'IDV_FH1PTH1', '158', '100', '200', '200', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+('S11_NEELP', 'IDV_FA1PAN', '452', '74', '650', '200', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+('S11_NEELP_Q2', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
+('NEELP_I2','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
+('S11_NEELP_alt1', 'IDV_FH1PTH1', '158', '100', '200', '200', '1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --NEELP GOES TO THE GAME ARCADE
-('15549', 'S30_NEELP_Q3', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
-('15550', 'NEELP_I3', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
-('15552', 'S30_NEELP', '4392', 'IDV_PATH2', '907', '84', '1070', '273', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('15551', 'S30_NEELP_alt1', '4391', 'IDV_PATH1', '1252', '136', '1299', '200','1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+( 'S30_NEELP_Q3', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
+( 'NEELP_I3','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
+( 'S30_NEELP', 'IDV_PATH2', '907', '84', '1070', '273', '0','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+( 'S30_NEELP_alt1', 'IDV_PATH1', '1252', '136', '1299', '200','1','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --------------------------------------
 --Rathe
-('15503', 'RATHE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
-('15508', 'S24_RATHE', '9218', 'IDV_EYEA', '1065', '30', '1260', '150', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('15509', 'S24_RATHE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
-('15533', 'RATHE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
+('RATHE_COORD', 'IDV_MEFID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
+('S24_RATHE', 'IDV_EYEA', '1065', '30', '1260', '150', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
+('S24_RATHE_Q1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
+('RATHE_I1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
 --Rathe Goes to the desert hills
-('15558', 'S25_RATHE', '9474', 'IDV_WR2', '3020', '100', '3156', '234', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('15559', 'S25_RATHE_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
-('15560', 'RATHE_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
+('S25_RATHE', 'IDV_WR2', '3020', '100', '3156', '234', '0','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
+('S25_RATHE_Q2','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
+('RATHE_I2', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
 
 
 -------------------------------------
 --THAOR
-('15510', 'THAOR_COORD', '5', 'IDV_OTHERID', '2', '2', '2', '2', '0','MEFLIN_COORD','','','',''),
-('15511', 'S10_THAOR', '4097', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('15512', 'S10_THAOR_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
-('15534', 'THAOR_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
-('15514', 'S10_THAOR_alt1','4096', 'IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
+('THAOR_COORD', 'IDV_MEFID', '2', '2', '2', '2', '0','MEFLIN_COORD','','','',''),
+('S10_THAOR', 'IDV_SCN10PT1', '2137', '55', '2337', '250', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
+('S10_THAOR_Q1','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
+('THAOR_I1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
+('S10_THAOR_alt1','IDV_SCN10PT0', '3083', '100', '3100', '190', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 --Thaor goes to the Hidden Nature
-('15561', 'S19_THAOR', '4353', 'IDV_NAT1b', '2399', '80', '2581', '233', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('15562', 'S19_THAOR_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
-('15563', 'THAOR_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
-('15564', 'S19_THAOR_alt1','4096', 'IDV_NAT1a', '2947', '100', '3019', '185', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
+('S19_THAOR',  'IDV_NAT1b', '2399', '80', '2581', '233', '0','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
+('S19_THAOR_Q2','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
+('THAOR_I2','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
+('S19_THAOR_alt1', 'IDV_NAT1a', '2947', '100', '3019', '185', '1','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 
 -------------------------------------
 --PERST
-('15517', 'PERST_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
-('15515', 'S16_PERST', '4869', 'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
-('15516', 'S16_PERST_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
-('15535', 'PERST_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
-('15518', 'S16_PERST_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_STATESCALEV','IDS_M2FIDDLEsm1','', '',  ''),
+('PERST_COORD','IDV_MEFID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
+('S16_PERST',  'IDV_VIL7', '2650', '40', '2798', '250', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
+('S16_PERST_Q1','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
+('PERST_I1','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
+('S16_PERST_alt1','IDV_VIL3', '2515', '115', '2600', '200', '1','M_STATESCALEV','IDS_M2FIDDLEsm1','', '',  ''),
 
 --Perst goes to the dock
 -- tmplpth9 1481 68
 
-('15555', 'S12_PERST', '4353', 'IDV_TMPLPTH9', '1481', '68', '1637', '200', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
-('15556', 'S12_PERST_Q2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
-('15557', 'PERST_I2', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
+('S12_PERST', 'IDV_TMPLPTH9', '1481', '68', '1637', '200', '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
+('S12_PERST_Q2', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
+('PERST_I2','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
 
 
 
 -------------------------------------
 -- --AMBLE
-('15901', 'AMBLE_COORD', '5', 'IDV_OTHERID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
-('15900', 'S09_AMBLE_DESK', '4902', 'IDV_VHB3', '2653', '180', '2699', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
-('15519', 'S09_AMBLE', '4902', 'IDV_VHB3', '2653', '40', '2753', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
+('AMBLE_COORD', 'IDV_MEFID', '1', '1', '1', '1', '0','MEFLIN_COORD','','','',''),
+('S09_AMBLE_DESK', 'IDV_VHB3', '2653', '180', '2699', '200', '0','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
+('S09_AMBLE', 'IDV_VHB3', '2653', '40', '2753', '300', '0','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
 
-('15520', 'S09_AMBLE_Q1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
-('15521', 'AMBLE_I1', '5', 'IDV_OTHERID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
+('S09_AMBLE_Q1','IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+('AMBLE_I1', 'IDV_MEFID', '0', '0', '8', '10', '1','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 ----Machines to serve them all
 
-('15513', 'MEFCURRENT', '9802', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
-
-('15520', 'MEFPAN_OK', '9802', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
-('15523', 'MEFPAN_CLOSER',  '5', 'IDV_OTHERID', '0', '0', '1', '1', '1','M_MEFCLOSER','','','',''),
-('15521', 'MEFPAN_WAITER', '9802', 'IDV_MEFPAN', '276', '200', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
-('15522', 'MEFPAN_VIEWCAP', '9802', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','',''),
-
-('15540', 'MEFPAN_PRIZE_A', '9802', 'IDV_MEFPAN', '545', '75', '613', '135', '1','M_MEFPAN_PRIZE','a','','',''),
-('15541', 'MEFPAN_PRIZE_B', '9802', 'IDV_MEFPAN', '545', '144', '613', '200', '1','M_MEFPAN_PRIZE','b','','',''),
-('15542', 'MEFPAN_PRIZE_C', '9802', 'IDV_MEFPAN', '545', '205', '613', '270', '1','M_MEFPAN_PRIZE','c','','',''),
-
-('15543', 'MEF_SHOW_COORDINATOR', '9802', 'IDV_MEFPAN', '0', '0', '2', '2', '1','M_MEFPAN_SHOW_COORD','','','',''),
-
-('15575', 'CHAR_DROPTARGET', '5', 'IDV_OTHERID', '0', '0', '80', '100', '1','M_CHARACTER_DROP','','','','');
+('MEFCURRENT', 'IDV_MEFPAN', '0', '0', '5', '5', '1','M_MEFCURRENT','','','',''),
+('MEFPAN_OK', 'IDV_MEFPAN', '490', '215', '555', '260', '1','M_MEFPAN_OK','','','',''),
+('MEFPAN_CLOSER', 'IDV_MEFID', '0', '0', '1', '1', '1','M_MEFCLOSER','','','',''),
+('MEFPAN_WAITER',  'IDV_MEFPAN', '276', '200', '350', '300', '1','M_MEFPAN_WAITER','','','',''),
+('MEFPAN_VIEWCAP', 'IDV_MEFPAN', '5', '20', '10', '30', '1','M_MEFPAN_VIEWCAP','','','',''),
+('MEFPAN_PRIZE_A', 'IDV_MEFPAN', '545', '75', '613', '135', '1','M_MEFPAN_PRIZE','a','','',''),
+('MEFPAN_PRIZE_B', 'IDV_MEFPAN', '545', '144', '613', '200', '1','M_MEFPAN_PRIZE','b','','',''),
+('MEFPAN_PRIZE_C', 'IDV_MEFPAN', '545', '205', '613', '270', '1','M_MEFPAN_PRIZE','c','','',''),
+('MEF_SHOW_COORDINATOR', 'IDV_MEFPAN', '0', '0', '2', '2', '1','M_MEFPAN_SHOW_COORD','','','',''),
+('CHAR_DROPTARGET', 'IDV_MEFID', '0', '0', '80', '100', '1','M_CHARACTER_DROP','','','','');
 
 
 delete from transitions where automaton =  'M_MEFCURRENT';
@@ -558,7 +563,7 @@ VALUES
     SHOW(0);
 '),
 ('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', '
-CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);'),
+CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
 --WIP2 = fixed number for a meflin
 --WIP3 = specific meflin coordinator
 --BPARM becomes the specific primary quest machine to play from the DB or for interogs/pendings too
