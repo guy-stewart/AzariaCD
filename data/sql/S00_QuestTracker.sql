@@ -8,24 +8,24 @@
 
 -- Quest Log
 
--- - [ ] Find the ancient map in the Wilderness
--- - [ ] Recover the seed of Azaria’s unity
--- - [ ] Excavate the Ancient Crypts in the canyons
--- - [ ] Restore the pyramid of the eyes
--- - [ ] Read the signs of the ancients
--- - [ ] Perform the ritual of the 7 moons
+-- - [e ] Find the ancient map in the Wilderness
+-- - [g ] Recover the seed of Azaria’s unity
+-- - [g ] Excavate the Ancient Crypts in the canyons
+-- - [g ] Restore the pyramid of the eyes
+-- - [e ] Read the signs of the ancients
+-- - [g ] Perform the ritual of the 7 moons
 
 -- Meflin Quests
 
--- - [ ] Find Neelp’s sacred amulet
--- - [ ] Bring Neelp the soul of a fish
--- - [ ] Bring Neelp a red gopa berry
--- - [ ] Find the Emerald of light for Rathe
--- - [ ] Find a green gopa berry for Rathe
--- - [ ] Bring Thaor a rare plant from the nystrom mines
--- - [ ] Bring Thaor the flower bud
--- - [ ] Find the enchanted stone for Perst
--- - [ ] Manufacture an item for Perst
+-- - [e ] Find Neelp’s sacred amulet
+-- - [e ] Bring Neelp the soul of a fish
+-- - [e ] Bring Neelp a red gopa berry
+-- - [e ] Find the Emerald of light for Rathe
+-- - [e ] Find a green gopa berry for Rathe
+-- - [e ] Bring Thaor a rare plant from the nystrom mines
+-- - [e ] Bring Thaor the flower bud
+-- - [g ] Find the enchanted stone for Perst
+-- - [g ] Manufacture an item for Perst
 
 --QL_glow 409,8
 
@@ -41,7 +41,8 @@ delete from views where [view_name] like 'IDV_QUESTPAN%';
 
 INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('IDV_QUESTPAN', '1', '0', '1', '2', 'wdepanel.vct', 'spacepanbig');
+('IDV_QUESTPAN', '1', '0', '1', '2', 'wdepanel.vct', 'spacepanbig'),
+('IDV_QUESTPANW', '1', '0', '1', '2', 'wdepanel.vct', 'spacepanbig2');
 
 delete from map where op like 'S00_QUEST%';
 INSERT INTO "main"."map" ("op", "key", "value")
@@ -88,6 +89,14 @@ delete from machines where [name] like 'QL_%';
 
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
+
+( 'QL_WORLDTAB', 'IDV_QUESTPAN', '226', '80', '366',  '103', '1','M_QUEST_TAB','IDV_QUESTPANW','','',''),
+( 'QL_MYTAB', 'IDV_QUESTPANW', '115', '80', '207',  '103', '1','M_QUEST_TAB','IDV_QUESTPAN','','',''),
+
+( 'QL_WORLDEXT',  'IDV_QUESTPAN', '112', '24', '144',  '51', '1','M_QUEST_EXT','','','',''),
+( 'QL_MYTABEXT', 'IDV_QUESTPANW', '112', '24', '144',  '51', '1','M_QUEST_EXT','','','',''),
+
+
 ( 'QL_POS1', 'IDV_QUESTPAN', '120', '140', '500',  '75', '1','M_QUEST_WAITER','ID_QLPOS1','','',''),
 ( 'QL_POS2', 'IDV_QUESTPAN', '120', '180', '500', '100', '1','M_QUEST_WAITER','ID_QLPOS2','','',''),
 ( 'QL_POS3', 'IDV_QUESTPAN', '120', '220', '500', '125', '1','M_QUEST_WAITER','ID_QLPOS3','','',''),
@@ -98,12 +107,13 @@ VALUES
 ( 'QL_POS8', 'IDV_QUESTPAN', '120', '420', '500', '250', '1','M_QUEST_WAITER','ID_QLPOS8','','',''),
 ( 'QL_POS9', 'IDV_QUESTPAN', '120', '460', '500', '275', '1','M_QUEST_WAITER','ID_QLPOS9','','',''),
 ('QL_POS10', 'IDV_QUESTPAN', '120', '500', '500', '300', '1','M_QUEST_WAITER','ID_QLPOS10','','',''),
-('QL_POS11', 'IDV_QUESTPAN', '120', '540', '500', '325', '1','M_QUEST_WAITER','ID_QLPOS11','','',''),
-('QL_POS12', 'IDV_QUESTPAN', '120', '580', '500', '350', '1','M_QUEST_WAITER','ID_QLPOS12','','',''),
-('QL_POS13', 'IDV_QUESTPAN', '120', '620', '500', '375', '1','M_QUEST_WAITER','ID_QLPOS13','','',''),
-('QL_POS14', 'IDV_QUESTPAN', '120', '660', '500', '400', '1','M_QUEST_WAITER','ID_QLPOS14','','',''),
-('QL_POS15', 'IDV_QUESTPAN', '120', '700', '500', '425', '1','M_QUEST_WAITER','ID_QLPOS15','','',''),
-('QL_POS16', 'IDV_QUESTPAN', '120', '740', '500', '450', '1','M_QUEST_WAITER','ID_QLPOS16','','',''),
+
+('QL_POS11', 'IDV_QUESTPANW', '120', '140', '500',  '75', '1','M_QUEST_WAITER','ID_QLPOS11','','',''),
+('QL_POS12', 'IDV_QUESTPANW', '120', '180', '500', '100', '1','M_QUEST_WAITER','ID_QLPOS12','','',''),
+('QL_POS13', 'IDV_QUESTPANW', '120', '220', '500', '125', '1','M_QUEST_WAITER','ID_QLPOS13','','',''),
+('QL_POS14', 'IDV_QUESTPANW', '120', '260', '500', '150', '1','M_QUEST_WAITER','ID_QLPOS14','','',''),
+('QL_POS15', 'IDV_QUESTPANW', '120', '300', '500', '175', '1','M_QUEST_WAITER','ID_QLPOS15','','',''),
+('QL_POS16', 'IDV_QUESTPANW', '120', '340', '500', '200', '1','M_QUEST_WAITER','ID_QLPOS16','','',''),
 
 ('QL_MANAGER', 'IDV_QUESTPAN', '10', '10', '20', '20', '1','M_QUEST_MANAGER','','','',''),
 
@@ -129,6 +139,18 @@ VALUES
 delete from transitions where automaton like 'M_QUEST_%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
+
+('M_QUEST_TAB','0','switched','CLICK', '', '', '
+        LOADVIEW(WIP1);          
+'),
+('M_QUEST_TAB','switched','0','Z_EPSILON', '', '', ''),
+--
+
+('M_QUEST_EXT','0','exited','CLICK', '', '', '
+       REF_MACHINE(S0_QL_BTN);
+       LOADVIEW(R_WPARM);       
+'),
+('M_QUEST_EXT','exited','0','Z_EPSILON', '', '', ''),
 
 -- The state of which line is open
 -- the state of each line - what map item is written to it
