@@ -318,27 +318,34 @@ VALUES
 
 
 -------------------------
-('M_QUEST_WAITER','0', 'waiting', 'Z_EPSILON', '', '', '
-        CLEAR(WPARM);
-'),
+('M_QUEST_WAITER','0', 'waiting', 'Z_EPSILON', '', '', ''),
 
 ('M_QUEST_WAITER', 'waiting', 'showText', 'WAIT', '0', 'SIG_WRITE_TEXT', '
          //blink QL_glow here & play sound
          REF_MACHINE(QL_MANAGER);
-         ASSIGN(WPARM,R_BPARM);
+         ASSIGN(BPARM,R_BPARM);
          WTEMP1 = "[ ]";
-         WTEMP2 = WTEMP1 + WPARM;
-         SETTEXT(WIP1,WTEMP2);      
+         WPARM = WTEMP1 + BPARM;
+            
 '),
+('M_QUEST_WAITER', 'showText', 'textDisplayed', 'Z_EPSILON', '0', '', '
+        SETTEXT(WIP1,WPARM);   
+'),
+
+
 ('M_QUEST_WAITER', 'waiting', 'dimText', 'WAIT', '0', 'SIG_DIM_TEXT', '
          REF_MACHINE(QL_MANAGER);
-         ASSIGN(WPARM,R_BPARM);
+         ASSIGN(BPARM,R_BPARM);
          WTEMP1 = "-------------------------------------------------"; 
-         WTEMP2 = WTEMP1 + WPARM;
-         SETTEXT(WIP1,WTEMP1);      
+         WPARM = WTEMP1 + BPARM;
+          
 '),
-('M_QUEST_WAITER', 'showText', '0', 'Z_EPSILON', '', '', ''),
-('M_QUEST_WAITER', 'dimText', '0', 'Z_EPSILON', '', '', '');
+('M_QUEST_WAITER', 'dimText', 'textDisplayed', 'Z_EPSILON', '0', '', '
+        SETTEXT(WIP1,WPARM); 
+'),
+
+('M_QUEST_WAITER', 'textDisplayed', 'waiting', 'Z_EPSILON', '0', 'SIG_RESET_TEXT', '');
+
 
 
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
