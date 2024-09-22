@@ -16,8 +16,8 @@ insert into sounds values ('SOUND_ONEDIEROLL', 'diceroll',0);
 delete from objects where object = 'IDD_DICE';
 delete from objects where object = 'IDD_SHAKE';
 insert into objects values
-('IDD_DICE',25007,'IDC_NULL','die','die','die'),
-('IDD_SHAKE',25008,'IDC_NULL','diceshake','diceshake','diceshake');
+('IDD_DICE','IDC_NULL','die','die','die'),
+('IDD_SHAKE','IDC_NULL','diceshake','diceshake','diceshake');
 
 delete from sounds where name like 'SOUND_SUCK%';
 delete from sounds where name like 'SOUND_QSUCK%';
@@ -44,18 +44,18 @@ delete from machines where [name] like 'S16_DICEDROP%';
 delete from machines where [name] like 'S16_DICEROLL%';
 delete from machines where [name] like 'S16_DICESTAK%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+INSERT INTO "main"."machines" ("id", "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('16003', 'S16_DICEDROP_R', '4881', 'IDV_TRAYL', '218', '133', '333', '174', '0','M16_DICEDROP','S16_DICEROLL_R1','S16_DICEROLL_R2','', ''),
-('16004', 'S16_DICEROLL_R1', '4881', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R2','', ''),
-('16005', 'S16_DICEROLL_R2', '4881', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R1','', ''),
+('16003', 'S16_DICEDROP_R',  'IDV_TRAYL', '218', '133', '333', '174', '0','M16_DICEDROP','S16_DICEROLL_R1','S16_DICEROLL_R2','', ''),
+('16004', 'S16_DICEROLL_R1', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R2','', ''),
+('16005', 'S16_DICEROLL_R2', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R1','', ''),
 
-('16006', 'S16_DICEDROP_L', '4881', 'IDV_TRAYL', '50', '120', '176', '150', '0','M16_DICEDROP','S16_DICEROLL_L1','S16_DICEROLL_L2','', ''),
-('16007', 'S16_DICEROLL_L1', '4881', 'IDV_TRAYL', '40', '150', '100', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L2','', ''),
-('16008', 'S16_DICEROLL_L2', '4881', 'IDV_TRAYL', '110', '150', '160', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L1','', ''),
+('16006', 'S16_DICEDROP_L',  'IDV_TRAYL', '50', '120', '176', '150', '0','M16_DICEDROP','S16_DICEROLL_L1','S16_DICEROLL_L2','', ''),
+('16007', 'S16_DICEROLL_L1', 'IDV_TRAYL', '40', '150', '100', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L2','', ''),
+('16008', 'S16_DICEROLL_L2', 'IDV_TRAYL', '110', '150', '160', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L1','', ''),
 
-('16009', 'S16_DICESTAKING_R', '4881', 'IDV_TRAYL', '223', '35', '337', '123', '0','M16_DICESTAKE','','','', ''),
-('16010', 'S16_DICESTAKING_L', '4881', 'IDV_TRAYL', '77', '35', '186', '123', '0','M16_DICESTAKE','','','', '');
+('16009', 'S16_DICESTAKING_R','IDV_TRAYL', '223', '35', '337', '123', '0','M16_DICESTAKE','','','', ''),
+('16010', 'S16_DICESTAKING_L','IDV_TRAYL', '77', '35', '186', '123', '0','M16_DICESTAKE','','','', '');
 
 
 delete from transitions where [automaton] like 'M16_DICEDROP%';
@@ -67,7 +67,7 @@ VALUES
 ('M16_DICEDROP', '0', '2', 'Z_EPSILON', '', '', '',''),
 ('M16_DICEDROP', '2', '0', 'DRAG', 'IDD_SHAKE', '', 'PLAYWAVE(SOUND_DICESHAKE);',''),
 ('M16_DICEDROP', '2', '3', 'DROP', 'IDD_SHAKE', '', 'SIGNAL(WIP1,SIG_SHOW);',''),
-('M16_DICEDROP', '3', '0', 'ESTIME', '', '1', 'SIGNAL(WIP2,SIG_SHOW);',''), 
+('M16_DICEDROP', '3', '0', 'ESTIME', '', '.5', 'SIGNAL(WIP2,SIG_SHOW);',''), 
 
 
 ('M16_DICEROLL', '0', '2', 'WAIT', '0', 'SIG_SHOW', 'PLAYWAVE(SOUND_DICEROLL);',''),
@@ -76,6 +76,7 @@ VALUES
 ('M16_DICEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', '',''),
 ('M16_DICEROLL', '5', '6', 'ESTIME', '', '2', '',''), 
 ('M16_DICEROLL','6','7','RAND','6','1','',''),
+
 ('M16_DICEROLL','7','8','MOV','BFRAME', 'WRAND','
     MAPi(BFRAME,S16_DICE_MAP);
     SHOW(BFRAME);
@@ -107,7 +108,7 @@ insert into spr_names values ('IDS_BLOBBALL','blobball','25010');
 
 delete from objects where object = 'IDD_BLOBBALL';
 insert into objects values
-('IDD_BLOBBALL',25010,'IDC_NULL','blobball','blobball','blobball');
+('IDD_BLOBBALL','IDC_NULL','blobball','blobball','blobball');
 
 delete from spr_names where [name] like 'IDS_BLOBFILL%';
 insert into spr_names values

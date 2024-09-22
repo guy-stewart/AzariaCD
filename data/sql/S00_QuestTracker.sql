@@ -142,6 +142,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 
 ('M_QUEST_TAB','0','switched','CLICK', '', '', '
+        PLAYWAVE(SOUND_BTNDRAG);
         LOADVIEW(WIP1);          
 '),
 ('M_QUEST_TAB','switched','0','Z_EPSILON', '', '', ''),
