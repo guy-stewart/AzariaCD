@@ -55,9 +55,8 @@ VALUES
 
 delete from transitions where automaton = 'M_ORIEKEY';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
- ('M_ORIEKEY', '0', '1', 'O_ACCEPT', '0', 'IDD_ORIEKEYSMALL', '', '', ''),
- ('M_ORIEKEY', '1', '2', 'DROP', '0', '0', '
- ', '', ''),
+ ('M_ORIEKEY', '0', '2', 'DROP', 'IDD_ORIEKEYSMALL', '', '', '', ''),
+ 
  ('M_ORIEKEY', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_ORIEKEYIN', '
     PLAYWAVE(SOUND_SWITCH);
  ', '', ''),
@@ -68,7 +67,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     HANDOFF(0,IDD_ORIEKEYSMALL);
     SIGNAL (WIP1,SIG_LOCK);
  ', '', ''),
- ('M_ORIEKEY', '6', '1', 'SHOW', '0', '0', '', '', '');
+ ('M_ORIEKEY', '6', '0', 'SHOW', '0', '0', '', '', '');
 
 
 

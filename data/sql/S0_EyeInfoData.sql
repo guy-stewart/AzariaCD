@@ -824,17 +824,21 @@ a spell.'),
 ' ),
 
 ('IDD_SHOVEL', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-        A shovel is a useful tool.
+        A shovel is a useful tool. Look for spots where
+        special items are burried throughout Azaria.
 ' ),
 ('IDD_PICK', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-       A pick that can break rock.
+       A pick that can break rock. Also, look for 
+       spots on cliff walls that might be hiding 
+       lost relics.
 ' ),
 ('IDD_CROWBAR', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT','
        A crowbar is useful in turning over 
        heavy rocks.
 ' ),
 ('IDD_SPADE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-       A spade is just a tiny shovel.
+       A spade is just a tiny shovel. Look for spots where
+        special items are burried throughout Azaria.
 ' ),
 
 ('IDD_DICE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
