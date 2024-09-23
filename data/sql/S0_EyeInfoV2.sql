@@ -6,27 +6,27 @@ delete from games;
 ----RESOURCES 
 delete from objects where [object] like 'IDD_DIARY%';
 insert into objects values
-('IDD_DIARY1',40401,'IDC_NULL','DIARY1','DIARY1','DIARY1'),
-('IDD_DIARY2',40402,'IDC_NULL','DIARY2','DIARY2','DIARY2'),
-('IDD_DIARY3',40403,'IDC_NULL','DIARY3','DIARY3','DIARY3'),
-('IDD_DIARY4',40404,'IDC_NULL','DIARY4','DIARY4','DIARY4'),
-
-('IDD_DIARY5',40405,'IDC_NULL','DIARY5','DIARY5','DIARY5'),
-('IDD_DIARY6',40406,'IDC_NULL','DIARY4','DIARY4','DIARY4'),
-('IDD_DIARY7',40407,'IDC_NULL','DIARY4','DIARY4','DIARY4');
+('IDD_DIARY1','IDC_NULL','DIARY1','DIARY1','DIARY1'),
+('IDD_DIARY2','IDC_NULL','DIARY2','DIARY2','DIARY2'),
+('IDD_DIARY3','IDC_NULL','DIARY3','DIARY3','DIARY3'),
+('IDD_DIARY4','IDC_NULL','DIARY4','DIARY4','DIARY4'),
+('IDD_DIARY5','IDC_NULL','DIARY5','DIARY5','DIARY5'),
+('IDD_DIARY6','IDC_NULL','DIARY4','DIARY4','DIARY4'),
+('IDD_DIARY7','IDC_NULL','DIARY4','DIARY4','DIARY4');
 
 
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
 delete from views where [view_name] like 'IDV_PARCHNYSTROM%';
 delete from views where [view_name] like 'IDV_TECHPAN%';
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('8710', 'IDV_PARCHBIG', '1', '0', '1', '2', 'wdepanel.vct', 'parchbig'),
-('8711', 'IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan'),
-('8712', 'IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom'),
-('8713', 'IDV_TECHPAN', '1', '0', '1', '2', 'wdepanel.vct', 'techpan1'),
-('8721', 'IDV_TECHPANBIG', '1', '0', '1', '2', 'wdepanel.vct', 'techpanbig');
+('IDV_PARCHBIG', '1', '0', '1', '2', 'wdepanel.vct', 'parchbig'),
+('IDV_PARCHSMALL', '1', '0', '1', '2', 'wdepanel.vct', 'parchpan'),
+('IDV_PARCHNYSTROM', '1', '0', '1', '2', 'wdepanel.vct', 'parchnystrom'),
+('IDV_TECHPAN', '1', '0', '1', '2', 'wdepanel.vct', 'techpan1'),
+('IDV_TECHPANBIG', '1', '0', '1', '2', 'wdepanel.vct', 'techpanbig'),
+('IDV_TECHPANBIGALT', '1', '0', '1', '2', 'wdepanel.vct', 'techpanbig');
 
 delete from spr_names where name = 'IDS_PARCHBIGBK';
 delete from spr_names where name = 'IDS_PARCHPANNYBK';
@@ -46,6 +46,7 @@ delete from controls where id = 'ID_PARCHNYSTROMTXT';
 insert into controls values
 ('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
 ('IDV_TECHPANBIG','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB16',0xe2ebb2,''),
+('IDV_TECHPANBIGALT','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB16',0xe2ebb2,''),
 ('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
 ('IDV_PARCHNYSTROM','ID_PARCHNYSTROMTXT','LABEL','IDS_PARCHPANNYBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
 
@@ -54,9 +55,9 @@ delete from idv where [name] like 'IDV_SPELLP%';
 delete from views where [view_name] like 'IDV_SPELLP%';
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_SPELLPAN', '8706');
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('8706', 'IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+('IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 --This is a progress recorder that shows players what they've accomplished
 -- when then drop the enchanted stone on their eyes
@@ -79,24 +80,24 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 
 delete from machines where name = 'REC_%';
 delete from transitions where [automaton] like 'M_RECORD_%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 
-('30001', 'REC_DRYPIT', '8707', 'IDV_ENCHANTPAN', '25', '50', '50', '70', '3', 'M_RECORD_COMPLETE', 'IDS_REC_DRYPIT', '', '', ''),
-('30002', 'REC_CAVE2', '8707', 'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', '', '', ''),
-('30003', 'REC_CAVE1', '8707', 'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', '', '', ''),
-('30004', 'REC_EYEOG', '8707', 'IDV_ENCHANTPAN', '204', '202', '250', '300', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEOG', '', '', ''),
-('30005', 'REC_HIDNAT', '8707', 'IDV_ENCHANTPAN', '388', '216', '440', '260', '3', 'M_RECORD_COMPLETE', 'IDS_REC_HIDNAT', '', '', ''),
-('30006', 'REC_MOONTBL', '8707', 'IDV_ENCHANTPAN', '481', '182', '530', '220', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONTBL', '', '', ''),
-('30007', 'REC_MOONDSK', '8707', 'IDV_ENCHANTPAN', '491', '86', '550', '120', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONDSK', '', '', ''),
-('30008', 'REC_EYESPELL', '8707', 'IDV_ENCHANTPAN', '350', '30', '400', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYESPELL', '', '', ''),
-('30009', 'REC_EYEFUSE', '8707', 'IDV_ENCHANTPAN', '393', '30', '420', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEFUSE', '', '', ''),
-('30010', 'REC_MEMFUSE', '8707', 'IDV_ENCHANTPAN', '436', '30', '460', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMFUSE', '', '', ''),
-('30011', 'REC_MEMSPELL', '8707', 'IDV_ENCHANTPAN', '459', '30', '500', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMSPELL', '', '', ''),
-('30012', 'REC_KAMIOZA', '8707', 'IDV_ENCHANTPAN', '275', '99', '320', '170', '3', 'M_RECORD_COMPLETE', 'IDS_REC_KAMIOZA', '', '', ''),
+('REC_DRYPIT',  'IDV_ENCHANTPAN', '25', '50', '50', '70', '3', 'M_RECORD_COMPLETE', 'IDS_REC_DRYPIT', '', '', ''),
+('REC_CAVE2',   'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', '', '', ''),
+('REC_CAVE1',   'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', '', '', ''),
+('REC_EYEOG',   'IDV_ENCHANTPAN', '204', '202', '250', '300', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEOG', '', '', ''),
+('REC_HIDNAT',  'IDV_ENCHANTPAN', '388', '216', '440', '260', '3', 'M_RECORD_COMPLETE', 'IDS_REC_HIDNAT', '', '', ''),
+('REC_MOONTBL', 'IDV_ENCHANTPAN', '481', '182', '530', '220', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONTBL', '', '', ''),
+('REC_MOONDSK', 'IDV_ENCHANTPAN', '491', '86', '550', '120', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONDSK', '', '', ''),
+('REC_EYESPELL','IDV_ENCHANTPAN', '350', '30', '400', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYESPELL', '', '', ''),
+('REC_EYEFUSE', 'IDV_ENCHANTPAN', '393', '30', '420', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEFUSE', '', '', ''),
+('REC_MEMFUSE', 'IDV_ENCHANTPAN', '436', '30', '460', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMFUSE', '', '', ''),
+('REC_MEMSPELL','IDV_ENCHANTPAN', '459', '30', '500', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMSPELL', '', '', ''),
+('REC_KAMIOZA', 'IDV_ENCHANTPAN', '275', '99', '320', '170', '3', 'M_RECORD_COMPLETE', 'IDS_REC_KAMIOZA', '', '', ''),
 --Whenever someone pays a machine we increase the count
-('30013', 'REC_NYSTROMPAID', '8707', 'IDV_ENCHANTPAN', '120', '35', '130', '45', '3', 'M_RECORD_COUNTER', '', '', '', ''),
-('30014', 'REC_BADKARMA', '8707', 'IDV_ENCHANTPAN', '130', '35', '140', '45', '3', 'M_RECORD_COUNTER', '', '', '', '');
+('REC_NYSTROMPAID', 'IDV_ENCHANTPAN', '120', '35', '130', '45', '3', 'M_RECORD_COUNTER', '', '', '', ''),
+('REC_BADKARMA', 'IDV_ENCHANTPAN', '130', '35', '140', '45', '3', 'M_RECORD_COUNTER', '', '', '', '');
 
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
@@ -126,8 +127,8 @@ delete from idv where [name] like 'IDV_ENCHANTP%';
 delete from views where [view_name] like 'IDV_ENCHANTP%';
 
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_ENCHANTPAN', '8707');
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('8707', 'IDV_ENCHANTPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
+INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('IDV_ENCHANTPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 
 --------Recycle 
 
@@ -143,15 +144,19 @@ delete from machines where [name] like 'NIRET_DIARY_WAITER';
 delete from machines where [name] like 'ETNOC_DIARY_WAITER';
 delete from machines where [name] like 'OBJECT_WAITER';
 delete from machines where [name] like 'NYSTROM_WAITER';
+delete from machines where [name] like 'ORIE_DIARY%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('15570', 'NIRET_DIARY_WAITER', '8710', 'IDV_PARCHBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHBIG','SIG_DIARY','ID_PARCHBIGTXT',''),
-('15573', 'ETNOC_DIARY_WAITER', '8721', 'IDV_TECHPANBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_TECHPANBIG','SIG_DIARY','ID_TECHBIGTXT',''),
-('15571', 'OBJECT_WAITER', '8711', 'IDV_PARCHSMALL', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHSMALL','SIG_OBJECT','ID_PARCHSMALLTXT',''),
-('15572', 'NYSTROM_WAITER', '8712', 'IDV_PARCHNYSTROM', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHNYSTROM','SIG_NYSTROM','ID_PARCHNYSTROMTXT','');
+('NIRET_DIARY_WAITER',  'IDV_PARCHBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHBIG','SIG_DIARY','ID_PARCHBIGTXT',''),
+('ETNOC_DIARY_WAITER',  'IDV_TECHPANBIG', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_TECHPANBIG','SIG_DIARY','ID_TECHBIGTXT',''),
+
+('ORIE_DIARY_WAITER',  'IDV_TECHPANBIGALT', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_TECHPANBIGALT','SIG_DIARY','ID_TECHBIGTXT',''),
+('ORIE_DIARY_KEYHOLDER',  'IDV_TECHPANBIGALT', '240', '400', '300', '450', '1','M_PLANTBIN','IDD_ORIEKEYSMALL','IDS_ORIEKEY','200',''),
 
 
+('OBJECT_WAITER',       'IDV_PARCHSMALL', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHSMALL','SIG_OBJECT','ID_PARCHSMALLTXT',''),
+('NYSTROM_WAITER',      'IDV_PARCHNYSTROM', '276', '236', '350', '300', '1','M_GENERAL_WAITER','IDV_PARCHNYSTROM','SIG_NYSTROM','ID_PARCHNYSTROMTXT','');
 
 delete from transitions where automaton =  'M_DIARY_WAITER';
 delete from transitions where automaton =  'M_GENERAL_WAITER';
@@ -177,21 +182,7 @@ VALUES
         CLEAR(WPARM);
 ');
 
-----------
 
--- ('M_NY_WAITER','0', 'waiting', 'Z_EPSILON', '', '', '
---         REF_MACHINE(SMP_EYEINFO);
---         CLEAR(WPARM);
--- '),
-
--- ('M_NY_WAITER', 'waiting', 'showText', 'WAIT', '0', 'WIP2', '
---         predicate objectInfo(object,view,control,content);
---         objectInfo(R_WPARM,?BPARM,?WPARM, ?WTEMP1);
---         LOADVIEW(BPARM);
---         SETTEXT(WPARM,WTEMP1);
-       
--- '),
--- ('M_NY_WAITER', 'showText', '0', 'Z_EPSILON', '', '', '');
 
 -----------------------------------------------------------------
 ------------- DROP ON EYE AND CHECK
@@ -237,7 +228,7 @@ MOV(BPARM,LVIEW);
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
         }
         if((WOBJECT == IDD_DIARY2 )){
-                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
+                 SIGNAL(ORIE_DIARY_WAITER,SIG_DIARY);
         }
          if((WOBJECT == IDD_DIARY3 )){
                  SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);
@@ -258,7 +249,7 @@ if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
                 SIGNAL(NYSTROM_WAITER,SIG_NYSTROM);
                 }
 
-       if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT) || IS_A(WOBJECT,IDC_TOKEN)){
+       if(IS_A(WOBJECT,IDC_NULL) || IS_A(WOBJECT,IDC_BOMB) || IS_A(WOBJECT,IDC_FISH) || IS_A(WOBJECT,IDC_SPELL) || IS_A(WOBJECT,IDC_BAIT) || IS_A(WOBJECT,IDC_TOKEN)|| IS_A(WOBJECT,ISA_TOOL_DIGGER)|| IS_A(WOBJECT,ISA_TOOL_STRIKER)|| IS_A(WOBJECT,ISA_TOOL_PRYER)){
                 MOV(WPARM,WOBJECT);
                 SIGNAL(OBJECT_WAITER,SIG_OBJECT);
                 }

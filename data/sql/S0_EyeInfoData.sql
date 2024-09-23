@@ -39,7 +39,7 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
         I shall now see for myself and fill my spirit with joy - 
         Searching for something to plant on some altar!'),
 
-('IDD_DIARY2', 'IDV_TECHPANBIG', 'ID_TECHBIGTXT', '	
+('IDD_DIARY2', 'IDV_TECHPANBIGALT', 'ID_TECHBIGTXT', '	
 	After years of isolation, your people are lost and divided.
 	
 	The flood water from more than 180,000 days of rain has
@@ -55,6 +55,9 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
 	There have been a few adventurers to wander out ahead of you 
 	and their new findings may begin to tell your tale.  Look for evidence 
 	of their discoveries as you go further on your journey. 
+        
+        Take this key to begin your journey and then 
+        remove the information card from your eye.
 
 '),
 
@@ -821,17 +824,21 @@ a spell.'),
 ' ),
 
 ('IDD_SHOVEL', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-        A shovel is a useful tool.
+        A shovel is a useful tool. Look for spots where
+        special items are burried throughout Azaria.
 ' ),
 ('IDD_PICK', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-       A pick that can break rock.
+       A pick that can break rock. Also, look for 
+       spots on cliff walls that might be hiding 
+       lost relics.
 ' ),
 ('IDD_CROWBAR', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT','
        A crowbar is useful in turning over 
        heavy rocks.
 ' ),
 ('IDD_SPADE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-       A spade is just a tiny shovel.
+       A spade is just a tiny shovel. Look for spots where
+        special items are burried throughout Azaria.
 ' ),
 
 ('IDD_DICE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
