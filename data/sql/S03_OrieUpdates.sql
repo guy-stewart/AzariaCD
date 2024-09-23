@@ -37,13 +37,13 @@ VALUES ('IDV_GUITECHPAN', '', 'IDV_ORIE');
 delete from machines where [name] like 'S03_DIARYBIN';
 delete from machines where [name] like 'S03_DOORANIM';
 delete from machines where [name] = 'S03_SPEAKERSTANDf';
+delete from machines where [name] = 'S03_SPEAKERSTANDg';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('S03_DIARYBIN', 'IDV_ORIE', '946', '86', '999', '142', '2', 'M_BIN', 'IDD_DIARY2', '', '', ''),
 ('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '0', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', ''),
-('S03_SPEAKERSTANDf','IDV_ORIE', '251', '170', '281', '200', '0', 'M_ORIEKEY', 'S03_DOORANIM', '', '', '');
-
-
+('S03_SPEAKERSTANDf','IDV_ORIE', '251', '170', '281', '200', '0', 'M_ORIEKEY', 'S03_DOORANIM', '', '', ''),
+('S03_SPEAKERSTANDg','IDV_ORIE', '986','168','1012','194','0', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE6', '');
 
 
 delete from triggers where [to] like 'IDV_DOORS%';
