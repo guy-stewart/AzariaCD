@@ -65,7 +65,10 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 --Vestpan2
 --fish spells are for - clearing language bariers?
---Turn off foul wind - by filling w/ nystrom scoop and sacrificing a fish spell
+--Turn off foul wind - 
+--Restoring Karma?
+-- increase wisdom ? 
+
 
 
 -- the strange vestibules -- TO BE LIFE AND DEATH
