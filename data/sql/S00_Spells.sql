@@ -21,69 +21,69 @@ delete from games;
 delete from objects where class = 'IDC_SPELL';
 
 
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") 
+INSERT INTO "main"."objects" ("object", "class", "icon", "cursor", "actor") 
 VALUES 
 
 --the 13 scroll spells
 --------------------------------------
 --------------------------------------
-('IDD_ENCHANT', '30609', 'IDC_SPELL', 'enchant', 'enchant', 'enchant'),
-('IDD_STALKER', '30610', 'IDC_SPELL', 'stalk', 'stalk', 'stalk'),
-('IDD_BLINDNESS', '30611', 'IDC_SPELL', 'blind', 'blind', 'blind'),
-('IDD_HOLDING', '30612', 'IDC_SPELL', 'holding', 'holding', 'holding'),
-('IDD_TRANSFER', '30613', 'IDC_SPELL', 'transfer', 'transfer', 'transfer'),
+('IDD_ENCHANT',  'IDC_SPELL', 'enchant', 'enchant', 'enchant'),
+('IDD_STALKER',  'IDC_SPELL', 'stalk', 'stalk', 'stalk'),
+('IDD_BLINDNESS','IDC_SPELL', 'blind', 'blind', 'blind'),
+('IDD_HOLDING',  'IDC_SPELL', 'holding', 'holding', 'holding'),
+('IDD_TRANSFER', 'IDC_SPELL', 'transfer', 'transfer', 'transfer'),
 --alarm
 --record
-('IDD_TELEKINESIS', '30616', 'IDC_SPELL', 'tele', 'tele', 'tele'),
-('IDD_EXPLOSION', '30617', 'IDC_SPELL', 'starspl1', 'starspl1', 'starspl1'),
+('IDD_TELEKINESIS', 'IDC_SPELL', 'tele', 'tele', 'tele'),
+('IDD_EXPLOSION', 'IDC_SPELL', 'starspl1', 'starspl1', 'starspl1'),
 --lock
 --lockpick
-('IDD_PROTECT', '30620', 'IDC_SPELL', 'protect', 'protect', 'protect'),
-('IDD_DEATH', '30621', 'IDC_SPELL', 'skull', 'skull', 'skull'), -- we need a different one here
-('IDD_REVIAL', '12603', 'IDC_SPELL', 'revial', 'revial', 'revial'),
+('IDD_PROTECT', 'IDC_SPELL', 'protect', 'protect', 'protect'),
+('IDD_DEATH',  'IDC_SPELL', 'skull', 'skull', 'skull'), -- we need a different one here
+('IDD_REVIAL', 'IDC_SPELL', 'revial', 'revial', 'revial'),
 --------------------------------------
 --------------------------------------
 
-('IDD_INVISIBLE', '30622', 'IDC_SPELL', 'spinspel', 'spinspel', 'spinspel'),
-('IDD_BANISHMENT', '30624', 'IDC_SPELL', 'skull', 'skull', 'skull'),
-('IDD_HALUCINATE', '30626', 'IDC_SPELL', 'redeye', 'redeye', 'redeye'), 
-('IDD_MINDREAD', '30625', 'IDC_SPELL', 'mind', 'mind', 'mind'),
+('IDD_INVISIBLE',  'IDC_SPELL', 'spinspel', 'spinspel', 'spinspel'),
+('IDD_BANISHMENT', 'IDC_SPELL', 'skull', 'skull', 'skull'),
+('IDD_HALUCINATE', 'IDC_SPELL', 'redeye', 'redeye', 'redeye'), 
+('IDD_MINDREAD',   'IDC_SPELL', 'mind', 'mind', 'mind'),
 
 
 --Hidden spells core to game puzzles
-('IDD_EYESPELL', '30629', 'IDC_SPELL', 'eyespell', 'eyespell', 'eyespell'),
-('IDD_MEMSPELL', '1630', 'IDC_SPELL', 'MEMSPELL', 'MEMSPELL', 'MEMSPELL'),
-('IDD_WETBREATH', '30628', 'IDC_SPELL', 'water', 'water', 'water'),
-('IDD_NYBREATH', '30627', 'IDC_SPELL', 'nys', 'nys', 'nys'),
+('IDD_EYESPELL',  'IDC_SPELL', 'eyespell', 'eyespell', 'eyespell'),
+('IDD_MEMSPELL', 'IDC_SPELL', 'MEMSPELL', 'MEMSPELL', 'MEMSPELL'),
+('IDD_WETBREATH', 'IDC_SPELL', 'water', 'water', 'water'),
+('IDD_NYBREATH',  'IDC_SPELL', 'nys', 'nys', 'nys'),
 --------------------------------------
 --------------------------------------
-('IDD_STRENGTH', '30623', 'IDC_SPELL', 'muscle', 'muscle', 'muscle'),
-('IDD_LOCK', '30618', 'IDC_SPELL', 'radio', 'radio', 'radio'), -- using fish spell general
-('IDD_RECORDER', '30615', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
-('IDD_UNLOCK', '30619', 'IDC_SPELL', 'radio', 'radio', 'radio'),
+('IDD_STRENGTH','IDC_SPELL', 'muscle', 'muscle', 'muscle'),
+('IDD_LOCK',    'IDC_SPELL', 'radio', 'radio', 'radio'), -- using fish spell general
+('IDD_RECORDER','IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
+('IDD_UNLOCK',  'IDC_SPELL', 'radio', 'radio', 'radio'),
 
  -- these atom spells equate to their fish? 
  -- These are cool but what do they mean?
-('IDD_SPELL01', '30583', 'IDC_SPELL', 'Spell01', 'Spell01', 'Spell01'),
-('IDD_SPELL02', '30584', 'IDC_SPELL', 'Spell02', 'Spell02', 'Spell02'),
-('IDD_SPELL03', '30585', 'IDC_SPELL', 'Spell03', 'Spell03', 'Spell03'),
-('IDD_SPELL04', '30586', 'IDC_SPELL', 'Spell04', 'Spell04', 'Spell04'),
-('IDD_SPELL05', '30587', 'IDC_SPELL', 'Spell05', 'Spell05', 'Spell05'),
-('IDD_SPELL06', '30588', 'IDC_SPELL', 'Spell06', 'Spell06', 'Spell06'),
-('IDD_SPELL07', '30589', 'IDC_SPELL', 'Spell07', 'Spell07', 'Spell07'),
-('IDD_SPELL08', '30590', 'IDC_SPELL', 'Spell08', 'Spell08', 'Spell08'),
-('IDD_SPELL09', '30591', 'IDC_SPELL', 'Spell09', 'Spell09', 'Spell09'),
-('IDD_SPELL10', '30592', 'IDC_SPELL', 'Spell10', 'Spell10', 'Spell10'),
-('IDD_SPELx01', '30599', 'IDC_SPELL', 'Spelx01', 'Spelx01', 'Spelx01'),
-('IDD_SPELx02', '30600', 'IDC_SPELL', 'Spelx02', 'Spelx02', 'Spelx02'),
-('IDD_SPELx03', '30601', 'IDC_SPELL', 'Spelx03', 'Spelx03', 'Spelx03'),
-('IDD_SPELx04', '30602', 'IDC_SPELL', 'Spelx04', 'Spelx04', 'Spelx04'),
-('IDD_SPELx05', '30603', 'IDC_SPELL', 'Spelx05', 'Spelx05', 'Spelx05'),
-('IDD_SPELx06', '30604', 'IDC_SPELL', 'Spelx06', 'Spelx06', 'Spelx06'),
-('IDD_SPELx07', '30605', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
-('IDD_SPELx08', '30606', 'IDC_SPELL', 'Spelx08', 'Spelx08', 'Spelx08'),
-('IDD_SPELx09', '30607', 'IDC_SPELL', 'Spelx09', 'Spelx09', 'Spelx09'),
-('IDD_SPELx10', '30608', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10');
+('IDD_SPELL01', 'IDC_SPELL', 'Spell01', 'Spell01', 'Spell01'),
+('IDD_SPELL02', 'IDC_SPELL', 'Spell02', 'Spell02', 'Spell02'),
+('IDD_SPELL03', 'IDC_SPELL', 'Spell03', 'Spell03', 'Spell03'),
+('IDD_SPELL04', 'IDC_SPELL', 'Spell04', 'Spell04', 'Spell04'),
+('IDD_SPELL05', 'IDC_SPELL', 'Spell05', 'Spell05', 'Spell05'),
+('IDD_SPELL06', 'IDC_SPELL', 'Spell06', 'Spell06', 'Spell06'),
+('IDD_SPELL07', 'IDC_SPELL', 'Spell07', 'Spell07', 'Spell07'),
+('IDD_SPELL08', 'IDC_SPELL', 'Spell08', 'Spell08', 'Spell08'),
+('IDD_SPELL09', 'IDC_SPELL', 'Spell09', 'Spell09', 'Spell09'),
+('IDD_SPELL10', 'IDC_SPELL', 'Spell10', 'Spell10', 'Spell10'),
+('IDD_SPELx01', 'IDC_SPELL', 'Spelx01', 'Spelx01', 'Spelx01'),
+('IDD_SPELx02', 'IDC_SPELL', 'Spelx02', 'Spelx02', 'Spelx02'),
+('IDD_SPELx03', 'IDC_SPELL', 'Spelx03', 'Spelx03', 'Spelx03'),
+('IDD_SPELx04', 'IDC_SPELL', 'Spelx04', 'Spelx04', 'Spelx04'),
+('IDD_SPELx05', 'IDC_SPELL', 'Spelx05', 'Spelx05', 'Spelx05'),
+('IDD_SPELx06', 'IDC_SPELL', 'Spelx06', 'Spelx06', 'Spelx06'),
+('IDD_SPELx07', 'IDC_SPELL', 'Spelx07', 'Spelx07', 'Spelx07'),
+('IDD_SPELx08', 'IDC_SPELL', 'Spelx08', 'Spelx08', 'Spelx08'),
+('IDD_SPELx09', 'IDC_SPELL', 'Spelx09', 'Spelx09', 'Spelx09'),
+('IDD_SPELx10', 'IDC_SPELL', 'Spelx10', 'Spelx10', 'Spelx10');
 
 -- TODO SHOULD THIS BEA A SPELL?? I DON'T THINK SO
 --('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
@@ -104,9 +104,9 @@ insert into spr_names values ('IDS_BRAIN_TINY','brain_tiny','70005');
 
 
 delete from "main"."views" where [view_name] like 'IDV_BLINDVIEW%';
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('70100', 'IDV_BLINDVIEW', '1', '0', '1', '6', 'surround.vct', 'blindview');
+('IDV_BLINDVIEW', '1', '0', '1', '6', 'surround.vct', 'blindview');
 
 delete from "main"."machines" where [name] like 'PROTECT_%';
 delete from "main"."machines" where [name] like 'WETBREATH_%';
@@ -121,53 +121,46 @@ delete from "main"."machines" where [name] like 'DEATH_%';
 delete from "main"."machines" where [name] like 'BANISHMENT_%';
 delete from "main"."machines" where [name] like 'BLINDNESS_%';
 delete from "main"."machines" where [name] like 'HALUCINATE_%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 --------------------
 --Defensive Spells
-('70000', 'PROTECT_ACTIVE', '1', 'IDV_MAIN_PANEL', '118', '57', '120', '65', '3', 'M_DEFENSESPELL', 'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
-('70001', 'PROTECT_TIMER', '1', 'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '30', 'PROTECT_ACTIVE', '', ''),
-
-('70002', 'WETBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '135','59', '145', '65', '3', 'M_DEFENSESPELL', 'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
-('70003', 'WETBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '30', 'WETBREATH_ACTIVE', '', ''),
-
-('70004', 'NYBREATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '154','59', '165', '65', '3', 'M_DEFENSESPELL', 'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
-('70005', 'NYBREATH_TIMER', '1', 'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '15', 'NYBREATH_ACTIVE', '', ''),
-
-('70006', 'TELEKINESIS_ACTIVE', '1', 'IDV_MAIN_PANEL', '169','59', '175', '65', '3', 'M_DEFENSESPELL', 'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('70007', 'TELEKINESIS_TIMER', '1', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '15', 'TELEKINESIS_ACTIVE', '', ''),
-
-('70008', 'INVISIBLE_ACTIVE', '1', 'IDV_MAIN_PANEL', '103','56', '114', '65', '3', 'M_DEFENSESPELL', 'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
-('70009', 'INVISIBLE_TIMER', '1', 'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '30', 'INVISIBLE_ACTIVE', '', ''),
+('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '118', '57', '120', '65', '3', 'M_DEFENSESPELL', 'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
+('PROTECT_TIMER',     'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '100', 'PROTECT_ACTIVE', '', ''),
+('WETBREATH_ACTIVE',  'IDV_MAIN_PANEL', '135','59', '145', '65', '3', 'M_DEFENSESPELL', 'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
+('WETBREATH_TIMER',   'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '100', 'WETBREATH_ACTIVE', '', ''),
+('NYBREATH_ACTIVE',   'IDV_MAIN_PANEL', '154','59', '165', '65', '3', 'M_DEFENSESPELL', 'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
+('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '30', 'NYBREATH_ACTIVE', '', ''),
+('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '169','59', '175', '65', '3', 'M_DEFENSESPELL', 'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
+('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '100', 'TELEKINESIS_ACTIVE', '', ''),
+('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '103','56', '114', '65', '3', 'M_DEFENSESPELL', 'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
+('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '100', 'INVISIBLE_ACTIVE', '', ''),
 
 --------------------
 -- attack spells
 -- view spells
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
-('70010', 'ENCHANT_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', '', ''),
-('70011', 'ENCHANT_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
-
-('70012', 'HOLDING_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', '', ''),
-('70013', 'HOLDING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
-
-('70014', 'STALKING_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', '', ''),
-('70015', 'STALKING_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
+('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', '', ''),
+('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
+('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', '', ''),
+('HOLDING_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
+('STALKING_ACTIVE','IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', '', ''),
+('STALKING_TIMER', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
 
 -- attack spells
 -- Instant
-('70016', 'TRANSFER_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'TRANSFER', 'NO_TIMER', '', ''),
-('70018', 'DEATH_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'DEATH', 'NO_TIMER', '', ''),
-('70020', 'BANISHMENT_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'BANISHMENT', 'NO_TIMER', '', ''),
-('70027', 'GOPA_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
+('TRANSFER_ACTIVE',   'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'TRANSFER', 'NO_TIMER', '', ''),
+('DEATH_ACTIVE',      'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'DEATH', 'NO_TIMER', '', ''),
+('BANISHMENT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'BANISHMENT', 'NO_TIMER', '', ''),
+('GOPA_ACTIVE',       'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
 -- Timed
 
-('70022', 'BLINDNESS_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
-('70023', 'BLINDNESS_GATE', '70100', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
-('70024', 'BLINDNESS_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '30', 'BLINDNESS_ACTIVE', '', ''),
-
-('70025', 'HALUCINATE_ACTIVE', '1', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
-('70026', 'HALUCINATE_TIMER', '1', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', '');
+('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
+('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
+('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '30', 'BLINDNESS_ACTIVE', '', ''),
+('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
+('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', '');
 
 --------------------
 -- object spells - ARE JUST OBJECTS - ALARM, LOCK, UNLOCK, EXPLODE...
@@ -197,7 +190,7 @@ VALUES
 ('M_SPELLTIMER', '0', 'timerStarted', 'WAIT', '0', 'SIG_START','
   WPARM = WIP1;
   if ( WIP2 == NYBREATH_ACTIVE ){
-    WPARM = 12;
+    WPARM = 30;
   }
 ', '', ''),
 ('M_SPELLTIMER', 'timerStarted', 'timerDone', 'ESTIME', '', 'WPARM','', '', ''),
