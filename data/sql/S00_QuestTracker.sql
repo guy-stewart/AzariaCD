@@ -358,14 +358,23 @@ VALUES
 delete from "main"."transitions" where [automaton] like 'M_QLBTN%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_QLBTN', '0', 'open', 'CLICK', '', '', '
+('M_QLBTN', '0', '1', 'Z_EPSILON', '', '', '
+   CLEAR(WOBJECT);
+   SHOW();
+', '', ''),
+('M_QLBTN', '1', 'logPresent', 'DROP', 'IDD_LOGBOOKBTN', '', '
+   SHOW(WOBJECT);
+   ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
+', '', ''),
+
+('M_QLBTN', 'logPresent', 'open', 'CLICK', '', '', '
     MOV(WPARM,LVIEW);
     LOADVIEW(IDV_QUESTPAN);
 ', '', ''),
 ('M_QLBTN', 'open', 'closed', 'CLICK', '', '', '
     LOADVIEW(WPARM);
 ', '', ''),
-('M_QLBTN', 'closed', '0', 'Z_EPSILON', '', '', '
+('M_QLBTN', 'closed', 'logPresent', 'Z_EPSILON', '', '', '
 ', '', '');
 
 

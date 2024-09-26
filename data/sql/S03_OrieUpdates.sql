@@ -4,18 +4,25 @@ delete from games;
 ----RESOURCES 
 delete from spr_names where name like 'IDS_ORIEKEY%';
 delete from objects where [object] like 'IDD_ORIEKEY%';
-
+delete from spr_names where name like 'IDS_LOGBOOK%';
+delete from objects where [object] like 'IDD_LOGBOOK%';
 
 INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
 ('IDS_ORIEKEY', 'ORIEKEY'),
 ('IDS_ORIEKEYSMALL', 'ORIEKEYSMALL'),
-('IDS_ORIEKEYIN', 'ORIEKEYIN');
+('IDS_ORIEKEYIN', 'ORIEKEYIN'),
+
+('IDS_LOGBOOK', 'LOGBOOK'),
+('IDS_LOGBOOKBTN', 'LOG');
 
 insert into objects values
 ('IDD_ORIEKEY','IDC_NULL','ORIEKEY','ORIEKEY','ORIEKEY'),
 ('IDD_ORIEKEYSMALL','IDC_NULL','ORIEKEYSMALL','ORIEKEYSMALL','ORIEKEYSMALL'),
-('IDD_ORIEKEYIN','IDC_NULL','ORIEKEYIN','ORIEKEYIN','ORIEKEYIN');
+('IDD_ORIEKEYIN','IDC_NULL','ORIEKEYIN','ORIEKEYIN','ORIEKEYIN'),
+
+('IDD_LOGBOOK','IDC_NULL','LOGBOOK','LOGBOOK','LOGBOOK'),
+('IDD_LOGBOOKBTN','IDC_NULL','LOG','LOG','LOG');
 
 delete from sounds where [name] like 'SOUND_SWITCH%';
 delete from sounds where [name] like 'SOUND_PORTAL%';
@@ -38,13 +45,14 @@ delete from machines where [name] like 'S03_DIARYBIN';
 delete from machines where [name] like 'S03_DOORANIM';
 delete from machines where [name] = 'S03_SPEAKERSTANDf';
 delete from machines where [name] = 'S03_SPEAKERSTANDg';
+delete from machines where [name] = 'S03_LOGBOOKBIN';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('S03_DIARYBIN', 'IDV_ORIE', '946', '86', '999', '142', '2', 'M_BIN', 'IDD_DIARY2', '', '', ''),
 ('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '0', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', ''),
 ('S03_SPEAKERSTANDf','IDV_ORIE', '251', '170', '281', '200', '0', 'M_ORIEKEY', 'S03_DOORANIM', '', '', ''),
-('S03_SPEAKERSTANDg','IDV_ORIE', '986','168','1012','194','0', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE6', '');
-
+('S03_SPEAKERSTANDg','IDV_ORIE', '986','168','1012','194','0', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE6', ''),
+('S03_LOGBOOKBIN', 'IDV_ORIE', '2228', '221', '2280', '280', '1','M_PLANTBIN','IDD_LOGBOOKBTN','IDS_LOGBOOK','100','');
 
 delete from triggers where [to] like 'IDV_DOORS%';
 delete from triggers where [to] like 'IDV_TECHPAN%';
