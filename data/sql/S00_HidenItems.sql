@@ -5,17 +5,17 @@ delete from games;
 delete from objects where [object] like 'IDD_SANDDIRT%';
 delete from objects where [object] like 'IDD_SANDROCK%';
 insert into objects values
-('IDD_SANDDIRT',40001,'IDC_NULL','sanddirt','sanddirt','sanddirt'),
-('IDD_SANDDIRT2',40002,'IDC_NULL','sanddirt2','sanddirt2','sanddirt2'),
-('IDD_SANDDIRT3',40003,'IDC_NULL','sanddirt3','sanddirt3','sanddirt3'),
-('IDD_SANDDIRTGRS',40004,'IDC_NULL','sanddirtgrs','sanddirtgrs','sanddirtgrs'),
-('IDD_SANDDIRTMOON',40005,'IDC_NULL','sanddirtMoon','sanddirtMoon','sanddirtMoon'),
-('IDD_SANDDIRTGRSDK',40006,'IDC_NULL','sanddirtgrsdk','sanddirtgrsdk','sanddirtgrsdk'),
+('IDD_SANDDIRT',     'IDC_NULL','sanddirt','sanddirt','sanddirt'),
+('IDD_SANDDIRT2',    'IDC_NULL','sanddirt2','sanddirt2','sanddirt2'),
+('IDD_SANDDIRT3',    'IDC_NULL','sanddirt3','sanddirt3','sanddirt3'),
+('IDD_SANDDIRTGRS',  'IDC_NULL','sanddirtgrs','sanddirtgrs','sanddirtgrs'),
+('IDD_SANDDIRTMOON', 'IDC_NULL','sanddirtMoon','sanddirtMoon','sanddirtMoon'),
+('IDD_SANDDIRTGRSDK','IDC_NULL','sanddirtgrsdk','sanddirtgrsdk','sanddirtgrsdk'),
 
-('IDD_SANDROCK1',40007,'IDC_NULL','sandrock1','sandrock1','sandrock1'),
-('IDD_SANDROCK2',40008,'IDC_NULL','sandrock2','sandrock2','sandrock2'),
-('IDD_SANDROCK3',40009,'IDC_NULL','sandrock3','sandrock3','sandrock3'),
-('IDD_SANDDIRTBIG',40010,'IDC_NULL','sanddirtbig','sanddirtbig','sanddirtbig');
+('IDD_SANDROCK1', 'IDC_NULL','sandrock1','sandrock1','sandrock1'),
+('IDD_SANDROCK2', 'IDC_NULL','sandrock2','sandrock2','sandrock2'),
+('IDD_SANDROCK3', 'IDC_NULL','sandrock3','sandrock3','sandrock3'),
+('IDD_SANDDIRTBIG','IDC_NULL','sanddirtbig','sanddirtbig','sanddirtbig');
 
 
 delete from sounds where [name] like 'SOUND_DIG%';
@@ -131,10 +131,10 @@ VALUES
 delete from objects where object = 'IDD_SHOVEL';
 delete from objects where object = 'IDD_PICK';
 delete from objects where object = 'IDD_CROWBAR';
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES
-('IDD_SHOVEL', '4469', 'ISA_TOOL_DIGGER', 'shovelb', 'shovelb', 'shovelb'),
-('IDD_PICK', '4463', 'ISA_TOOL_STRIKER', 'PICK', 'PICK', 'PICK'),
-('IDD_CROWBAR', '9488', 'ISA_TOOL_PRYER', 'Crowbar', 'Crowbar', 'Crowbar');
+INSERT INTO "main"."objects" ("object", "class", "icon", "cursor", "actor") VALUES
+('IDD_SHOVEL', 'ISA_TOOL_DIGGER', 'shovelb', 'shovelb', 'shovelb'),
+('IDD_PICK',   'ISA_TOOL_STRIKER', 'PICK', 'PICK', 'PICK'),
+('IDD_CROWBAR','ISA_TOOL_PRYER', 'Crowbar', 'Crowbar', 'Crowbar');
 
 --some new panel views
 delete from idv where [name] like 'IDV_CU_%';
@@ -143,69 +143,66 @@ INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_GRASSPATCH1', '40001');
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_DIRTPATCH1', '40002');
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_CU_DIRTPATCH2', '40003');
 
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
-('40001', 'IDV_CU_GRASSPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'grasspatchcu'),
-('40002', 'IDV_CU_DIRTPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu'),
-('40003', 'IDV_CU_DIRTPATCH2', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu2');
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
+('IDV_CU_GRASSPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'grasspatchcu'),
+('IDV_CU_DIRTPATCH1', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu'),
+('IDV_CU_DIRTPATCH2', '1', '3', '1', '1', 'smlpanel.vct', 'sanddirtcu2');
 
 
 
 delete from machines where [name] like 'S00_HIDDEN%';
 delete from machines where [name] like 'S00_HIDE%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES  
-('40000', 'S00_HIDER', '4392', 'IDV_PATH2', '1', '1', '2', '1', '2', 'M_HIDER', '10', '22', '', ''),
-('40025', 'S00_HIDECHECK', '4392', 'IDV_PATH2', '0', '0', '0', '0', '2', 'M_OLIEOLIE', '10', '22', '', ''),
+('S00_HIDER','IDV_PATH2', '1', '1', '2', '1', '2', 'M_HIDER', '10', '22', '', ''),
+('S00_HIDECHECK',  'IDV_PATH2', '0', '0', '0', '0', '2', 'M_OLIEOLIE', '10', '22', '', ''),
 --Digging - Striking - Plying
-('40001', 'S00_HIDDEN_1', '4392', 'IDV_PATH2', '2348', '179', '2425', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40002', 'S00_HIDDEN_2', '4703', 'IDV_MOON3', '2599', '174', '2675', '225', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
-('40022', 'S00_HIDDEN_3', '4705', 'IDV_MOON5', '2355', '89', '2455', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
-('40018', 'S00_HIDDEN_4', '9218', 'IDV_EYEB', '2464', '100', '2536', '170', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL1', 'ISA_TOOL_STRIKER', ''),
+( 'S00_HIDDEN_1', 'IDV_PATH2', '2348', '179', '2425', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_2', 'IDV_MOON3', '2599', '174', '2675', '225', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_3', 'IDV_MOON5', '2355', '89', '2455', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
+( 'S00_HIDDEN_4', 'IDV_EYEB', '2464', '100', '2536', '170', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL1', 'ISA_TOOL_STRIKER', ''),
 
-('40005', 'S00_HIDDEN_5', '9475', 'IDV_WR3', '274', '202', '375', '300', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_5',  'IDV_WR3', '274', '202', '375', '300', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
 
-('40017', 'S00_HIDDEN_6', '506', 'IDV_CTO1', '2285', '223', '2330', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+( 'S00_HIDDEN_6', 'IDV_CTO1', '2285', '223', '2330', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
 
-('40007', 'S00_HIDDEN_7', '4866', 'IDV_VIL4', '1985', '203', '2060', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40008', 'S00_HIDDEN_8', '5381', 'IDV_TMPLPTH5', '1899', '239', '1940', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40019', 'S00_HIDDEN_9', '9218', 'IDV_EYEB', '881', '95', '950', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
-('40020', 'S00_HIDDEN_10', '9474', 'IDV_WR2', '2578', '46', '2660', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
+('S00_HIDDEN_7', 'IDV_VIL4', '1985', '203', '2060', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_8', 'IDV_TMPLPTH5', '1899', '239', '1940', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_9', 'IDV_EYEB', '881', '95', '950', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL2', 'ISA_TOOL_STRIKER', ''),
+('S00_HIDDEN_10', 'IDV_WR2', '2578', '46', '2660', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
  
-('40011', 'S00_HIDDEN_11', '4096', 'IDV_SCN10PT0', '622', '181', '700', '220', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-('40012', 'S00_HIDDEN_12', '4353', 'IDV_FA1PAN', '1424', '204', '1480', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-('40013', 'S00_HIDDEN_13', '4353', 'IDV_FA1PAN', '2853', '208', '2920', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-('40014', 'S00_HIDDEN_14', '4354', 'IDV_FH1PTH1', '238', '262', '290', '320', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_11', 'IDV_SCN10PT0', '622', '181', '700', '220', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_12', 'IDV_FA1PAN', '1424', '204', '1480', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_13', 'IDV_FA1PAN', '2853', '208', '2920', '240', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+( 'S00_HIDDEN_14', 'IDV_FH1PTH1', '238', '262', '290', '320', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 
-('40015', 'S00_HIDDEN_15', '4096', 'IDV_SCN10PT0', '492', '198', '560', '230', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
-('40016', 'S00_HIDDEN_16', '508', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+( 'S00_HIDDEN_15','IDV_SCN10PT0', '492', '198', '560', '230', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+('S00_HIDDEN_16', 'IDV_CTO3', '2046', '250', '2100', '270', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDROCK1', 'ISA_TOOL_PRYER', ''),
+('S00_HIDDEN_17', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_18', 'IDV_ctyh', '2807', '207', '2900', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_21', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
+('S00_HIDDEN_22', 'IDV_WR3', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_19', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_20', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
 
-('40006', 'S00_HIDDEN_17', '507', 'IDV_CTO2', '1190', '239', '1270', '300', '2', 'M_DIGGABLE', 'IDV_CU_DIRTPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
-('40004', 'S00_HIDDEN_18', '551', 'IDV_ctyh', '2807', '207', '2900', '250', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT3', 'ISA_TOOL_DIGGER', ''),
-
-
-('40021', 'S00_HIDDEN_21', '9475', 'IDV_WR3', '2492', '46', '2570', '150', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDWALL3', 'ISA_TOOL_STRIKER', ''),
-('40003', 'S00_HIDDEN_22', '4704', 'IDV_WR3', '1198', '227', '1275', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRT', 'ISA_TOOL_DIGGER', ''),
-('40009', 'S00_HIDDEN_19', '5381', 'IDV_TMPLPTH5', '431', '195', '500', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40010', 'S00_HIDDEN_20', '4096', 'IDV_SCN10PT0', '2510', '175', '2580', '230', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-
-('40023', 'S00_HIDDEN_23', '4391', 'IDV_PATH2', '693', '208', '750', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40024', 'S00_HIDDEN_24', '4391', 'IDV_PATH2', '2065', '214', '2165', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40025', 'S00_HIDDEN_25','4703', 'IDV_MOON5', '300', '205', '380', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
-('40026', 'S00_HIDDEN_26',  '5381', 'IDV_TMPLPTH5', '2279', '215', '2350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40027', 'S00_HIDDEN_27', '5381', 'IDV_TMPLPTH5', '1197', '224', '1290', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40028', 'S00_HIDDEN_28', '5382', 'IDV_TMPLPTH9', '2018', '245', '2100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40029', 'S00_HIDDEN_29', '4868', 'IDV_VIL6', '3180', '172', '3220', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40030', 'S00_HIDDEN_30', '4868', 'IDV_VIL6', '2134', '222', '2220', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_23', 'IDV_PATH2', '693', '208', '750', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_24', 'IDV_PATH2', '2065', '214', '2165', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_25', 'IDV_MOON5', '300', '205', '380', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTMOON', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_26', 'IDV_TMPLPTH5', '2279', '215', '2350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_27', 'IDV_TMPLPTH5', '1197', '224', '1290', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_28', 'IDV_TMPLPTH9', '2018', '245', '2100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_29', 'IDV_VIL6', '3180', '172', '3220', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_30', 'IDV_VIL6', '2134', '222', '2220', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 
 --Highly unlikely hiding places - just in case
-('40031', 'S00_HIDDEN_26',  '5381', 'IDV_TMPLPTH5', '1279', '215', '1350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40032', 'S00_HIDDEN_27', '5381', 'IDV_TMPLPTH5', '1000', '224', '1190', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40033', 'S00_HIDDEN_28', '5382', 'IDV_TMPLPTH9', '1018', '245', '1100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40034', 'S00_HIDDEN_29', '4868', 'IDV_VIL6', '3080', '172', '3120', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
-('40035', 'S00_HIDDEN_30', '4868', 'IDV_VIL6', '2034', '222', '2020', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_26', 'IDV_TMPLPTH5', '1279', '215', '1350', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_27', 'IDV_TMPLPTH5', '1000', '224', '1190', '280', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_28', 'IDV_TMPLPTH9', '1018', '245', '1100', '290', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_29', 'IDV_VIL6', '3080', '172', '3120', '224', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+('S00_HIDDEN_30', 'IDV_VIL6', '2034', '222', '2020', '275', '2', 'M_DIGGABLE', 'IDV_CU_GRASSPATCH1', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 
 
-('40023', 'S00_HIDEFINDER', '4096', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDELIST', 'S00_HIDECHECK', '', '', '');
+('S00_HIDEFINDER', 'IDV_SCN10PT1', '268', '128', '463', '204', '2', 'M_HIDELIST', 'S00_HIDECHECK', '', '', '');
 
 
 
