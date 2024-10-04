@@ -12,8 +12,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_BARD', 'summonFoulWind', 'FWcountdown', 'SIGNALi', '0', 'S17_aFOULWIND', '', '', ''),
 --inserting hiding stuff and and other one off signals then go to timed loop
 ('M_BARD', 'hideStuff', 'kickOffNature', 'SIGNALi', 'SIG_OPEN', 'S00_HIDER', '', '', ''),
-('M_BARD', 'kickOffNature', '20', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', '');
-
+('M_BARD', 'kickOffNature', 'kickOffQuests', 'SIGNAL', 'QL_MANAGER', 'Q0_START', '', '', ''),
+('M_BARD', 'kickOffQuests', 'endgame', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', ''),
+('M_BARD', 'endgame', '0', 'WAIT', '', 'SIG_ENDGAME', '', '', '');
 
 delete from machines where name = 'S01_NATURE';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 

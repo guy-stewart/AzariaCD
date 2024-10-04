@@ -246,74 +246,74 @@ VALUES
 ---
 ('M_QUEST_MANAGER','startposted','0','Z_EPSILON', '', '', ''),
 ---
-('M_QUEST_MANAGER','waiting', 'postfini','WAIT', '', 'Q0_STOP', '
+('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q0_STOP', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC);
         q_local_active(BPARM, 0,active,WPARM)~ 
         q_local_complete(BPARM, 0,complete,WPARM).
 
 '),
-('M_QUEST_MANAGER','waiting', 'postfini','WAIT', '', 'Q1_STOP', '
+('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q1_STOP', '', '
         BPARM = 1; MAPi(BPARM,S00_QUEST); 
         WPARM = 1; MAPi(WPARM,S00_QUESTLOC);
         q_local_active(BPARM, 1,active,WPARM)~ 
         q_local_complete(BPARM, 1,complete,WPARM).
 
 '),
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q2_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q2_STOP', '', '
         BPARM = 2; MAPi(BPARM,S00_QUEST); 
         WPARM = 2; MAPi(WPARM,S00_QUESTLOC);
         q_world_active(BPARM, 2,active,WPARM)~ 
         q_world_complete(BPARM, 2,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q3_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q3_STOP', '', '
         BPARM = 3; MAPi(BPARM,S00_QUEST); 
         WPARM = 3; MAPi(WPARM,S00_QUESTLOC);
           q_world_active(BPARM, 3,active,WPARM)~ 
         q_world_complete(BPARM, 3,complete,WPARM).
 '),
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q4_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q4_STOP', '', '
         BPARM = 4; MAPi(BPARM,S00_QUEST); 
         WPARM = 4; MAPi(WPARM,S00_QUESTLOC);
           q_world_active(BPARM, 4,active,WPARM)~ 
         q_world_complete(BPARM, 4,complete,WPARM).
 '),
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q5_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q5_STOP', '', '
        BPARM = 5; MAPi(BPARM,S00_QUEST); 
         WPARM = 5; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 5,active,WPARM)~ 
         q_local_complete(BPARM, 5,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q6_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q6_STOP', '', '
         BPARM = 6; MAPi(BPARM,S00_QUEST); 
         WPARM = 6; MAPi(WPARM,S00_QUESTLOC);
           q_world_active(BPARM, 6,active,WPARM)~ 
         q_world_complete(BPARM, 6,complete,WPARM).
 '),
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q7_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q7_STOP', '', '
         BPARM = 7; MAPi(BPARM,S00_QUEST); 
         WPARM = 7; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 7,active,WPARM)~ 
         q_local_complete(BPARM, 7,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q8_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q8_STOP', '', '
         BPARM = 8; MAPi(BPARM,S00_QUEST); 
         WPARM = 8; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 8,active,WPARM)~ 
         q_local_complete(BPARM, 8,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q9_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q9_STOP', '', '
         BPARM = 9; MAPi(BPARM,S00_QUEST); 
         WPARM = 9; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 9,active,WPARM)~ 
         q_local_complete(BPARM, 9,complete,WPARM).
 '),      
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q10_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q10_STOP', '', '
         BPARM = 10; MAPi(BPARM,S00_QUEST); 
         WPARM = 10; MAPi(WPARM,S00_QUESTLOC);
         q_local_active(BPARM, 10,active,WPARM)~ 
@@ -322,7 +322,7 @@ VALUES
         
         
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q11_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q11_STOP', '', '
         BPARM = 11; MAPi(BPARM,S00_QUEST); 
         WPARM = 11; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 11,active,WPARM)~ 
@@ -331,21 +331,21 @@ VALUES
         
         
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q12_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q12_STOP', '', '
         BPARM = 12; MAPi(BPARM,S00_QUEST); 
         WPARM = 12; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 12,active,WPARM)~ 
         q_local_complete(BPARM, 12,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q13_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q13_STOP', '', '
         BPARM = 13; MAPi(BPARM,S00_QUEST); 
         WPARM = 13; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 13,active,WPARM)~ 
         q_local_complete(BPARM, 13,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q14_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q14_STOP', '', '
         BPARM = 14; MAPi(BPARM,S00_QUEST); 
         WPARM = 14; MAPi(WPARM,S00_QUESTLOC);
           q_word_active(BPARM, 14,active,WPARM)~ 
@@ -353,14 +353,14 @@ VALUES
 '),
 
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q15_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q15_STOP', '', '
         BPARM = 15; MAPi(BPARM,S00_QUEST); 
         WPARM = 15; MAPi(WPARM,S00_QUESTLOC);
         q_local_active(BPARM, 15,active,WPARM)~ 
         q_local_complete(BPARM, 15,complete,WPARM).
 '),
 
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', '', 'Q16_STOP', '
+('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q16_STOP', '', '
         BPARM = 16; MAPi(BPARM,S00_QUEST); 
         WPARM = 16; MAPi(WPARM,S00_QUESTLOC);
           q_local_active(BPARM, 16,active,WPARM)~ 
