@@ -156,6 +156,10 @@ VALUES
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC); 
+        q_local_active('%')~
+        q_local_complete('%')~
+        q_world_active('%')~
+        q_world_complete('%')~
         q_local_active(BPARM, 0,active,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q1_START', '', '

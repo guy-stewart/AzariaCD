@@ -13,12 +13,12 @@ delete from machines where name like 'S27_FISH%';
 delete from machines where name like 'S27_LAKE%';
 delete from machines where name like 'S27_DEATH%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('9820', 'S27_POLESTANDa', '5385', 'IDV_TMPLPTH9', '930', '120', '1000', '300', '0', 'M_POLESTAND', '', '','',''),
-('9821', 'S27_FISHSTATION1', '5385', 'IDV_TMPLPTH9', '257', '151', '345', '275', '0', 'M_FISHSTATION',  '', '','',''),
-('9822', 'S27_FISHSTATION2', '5385', 'IDV_TMPLPTH9', '351', '151', '400', '275', '0', 'M_FISHSTATION',  '', '','',''),
-('9823', 'S27_DEATHMANAGER', '5390', 'IDV_LAKEB1', '1', '1', '10', '10', '1', 'M_DEATHMANAGER', '5', 'WETBREATH_ACTIVE','2','SOUND_SPLASH');
+('S27_POLESTANDa',   'IDV_TMPLPTH9', '930', '120', '1000', '300', '0', 'M_POLESTAND', '', '','',''),
+('S27_FISHSTATION1', 'IDV_TMPLPTH9', '257', '151', '345', '275', '0', 'M_FISHSTATION',  '', '','',''),
+('S27_FISHSTATION2', 'IDV_TMPLPTH9', '351', '151', '400', '275', '0', 'M_FISHSTATION',  '', '','',''),
+('S27_DEATHMANAGER', 'IDV_LAKEB1', '1', '1', '10', '10', '1', 'M_DEATHMANAGER', '5', 'WETBREATH_ACTIVE','2','SOUND_SPLASH');
 
 
 
@@ -59,6 +59,7 @@ VALUES
     PLAYWAVE(WIP4);
 '),
 ('M_DEATHMANAGER', 'safe', 'fineOnBreath', 'ESTIME', '', 'WIP1', ''),
+('M_DEATHMANAGER', 'safe', '0','WAIT','','SIG_CLEAR', ''),
 ('M_DEATHMANAGER', 'fineOnBreath', 'needAir', 'Z_EPSILON', '0', '', ''),
 ('M_DEATHMANAGER', 'needAir', 'safe', 'IFSTATE', 'active', 'WIP2', ''),
 ('M_DEATHMANAGER', 'needAir', 'dieing', 'ESTIME', '0', 'WIP3','
@@ -74,14 +75,14 @@ VALUES
 
 delete from objects where object = 'IDD_TICKLELEAF';
 insert into objects values
-('IDD_TICKLELEAF','IDD_NULL','0','tickleleaf','tickleleaf','tickleleaf');
+('IDD_TICKLELEAF','IDD_NULL','tickleleaf','tickleleaf','tickleleaf');
 
 
 delete from machines where name = 'S27_HUNGRYCLAM';
 delete from machines where name = 'S27_TICKLEPLANT';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('9800', 'S27_HUNGRYCLAM', '5390', 'IDV_LAKEB1', '1722', '162', '1780', '200', '0', 'M_CLAM', 'IDS_CLAM', '', '', ''),
-('9801', 'S27_TICKLEPLANT', '5391', 'IDV_LAKEB2', '448', '164', '584', '271', '2', 'M_PLANTBIN', 'IDD_TICKLELEAF', 'IDS_TICKLEPLANT', '60', '');
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+('S27_HUNGRYCLAM', 'IDV_LAKEB1', '1722', '162', '1780', '200', '0', 'M_CLAM', 'IDS_CLAM', '', '', ''),
+('S27_TICKLEPLANT','IDV_LAKEB2', '448', '164', '584', '271', '2', 'M_PLANTBIN', 'IDD_TICKLELEAF', 'IDS_TICKLEPLANT', '60', '');
 
 delete from transitions where automaton = 'M_CLAM';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
