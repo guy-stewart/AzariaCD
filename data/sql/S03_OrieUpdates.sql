@@ -70,6 +70,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ', '', ''),
  ('M_ORIEKEY', '3', '5', 'SHOW', 'WOBJECT', '', ' 
     SIGNAL(WIP1,SIG_UNLOCK);
+    SIGNAL(QL_MANAGER,Q0_STOP);
  ', '', ''),
  ('M_ORIEKEY', '5', '6', 'GRAB', '0', '0', '
     HANDOFF(0,IDD_ORIEKEYSMALL);
@@ -98,7 +99,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ('M_QANIPORTAL', '25', '10', 'WAIT', '', 'SIG_UNLOCK','
     MOV(WSPRITE,WIP1);
  '),
- ('M_QANIPORTAL', '30', '10', 'LOADVIEW', '0', 'WIP3','');
+ ('M_QANIPORTAL', '30', '10', 'LOADVIEW', '0', 'WIP3','
+    SIGNAL(QL_MANAGER,Q1_START);
+ ');
 
 delete from cardinals where [from] like 'IDV_N2A%';
 INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest")

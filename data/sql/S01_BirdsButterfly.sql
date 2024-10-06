@@ -32,16 +32,14 @@ delete from transitions where automaton = 'M_VPLAY2';
 delete from transitions where automaton = 'M_VPLAY3';
 delete from transitions where automaton = 'M_ANIPORTAL';
 
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
-VALUES 
-('M_NATURE', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
-('M_NATURE', '1', '2', 'ESTIME', '', '4',''),
-('M_NATURE', '2', '3', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSFWD',''),
-('M_NATURE', '3', '4', 'ESTIME', '10', '10',''),
-('M_NATURE', '4', '5', 'SIGNALi', 'SIG_OPEN', 'S03_BIRDSBKWD',''),
-('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY',''),
-('M_NATURE', '6', '7', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
-('M_NATURE', '7', '1', 'ESTIME', '', '20',''),
+-- the latest M_NATURE is in the file S00_BARD which adds a gopa bush and increases time
+
+
+-- Removed from here
+
+
+INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+
 
 
 ('M_TIMEDVPLAY', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),

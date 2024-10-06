@@ -1,5 +1,5 @@
-delete from games;
---drop table games;
+--delete from games;
+drop table games;
 
 
 --When running this, there seems to be a conflict somewhere with 
@@ -553,8 +553,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 --Show the standing sprite and record the current view
 --put up the mefpan and then signal the quest to play
-('M_MEF_APPROACH','0', 'setup', 'MOV', 'WVIEWID', 'LVIEW',''),
-('M_MEF_APPROACH', 'setup', 'chillin', 'WAIT', '', 'SIG_SHOW', '
+-- ('M_MEF_APPROACH','0', '0', 'MOV', 'WVIEWID', 'LVIEW',''),
+('M_MEF_APPROACH', '0', 'chillin', 'WAIT', '', 'SIG_SHOW', '
     MOV(WSPRITE,WIP1);
     ASHOW(WSPRITE,V_LOOP);
 '),
@@ -639,7 +639,11 @@ VALUES
 PLAYWAVE(WIP3);
 '),
 ('M_MEF_TALK','startPlayingTalkFile', 'chatting', 'ESTIME', 'WIP2', '', ''), -- close durration of talk wip2
-
+('M_MEF_TALK','startPlayingTalkFile', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
+   // REF_MACHINE(SOD_SPELL);
+    REF_MACHINE(CHAR_DROPTARGET);
+    MOV(WOBJECT,R_WOBJECT);
+'),
 ('M_MEF_TALK','chatting', 'talkDone', 'MOV', 'BFRAME', '0','
     SHOW(WIP4); //expression file
    // ANIMATE(10);
@@ -657,6 +661,11 @@ PLAYWAVE(WIP3);
 '),
 ('M_MEF_TALK','closed', '0', 'Z_EPSILON', '0', '0', ''),
 -- Examine and react to items -------------------------
+('M_MEF_TALK','chatting', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
+   // REF_MACHINE(SOD_SPELL);
+    REF_MACHINE(CHAR_DROPTARGET);
+    MOV(WOBJECT,R_WOBJECT);
+'),
 ('M_MEF_TALK','talkDone', 'droppedItem', 'WAIT', '0', 'SIG_DROP', '
    // REF_MACHINE(SOD_SPELL);
     REF_MACHINE(CHAR_DROPTARGET);

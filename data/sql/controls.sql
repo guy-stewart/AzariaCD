@@ -36,11 +36,9 @@ GREEN = 0x00FF00
 BLUE  = 0xFF0000
 */
 
-drop table if exists controls;
-create table controls
-(
+create table IF NOT EXISTS controls (
     [view]    text,
-    [id]   int,
+    [id]   text,
     [type] text,
     [image]     text,
     [image_selected]     text,
@@ -50,27 +48,54 @@ create table controls
     [values] text,
     [default] text,
     [ids_font] text,
-    [font_color] int,
+    [font_color] TEXT,
     [code] text,
     PRIMARY KEY ([view],[id]) ON CONFLICT REPLACE);
 
+delete from controls where view = 'IDV_CTLTEST1';
+delete from controls where view = 'IDV_CTLTEST2';
+delete from controls where view = 'IDV_CTLTEST3';
 
-insert into controls (view, id, [type],[image],image_selected,x,y,border,[values],[default],[ids_font],[font_color]) values
-('IDV_CTLTEST1', 1, 'LABEL',    'IDS_REDDOT',       '',                   200, 130, 0,
+insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
+('IDV_CTLTEST1', '1', 'LABEL',    'IDS_REDDOT',       '',                   200, 130, 0,
 ' This is a test string
       line two
       line three
-and this is line FOUR.','', 'IDS_FONTTNB18', 0xFF8888), 
-('IDV_CTLTEST1', 2, 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50,  60, 0, '','','',0),
-('IDV_CTLTEST1', 3, 'BUTTON',   'IDS_BTN_DOWN',     'IDS_BTN_OK_HI',       50, 110, 0, '','','',0),
-('IDV_CTLTEST1', 4, 'CHECKBOX', 'IDS_BTN_VILCULT',  'IDS_BTN_VILCULT_HI',  50, 160, 0, '','','',0),
-('IDV_CTLTEST1', 5, 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',    200,  50, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF);
+and this is line FOUR.','', 'IDS_FONTTNR12', 0xFF8888,''), 
+
+('IDV_CTLTEST1', '2', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50,  60, 0, '','','',0,
+'LOADVIEW(IDV_CTLTEST2);'),
+('IDV_CTLTEST1', '3', 'BUTTON',   'IDS_BTN_DOWN',     'IDS_BTN_OK_HI',       50, 110, 0, '','','',0,''),
+('IDV_CTLTEST1', '4', 'CHECKBOX', 'IDS_BTN_VILCULT',  'IDS_BTN_VILCULT_HI',  50, 160, 0, '','','',0,''),
+('IDV_CTLTEST1', '5', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',    200,  50, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
+
+('IDV_CTLTEST2', 'B1', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50, 35, 0, '','','',0,''),
+('IDV_CTLTEST2', 'E2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',     150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
+('IDV_CTLTEST2', 'L3', 'LISTBOX',  'cListBxL',       'cListBxL',       50, 90, 7, 'ctltest2','','',0,
+'myvar = LB_SELECTED_ROW_TEXT;
+LOADVIEW(myvar);
+'),
+
+('IDV_CTLTEST3', '1', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50, 35, 0, '','','',0,''),
+('IDV_CTLTEST3', '2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',     150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
+('IDV_CTLTEST3', '3', 'LISTBOX',  'cListBxL',       'cListBxL',       50, 90, 7, 'ctltest2','','',0,
+'myvar = LB_SELECTED_ROW_TEXT;
+LOADVIEW(myvar);
+');
 
 delete from views where view_name = 'IDV_CTLTEST1';
-insert into views ([view_id],[view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
-(6587,'IDV_CTLTEST1',1,3,1,1,'wdepanel.vct','spacebak');
+delete from views where view_name = 'IDV_CTLTEST2';
+delete from views where view_name = 'IDV_CTLTEST3';
+delete from views where view_name = 'IDV_CTLTEST4';
+insert into views ([view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
+('IDV_CTLTEST1',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST2',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST3',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST4',1,3,1,1,'wdepanel.vct','spacebak');
 
-delete from views where view_name = 'IDV_CFGPLAYER2';
-insert into `views` (`Z`, `backgroundAudio`, `behavior_id`, `locator_view`, `portal_filename`, `surface_filename`, `view_id`, `view_name`) 
-values 
-('1', '0', '10', '1', 'wdepanel.vct', 'cultmen', '34', 'IDV_CFGPLAYER2')
+drop table if exists ctltest2;
+create table if not exists ctltest2 (value text not null, [alt] text, primary key (value) on conflict replace);
+insert into ctltest2 values
+("IDV_CTLTEST1", "alt one"),
+("IDV_PATH1", "alt two"),
+("IDV_FH1PATH", "alt three");

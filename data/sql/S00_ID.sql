@@ -235,7 +235,7 @@ VALUES
 ('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
 
-
+delete from "main"."transitions" where [automaton] like 'M_DEC_E%';
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 delete from "main"."transitions" where [automaton] like 'M_O_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
@@ -518,21 +518,21 @@ VALUES
 delete from "main"."idv" where [name] like 'IDV_TESTPAN%';
 INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_TESTPAN', '40100');
 delete from "main"."views" where [view_name] like 'IDV_TESTPAN%';
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('40100', 'IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
+INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+VALUES ('IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
 
 delete from "main"."machines" where [name] like 'S0_TEST%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('40110', 'S0_TEST_1', '40100', 'IDV_TESTPAN', '40', '70', '110', '135',  '0', 'M_TEST1', '', '', '', ''),
-('40111', 'S0_TEST_2', '40100', 'IDV_TESTPAN', '40', '148', '110', '212', '0', 'M_TEST2', '', '', '', ''),
-('40112', 'S0_TEST_3', '40100', 'IDV_TESTPAN', '40', '212', '110', '290', '0', 'M_TEST3', '', '', '', ''),
-('40113', 'S0_TEST_4', '40100', 'IDV_TESTPAN', '150', '70', '210', '135',  '0', 'M_TEST4', '', '', '', ''),
-('40114', 'S0_TEST_5', '40100', 'IDV_TESTPAN', '150', '148', '210', '212', '0', 'M_TEST5', '', '', '', ''),
-('40115', 'S0_TEST_6', '40100', 'IDV_TESTPAN', '150', '212', '210', '290', '0', 'M_TEST6', '', '', '', ''),
-('40116', 'S0_TEST_7', '40100', 'IDV_TESTPAN', '250', '70', '310', '135',  '0', 'M_TEST7', '', '', '', ''),
-('40117', 'S0_TEST_8', '40100', 'IDV_TESTPAN', '250', '148', '310', '212', '0', 'M_TEST8', '', '', '', ''),
-('40118', 'S0_TEST_9', '40100', 'IDV_TESTPAN', '250', '212', '310', '290', '0', 'M_TEST9', '', '', '', '');
+('S0_TEST_1', 'IDV_TESTPAN', '40', '70', '110', '135',  '0', 'M_TEST1', '', '', '', ''),
+('S0_TEST_2', 'IDV_TESTPAN', '40', '148', '110', '212', '0', 'M_TEST2', '', '', '', ''),
+('S0_TEST_3', 'IDV_TESTPAN', '40', '212', '110', '290', '0', 'M_TEST3', '', '', '', ''),
+('S0_TEST_4', 'IDV_TESTPAN', '150', '70', '210', '135',  '0', 'M_TEST4', '', '', '', ''),
+('S0_TEST_5', 'IDV_TESTPAN', '150', '148', '210', '212', '0', 'M_TEST5', '', '', '', ''),
+('S0_TEST_6', 'IDV_TESTPAN', '150', '212', '210', '290', '0', 'M_TEST6', '', '', '', ''),
+('S0_TEST_7', 'IDV_TESTPAN', '250', '70', '310', '135',  '0', 'M_TEST7', '', '', '', ''),
+('S0_TEST_8', 'IDV_TESTPAN', '250', '148', '310', '212', '0', 'M_TEST8', '', '', '', ''),
+('S0_TEST_9', 'IDV_TESTPAN', '250', '212', '310', '290', '0', 'M_TEST9', '', '', '', '');
 
 
 
