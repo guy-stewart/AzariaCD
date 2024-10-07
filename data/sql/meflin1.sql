@@ -488,44 +488,44 @@ VALUES
 
 --keeps the most recently engaged quest 
 
-('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);'),
+('M_MEFCURRENT','0', 'quest1', 'WAIT', '', 'SIG_Q1', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,S33_NEELP_Q1);SIGNAL(QL_MANAGER,Q7_START);'),
 ('M_MEFCURRENT','quest1', '0', 'Z_EPSILON', '', '', ''), 
 ('M_MEFCURRENT','0', 'quest1p', 'WAIT', '', 'SIG_Q1P', 'ASSIGN(BPARM,S33_NEELP);ASSIGN(WPARM,NEELP_I1);'),
 ('M_MEFCURRENT','quest1p', '0', 'Z_EPSILON', '', '', ''), 
-('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(BPARM,S11_NEELP);ASSIGN(WPARM,S11_NEELP_Q2);'), 
+('M_MEFCURRENT','0', 'quest2', 'WAIT', '', 'SIG_Q2', 'ASSIGN(BPARM,S11_NEELP);ASSIGN(WPARM,S11_NEELP_Q2);SIGNAL(QL_MANAGER,Q8_START);'), 
 ('M_MEFCURRENT','quest2', '0', 'Z_EPSILON', '', '', ''), 
 ('M_MEFCURRENT','0', 'quest2p', 'WAIT', '', 'SIG_Q2P', 'ASSIGN(BPARM,S11_NEELP);ASSIGN(WPARM,NEELP_I2);'),
 ('M_MEFCURRENT','quest2p', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S30_NEELP);ASSIGN(WPARM,S30_NEELP_Q3);'), 
+('M_MEFCURRENT','0', 'quest3', 'WAIT', '', 'SIG_Q3', 'ASSIGN(BPARM,S30_NEELP);ASSIGN(WPARM,S30_NEELP_Q3);SIGNAL(QL_MANAGER,Q9_START);'), 
 ('M_MEFCURRENT','quest3', '0', 'Z_EPSILON', '', '', ''), 
 ('M_MEFCURRENT','0', 'quest3p', 'WAIT', '', 'SIG_Q3P', 'ASSIGN(BPARM,S30_NEELP);ASSIGN(WPARM,NEELP_I3);'), 
 ('M_MEFCURRENT','quest3p', '0', 'Z_EPSILON', '', '', ''), 
 
-('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);'), 
+('M_MEFCURRENT','0', 'quest4', 'WAIT', '', 'SIG_Q4', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,S24_RATHE_Q1);SIGNAL(QL_MANAGER,Q10_START);'), 
 ('M_MEFCURRENT','quest4', '0', 'Z_EPSILON', '', '', ''),
 ('M_MEFCURRENT','0', 'quest4p', 'WAIT', '', 'SIG_Q4P', 'ASSIGN(BPARM,S24_RATHE);ASSIGN(WPARM,RATHE_I1);'), 
 ('M_MEFCURRENT','quest4p', '0', 'Z_EPSILON', '', '', ''),
 
-('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(BPARM,S25_RATHE);ASSIGN(WPARM,S25_RATHE_Q2);'), 
+('M_MEFCURRENT','0', 'quest5', 'WAIT', '', 'SIG_Q5', 'ASSIGN(BPARM,S25_RATHE);ASSIGN(WPARM,S25_RATHE_Q2);SIGNAL(QL_MANAGER,Q11_START);'), 
 ('M_MEFCURRENT','quest5', '0', 'Z_EPSILON', '', '', ''),
 
 ('M_MEFCURRENT','0', 'quest5p', 'WAIT', '', 'SIG_Q5P', 'ASSIGN(BPARM,S25_RATHE);ASSIGN(WPARM,RATHE_I2);'), 
 ('M_MEFCURRENT','quest5p', '0', 'Z_EPSILON', '', '', ''),
 
-('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,S10_THAOR_Q1);'), 
+('M_MEFCURRENT','0', 'quest6', 'WAIT', '', 'SIG_Q6', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,S10_THAOR_Q1);SIGNAL(QL_MANAGER,Q12_START);'), 
 ('M_MEFCURRENT','quest6', '0', 'Z_EPSILON', '', '', ''),
 ('M_MEFCURRENT','0', 'quest6p', 'WAIT', '', 'SIG_Q6P', 'ASSIGN(BPARM,S10_THAOR);ASSIGN(WPARM,THAOR_I1);'), 
 ('M_MEFCURRENT','quest6p', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(BPARM,S19_THAOR);ASSIGN(WPARM,S19_THAOR_Q2);'), 
+('M_MEFCURRENT','0', 'quest7', 'WAIT', '', 'SIG_Q7', 'ASSIGN(BPARM,S19_THAOR);ASSIGN(WPARM,S19_THAOR_Q2);SIGNAL(QL_MANAGER,Q13_START);'), 
 ('M_MEFCURRENT','quest7', '0', 'Z_EPSILON', '', '', ''),
 ('M_MEFCURRENT','0', 'quest7p', 'WAIT', '', 'SIG_Q7P', 'ASSIGN(BPARM,S19_THAOR);ASSIGN(WPARM,THAOR_I2);'), 
 ('M_MEFCURRENT','quest7p', '0', 'Z_EPSILON', '', '', ''),
 
-('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,S16_PERST_Q1);'), 
+('M_MEFCURRENT','0', 'quest8', 'WAIT', '', 'SIG_Q8', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,S16_PERST_Q1);SIGNAL(QL_MANAGER,Q14_START);'), 
 ('M_MEFCURRENT','quest8', '0', 'Z_EPSILON', '', '', ''),
 ('M_MEFCURRENT','0', 'quest8p', 'WAIT', '', 'SIG_Q8P', 'ASSIGN(BPARM,S16_PERST);ASSIGN(WPARM,PERST_I1);'), 
 ('M_MEFCURRENT','quest8p', '0', 'Z_EPSILON', '', '', ''),
-('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(BPARM,S12_PERST);ASSIGN(WPARM,S12_PERST_Q2);'),
+('M_MEFCURRENT','0', 'quest9', 'WAIT', '', 'SIG_Q9', 'ASSIGN(BPARM,S12_PERST);ASSIGN(WPARM,S12_PERST_Q2);SIGNAL(QL_MANAGER,Q15_START);'),
 ('M_MEFCURRENT','quest9', '0', 'Z_EPSILON', '', '', ''),
 ('M_MEFCURRENT','0', 'quest9p', 'WAIT', '', 'SIG_Q9P', 'ASSIGN(BPARM,S12_PERST);ASSIGN(WPARM,PERST_I2);'),
 ('M_MEFCURRENT','quest9p', '0', 'Z_EPSILON', '', '', ''),
@@ -701,16 +701,19 @@ PLAYWAVE(WIP3);
                 //Signal the quest solved - the new start happens whith the next approach
                      if(R_BPARM == S33_NEELP){
                         SIGNAL(NEELP_COORD,SIG_Q1_SOLVED);
+                        SIGNAL(QL_MANAGER,Q7_STOP);
                         SIGNAL(S33_NEELP,SIG_VANISH); SIGNAL(S33_NEELP_alt1,SIG_HIDE); SIGNAL(S33_NEELP_alt2,SIG_HIDE);
                         SIGNAL(S11_NEELP,SIG_SHOW);SIGNAL(S11_NEELP_alt1,SIG_SHOW);
                      }
                     if(R_BPARM == S11_NEELP){
                         SIGNAL(NEELP_COORD,SIG_Q2_SOLVED);
+                        SIGNAL(QL_MANAGER,Q8_STOP);
                         SIGNAL(S11_NEELP,SIG_VANISH); SIGNAL(S11_NEELP_alt1,SIG_HIDE);
                         SIGNAL(S30_NEELP,SIG_SHOW);SIGNAL(S30_NEELP_alt1,SIG_SHOW);
                     }
                     if(R_BPARM == S30_NEELP){
                         SIGNAL(NEELP_COORD,SIG_Q3_SOLVED);
+                        SIGNAL(QL_MANAGER,Q9_STOP);
                         SIGNAL(S30_NEELP,SIG_VANISH); SIGNAL(S30_NEELP_alt1,SIG_HIDE);
                     }
              //--------------
@@ -754,11 +757,13 @@ PLAYWAVE(WIP3);
                 PLAYWAVE(WTEMP2);
                    if(R_BPARM == S24_RATHE){
                         SIGNAL(RATHE_COORD,SIG_Q1_SOLVED);
+                        SIGNAL(QL_MANAGER,Q10_STOP);
                         SIGNAL(S24_RATHE,SIG_VANISH);
                         SIGNAL(S25_RATHE,SIG_SHOW);
                      }
                      if(R_BPARM == S25_RATHE){
                         SIGNAL(RATHE_COORD,SIG_Q2_SOLVED);
+                        SIGNAL(QL_MANAGER,Q11_STOP);
                         SIGNAL(S25_RATHE,SIG_VANISH);
                      }
             }
@@ -797,11 +802,17 @@ PLAYWAVE(WIP3);
                 PLAYWAVE(WTEMP2);
                     if(R_BPARM == S10_THAOR){
                         SIGNAL(THAOR_COORD,SIG_Q1_SOLVED);
+                        q_world_active(?BPARM, "3");
+                        if(BPARM != " Excavate the Ancient crypts in the canyons."){
+                                SIGNAL(QL_MANAGER,Q3_START);
+                        }
+                        SIGNAL(QL_MANAGER,Q12_STOP);
                         SIGNAL(S10_THAOR,SIG_VANISH); SIGNAL(S10_THAOR_alt1,SIG_HIDE); 
                         SIGNAL(S19_THAOR,SIG_SHOW);SIGNAL(S19_THAOR_alt1,SIG_SHOW);
                      }
                      if(R_BPARM == S19_THAOR){
                         SIGNAL(THAOR_COORD,SIG_Q2_SOLVED);
+                        SIGNAL(QL_MANAGER,Q13_STOP);
                         SIGNAL(S19_THAOR,SIG_VANISH);SIGNAL(S19_THAOR_alt1,SIG_HIDE);
                      }
             }
@@ -838,11 +849,13 @@ PLAYWAVE(WIP3);
                 PLAYWAVE(WTEMP2);
                     if(R_BPARM == S16_PERST){
                         SIGNAL(PERST_COORD,SIG_Q1_SOLVED);
+                        SIGNAL(QL_MANAGER,Q14_STOP);
                         SIGNAL(S16_PERST,SIG_VANISH); SIGNAL(S16_PERST_alt1,SIG_HIDE); 
                         SIGNAL(S12_PERST,SIG_SHOW);
                      }
                      if(R_BPARM == S12_PERST){
                         SIGNAL(PERST_COORD,SIG_Q2_SOLVED);
+                        SIGNAL(QL_MANAGER,Q15_STOP);
                         SIGNAL(S12_PERST,SIG_VANISH);
                      }
             }

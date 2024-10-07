@@ -20,12 +20,11 @@ delete from machines where name = 'S21_LEVER';
 
 
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('8466', 'S21_LEVSTOP', '8105', 'IDV_LEVERCU', '295', '210', '360', '260', '1', 'M_LEVSTOP', '','S21_LEVER','',''),
-('8465', 'S21_LEVER', '8105', 'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER'),
-
-('8467', 'S21_MAPOPEN', '8104', 'IDV_MAPBOX1', '40', '0', '227', '177', '1', 'M_LEVDOOR', 'IDS_MAPOPN','IDV_MAPROOM','','');
+('S21_LEVSTOP', 'IDV_LEVERCU', '295', '210', '360', '260', '1', 'M_LEVSTOP', '','S21_LEVER','',''),
+('S21_LEVER',   'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER'),
+('S21_MAPOPEN', 'IDV_MAPBOX1', '40', '0', '227', '177', '1', 'M_LEVDOOR', 'IDS_MAPOPN','IDV_MAPROOM','','');
 
 
 /*
@@ -91,10 +90,10 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 delete from machines where name = 'S21_ALT_LEVER';
 delete from machines where name = 'S21_ALT_MAPBOX';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('8468', 'S21_ALT_LEVER', '8101', 'IDV_N2B', '1556', '142', '1565', '147', '0', 'M_STATESCALE', 'IDS_LEVOPNSML','','',''),
-('8469', 'S21_ALT_MAPBOX', '8103', 'IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALE', 'IDS_MAPBOXSML','','','');
+('S21_ALT_LEVER', 'IDV_N2B', '1556', '142', '1565', '147', '0', 'M_STATESCALE', 'IDS_LEVOPNSML','','',''),
+('S21_ALT_MAPBOX','IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALE', 'IDS_MAPBOXSML','','','');
 
 delete from  "main"."transitions" where automaton = 'M_STATESCALE';
 
@@ -108,7 +107,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 -- Scene 21 Plants and Rocks
 delete from "main"."objects" where object = 'IDD_MAPBTN';
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES ('IDD_MAPBTN', '8572', 'IDC_NULL','mapbtn', 'mapbtn', 'mapbtn');
+INSERT INTO "main"."objects" ("object", "class", "icon", "cursor", "actor") VALUES ('IDD_MAPBTN','IDC_NULL','mapbtn', 'mapbtn', 'mapbtn');
 
 
 delete from  "main"."machines" where name = 'S21_ROCKBIN1';
@@ -125,41 +124,38 @@ delete from machines where [name] like 'S21_p%';
 delete from machines where [name] like 'S21_o%';
 delete from machines where [name] like 'S21_H%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
  VALUES 
  
-    ('8449', 'S21_m1BERRYTREE', '8100', 'IDV_N2A', '1830', '213', '1900', '273', '2', 'M_PLANTBIN', 'IDD_FERNLEAF', 'IDS_FERN', '60', ''),
-    ('8463', 'S21_p3BERRYTREE', '8100', 'IDV_N2A', '708', '220', '758', '278', '2', 'M_PLANTBIN', 'IDD_WFLWRSPT','IDS_WFLOWER','60', ''),
-   
-    ('8450', 'S21_m2BERRYTREE', '8101', 'IDV_N2B', '2015', '166', '2115', '314', '2', 'M_BIN', 'IDD_REDBERRY', '', '60', ''),
-    ('8454', 'S21_m6BERRYTREE', '8101', 'IDV_N2B', '570', '190', '760', '230', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
-    ('8462', 'S21_p2BERRYTREE', '8101', 'IDV_N2B', '2471', '230', '2531', '290', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
-    ('8464', 'S21_p4BERRYTREE', '8101', 'IDV_N2B', '1962', '234', '2022', '294', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
-    
-    ('8451', 'S21_m3BERRYTREE', '8102', 'IDV_N2C', '572', '212', '632', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
-    ('8452', 'S21_m4BERRYTREE', '8102', 'IDV_N2C', '219', '219', '279', '279', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
-    ('8453', 'S21_m5BERRYTREE', '8102', 'IDV_N2C', '61', '161', '235', '209', '2', 'M_PLANTBIN', 'IDD_OMUSHSPT', 'IDS_OMUSH', '60', ''),
-   
-    ('8455', 'S21_o1BERRYTREE', '8103', 'IDV_N2D2', '1711', '209', '1894', '269', '2','M_PLANTBIN', 'IDD_OMUSHSPT', 'IDS_OMUSH', '60', ''),
-    ('8456', 'S21_o2BERRYTREE', '8103', 'IDV_N2D2', '429', '229', '489', '289', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
-    ('8458', 'S21_o4BERRYTREE', '8103', 'IDV_N2D2', '2030', '201', '2090', '261', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
-    ('8459', 'S21_o5BERRYTREE', '8103', 'IDV_N2D2', '2100', '212', '2160', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
-    ('8460', 'S21_o6BERRYTREE', '8103', 'IDV_N2D2', '2170', '195', '2230', '255', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT','IDS_PFLOWER', '60', ''),
-    ('8470', 'S21_ROCKBIN1', '8102', 'IDV_N2C', '1081', '223', '1120', '255', '2', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBIN', '60', ''),
+    ('S21_m1BERRYTREE', 'IDV_N2A', '1830', '213', '1900', '273', '2', 'M_PLANTBIN', 'IDD_FERNLEAF', 'IDS_FERN', '60', ''),
+    ('S21_p3BERRYTREE', 'IDV_N2A', '708', '220', '758', '278', '2', 'M_PLANTBIN', 'IDD_WFLWRSPT','IDS_WFLOWER','60', ''),
+    ('S21_m2BERRYTREE', 'IDV_N2B', '2015', '166', '2115', '314', '2', 'M_BIN', 'IDD_REDBERRY', '', '60', ''),
+    ('S21_m6BERRYTREE', 'IDV_N2B', '570', '190', '760', '230', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
+    ('S21_p2BERRYTREE', 'IDV_N2B', '2471', '230', '2531', '290', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
+    ('S21_p4BERRYTREE', 'IDV_N2B', '1962', '234', '2022', '294', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
+    ('S21_m3BERRYTREE', 'IDV_N2C', '572', '212', '632', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
+    ('S21_m4BERRYTREE', 'IDV_N2C', '219', '219', '279', '279', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
+    ('S21_m5BERRYTREE', 'IDV_N2C', '61', '161', '235', '209', '2', 'M_PLANTBIN', 'IDD_OMUSHSPT', 'IDS_OMUSH', '60', ''),
+    ('S21_o1BERRYTREE', 'IDV_N2D2', '1711', '209', '1894', '269', '2','M_PLANTBIN', 'IDD_OMUSHSPT', 'IDS_OMUSH', '60', ''),
+    ('S21_o2BERRYTREE', 'IDV_N2D2', '429', '229', '489', '289', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
+    ('S21_o4BERRYTREE', 'IDV_N2D2', '2030', '201', '2090', '261', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
+    ('S21_o5BERRYTREE', 'IDV_N2D2', '2100', '212', '2160', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
+    ('S21_o6BERRYTREE', 'IDV_N2D2', '2170', '195', '2230', '255', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT','IDS_PFLOWER', '60', ''),
+    ('S21_ROCKBIN1', 'IDV_N2C', '1081', '223', '1120', '255', '2', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBIN', '60', ''),
 
     -- Scene 21 Maproom Map bin
     --8471 ->
 
-   ('8471', 'S21_MAPBIN', '8106', 'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
-   ('8472', 'S21_MAPTEXT', '8106', 'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
-  ('8500', 'S21_DIARY1BIN', '8106', 'IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', ''),
+   ( 'S21_MAPBIN',   'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
+   ( 'S21_MAPTEXT',  'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
+   ( 'S21_DIARY1BIN','IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', ''),
 
-  ('40011', 'S21_HIDDEN_01', '8103', 'IDV_N2D2', '3097', '193', '3194', '230', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
+  ('S21_HIDDEN_01','IDV_N2D2', '3097', '193', '3194', '230', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
 
 delete from machines where [name] like 'SMP_MAPBUTTONH%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('18', 'SMP_MAPBUTTON', '1', 'IDV_MAIN_PANEL', '155', '18', '191', '53', '3', 'M_MAPBUTTON', '', '', '', '');
+('SMP_MAPBUTTON','IDV_MAIN_PANEL', '155', '18', '191', '53', '3', 'M_MAPBUTTON', '', '', '', '');
 
 
 --Need to create a machine that shuts everything down when someone clicks on the map
@@ -173,6 +169,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    SHOW();
 ', '', ''),
 ('M_MAPBUTTON', '1', 'mapPresent', 'DROP', 'IDD_MAPBTN', '', '
+   SIGNAL(QL_MANAGER,Q1_STOP);
    SHOW(WOBJECT);
    ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
 ', '', ''),

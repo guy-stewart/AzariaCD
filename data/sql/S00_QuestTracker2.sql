@@ -1,4 +1,4 @@
-
+drop table games;
 -- create a map of these quests
 -- map should have quest id and description
 -- Create a waiter -- signal in quest begin and quest complete 
@@ -32,10 +32,11 @@
 -- Learn more about …
 
 delete from spr_names where name = 'IDS_BLACKBACK';
+delete from spr_names where name = 'IDS_QL_GLOW';
 INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
-('IDS_BLACKBACK', 'BLACKBACK');
-
+('IDS_BLACKBACK', 'BLACKBACK'),
+('IDS_QL_GLOW', 'QL_glow');
 -- Add the view
 delete from views where [view_name] like 'IDV_QUESTPAN%';
 
@@ -50,11 +51,14 @@ VALUES
 --identify hidden items
 ('S00_QUEST',  '0', ' Find the key to power the portal.'), 
 ('S00_QUEST',  '1', ' Find the ancient map in the wilderness.'), 
+
 ('S00_QUEST',  '2', ' Recover the seed of Azarian unity.'),
 ('S00_QUEST',  '3', ' Excavate the Ancient crypts in the canyons.'),
 ('S00_QUEST',  '4', ' Restore the pyramid of the eyes.'),
 ('S00_QUEST',  '5', ' Read the signs of the ancients.'),
 ('S00_QUEST',  '6', ' Perform the ritual of the 7 moons.'),
+('S00_QUEST',  '20', 'Plant the seed to evolve to Kamiozan.'),
+
 ('S00_QUEST',  '7', ' Find the sacred amulet that belongs to Neelp.'),
 ('S00_QUEST',  '8', ' Bring Neelp the soul of a fish.'),
 ('S00_QUEST',  '9', ' Bring Neelp a red gopa berry.'),
@@ -84,7 +88,7 @@ VALUES
 
 
 
-delete from controls where view like 'IDV_QUEST%';
+delete from controls where [view] like 'IDV_QUEST%';
 
 insert into controls ([view],[id], [type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
 
@@ -93,17 +97,17 @@ insert into controls ([view],[id], [type],[image],[image_selected],[x],[y],[bord
     LOADVIEW(myvar);
 '),
 
-('IDV_QUESTPAN', 20,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'q_local_complete','2','IDS_FONTENG_BIG',16746632,
+('IDV_QUESTPAN', 20,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'q_local_complete','2','IDS_FONTENG_BIG','#e0e0e0',
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 '),
 
-('IDV_QUESTPAN2', 21,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 185, 7, 'q_world_active','2','IDS_FONTENG_BIG',14871474,
+('IDV_QUESTPANW', 21,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 185, 7, 'q_world_active','2','IDS_FONTENG_BIG',14871474,
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 '),
 
-('IDV_QUESTPAN2', 22,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'q_world_complete','2','IDS_FONTENG_BIG',16746632,
+('IDV_QUESTPANW', 22,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'q_world_complete','2','IDS_FONTENG_BIG','#e0e0e0',
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 ');
@@ -148,18 +152,15 @@ VALUES
 
 
 --M_QUEST_MANAGER
-('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', '
-        WPARM=0; 
-        BPARM=0;   
-        
+ ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', '
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
+        q_local_active("%")~
+        q_local_complete("%")~
+        q_world_active("%")~
+        q_world_complete("%")~
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC); 
-        q_local_active('%')~
-        q_local_complete('%')~
-        q_world_active('%')~
-        q_world_complete('%')~
         q_local_active(BPARM, 0,active,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q1_START', '', '
@@ -218,37 +219,39 @@ VALUES
           q_local_active(BPARM,10,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q11_START', '', '
-         BPARM = 10; MAPi(BPARM,S00_QUEST); 
-          WPARM = 10; MAPi(WPARM,S00_QUESTLOC); 
-          q_local_active(BPARM,10,active,WPARM).
-        '),
-('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q12_START', '', '
          BPARM = 11; MAPi(BPARM,S00_QUEST); 
           WPARM = 11; MAPi(WPARM,S00_QUESTLOC); 
           q_local_active(BPARM,11,active,WPARM).
         '),
-('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q13_START', '', '
+('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q12_START', '', '
          BPARM = 12; MAPi(BPARM,S00_QUEST); 
           WPARM = 12; MAPi(WPARM,S00_QUESTLOC); 
           q_local_active(BPARM,12,active,WPARM).
         '),
-('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q14_START', '', '
+('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q13_START', '', '
          BPARM = 13; MAPi(BPARM,S00_QUEST); 
           WPARM = 13; MAPi(WPARM,S00_QUESTLOC); 
           q_local_active(BPARM,13,active,WPARM).
         '),
-('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q15_START', '', '
-        BPARM = 14; MAPi(BPARM,S00_QUEST); 
+('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q14_START', '', '
+         BPARM = 14; MAPi(BPARM,S00_QUEST); 
           WPARM = 14; MAPi(WPARM,S00_QUESTLOC); 
-          q_world_active(BPARM,14,active,WPARM).
+          q_local_active(BPARM,14,active,WPARM).
+        '),
+('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q15_START', '', '
+        BPARM = 15; MAPi(BPARM,S00_QUEST); 
+          WPARM = 15; MAPi(WPARM,S00_QUESTLOC); 
+          q_world_active(BPARM,15,active,WPARM).
         '), 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q16_START', '', '
-         BPARM = 15; MAPi(BPARM,S00_QUEST); 
-          WPARM = 15; MAPi(WPARM,S00_QUESTLOC); 
-          q_local_active(BPARM,15,active,WPARM).
+         BPARM = 16; MAPi(BPARM,S00_QUEST); 
+          WPARM = 16; MAPi(WPARM,S00_QUESTLOC); 
+          q_local_active(BPARM,16,active,WPARM).
         '),
 ---
-('M_QUEST_MANAGER','startposted','0','Z_EPSILON', '', '', ''),
+('M_QUEST_MANAGER','startposted','0','Z_EPSILON', '', '', '
+        SIGNAL(S0_QL_BTNGLOW,SIG_GLOW);
+'),
 ---
 ('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q0_STOP', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
@@ -382,12 +385,27 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_QL_BTN', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', '');
+('S0_QL_BTN', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', ''),
+('S0_QL_BTNGLOW', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTNGLOW', '', '', '', '');
 
 
 delete from "main"."transitions" where [automaton] like 'M_QLBTN%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
+('M_QLBTNGLOW', '0', '1', 'Z_EPSILON', '', '', '
+   CLEAR(WOBJECT);
+   SHOW();
+', '', ''),
+('M_QLBTNGLOW', '1', 'blink', 'WAIT', '', 'SIG_GLOW', '
+        SHOW(IDS_QL_GLOW);
+        PLAYWAVE(SOUND_POP);
+', '', ''),
+('M_QLBTNGLOW', 'blink', '0', 'Z_EPSILON', '', '', '', '', ''),
+
+
+
+
+
 ('M_QLBTN', '0', '1', 'Z_EPSILON', '', '', '
    CLEAR(WOBJECT);
    SHOW();
@@ -395,16 +413,30 @@ VALUES
 ('M_QLBTN', '1', 'logPresent', 'DROP', 'IDD_LOGBOOKBTN', '', '
    SHOW(WOBJECT);
    ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
+   BPARM = 0;
 ', '', ''),
 
 ('M_QLBTN', 'logPresent', 'open', 'CLICK', '', '', '
-    MOV(WPARM,LVIEW);
+    //negative or comparisons not working
+    if((LVIEW == "IDV_QUESTPANW") || (LVIEW == "IDV_QUESTPAN")){
+      BPARM = 1;
+      WRITE("We are clicking the log button on the log button - stop that!");
+    }
+    if(BPARM == 0){
+        MOV(WPARM,LVIEW);
+    }
     LOADVIEW(IDV_QUESTPAN);
+    BPARM = 0;
 ', '', ''),
-('M_QLBTN', 'open', 'closed', 'CLICK', '', '', '
-    LOADVIEW(WPARM);
-', '', ''),
-('M_QLBTN', 'closed', 'logPresent', 'Z_EPSILON', '', '', '
+-- ('M_QLBTN', 'open', 'closed', 'CLICK', '', '', '
+--     LOADVIEW(WPARM);
+-- ', '', ''),
+
+-- This logic not working :/
+-- if((LVIEW != "IDV_QUESTPANW") || (LVIEW != "IDV_QUESTPAN")){
+--       MOV(WPARM,LVIEW);
+--     }
+('M_QLBTN', 'open', 'logPresent', 'Z_EPSILON', '', '', '
 ', '', '');
 
 

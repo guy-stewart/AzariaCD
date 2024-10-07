@@ -100,8 +100,41 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     MOV(WSPRITE,WIP1);
  '),
  ('M_QANIPORTAL', '30', '10', 'LOADVIEW', '0', 'WIP3','
-    SIGNAL(QL_MANAGER,Q1_START);
+    q_local_active(?BPARM, "1");
+    if(BPARM != " Find the ancient map in the wilderness."){
+     SIGNAL(QL_MANAGER,Q1_START);
+    }
+   
  ');
+
+
+delete from transitions where automaton = 'M_ORIESPEAKER';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES 
+ ('M_ORIESPEAKER', '0', '1', 'O_ACCEPT', '0', 'IDD_SPEAKER', ''),
+ ('M_ORIESPEAKER', '1', '2', 'DROP', '0', '0', ''),
+ ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
+ ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
+ ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
+ ('M_ORIESPEAKER', '3', '4', 'SHOW', 'WOBJECT', '', ''),
+ ('M_ORIESPEAKER', '4', '5', 'PLAYWAVE', 'WIP3', '', '
+      if(WIP3 == "SOUND_ORIE1"){
+          q_local_active(?BPARM, "1");
+            if(BPARM != " Find the ancient map in the wilderness."){
+               SIGNAL(QL_MANAGER,Q1_START);
+            }
+      }
+ '),
+ ('M_ORIESPEAKER', '5', '6', 'GRAB', '0', '0', ''),
+ ('M_ORIESPEAKER', '6', '1', 'SHOW', '0', '0', '');
+
+
+
+
+
+
+
+
+
 
 delete from cardinals where [from] like 'IDV_N2A%';
 INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest")

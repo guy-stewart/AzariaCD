@@ -1,7 +1,10 @@
 
 delete from games;
 
-
+delete from "main"."constants" where name = 'IDS_DIARY8_BIN';
+INSERT INTO "main"."spr_names" ("name", "value", "id") 
+VALUES 
+('IDS_DIARY8_BIN', 'DIARY8_BIN', '0');
 
 ----RESOURCES 
 delete from objects where [object] like 'IDD_DIARY%';
@@ -12,8 +15,8 @@ insert into objects values
 ('IDD_DIARY4','IDC_NULL','DIARY4','DIARY4','DIARY4'),
 ('IDD_DIARY5','IDC_NULL','DIARY5','DIARY5','DIARY5'),
 ('IDD_DIARY6','IDC_NULL','DIARY4','DIARY4','DIARY4'),
-('IDD_DIARY7','IDC_NULL','DIARY4','DIARY4','DIARY4');
-
+('IDD_DIARY7','IDC_NULL','DIARY4','DIARY4','DIARY4'),
+('IDD_DIARY8','IDC_NULL','DIARY1','DIARY1','DIARY1');
 
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
@@ -78,23 +81,34 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES
 ('IDS_REC_MEMSPELL', 'rec_memspell', '18810'),
 ('IDS_REC_KAMIOZA', 'rec_kamioza', '18811');
 
+
+delete from machines where [name] like 'S08_DIARYBIN';
+INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+VALUES 
+('S08_DIARYBIN', 'IDV_EYEB', '2684', '198', '2720', '250', '2',  'M_PLANTBIN', 'IDD_DIARY8', 'IDS_DIARY8_BIN', '60', '');
+
+
+
+
 delete from machines where name = 'REC_%';
 delete from transitions where [automaton] like 'M_RECORD_%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 
-('REC_DRYPIT',  'IDV_ENCHANTPAN', '25', '50', '50', '70', '3', 'M_RECORD_COMPLETE', 'IDS_REC_DRYPIT', '', '', ''),
-('REC_CAVE2',   'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', '', '', ''),
-('REC_CAVE1',   'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', '', '', ''),
-('REC_EYEOG',   'IDV_ENCHANTPAN', '204', '202', '250', '300', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEOG', '', '', ''),
-('REC_HIDNAT',  'IDV_ENCHANTPAN', '388', '216', '440', '260', '3', 'M_RECORD_COMPLETE', 'IDS_REC_HIDNAT', '', '', ''),
+-- record the completion for the enchanted stone and also stop the quest for the quest manager (wip2 quest number)
+
+('REC_DRYPIT',  'IDV_ENCHANTPAN', '25', '50', '50', '70', '3', 'M_RECORD_COMPLETE', 'IDS_REC_DRYPIT', 'Q2_STOP', '', ''),
+('REC_CAVE2',   'IDV_ENCHANTPAN', '30', '156', '80', '200', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE2', 'Q3_STOP', '', ''),
+('REC_CAVE1',   'IDV_ENCHANTPAN', '95', '199', '150', '245', '3', 'M_RECORD_COMPLETE', 'IDS_REC_CAVE1', 'Q3_STOP', '', ''),
+('REC_EYEOG',   'IDV_ENCHANTPAN', '204', '202', '250', '300', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEOG', 'Q4_STOP', '', ''),
+('REC_HIDNAT',  'IDV_ENCHANTPAN', '388', '216', '440', '260', '3', 'M_RECORD_COMPLETE', 'IDS_REC_HIDNAT', 'Q5_STOP', '', ''),
 ('REC_MOONTBL', 'IDV_ENCHANTPAN', '481', '182', '530', '220', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONTBL', '', '', ''),
-('REC_MOONDSK', 'IDV_ENCHANTPAN', '491', '86', '550', '120', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONDSK', '', '', ''),
+('REC_MOONDSK', 'IDV_ENCHANTPAN', '491', '86', '550', '120', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MOONDSK', 'Q6_STOP', 'Q20_START', ''),
 ('REC_EYESPELL','IDV_ENCHANTPAN', '350', '30', '400', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYESPELL', '', '', ''),
 ('REC_EYEFUSE', 'IDV_ENCHANTPAN', '393', '30', '420', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_EYEFUSE', '', '', ''),
 ('REC_MEMFUSE', 'IDV_ENCHANTPAN', '436', '30', '460', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMFUSE', '', '', ''),
 ('REC_MEMSPELL','IDV_ENCHANTPAN', '459', '30', '500', '60', '3', 'M_RECORD_COMPLETE', 'IDS_REC_MEMSPELL', '', '', ''),
-('REC_KAMIOZA', 'IDV_ENCHANTPAN', '275', '99', '320', '170', '3', 'M_RECORD_COMPLETE', 'IDS_REC_KAMIOZA', '', '', ''),
+('REC_KAMIOZA', 'IDV_ENCHANTPAN', '275', '99', '320', '170', '3', 'M_RECORD_COMPLETE', 'IDS_REC_KAMIOZA', 'Q20_STOP', '', ''),
 --Whenever someone pays a machine we increase the count
 ('REC_NYSTROMPAID', 'IDV_ENCHANTPAN', '120', '35', '130', '45', '3', 'M_RECORD_COUNTER', '', '', '', ''),
 ('REC_BADKARMA', 'IDV_ENCHANTPAN', '130', '35', '140', '45', '3', 'M_RECORD_COUNTER', '', '', '', '');
@@ -102,7 +116,17 @@ VALUES
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_RECORD_COMPLETE', '0', '100', 'WAIT','0', 'SIG_COMPLETE', 'ASSIGN(WSPRITE,WIP1);SHOW(WIP1);'),
+('M_RECORD_COMPLETE', '0', '100', 'WAIT','0', 'SIG_COMPLETE', '
+        ASSIGN(WSPRITE,WIP1);
+        SHOW(WIP1);
+        if(WIP2 != ""){
+          WRITE(''Trying to stop QL_MANAGER'');
+         SIGNAL(QL_MANAGER,WIP2);
+        }
+         if(WIP3){
+          SIGNAL(QL_MANAGER,WIP3);
+        }
+'),
 ('M_RECORD_COMPLETE', '100', '101', 'WAIT','0', 'SIG_RESET', ''),
 ('M_RECORD_COMPLETE', '101', '0', 'Z_EPSILON','', '', 'CLEAR(WSPRITE);SHOW();'),
 
@@ -122,6 +146,7 @@ INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY4');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY5');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY6');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY7');
+INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY8');
 
 delete from idv where [name] like 'IDV_ENCHANTP%';
 delete from views where [view_name] like 'IDV_ENCHANTP%';
@@ -226,6 +251,10 @@ MOV(BPARM,LVIEW);
         'MOV(WPARM,WOBJECT);
         if((WOBJECT == IDD_DIARY1 )){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
+                   q_world_active(?BPARM, "2");
+                        if(BPARM != " Recover the seed of Azarian unity."){
+                                SIGNAL(QL_MANAGER,Q2_START);
+                        }
         }
         if((WOBJECT == IDD_DIARY2 )){
                  SIGNAL(ORIE_DIARY_WAITER,SIG_DIARY);
@@ -238,6 +267,17 @@ MOV(BPARM,LVIEW);
         }
          if((WOBJECT == IDD_DIARY5 )){
                   SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
+                  q_world_active(?BPARM, "6");
+                        if(BPARM != " Perform the ritual of the 7 moons."){
+                                SIGNAL(QL_MANAGER,Q6_START);
+                        }
+        }
+        if((WOBJECT == IDD_DIARY8 )){
+                 SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
+                   q_world_active(?BPARM, "4");
+                        if(BPARM != " Restore the pyramid of the eyes."){
+                                SIGNAL(QL_MANAGER,Q4_START);
+                        }
         }
         '),           
      
