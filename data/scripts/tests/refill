@@ -1,20 +1,39 @@
-
-
 // fill up on nystrom
-warp(S17_bMINE);
+get(IDD_MAPBTN);
+drop(SMP_MAPBUTTON);
 drop(SMP_RECYCLE);
+grab(SMP_MAPBUTTON);
+
 grab(SMP_VIAL);
 if (got() == IDD_SCOOPF) { drag(SMP_VIAL);}
 
 write('got ', got());
 while (got() == IDD_SCOOPE) {
-    drop(SMP_RECYCLE);
+    drop(SMP_RECYCLE); // drop the scoope
     get(IDD_NYBREATH);
     drop(SID_SPELL);
     drop(SMP_RECYCLE);
-    get(IDD_SCOOPE);
+
+    warp(IDV_bCV1bPAN); // view
+    warp(S17_bMINE);    // face the machine
+
+    warp(SMP_VIAL);
+    grab(SMP_VIAL);
+    if (got() == IDD_SCOOPF) { drag(SMP_VIAL);}
+
     drag(S17_bMINE);
     drag(SMP_VIAL);
+    if (got() == IDD_SCOOPE) {
+        drag(S17_bMINE);
+        drag(SMP_VIAL);
+    }
+    if (got() == IDD_SCOOPE) {
+        drag(S17_bMINE);
+        drag(SMP_VIAL);
+    }
     write('got ', got());
+    grab(SMP_MAPBUTTON);
 }
+
+grab(SMP_MAPBUTTON);
 warp(IDV_QUARSA);
