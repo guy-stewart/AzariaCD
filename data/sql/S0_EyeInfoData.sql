@@ -37,7 +37,7 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
         contains this seed.
 
         I shall now see for myself and fill my spirit with joy - 
-        Searching for something to plant on some altar!'),
+        Searching for something to plant on some altar!'),    
 
 ('IDD_DIARY2', 'IDV_TECHPANBIGALT', 'ID_TECHBIGTXT', '	
 	After years of isolation, your people are lost and divided.
@@ -447,6 +447,28 @@ As is the custom, we shall use our breath spell and be able to pay you
 twice value.
 
 Onam'),
+
+('IDD_DIARY8', 'IDV_PARCHBIG', 'ID_PARCHBIGTXT', '
+
+        I Onam, archiologist of Niret 
+        am at a loss.
+
+        This majestic structure seems to taunt
+        me.  Its instructions I can not read.
+
+        This language, completely unlike the divinge Niret
+        marks and simple characters of Etnoc, begs something of
+        me I know not what!
+        
+        This one spinning spell - an obvious eye - seems
+        to be missing companions.  The three rectangular 
+        impressions missing something completely.
+
+        I shall sit and ponder some more before I head 
+        to the desert mountains where the meflin 
+        suggested I should start.
+'),
+
 
 ('IDD_GOPASEED', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
 Gopa is grown from its seed stage by only watering once per week.

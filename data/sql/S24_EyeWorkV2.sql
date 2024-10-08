@@ -20,14 +20,14 @@ delete from machines where name = 'S24_EYESPELL3';
 
 delete from machines where name = 'S24_BIGEYE'; -- OTHERWISE KNOWN AS EYESPELL2
 -- this is where they pass in which alternate eyeplate views to signal in WIP1, 2..
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('9216', 'S24_EYEPLATE1', '9219', 'IDV_EYEC1P', '200', '28', '260', '63', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE1', 'S24_ALTb_EYEPLATE1',  '', ''),
-('9217', 'S24_EYEPLATE2', '9219', 'IDV_EYEC1P', '266', '32', '324', '68', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE2', 'S24_ALTb_EYEPLATE2',  '', ''),
-('9218', 'S24_EYEPLATE3', '9219', 'IDV_EYEC1P', '333', '38', '390', '73', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE3', 'S24_ALTb_EYEPLATE3',  '', ''),
-('9219', 'S24_EYESPELL1', '9219', 'IDV_EYEC1P', '0', '64', '59', '105', '0', 'M24_EYESPELL', 'S24_ALTa_EYESPELL1', 'S24_ALTb_EYESPELL1', '', ''),
-('9221', 'S24_EYESPELL3', '9219', 'IDV_EYEC1P', '542', '79', '603', '120', '0', 'M24_EYESPELL', 'S24_ALTa_EYESPELL3', 'S24_ALTb_EYESPELL3', '', ''),
-('9222', 'S24_BIGEYE', '9219', 'IDV_EYEC1P', '295', '60', '368', '112', '0', 'M24_BIGEYE', 'IDS_BIGEYE1', 'S24_ALTa_EYESPELL2','S24_ALTb_EYESPELL2','');
+('S24_EYEPLATE1','IDV_EYEC1P', '200', '28', '260', '63', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE1', 'S24_ALTb_EYEPLATE1',  '', ''),
+('S24_EYEPLATE2','IDV_EYEC1P', '266', '32', '324', '68', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE2', 'S24_ALTb_EYEPLATE2',  '', ''),
+('S24_EYEPLATE3','IDV_EYEC1P', '333', '38', '390', '73', '0', 'M24_EYEPLATE', 'S24_ALTa_EYEPLATE3', 'S24_ALTb_EYEPLATE3',  '', ''),
+('S24_EYESPELL1','IDV_EYEC1P', '0', '64', '59', '105', '0', 'M24_EYESPELL', 'S24_ALTa_EYESPELL1', 'S24_ALTb_EYESPELL1', '', ''),
+('S24_EYESPELL3','IDV_EYEC1P', '542', '79', '603', '120', '0', 'M24_EYESPELL', 'S24_ALTa_EYESPELL3', 'S24_ALTb_EYESPELL3', '', ''),
+('S24_BIGEYE',   'IDV_EYEC1P', '295', '60', '368', '112', '0', 'M24_BIGEYE', 'IDS_BIGEYE1', 'S24_ALTa_EYESPELL2','S24_ALTb_EYESPELL2','');
 
 delete from  "main"."transitions" where automaton = 'M24_EYEPLATE';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code") VALUES 
@@ -82,7 +82,14 @@ VALUES
 ('M24_BIGEYE', '10', '20', 'Z_EPSILON', '', '', ''),
 
 ('M24_BIGEYE', '20', '30', 'ASHOW', '0', 'IDS_BIGEYE1', ''),
-('M24_BIGEYE', '30', '30', 'GRAB', '0', 'IDD_EYEWAND', 'ADDI(LWISDOM,2); SIGNALi(0,SID_ID);'),
+('M24_BIGEYE', '30', '30', 'GRAB', '0', 'IDD_EYEWAND', '
+    ADDI(LWISDOM,2);
+    SIGNALi(0,SID_ID);
+      q_local_active(?BPARM, "5");
+            if(BPARM != " Read the signs of the ancients."){
+               SIGNAL(QL_MANAGER,Q5_START);
+            }
+'),
 ('M24_BIGEYE', '30', '50', 'WAIT', '0', 'SIG_BOMB', ''),
 ('M24_BIGEYE', '50', '51', 'SHOW', '0', '0', ''),
 ('M24_BIGEYE', '51', '52', 'SIGNAL','WIP2', 'SIG_HIDE', ''),
@@ -98,14 +105,14 @@ delete from machines where name = 'S24_ALTb_EYEPLATE1';
 delete from machines where name = 'S24_ALTb_EYEPLATE2';
 delete from machines where name = 'S24_ALTb_EYEPLATE3';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('9230', 'S24_ALTa_EYEPLATE1', '9217', 'IDV_EYEA', '3091', '113', '3093', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
-('9231', 'S24_ALTa_EYEPLATE2', '9217', 'IDV_EYEA', '3114', '113', '3118', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
-('9232', 'S24_ALTa_EYEPLATE3', '9217', 'IDV_EYEA', '3135', '113', '3137', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
-('9233', 'S24_ALTb_EYEPLATE1', '9218', 'IDV_EYEB', '3065', '83', '3070', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', ''),
-('9234', 'S24_ALTb_EYEPLATE2', '9218', 'IDV_EYEB', '3103', '83', '1565', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', ''),
-('9235', 'S24_ALTb_EYEPLATE3', '9218', 'IDV_EYEB', '3144', '83', '1565', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', '');
+('S24_ALTa_EYEPLATE1','IDV_EYEA', '3091', '113', '3093', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
+('S24_ALTa_EYEPLATE2','IDV_EYEA', '3114', '113', '3118', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
+('S24_ALTa_EYEPLATE3','IDV_EYEA', '3135', '113', '3137', '115', '0', 'M_STATESCALE', 'IDS_EYEPLATEASML', '', '', ''),
+('S24_ALTb_EYEPLATE1','IDV_EYEB', '3065', '83', '3070', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', ''),
+('S24_ALTb_EYEPLATE2','IDV_EYEB', '3103', '83', '1565', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', ''),
+('S24_ALTb_EYEPLATE3','IDV_EYEB', '3144', '83', '1565', '85', '0', 'M_STATESCALE', 'IDS_EYEPLATEBSML',  '', '', '');
 
 
 --eyea from left to right
@@ -117,15 +124,15 @@ delete from machines where name = 'S24_ALTb_EYESPELL3';
 delete from machines where name = 'S24_ALTa_EYESPELL2';
 delete from machines where name = 'S24_ALTb_EYESPELL2';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('9236', 'S24_ALTa_EYESPELL1', '9217', 'IDV_EYEA', '3036', '130', '3040', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
-('9237', 'S24_ALTb_EYESPELL1',  '9218', 'IDV_EYEB', '2952', '112', '2955', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML','', '', ''),
-('9238', 'S24_ALTa_EYESPELL3', '9217', 'IDV_EYEA', '3170', '130', '3171', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
-('9239', 'S24_ALTb_EYESPELL3',  '9218', 'IDV_EYEB', '11', '112', '14', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML',  '', '', ''),
+('S24_ALTa_EYESPELL1',   'IDV_EYEA', '3036', '130', '3040', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
+('S24_ALTb_EYESPELL1',   'IDV_EYEB', '2952', '112', '2955', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML','', '', ''),
+('S24_ALTa_EYESPELL3',   'IDV_EYEA', '3170', '130', '3171', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
+('S24_ALTb_EYESPELL3',   'IDV_EYEB', '11', '112', '14', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML',  '', '', ''),
 
-('9240', 'S24_ALTa_EYESPELL2', '9217', 'IDV_EYEA', '3110', '130', '3110', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
-('9241', 'S24_ALTb_EYESPELL2',  '9218', 'IDV_EYEB', '3090', '112', '3175', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML',  '', '', '');
+('S24_ALTa_EYESPELL2',  'IDV_EYEA', '3110', '130', '3110', '131', '0', 'M_STATESCALE', 'IDS_EYESPELLASML', '', '', ''),
+('S24_ALTb_EYESPELL2',  'IDV_EYEB', '3090', '112', '3175', '115', '0', 'M_STATESCALE', 'IDS_EYESPELLBSML',  '', '', '');
 
 
 
