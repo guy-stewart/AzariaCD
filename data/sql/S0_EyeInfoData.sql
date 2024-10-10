@@ -122,7 +122,7 @@ now too their absence reminds us of our folly.'),
        If you roll a number which already has a ball in it, 
        you take it and the other player takes over.
 
-       Oh, you do not have a die? You can buy one!
+       You can buy a die at a village table.
 '),
 
 ('IDD_EMERALD', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
@@ -846,8 +846,9 @@ a spell.'),
 ' ),
 
 ('IDD_SHOVEL', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-        A shovel is a useful tool. Look for spots where
-        special items are burried throughout Azaria.
+        A shovel is a useful tool. Some items and spells
+        were lost during the dark times and may be found
+        burried throughout Azaria.
 ' ),
 ('IDD_PICK', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
        A pick that can break rock. Also, look for 
@@ -859,8 +860,10 @@ a spell.'),
        heavy rocks.
 ' ),
 ('IDD_SPADE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
-       A spade is just a tiny shovel. Look for spots where
-        special items are burried throughout Azaria.
+       A spade is just a tiny shovel. Some items and spells
+        were lost during the dark times and may be found
+        burried throughout Azaria.  May be used in the 
+        harvesting of gopa.
 ' ),
 
 ('IDD_DICE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
