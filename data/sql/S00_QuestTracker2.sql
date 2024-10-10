@@ -152,8 +152,7 @@ VALUES
 
 
 --M_QUEST_MANAGER
- ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', '
-'),
+ ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', ''),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
         q_local_active("%")~
         q_local_complete("%")~
@@ -192,13 +191,13 @@ VALUES
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q6_START', '', '
-         BPARM = 6; MAPi(BPARM,S00_QUEST); 
+        BPARM = 6; MAPi(BPARM,S00_QUEST); 
         WPARM = 6; MAPi(WPARM,S00_QUESTLOC); 
         q_world_active(BPARM, 6,active,WPARM).
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q7_START', '', '
-         BPARM = 7; MAPi(BPARM,S00_QUEST); 
+        BPARM = 7; MAPi(BPARM,S00_QUEST); 
         WPARM = 7; MAPi(WPARM,S00_QUESTLOC); 
         q_local_active(BPARM, 7,active,WPARM).
         '),
@@ -250,7 +249,7 @@ VALUES
         '),
 ---
 ('M_QUEST_MANAGER','startposted','0','Z_EPSILON', '', '', '
-        SIGNAL(S0_QL_BTNGLOW,SIG_GLOW);
+        SIGNAL(S0_QL_BTN,SIG_GLOW);
 '),
 ---
 ('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q0_STOP', '', '
@@ -385,25 +384,13 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_QL_BTN', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', ''),
-('S0_QL_BTNGLOW', 'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTNGLOW', '', '', '', '');
+('S0_QL_BTN',    'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', '');
+-- ('S0_QL_BTNGLOW','IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTNGLOW', '', '', '', '');
 
 
 delete from "main"."transitions" where [automaton] like 'M_QLBTN%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_QLBTNGLOW', '0', '1', 'Z_EPSILON', '', '', '
-   CLEAR(WOBJECT);
-   SHOW();
-', '', ''),
-('M_QLBTNGLOW', '1', 'blink', 'WAIT', '', 'SIG_GLOW', '
-        SHOW(IDS_QL_GLOW);
-        PLAYWAVE(SOUND_POP);
-', '', ''),
-('M_QLBTNGLOW', 'blink', '0', 'Z_EPSILON', '', '', '', '', ''),
-
-
-
 
 
 ('M_QLBTN', '0', '1', 'Z_EPSILON', '', '', '
@@ -417,26 +404,24 @@ VALUES
 ', '', ''),
 
 ('M_QLBTN', 'logPresent', 'open', 'CLICK', '', '', '
-    //negative or comparisons not working
     if((LVIEW == "IDV_QUESTPANW") || (LVIEW == "IDV_QUESTPAN")){
       BPARM = 1;
       WRITE("We are clicking the log button on the log button - stop that!");
     }
     if(BPARM == 0){
+        MOV(WOBJECT,IDD_LOGBOOKBTN);
+        SHOW(WOBJECT);
         MOV(WPARM,LVIEW);
     }
     LOADVIEW(IDV_QUESTPAN);
     BPARM = 0;
 ', '', ''),
--- ('M_QLBTN', 'open', 'closed', 'CLICK', '', '', '
---     LOADVIEW(WPARM);
--- ', '', ''),
-
--- This logic not working :/
--- if((LVIEW != "IDV_QUESTPANW") || (LVIEW != "IDV_QUESTPAN")){
---       MOV(WPARM,LVIEW);
---     }
-('M_QLBTN', 'open', 'logPresent', 'Z_EPSILON', '', '', '
-', '', '');
-
+('M_QLBTN', 'open', 'logPresent', 'Z_EPSILON', '', '', '', '', ''),
+('M_QLBTN', 'logPresent', 'newQuest', 'WAIT', '', 'SIG_GLOW', '
+        WRITE("GOT THE SIG_GLOW SIGNAL");
+        PLAYWAVE(SOUND_POP);
+        MOV(WSPRITE,IDS_QL_GLOW);
+        ASHOW(WSPRITE);
+', '', ''),
+('M_QLBTN', 'newQuest', 'logPresent', 'Z_EPSILON', '', '', '', '', '');
 
