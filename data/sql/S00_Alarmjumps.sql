@@ -8,17 +8,6 @@ VALUES
 ('IDS_ALARMOFF', 'ALMOFF', '30403');
 
 
-delete from "main"."machines" where [name] like 'S0_ALARM%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('40', 'S0_ALARM_1', '1', 'IDV_MAIN_PANEL',211,69,240,90, 0, 'M_ALARM', '', '', '', ''),
-('41', 'S0_ALARM_2', '1', 'IDV_MAIN_PANEL',241,69,270,90, 0, 'M_ALARM', '', '', '', ''),
-('42', 'S0_ALARM_3', '1', 'IDV_MAIN_PANEL',271,69,300,90, 0, 'M_ALARM', '', '', '', ''),
-('43', 'S0_ALARM_4', '1', 'IDV_MAIN_PANEL',301,69,330,90, 0, 'M_ALARM', '', '', '', ''),
-('44', 'S0_ALARM_5', '1', 'IDV_MAIN_PANEL',331,69,360,90, 0, 'M_ALARM', '', '', '', ''),
-('45', 'S0_ALARM_6', '1', 'IDV_MAIN_PANEL',361,69,390,90, 0, 'M_ALARM', '', '', '', ''),
-('46', 'S0_ALARM_7', '1', 'IDV_MAIN_PANEL',391,69,420,90, 0, 'M_ALARM', '', '', '', '');
-
 delete from "main"."transitions" where [automaton] like 'M_ALARM%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 

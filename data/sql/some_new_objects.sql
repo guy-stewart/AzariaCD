@@ -67,11 +67,6 @@ VALUES
 
 
 
-delete from machines where [name] like 'S1_VIALM%';
-
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('60251', 'S1_VIALMETER', '1', 'IDV_MAIN_PANEL', '200', '6', '219', '63', '3', 'M_VIALMETER', 'SMP_VIAL','IDS_NYSMETER','','');
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 

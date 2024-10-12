@@ -211,12 +211,8 @@ VALUES
 
 -----------------------------------------------------------------
 ------------- DROP ON EYE AND CHECK
-delete from machines where name = 'SMP_EYEINFO';
-delete from transitions where [automaton] like 'M_EYEINF%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('112', 'SMP_EYEINFO', '1', 'IDV_MAIN_PANEL', '290', '12', '344', '64', '3', 'M_EYEINFO', '', '', '', '');
+delete from transitions where [automaton] like 'M_EYEINF%';
 
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 

@@ -152,10 +152,6 @@ INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bott
 
   ('S21_HIDDEN_01','IDV_N2D2', '3097', '193', '3194', '230', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
 
-delete from machines where [name] like 'SMP_MAPBUTTONH%';
-INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('SMP_MAPBUTTON','IDV_MAIN_PANEL', '155', '18', '191', '53', '3', 'M_MAPBUTTON', '', '', '', '');
 
 
 --Need to create a machine that shuts everything down when someone clicks on the map

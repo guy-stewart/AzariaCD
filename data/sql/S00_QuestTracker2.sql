@@ -381,10 +381,7 @@ VALUES
 -------------------------
 
 
-delete from "main"."machines" where [name] like 'S0_QL_BTN%';
-INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
-VALUES 
-('S0_QL_BTN',    'IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTN', '', '', '', '');
+
 -- ('S0_QL_BTNGLOW','IDV_MAIN_PANEL',423,9,463,49, 0, 'M_QLBTNGLOW', '', '', '', '');
 
 
