@@ -1,4 +1,6 @@
-
+drop table if exists games;
+drop table if exists players;
+drop table if exists env;
 
 delete from machines where [name] like 'S1_VIALM%';
 delete from machines where [name] like 'SMP_VIAL%';
@@ -38,3 +40,7 @@ VALUES
 delete from machines where name = 'SMP_RECYCLE';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 ('SMP_RECYCLE','IDV_MAIN_PANEL', '387', '12', '444', '64', '3', 'M_RECYCLE', '', '', '', '');
+
+delete from machines where name = 'SMP_BACKBUTTON';
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+('SMP_BACKBUTTON', 'IDV_MAIN_PANEL', '147', '19', '182', '52', '3', 'M_BACKBUTTON', '', '', '', '');
