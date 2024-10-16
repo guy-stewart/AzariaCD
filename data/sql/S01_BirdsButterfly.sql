@@ -19,29 +19,22 @@ insert into machines
 (0x1151,'S11_LOGBINB','IDV_TMPLPTH5',726,206,837,262,2,'M_OBJECTBIN','IDD_LOG','','','');
 
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name","wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name","wip4_name") 
 VALUES 
-('4664', 'S12_BUTTERFLY', '5380', 'IDV_TMPLPTH4', '3190', '0', '3200', '300',  '2', 'M_TIMEDVPLAY', 'IDS_BFLY', '', '', ''),
-('215', 'S03_BIRDSFWD', '5633', 'IDV_GRNDCNT1', '360', '2', '370', '10',  '2', 'M_VPLAY2', 'IDS_BIRDSFWD', '', '', ''),
-('216', 'S03_BIRDSBKWD', '5633', 'IDV_GRNDCNT1', '1920', '2', '2100', '300',  '2', 'M_VPLAY3', 'IDS_BIRDSBKWD','', '', ''),
-('217', 'S01_NATURE', '5633', 'IDV_GRNDCNT1', '417', '45', '420', '50',  '2', 'M_NATURE', '', '', '', '');
+( 'S12_BUTTERFLY', 'IDV_TMPLPTH4', '3190', '0', '3200', '300',  '2', 'M_TIMEDVPLAY', 'IDS_BFLY', '', '', ''),
+('S03_BIRDSFWD',   'IDV_GRNDCNT1', '360', '2', '370', '10',  '2', 'M_VPLAY2', 'IDS_BIRDSFWD', '', '', ''),
+('S03_BIRDSBKWD',  'IDV_GRNDCNT1', '1940', '2', '2100', '200',  '2', 'M_VPLAY3', 'IDS_BIRDSBKWD','', '', ''),
+('S01_NATURE',     'IDV_GRNDCNT1', '417', '45', '420', '50',  '2', 'M_NATURE', '', '', '', '');
 
-delete from transitions where automaton = 'M_NATURE';
+
 delete from transitions where automaton = 'M_TIMEDVPLAY';
 delete from transitions where automaton = 'M_VPLAY2';
 delete from transitions where automaton = 'M_VPLAY3';
 delete from transitions where automaton = 'M_ANIPORTAL';
 
--- the latest M_NATURE is in the file S00_BARD which adds a gopa bush and increases time
 
-
--- Removed from here
-
-
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-
-
-
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
+ VALUES 
 ('M_TIMEDVPLAY', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
 ('M_TIMEDVPLAY',  '1', '2', 'SHOW', '0', 'IDS_BFLY',''),
 ('M_TIMEDVPLAY', '2', '0', 'ANIMATE', '0', '0',''),
@@ -52,12 +45,10 @@ INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "to
 
 ('M_VPLAY3', '0', '1', 'WAIT', '0', 'SIG_OPEN',''),
 ('M_VPLAY3',  '1', '2', 'SHOW', '0', 'IDS_BIRDSBKWD',''),
-('M_VPLAY3', '2', '0', 'ANIMATE', '0', '0','');
+('M_VPLAY3', '2', '0', 'ANIMATE', '0', '0',''),
 
 
 
-INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
- VALUES 
  ('M_ANIPORTAL', '0', '1', 'MOV', 'WSPRITE', 'WIP1',''),
  ('M_ANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
  ('M_ANIPORTAL', '2', '3', 'CLICK', '0', '0',''),

@@ -1,0 +1,27 @@
+
+lore_rooms("%")~
+lore_rooms(1,'IDV_MAPROOM','S21_DIARY1BIN').
+lore_rooms(2,'IDV_EYEB','S08_DIARYBIN').
+lore_rooms(3,'IDV_CU_GRASSPATCH1','S28_PARCHFIND').
+lore_rooms(4,'IDV_ctyn','S04_DIARYBIN').
+lore_rooms(5,'IDV_RUBBLECU','S19_DIARYBIN').
+lore_rooms(6,'IDV_ORIE','S03_DIARYBIN').
+
+
+i = 1;
+while (i<7) {
+    write("while (i<7) with i = ", i);
+        lore_rooms(i, ?room, ?machine);
+            warp(room);
+            setsleep(3);
+
+            grab(machine); 
+           // loiter = 3;
+            drop(SMP_EYEINFO);
+           // loiter = 5;
+            grab(SMP_EYEINFO);
+            recycle();
+    i = i + 1;
+}
+write(done);
+lore_rooms("%")~

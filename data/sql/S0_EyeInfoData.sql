@@ -896,6 +896,11 @@ a spell.'),
 ('IDD_MAPBTN', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
        Try a little farther to the left.
 ' ),
+('IDD_LOGBOOKBTN', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
+       This book contains the will of the ancients synthesised to
+       speak with you directly. You feel compelled to place it 
+       next ot your other helpful enigmatic square gifts.  
+' ),
 ('IDD_EXPLOA', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
        This is obviously magic to be used elsewhere.
 ' ),

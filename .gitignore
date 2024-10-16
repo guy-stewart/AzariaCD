@@ -24,3 +24,15 @@ products/Release_v0_0_85/
 products/Release_v0_0_86/
 products/Release_v0_0_87/
 kamioza.dSYM
+SDL2_ttf.framework/Resources
+SDL2_ttf.framework/SDL2_ttf
+SDL2_ttf.framework/Versions/Current
+SDL2_ttf.framework/Versions/A/SDL2_ttf
+SDL2_ttf.framework/Versions/A/_CodeSignature/CodeResources
+SDL2_ttf.framework/Versions/A/Resources/FreeType-LICENSE.txt
+SDL2_ttf.framework/Versions/A/Resources/FTL.TXT
+SDL2_ttf.framework/Versions/A/Resources/HarfBuzz-LICENSE.txt
+SDL2_ttf.framework/Versions/A/Resources/Info.plist
+SDL2_ttf.framework/Versions/A/Resources/ReadMe.txt
+SDL2_ttf.framework/Versions/A/Resources/CMake/sdl2_ttf-config-version.cmake
+SDL2_ttf.framework/Versions/A/Resources/CMake/sdl2_ttf-config.cmake

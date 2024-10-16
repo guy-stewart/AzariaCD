@@ -247,8 +247,8 @@ MOV(BPARM,LVIEW);
         'MOV(WPARM,WOBJECT);
         if((WOBJECT == IDD_DIARY1 )){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
-                   q_world_active(?BPARM, "2");
-                        if(BPARM != " Recover the seed of Azarian unity."){
+                   q_world_active(?TEMP1, "2");
+                        if(TEMP1 != " Recover the seed of Azarian unity."){
                                 SIGNAL(QL_MANAGER,Q2_START);
                         }
         }
@@ -263,15 +263,15 @@ MOV(BPARM,LVIEW);
         }
          if((WOBJECT == IDD_DIARY5 )){
                   SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
-                  q_world_active(?BPARM, "6");
-                        if(BPARM != " Perform the ritual of the 7 moons."){
+                  q_world_active(?TEMP1, "6");
+                        if(TEMP1 != " Perform the ritual of the 7 moons."){
                                 SIGNAL(QL_MANAGER,Q6_START);
                         }
         }
         if((WOBJECT == IDD_DIARY8 )){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
-                   q_world_active(?BPARM, "4");
-                        if(BPARM != " Restore the pyramid of the eyes."){
+                   q_world_active(?TEMP1, "4");
+                        if(TEMP1 != " Restore the pyramid of the eyes."){
                                 SIGNAL(QL_MANAGER,Q4_START);
                         }
         }
