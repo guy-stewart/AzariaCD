@@ -2,6 +2,20 @@ drop table if exists games;
 drop table if exists players;
 drop table if exists env;
 
+
+--add network choice sprites IDS_BTN_NW1A,B & C
+
+delete from spr_names where [name] like 'IDS_INDC_NW_%';
+INSERT INTO "main"."spr_names" ("name", "value") VALUES 
+
+('IDS_INDC_NW_BLANK',   'indc_nw_blank'),
+('IDS_INDC_NW_WHITE',   'indc_nw_white'),
+('IDS_INDC_NW_GREEN',   'indc_nw_green'),
+('IDS_INDC_NW_RED',     'indc_nw_red');
+
+
+
+
 delete from machines where [name] like 'S1_VIALM%';
 delete from machines where [name] like 'SMP_VIAL%';
 
@@ -12,6 +26,7 @@ VALUES
 ('SMP_VIAL',  'IDV_MAIN_PANEL', '301', '7', '360', '62', '3', 'M_VIAL', '', '', '', '');
 
 delete from "main"."machines" where [name] like 'S0_ALARM%';
+
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('S0_ALARM_1','IDV_MAIN_PANEL',245,69,274,90, 0, 'M_ALARM', '', '', '', ''),
@@ -21,6 +36,16 @@ VALUES
 ('S0_ALARM_5','IDV_MAIN_PANEL',365,69,394,90, 0, 'M_ALARM', '', '', '', ''),
 ('S0_ALARM_6','IDV_MAIN_PANEL',395,69,424,90, 0, 'M_ALARM', '', '', '', ''),
 ('S0_ALARM_7','IDV_MAIN_PANEL',425,69,454,90, 0, 'M_ALARM', '', '', '', '');
+
+-- machines for network indicators on the man panel
+delete from "main"."machines" where [name] like 'S0_NW_INDC%';
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('S0_NW_INDC_LIGHT',    'IDV_MAIN_PANEL',991,147,1005,188, 0, 'M_NW_INDC_LIGHT', 'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_NW_RED', ''),
+('S0_NW_INDC_GAME',     'IDV_MAIN_PANEL',890,144,1005,188, 0, 'M_NW_INDC_NAME', 'IDS_INDC_NW_BLANK', '', '', '');
+
+
+
 
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
