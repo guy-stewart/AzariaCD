@@ -1,4 +1,4 @@
-delete from games;
+
 
 
 delete from transitions where [automaton]='M_FISHSTATION';
@@ -12,7 +12,7 @@ insert into transitions ([automaton], [state], [new_state], [opcode], [param_1],
 
 ('M_FISHSTATION','branch','baited_pole','IS_A','WOBJECT','ISA_BAITEDPOLE',
 'SHOW(IDS_POLE1LCL);
-RAND(ADD_CATCH_TIME,MIN_CATCH_TIME);'),
+RAND(MIN_CATCH_TIME,ADD_CATCH_TIME);'),
 ('M_FISHSTATION','branch','pole','Z_EPSILON','','',
 'SHOW(IDS_POLE1LCU);
 MOV(WPARM,WOBJECT);'),
@@ -28,12 +28,12 @@ MOV(WPARM,WOBJECT);'),
     'PLAYWAVE(0,SOUND_HURT);
     MOV(WPARM,WOBJECT);
       if(WTEMP1 < 6 ){
-        RAND(5,1); 
+        RAND(1,5); 
         MOV(WOBJECT,WRAND);
         MAP(WOBJECT,FISH_CAUGHT);
       }
     if(WTEMP1 >= 6 ){
-        RAND(10,6); 
+        RAND(6,10); 
         MOV(WOBJECT,WRAND);
         MAP(WOBJECT,FISH_CAUGHT);
     }
@@ -71,7 +71,7 @@ insert into map ([op],[key],[value]) values
 ('FISH_CAUGHT','10','IDD_FISH10');
 
 delete from map_obj where op = 'IDD_POLE2';
-
+delete from map_obj where op = 'IDD_POLE1';
 insert into map_obj ([op],[key],[value]) values 
 ('IDD_POLE1','IDD_LUNCHCRUMBS','IDD_POLE1B9'),
 ('IDD_POLE1','IDD_BAIT9','IDD_POLE1B9'),

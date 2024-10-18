@@ -1,5 +1,5 @@
 
-delete from games;
+
 
 --for testing we're going to make the sanddirts objects
 delete from objects where [object] like 'IDD_SANDDIRT%';
@@ -235,14 +235,14 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
       want(10).
       ASSIGN(WTEMP3,0);
       ASSIGN(WTEMP2,0);
-      RAND(3,1); 
+      RAND(1,3); 
       ASSIGN(BPARM,WRAND);  
 ', '', ''),
 ('M_HIDER', 'topOLoop', '0', 'GT', 'WTEMP3', 9, '
  WRITE('' should be done ''); 
 ', '', ''),
 ('M_HIDER', 'topOLoop', 'numberCheck','Z_EPSILON', '', '', '
-         RAND(10,1);
+         RAND(1,10);
          ASSIGN(WTEMP1,WRAND);
          WRITE(''Check to see if we want WTEMP1 ''); 
          if (want(WTEMP1)) {
@@ -268,7 +268,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
          MOV(WTEMP2,BPARM);
          MAPi(WTEMP2,S00_HIDINGPLACE); 
          SIGNAL(WTEMP2,SIG_OPEN); 
-         RAND(4,1); 
+         RAND(1,4); 
         //I want to update BPARM by adding 1,2, 3 or 4
         ASSIGN(WTEMP2,BPARM);
         ADD(WTEMP2,WRAND); 

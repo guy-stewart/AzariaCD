@@ -44,18 +44,16 @@ delete from machines where [name] like 'S16_DICEDROP%';
 delete from machines where [name] like 'S16_DICEROLL%';
 delete from machines where [name] like 'S16_DICESTAK%';
 
-INSERT INTO "main"."machines" ("id", "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('16003', 'S16_DICEDROP_R',  'IDV_TRAYL', '218', '133', '333', '174', '0','M16_DICEDROP','S16_DICEROLL_R1','S16_DICEROLL_R2','', ''),
-('16004', 'S16_DICEROLL_R1', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R2','', ''),
-('16005', 'S16_DICEROLL_R2', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R1','', ''),
-
-('16006', 'S16_DICEDROP_L',  'IDV_TRAYL', '50', '120', '176', '150', '0','M16_DICEDROP','S16_DICEROLL_L1','S16_DICEROLL_L2','', ''),
-('16007', 'S16_DICEROLL_L1', 'IDV_TRAYL', '40', '150', '100', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L2','', ''),
-('16008', 'S16_DICEROLL_L2', 'IDV_TRAYL', '110', '150', '160', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L1','', ''),
-
-('16009', 'S16_DICESTAKING_R','IDV_TRAYL', '223', '35', '337', '123', '0','M16_DICESTAKE','','','', ''),
-('16010', 'S16_DICESTAKING_L','IDV_TRAYL', '77', '35', '186', '123', '0','M16_DICESTAKE','','','', '');
+('S16_DICEDROP_R',  'IDV_TRAYL', '218', '133', '333', '174', '0','M16_DICEDROP','S16_DICEROLL_R1','S16_DICEROLL_R2','', ''),
+('S16_DICEROLL_R1', 'IDV_TRAYL', '205', '140', '280', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R2','', ''),
+('S16_DICEROLL_R2', 'IDV_TRAYL', '281', '140', '365', '240', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_R1','', ''),
+('S16_DICEDROP_L',  'IDV_TRAYL', '50', '120', '176', '150', '0','M16_DICEDROP','S16_DICEROLL_L1','S16_DICEROLL_L2','', ''),
+('S16_DICEROLL_L1', 'IDV_TRAYL', '40', '150', '100', '210',  '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L2','', ''),
+('S16_DICEROLL_L2', 'IDV_TRAYL', '110', '150', '160', '210', '0','M16_DICEROLL','IDS_DICE','S16_DICEROLL_L1','', ''),
+('S16_DICESTAKING_R','IDV_TRAYL', '223', '35', '337', '123', '0','M16_DICESTAKE','','','', ''),
+('S16_DICESTAKING_L','IDV_TRAYL', '77', '35', '186', '123',  '0','M16_DICESTAKE','','','', '');
 
 
 delete from transitions where [automaton] like 'M16_DICEDROP%';
@@ -75,7 +73,7 @@ VALUES
 ('M16_DICEROLL', '2', '4', 'MOV', 'WSPRITE', 'WIP1', '',''),
 ('M16_DICEROLL', '4', '5', 'ASHOW', 'WSPRITE', 'V_LOOP', '',''),
 ('M16_DICEROLL', '5', '6', 'ESTIME', '', '2', '',''), 
-('M16_DICEROLL','6','7','RAND','6','1','',''),
+('M16_DICEROLL','6','7','RAND','1','6','',''),
 
 ('M16_DICEROLL','7','8','MOV','BFRAME', 'WRAND','
     MAPi(BFRAME,S16_DICE_MAP);
@@ -220,7 +218,7 @@ VALUES
 ASHOW(IDS_DICE,V_LOOP);
 PLAYWAVE(SOUND_ONEDIEROLL);',''),
 ('M16_DIEROLL','ROLLING','8','SYNCPOINT','2','SYNC_ROLL','
-RAND(6,1);
+RAND(1,6);
 BFRAME=WRAND;
 MAPi(BFRAME,S16_DICE_MAP);
 SHOW(BFRAME);',''),

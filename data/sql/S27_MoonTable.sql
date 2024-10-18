@@ -1,4 +1,4 @@
-delete from games;
+
 
 
 delete from spr_names where name = 'IDS_MOON1';
@@ -33,8 +33,8 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MEMFUSEO', '
 delete from objects where object = 'IDD_MEMSPELL';
 delete from objects where object = 'IDD_MEMFUSE';
 insert into objects values
-('IDD_MEMSPELL','1630','IDC_SPELL','MEMSPELL','MEMSPELL','MEMSPELL'),
-('IDD_MEMFUSE','1631','IDD_NULL','MEMFUSE','MEMFUSE','MEMFUSE');
+('IDD_MEMSPELL','IDC_SPELL','MEMSPELL','MEMSPELL','MEMSPELL'),
+('IDD_MEMFUSE', 'IDD_NULL','MEMFUSE','MEMFUSE','MEMFUSE');
 
 delete from machines where name = 'S27_MEMSTONE1';
 delete from machines where name = 'S27_MEMSTONE2';
@@ -46,20 +46,20 @@ delete from machines where name = 'S27_MEMSTONE7';
 
 delete from machines where name = 'S27_MEMFUSE';
 delete from machines where name = 'S27_MEMSPELL';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
 --These are 1 nearest the planet to 7 furthest away
-('9810', 'S27_MEMSTONE1', '5393', 'IDV_MEMSTONE', '0', '0', '10', '10', '0','M_MEMORY','IDS_MOON1','8','', ''),
-('9811', 'S27_MEMSTONE2', '5393', 'IDV_MEMSTONE', '0', '0', '10', '20', '0','M_MEMORY','IDS_MOON2','8','', ''),
-('9812', 'S27_MEMSTONE3', '5393', 'IDV_MEMSTONE', '0', '0', '10', '30', '0','M_MEMORY','IDS_MOON3','8','', ''),
-('9813', 'S27_MEMSTONE4', '5393', 'IDV_MEMSTONE', '0', '0', '10', '40', '0','M_MEMORY','IDS_MOON4','8','', ''),
-('9814', 'S27_MEMSTONE5', '5393', 'IDV_MEMSTONE', '0', '0', '10', '50', '0','M_MEMORY','IDS_MOON5','8','', ''),
-('9815', 'S27_MEMSTONE6', '5393', 'IDV_MEMSTONE', '0', '0', '10', '60', '0','M_MEMORY','IDS_MOON6','8','', ''),
-('9816', 'S27_MEMSTONE7', '5393', 'IDV_MEMSTONE', '0', '0', '10', '70', '0','M_MEMORY','IDS_MOON7','8','', ''),
+('S27_MEMSTONE1', 'IDV_MEMSTONE', '0', '0', '10', '10', '0','M_MEMORY','IDS_MOON1','8','', ''),
+('S27_MEMSTONE2', 'IDV_MEMSTONE', '0', '0', '10', '20', '0','M_MEMORY','IDS_MOON2','8','', ''),
+('S27_MEMSTONE3', 'IDV_MEMSTONE', '0', '0', '10', '30', '0','M_MEMORY','IDS_MOON3','8','', ''),
+('S27_MEMSTONE4', 'IDV_MEMSTONE', '0', '0', '10', '40', '0','M_MEMORY','IDS_MOON4','8','', ''),
+('S27_MEMSTONE5', 'IDV_MEMSTONE', '0', '0', '10', '50', '0','M_MEMORY','IDS_MOON5','8','', ''),
+('S27_MEMSTONE6', 'IDV_MEMSTONE', '0', '0', '10', '60', '0','M_MEMORY','IDS_MOON6','8','', ''),
+('S27_MEMSTONE7', 'IDV_MEMSTONE', '0', '0', '10', '70', '0','M_MEMORY','IDS_MOON7','8','', ''),
 
 
-('9817', 'S27_MEMFUSE', '5393', 'IDV_MEMSTONE', '355', '109','390', '172', '0','M_MEMOBJ','IDD_MEMFUSE','IDD_MEMSPELL', 'IDS_MEMFUSEO', 'S27_MEMSPELL'),
-('9818', 'S27_MEMSPELL', '5393', 'IDV_MEMSTONE', '8', '111', '281', '163', '0','M_MEMOBJ','IDD_MEMSPELL','IDD_MEMFUSE', 'IDS_MEMSPELLO', 'S27_MEMFUSE');
+('S27_MEMFUSE', 'IDV_MEMSTONE', '355', '109','390', '172', '0','M_MEMOBJ','IDD_MEMFUSE','IDD_MEMSPELL', 'IDS_MEMFUSEO', 'S27_MEMSPELL'),
+('S27_MEMSPELL', 'IDV_MEMSTONE', '8', '111', '281', '163', '0','M_MEMOBJ','IDD_MEMSPELL','IDD_MEMFUSE', 'IDS_MEMSPELLO', 'S27_MEMFUSE');
 
 
 delete from transitions where automaton = 'M_MEMORY';
@@ -69,7 +69,7 @@ delete from transitions where automaton = 'M_MEMOBJ';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
 ('M_MEMORY','0','1','WAIT','','SIG_SHOW',''),
-('M_MEMORY','1','2','RAND','8','0',''),
+('M_MEMORY','1','2','RAND','0','8',''),
 ('M_MEMORY','2','3','MOV','BFRAME', 'WRAND',''), -- 
 ('M_MEMORY','3','4','SHOW','WIP1', '', 'MOV(BPARM,BFRAME);ASSIGN(WPARM,1);'),
 ('M_MEMORY','4','5','WAIT','','SIG_HIDE',''),

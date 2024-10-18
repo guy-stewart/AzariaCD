@@ -1,5 +1,5 @@
 
-delete from games;
+
 
 -- 1.) There are spells that act on the holding player 
 --(Telekinesis,Protect,Invisible,Mindread/Perception,Wetbreath,Nybreath)
@@ -290,7 +290,7 @@ VALUES
 --------------------
 
 ('M_BLINDVIEW','0','5','CLICK','','', '', '', ''),
-('M_BLINDVIEW','5','10','RAND','10','1', '
+('M_BLINDVIEW','5','10','RAND','1','10', '
     if(WRAND > 5){
         SIGNAL(BLINDNESS_ACTIVE,SIG_STOP);
     }
