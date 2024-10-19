@@ -1,0 +1,74 @@
+///====================
+//Check Hidden Items
+//
+hiders("%")~
+
+hiders( 1, 'IDV_PATH2',    'S00_HIDDEN_1',    'ISA_TOOL_DIGGER'  ). 
+hiders( 2, 'IDV_MOON3',    'S00_HIDDEN_2',    'ISA_TOOL_DIGGER'  ). 
+hiders( 3, 'IDV_MOON5',    'S00_HIDDEN_3',    'ISA_TOOL_STRIKER'  ). 
+hiders( 4, 'IDV_EYEB',     'S00_HIDDEN_4',    'ISA_TOOL_STRIKER'  ). 
+hiders( 5, 'IDV_WR3',      'S00_HIDDEN_5',    'ISA_TOOL_DIGGER'   ). 
+hiders( 6, 'IDV_CTO1',     'S00_HIDDEN_6',    'ISA_TOOL_PRYER'    ). 
+hiders( 7, 'IDV_VIL4',     'S00_HIDDEN_7',    'ISA_TOOL_DIGGER'   ). 
+hiders( 8, 'IDV_TMPLPTH5', 'S00_HIDDEN_8',    'ISA_TOOL_DIGGER'   ). 
+hiders( 9, 'IDV_EYEB',     'S00_HIDDEN_9',    'ISA_TOOL_STRIKER' ). 
+hiders( 10,'IDV_WR2',      'S00_HIDDEN_10',   'ISA_TOOL_STRIKER'  ). 
+hiders( 11,'IDV_SCN10PT0', 'S00_HIDDEN_11',   'ISA_TOOL_DIGGER'  ). 
+hiders( 12,'IDV_FA1PAN',   'S00_HIDDEN_12',   'ISA_TOOL_DIGGER'   ). 
+hiders( 13,'IDV_FA1PAN',   'S00_HIDDEN_13',   'ISA_TOOL_DIGGER'   ). 
+hiders( 14,'IDV_FH1PTH1',  'S00_HIDDEN_14',   'ISA_TOOL_DIGGER'   ). 
+hiders( 15,'IDV_SCN10PT0', 'S00_HIDDEN_15',   'ISA_TOOL_PRYER'   ). 
+hiders( 16,'IDV_CTO3',     'S00_HIDDEN_16',   'ISA_TOOL_PRYER'   ). 
+hiders( 17,'IDV_CTO2',     'S00_HIDDEN_17',   'ISA_TOOL_DIGGER'   ). 
+hiders( 18,'IDV_ctyh',     'S00_HIDDEN_18',   'ISA_TOOL_DIGGER'   ). 
+hiders( 21,'IDV_WR3',      'S00_HIDDEN_21',   'ISA_TOOL_STRIKER'  ). 
+hiders( 22,'IDV_WR3',      'S00_HIDDEN_22',   'ISA_TOOL_DIGGER'   ). 
+hiders( 19,'IDV_TMPLPTH5', 'S00_HIDDEN_19',   'ISA_TOOL_DIGGER'  ). 
+hiders( 20,'IDV_SCN10PT0', 'S00_HIDDEN_20',   'ISA_TOOL_DIGGER'  ). 
+hiders( 23,'IDV_PATH2',    'S00_HIDDEN_23',   'ISA_TOOL_DIGGER'  ). 
+hiders( 24,'IDV_PATH2',    'S00_HIDDEN_24',   'ISA_TOOL_DIGGER'  ). 
+hiders( 25,'IDV_MOON5',    'S00_HIDDEN_25',   'ISA_TOOL_DIGGER'  ). 
+
+
+
+
+i = 1;
+while (i<26) {
+    write("while (i<26) with i = ", i);
+        hiders(i, ?room, ?machine, ?needed);
+            write("view is now",room );
+            warp(room);
+            setsleep(1);
+
+            if(needed == 'ISA_TOOL_DIGGER'){
+                get('IDD_SPADE'); 
+            }
+            if(needed == 'ISA_TOOL_STRIKER'){
+                get('IDD_PICK');
+            }
+            if(needed == 'ISA_TOOL_PRYER'){
+                get('IDD_PICK');
+            }
+
+            drag(machine);
+            sleep(1);
+            drag(machine);
+            sleep(1);
+            drag(machine);
+            sleep(1);
+           
+            recycle();
+             sleep(1);
+
+            grab(machine); 
+     
+            drop(SMP_EYEINFO);
+            setsleep(3);
+            grab(SMP_EYEINFO);
+            recycle();
+            sleep(3);
+            
+    i = i + 1;
+}
+write(done);
+hiders("%")~

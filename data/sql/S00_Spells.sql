@@ -270,21 +270,18 @@ VALUES
     //start the timer
     SIGNAL(WIP2,SIG_START);
 ', '', ''),
-('M_ATTACKSPELL','turntOn','active','Z_EPSILON','','', '', '', ''),
-    
-('M_ATTACKSPELL','active','caughtInLoop','ESTIME','0','0', '
-        if(WIP1==BLINDNESS){
-             MOV(WPARM,IDV_BLINDVIEW);
-             LOADVIEW(WPARM);
-        }
-  
-        if(WIP1==HALUCINATE){ 
-            MOV(WPARM,IDV_BLINDVIEW);
-            LOADVIEW(WPARM);
-        }
+('M_ATTACKSPELL','turntOn','active','Z_EPSILON','','', '
+ if(WIP1==BLINDNESS){
+      MOV(WPARM,IDV_BLINDVIEW);
+      LOADVIEW(WPARM);
+ }
+ if(WIP1==HALUCINATE){ 
+     MOV(WPARM,IDV_BLINDVIEW);
+     LOADVIEW(WPARM);
+ }
 ', '', ''),
-('M_ATTACKSPELL','caughtInLoop','active','Z_EPSILON','','', '', '', ''),
-('M_ATTACKSPELL','caughtInLoop','ended','WAIT','0','SIG_STOP', 'SIGNAL(SID_SPELL,SIG_CLEAR);', '', ''),
+    
+('M_ATTACKSPELL','active','ended','WAIT','0','SIG_STOP', 'SIGNAL(SID_SPELL,SIG_CLEAR);', '', ''),
 ('M_ATTACKSPELL','ended','0','Z_EPSILON','','', '', '', ''),
 
 --------------------
