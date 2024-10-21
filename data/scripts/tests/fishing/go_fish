@@ -40,8 +40,8 @@ while ((station <=6) && (want(got()) == 0)) {
         drop(machine, 'IDD_BAIT'+baitno);
     }
     station = station + 1;
-    baitno = baitno+1;
-    if (baitno > 10) baitno=0;
+    baitno = baitno+2;
+    if (baitno > 9) baitno=0;
 }
 
 fishstation('%',)~
