@@ -232,7 +232,7 @@ delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '0', '0', '50', '50', '3', 'M_O_IDSPELL', '', '', '', ''),
-('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_ID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
 
 delete from "main"."transitions" where [automaton] like 'M_DEC_E%';
@@ -354,6 +354,7 @@ VALUES
 
 
 delete from "main"."transitions" where [automaton] = 'M_ID';
+delete from "main"."transitions" where [automaton] = 'M_OID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
@@ -437,7 +438,95 @@ VALUES
     SHOW(0);
     SIGNAL(WIP4,SIG_CLEAR);
 ', '', ''),
-('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
+('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', ''),
+
+---------------------
+
+
+('M_OID', '0', 'setId', 'EQUALi', 'OSEX', '1', '
+    if(OWISDOM >= 30){
+       ASSIGN(WPARM,F3);
+    }
+     if(OWISDOM >= 20 && LWISDOM < 31){
+        ASSIGN(WPARM,F2);
+    }
+    if(OWISDOM < 20){
+       ASSIGN(WPARM,F1);
+    }
+', '', ''), 
+('M_OID', '0', 'setId', 'NEQUALi', 'OSEX', '1', '
+    if(OWISDOM >= 30){
+       ASSIGN(WPARM,M3);
+    }
+    if(OWISDOM >= 20 && OWISDOM < 31){
+        ASSIGN(WPARM,M2);
+    }
+    if(OWISDOM < 20){
+       ASSIGN(WPARM,M1);
+    }
+', '', ''), 
+
+('M_OID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
+    MAP(WSPRITE,WPARM);
+    ASSIGN(BFRAME,0);
+    SHOW(WSPRITE);
+', '', ''),
+
+('M_OID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
+('M_OID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
+('M_OID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
+('M_OID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
+('M_OID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
+('M_OID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
+('M_OID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
+('M_OID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
+('M_OID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
+('M_OID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
+('M_OID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
+('M_OID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
+
+('M_OID', '20', 'playForward', 'ASSIGN', 'WSPRITE', 'happy', '', '', ''),
+('M_OID', '21', 'playForward', 'ASSIGN', 'WSPRITE', 'hurt', '', '', ''),
+('M_OID', '22', 'playOnce', 'ASSIGN', 'WSPRITE', 'kiss', '', '', ''),
+('M_OID', '23', 'playForward', 'ASSIGN', 'WSPRITE', 'mad', '', '', ''),
+('M_OID', '24', 'playForward', 'ASSIGN', 'WSPRITE', 'sad', '', '', ''),
+('M_OID', '25', 'playForward', 'ASSIGN', 'WSPRITE', 'surprised', '', '', ''),
+('M_OID', '26', 'playForward', 'ASSIGN', 'WSPRITE', 'stress', '', '', ''),
+('M_OID', '27', 'playForward', 'ASSIGN', 'WSPRITE', 'wave', '', '', ''),
+('M_OID', '30', 'playDead', 'ASSIGN', 'WSPRITE', 'dead', '', '', ''),
+
+('M_OID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
+('M_OID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '', '', ''),
+
+('M_OID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+    MAP(WSPRITE,WPARM);
+    SHOW(WSPRITE);
+    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK
+', '', ''),
+('M_OID', 'playOnce', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+    MAP(WSPRITE,WPARM);
+    SHOW(0,WSPRITE);
+    ANIMATE(0,0);
+', '', ''),
+('M_OID', 'playDead', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+    MAP(WSPRITE,WPARM);
+    SHOW(0,WSPRITE);
+    VIDEO(0,WSPRITE);
+    ANIMATE(0,0);
+    ASSIGN(OENERGY,1);
+    ASSIGN(OWEALTH,0);
+    SIGNAL(SMP_VIAL,SIG_DRAIN);
+    LOADVIEW(IDV_VIL8);
+', '', ''),
+('M_OID', '100', 'empty', 'Z_EPSILON', '', '', '
+    SHOW(0);
+    SIGNAL(WIP4,SIG_CLEAR);
+', '', ''),
+('M_OID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
+
+
+
+
 
 
 delete from "main"."transitions" where [automaton] like 'M_IDSPELL%';
@@ -524,15 +613,15 @@ VALUES ('IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
 delete from "main"."machines" where [name] like 'S0_TEST%';
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_TEST_1', 'IDV_TESTPAN', '40', '70', '110', '135',  '0', 'M_TEST1', '', '', '', ''),
-('S0_TEST_2', 'IDV_TESTPAN', '40', '148', '110', '212', '0', 'M_TEST2', '', '', '', ''),
-('S0_TEST_3', 'IDV_TESTPAN', '40', '212', '110', '290', '0', 'M_TEST3', '', '', '', ''),
-('S0_TEST_4', 'IDV_TESTPAN', '150', '70', '210', '135',  '0', 'M_TEST4', '', '', '', ''),
-('S0_TEST_5', 'IDV_TESTPAN', '150', '148', '210', '212', '0', 'M_TEST5', '', '', '', ''),
-('S0_TEST_6', 'IDV_TESTPAN', '150', '212', '210', '290', '0', 'M_TEST6', '', '', '', ''),
-('S0_TEST_7', 'IDV_TESTPAN', '250', '70', '310', '135',  '0', 'M_TEST7', '', '', '', ''),
-('S0_TEST_8', 'IDV_TESTPAN', '250', '148', '310', '212', '0', 'M_TEST8', '', '', '', ''),
-('S0_TEST_9', 'IDV_TESTPAN', '250', '212', '310', '290', '0', 'M_TEST9', '', '', '', '');
+('S0_TEST_1', 'IDV_TESTPAN', '40', '70', '110', '135',   '2', 'M_TEST1', '', '', '', ''),
+('S0_TEST_2', 'IDV_TESTPAN', '40', '148', '110', '212',  '2', 'M_TEST2', '', '', '', ''),
+('S0_TEST_3', 'IDV_TESTPAN', '40', '212', '110', '290',  '2', 'M_TEST3', '', '', '', ''),
+('S0_TEST_4', 'IDV_TESTPAN', '150', '70', '210', '135',  '2', 'M_TEST4', '', '', '', ''),
+('S0_TEST_5', 'IDV_TESTPAN', '150', '148', '210', '212', '2', 'M_TEST5', '', '', '', ''),
+('S0_TEST_6', 'IDV_TESTPAN', '150', '212', '210', '290', '2', 'M_TEST6', '', '', '', ''),
+('S0_TEST_7', 'IDV_TESTPAN', '250', '70', '310', '135',  '2', 'M_TEST7', '', '', '', ''),
+('S0_TEST_8', 'IDV_TESTPAN', '250', '148', '310', '212', '2', 'M_TEST8', '', '', '', ''),
+('S0_TEST_9', 'IDV_TESTPAN', '250', '212', '310', '290', '2', 'M_TEST9', '', '', '', '');
 
 
 
@@ -540,15 +629,15 @@ delete from "main"."transitions" where [automaton] like 'M_TEST%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 ('M_TEST1', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(LENERGY,4);
+    ASSIGN(OENERGY,4);
     SIGNAL(SID_AURA,SIG_ADD);
 ', '', ''),
 ('M_TEST2', '0', '0', 'CLICK', '0', '0', '
-    ADDI(LENERGY,1);
+    ADDI(OENERGY,1);
     SIGNAL(SID_AURA,SIG_ADD);
     ', '', ''),
 ('M_TEST3', '0', '0', 'CLICK', '0', '0', '
-    SUBI(LENERGY,1);
+    SUBI(OENERGY,1);
     SIGNAL(SID_AURA,SIG_SUB);
     ', '', ''),
 ('M_TEST4', '0', '0', 'CLICK', '0', '0', '
@@ -594,7 +683,7 @@ VALUES
 --     healing
 --     killing
 
--- things that impact your energy (SID_AURA)  ADDI(LENERGY,1); SIGNAL(SID_AURA,SIG_ADD);
+-- things that impact your energy (SID_AURA)  ADDI(OENERGY,1); SIGNAL(SID_AURA,SIG_ADD);
 --     this is done..
 
 

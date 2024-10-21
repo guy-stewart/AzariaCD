@@ -40,13 +40,13 @@ delete from views where view_name = 'IDV_VHS1';
 delete from views where view_name = 'IDV_VHSE';
 delete from views where view_name = 'IDV_VILDOOR';
 
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('50000', 'IDV_CHS1','1', '3', '1', '6', 'surround.vct', 'CHS1'),
-('50001', 'IDV_CDOOR','1', '0', '1', '1', 'smlpanel.vct', 'CDOOR'),
-('50002', 'IDV_CHESTIN','1', '0', '1', '1', 'smlpanel.vct','CHESTIN'),
-('50003', 'IDV_VHS1','1', '3', '1', '6', 'surround.vct', 'VHS1'),
-('50004', 'IDV_VILDOOR','1', '0', '1', '1', 'smlpanel.vct', 'VILDOOR');
+('IDV_CHS1','1', '3', '1', '6', 'surround.vct', 'CHS1'),
+('IDV_CDOOR','1', '0', '1', '1', 'smlpanel.vct', 'CDOOR'),
+('IDV_CHESTIN','1', '0', '1', '1', 'smlpanel.vct','CHESTIN'),
+('IDV_VHS1','1', '3', '1', '6', 'surround.vct', 'VHS1'),
+('IDV_VILDOOR','1', '0', '1', '1', 'smlpanel.vct', 'VILDOOR');
 
 
 delete from cardinals where [from] = 'IDV_VIL4';
@@ -72,8 +72,8 @@ INSERT INTO "main"."panel_nav" ("from", "forward", "back") VALUES
 delete from objects where [object] like 'IDD_GOPASEED';
 delete from objects where [object] like 'IDD_SPADE';
 insert into objects values
-('IDD_GOPASEED',50005,'IDC_NULL','gopaseed','gopaseed','gopaseed'),
-('IDD_SPADE',50010,'IDC_NULL','spade','spade','spade');
+('IDD_GOPASEED','IDC_NULL','gopaseed','gopaseed','gopaseed'),
+('IDD_SPADE','IDC_NULL','spade','spade','spade');
 
 delete from isa where [member] like 'IDD_SPADE%';
 INSERT INTO "main"."isa" ("class", "member")
@@ -90,36 +90,27 @@ insert into spr_names values ('IDS_SANDPILEGOPA','sandpilegopa','50008');
 
 delete from machines where [name] like 'S00_CITYGOP%';
 delete from machines where [name] like 'S00_VILGOP%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
-('50006', 'S00_CITYGOPA', '50000', 'IDV_CHS1', '2957', '186', '3045', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
-('50007', 'S00_VILGOPA', '50003', 'IDV_VHS1', '2546', '181', '2631', '240', '0', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
-
-
-
-('50010', 'S00_VIL_SHELFSPOT1', '50003', 'IDV_VHS1', '944', '225', '1045', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50011', 'S00_VIL_SHELFSPOT2', '50003', 'IDV_VHS1', '1045', '225', '1137', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50012', 'S00_VIL_SHELFSPOT3', '50003', 'IDV_VHS1', '1138', '220', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
-
-('50013', 'S00_VIL_SHELFSPOT4', '50003', 'IDV_VHS1', '944', '139', '1045', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50014', 'S00_VIL_SHELFSPOT5', '50003', 'IDV_VHS1', '1045', '139', '1137', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50015', 'S00_VIL_SHELFSPOT6', '50003', 'IDV_VHS1', '1138', '137', '1230', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-
-('50016', 'S00_VIL_SHELFSPOT7', '50003', 'IDV_VHS1', '944', '66', '1045', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50017', 'S00_VIL_SHELFSPOT8', '50003', 'IDV_VHS1', '1045', '63', '1137', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50018', 'S00_VIL_SHELFSPOT9', '50003', 'IDV_VHS1', '1138', '70', '1230', '206', '0', 'M_SHELFBIN', '', '', '', '', ''),
-
-
-('50020', 'S00_CIT_SHELFSPOT1', '50000', 'IDV_CHS1', '869', '199', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50021', 'S00_CIT_SHELFSPOT2', '50000', 'IDV_CHS1', '961', '199', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50022', 'S00_CIT_SHELFSPOT3', '50000', 'IDV_CHS1', '1045', '199', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
-
-('50023', 'S00_CIT_SHELFSPOT4', '50000', 'IDV_CHS1', '869', '150', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50024', 'S00_CIT_SHELFSPOT5', '50000', 'IDV_CHS1', '961', '150', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50025', 'S00_CIT_SHELFSPOT6', '50000', 'IDV_CHS1', '1045', '150', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', ''),
-
-('50026', 'S00_CIT_SHELFSPOT7', '50000', 'IDV_CHS1', '869', '101', '941', '250', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50027', 'S00_CIT_SHELFSPOT8', '50000', 'IDV_CHS1', '961', '101', '1033', '260', '0', 'M_SHELFBIN', '', '', '', '', ''),
-('50028', 'S00_CIT_SHELFSPOT9', '50000', 'IDV_CHS1', '1045', '101', '1230', '280', '0', 'M_SHELFBIN', '', '', '', '', '');
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
+( 'S00_CITYGOPA', 'IDV_CHS1', '2957', '186', '3045', '240', '2', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
+( 'S00_VILGOPA', 'IDV_VHS1', '2546', '181', '2631', '240', '2', 'M_NEWGOPA', 'ISA_TOOL_DIGGER', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT1', 'IDV_VHS1', '944', '225', '1045', '280', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT2', 'IDV_VHS1', '1045', '225', '1137', '280', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT3', 'IDV_VHS1', '1138', '220', '1230', '280', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT4', 'IDV_VHS1', '944', '139', '1045', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT5', 'IDV_VHS1', '1045', '139', '1137', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT6', 'IDV_VHS1', '1138', '137', '1230', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT7', 'IDV_VHS1', '944', '66', '1045', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT8', 'IDV_VHS1', '1045', '63', '1137', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_VIL_SHELFSPOT9', 'IDV_VHS1', '1138', '70', '1230', '206', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT1', 'IDV_CHS1', '869', '199', '941', '250', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT2', 'IDV_CHS1', '961', '199', '1033', '260', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT3', 'IDV_CHS1', '1045', '199', '1230', '280', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT4', 'IDV_CHS1', '869', '150', '941', '250', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT5', 'IDV_CHS1', '961', '150', '1033', '260', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT6', 'IDV_CHS1', '1045', '150', '1230', '280', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT7', 'IDV_CHS1', '869', '101', '941', '250', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT8', 'IDV_CHS1', '961', '101', '1033', '260', '2', 'M_SHELFBIN', '', '', '', '', ''),
+( 'S00_CIT_SHELFSPOT9', 'IDV_CHS1', '1045', '101', '1230', '280', '2', 'M_SHELFBIN', '', '', '', '', '');
 
 
 

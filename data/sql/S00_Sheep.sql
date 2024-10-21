@@ -34,6 +34,7 @@ insert into transitions values
 SHOW(WIP3);','',''),
 ('M_PESTER',4,5,'CLICK','','',
 'PLAYWAVE("SOUND_LEVER");
+HFLIP(WIP2);
 ASHOW(WIP2);','',''),
 ('M_PESTER',5,2,'MOVETO','mark1','2000',
 'STOPWAVE();
