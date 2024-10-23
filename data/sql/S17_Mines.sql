@@ -78,12 +78,12 @@ VALUES
 ('S17_eLOCKSOCKET', 'IDV_eMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_eDOORWAY', 'S17_eLOCKBURN', 'S17_ALT_e_A', 'S17_ALT_e_B'),
 
 
---This may need to go to 0/local_visable 
-('S17_aDOORWAY',    'IDV_aMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_aCV1aPAN', 'S17_aFFIELD1', 'S17_aFOULWIND', ''),
-('S17_bDOORWAY',    'IDV_bMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_bCV1aPAN', 'S17_bFFIELD1', 'S17_bFOULWIND', ''),
-('S17_cDOORWAY',    'IDV_cMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_cCV1aPAN', 'S17_cFFIELD1', 'S17_cFOULWIND', ''),
-('S17_dDOORWAY',    'IDV_dMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_dCV1aPAN', 'S17_dFFIELD1', 'S17_dFOULWIND', ''),
-('S17_eDOORWAY',    'IDV_eMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_eCV1aPAN', 'S17_eFFIELD1', 'S17_eFOULWIND', ''),
+--This may need to go to 0/local_visable - from 2
+('S17_aDOORWAY',    'IDV_aMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_aCV1aPAN', 'S17_aFFIELD1', 'S17_aFOULWIND', ''),
+('S17_bDOORWAY',    'IDV_bMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_bCV1aPAN', 'S17_bFFIELD1', 'S17_bFOULWIND', ''),
+('S17_cDOORWAY',    'IDV_cMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_cCV1aPAN', 'S17_cFFIELD1', 'S17_cFOULWIND', ''),
+('S17_dDOORWAY',    'IDV_dMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_dCV1aPAN', 'S17_dFFIELD1', 'S17_dFOULWIND', ''),
+('S17_eDOORWAY',    'IDV_eMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_eCV1aPAN', 'S17_eFFIELD1', 'S17_eFOULWIND', ''),
 
 ('S17_aFFIELD1', 'IDV_aMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_aFFIELD2', '', '', ''),
 ('S17_aFFIELD2', 'IDV_aMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_aFFIELD3', '', '', ''),
@@ -106,6 +106,13 @@ VALUES
 ('S17_eFFIELD3', 'IDV_eMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', '');
 
 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+
+( 'S17_aFOULWIND', 'IDV_aCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '6', 'NYBREATH_ACTIVE','20','SOUND_SPLASH'),
+( 'S17_bFOULWIND', 'IDV_bCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '6', 'NYBREATH_ACTIVE','20','SOUND_SPLASH'),
+( 'S17_cFOULWIND', 'IDV_cCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '6', 'NYBREATH_ACTIVE','20','SOUND_SPLASH'),
+( 'S17_dFOULWIND', 'IDV_dCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '6', 'NYBREATH_ACTIVE','20','SOUND_SPLASH'),
+( 'S17_eFOULWIND', 'IDV_eCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '6', 'NYBREATH_ACTIVE','20','SOUND_SPLASH');
 
 
 
@@ -141,13 +148,6 @@ VALUES
 
 
 
-INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-
-( 'S17_aFOULWIND', 'IDV_aCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-( 'S17_bFOULWIND', 'IDV_bCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-( 'S17_cFOULWIND', 'IDV_cCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-( 'S17_dFOULWIND', 'IDV_dCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-( 'S17_eFOULWIND', 'IDV_eCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH');
 
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
@@ -223,6 +223,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 
 
+-- We can't signal the foul wind from a shared machine or everyone dies! SIGNAL(WIP3,SIG_START);  
+-- The foul wind is only a personal foul wind and must be signaled from something with a 2 for local_visible
+   
 
 
 ('M17_DOORWAY', '0', 'caveNoLockEntry', 'CLICK', '0', '0', '', '', ''),
@@ -235,15 +238,15 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M17_DOORWAY', 'LockBombed', '0', 'SIGNAL', 'WIP2', 'SIG_OFF', '', '', ''),
 ('M17_DOORWAY', 'caveNoLockEntry', '0', 'LOADVIEW', 'WIP1', '', '
-    WRITE("No Lock entry - SIGNAL THE FOUL WIND");
-    SIGNAL(WIP3,SIG_START);
+    WRITE("No Lock entry - ");
+
 ', '', ''),
 ('M17_DOORWAY', 'keyUsed', 'tempOpen', 'SIGNAL', 'WIP2', 'SIG_OFF', '', '', ''),
 ('M17_DOORWAY', 'tempOpen', 'letInOne', 'CLICK', '0', '0', '', '', ''),
 ('M17_DOORWAY', 'tempOpen', 'Lock', 'WAIT', '0', 'SIG_CLOSE', '', '', ''),
 ('M17_DOORWAY', 'letInOne', 'Lock', 'LOADVIEW', 'WIP1', '', '
-   WRITE("unlocked SIGNAL THE FOUL WIND");
-   SIGNAL(WIP3,SIG_START);
+   WRITE("unlocked ");
+
 ', '', ''),
 
 
