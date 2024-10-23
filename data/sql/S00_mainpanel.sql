@@ -50,7 +50,7 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_QL_BTN',    'IDV_MAIN_PANEL',228,7,268,47, 0, 'M_QLBTN', '', '', '', '');
+('S0_QL_BTN',    'IDV_MAIN_PANEL',228,7,268,47, 3, 'M_QLBTN', '', '', '', '');
 
 delete from machines where [name] like 'SMP_MAPBUTTONH%';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 

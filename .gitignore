@@ -37,3 +37,4 @@ SDL2_ttf.framework/Versions/A/Resources/ReadMe.txt
 SDL2_ttf.framework/Versions/A/Resources/CMake/sdl2_ttf-config-version.cmake
 SDL2_ttf.framework/Versions/A/Resources/CMake/sdl2_ttf-config.cmake
 ledger.db
+ledger.db-journal

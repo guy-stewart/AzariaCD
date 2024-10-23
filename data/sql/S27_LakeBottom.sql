@@ -18,7 +18,7 @@ VALUES
 ('S27_POLESTANDa',   'IDV_TMPLPTH9', '930', '120', '1000', '300', '0', 'M_POLESTAND', '', '','',''),
 ('S27_FISHSTATION1', 'IDV_TMPLPTH9', '257', '151', '345', '275', '0', 'M_FISHSTATION',  '', '','',''),
 ('S27_FISHSTATION2', 'IDV_TMPLPTH9', '351', '151', '400', '275', '0', 'M_FISHSTATION',  '', '','',''),
-('S27_DEATHMANAGER', 'IDV_LAKEB1', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'WETBREATH_ACTIVE','2','SOUND_SPLASH');
+('S27_DEATHMANAGER', 'IDV_LAKEB1', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'WETBREATH_ACTIVE','10','SOUND_SPLASH');
 
 
 
@@ -60,7 +60,9 @@ VALUES
 '),
 ('M_DEATHMANAGER', 'safe', 'fineOnBreath', 'ESTIME', '', 'WIP1', ''),
 ('M_DEATHMANAGER', 'safe', '0','WAIT','','SIG_CLEAR', ''),
-('M_DEATHMANAGER', 'fineOnBreath', 'needAir', 'Z_EPSILON', '0', '', ''),
+('M_DEATHMANAGER', 'fineOnBreath', 'needAir', 'Z_EPSILON', '0', '', '
+    PLAYWAVE(SOUND_BURBLE);
+'),
 ('M_DEATHMANAGER', 'needAir', 'safe', 'IFSTATE', 'active', 'WIP2', ''),
 ('M_DEATHMANAGER', 'needAir', 'dieing', 'ESTIME', '0', 'WIP3','
      PLAYWAVE(SOUND_BURBLE);

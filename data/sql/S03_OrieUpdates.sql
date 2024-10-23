@@ -1,5 +1,5 @@
 
-delete from games;
+
 
 ----RESOURCES 
 delete from spr_names where name like 'IDS_ORIEKEY%';
@@ -43,16 +43,27 @@ VALUES ('IDV_GUITECHPAN', '', 'IDV_ORIE');
 
 delete from machines where [name] like 'S03_DIARYBIN';
 delete from machines where [name] like 'S03_DOORANIM';
-delete from machines where [name] = 'S03_SPEAKERSTANDf';
-delete from machines where [name] = 'S03_SPEAKERSTANDg';
+delete from machines where [name] like 'S03_SPEAKERSTAND%';
+
 delete from machines where [name] = 'S03_LOGBOOKBIN';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('S03_DIARYBIN', 'IDV_ORIE', '946', '86', '999', '142', '2', 'M_BIN', 'IDD_DIARY2', '', '', ''),
-('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '0', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', ''),
-('S03_SPEAKERSTANDf','IDV_ORIE', '251', '170', '281', '200', '0', 'M_ORIEKEY', 'S03_DOORANIM', '', '', ''),
-('S03_SPEAKERSTANDg','IDV_ORIE', '986','168','1012','194','0', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE6', ''),
-('S03_LOGBOOKBIN', 'IDV_ORIE', '2228', '221', '2280', '280', '1','M_PLANTBIN','IDD_LOGBOOKBTN','IDS_LOGBOOK','100','');
+('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '2', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', ''),
+
+
+('S03_LOGBOOKBIN', 'IDV_ORIE', '2228', '221', '2280', '280', '2','M_PLANTBIN','IDD_LOGBOOKBTN','IDS_LOGBOOK','100','');
+
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
+('S03_SPEAKERSTANDa','IDV_ORIE', '2416', '170', '2442', '200', '2', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE1', '', ''),
+('S03_SPEAKERSTANDb','IDV_ORIE', '2148', '170', '2177', '200', '2', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE2', '', ''),
+('S03_SPEAKERSTANDc','IDV_ORIE', '1881', '170', '1910', '200', '2', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE3', '', ''),
+('S03_SPEAKERSTANDd','IDV_ORIE', '1347', '170', '1378', '200', '2', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE4', '', ''),
+('S03_SPEAKERSTANDe','IDV_ORIE', '819', '170', '848', '200',   '2', 'M_ORIESPEAKER', '', '', 'SOUND_ORIE5', '', ''),
+('S03_SPEAKERSTANDf','IDV_ORIE', '251', '170', '281', '200','2',   'M_ORIEKEY', 'S03_DOORANIM', '', '', '', ''),
+('S03_SPEAKERSTANDg','IDV_ORIE', '986', '168','1012','194',  '2',   'M_ORIESPEAKER', '', '', 'SOUND_ORIE6', '', '');
+
+
 
 delete from triggers where [to] like 'IDV_DOORS%';
 delete from triggers where [to] like 'IDV_TECHPAN%';

@@ -629,15 +629,15 @@ delete from "main"."transitions" where [automaton] like 'M_TEST%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 ('M_TEST1', '0', '0', 'CLICK', '0', '0', '
-    ASSIGN(OENERGY,4);
+    ASSIGN(LENERGY,4);
     SIGNAL(SID_AURA,SIG_ADD);
 ', '', ''),
 ('M_TEST2', '0', '0', 'CLICK', '0', '0', '
-    ADDI(OENERGY,1);
+    ADDI(LENERGY,1);
     SIGNAL(SID_AURA,SIG_ADD);
     ', '', ''),
 ('M_TEST3', '0', '0', 'CLICK', '0', '0', '
-    SUBI(OENERGY,1);
+    SUBI(LENERGY,1);
     SIGNAL(SID_AURA,SIG_SUB);
     ', '', ''),
 ('M_TEST4', '0', '0', 'CLICK', '0', '0', '
