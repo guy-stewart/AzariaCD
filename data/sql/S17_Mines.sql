@@ -58,30 +58,56 @@ delete from machines where name = 'S17_dDOORWAY';
 delete from machines where name = 'S17_eDOORWAY';
 --Mines start with A in the middle North and go around to the right 
 -- add wips here 3, 4 for alt views a for a, b for b, c, d, e f (from right to left)
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('5950', 'S17_ALT_a_A', '5889', 'IDV_QUARSA', '3155', '157', '3176', '171', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
-('5951', 'S17_ALT_a_B', '5890', 'IDV_QUARSB', '3147', '161', '3185', '188', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
-('5952', 'S17_ALT_b_A', '5889', 'IDV_QUARSA', '188', '161', '211', '181', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
-('5953', 'S17_ALT_b_B', '5890', 'IDV_QUARSB', '336', '159', '374', '192', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
-('5954', 'S17_ALT_c_A', '5889', 'IDV_QUARSA', '425', '173', '452', '196', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
-('5955', 'S17_ALT_c_B', '5890', 'IDV_QUARSB', '813', '159', '856', '197', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
-('5956', 'S17_ALT_d_A', '5889', 'IDV_QUARSA', '2759', '165', '2762', '169', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
-('5957', 'S17_ALT_d_B', '5890', 'IDV_QUARSB', '2229', '182', '2272', '216', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
-('5958', 'S17_ALT_e_A', '5889', 'IDV_QUARSA', '2973', '154', '2993', '173', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
-('5959', 'S17_ALT_e_B', '5890', 'IDV_QUARSB', '2730', '169', '2773', '199', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
+('S17_ALT_a_A',     'IDV_QUARSA', '3155', '157', '3176', '171', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
+('S17_ALT_a_B',     'IDV_QUARSB', '3147', '161', '3185', '188', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
+('S17_ALT_b_A',     'IDV_QUARSA', '188', '161', '211', '181', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
+('S17_ALT_b_B',     'IDV_QUARSB', '336', '159', '374', '192', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
+('S17_ALT_c_A',     'IDV_QUARSA', '425', '173', '452', '196', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
+('S17_ALT_c_B',     'IDV_QUARSB', '813', '159', '856', '197', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
+('S17_ALT_d_A',     'IDV_QUARSA', '2759', '165', '2762', '169', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
+('S17_ALT_d_B',     'IDV_QUARSB', '2229', '182', '2272', '216', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
+('S17_ALT_e_A',     'IDV_QUARSA', '2973', '154', '2993', '173', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_A', '', '', ''),
+('S17_ALT_e_B',     'IDV_QUARSB', '2730', '169', '2773', '199', '0', 'M_STATESCALEV', 'IDS_QUARLOCK_B', '', '', ''),
 
-('5888', 'S17_aLOCKSOCKET', '5891', 'IDV_aMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_aDOORWAY', 'S17_aLOCKBURN', 'S17_ALT_a_A', 'S17_ALT_a_B'),
-('5896', 'S17_bLOCKSOCKET', '5894', 'IDV_bMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_bDOORWAY', 'S17_bLOCKBURN', 'S17_ALT_b_A', 'S17_ALT_b_B'),
-('5904', 'S17_cLOCKSOCKET', '5897', 'IDV_cMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_cDOORWAY', 'S17_cLOCKBURN', 'S17_ALT_c_A', 'S17_ALT_c_B'),
-('5912', 'S17_dLOCKSOCKET', '5900', 'IDV_dMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_dDOORWAY', 'S17_dLOCKBURN', 'S17_ALT_d_A', 'S17_ALT_d_B'),
-('5920', 'S17_eLOCKSOCKET', '5903', 'IDV_eMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_eDOORWAY', 'S17_eLOCKBURN', 'S17_ALT_e_A', 'S17_ALT_e_B'),
+('S17_aLOCKSOCKET', 'IDV_aMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_aDOORWAY', 'S17_aLOCKBURN', 'S17_ALT_a_A', 'S17_ALT_a_B'),
+('S17_bLOCKSOCKET', 'IDV_bMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_bDOORWAY', 'S17_bLOCKBURN', 'S17_ALT_b_A', 'S17_ALT_b_B'),
+('S17_cLOCKSOCKET', 'IDV_cMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_cDOORWAY', 'S17_cLOCKBURN', 'S17_ALT_c_A', 'S17_ALT_c_B'),
+('S17_dLOCKSOCKET', 'IDV_dMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_dDOORWAY', 'S17_dLOCKBURN', 'S17_ALT_d_A', 'S17_ALT_d_B'),
+('S17_eLOCKSOCKET', 'IDV_eMINEPAN', '172', '118', '232', '163', '0', 'M17_LOCKSOCKET', 'S17_eDOORWAY', 'S17_eLOCKBURN', 'S17_ALT_e_A', 'S17_ALT_e_B'),
 
-('5890', 'S17_aDOORWAY', '5891', 'IDV_aMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_aCV1aPAN', 'S17_aFFIELD1', 'S17_aFOULWIND', ''),
-('5898', 'S17_bDOORWAY', '5894', 'IDV_bMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_bCV1aPAN', 'S17_bFFIELD1', 'S17_bFOULWIND', ''),
-('5906', 'S17_cDOORWAY', '5897', 'IDV_cMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_cCV1aPAN', 'S17_cFFIELD1', 'S17_cFOULWIND', ''),
-('5914', 'S17_dDOORWAY', '5900', 'IDV_dMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_dCV1aPAN', 'S17_dFFIELD1', 'S17_dFOULWIND', ''),
-('5922', 'S17_eDOORWAY', '5903', 'IDV_eMINEPAN', '280', '75', '480', '274', '0', 'M17_DOORWAY', 'IDV_eCV1aPAN', 'S17_eFFIELD1', 'S17_eFOULWIND', '');
+
+--This may need to go to 0/local_visable 
+('S17_aDOORWAY',    'IDV_aMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_aCV1aPAN', 'S17_aFFIELD1', 'S17_aFOULWIND', ''),
+('S17_bDOORWAY',    'IDV_bMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_bCV1aPAN', 'S17_bFFIELD1', 'S17_bFOULWIND', ''),
+('S17_cDOORWAY',    'IDV_cMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_cCV1aPAN', 'S17_cFFIELD1', 'S17_cFOULWIND', ''),
+('S17_dDOORWAY',    'IDV_dMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_dCV1aPAN', 'S17_dFFIELD1', 'S17_dFOULWIND', ''),
+('S17_eDOORWAY',    'IDV_eMINEPAN', '280', '75', '480', '274', '2', 'M17_DOORWAY', 'IDV_eCV1aPAN', 'S17_eFFIELD1', 'S17_eFOULWIND', ''),
+
+('S17_aFFIELD1', 'IDV_aMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_aFFIELD2', '', '', ''),
+('S17_aFFIELD2', 'IDV_aMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_aFFIELD3', '', '', ''),
+('S17_aFFIELD3', 'IDV_aMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', ''),
+
+('S17_bFFIELD1', 'IDV_bMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_bFFIELD2', '', '', ''),
+('S17_bFFIELD2', 'IDV_bMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_bFFIELD3', '', '', ''),
+('S17_bFFIELD3', 'IDV_bMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', ''),
+
+('S17_cFFIELD1', 'IDV_cMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_cFFIELD2', '', '', ''),
+('S17_cFFIELD2', 'IDV_cMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_cFFIELD3', '', '', ''),
+('S17_cFFIELD3', 'IDV_cMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', ''),
+
+('S17_dFFIELD1', 'IDV_dMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_dFFIELD2', '', '', ''),
+('S17_dFFIELD2', 'IDV_dMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_dFFIELD3', '', '', ''),
+('S17_dFFIELD3', 'IDV_dMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', ''),
+
+('S17_eFFIELD1', 'IDV_eMINEPAN', '280', '75', '480', '274', '0', 'M17_FFIELD','S17_eFFIELD2', '', '', ''),
+('S17_eFFIELD2', 'IDV_eMINEPAN', '280', '156','280','156',  '0', 'M17_FFIELD','S17_eFFIELD3', '', '', ''),
+('S17_eFFIELD3', 'IDV_eMINEPAN', '280', '223','280','223',  '0', 'M17_FFIELD','', '', '', '');
+
+
+
+
 
 -- EXITING THE MINES
 
@@ -115,27 +141,27 @@ VALUES
 
 
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 
-('5942', 'S17_aFOULWIND', '5893', 'IDV_aCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-('5943', 'S17_bFOULWIND', '5893', 'IDV_bCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-('5944', 'S17_cFOULWIND', '5893', 'IDV_cCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-('5945', 'S17_dFOULWIND', '5893', 'IDV_dCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
-('5945', 'S17_eFOULWIND', '5893', 'IDV_eCV1bPAN', '0', '0', '0', '0', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH');
+( 'S17_aFOULWIND', 'IDV_aCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+( 'S17_bFOULWIND', 'IDV_bCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+( 'S17_cFOULWIND', 'IDV_cCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+( 'S17_dFOULWIND', 'IDV_dCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH'),
+( 'S17_eFOULWIND', 'IDV_eCV1bPAN', '1', '1', '10', '10', '2', 'M_DEATHMANAGER', '5', 'NYBREATH_ACTIVE','2','SOUND_SPLASH');
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
-('5889', 'S17_aLOCKBURN', '5891', 'IDV_aMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
-('5897', 'S17_bLOCKBURN', '5894', 'IDV_bMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
-('5905', 'S17_cLOCKBURN', '5897', 'IDV_cMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
-('5913', 'S17_dLOCKBURN', '5900', 'IDV_dMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
-('5921', 'S17_eLOCKBURN', '5903', 'IDV_eMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
+('S17_aLOCKBURN','IDV_aMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
+('S17_bLOCKBURN','IDV_bMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
+('S17_cLOCKBURN','IDV_cMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
+('S17_dLOCKBURN','IDV_dMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
+('S17_eLOCKBURN','IDV_eMINEPAN', '128', '20', '128', '20', '0', 'M17_LOCKBURN', '', '', '', ''),
 
-('5894', 'S17_aMINE', '5893', 'IDV_aCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_aFOULWIND', '', '', ''),
-('5902', 'S17_bMINE', '5896', 'IDV_bCV1bPAN', '2900', '200', '3200', '300', '0', 'M17_MINE', 'S17_bFOULWIND', '', '', ''),
-('5910', 'S17_cMINE', '5899', 'IDV_cCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_cFOULWIND', '', '', ''),
-('5918', 'S17_dMINE', '5902', 'IDV_dCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_dFOULWIND', '', '', ''),
-('5926', 'S17_eMINE', '5905', 'IDV_eCV1bPAN', '2339', '191', '3200', '300', '0', 'M17_MINE', 'S17_eFOULWIND', '', '', '');
+('S17_aMINE',    'IDV_aCV1bPAN', '2900', '200', '3200', '300', '2', 'M17_MINE', 'S17_aFOULWIND', '', '', ''),
+('S17_bMINE',    'IDV_bCV1bPAN', '2900', '200', '3200', '300', '2', 'M17_MINE', 'S17_bFOULWIND', '', '', ''),
+('S17_cMINE',    'IDV_cCV1bPAN', '2339', '191', '3200', '300', '2', 'M17_MINE', 'S17_cFOULWIND', '', '', ''),
+('S17_dMINE',    'IDV_dCV1bPAN', '2339', '191', '3200', '300', '2', 'M17_MINE', 'S17_dFOULWIND', '', '', ''),
+('S17_eMINE',    'IDV_eCV1bPAN', '2339', '191', '3200', '300', '2', 'M17_MINE', 'S17_eFOULWIND', '', '', '');
 
 
 delete from  "main"."transitions" where automaton = 'M17_LOCKSOCKET';
@@ -144,6 +170,7 @@ delete from  "main"."transitions" where automaton = 'M17_FOULWIND';
 delete from "main"."transitions" where [automaton] like 'M17_MINE%';
 delete from "main"."transitions" where [automaton] like 'M17_DOORWAY%';
 delete from  "main"."transitions" where automaton = 'M_STATESCALEV';
+delete from  "main"."transitions" where automaton = 'M17_FFIELD';
 --foul winds from beta
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
@@ -155,7 +182,21 @@ VALUES
 ('M17_MINE', '1', '2', 'PLAYWAVE', '0', 'SOUND_SLURP', '', '', ''),
 ('M17_MINE', '2', '0', 'HANDOFF', '0', 'IDD_SCOOPF', '', '', ''),
 ('M17_MINE', '3', '4', 'PLAYWAVE', '0', 'SOUND_SPIT', '', '', ''),
-('M17_MINE', '4', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '', '', ''),
+('M17_MINE', '4', '0', 'HANDOFF', '0', 'IDD_SCOOPE', '', '', '');
+
+
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+ ('M17_FFIELD', '0', '1', 'WAIT', '0', 'SIG_ON', '
+    SIGNAL(WIP1,SIG_ON);
+ ', '', ''),
+ ('M17_FFIELD', '1', '3', 'SHOW', '0', 'IDS_FORCEFLD', '', '', ''),
+ ('M17_FFIELD', '3', '4', 'ANIMATE', '0', 'V_REWIND|V_LOOP', '', '', ''),
+ ('M17_FFIELD', '4', '6', 'WAIT', '0', 'SIG_OFF', '
+     SIGNAL(WIP1,SIG_OFF);
+ ', '', ''),
+ ('M17_FFIELD', '6', '0', 'SHOW', '0', '0', '', '', ''),
+
+
 
 
 --M_DEATHMANAGER
