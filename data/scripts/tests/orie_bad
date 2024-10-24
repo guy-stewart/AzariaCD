@@ -1,0 +1,66 @@
+
+warp(IDV_ORIE);
+setsleep(2);
+
+loiter = 12;
+
+grab(S03_aSPEAKERTREE);
+drop(S03_SPEAKERSTANDa);
+sleep(loiter);
+
+grab(S03_SPEAKERSTANDa);
+drop(S03_SPEAKERSTANDb);
+sleep(loiter);
+
+grab(S03_SPEAKERSTANDb);
+drop(S03_SPEAKERSTANDc);
+sleep(loiter);
+
+grab(S03_SPEAKERSTANDc);
+drop(S03_SPEAKERSTANDd);
+sleep(loiter);
+
+grab(S03_SPEAKERSTANDd);
+drop(S03_SPEAKERSTANDe);
+sleep(loiter);
+
+setsleep(1);
+grab(S03_SPEAKERSTANDe);
+replay('city/lockup');
+sleep(5);
+
+
+grab(S03_DIARYBIN); 
+ drop(SMP_EYEINFO);
+ sleep(2);
+ drag(ORIE_DIARY_KEYHOLDER);
+ grab(ORIE_DIARY_KEYHOLDER);
+
+drop(SID_ID);
+
+sleep(1);
+grab(SMP_EYEINFO);
+recycle();
+
+grab(S03_aSPEAKERTREE);
+drop(S03_SPEAKERSTANDa);
+sleep(4);
+grab(S03_SPEAKERSTANDa);
+recycle();
+
+drag(SID_SPELL);
+grab(SID_SPELL);
+
+warp(S03_SPEAKERSTANDe);
+drag(S03_SPEAKERSTANDe);
+
+warp(S03_SPEAKERSTANDa);
+drag(S03_SPEAKERSTANDa);
+
+
+ drag(S03_SPEAKERSTANDf);
+ drop(S03_SPEAKERSTANDf);
+
+ warp(S03_DOORANIM);
+ drag(S03_DOORANIM);
+ grab(S03_DOORANIM);
