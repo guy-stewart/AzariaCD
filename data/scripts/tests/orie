@@ -26,11 +26,49 @@ sleep(loiter);
 
 setsleep(1);
 grab(S03_SPEAKERSTANDe);
-drop(S03_SPEAKERSTANDf);
+replay('city/lockup');
 sleep(5);
 
-grab(S03_SPEAKERSTANDf);
-replay('city/lockup');
 
-drag(S03_DOORANIM);
-grab(S03_DOORANIM);
+grab(S03_DIARYBIN); 
+ drop(SMP_EYEINFO);
+ sleep(2);
+ drag(ORIE_DIARY_KEYHOLDER);
+ grab(ORIE_DIARY_KEYHOLDER);
+
+drop(SID_ID);
+
+sleep(1);
+grab(SMP_EYEINFO);
+recycle();
+
+grab(S03_aSPEAKERTREE);
+drop(S03_SPEAKERSTANDa);
+sleep(4);
+grab(S03_SPEAKERSTANDa);
+recycle();
+
+drag(SID_SPELL);
+grab(SID_SPELL);
+
+warp(S03_SPEAKERSTANDe);
+drag(S03_SPEAKERSTANDe);
+
+warp(S03_SPEAKERSTANDa);
+drag(S03_SPEAKERSTANDa);
+recycle();
+
+
+warp(IDV_N2A);
+
+
+// This has some problem dropping the key on the 
+// Door - machine seems to go away or loose focus
+
+// warp(S03_SPEAKERSTANDf);
+// drag(S03_SPEAKERSTANDf);
+// drop(S03_SPEAKERSTANDf);
+
+// warp(S03_DOORANIM);
+// drag(S03_DOORANIM);
+// grab(S03_DOORANIM);

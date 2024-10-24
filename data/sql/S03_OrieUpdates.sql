@@ -7,6 +7,13 @@ delete from objects where [object] like 'IDD_ORIEKEY%';
 delete from spr_names where name like 'IDS_LOGBOOK%';
 delete from objects where [object] like 'IDD_LOGBOOK%';
 
+--Orientation doesn't need a cardinal exit
+delete from "main"."cardinals"  where [from] like 'IDV_ORIE%';
+INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES 
+('IDV_ORIE', '', '', '', '', '', '', '', '');
+
+
+
 INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
 ('IDS_ORIEKEY', 'ORIEKEY'),
