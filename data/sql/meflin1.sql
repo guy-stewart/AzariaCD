@@ -346,48 +346,56 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 VALUES 
 -- ALSO MAKE A MACHINE CALLED A MEF_COORDINATOR WHICH HOLDS QUEST PROGRESS AS TRANSITIONS AND CAN MOVE THE MEFLIN TO NEW POSITIONS
 
---NEELP
-('NEELP_COORD', 'IDV_MEFID', '0', '0', '0', '0',            '2','MEFLIN_COORD','','','',''),
-('S33_NEELP', 'IDV_N2B', '47', '101', '300', '300',         '2','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('S33_NEELP_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '2','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
-('NEELP_I1', 'IDV_MEFID', '0', '0', '8', '10',              '2','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
+-- Local vs Global (local_visible)
+-- 0 or 1 -> Global machine - as in there is only 1 shared machine in the game
+-- with 0 or 1 the audio can be heard by players within the view (tested)
+-- 2 - Local but audio can't be heard
+-- 3 - Local with audio  
 
-('S33_NEELP_alt1', 'IDV_N2A', '696', '139', '761', '214',   '2','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
-('S33_NEELP_alt2', 'IDV_N2C', '2607', '140', '2800', '201', '2','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
+
+
+--NEELP
+('NEELP_COORD', 'IDV_MEFID', '0', '0', '0', '0',            '3','MEFLIN_COORD','','','',''),
+('S33_NEELP', 'IDV_N2B', '47', '101', '300', '300',         '3','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+('S33_NEELP_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
+('NEELP_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
+
+('S33_NEELP_alt1', 'IDV_N2A', '696', '139', '761', '214',   '3','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
+('S33_NEELP_alt2', 'IDV_N2C', '2607', '140', '2800', '201', '3','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
 --NEELP GOES TO THE BEACH
-('S11_NEELP', 'IDV_FA1PAN', '452', '74', '650', '200',       '2','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-('S11_NEELP_Q2', 'IDV_MEFID', '0', '0', '8', '10',           '2','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
-('NEELP_I2','IDV_MEFID', '0', '0', '8', '10',                '2','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
-('S11_NEELP_alt1', 'IDV_FH1PTH1', '158', '100', '200', '200','2','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+('S11_NEELP', 'IDV_FA1PAN', '452', '74', '650', '200',       '3','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+('S11_NEELP_Q2', 'IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
+('NEELP_I2','IDV_MEFID', '0', '0', '8', '10',                '3','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI2', 'IDS_M1I1ANIM'),
+('S11_NEELP_alt1', 'IDV_FH1PTH1', '158', '100', '200', '200','3','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --NEELP GOES TO THE GAME ARCADE
-( 'S30_NEELP_Q3', 'IDV_MEFID', '0', '0', '8', '10',          '2','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
-( 'NEELP_I3','IDV_MEFID', '0', '0', '8', '10',               '2','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
-( 'S30_NEELP', 'IDV_PATH2', '907', '84', '1070', '273',      '2','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
-( 'S30_NEELP_alt1', 'IDV_PATH1', '1252', '136','1299','200', '2','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
+( 'S30_NEELP_Q3', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ3', 'IDS_M1S1ANIM'),
+( 'NEELP_I3','IDV_MEFID', '0', '0', '8', '10',               '3','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI3', 'IDS_M1I1ANIM'),
+( 'S30_NEELP', 'IDV_PATH2', '907', '84', '1070', '273',      '3','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
+( 'S30_NEELP_alt1', 'IDV_PATH1', '1252', '136','1299','200', '3','M_STATESCALEV','IDS_M1SWAYB','',  '', ''),
 --------------------------------------
 --Rathe
-('RATHE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '2','MEFLIN_COORD','','','',''),
-('S24_RATHE', 'IDV_EYEA', '1065', '30', '1260', '150',      '2','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('S24_RATHE_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '2','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
-('RATHE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '2','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
+('RATHE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '3','MEFLIN_COORD','','','',''),
+('S24_RATHE', 'IDV_EYEA', '1065', '30', '1260', '150',      '3','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
+('S24_RATHE_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
+('RATHE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
 --Rathe Goes to the desert hills
-('S25_RATHE', 'IDV_WR2', '3020', '100', '3156', '234',      '2','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('S25_RATHE_Q2','IDV_MEFID', '0', '0', '8', '10',           '2','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
-('RATHE_I2', 'IDV_MEFID', '0', '0', '8', '10',              '2','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
+('S25_RATHE', 'IDV_WR2', '3020', '100', '3156', '234',      '3','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
+('S25_RATHE_Q2','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
+('RATHE_I2', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M6T10000','2','SOUND_RATHEI2', 'IDS_M6I10000'),
 
 
 -------------------------------------
 --THAOR
-('THAOR_COORD', 'IDV_MEFID', '2', '2', '2', '2',            '2','MEFLIN_COORD','','','',''),
-('S10_THAOR', 'IDV_SCN10PT1', '2137', '55', '2337', '250',  '2','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('S10_THAOR_Q1','IDV_MEFID', '0', '0', '8', '10',           '2','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
-('THAOR_I1', 'IDV_MEFID', '0', '0', '8', '10',              '2','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
-('S10_THAOR_alt1','IDV_SCN10PT0','3083','100','3100','190', '2','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
+('THAOR_COORD', 'IDV_MEFID', '2', '2', '2', '2',            '3','MEFLIN_COORD','','','',''),
+('S10_THAOR', 'IDV_SCN10PT1', '2137', '55', '2337', '250',  '3','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
+('S10_THAOR_Q1','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ1', 'IDS_MYI10000'),
+('THAOR_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI1', 'IDS_MYI10000'),
+('S10_THAOR_alt1','IDV_SCN10PT0','3083','100','3100','190', '3','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 --Thaor goes to the Hidden Nature
-('S19_THAOR',  'IDV_NAT1b', '2399', '80', '2581', '233',    '2','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
-('S19_THAOR_Q2','IDV_MEFID', '0', '0', '8', '10',           '2','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
-('THAOR_I2','IDV_MEFID', '0', '0', '8', '10',               '2','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
-('S19_THAOR_alt1', 'IDV_NAT1a', '2947', '100', '3019','185','2','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
+('S19_THAOR',  'IDV_NAT1b', '2399', '80', '2581', '233',    '3','M_MEF_APPROACH','IDS_MYJUGGLE',3,'THAOR_COORD',''),
+('S19_THAOR_Q2','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_MYT10000','7','SOUND_THAORQ2', 'IDS_MYH10000'),
+('THAOR_I2','IDV_MEFID', '0', '0', '8', '10',               '3','M_MEF_TALK','IDS_MYT10000','2', 'SOUND_THAORI2', 'IDS_MYI10000'),
+('S19_THAOR_alt1', 'IDV_NAT1a', '2947', '100', '3019','185','3','M_STATESCALEV','IDS_MYJUGGLEsm1','', '',  ''),
 
 -------------------------------------
 --PERST - Global task for enchanted stone
@@ -400,34 +408,34 @@ VALUES
 --Perst goes to the dock
 -- tmplpth9 1481 68
 
-('S12_PERST', 'IDV_TMPLPTH9', '1481', '68', '1637', '200',  '2','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
-('S12_PERST_Q2', 'IDV_MEFID', '0', '0', '8', '10',          '2','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
-('PERST_I2','IDV_MEFID', '0', '0', '8', '10',               '2','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
+('S12_PERST', 'IDV_TMPLPTH9', '1481', '68', '1637', '200',  '3','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
+('S12_PERST_Q2', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
+('PERST_I2','IDV_MEFID', '0', '0', '8', '10',               '3','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
 
 
 
 -------------------------------------
 -- --AMBLE  
-('AMBLE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '2','MEFLIN_COORD','','','',''),
-('S09_AMBLE_DESK', 'IDV_VHB3', '2653','180','2699','200',   '2','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
-('S09_AMBLE', 'IDV_VHB3', '2653', '40', '2753', '300',      '2','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
+('AMBLE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '3','MEFLIN_COORD','','','',''),
+('S09_AMBLE_DESK', 'IDV_VHB3', '2653','180','2699','200',   '3','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
+('S09_AMBLE', 'IDV_VHB3', '2653', '40', '2753', '300',      '3','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
 
-('S09_AMBLE_Q1','IDV_MEFID', '0', '0', '8', '10',           '2','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
-('AMBLE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '2','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
+('S09_AMBLE_Q1','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
+('AMBLE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');
 
 ----Machines to serve them all
 
-('MEFCURRENT', 'IDV_MEFPAN', '0', '0', '5', '5',            '2','M_MEFCURRENT','','','',''),
-('MEFPAN_OK', 'IDV_MEFPAN', '490', '215', '555', '260',     '2','M_MEFPAN_OK','','','',''),
-('MEFPAN_CLOSER', 'IDV_MEFID', '0', '0', '1', '1',          '2','M_MEFCLOSER','','','',''),
-('MEFPAN_WAITER',  'IDV_MEFPAN', '276','200','350','300',   '2','M_MEFPAN_WAITER','','','',''),
-('MEFPAN_VIEWCAP', 'IDV_MEFPAN', '5', '20', '10', '30',     '2','M_MEFPAN_VIEWCAP','','','',''),
-('MEFPAN_PRIZE_A', 'IDV_MEFPAN', '545', '75', '613', '135', '2','M_MEFPAN_PRIZE','a','','',''),
-('MEFPAN_PRIZE_B', 'IDV_MEFPAN', '545','144','613','200',   '2','M_MEFPAN_PRIZE','b','','',''),
-('MEFPAN_PRIZE_C', 'IDV_MEFPAN', '545','205','613','270',   '2','M_MEFPAN_PRIZE','c','','',''),
-('MEF_SHOW_COORDINATOR', 'IDV_MEFPAN', '0', '0', '2', '2',  '2','M_MEFPAN_SHOW_COORD','','','',''),
-('CHAR_DROPTARGET', 'IDV_MEFID', '0', '0', '80', '100',     '2','M_CHARACTER_DROP','','','','');
+('MEFCURRENT', 'IDV_MEFPAN', '0', '0', '5', '5',            '3','M_MEFCURRENT','','','',''),
+('MEFPAN_OK', 'IDV_MEFPAN', '490', '215', '555', '260',     '3','M_MEFPAN_OK','','','',''),
+('MEFPAN_CLOSER', 'IDV_MEFID', '0', '0', '1', '1',          '3','M_MEFCLOSER','','','',''),
+('MEFPAN_WAITER',  'IDV_MEFPAN', '276','200','350','300',   '3','M_MEFPAN_WAITER','','','',''),
+('MEFPAN_VIEWCAP', 'IDV_MEFPAN', '5', '20', '10', '30',     '3','M_MEFPAN_VIEWCAP','','','',''),
+('MEFPAN_PRIZE_A', 'IDV_MEFPAN', '545', '75', '613', '135', '3','M_MEFPAN_PRIZE','a','','',''),
+('MEFPAN_PRIZE_B', 'IDV_MEFPAN', '545','144','613','200',   '3','M_MEFPAN_PRIZE','b','','',''),
+('MEFPAN_PRIZE_C', 'IDV_MEFPAN', '545','205','613','270',   '3','M_MEFPAN_PRIZE','c','','',''),
+('MEF_SHOW_COORDINATOR', 'IDV_MEFPAN', '0', '0', '2', '2',  '3','M_MEFPAN_SHOW_COORD','','','',''),
+('CHAR_DROPTARGET', 'IDV_MEFID', '0', '0', '80', '100',     '3','M_CHARACTER_DROP','','','','');
 
 
 delete from transitions where automaton =  'M_MEFCURRENT';
