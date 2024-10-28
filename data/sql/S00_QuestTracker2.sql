@@ -1,4 +1,4 @@
-drop table games;
+
 -- create a map of these quests
 -- map should have quest id and description
 -- Create a waiter -- signal in quest begin and quest complete 
@@ -152,12 +152,9 @@ VALUES
 
 
 --M_QUEST_MANAGER
- ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', ''),
+ ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', '    
+ '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
-        q_local_active("%")~
-        q_local_complete("%")~
-        q_world_active("%")~
-        q_world_complete("%")~
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC); 
         q_local_active(BPARM, 0,active,WPARM).
@@ -395,6 +392,11 @@ VALUES
    SHOW();
 ', '', ''),
 ('M_QLBTN', '1', 'logPresent', 'DROP', 'IDD_LOGBOOKBTN', '', '
+        //this is not right for world - do on game start @todo
+        q_world_active("%")~
+        q_world_complete("%")~
+   q_local_active("%")~
+   q_local_complete("%")~
    SHOW(WOBJECT);
    ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
    BPARM = 0;

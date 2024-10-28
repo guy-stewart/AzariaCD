@@ -1,5 +1,5 @@
 
-delete from games;
+
 delete from objectInfo;
 
 update objects 
@@ -469,6 +469,32 @@ Onam'),
         suggested I should start.
 '),
 
+
+('IDD_DIARY9', 'IDV_PARCHBIG', 'ID_PARCHBIGTXT', '
+
+Dearest Emeel,
+
+My father has forbidden me to write you and truly has a misguided
+hatred of all those of the Etnoc way. I, of course, shall write
+anyway and hope that this letter finds you and warms your heart.
+
+So many of us have left the village now that the water has subsided.
+The bridges I once crossed  are falling apart now and what was once
+almost completely under water, is now the home to our new promise tables.
+With the merchants out seeking a new way, Our great mystical teachers
+have cast a spell to collect Nystrom for them.  May Kamioza
+forgive anyone who fails to pay what is promised with those stamps.
+
+I miss you terribly.  Grounded from travel, I have taken to spell casting
+lessons under the direct tutelage of a meflin named Marcos.  
+He sends me out to find ceramic items in the wilderness and place them in 
+jars.  He says that doing so will ignite the spells of the ancients. Outside 
+of my practice at the temple, I have yet to see anything manifest and 
+if he asks me to bring him one more fish, I will likely explode.
+
+I hear my father coming in.  He would take this letter and thro
+
+'),
 
 ('IDD_GOPASEED', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
 Gopa is grown from its seed stage by only watering once per week.

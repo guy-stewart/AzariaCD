@@ -59,7 +59,7 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_QL_BTN%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_QL_BTN',    'IDV_MAIN_PANEL',106,18,142,56, 3, 'M_QLBTN', '', '', '', '');
+('S0_QL_BTN',    'IDV_MAIN_PANEL',108,18,142,56, 3, 'M_QLBTN', '', '', '', '');
 
 delete from "main"."machines" where [name] like 'SMP_COMPASS%';
 INSERT INTO "main"."machines" ( "name",  "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
@@ -92,16 +92,16 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
  ( 'SMP_TEXT_DOWN','IDV_MAIN_PANEL', '831', '35', '846', '58', '3', 'M_TEXT_DOWN', '', '', '', '', ''),
  
  --35/35
- ( 'SMP_LISTEN1',  'IDV_MAIN_PANEL', '850', '13', '885', '43', '3', 'M_LISTEN', '0', '4', '0', '', ''),
- ( 'SMP_LISTEN2',  'IDV_MAIN_PANEL', '885', '13', '920', '43', '3', 'M_LISTEN', '1', '5', '0', '', ''),
- ( 'SMP_LISTEN3',  'IDV_MAIN_PANEL', '920', '13', '955', '43', '3', 'M_LISTEN', '2', '6', '0', '', ''),
- ( 'SMP_LISTEN4',  'IDV_MAIN_PANEL', '955', '13', '990', '43', '3', 'M_LISTEN', '3', '7', '0', '', ''),
+ ( 'SMP_LISTEN1',  'IDV_MAIN_PANEL', '850', '10', '885', '43', '3', 'M_LISTEN', '0', '4', '0', '', ''),
+ ( 'SMP_LISTEN2',  'IDV_MAIN_PANEL', '885', '10', '920', '43', '3', 'M_LISTEN', '1', '5', '0', '', ''),
+ ( 'SMP_LISTEN3',  'IDV_MAIN_PANEL', '920', '10', '955', '43', '3', 'M_LISTEN', '2', '6', '0', '', ''),
+ ( 'SMP_LISTEN4',  'IDV_MAIN_PANEL', '955', '10', '990', '43', '3', 'M_LISTEN', '3', '7', '0', '', ''),
  
  --35/25
- ( 'SMP_TALK1',    'IDV_MAIN_PANEL', '850', '38', '875', '63', '3', 'M_TALK', 'SMP_TALK2', 'SMP_TALK3', 'SMP_TALK4', 'IDS_REDDOT', ''),
- ( 'SMP_TALK2',    'IDV_MAIN_PANEL', '885', '38', '905', '63', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK3', 'SMP_TALK4', '', ''),
- ( 'SMP_TALK3',    'IDV_MAIN_PANEL', '920', '38', '945', '63', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK2', 'SMP_TALK4', '', ''),
- ( 'SMP_TALK4',    'IDV_MAIN_PANEL', '955', '38', '980', '63', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK2', 'SMP_TALK3', '', ''),
+ ( 'SMP_TALK1',    'IDV_MAIN_PANEL', '846', '32', '875', '62', '3', 'M_TALK', 'SMP_TALK2', 'SMP_TALK3', 'SMP_TALK4', 'IDS_REDDOT', ''),
+ ( 'SMP_TALK2',    'IDV_MAIN_PANEL', '883', '32', '905', '62', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK3', 'SMP_TALK4', '', ''),
+ ( 'SMP_TALK3',    'IDV_MAIN_PANEL', '919', '32', '945', '62', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK2', 'SMP_TALK4', '', ''),
+ ( 'SMP_TALK4',    'IDV_MAIN_PANEL', '954', '32', '980', '62', '3', 'M_TALK', 'SMP_TALK1', 'SMP_TALK2', 'SMP_TALK3', '', ''),
 
  -- Comm button Enlarge
  ( 'SMP_COM_UP',    'IDV_MAIN_PANEL', '997', '367', '1037', '407', '3', 'M_POP_COM', '', '', '', '', '');
