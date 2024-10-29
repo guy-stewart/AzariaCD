@@ -8,7 +8,7 @@ for (json_iter(data_array, ?data)) {
     providerId   = json_element(data, "providerId");
     providerUrl  = json_element(data, "providerUrl");
     providerPort = json_element(data, "providerPort");
-    write("providerUrl:"+providerUrl);
-    write("enum_provider('"+id+"','"+providerName+"').");
+    //write("providerUrl:"+providerUrl);
+    //write("enum_provider('"+id+"','"+providerName+"').");
     enum_provider(id, providerName);
 }

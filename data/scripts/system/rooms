@@ -1,12 +1,14 @@
-write('sessions');
+write('ROOMS ????');
 
-uri = "us-atl-3b185468.colyseus.cloud";
-resourcePath = "/Rooms";
-response = https_get(uri+resourcePath);
+response = https_get( "us-atl-3b185468.colyseus.cloud/Rooms");
 
 roomobjects =  json_element(response, "roomsById");
-write("response:"+roomobjects);
+count = 0;
 for (json_iter(roomobjects, ?room)) {
+    count = count + 1;
     roomid = json_element(room, "roomId");
     enum_room(roomid, roomid);
 }    
+if (count == 0) {
+    write(response);
+}

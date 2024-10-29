@@ -79,7 +79,5 @@ setOpenPlay("roomid", roomId);
 // create a named websocket. The name does not matter, we will call this one 'bob':
 // socket name = 'bob'
 // host name = publicAddress.
-mysock = websocket('bob', publicAddress, resource);
+mysock = websocket('colyseus', publicAddress, resource);
 write('mysock:<'+mysock+'>');
-//wsSend('bob', message);
-//wssSocket();

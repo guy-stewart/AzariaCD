@@ -14,5 +14,5 @@ write("                                  |_|");
 // warp(IDV_FH1PAN);
 
 response = https_get2('iometics.info/stun');
-write("hyperstun response:");
-write(response);
+// write("hyperstun response:");
+// write(response);
