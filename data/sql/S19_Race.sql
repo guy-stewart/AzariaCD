@@ -333,21 +333,25 @@ delete from transitions where [automaton] like 'M19_%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code","guard")
 VALUES 
 
-------------------------------------------------------------
+-- Wip1 S19_SPINNER_TOP_PICK' The color picked
+-- Wip2 S19_SPINNER_BOTTOM_PICK 
+-- wip3 'S19_COLOR_MAP',
+-- wip4 'S19_EVENT_MAP'
+-----------------------------------------------------------
 
 ('M19_SPELLCASTER', '0', 'collectingColor', 'WAIT', '0', 'SIG_START', '', ''),
 ('M19_SPELLCASTER', 'collectingColor', 'collectingEvent', 'REF_MACHINE', 'WIP1','', '
     //Top spinner frame
     WTEMP1=R_WPARM;
     MOV(WPARM,WTEMP1);
-    //color to attack violet,green, or brown square
+    //WPARM wil be color to attack violet,green, or brown square
     MAPi(WPARM,WIP3);
 ', ''),
 ('M19_SPELLCASTER', 'collectingEvent', 'findVictimOne', 'REF_MACHINE', 'WIP2','', '
     //Bottom spinner frame
     WTEMP2=R_WPARM;
     MOV(BPARM,WTEMP2);
-    //event or spell to cast
+    //BPARM will be the event or spell to cast
     MAPi(BPARM,WIP4);
 ', ''),
 ('M19_SPELLCASTER', 'findVictimOne', 'castspell', 'REF_MACHINE', '0', 'S19_PLAYERWATCHER', '

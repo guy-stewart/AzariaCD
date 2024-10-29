@@ -1,4 +1,4 @@
-delete from games;
+
 --sign trigger conditional - SIGNPAN
 --continent trigger conditional - when racepan cleared
 
@@ -12,21 +12,21 @@ VALUES
 
 
 delete from views where [view_name] like 'IDV_NAT1%';
-INSERT INTO "main"."views" ("view_id", "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
-('8449', 'IDV_NAT1a', '1', '0', '1', '6', 'surround.vct', 'nat1a'),
-('8450', 'IDV_NAT1b', '1', '0', '1', '6', 'surround.vct', 'nat1b'),
-('8451', 'IDV_NAT1c', '1', '0', '1', '6', 'surround.vct', 'nat1c'),
-('8452', 'IDV_NAT1d', '1', '0', '1', '6', 'surround.vct', 'nat1d');
+('IDV_NAT1A', '1', '0', '1', '6', 'surround.vct', 'nat1a'),
+('IDV_NAT1B', '1', '0', '1', '6', 'surround.vct', 'nat1b'),
+('IDV_NAT1C', '1', '0', '1', '6', 'surround.vct', 'nat1c'),
+('IDV_NAT1D', '1', '0', '1', '6', 'surround.vct', 'nat1d');
 
 
 delete from machines where name = 'S16_SIGNPORTAL';
 delete from machines where name = 'S16_SIGNTRANS';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('16200', 'S16_SIGNTRANS', '4878', 'IDV_SIGNPAN', '99', '108', '219', '222', '0', 'M_SIGNTRANS','', '', '', ''),
-('16201', 'S16_SIGNPORTAL', '4879', 'IDV_SIGNPANENG', '99', '108', '219', '222', '0', 'M_PORTAL','IDV_NAT1A', '', '', ''),
-('16203', 'S16_CONTINENTPOINT', '96', 'IDV_CONTINENT', '917', '363', '970', '430', '0', 'M_CONTLOCKED','IDV_NAT1A', '', '', '');
+('S16_SIGNTRANS',  'IDV_SIGNPAN', '99', '108', '219', '222', '0', 'M_SIGNTRANS','', '', '', ''),
+('S16_SIGNPORTAL', 'IDV_SIGNPANENG', '99', '108', '219', '222', '0', 'M_PORTAL','IDV_NAT1A', '', '', ''),
+('S16_CONTINENTPOINT',  'IDV_CONTINENT', '917', '363', '970', '430', '0', 'M_CONTLOCKED','IDV_NAT1A', '', '', '');
 
 
 
@@ -50,14 +50,14 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 delete from machines where [name] like 'S19_COVER%';
 delete from machines where [name] like 'S19_DIARY%';
 delete from machines where [name] like 'S19_RACEGATE%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES  
-('16202', 'S19_COVER1', '8452', 'IDV_NAT1D', '2636', '238', '2670', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-('16203', 'S19_COVER2', '8452', 'IDV_NAT1D', '2848', '231', '2870', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
-('16204', 'S19_COVER3', '8452', 'IDV_NAT1D', '2762', '222', '2800', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
+( 'S19_COVER1', 'IDV_NAT1D', '2636', '200', '2670', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+( 'S19_COVER2', 'IDV_NAT1D', '2848', '210', '2870', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', ''),
+( 'S19_COVER3', 'IDV_NAT1D', '2762', '205', '2800', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTGRS', 'ISA_TOOL_DIGGER', ''),
 --('16206', 'S19_COVERBIG', '8452', 'IDV_NAT1D', '2696', '176', '2861', '300', '2', 'M_DIG_UNCOVER', '', 'IDS_SANDDIRTBIG', 'ISA_TOOL_DIGGER', ''),
-('16205', 'S19_RACEGATE', '8452', 'IDV_NAT1D', '2710', '112', '2955', '225', '2', 'M_RACEGATE', 'IDV_RACEPAN', '', '', ''),
-('16206', 'S19_DIARYBIN', '8471', 'IDV_RUBBLECU', '149', '226', '181', '247', '2',  'M_PLANTBIN', 'IDD_DIARY3', 'IDS_DIARY3_BIN', '60', '');
+('S19_RACEGATE', 'IDV_NAT1D', '2710', '112', '2955', '225', '2', 'M_RACEGATE', 'IDV_RACEPAN', '', '', ''),
+('S19_DIARYBIN', 'IDV_RUBBLECU', '149', '226', '181', '247', '2',  'M_PLANTBIN', 'IDD_DIARY3', 'IDS_DIARY3_BIN', '60', '');
 
  
 

@@ -1,4 +1,4 @@
-delete from games;
+
 
 
 --Remove outdated sprites from spr_names
@@ -216,24 +216,25 @@ VALUES
 
 
 delete from "main"."machines" where [name] like 'SID_%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('64', 'SID_HALO', '3', 'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
-('65', 'SID_SPELL', '3', 'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
-('66', 'SID_ID', '3', 'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
-('68', 'SID_AURA', '3', 'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
-('56', 'SID_DEC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
-('57', 'SID_INC_WEALTH', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
+( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
+( 'SID_SPELL',  'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
+( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
+( 'SID_AURA',   'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
+( 'SID_DEC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
+( 'SID_INC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
 --58 - 63 avail
-('58', 'SID_DEC_ENERGY', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', ''),
-('58', 'SID_INC_ENERGY', '3', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', '');
+( 'SID_DEC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', ''),
+( 'SID_INC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', '');
 
 delete from "main"."machines" where [name] like 'SOD_%';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('71', 'SOD_SPELL', '5', 'IDV_OTHERID', '0', '0', '50', '50', '3', 'M_O_IDSPELL', '', '', '', ''),
-('72', 'SOD_ID', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
-('74', 'SOD_AURA', '5', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
+('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
+('SOD_SPELL','IDV_OTHERID', '0', '0', '101', '171', '3', 'M_O_IDSPELL', '', '', '', ''),
+('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
 
 delete from "main"."transitions" where [automaton] like 'M_DEC_E%';
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
@@ -574,7 +575,15 @@ VALUES
 ', '', ''),
 
 
+
+
+----------------------------
+('M_O_IDSPELL','0','checkObject','DROP','','', '
+    CLEAR(WVIEWID);
+    WRITE("Item Dropped on OTHER ID");
+', '', ''),
 ('M_O_IDSPELL', '0', 'postProcessObject', 'WAIT', '', 'SIG_DROP', '
+    WRITE("M_O_IDSPELL says an item dropped... check if there is a meflin");
     REF_MACHINE(MEFPAN_VIEWCAP);
     MOV(BPARM,R_BPARM);
     if(R_BPARM == 1){  //Theres a meflin up
@@ -595,9 +604,46 @@ VALUES
     } 
 ', '', ''),
 
-('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', '');
+('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', ''),
+('M_O_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
+('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
+('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
+('M_O_IDSPELL','checkObject','nothingImportant','Z_EPSILON','0','0', '
+    SHOW(WOBJECT);
+', '', ''),
+('M_O_IDSPELL','nothingImportant','0','GRAB','','', '
+    CLEAR(WOBJECT);
+    SHOW();
+', '', ''),
+('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','0','SIG_BOMB', 'WRITE("ITS A BOMB");', '', ''),
+('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
+   SPELL_YOU(WOBJECT);
+', '', '');
 
+--MODIFYING 10/28/24
+-- ('M_O_IDSPELL', '0', 'postProcessObject', 'WAIT', '', 'SIG_DROP', '
+--     WRITE("M_O_IDSPELL says an item dropped... check if there is a meflin");
+--     REF_MACHINE(MEFPAN_VIEWCAP);
+--     MOV(BPARM,R_BPARM);
+--     if(R_BPARM == 1){  //Theres a meflin up
+--         REF_MACHINE(MEFCURRENT); //Who is it?
+--         MOV(WPARM,R_WPARM);
+--         SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
+--         SHOW();
+--     }
+--    if(R_BPARM == 0){
+--         REF_MACHINE(CHAR_DROPTARGET); 
+--         MOV(WOBJECT,R_WOBJECT);
+--             //Deduct for all the bad or good things local player can drop 
+--                 ADDI(LKARMA,1); 
+--                 SIGNAL(SID_HALO,SIG_ADD);
+--         //Assuming this would create the spell over on the other player
+--         SPELL_YOU(WOBJECT);
+--         SHOW();
+--     } 
+-- ', '', ''),
 
+-- ('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', '');
 
 
 --Making a test view ------------------
