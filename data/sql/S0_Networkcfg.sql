@@ -48,12 +48,16 @@ insert into transitions values
 ('M_NW_INDC_LIGHT',1,'waiting','SHOW','WIP1', '','','',''),
 ('M_NW_INDC_LIGHT','waiting','on','WAIT','','SIG_ON','
     WRITE("GOT MY SIG_ON");
-    SHOW(WIP2);
+   
 ','',''),
-('M_NW_INDC_LIGHT','on','waiting','ZEPSILON','', '','','',''),
+('M_NW_INDC_LIGHT','on','waiting','ZEPSILON','', '','
+    WRITE("Waiting in on position");
+    ASHOW(WIP3);
+
+','',''),
 ('M_NW_INDC_LIGHT','waiting','off','WAIT','','SIG_OFF','
     WRITE("GOT MY SIG_OFF");
-    SHOW(WIP3);
+    SHOW(WIP4);
 ','','
 '),
 ('M_NW_INDC_LIGHT','off','waiting','ZEPSILON','', '','','',''),

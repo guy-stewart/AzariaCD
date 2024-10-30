@@ -6,13 +6,14 @@ drop table if exists env;
 --add network choice sprites IDS_BTN_NW1A,B & C
 
 delete from spr_names where [name] like 'IDS_INDC_NW_%';
+delete from spr_names where [name] like 'IDS_INDC_BLINK%';
 INSERT INTO "main"."spr_names" ("name", "value") VALUES 
 
 ('IDS_INDC_NW_BLANK',   'indc_nw_blank'),
 ('IDS_INDC_NW_WHITE',   'indc_nw_white'),
 ('IDS_INDC_NW_GREEN',   'indc_nw_green'),
-('IDS_INDC_NW_RED',     'indc_nw_red');
-
+('IDS_INDC_NW_RED',     'indc_nw_red'),
+('IDS_INDC_BLINK',      'indc_blink');
 
 
 
@@ -41,7 +42,7 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_NW_INDC%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_NW_INDC_LIGHT',    'IDV_MAIN_PANEL',991,218,1005,259, 0, 'M_NW_INDC_LIGHT', 'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_NW_RED', ''),
+('S0_NW_INDC_LIGHT',    'IDV_MAIN_PANEL',991,218,1005,259, 0, 'M_NW_INDC_LIGHT', 'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_BLINK', 'IDS_INDC_NW_RED'),
 ('S0_NW_INDC_GAME',     'IDV_MAIN_PANEL',890,215,1005,259, 0, 'M_NW_INDC_NAME', 'IDS_INDC_NW_BLANK', '', '', '');
 
 --menu button
