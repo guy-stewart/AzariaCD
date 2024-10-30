@@ -1,0 +1,3 @@
+signal('S0_NW_INDC_LIGHT', 'SIG_OFF');
+sleep(3);
+signal('S0_NW_INDC_LIGHT', 'SIG_ON');
