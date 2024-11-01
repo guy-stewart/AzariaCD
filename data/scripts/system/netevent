@@ -1,3 +1,20 @@
-signal('S0_NW_INDC_LIGHT', 'SIG_OFF');
-sleep(3);
-signal('S0_NW_INDC_LIGHT', 'SIG_ON');
+if (NetEvent == 'DPSYS_PING') {
+    // This fires when I receive a PING from another player ...
+    signal('S0_NW_INDC_LIGHT', 'SIG_UPDATE');
+} else if (NetEvent=='DPSYS_PONG') {
+    // This fires when I receive a PING response (PONG) from another player ...
+    write("NetEvent:",NetEvent);
+    write("Params:"+Params);
+    signal('S0_NW_INDC_LIGHT', 'SIG_ON');
+} else if (NetEvent=='DPSYS_ADDPLAYER') {
+    write("NetEvent:",NetEvent);
+    write("Params:"+Params);
+    //Add player to local table 
+
+
+
+
+} else {
+    write("NetEvent:",NetEvent);
+    write("Params:"+Params);
+}

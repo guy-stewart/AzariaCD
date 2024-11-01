@@ -38,22 +38,27 @@ delete from transitions where automaton = 'M_NW_INDC_LIGHT';
 insert into transitions values
 ('M_NW_INDC_NAME',0,1,'MOV','BFRAME','0','','',''),
 ('M_NW_INDC_NAME',1,2,'SHOW','WIP1', '','','',''),
-('M_NW_INDC_NAME',2,'on','CLICK','', '','SIGNAL(S0_NW_INDC_LIGHT, SIG_ON);','',''),
-('M_NW_INDC_NAME','on','off','CLICK','', '','  SIGNAL(S0_NW_INDC_LIGHT, SIG_OFF);','',''),
-('M_NW_INDC_NAME','off',2,'CLICK','', '',' SIGNAL(S0_NW_INDC_LIGHT, SIG_RESET);','',''),
+('M_NW_INDC_NAME',2,'launch','CLICK','', '','LOADVIEW(IDV_CFGNW1);','',''),
 
 
+
+
+--wips  'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_BLINK', 'IDS_INDC_NW_RED'
 
 ('M_NW_INDC_LIGHT',0,1,'MOV','BFRAME','0','','',''),
 ('M_NW_INDC_LIGHT',1,'waiting','SHOW','WIP1', '','','',''),
 ('M_NW_INDC_LIGHT','waiting','on','WAIT','','SIG_ON','
     WRITE("GOT MY SIG_ON");
-   
-','',''),
-('M_NW_INDC_LIGHT','on','waiting','ZEPSILON','', '','
     WRITE("Waiting in on position");
     ASHOW(WIP3);
-
+','',''),
+('M_NW_INDC_LIGHT','on','waiting','ZEPSILON','', '','','',''),
+('M_NW_INDC_LIGHT','waiting','good','WAIT','','SIG_UPDATE','
+    WRITE("GOT MY SIG_UPDATE");
+    SHOW(WIP2);
+','',''),
+('M_NW_INDC_LIGHT','good','waiting','ESTIME','', '1','
+    ASHOW(WIP3);
 ','',''),
 ('M_NW_INDC_LIGHT','waiting','off','WAIT','','SIG_OFF','
     WRITE("GOT MY SIG_OFF");
