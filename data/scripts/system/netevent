@@ -9,6 +9,7 @@ if (NetEvent == 'DPSYS_PING') {
 } else if (NetEvent=='DPSYS_ADDPLAYER') {
     write("NetEvent:",NetEvent);
     write("Params:"+Params);
+    //write("Params:"+Params);
     //Add player to local table 
 
 

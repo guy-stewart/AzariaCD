@@ -125,26 +125,32 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 VALUES 
 --------------------
 --Defensive Spells
-('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '118', '57', '120', '65', '3', 'M_DEFENSESPELL', 'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
-('PROTECT_TIMER',     'IDV_MAIN_PANEL', '118', '66', '120', '68', '3', 'M_SPELLTIMER', '100', 'PROTECT_ACTIVE', '', ''),
-('WETBREATH_ACTIVE',  'IDV_MAIN_PANEL', '135','59', '145', '65', '3', 'M_DEFENSESPELL', 'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
-('WETBREATH_TIMER',   'IDV_MAIN_PANEL', '135', '66', '145', '68', '3', 'M_SPELLTIMER', '100', 'WETBREATH_ACTIVE', '', ''),
-('NYBREATH_ACTIVE',   'IDV_MAIN_PANEL', '154','59', '165', '65', '3', 'M_DEFENSESPELL', 'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
-('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '154', '66', '165', '68', '3', 'M_SPELLTIMER', '30', 'NYBREATH_ACTIVE', '', ''),
-('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '169','59', '175', '65', '3', 'M_DEFENSESPELL', 'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '169', '66', '175', '68', '3', 'M_SPELLTIMER', '100', 'TELEKINESIS_ACTIVE', '', ''),
-('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '103','56', '114', '65', '3', 'M_DEFENSESPELL', 'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
-('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '103', '66', '114', '68', '3', 'M_SPELLTIMER', '100', 'INVISIBLE_ACTIVE', '', ''),
+('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '153',  '90',   '170',  '107', '3', 'M_DEFENSESPELL',    'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
+('PROTECT_TIMER',     'IDV_MAIN_PANEL', '153',  '107',  '170',  '124', '3', 'M_SPELLTIMER',      '100', 'PROTECT_ACTIVE', '', ''),
 
---------------------
+('WETBREATH_ACTIVE',  'IDV_MAIN_PANEL', '170',  '90',   '187',  '107', '3', 'M_DEFENSESPELL',    'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
+('WETBREATH_TIMER',   'IDV_MAIN_PANEL', '170',  '107',  '187',  '124', '3', 'M_SPELLTIMER',      '100', 'WETBREATH_ACTIVE', '', ''),
+
+('NYBREATH_ACTIVE',   'IDV_MAIN_PANEL', '187',  '90',   '204',  '107', '3', 'M_DEFENSESPELL',    'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
+('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '187',  '107',  '204',  '124', '3', 'M_SPELLTIMER',      '30', 'NYBREATH_ACTIVE', '', ''),
+
+('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '204',  '90',   '221',  '107', '3', 'M_DEFENSESPELL',    'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
+('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '204',  '107',  '221',  '124', '3', 'M_SPELLTIMER',      '100', 'TELEKINESIS_ACTIVE', '', ''),
+
+('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '221',  '90',   '238',  '107', '3', 'M_DEFENSESPELL',    'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
+('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '221',  '107',  '238',  '124', '3', 'M_SPELLTIMER',      '100', 'INVISIBLE_ACTIVE', '', ''),
+
+--------------------    
 -- attack spells
 -- view spells
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
 ('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', '', ''),
 ('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
+
 ('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', '', ''),
 ('HOLDING_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
+
 ('STALKING_ACTIVE','IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', '', ''),
 ('STALKING_TIMER', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
 
@@ -153,13 +159,15 @@ VALUES
 ('TRANSFER_ACTIVE',   'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'TRANSFER', 'NO_TIMER', '', ''),
 ('DEATH_ACTIVE',      'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'DEATH', 'NO_TIMER', '', ''),
 ('BANISHMENT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'BANISHMENT', 'NO_TIMER', '', ''),
+
 ('GOPA_ACTIVE',       'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
 -- Timed
 
-('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
+('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
 ('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
-('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '30', 'BLINDNESS_ACTIVE', '', ''),
-('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_ATTACKSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
+('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
+
+('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
 ('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', '');
 
 --------------------
@@ -176,6 +184,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 
 ('M_DEFENSESPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
+    WRITE("A DEFENSE SPELL ACTIVATED");
     SHOW(WIP1);
     SIGNAL(WIP2,SIG_START);
 ', '', ''),
@@ -189,9 +198,6 @@ VALUES
 
 ('M_SPELLTIMER', '0', 'timerStarted', 'WAIT', '0', 'SIG_START','
   WPARM = WIP1;
-  if ( WIP2 == NYBREATH_ACTIVE ){
-    WPARM = 30;
-  }
 ', '', ''),
 ('M_SPELLTIMER', 'timerStarted', 'timerDone', 'ESTIME', '', 'WPARM','', '', ''),
 ('M_SPELLTIMER', 'timerDone', 'spellStopped', 'SIGNAL', 'WIP2', 'SIG_STOP','', '', ''),
@@ -201,47 +207,65 @@ VALUES
 
 ('M_VIEWSPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
     //start the timer
-    SIGNAL(WIP2,SIG_START);
-     MOV(WPARM,LVIEW);
-     MOV(BPARM,OVIEW);
+     WRITE("A VIEW SPELL ACTIVATED");
+     SIGNAL(WIP2,SIG_START);
+     MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM
+     MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER
 
 ', '', ''),
-('M_VIEWSPELL','turntOn','active','Z_EPSILON','','', '
-    SUBI(LKARMA,2);
-', '', ''),
+
     
-('M_VIEWSPELL','active','caughtInLoop','ESTIME','0','1', '
-    //guy needs to let me set the other players view - like loadview
+('M_VIEWSPELL','turntOn','caughtInLoop','ESTIME','0','1', '
         if(WIP1==ENCHANT){
-            MOV(OVIEW,WPARM);
+            MOV(WPARM,OVIEW); 
+            LOADVIEW(WPARM);
         }
-        //As a test we do holding against lview
         if(WIP1==HOLDING){ 
             LOADVIEW(WPARM);
         }
          if(WIP1==STALKING){
-            MOV(BPARM,OVIEW);
-            LOADVIEW(BPARM);
+            MOV(WPARM,LVIEW);
+            LOADVIEW(WPARM);
+        }
+        if(WIP1==BLINDNESS){
+            MOV(WPARM,IDV_BLINDVIEW);
+            LOADVIEW(WPARM);
+        }
+        if(WIP1==HALUCINATE){ 
+            MOV(WPARM,IDV_BLINDVIEW);
+            LOADVIEW(WPARM);
         }
 ', '', ''),
 ('M_VIEWSPELL','caughtInLoop','active','Z_EPSILON','','', '', '', ''),
 ('M_VIEWSPELL','active','ended','WAIT','0','SIG_STOP', 'SIGNAL(SID_SPELL,SIG_CLEAR);', '', ''),
+('M_VIEWSPELL','active','turntOn','Z_EPSILON','','', '', '', ''),
 ('M_VIEWSPELL','ended','0','Z_EPSILON','','', '', '', ''),
 
 --------------------
 
-('M_INSTANTATTACK','0','spellcast','WAIT','0','SIG_SPELLME', '', '', ''),
+('M_INSTANTATTACK','0','spellcast','WAIT','0','SIG_SPELLME', '
+   WRITE("A INSTANTATTACK SPELL ACTIVATED");
+', '', ''),
 ('M_INSTANTATTACK','spellcast','impact','Z_EPSILON','','', '
         if(WIP1 == TRANSFER){
-            //this should read the other players stas and take them
-            //MOV(WPARM,OWISDOM);MOV(BPARM,OKARMA;MOV(WTEMP1,OENERGY);
-            ASSIGN(LWISDOM,39);
+            //L is the victim
+            //O is the caster
+           //GET THE VICTIMS STATS AND SET ASSIDE 
+            MOV(WTEMP2,LWISDOM);MOV(WTEMP3,LKARMA);MOV(WTEMP4,LENERGY);
+           //GET THE CASTERS STATS AND GIVE TO THE VICTIM
+            MOV(WPARM,OWISDOM);MOV(BPARM,OKARMA);MOV(WTEMP1,OENERGY);
+            ASSIGN(LWISDOM,WPARM);
             SIGNALi(0,SID_ID);
-            ASSIGN(LKARMA,1);
+            ASSIGN(LKARMA,BPARM);
             SIGNAL(SID_HALO,SIG_ADD);
-            ASSIGN(LENERGY,20);
+            ASSIGN(LENERGY,WTEMP1);
             SIGNAL(SID_AURA,SIG_SUB);
-
+            ASSIGN(OWISDOM,WTEMP2);
+            SIGNALi(0,SID_ID);
+            ASSIGN(OKARMA,WTEMP3);
+            SIGNAL(SID_HALO,SIG_ADD);
+            ASSIGN(OENERGY,WTEMP4);
+            SIGNAL(SID_AURA,SIG_SUB);
         }
         if(WIP1 == DEATH){ 
             ASSIGN(LENERGY,1);
@@ -256,6 +280,7 @@ VALUES
             SUBI(LKARMA,2);
         }
          if(WIP1 == GOPA){
+            WRITE("ADDING TO LENERGY");
             ADDI(LENERGY,1);
             SIGNAL(SID_AURA,SIG_ADD);
         }
@@ -266,33 +291,13 @@ VALUES
 
 --------------------
 
-('M_ATTACKSPELL','0','turntOn','WAIT','0','SIG_SPELLME', '
-    //start the timer
-    SIGNAL(WIP2,SIG_START);
-', '', ''),
-('M_ATTACKSPELL','turntOn','active','Z_EPSILON','','', '
- if(WIP1==BLINDNESS){
-      MOV(WPARM,IDV_BLINDVIEW);
-      LOADVIEW(WPARM);
- }
- if(WIP1==HALUCINATE){ 
-     MOV(WPARM,IDV_BLINDVIEW);
-     LOADVIEW(WPARM);
- }
-', '', ''),
-    
-('M_ATTACKSPELL','active','ended','WAIT','0','SIG_STOP', 'SIGNAL(SID_SPELL,SIG_CLEAR);', '', ''),
-('M_ATTACKSPELL','ended','0','Z_EPSILON','','', '', '', ''),
 
 --------------------
 
-('M_BLINDVIEW','0','5','CLICK','','', '', '', ''),
-('M_BLINDVIEW','5','10','RAND','1','10', '
-    if(WRAND > 5){
-        SIGNAL(BLINDNESS_ACTIVE,SIG_STOP);
-    }
+('M_BLINDVIEW','0','10','CLICK','','', '
+      SIGNAL(BLINDNESS_ACTIVE,SIG_STOP);
 ', '', ''),
-('M_BLINDVIEW','10','','Z_EPSILON','','', '', '', '');
+('M_BLINDVIEW','10','0','Z_EPSILON','','', '', '', '');
 
 
 --------------------

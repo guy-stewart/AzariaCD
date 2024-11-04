@@ -9,6 +9,7 @@ delete from "main"."spr_names" where "name" like 'IDS_M4%';
 delete from "main"."spr_names" where "name" like 'IDS_M0%';
 delete from "main"."spr_names" where "name" like 'IDS_M5%';
 
+
 delete from "main"."spr_names" where "name" like 'IDS_M1EX';
 delete from "main"."spr_names" where "name" like 'IDS_M2EX';
 delete from "main"."spr_names" where "name" like 'IDS_M3EX';
@@ -65,13 +66,13 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3WAVE', '
 
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1HAPPY', 'm1hap', '368');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MIDM1HURT', 'M1HURT', '369');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1KISS', 'M1KISS', '370');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1MAD', 'M1MAD', '371');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SAD', 'M1SAD', '372');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SUPRISED', 'M1SUP', '373');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1STRESS', 'M1STRESS', '374');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1WAVE', 'M1WAV', '375');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MIDM1HURT', 'm1hurt', '369');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1KISS', 'm1kiss', '370');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1MAD', 'm1mad', '371');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SAD', 'm1sad', '372');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SUPRISED', 'm1sup', '373');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1STRESS', 'm1stress', '374');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1WAVE', 'm1wav', '375');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2HAPPY', 'M2HAP', '384');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2HURT', 'M2HURT', '385');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2KISS', 'M2KISS', '386');
@@ -232,9 +233,15 @@ delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
-('SOD_SPELL','IDV_OTHERID', '0', '0', '101', '171', '3', 'M_O_IDSPELL', '', '', '', ''),
+('SOD_SPELL','IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
 ('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
+
+
+
+--You can send just and object, just a signal, or both. The objects are dropped on the SID_ID, signals are sent to SID_SPELL …. Iirc
+
+
 
 delete from "main"."transitions" where [automaton] like 'M_DEC_E%';
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
@@ -398,9 +405,12 @@ VALUES
 ('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
 ('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
 ('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
-('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
+('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '
+     WRITE("I am S_ID and I receive signals! This one is a SIG_BOMB! ");
+', '', ''),
 ('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
 ('M_ID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
+
 
 ('M_ID', '20', 'playForward', 'ASSIGN', 'WSPRITE', 'happy', '', '', ''),
 ('M_ID', '21', 'playForward', 'ASSIGN', 'WSPRITE', 'hurt', '', '', ''),
@@ -413,7 +423,10 @@ VALUES
 ('M_ID', '30', 'playDead', 'ASSIGN', 'WSPRITE', 'dead', '', '', ''),
 
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
-('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '', '', ''),
+('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '
+            SUBI(LENERGY,1);
+            SIGNAL(SID_AURA,SIG_SUB);
+', '', ''),
 
 ('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
@@ -549,14 +562,14 @@ VALUES
 ('M_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
-('M_IDSPELL','checkObject','nothingImportant','Z_EPSILON','0','0', '
+('M_IDSPELL','checkObject','regularObject','Z_EPSILON','0','0', '
     SHOW(WOBJECT);
 ', '', ''),
-('M_IDSPELL','nothingImportant','0','GRAB','','', '
+('M_IDSPELL','regularObject','0','GRAB','','', '
     CLEAR(WOBJECT);
     SHOW();
 ', '', ''),
-('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', 'WRITE("ITS A BOMB");', '', ''),
+('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', 'WRITE("M_IDSPELL says ITS A BOMB");', '', ''),
 ('M_IDSPELL','itsAspell','0','Z_EPSILON','','', '
     if(WOBJECT == IDD_PROTECT){SHOW();SIGNAL(PROTECT_ACTIVE,SIG_SPELLME);}
     if(WOBJECT == IDD_NYBREATH){SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_SPELLME);}
@@ -580,7 +593,7 @@ VALUES
 ----------------------------
 ('M_O_IDSPELL','0','checkObject','DROP','','', '
     CLEAR(WVIEWID);
-    WRITE("Item Dropped on OTHER ID");
+    WRITE("I dropped an item on another player");
 ', '', ''),
 ('M_O_IDSPELL', '0', 'postProcessObject', 'WAIT', '', 'SIG_DROP', '
     WRITE("M_O_IDSPELL says an item dropped... check if there is a meflin");
@@ -608,42 +621,18 @@ VALUES
 ('M_O_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
-('M_O_IDSPELL','checkObject','nothingImportant','Z_EPSILON','0','0', '
+('M_O_IDSPELL','checkObject','regularObject','Z_EPSILON','0','0', '
     SHOW(WOBJECT);
+    SPELL_YOU(WOBJECT);
 ', '', ''),
-('M_O_IDSPELL','nothingImportant','0','GRAB','','', '
+('M_O_IDSPELL','regularObject','0','ZEPSILON','','', '
     CLEAR(WOBJECT);
     SHOW();
 ', '', ''),
-('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','0','SIG_BOMB', 'WRITE("ITS A BOMB");', '', ''),
+('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','0','SIG_BOMB', 'WRITE("M_O_IDSPELL says ITS A BOMB");', '', ''),
 ('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
    SPELL_YOU(WOBJECT);
 ', '', '');
-
---MODIFYING 10/28/24
--- ('M_O_IDSPELL', '0', 'postProcessObject', 'WAIT', '', 'SIG_DROP', '
---     WRITE("M_O_IDSPELL says an item dropped... check if there is a meflin");
---     REF_MACHINE(MEFPAN_VIEWCAP);
---     MOV(BPARM,R_BPARM);
---     if(R_BPARM == 1){  //Theres a meflin up
---         REF_MACHINE(MEFCURRENT); //Who is it?
---         MOV(WPARM,R_WPARM);
---         SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject
---         SHOW();
---     }
---    if(R_BPARM == 0){
---         REF_MACHINE(CHAR_DROPTARGET); 
---         MOV(WOBJECT,R_WOBJECT);
---             //Deduct for all the bad or good things local player can drop 
---                 ADDI(LKARMA,1); 
---                 SIGNAL(SID_HALO,SIG_ADD);
---         //Assuming this would create the spell over on the other player
---         SPELL_YOU(WOBJECT);
---         SHOW();
---     } 
--- ', '', ''),
-
--- ('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', '');
 
 
 --Making a test view ------------------
