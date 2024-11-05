@@ -393,6 +393,10 @@ VALUES
 ('M_ID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
     MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
+    //--adding refresh code
+    SIGNAL(SID_HALO,SIG_ADD);
+    SIGNAL(SID_AURA,SIG_ADD);
+
     SHOW(WSPRITE);
 ', '', ''),
 

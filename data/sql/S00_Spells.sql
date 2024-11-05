@@ -96,12 +96,24 @@ delete from spr_names where [name] like 'IDS_NYS_TINY%';
 delete from spr_names where [name] like 'IDS_WET_TINY%';
 delete from spr_names where [name] like 'IDS_INVIS_TINY%';
 delete from spr_names where [name] like 'IDS_BRAIN_TINY%';
+
+delete from spr_names where [name] like 'IDS_BLINDNESS_TINY%';
+delete from spr_names where [name] like 'IDS_ENCHANT_TINY%';
+delete from spr_names where [name] like 'IDS_HOLDING_TINY%';
+delete from spr_names where [name] like 'IDS_STALK_TINY%';
+delete from spr_names where [name] like 'IDS_HALUCINATE_TINY%';
+
 insert into spr_names values ('IDS_PROTECT_TINY','protect_tiny','70001');
 insert into spr_names values ('IDS_NYS_TINY','nys_tiny','70002');
 insert into spr_names values ('IDS_WET_TINY','wet_tiny','70003');
 insert into spr_names values ('IDS_INVIS_TINY','invis_tiny','70004');
 insert into spr_names values ('IDS_BRAIN_TINY','brain_tiny','70005');
 
+insert into spr_names values ('IDS_BLINDNESS_TINY','tiny_blindness','70020');
+insert into spr_names values ('IDS_ENCHANT_TINY','tiny_enchant','70021');
+insert into spr_names values ('IDS_HALUCINATE_TINY','tiny_halucinate','70022');
+insert into spr_names values ('IDS_HOLDING_TINY','tiny_holding','70023');
+insert into spr_names values ('IDS_STALK_TINY','tiny_stalk','70024');
 
 delete from "main"."views" where [view_name] like 'IDV_BLINDVIEW%';
 INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
@@ -121,10 +133,11 @@ delete from "main"."machines" where [name] like 'DEATH_%';
 delete from "main"."machines" where [name] like 'BANISHMENT_%';
 delete from "main"."machines" where [name] like 'BLINDNESS_%';
 delete from "main"."machines" where [name] like 'HALUCINATE_%';
+delete from "main"."machines" where [name] like 'REVIVE_%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 --------------------
---Defensive Spells
+--Defensive Spells and timed view spells
 ('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '153',  '90',   '170',  '107', '3', 'M_DEFENSESPELL',    'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
 ('PROTECT_TIMER',     'IDV_MAIN_PANEL', '153',  '107',  '170',  '124', '3', 'M_SPELLTIMER',      '100', 'PROTECT_ACTIVE', '', ''),
 
@@ -140,35 +153,43 @@ VALUES
 ('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '221',  '90',   '238',  '107', '3', 'M_DEFENSESPELL',    'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
 ('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '221',  '107',  '238',  '124', '3', 'M_SPELLTIMER',      '100', 'INVISIBLE_ACTIVE', '', ''),
 
+
+
+
 --------------------    
 -- attack spells
 -- view spells
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
-('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', '', ''),
+('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '153','110', '170', '127', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', 'IDS_ENCHANT_TINY', ''),
 ('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
 
-('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', '', ''),
+('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '170','110', '187', '127', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', 'IDS_HOLDING_TINY', ''),
 ('HOLDING_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
 
-('STALKING_ACTIVE','IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', '', ''),
+('STALKING_ACTIVE','IDV_MAIN_PANEL', '187','110', '204', '127', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', 'IDS_STALK_TINY', ''),
 ('STALKING_TIMER', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
 
--- attack spells
+('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '204','110', '221', '127', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', 'IDS_BLINDNESS_TINY', ''),
+('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
+('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
+
+('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '221','110', '238', '127', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', 'IDS_HALUCINATE_TINY', ''),
+('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', ''),
+
+
+
+
+-- INSTANT spells
 -- Instant
 ('TRANSFER_ACTIVE',   'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'TRANSFER', 'NO_TIMER', '', ''),
 ('DEATH_ACTIVE',      'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'DEATH', 'NO_TIMER', '', ''),
 ('BANISHMENT_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'BANISHMENT', 'NO_TIMER', '', ''),
 
-('GOPA_ACTIVE',       'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
+('GOPA_ACTIVE',    'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'GOPA', 'NO_TIMER', '', ''),
+('REVIVE_ACTIVE',  'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_INSTANTATTACK', 'REVIVE', 'NO_TIMER', '', '');
 -- Timed
 
-('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', '', ''),
-('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
-('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
-
-('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '1','5', '12', '13', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', '', ''),
-('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', '');
 
 --------------------
 -- object spells - ARE JUST OBJECTS - ALARM, LOCK, UNLOCK, EXPLODE...
@@ -211,11 +232,11 @@ VALUES
      SIGNAL(WIP2,SIG_START);
      MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM
      MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER
-
+     SHOW(WIP3);
 ', '', ''),
 
     
-('M_VIEWSPELL','turntOn','caughtInLoop','ESTIME','0','1', '
+('M_VIEWSPELL','turntOn','caughtInLoop','Z_EPSILON','','', '
         if(WIP1==ENCHANT){
             MOV(WPARM,OVIEW); 
             LOADVIEW(WPARM);
@@ -236,9 +257,12 @@ VALUES
             LOADVIEW(WPARM);
         }
 ', '', ''),
-('M_VIEWSPELL','caughtInLoop','active','Z_EPSILON','','', '', '', ''),
-('M_VIEWSPELL','active','ended','WAIT','0','SIG_STOP', 'SIGNAL(SID_SPELL,SIG_CLEAR);', '', ''),
-('M_VIEWSPELL','active','turntOn','Z_EPSILON','','', '', '', ''),
+('M_VIEWSPELL','caughtInLoop','ended','WAIT','0','SIG_STOP', '
+    SIGNAL(SID_SPELL,SIG_CLEAR); 
+    SHOW();
+', '', ''),
+('M_VIEWSPELL','caughtInLoop','turntOn','ESTIME','0','1', '', '', ''),
+
 ('M_VIEWSPELL','ended','0','Z_EPSILON','','', '', '', ''),
 
 --------------------
@@ -268,11 +292,19 @@ VALUES
             SIGNAL(SID_AURA,SIG_SUB);
         }
         if(WIP1 == DEATH){ 
-            ASSIGN(LENERGY,1);
-            SIGNAL(SID_AURA,SIG_SUB);
             ASSIGN(LWEALTH,0);SIGNAL(S1_VIALMETER,SIG_SHOW);
-            SIGNAL(SID_ID,SIG_DEAD);
+            ASSIGN(LENERGY,1);
+            SUBI(LENERGY,1);
+            SIGNAL(SID_AURA,SIG_SUB);   
+        }
+        if(WIP1 == REVIVE){ 
+            ASSIGN(LWISDOM,20);
+            ASSIGN(LENERGY,10);
+            SIGNAL(SID_AURA,SIG_SUB);
+            ASSIGN(LWEALTH,5);SIGNAL(S1_VIALMETER,SIG_SHOW);
+            SIGNAL(SID_ID,SIG_SURPRISED);
             SUBI(LKARMA,6);
+             SIGNALi(0,SID_ID);
         }
          if(WIP1 == BANISHMENT){
             MOV(WPARM,IDV_BANISH);
@@ -281,8 +313,10 @@ VALUES
         }
          if(WIP1 == GOPA){
             WRITE("ADDING TO LENERGY");
-            ADDI(LENERGY,1);
-            SIGNAL(SID_AURA,SIG_ADD);
+            if(LENERGY > 1){
+                ADDI(LENERGY,1);
+                SIGNAL(SID_AURA,SIG_ADD);
+            }
         }
 ', '', ''),
 
