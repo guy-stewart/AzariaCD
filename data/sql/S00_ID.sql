@@ -368,10 +368,12 @@ VALUES
 
 
 ('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '
+   
+    
     if(LWISDOM >= 30){
        ASSIGN(WPARM,F3);
     }
-     if(LWISDOM >= 20 && LWISDOM < 31){
+     if(LWISDOM >= 20 && LWISDOM < 30){
         ASSIGN(WPARM,F2);
     }
     if(LWISDOM < 20){
@@ -379,10 +381,12 @@ VALUES
     }
 ', '', ''), 
 ('M_ID', '0', 'setId', 'NEQUALi', 'LSEX', '1', '
+   
+
     if(LWISDOM >= 30){
        ASSIGN(WPARM,M3);
     }
-    if(LWISDOM >= 20 && LWISDOM < 31){
+    if(LWISDOM >= 20 && LWISDOM < 30){
         ASSIGN(WPARM,M2);
     }
     if(LWISDOM < 20){
@@ -465,7 +469,7 @@ VALUES
     if(OWISDOM >= 30){
        ASSIGN(WPARM,F3);
     }
-     if(OWISDOM >= 20 && LWISDOM < 31){
+     if(OWISDOM >= 20 && LWISDOM < 30){
         ASSIGN(WPARM,F2);
     }
     if(OWISDOM < 20){
@@ -476,7 +480,7 @@ VALUES
     if(OWISDOM >= 30){
        ASSIGN(WPARM,M3);
     }
-    if(OWISDOM >= 20 && OWISDOM < 31){
+    if(OWISDOM >= 20 && OWISDOM < 30){
         ASSIGN(WPARM,M2);
     }
     if(OWISDOM < 20){
