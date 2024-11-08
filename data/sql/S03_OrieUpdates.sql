@@ -56,7 +56,7 @@ delete from machines where [name] = 'S03_LOGBOOKBIN';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
 ('S03_DIARYBIN', 'IDV_ORIE', '946', '86', '999', '142', '2', 'M_BIN', 'IDD_DIARY2', '', '', ''),
-('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '2', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A', ''),
+('S03_DOORANIM', 'IDV_ORIE', '305', '55', '406', '260', '2', 'M_QANIPORTAL', 'IDS_DOORANIM', '', 'IDV_N2A','9300'),
 
 
 ('S03_LOGBOOKBIN', 'IDV_ORIE', '2228', '221', '2280', '280', '2','M_PLANTBIN','IDD_LOGBOOKBTN','IDS_LOGBOOK','100','');
@@ -117,7 +117,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ('M_QANIPORTAL', '25', '10', 'WAIT', '', 'SIG_UNLOCK','
     MOV(WSPRITE,WIP1);
  '),
- ('M_QANIPORTAL', '30', '10', 'LOADVIEW', '0', 'WIP3','
+ ('M_QANIPORTAL', '30', '10', 'LOADVIEW', 'WIP3', '','
+    ASSIGN(LTHETA,WIP4);
     q_local_active(?BPARM, "1");
     if(BPARM != " Find the ancient map in the wilderness."){
      SIGNAL(QL_MANAGER,Q1_START);

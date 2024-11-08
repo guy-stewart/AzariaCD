@@ -55,8 +55,15 @@ VALUES ('IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
 delete from cardinals where [from] = 'IDV_VIL6';
 delete from cardinals where [from] = 'IDV_VHB3';
 INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES 
-('IDV_VIL6', '', 'IDV_TRAYL', 'IDV_TRAYR', '', '', 'IDV_VHB3', 'IDV_VIL5', ''),
+('IDV_VIL6', '', 'IDV_TRAYL', 'IDV_TRAYR', '', '', '', 'IDV_VIL5', ''),
 ('IDV_VHB3', '', '', 'IDV_VIL6', '', '', '', '', '');
+
+delete from machines where name = 'VIL6_DOOR';
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('VIL6_DOOR', 'IDV_VIL6', '1829', '82', '1944', '226', '0', 'M_PORTAL', 'IDV_VHB3','31900','','');
+
+
 
 delete from spr_names where name = 'IDS_PARCHPANBK';
 INSERT INTO "main"."spr_names" ("name", "value") 
@@ -360,8 +367,8 @@ VALUES
 ('S33_NEELP_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M1T1ANIM','10', 'SOUND_NEELPQ1', 'IDS_M1I1ANIM'),
 ('NEELP_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M1T1ANIM','2', 'SOUND_NEELPI1', 'IDS_M1I1ANIM'),
 
-('S33_NEELP_alt1', 'IDV_N2A', '696', '139', '761', '214',   '3','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '', ''),
-('S33_NEELP_alt2', 'IDV_N2C', '2607', '140', '2800', '201', '3','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '', ''),
+('S33_NEELP_alt1', 'IDV_N2A', '696', '139', '761', '214',   '3','M_STATESCALEZ','IDS_M1SWAYC','IDV_N2B', '900', ''),
+('S33_NEELP_alt2', 'IDV_N2C', '2607', '140', '2800', '201', '3','M_STATESCALEZ','IDS_M1SWAYB','IDV_N2B',  '900', ''),
 --NEELP GOES TO THE BEACH
 ('S11_NEELP', 'IDV_FA1PAN', '452', '74', '650', '200',       '3','M_MEF_APPROACH','IDS_M1SWAY',1,'NEELP_COORD', ''),
 ('S11_NEELP_Q2', 'IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_M1T1ANIM','4', 'SOUND_NEELPQ2', 'IDS_M1I1ANIM'),
@@ -403,7 +410,7 @@ VALUES
 ('S16_PERST',  'IDV_VIL7', '2650', '40', '2798', '250',     '0','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD',''),
 ('S16_PERST_Q1','IDV_MEFID', '0', '0', '8', '10',           '1','M_MEF_TALK','IDS_M2T10000','15','SOUND_PERSTQ1', 'IDS_M2I10000'),
 ('PERST_I1','IDV_MEFID', '0', '0', '8', '10',               '1','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI1', 'IDS_M2I10000'),
-('S16_PERST_alt1','IDV_VIL3', '2515', '115', '2600', '200', '1','M_STATESCALEV','IDS_M2FIDDLEsm1','', '',  ''),
+('S16_PERST_alt1','IDV_VIL3', '2515', '115', '2600', '200', '1','M_STATESCALEZ','IDS_M2FIDDLEsm1','IDV_VIL7', '30100',  ''),
 
 --Perst goes to the dock
 -- tmplpth9 1481 68
@@ -551,7 +558,7 @@ VALUES
 ('M_STATESCALEZ', '0', 'signaled', 'WAIT', '0', 'SIG_SHOW', ''),
 ('M_STATESCALEZ', 'signaled', 'shown', 'ASHOW', 'WIP1', '0', ''),
 ('M_STATESCALEZ', 'shown', 'zoomed', 'CLICK', '', '0', ''),
-('M_STATESCALEZ', 'zoomed', 'signaled', 'LOADVIEW', 'WIP2', '0', ''),
+('M_STATESCALEZ', 'zoomed', 'signaled', 'LOADVIEW', 'WIP2', 'WIP3', ''),
 ('M_STATESCALEZ', 'shown', 'signalledOff', 'WAIT', '0', 'SIG_HIDE', ''),
 ('M_STATESCALEZ', 'signalledOff', '0', 'ASHOW', '0', '0', '');
 

@@ -1,4 +1,4 @@
-delete from games;
+
 delete from spr_names where name = 'IDS_BFLY';
 delete from spr_names where name = 'IDS_BIRDSFWD';
 delete from spr_names where name = 'IDS_BIRDSBKWD';
@@ -53,4 +53,4 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
  ('M_ANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
  ('M_ANIPORTAL', '2', '3', 'CLICK', '0', '0',''),
  ('M_ANIPORTAL', '3', '4', 'SIGNALi', 'SIG_OPEN', 'WIP2',''),
- ('M_ANIPORTAL', '4', '1', 'LOADVIEW', '0', 'WIP3','');
+ ('M_ANIPORTAL', '4', '1', 'LOADVIEW', 'WIP3', '','');

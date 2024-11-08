@@ -6,6 +6,7 @@ delete from spr_names where name = 'IDS_MAPOPN';
 delete from spr_names where [name] like 'IDS_DIARY1_%';
 delete from sounds where name = 'SOUND_LEVER';
 delete from spr_names where [name] like 'IDS_SPADE%';
+delete from spr_names where [name] like 'IDS_ROCKBINSMALL%';
 
 insert into spr_names values ('IDS_DIARY1_BIN','DIARY1_BIN',0);
 insert into spr_names values ('IDS_LEVANI','levani',0);
@@ -13,7 +14,7 @@ insert into sounds values ('SOUND_LEVER', 'lever',0);
 insert into spr_names values ('IDS_MAPOPN','MAPOPN',0);
 insert into spr_names values ('IDS_SPADE','spade',0);
 insert into spr_names values ('IDS_SPADEBIN','spadebin',0);
-
+insert into spr_names values ('IDS_ROCKBINSMALL','rockbinsmall',0);
 
 delete from machines where name = 'S21_MAPOPEN';
 delete from machines where name = 'S21_LEVSTOP';
@@ -89,10 +90,12 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
   
 
 
-delete from machines where name = 'S21_ALT_LEVER';
+delete from machines where [name] like 'S21_ALT_LEVER%';
 delete from machines where name = 'S21_ALT_MAPBOX';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
+('S21_ALT_LEVER1', 'IDV_N2A', '1038', '150', '1100', '200', '0', 'M_PORTAL', 'IDV_N2B','17400','',''),
+('S21_ALT_LEVER2', 'IDV_N2C', '2105', '159', '2150', '200', '0', 'M_PORTAL', 'IDV_N2B','17400','',''),
 ('S21_ALT_LEVER', 'IDV_N2B', '1556', '142', '1565', '147', '0', 'M_STATESCALEZ', 'IDS_LEVOPNSML','','',''),
 ('S21_ALT_MAPBOX','IDV_N2D2', '1300', '82', '1350', '182', '0', 'M_STATESCALEZ', 'IDS_MAPBOXSML','IDV_MAPBOX1','','');
 
@@ -143,7 +146,7 @@ INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bott
     ('S21_o4BERRYTREE', 'IDV_N2D2', '2030', '201', '2090', '261', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
     ('S21_o5BERRYTREE', 'IDV_N2D2', '2100', '212', '2160', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
     ('S21_o6BERRYTREE', 'IDV_N2D2', '2170', '195', '2230', '255', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT','IDS_PFLOWER', '60', ''),
-    ('S21_ROCKBIN1',    'IDV_N2B', '1378', '223', '1430', '274', '3', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBIN', '60', ''),
+    ('S21_ROCKBIN1',    'IDV_N2B', '1378', '223', '1430', '274', '3', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBINSMALL', '60', ''),
     ('S21_SPADEBIN',    'IDV_N2D2', '272', '202', '312', '240', '3', 'M_PLANTBIN', 'IDD_SPADE', 'IDS_SPADEBIN', '60', ''),
 
     -- Scene 21 Maproom Map bin
@@ -182,7 +185,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
       SIGNAL(S17_eFOULWIND,SIG_CLEAR);
    PLAYWAVE(SOUND_POPUP);
 ', '', ''),
-('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', '0', 'IDV_CONTINENT', '', '', ''),
+('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', 'IDV_CONTINENT', '', '', '', ''),
 ('M_MAPBUTTON', 'mapPresent', 'empty', 'GRAB', '0', '', '', '', '');
 
 

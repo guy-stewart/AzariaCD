@@ -42,7 +42,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M_SIGNTRANS', 'portalOpen', '0', 'Z_EPSILON', '0', '', '', '', ''),
 
-('M_PORTAL', '0', 'portal', 'CLICK', '', '', 'LOADVIEW(WIP1);', '', ''),
+('M_PORTAL', '0', 'portal', 'CLICK', '', '', '
+        LOADVIEW(WIP1, WIP2);
+', '', ''),
 ('M_PORTAL', 'portal', '0','Z_EPSILON', '0', '', '', '', '');
 
 

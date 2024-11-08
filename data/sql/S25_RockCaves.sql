@@ -1,4 +1,4 @@
-delete from games;
+
 
 
 delete from sounds where name like 'SOUND_PICKA%';
@@ -81,7 +81,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    SIGNALi(0,SID_ID);
 ', '', ''), 
 ('M25_RUMBLE', '70', '71', 'CLICK', '0', '0', '', '', ''), 
-('M25_RUMBLE', '71', '70', 'LOADVIEW', '0', 'IDV_WALL2EN', '', '', ''),
+('M25_RUMBLE', '71', '70', 'LOADVIEW', 'IDV_WALL2EN', '', '', '', ''),
 
 ('M25_RUMBLEPRY', '0', 'prying', 'DRAG', 'IDD_CROWBAR, IDD_SHOVEL, IDD_PICK', '', '
     ASSIGN(BPARM,0);

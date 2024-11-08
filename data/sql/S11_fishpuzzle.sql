@@ -46,14 +46,14 @@ VALUES
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
 ('M_LUNCHPORTAL', '0', '1', 'CLICK', '0', '0', ''),
-('M_LUNCHPORTAL', '1', '0', 'LOADVIEW', '0', 'IDV_LUNCHCU', ''),
+('M_LUNCHPORTAL', '1', '0', 'LOADVIEW', 'IDV_LUNCHCU', '', ''),
 
 
 
  ('M_XANIPORTAL', '0', '1', 'MOV', 'WSPRITE', 'WIP1',''),
  ('M_XANIPORTAL', '1', '2', 'ASHOW', 'WSPRITE', 'V_LOOP',''),
  ('M_XANIPORTAL', '2', '3', 'CLICK', '0', '0',''),
- ('M_XANIPORTAL', '3', '1', 'LOADVIEW', '0', 'WIP3','');
+ ('M_XANIPORTAL', '3', '1', 'LOADVIEW', 'WIP3', '','');
 
 
 

@@ -1,4 +1,4 @@
-drop table if exists games;
+
 
 delete from sounds where name like 'SOUND_SPLASH%';
 INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_SPLASH', 'splash', '0');
@@ -6,13 +6,19 @@ INSERT INTO "main"."sounds" ("name", "value", "id") VALUES ('SOUND_SPLASH', 'spl
 delete from machines where name = 'S11_FIRE';
 delete from machines where name = 'S11_GRILL';
 delete from machines where name = 'S11_ASCENT';
+delete from machines where name = 'S11_LOGBIN';
 
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
+delete from spr_names where [name] like 'IDS_LOGBIN%';
+insert into spr_names values ('IDS_LOGBIN','logs',0);
+
+
+
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name")
 VALUES 
-('4368', 'S11_FIRE', '4355', 'IDV_FALTAR', '122', '165', '290', '210', '0', 'M11_FIRE', 'S11_GRILL', '', '', ''),
-('4369', 'S11_GRILL', '4355', 'IDV_FALTAR', '145', '100', '267', '142', '0', 'M11_GRILL', 'S11_FIRE', 'S11_ASCENT', '', ''),
-('4370', 'S11_ASCENT', '4355', 'IDV_FALTAR', '175', '40', '267', '100', '0', 'M11_ASCENT', '', '', '', '');
-
+('S11_FIRE',   'IDV_FALTAR', '122', '165', '290', '210', '0', 'M11_FIRE', 'S11_GRILL', '', '', ''),
+('S11_GRILL',  'IDV_FALTAR', '145', '100', '267', '142', '0', 'M11_GRILL', 'S11_FIRE', 'S11_ASCENT', '', ''),
+('S11_ASCENT', 'IDV_FALTAR', '175', '40', '267', '100', '0', 'M11_ASCENT', '', '', '', ''),
+('S11_LOGBINC', 'IDV_FH1PAN', '367', '191', '420', '240', '0', 'M_PLANTBIN', 'IDD_LOG', 'IDS_LOGBIN', '30', '');
 -- transitions for the fish grill machines
 delete from transitions where [automaton] like 'M11_%';
 

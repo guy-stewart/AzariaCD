@@ -302,8 +302,8 @@ if(IS_A(WOBJECT,IDD_SCOOPE) || IS_A(WOBJECT,IDD_SCOOPF)){
 
 ('M_EYEINFO', 'checkObject', '0', 'Z_EPSILON', '0', '0', ''),
 
-('M_EYEINFO', 'viewSpell', '0', 'LOADVIEW', '0', 'IDV_SPELLPAN', ''),
-('M_EYEINFO', 'viewEnchantment', '0', 'LOADVIEW', '0', 'IDV_ENCHANTPAN', '');
+('M_EYEINFO', 'viewSpell', '0', 'LOADVIEW', 'IDV_SPELLPAN', '', ''),
+('M_EYEINFO', 'viewEnchantment', '0', 'LOADVIEW', 'IDV_ENCHANTPAN', '', '');
 
 
 
