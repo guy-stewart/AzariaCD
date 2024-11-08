@@ -1,17 +1,18 @@
 
-delete from games;
+
 -- ASSETS:
 delete from spr_names where name = 'IDS_LEVANI';
 delete from spr_names where name = 'IDS_MAPOPN';
-delete from spr_names where [name] like 'IDS_DIARY1%';
+delete from spr_names where [name] like 'IDS_DIARY1_%';
 delete from sounds where name = 'SOUND_LEVER';
+delete from spr_names where [name] like 'IDS_SPADE%';
 
 insert into spr_names values ('IDS_DIARY1_BIN','DIARY1_BIN',0);
 insert into spr_names values ('IDS_LEVANI','levani',0);
 insert into sounds values ('SOUND_LEVER', 'lever',0);
 insert into spr_names values ('IDS_MAPOPN','MAPOPN',0);
-
-
+insert into spr_names values ('IDS_SPADE','spade',0);
+insert into spr_names values ('IDS_SPADEBIN','spadebin',0);
 
 
 delete from machines where name = 'S21_MAPOPEN';
@@ -123,6 +124,7 @@ delete from machines where [name] like 'S21_m5B%';
 delete from machines where [name] like 'S21_p%';
 delete from machines where [name] like 'S21_o%';
 delete from machines where [name] like 'S21_H%';
+delete from machines where [name] like 'S21_SPADE%';
 
 INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
  VALUES 
@@ -141,7 +143,8 @@ INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bott
     ('S21_o4BERRYTREE', 'IDV_N2D2', '2030', '201', '2090', '261', '2', 'M_PLANTBIN', 'IDD_YFLWRSPT', 'IDS_YFLOWER','60', ''),
     ('S21_o5BERRYTREE', 'IDV_N2D2', '2100', '212', '2160', '272', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER','60', ''),
     ('S21_o6BERRYTREE', 'IDV_N2D2', '2170', '195', '2230', '255', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT','IDS_PFLOWER', '60', ''),
-    ('S21_ROCKBIN1', 'IDV_N2C', '1081', '223', '1120', '255', '2', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBIN', '60', ''),
+    ('S21_ROCKBIN1',    'IDV_N2B', '1378', '223', '1430', '274', '3', 'M_PLANTBIN', 'IDD_ROCK', 'IDS_ROCKBIN', '60', ''),
+    ('S21_SPADEBIN',    'IDV_N2D2', '272', '202', '312', '240', '3', 'M_PLANTBIN', 'IDD_SPADE', 'IDS_SPADEBIN', '60', ''),
 
     -- Scene 21 Maproom Map bin
     --8471 ->
