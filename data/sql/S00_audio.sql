@@ -7,10 +7,10 @@ VALUES
 delete from machines where [name] like 'BTN_AUDIO_%';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('BTN_AUDIO_MDN',   'IDV_MAIN_PANEL', '35',     '225',  '51',  '240', '3',  'M_AUDIO_BTN', 'MUSIC_DN', 'IDS_YELLOWDOT', 'AUDIO_LEVELS', ''),
-('BTN_AUDIO_MUP',   'IDV_MAIN_PANEL', '126',    '225',  '142', '240', '3',  'M_AUDIO_BTN', 'MUSIC_UP', 'IDS_YELLOWDOT', 'AUDIO_LEVELS', ''),
-('BTN_AUDIO_EFXDN', 'IDV_MAIN_PANEL', '35',     '258',  '51',  '272', '3',  'M_AUDIO_BTN', 'SFX_DN',   'IDS_YELLOWDOT', 'AUDIO_LEVELS', ''),
-('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '126',    '258',  '142', '272', '3',  'M_AUDIO_BTN', 'SFX_UP',   'IDS_YELLOWDOT', 'AUDIO_LEVELS', '');
+('BTN_AUDIO_MDN',   'IDV_MAIN_PANEL', '35',     '225',  '51',  '240', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_DN', '',  ''),
+('BTN_AUDIO_MUP',   'IDV_MAIN_PANEL', '126',    '225',  '142', '240', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_UP', '',  ''),
+('BTN_AUDIO_EFXDN', 'IDV_MAIN_PANEL', '35',     '258',  '51',  '272', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_DN',   '',  ''),
+('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '126',    '258',  '142', '272', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_UP',   '',  '');
 
 delete from machines where [name] like 'POS_AUDIO_%';
 delete from machines where [name] like 'AUDIO_LEVELS%';
@@ -43,83 +43,50 @@ delete from transitions where [automaton] like 'M_VOL%';
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_AUDIO_BTN', '0', 'RESET', 'Z_EPSILON','0', '', '
-    REF_MACHINE(WIP3);
-   
-'),
-('M_AUDIO_BTN', 'RESET', 'PRESSED', 'CLICK','0', '', '
-    if(WIP1 == "MUSIC_UP"){
-         if(R_WPARM <= 7){
-            SIGNAL(WIP3,SIG_MUSIC_UP);
-            if(R_WPARM == 1){SIGNAL(POS_AUDIO_M1,SIG_ON); }
-            if(R_WPARM == 2){SIGNAL(POS_AUDIO_M1,SIG_OFF);SIGNAL(POS_AUDIO_M2,SIG_ON); }
-            if(R_WPARM == 3){SIGNAL(POS_AUDIO_M2,SIG_OFF);SIGNAL(POS_AUDIO_M3,SIG_ON); }
-            if(R_WPARM == 4){SIGNAL(POS_AUDIO_M3,SIG_OFF);SIGNAL(POS_AUDIO_M4,SIG_ON); }
-            if(R_WPARM == 5){SIGNAL(POS_AUDIO_M4,SIG_OFF);SIGNAL(POS_AUDIO_M5,SIG_ON); }
-            if(R_WPARM == 6){SIGNAL(POS_AUDIO_M5,SIG_OFF);SIGNAL(POS_AUDIO_M6,SIG_ON); } 
-            if(R_WPARM == 7){SIGNAL(POS_AUDIO_M6,SIG_OFF);SIGNAL(POS_AUDIO_M7,SIG_ON); } 
-         }
-    }
-    if(WIP1 == "MUSIC_DN"){
-         if(R_WPARM > 0){
-            SIGNAL(WIP3,SIG_MUSIC_DN);
-            if(R_WPARM == 1){SIGNAL(POS_AUDIO_M2,SIG_OFF);SIGNAL(POS_AUDIO_M1,SIG_ON); }
-            if(R_WPARM == 2){SIGNAL(POS_AUDIO_M3,SIG_OFF);SIGNAL(POS_AUDIO_M2,SIG_ON); }
-            if(R_WPARM == 3){SIGNAL(POS_AUDIO_M4,SIG_OFF);SIGNAL(POS_AUDIO_M3,SIG_ON); }
-            if(R_WPARM == 4){SIGNAL(POS_AUDIO_M5,SIG_OFF);SIGNAL(POS_AUDIO_M4,SIG_ON); }
-            if(R_WPARM == 5){SIGNAL(POS_AUDIO_M6,SIG_OFF);SIGNAL(POS_AUDIO_M5,SIG_ON); }
-            if(R_WPARM == 6){SIGNAL(POS_AUDIO_M7,SIG_OFF);SIGNAL(POS_AUDIO_M6,SIG_ON); } 
-         }
-    }
-     if(WIP1 == "SFX_UP"){
-      if(R_BPARM <= 7){
-         SIGNAL(WIP3,SIG_SFX_UP);
-         if(R_BPARM == 1){  SIGNAL(POS_AUDIO_SFX1,SIG_ON); }
-         if(R_BPARM == 2){SIGNAL(POS_AUDIO_SFX1,SIG_OFF); SIGNAL(POS_AUDIO_SFX2,SIG_ON); }
-         if(R_BPARM == 3){SIGNAL(POS_AUDIO_SFX2,SIG_OFF); SIGNAL(POS_AUDIO_SFX3,SIG_ON); }
-         if(R_BPARM == 4){SIGNAL(POS_AUDIO_SFX3,SIG_OFF); SIGNAL(POS_AUDIO_SFX4,SIG_ON); }
-         if(R_BPARM == 5){SIGNAL(POS_AUDIO_SFX4,SIG_OFF); SIGNAL(POS_AUDIO_SFX5,SIG_ON); }
-         if(R_BPARM == 6){SIGNAL(POS_AUDIO_SFX5,SIG_OFF); SIGNAL(POS_AUDIO_SFX6,SIG_ON); } 
-         if(R_BPARM == 7){SIGNAL(POS_AUDIO_SFX6,SIG_OFF); SIGNAL(POS_AUDIO_SFX7,SIG_ON); } 
-      }
- }
- if(WIP1 == "SFX_DN"){
-      if(R_BPARM > 0){
-         SIGNAL(WIP3,SIG_SFX_DN);
-         if(R_BPARM == 1){SIGNAL(POS_AUDIO_SFX2,SIG_OFF);SIGNAL(POS_AUDIO_SFX1,SIG_ON); }
-         if(R_BPARM == 2){SIGNAL(POS_AUDIO_SFX3,SIG_OFF);SIGNAL(POS_AUDIO_SFX2,SIG_ON); }
-         if(R_BPARM == 3){SIGNAL(POS_AUDIO_SFX4,SIG_OFF);SIGNAL(POS_AUDIO_SFX3,SIG_ON); }
-         if(R_BPARM == 4){SIGNAL(POS_AUDIO_SFX5,SIG_OFF);SIGNAL(POS_AUDIO_SFX4,SIG_ON); }
-         if(R_BPARM == 5){SIGNAL(POS_AUDIO_SFX6,SIG_OFF);SIGNAL(POS_AUDIO_SFX5,SIG_ON); }
-         if(R_BPARM == 6){SIGNAL(POS_AUDIO_SFX7,SIG_OFF);SIGNAL(POS_AUDIO_SFX6,SIG_ON); } 
-   
-      }
- }
-
-'),
-('M_AUDIO_BTN', 'PRESSED', 'RESET', 'Z_EPSILON','0', '', ''),
-
-
-
+('M_AUDIO_BTN', '0', '0', 'CLICK','0', '', 'SIGNAL(WIP1,WIP2);}'),
 
 ('M_AUDIO_LEVELS', '0', 'READY', 'Z_EPSILON','0', '', '
      //set initial audio level here 
-     ASSIGN(WPARM,2); SIGNAL(POS_AUDIO_M2,SIG_ON); //MUSIC
-     ASSIGN(BPARM,2); SIGNAL(POS_AUDIO_SFX2,SIG_ON); //SFX
+     ASSIGN(WPARM,1+music_volume()); SIGNAL(POS_AUDIO_M2,SIG_ON); //MUSIC
+     ASSIGN(BPARM,1+effects_volume()); SIGNAL(POS_AUDIO_SFX2,SIG_ON); //SFX
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_MUSIC_UP', '
-    ADD(WPARM,1);
+    if (WPARM<7) ADD(WPARM,1);
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_MUSIC_DN', '
-    SUB(WPARM,1);
+    if (WPARM>0) SUB(WPARM,1);
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_SFX_UP', '
-    ADD(BPARM,1);
+    if (BPARM<7) ADD(BPARM,1);
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_SFX_DN', '
-    SUB(BPARM,1);
+    if (BPARM>0) SUB(BPARM,1);
 '),
-('M_AUDIO_LEVELS', 'CHANGED', 'READY', 'Z_EPSILON','', '', '');
+('M_AUDIO_LEVELS', 'CHANGED', 'READY', 'Z_EPSILON','', '',
+'    log("turn all the lights off ...");
+    SIGNAL(POS_AUDIO_M1,SIG_OFF);
+    SIGNAL(POS_AUDIO_M2,SIG_OFF);
+    SIGNAL(POS_AUDIO_M3,SIG_OFF);
+    SIGNAL(POS_AUDIO_M4,SIG_OFF);
+    SIGNAL(POS_AUDIO_M5,SIG_OFF);
+    SIGNAL(POS_AUDIO_M6,SIG_OFF); 
+    SIGNAL(POS_AUDIO_M7,SIG_OFF); 
+    SIGNAL(POS_AUDIO_SFX1,SIG_OFF);
+    SIGNAL(POS_AUDIO_SFX2,SIG_OFF);
+    SIGNAL(POS_AUDIO_SFX3,SIG_OFF);
+    SIGNAL(POS_AUDIO_SFX4,SIG_OFF);
+    SIGNAL(POS_AUDIO_SFX5,SIG_OFF);
+    SIGNAL(POS_AUDIO_SFX6,SIG_OFF); 
+    SIGNAL(POS_AUDIO_SFX7,SIG_OFF); 
+    // turn on just the ones we want ...
+    SIGNAL("POS_AUDIO_M"+WPARM, SIG_ON);
+    SIGNAL("POS_AUDIO_SFX"+BPARM, SIG_ON);
+
+    log("BPARM==", BPARM);
+    log("WPARM==", WPARM);
+    effects_volume(BPARM);
+    music_volume(WPARM);
+');
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 

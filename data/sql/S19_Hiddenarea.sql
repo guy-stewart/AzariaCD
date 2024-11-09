@@ -19,6 +19,17 @@ VALUES
 ('IDV_NAT1C', '1', '0', '1', '6', 'surround.vct', 'nat1c'),
 ('IDV_NAT1D', '1', '0', '1', '6', 'surround.vct', 'nat1d');
 
+delete from "main"."cardinals"  where [from] like 'IDV_NAT1%';
+INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES 
+ ('IDV_NAT1A', 'IDV_NAT1B', '', '', 'IDV_GRNDCNT1', '', '', '', ''),
+ ('IDV_NAT1B', 'IDV_NAT1C', '', '', 'IDV_NAT1A', '', '', '', 'IDV_NAT1C'),
+ ('IDV_NAT1C', '', 'IDV_NAT1D', '', '', 'IDV_NAT1B', '', '', ''),
+ ('IDV_NAT1D', '', 'IDV_RUBBLECU', '', '', '', 'IDV_NAT1C', '', '');
+
+
+
+
+
 
 delete from machines where name = 'S16_SIGNPORTAL';
 delete from machines where name = 'S16_SIGNTRANS';
@@ -119,3 +130,19 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M_CONTLOCKED', 'passthru', 'unlocked','Z_EPSILON', '', '', '', '', ''),
 ('M_CONTLOCKED', 'unlocked', '0','WAIT', '', 'SIG_LOCK', '', '', '');
+
+
+
+--old stuff removed
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1e', '', 'IDV_NAT1f', '', '', 'IDV_NAT1o', 'IDV_NAT1d', '', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1f', '', 'IDV_NAT1p', '', '', '', 'IDV_NAT1e', '', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1g', '', '', '', 'IDV_NAT1c', '', 'IDV_NAT1h', 'IDV_NAT1n', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1h', '', 'IDV_NAT1g', '', '', 'IDV_NAT1n', 'IDV_NAT1i', '', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1i', '', 'IDV_NAT1h', '', 'IDV_NAT1n', '', 'IDV_NAT1j', '', 'IDV_NAT1k');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1j', 'IDV_NAT1k', 'IDV_NAT1i', '', '', '', 'IDV_NAT1m', '', 'IDV_NAT1l');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1k', '', '', '', 'IDV_NAT1i', 'IDV_NAT1j', 'IDV_NAT1j', '', 'IDV_NAT1l');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1l', '', '', 'IDV_NAT1i', 'IDV_NAT1k', 'IDV_NAT1m', '', '', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1m', 'IDV_NAT1l', 'IDV_NAT1j', 'IDV_NAT1n', '', '', '', '', '');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1n', 'IDV_NAT1h', 'IDV_NAT1g', '', '', '', '', 'IDV_NAT1m', 'IDV_NAT1i');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1o', 'IDV_NAT1d', 'IDV_NAT1e', '', '', '', '', '', 'IDV_NAT1c');
+-- INSERT INTO "main"."cardinals" ("from", "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest") VALUES ('IDV_NAT1p', '', '', '', '', 'IDV_NAT1f', '', '', '');
