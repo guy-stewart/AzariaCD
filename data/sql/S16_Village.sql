@@ -1,4 +1,4 @@
-delete from games;
+
 
 delete from spr_names where name = 'IDS_GBANIM';
 delete from spr_names where name = 'IDS_GOPAB';
@@ -13,45 +13,66 @@ insert into spr_names values ('IDS_GOPAR','GOPAR','16004');
 delete from objects where object = 'IDD_GOPAB';
 delete from objects where object = 'IDD_GOPAG';
 delete from objects where object = 'IDD_GOPAR';
-INSERT INTO "main"."objects" ("object", "object_id", "class", "class_id", "icon", "cursor", "actor") 
+INSERT INTO "main"."objects" ("object",  "class","icon", "cursor", "actor") 
 VALUES
-('IDD_GOPAR', '16004', 'IDC_NULL', '0', 'GOPAR', 'GOPAR', 'GOPAR'),
-('IDD_GOPAG', '16003', 'IDC_NULL', '0', 'GOPAG', 'GOPAG', 'GOPAG'),
-('IDD_GOPAB', '16002', 'IDC_NULL', '0', 'GOPAB', 'GOPAB', 'GOPAB');
+('IDD_GOPAR', 'IDC_NULL', 'GOPAR', 'GOPAR', 'GOPAR'),
+('IDD_GOPAG', 'IDC_NULL', 'GOPAG', 'GOPAG', 'GOPAG'),
+('IDD_GOPAB', 'IDC_NULL', 'GOPAB', 'GOPAB', 'GOPAB');
 
 
 delete from machines where name = 'S16_GOPABUSH';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip1_value", "wip2_name", "wip2_value", "wip3_name", "wip3_value", "wip4_name", "wip4_value") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('16001', 'S16_GOPABUSH', '4866', 'IDV_VIL4', '2362', '140', '2428', '244', '0', 'M_GOPABIN', 'IDS_GBANIM', '16001', '4', '', '0', '', '', '');
+( 'S16_GOPABUSH', 'IDV_VIL4', '2362', '140', '2428', '244', '0', 'M_GOPABIN', 'IDS_GBANIM', '4', '0', '');
 
 
-delete from  "main"."transitions" where name = 'M_GOPABIN';
-INSERT INTO "main"."transitions" ("name", "state", "new_state", "opcode", "param_1", "param_2") 
+delete from  "main"."transitions" where automaton = 'M_GOPABIN';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_GOPABIN', '0', '1', 'MOV', 'BFRAME', 'WIP3'), -- START WITH A RED GOPA 0 FRAME
-('M_GOPABIN', '1', '2', 'SHOW', 'WIP1', ''),
-('M_GOPABIN', '2', '20', 'GRAB', '', ''),
-('M_GOPABIN','2', '3', 'WAIT', '0', 'SIG_RIPEN'),
-('M_GOPABIN', '3', '4', 'ADDI', 'BFRAME', '1'), -- SHOULD NOW BE GREEN GOPA
-('M_GOPABIN', '4', '5', 'EQUALi', 'BFRAME', '0'),
-('M_GOPABIN', '5', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
-('M_GOPABIN', '4', '6', 'EQUALi', 'BFRAME', '1'),
-('M_GOPABIN', '6', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAG'),
-('M_GOPABIN', '4', '7', 'EQUALi', 'BFRAME', '2'),
-('M_GOPABIN', '7', '2', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB'),
-('M_GOPABIN', '4', '8', 'EQUALi', 'BFRAME', '3'),
-('M_GOPABIN', '8', '2', 'ASSIGN', 'WOBJECT', ''),
-('M_GOPABIN', '4', '9', 'GTE', 'BFRAME', 'WIP2'), -- NUMBER OF FRAMES
-('M_GOPABIN', '9', '0', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
-('M_GOPABIN','20', '30', 'EQUALi', 'BFRAME', '0'),
-('M_GOPABIN', '30', '31', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR'),
-('M_GOPABIN', '31', '1', 'SHOW', '0', '0'),
-('M_GOPABIN','20', '40', 'EQUALi', 'BFRAME', '1'),
-('M_GOPABIN', '40', '41',  'ASSIGN', 'WOBJECT', 'IDD_GOPAG'),
-('M_GOPABIN', '41', '1', 'SHOW', '0', '0'),
-('M_GOPABIN','20', '50', 'EQUALi', 'BFRAME', '2'),
-('M_GOPABIN', '50', '51', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB'),
-('M_GOPABIN', '51', '1', 'SHOW', '0', '0'),
-('M_GOPABIN','20', '1', 'Z_EPSILON', '', '');
+('M_GOPABIN', '0', 'ready', 'MOV', 'BFRAME', 'WIP3','
+     ASSIGN(BFRAME, WIP3);
+     ASSIGN(BPARM, 0);
+     '), -- START WITH RED - FRAME 0
+
+('M_GOPABIN', 'ready', 'askforsun', 'SHOW', 'WIP1', '',''),
+
+('M_GOPABIN','askforsun', 'getsun', 'WAIT', '0', 'SIG_RIPEN',''),
+
+('M_GOPABIN', 'getsun', 'ripened', 'Z_EPSILON', '', '','
+       ADDI(BPARM,1);
+       if(BPARM >= 4){
+         ASSIGN(BPARM,0);
+       }
+         MOV(BFRAME,BPARM);
+       SHOW(WIP1);
+'),
+
+('M_GOPABIN', 'ripened', 'redpresent', 'EQUALi', 'BFRAME', '0',''),
+('M_GOPABIN', 'redpresent', 'grabable', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR',''),
+
+('M_GOPABIN', 'ripened', 'greenpresent', 'EQUALi', 'BFRAME', '1',''),
+('M_GOPABIN', 'greenpresent', 'grabable', 'ASSIGN', 'WOBJECT', 'IDD_GOPAG',''),
+
+('M_GOPABIN', 'ripened', 'bluepresent', 'EQUALi', 'BFRAME', '2',''),
+('M_GOPABIN', 'bluepresent', 'grabable', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB',''),
+
+('M_GOPABIN', 'ripened', 'empty', 'EQUALi', 'BFRAME', '3',''),
+('M_GOPABIN', 'empty', 'askforsun', '', '', '',''),
+
+('M_GOPABIN', 'grabable', 'askforsun', 'GRAB', '', '','
+    ASSIGN(BFRAME,3);
+');
+
+
+
+-- ('M_GOPABIN','20', '30', 'EQUALi', 'BFRAME', '0',''),
+-- ('M_GOPABIN', '30', '31', 'ASSIGN', 'WOBJECT', 'IDD_GOPAR',''),
+-- ('M_GOPABIN', '31', '1', 'SHOW', '0', '0',''),
+-- ('M_GOPABIN','20', '40', 'EQUALi', 'BFRAME', '1',''),
+-- ('M_GOPABIN', '40', '41',  'ASSIGN', 'WOBJECT', 'IDD_GOPAG',''),
+-- ('M_GOPABIN', '41', '1', 'SHOW', '0', '0',''),
+-- ('M_GOPABIN','20', '50', 'EQUALi', 'BFRAME', '2',''),
+-- ('M_GOPABIN', '50', '51', 'ASSIGN', 'WOBJECT', 'IDD_GOPAB',''),
+-- ('M_GOPABIN', '51', '1', 'SHOW', '0', '0',''),
+-- ('M_GOPABIN','20', '1', 'Z_EPSILON', '', '','');
 

@@ -1,4 +1,4 @@
-delete from games;
+
 
 delete from transitions where [automaton] like 'M_BARD%';
 --The Bard is attached to the ID and loaded at startup
@@ -17,8 +17,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_BARD', 'endgame', '0', 'WAIT', '', 'SIG_ENDGAME', '', '', '');
 
 delete from machines where name = 'S01_NATURE';
-INSERT INTO "main"."machines" ("id", "name", "view_id", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('217', 'S01_NATURE', '5633', 'IDV_GRNDCNT1', '0', '0', '0', '0', '2', 'M_NATURE', '', '', '', '');
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
+('S01_NATURE','IDV_GRNDCNT1', '0', '0', '0', '0', '2', 'M_NATURE', '', '', '', '');
 
 delete from transitions where automaton = 'M_NATURE';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2","code") 
@@ -31,4 +31,4 @@ VALUES
 ('M_NATURE', '5', '6', 'SIGNALi', 'SIG_OPEN', 'S12_BUTTERFLY',''),
 ('M_NATURE', '6', '7', 'SIGNALi', 'SIG_RIPEN', 'S16_GOPABUSH',''),
 ('M_NATURE', '7', '8', 'SIGNALi', 'SIG_RIPEN', 'S10_GOPABUSH',''),
-('M_NATURE', '8', '1', 'ESTIME', '', '300','');
+('M_NATURE', '8', '1', 'ESTIME', '', '200','');

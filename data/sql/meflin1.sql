@@ -110,6 +110,7 @@ delete from spr_names where name = 'IDS_M6P10000';
 delete from spr_names where name = 'IDS_M6S10000';
 delete from spr_names where name = 'IDS_M6S20000';
 delete from spr_names where name = 'IDS_M6STIR';
+delete from spr_names where name = 'IDS_M6STIR_alt';
 delete from spr_names where name = 'IDS_M6T10000';
 
 -- OLD GUY - IN RESERVE FOR NOW
@@ -178,6 +179,7 @@ VALUES
 ('IDS_M6S10000', 'M6S10000'),
 ('IDS_M6S20000', 'M6S20000'),
 ('IDS_M6STIR', 'M6STIR'),
+('IDS_M6STIR_alt', 'M6STIR_alt'),
 ('IDS_M6T10000', 'M6T'),
 
 ('IDS_MSA10001', 'MSA10001'),
@@ -382,9 +384,10 @@ VALUES
 --------------------------------------
 --Rathe
 ('RATHE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '3','MEFLIN_COORD','','','',''),
-('S24_RATHE', 'IDV_EYEA', '1065', '30', '1260', '150',      '3','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
-('S24_RATHE_Q1', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
-('RATHE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
+('S24_RATHE',       'IDV_EYEA', '1065', '30', '1260', '150',      '3','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
+('S24_RATHE_alt1',  'IDV_EYEB', '1450', '113', '1500', '200', '3','M_STATESCALEZ','IDS_M6STIR_alt','IDV_EYEA', '13400',  ''),
+('S24_RATHE_Q1',    'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M6T10000','9','SOUND_RATHEQ1', 'IDS_M6H10000'),
+('RATHE_I1',        'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_M6T10000','2', 'SOUND_RATHEI1', 'IDS_M6I10000'),
 --Rathe Goes to the desert hills
 ('S25_RATHE', 'IDV_WR2', '3020', '100', '3156', '234',      '3','M_MEF_APPROACH','IDS_M6STIR',2,'RATHE_COORD', ''),
 ('S25_RATHE_Q2','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_M6T10000','5','SOUND_RATHEQ2', 'IDS_M6A10000'),
@@ -472,6 +475,7 @@ VALUES
 ('M_MEFPAN_SHOW_COORD','0', 'allBrandNew','Z_EPSILON', '', '', '
     SIGNAL(S33_NEELP,SIG_SHOW); SIGNAL(S33_NEELP_alt1,SIG_SHOW); SIGNAL(S33_NEELP_alt2,SIG_SHOW);
     SIGNAL(S24_RATHE,SIG_SHOW);
+    SIGNAL(S24_RATHE_alt1,SIG_SHOW);
     SIGNAL(S10_THAOR,SIG_SHOW);SIGNAL(S10_THAOR_alt1,SIG_SHOW);
     SIGNAL(S16_PERST,SIG_SHOW);SIGNAL(S16_PERST_alt1,SIG_SHOW);
     SIGNAL(S09_AMBLE,SIG_SHOW);
@@ -774,6 +778,7 @@ PLAYWAVE(WIP3);
                         SIGNAL(RATHE_COORD,SIG_Q1_SOLVED);
                         SIGNAL(QL_MANAGER,Q10_STOP);
                         SIGNAL(S24_RATHE,SIG_VANISH);
+                         SIGNAL(S24_RATHE_alt1,SIG_HIDE);
                         SIGNAL(S25_RATHE,SIG_SHOW);
                      }
                      if(R_BPARM == S25_RATHE){
