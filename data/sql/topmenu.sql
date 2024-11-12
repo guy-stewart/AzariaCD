@@ -10,7 +10,7 @@
 (0x26,'IDV_CFGGAME',1,0,1,11,'wdepanel.vct','spacebak'),
 (0x27,'IDV_CFGAV',1,0,1,12,'wdepanel.vct','spacebak'),
 */
-delete from "main"."idv" where name = 'IDV_NW1';
+delete from "main"."idv" where [name] like 'IDV_CFGNW1%';
 INSERT INTO "main"."idv" ("name", "id") VALUES 
 ('IDV_CFGNW1', '60010'),
 ('IDV_CFGNW1A', '60011'),

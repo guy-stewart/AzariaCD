@@ -103,6 +103,7 @@ delete from spr_names where [name] like 'IDS_HOLDING_TINY%';
 delete from spr_names where [name] like 'IDS_STALK_TINY%';
 delete from spr_names where [name] like 'IDS_HALUCINATE_TINY%';
 
+
 insert into spr_names values ('IDS_PROTECT_TINY','protect_tiny','70001');
 insert into spr_names values ('IDS_NYS_TINY','nys_tiny','70002');
 insert into spr_names values ('IDS_WET_TINY','wet_tiny','70003');

@@ -59,10 +59,10 @@ VALUES
 ('M_GOPABIN', 'ripened', 'empty', 'EQUALi', 'BFRAME', '3',''),
 ('M_GOPABIN', 'empty', 'askforsun', '', '', '',''),
 
-('M_GOPABIN', 'grabable', 'askforsun', 'GRAB', '', '','
+('M_GOPABIN', 'grabable', 'berrygrabbed', 'GRAB', '', '','
     ASSIGN(BFRAME,3);
-');
-
+'),
+('M_GOPABIN', 'berrygrabbed', 'askforsun', 'Z_EPSILON', '', '','');
 
 
 -- ('M_GOPABIN','20', '30', 'EQUALi', 'BFRAME', '0',''),
