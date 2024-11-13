@@ -463,7 +463,8 @@ VALUES
 ('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', ''),
 
 ---------------------
-
+---------------------
+---------------------
 
 ('M_OID', '0', 'setId', 'EQUALi', 'OSEX', '1', '
     if(OWISDOM >= 30){
@@ -540,10 +541,12 @@ VALUES
     SIGNAL(SMP_VIAL,SIG_DRAIN);
     LOADVIEW(IDV_VIL8);
 ', '', ''),
+--this clears the id and the aura (wip4)
 ('M_OID', '100', 'empty', 'Z_EPSILON', '', '', '
     SHOW(0);
     SIGNAL(WIP4,SIG_CLEAR);
 ', '', ''),
+--The to state below should prob be setid not sitting
 ('M_OID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
 
 
@@ -556,28 +559,46 @@ delete from "main"."transitions" where [automaton] like 'M_O_IDSPELL%';
 delete from "main"."transitions" where [automaton] like 'M_ACTIVE_SPELLTARGET%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
+----------------------------
+----------------------------
+-- This is where bombs and spells get processed for effect
+-- for both local and other players
 
 ('M_IDSPELL','0','checkObject','DROP','','', '
     CLEAR(WVIEWID);
     WRITE("Item Dropped on ID");
+
 ', '', ''),
---SPELL_ME not working and causing some issues
---('M_IDSPELL','0','checkObject','SPELL_ME','WOBJECT','', '', '', ''),
---('M_IDSPELL','0','checkObject','SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
 ('M_IDSPELL','0','0','WAIT','0','SIG_CLEAR', '
     SHOW();
 ', '', ''),
 ('M_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
+--
 ('M_IDSPELL','checkObject','regularObject','Z_EPSILON','0','0', '
+    WRITE("M_IDSPELL has detected a regular object drop from me or other");
     SHOW(WOBJECT);
 ', '', ''),
+--
 ('M_IDSPELL','regularObject','0','GRAB','','', '
     CLEAR(WOBJECT);
     SHOW();
 ', '', ''),
-('M_IDSPELL','itsAbomb','0','SPELL_ME','0','SIG_BOMB', 'WRITE("M_IDSPELL says ITS A BOMB");', '', ''),
+
+-- Need to check to see if protection is active and if it is 
+-- ignore bombs and spells (PROTECT_ACTIVE in state active)
+
+('M_IDSPELL','itsAbomb','0','IFSTATE','active','PROTECT_ACTIVE', ' 
+    PLAYWAVE(SOUND_SUCK);
+', '', ''),
+('M_IDSPELL','itsAspell','0','IFSTATE','active','PROTECT_ACTIVE', ' 
+  PLAYWAVE(SOUND_SUCK);
+', '', ''),
+('M_IDSPELL','itsAbomb','0','SPELL_ME','WOBJECT','SIG_BOMB', '
+     WRITE("M_IDSPELL says ITS A BOMB");
+     SIGNAL(SID_ID, SIG_BOMB);
+', '', ''),
 ('M_IDSPELL','itsAspell','0','Z_EPSILON','','', '
     if(WOBJECT == IDD_PROTECT){SHOW();SIGNAL(PROTECT_ACTIVE,SIG_SPELLME);}
     if(WOBJECT == IDD_NYBREATH){SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_SPELLME);}
@@ -595,10 +616,14 @@ VALUES
     if(WOBJECT == IDD_GVIAL){SHOW();SIGNAL(GOPA_ACTIVE,SIG_SPELLME);}
 ', '', ''),
 
-
-
-
 ----------------------------
+----------------------------
+----------------------------
+-->>> Local player drops an object on M_O_IDSPELL and then
+--  SPELL_YOU(WOBJECT); creates a DROP over in the other players M_IDSPELL by calling  SPELL_YOU(WOBJECT,SIG_OBJECT);
+--  The object is again looked at on the M_IDSPELL
+
+
 ('M_O_IDSPELL','0','checkObject','DROP','','', '
     CLEAR(WVIEWID);
     WRITE("I dropped an item on another player");
@@ -626,18 +651,26 @@ VALUES
 ', '', ''),
 
 ('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', ''),
+
+--from 0 drop
 ('M_O_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
 ('M_O_IDSPELL','checkObject','regularObject','Z_EPSILON','0','0', '
     SHOW(WOBJECT);
-    SPELL_YOU(WOBJECT);
+    SPELL_YOU(WOBJECT,SIG_OBJECT);
 ', '', ''),
 ('M_O_IDSPELL','regularObject','0','ZEPSILON','','', '
     CLEAR(WOBJECT);
     SHOW();
 ', '', ''),
-('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','0','SIG_BOMB', 'WRITE("M_O_IDSPELL says ITS A BOMB");', '', ''),
+
+-- This SPELL_YOU needs to pass the WOBJECT and the SIG_BOMB (M_IDSPELL needs to look at the WOBJECT to determine it a bomb)
+-- M_IDSPELL will process it locally
+('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','WOBJECT','SIG_BOMB', '
+    WRITE("M_O_IDSPELL says ITS A BOMB");
+    SIGNALi(SOD_ID,SIG_BOMB);
+    ', '', ''),
 ('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
    SPELL_YOU(WOBJECT);
 ', '', '');
