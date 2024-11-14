@@ -17,7 +17,7 @@ roomId = getOpenPlay("roomid");
 fname = getOpenPlay("roomid");
 candidates = getOpenPlay("candidates");
 
-uri = "us-atl-3b185468.colyseus.cloud";
+host = "us-atl-3b185468.colyseus.cloud";
 resourcePath = "/matchmake/create/AzariaRoom";
 postdata = "{"
 +'"playerId":"'+ playerid +'",'
@@ -32,8 +32,8 @@ postdata = "{"
 write("----------------------");
 write("     CREATE ROOM");
 write("----------------------");
-write(" https_put('",uri+resourcePath,"','",postdata,"');");
-response = https_put(uri+resourcePath, postdata);
+write(" https_post('",host,"',",resourcePath,"','",postdata,"');");
+response = https_post(host, resourcePath, postdata);
 write("---------------------------");
 write("   CREATE ROOM RESPONSE:");
 write("---------------------------");

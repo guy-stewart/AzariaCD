@@ -1,6 +1,6 @@
 write('ROOMS ????');
 
-response = https_get( "us-atl-3b185468.colyseus.cloud/Rooms");
+response = https_get( "us-atl-3b185468.colyseus.cloud", "/Rooms");
 
 roomobjects =  json_element(response, "roomsById");
 count = 0;
