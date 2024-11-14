@@ -1,6 +1,6 @@
-uri = "us-atl-3b185468.colyseus.cloud";
-resourcePath = "/kam/providers";
-response = https_get(uri+resourcePath);
+host = "us-atl-3b185468.colyseus.cloud";
+resource = "/kam/providers";
+response = https_get(host, resource);
 data_array = json_element(response, "Data");
 for (json_iter(data_array, ?data)) {
     id           = json_element(data, "id");
