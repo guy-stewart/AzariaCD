@@ -1,9 +1,9 @@
 // players.
 // called by OpenPlay to enumerate all of the players in a room.
-uri = "us-atl-3b185468.colyseus.cloud";
+host = "us-atl-3b185468.colyseus.cloud";
 roomid = getOpenPlay("roomid");
 resourcePath = "/colyseus/api/room?roomId="+roomid;
-response = https_get(uri+resourcePath);
+response = https_get(host, resourcePath);
 state   = json_element(response, "state");
 players = json_element(state, "players");
 count=0;

@@ -8,7 +8,7 @@ roomId = getOpenPlay("roomid");
 fname = getOpenPlay("fname");
 candidates = getOpenPlay("candidates");
 
-uri = "us-atl-3b185468.colyseus.cloud";
+host = "us-atl-3b185468.colyseus.cloud";
 resourcePath = "/matchmake/joinById/"+roomId;
 
 postdata = "{"
@@ -24,7 +24,7 @@ write("resourcePath:'"+resourcePath+"'");
 write("postdata is -->",postdata);
 // request a reservation.
 // ERR?
-reservation = https_put(uri+resourcePath, postdata);
+reservation = https_post(host, resourcePath, postdata);
 write("reservation:"+reservation);
 
 //---- we have to take the response and make and post it to accept the reservation

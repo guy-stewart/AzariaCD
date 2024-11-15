@@ -59,7 +59,7 @@ postdata = "{"
 +'"fname":"'+ fname + '"'
 +"}";
 write("postdata is -->",postdata);
-response = https_put(uri+resourcePath, postdata);
+response = https_post(uri+resourcePath, postdata);
 write(response);
 
 
@@ -98,7 +98,7 @@ postdata = "{"
 +'"fname":"'+ fname + '"'
 +"}";
 write("postdata is -->",postdata);
-response = https_put(uri+resourcePath, postdata);
+response = https_post(uri+resourcePath, postdata);
 write(response);
 
 
