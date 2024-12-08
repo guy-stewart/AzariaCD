@@ -30,13 +30,13 @@ delete from "main"."machines" where [name] like 'S0_ALARM%';
 
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_ALARM_1','IDV_MAIN_PANEL',190,450,215,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_2','IDV_MAIN_PANEL',220,450,243,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_3','IDV_MAIN_PANEL',249,450,273,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_4','IDV_MAIN_PANEL',278,450,302,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_5','IDV_MAIN_PANEL',307,450,332,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_6','IDV_MAIN_PANEL',337,450,360,469, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_7','IDV_MAIN_PANEL',365,450,388,469, 3, 'M_ALARM', '', '', '', '');
+('S0_ALARM_1','IDV_MAIN_PANEL',189,449,215,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_2','IDV_MAIN_PANEL',219,449,243,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_3','IDV_MAIN_PANEL',248,449,273,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_4','IDV_MAIN_PANEL',277,449,302,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_5','IDV_MAIN_PANEL',306,449,332,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_6','IDV_MAIN_PANEL',336,449,360,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_7','IDV_MAIN_PANEL',364,449,388,469, 3, 'M_ALARM', '', '', '', '');
 
 -- machines for network indicators on the man panel
 delete from "main"."machines" where [name] like 'S0_NW_INDC%';
