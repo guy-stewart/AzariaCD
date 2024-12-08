@@ -23,20 +23,20 @@ delete from machines where [name] like 'SMP_VIAL%';
 
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S1_VIALMETER', 'IDV_MAIN_PANEL', '281', '78', '253', '134', '3', 'M_VIALMETER', 'SMP_VIAL','IDS_NYSMETER','',''),
-('SMP_VIAL',  'IDV_MAIN_PANEL', '301', '78', '360', '133', '3', 'M_VIAL', '', '', '', '');
+('S1_VIALMETER', 'IDV_MAIN_PANEL', '56', '258', '68', '316', '3', 'M_VIALMETER', 'SMP_VIAL','IDS_NYSMETER','',''),
+('SMP_VIAL',  'IDV_MAIN_PANEL', '78', '262', '133', '313', '3', 'M_VIAL', '', '', '', '');
 
 delete from "main"."machines" where [name] like 'S0_ALARM%';
 
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_ALARM_1','IDV_MAIN_PANEL',245,140,274,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_2','IDV_MAIN_PANEL',275,140,304,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_3','IDV_MAIN_PANEL',305,140,334,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_4','IDV_MAIN_PANEL',335,140,364,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_5','IDV_MAIN_PANEL',365,140,394,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_6','IDV_MAIN_PANEL',395,140,424,161, 3, 'M_ALARM', '', '', '', ''),
-('S0_ALARM_7','IDV_MAIN_PANEL',425,140,454,161, 3, 'M_ALARM', '', '', '', '');
+('S0_ALARM_1','IDV_MAIN_PANEL',189,449,215,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_2','IDV_MAIN_PANEL',219,449,243,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_3','IDV_MAIN_PANEL',248,449,273,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_4','IDV_MAIN_PANEL',277,449,302,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_5','IDV_MAIN_PANEL',306,449,332,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_6','IDV_MAIN_PANEL',336,449,360,469, 3, 'M_ALARM', '', '', '', ''),
+('S0_ALARM_7','IDV_MAIN_PANEL',364,449,388,469, 3, 'M_ALARM', '', '', '', '');
 
 -- machines for network indicators on the man panel
 delete from "main"."machines" where [name] like 'S0_NW_INDC%';
@@ -71,11 +71,11 @@ INSERT INTO "main"."machines" ( "name",  "view_name", "left", "top", "right", "b
 delete from machines where name = 'SMP_EYEINFO';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('SMP_EYEINFO', 'IDV_MAIN_PANEL', '509', '89', '580', '153', '3', 'M_EYEINFO', '', '', '', '');
+('SMP_EYEINFO', 'IDV_MAIN_PANEL', '61', '326', '129', '379', '3', 'M_EYEINFO', '', '', '', '');
 
 delete from machines where name = 'SMP_RECYCLE';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('SMP_RECYCLE','IDV_MAIN_PANEL', '367', '75', '423', '132', '3', 'M_RECYCLE', '', '', '', '');
+('SMP_RECYCLE','IDV_MAIN_PANEL', '934', '387', '993', '445', '3', 'M_RECYCLE', '', '', '', '');
 
 delete from machines where [name] like 'SMP_INV%';
 delete from machines where [name] like 'SMP_TEXT%';
@@ -84,11 +84,11 @@ delete from machines where [name] like 'SMP_TALK%';
 delete from machines where [name] like 'SMP_COM_%';
 --inventory and com buttons
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "z") VALUES 
- ( 'SMP_INV_LEFT', 'IDV_MAIN_PANEL', '30', '379', '69', '408', '3', 'M_INV_LEFT', '', '', '', '', ''),
- ( 'SMP_INV_RIGHT','IDV_MAIN_PANEL', '133', '379', '175', '408', '3', 'M_INV_RIGHT', '', '', '', '', ''),
+ ( 'SMP_INV_LEFT', 'IDV_MAIN_PANEL', '12', '381', '56', '408', '3', 'M_INV_LEFT', '', '', '', '', ''),
+ ( 'SMP_INV_RIGHT','IDV_MAIN_PANEL', '136', '382', '179', '409', '3', 'M_INV_RIGHT', '', '', '', '', ''),
  
- ( 'SMP_TEXT_UP',  'IDV_MAIN_PANEL', '831', '11', '846', '34', '3', 'M_TEXT_UP', '', '', '', '', ''),
- ( 'SMP_TEXT_DOWN','IDV_MAIN_PANEL', '831', '35', '846', '58', '3', 'M_TEXT_DOWN', '', '', '', '', ''),
+ ( 'SMP_TEXT_UP',  'IDV_MAIN_PANEL', '848', '60', '878', '94', '3', 'M_TEXT_UP', '', '', '', '', ''),
+ ( 'SMP_TEXT_DOWN','IDV_MAIN_PANEL', '848', '99', '878', '132', '3', 'M_TEXT_DOWN', '', '', '', '', ''),
  
  --35/35
  ( 'SMP_LISTEN1',  'IDV_MAIN_PANEL', '850', '10', '885', '43', '3', 'M_LISTEN', '0', '4', '0', '', ''),

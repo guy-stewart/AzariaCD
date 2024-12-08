@@ -7,32 +7,37 @@ VALUES
 delete from machines where [name] like 'BTN_AUDIO_%';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('BTN_AUDIO_MDN',   'IDV_MAIN_PANEL', '35',     '225',  '51',  '240', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_DN', '',  ''),
-('BTN_AUDIO_MUP',   'IDV_MAIN_PANEL', '126',    '225',  '142', '240', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_UP', '',  ''),
-('BTN_AUDIO_EFXDN', 'IDV_MAIN_PANEL', '35',     '258',  '51',  '272', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_DN',   '',  ''),
-('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '126',    '258',  '142', '272', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_UP',   '',  '');
+('BTN_AUDIO_MDN',   'IDV_MAIN_PANEL', '472',    '444',  '500', '470', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_DN', '',  ''),
+('BTN_AUDIO_MUP',   'IDV_MAIN_PANEL', '602',    '444',  '629', '470', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_UP', '',  ''),
+('BTN_AUDIO_EFXDN', 'IDV_MAIN_PANEL', '688',    '444', '716','470', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_DN',   '',  ''),
+('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '819',    '444',  '846', '470', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_UP',   '',  '');
 
 delete from machines where [name] like 'POS_AUDIO_%';
 delete from machines where [name] like 'AUDIO_LEVELS%';
 
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
-('POS_AUDIO_M1',   'IDV_MAIN_PANEL',   '53',  '230',  '61',  '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M2',   'IDV_MAIN_PANEL',   '62',  '230',  '70',  '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M3',   'IDV_MAIN_PANEL',   '75',  '230',  '83',  '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M4',   'IDV_MAIN_PANEL',   '86',  '230',  '91',  '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M5',   'IDV_MAIN_PANEL',   '95',  '230',  '99',  '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M6',   'IDV_MAIN_PANEL',   '106', '230',  '107', '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_M7',   'IDV_MAIN_PANEL',   '115', '230',  '116', '240', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M1',   'IDV_MAIN_PANEL',   '503', '456',  '511',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M2',   'IDV_MAIN_PANEL',   '513', '456',  '521',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M3',   'IDV_MAIN_PANEL',   '523', '456',  '531',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M4',   'IDV_MAIN_PANEL',   '533', '456',  '541',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M5',   'IDV_MAIN_PANEL',   '543', '456',  '551',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M6',   'IDV_MAIN_PANEL',   '553', '456',  '561', '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M7',   'IDV_MAIN_PANEL',   '563', '456',  '571', '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M8',   'IDV_MAIN_PANEL',   '573', '456',  '581', '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M9',   'IDV_MAIN_PANEL',   '583', '456',  '591', '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_M10',   'IDV_MAIN_PANEL',  '593', '456',  '601', '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
 
-('POS_AUDIO_SFX1',   'IDV_MAIN_PANEL',  '53',   '264',  '61',   '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX2',   'IDV_MAIN_PANEL',  '62',   '264',  '70',   '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX3',   'IDV_MAIN_PANEL',  '75',   '264',  '83',   '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX4',   'IDV_MAIN_PANEL',  '86',   '264',  '91',   '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX5',   'IDV_MAIN_PANEL',  '95',   '264',  '99',   '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX6',   'IDV_MAIN_PANEL',  '106',  '264',  '107',  '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-('POS_AUDIO_SFX7',   'IDV_MAIN_PANEL',  '115',  '264',  '116',  '274', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
-
+('POS_AUDIO_SFX1',   'IDV_MAIN_PANEL', '719', '456',  '727',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX2',   'IDV_MAIN_PANEL', '729', '456',  '737',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX3',   'IDV_MAIN_PANEL', '739', '456',  '747',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX4',   'IDV_MAIN_PANEL', '749', '456',  '757',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX5',   'IDV_MAIN_PANEL', '759', '456',  '767',  '466', '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX6',   'IDV_MAIN_PANEL', '769', '456',  '777', '466',  '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX7',   'IDV_MAIN_PANEL', '779', '456',  '787', '466',  '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX8',   'IDV_MAIN_PANEL', '789', '456',  '797', '466',  '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX9',   'IDV_MAIN_PANEL', '799', '456',  '807', '466',  '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
+('POS_AUDIO_SFX10',  'IDV_MAIN_PANEL', '809', '456',  '817', '466',  '3',  'M_VOL', 'IDS_YELLOWDOT', '', '', ''),
 
 ('AUDIO_LEVELS',   'IDV_MAIN_PANEL',   '53',  '207',  '61',  '222', '3',  'M_AUDIO_LEVELS', '', '', '', '');
 
