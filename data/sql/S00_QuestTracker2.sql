@@ -36,7 +36,7 @@ delete from spr_names where name = 'IDS_QL_GLOW';
 INSERT INTO "main"."spr_names" ("name", "value") 
 VALUES 
 ('IDS_BLACKBACK', 'BLACKBACK'),
-('IDS_QL_GLOW', 'QL_glow');
+('IDS_QL_GLOW', 'IDS_QL_GLOW');
 -- Add the view
 delete from views where [view_name] like 'IDV_QUESTPAN%';
 
