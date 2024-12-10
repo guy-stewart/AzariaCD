@@ -139,20 +139,20 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 VALUES 
 --------------------
 --Defensive Spells and timed view spells
-('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '153',  '90',   '170',  '107', '3', 'M_DEFENSESPELL',    'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
-('PROTECT_TIMER',     'IDV_MAIN_PANEL', '153',  '107',  '170',  '124', '3', 'M_SPELLTIMER',      '100', 'PROTECT_ACTIVE', '', ''),
+('PROTECT_ACTIVE',    'IDV_MAIN_PANEL', '50',  '225',   '70',  '245', '3', 'M_DEFENSESPELL',    'IDS_PROTECT_TINY', 'PROTECT_TIMER', '', ''),
+('PROTECT_TIMER',     'IDV_MAIN_PANEL', '50',  '225',  '60',  '230', '3', 'M_SPELLTIMER',      '100', 'PROTECT_ACTIVE', '', ''),
 
-('WETBREATH_ACTIVE',  'IDV_MAIN_PANEL', '170',  '90',   '187',  '107', '3', 'M_DEFENSESPELL',    'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
-('WETBREATH_TIMER',   'IDV_MAIN_PANEL', '170',  '107',  '187',  '124', '3', 'M_SPELLTIMER',      '100', 'WETBREATH_ACTIVE', '', ''),
+('WETBREATH_ACTIVE',  'IDV_MAIN_PANEL', '80',  '225',   '100',  '245', '3', 'M_DEFENSESPELL',    'IDS_WET_TINY', 'WETBREATH_TIMER', '', ''),
+('WETBREATH_TIMER',   'IDV_MAIN_PANEL', '80',  '225',  '110',  '230', '3', 'M_SPELLTIMER',      '100', 'WETBREATH_ACTIVE', '', ''),
 
-('NYBREATH_ACTIVE',   'IDV_MAIN_PANEL', '187',  '90',   '204',  '107', '3', 'M_DEFENSESPELL',    'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
-('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '187',  '107',  '204',  '124', '3', 'M_SPELLTIMER',      '30', 'NYBREATH_ACTIVE', '', ''),
+('NYBREATH_ACTIVE',   'IDV_MAIN_PANEL', '110',  '225',   '130',  '245', '3', 'M_DEFENSESPELL',    'IDS_NYS_TINY', 'NYBREATH_TIMER', '', ''),
+('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '110',  '225',  '140',  '230', '3', 'M_SPELLTIMER',      '30', 'NYBREATH_ACTIVE', '', ''),
 
-('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '204',  '90',   '221',  '107', '3', 'M_DEFENSESPELL',    'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '204',  '107',  '221',  '124', '3', 'M_SPELLTIMER',      '100', 'TELEKINESIS_ACTIVE', '', ''),
+('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '50',  '250',   '70',  '270', '3', 'M_DEFENSESPELL',    'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
+('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '250',  '250',  '60',  '260', '3', 'M_SPELLTIMER',      '100', 'TELEKINESIS_ACTIVE', '', ''),
 
-('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '221',  '90',   '238',  '107', '3', 'M_DEFENSESPELL',    'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
-('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '221',  '107',  '238',  '124', '3', 'M_SPELLTIMER',      '100', 'INVISIBLE_ACTIVE', '', ''),
+('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '80',  '250', '100',  '270', '3', 'M_DEFENSESPELL',    'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
+('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '80',  '250', '90',   '260', '3', 'M_SPELLTIMER',      '100', 'INVISIBLE_ACTIVE', '', ''),
 
 
 
