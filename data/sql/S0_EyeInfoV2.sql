@@ -49,17 +49,17 @@ delete from controls where id = 'ID_TECHBIGTXT';
 delete from controls where [id] like 'ID_PARCHSMALLTXT%';
 delete from controls where id = 'ID_PARCHNYSTROMTXT';
 insert into controls values
-('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
-('IDV_TECHPANBIG','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB16',0xe2ebb2,''),
-('IDV_TECHPANBIGALT','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB16',0xe2ebb2,''),
-('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,''),
-('IDV_PARCHNYSTROM','ID_PARCHNYSTROMTXT','LABEL','IDS_PARCHPANNYBK','',40, 20, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
+('IDV_PARCHBIG','ID_PARCHBIGTXT','LABEL','IDS_PARCHBIGBK','',46, 55, 0,'','', 'IDS_FONTTNB18', 0x010101,''),
+('IDV_TECHPANBIG','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB18',0xFEFEFE,''),
+('IDV_TECHPANBIGALT','ID_TECHBIGTXT','LABEL','IDS_TECHPANBIGBK','',40, 40, 0,'','', 'IDS_FONTTNB18',0xFEFEFE,''),
+('IDV_PARCHSMALL','ID_PARCHSMALLTXT','LABEL','IDS_PARCHPANBK','',40, 20, 0,'','', 'IDS_FONTTNB18', 0x010101,''),
+('IDV_PARCHNYSTROM','ID_PARCHNYSTROMTXT','LABEL','IDS_PARCHPANNYBK','',40, 20, 0,'','', 'IDS_FONTTNB18', 0x010101,'');
 
 
-delete from idv where [name] like 'IDV_SPELLP%';
+
 delete from views where [view_name] like 'IDV_SPELLP%';
 
-INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_SPELLPAN', '8706');
+
 INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES 
 ('IDV_SPELLPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
@@ -154,10 +154,10 @@ INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY7');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY8');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY9');
 
-delete from idv where [name] like 'IDV_ENCHANTP%';
+
 delete from views where [view_name] like 'IDV_ENCHANTP%';
 
-INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_ENCHANTPAN', '8707');
+
 INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES ('IDV_ENCHANTPAN', '1', '0', '1', '1', 'wdepanel.vct', 'PARCHPAN');
 

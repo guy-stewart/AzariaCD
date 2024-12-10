@@ -13,27 +13,27 @@
 
 
 ------------------------------------RESOURCES
-delete from idv where name = 'IDV_MEFID';
+-- delete from idv where name = 'IDV_MEFID';
 delete from views where view_name = 'IDV_MEFID';
 
-delete from idv where name = 'IDV_MEFPAN';
+--delete from idv where name = 'IDV_MEFPAN';
 delete from views where view_name = 'IDV_MEFPAN';
 
-delete from idv where name = 'IDV_S24_RATHE_PAN';
+--delete from idv where name = 'IDV_S24_RATHE_PAN';
 delete from views where view_name = 'IDV_S24_RATHE_PAN';
 
-delete from idv where name = 'IDV_S10_THAOR_PAN';
+----delete from idv where name = 'IDV_S10_THAOR_PAN';
 delete from views where view_name = 'IDV_S10_THAOR_PAN';
 
-delete from idv where name = 'IDV_S16_PERST_PAN';
+--delete from idv where name = 'IDV_S16_PERST_PAN';
 delete from views where view_name = 'IDV_S16_PERST_PAN';
 
-delete from idv where name = 'IDV_S09_AMBLE_PAN';
+--delete from idv where name = 'IDV_S09_AMBLE_PAN';
 delete from views where view_name = 'IDV_S09_AMBLE_PAN';
 
-delete from idv where name = 'IDV_VILLIB';
+--delete from idv where name = 'IDV_VILLIB';
 delete from views where view_name = 'IDV_VILLIB';
-delete from idv where name = 'IDV_VILLIBA';
+--delete from idv where name = 'IDV_VILLIBA';
 delete from views where view_name = 'IDV_VILLIBA';
 
 
@@ -42,11 +42,11 @@ insert into views values
 
 
 
-INSERT INTO "main"."idv" ("name", "id") VALUES 
-('IDV_MEFID', '12'),
-('IDV_MEFPAN', '9802'),
-('IDV_VILLIBA', '9803'),
-('IDV_VILLIB', '9804');
+-- INSERT INTO "main"."idv" ("name", "id") VALUES 
+-- ('IDV_MEFID', '12'),
+-- ('IDV_MEFPAN', '9802'),
+-- ('IDV_VILLIBA', '9803'),
+-- ('IDV_VILLIB', '9804');
 INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES ('IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
        ('IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib'),
@@ -63,6 +63,10 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 VALUES 
 ('VIL6_DOOR', 'IDV_VIL6', '1829', '82', '1944', '226', '0', 'M_PORTAL', 'IDV_VHB3','31900','','');
 
+delete from spr_names where name = 'IDS_FONTTNB20';
+INSERT INTO "main"."spr_names" ("name", "value") 
+VALUES 
+('IDS_FONTTNB20', 'fnttnb20');
 
 
 delete from spr_names where name = 'IDS_PARCHPANBK';
@@ -71,7 +75,7 @@ VALUES
 ('IDS_PARCHPANBK', 'parchpanbk');
 delete from controls where id = 'ID_MEFTEXT';
 insert into controls values
-('IDV_MEFPAN','ID_MEFTEXT','LABEL','IDS_PARCHPANBK','',90, 50, 0,'','', 'IDS_FONTTNB16', 0x010101,'');
+('IDV_MEFPAN','ID_MEFTEXT','LABEL','IDS_PARCHPANBK','',90, 50, 0,'','', 'IDS_FONTTNB20', 0x010101,'');
 --('IDV_MEFPAN','ID_MYLABEL2','LABEL','CLISTBXL','',120, 30, 0,'default text','', 'IDS_FONTTNB16', 0x010101,'');
 
 
