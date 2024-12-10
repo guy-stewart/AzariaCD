@@ -16,7 +16,7 @@ create table if not exists controls (
     PRIMARY KEY ([view],[id]) ON CONFLICT REPLACE);
 
 insert into controls values
-('IDV_MEFLINTEXT','ID_MYLABEL','LABEL','CLISTBXL','',120, 30, 0,'default text','', 'IDS_FONTTNB16', 0x010101,'');
+('IDV_MEFLINTEXT','ID_MYLABEL','LABEL','CLISTBXL','',120, 30, 0,'default text','', 'IDS_FONTENG_BIG', 0x010101,'');
 
 delete from views where view_name = 'IDV_MEFLINTEXT';
 -- insert into views ([view_id],[view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
