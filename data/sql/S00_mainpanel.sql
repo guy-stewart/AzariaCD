@@ -113,7 +113,7 @@ INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view",
  ('IDV_COM_UI_TELE', '1', '0', '0', '4', 'comboxLG.vct', 'teletype');
 
 -- M_TALK(channel[1..N], count[N]);
-delete from transitions where [automaton] like 'M_TALK';
+delete from transitions where [automaton] like 'M_TALK%';
 insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code])
  values
 ('M_TALK','0','READY','EQUAL','WIP3','1',
@@ -129,3 +129,12 @@ SIGNAL   (SMP_TALK2);
 SIGNAL   (SMP_TALK3);
 SIGNAL   (SMP_TALK4);
 SHOW     (reddot);');
+
+delete from transitions where [automaton] like 'M_BACKBUTTON%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+('M_BACKBUTTON', '0', '1', 'CLICK', '0', '0', '', '', ''),
+('M_BACKBUTTON', '1', '0', 'PLAYWAVE', '0', 'SOUND_POPUP', '
+    if(LVIEW != IDV_BANISH){
+        LOADVIEW(IDV_TOPMENU);
+    }
+', '', '');

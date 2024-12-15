@@ -185,8 +185,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
       SIGNAL(S17_eFOULWIND,SIG_CLEAR);
    PLAYWAVE(SOUND_POPUP);
 ', '', ''),
-('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', 'IDV_CONTINENT', '', '', '', ''),
-('M_MAPBUTTON', 'mapPresent', 'empty', 'GRAB', '0', '', '', '', '');
+('M_MAPBUTTON', 'mapPresent', '0', 'WAIT', 'SIG_RESET', '', '', '', ''),
+('M_MAPBUTTON', 'requested', 'mapPresent', 'LOADVIEW', 'IDV_CONTINENT', '', '', '', '');
+
 
 
 

@@ -1,10 +1,13 @@
 
-delete from games;
+
 
 --we use M_PLANTBIN
 --we'll use 80001
 delete from machines where [name] like 'S01_PLNT%';
 
+-- fixes to tmplpth4
+delete from cardinals where [from] = 'IDV_TMPLPTH4';
+insert into cardinals values ('IDV_TMPLPTH4','IDV_TMPLPTH5',NULL,NULL,NULL,'IDV_GRNDCNT1',NULL,NULL,Null);
 
 
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
@@ -22,10 +25,17 @@ VALUES
 ('S01_PLNTCARFLOWER5',  'IDV_CTO2', '1360', '220', '1440', '320', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
 ('S01_PLNTGRNPLANT1',   'IDV_CTO2', '94', '167', '130', '200', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
 
+
+
+
 --outside of the temple
 ('S01_PLNTROSEBUSH2','IDV_TMPLPTH5', '3126', '170', '103', '215', '2', 'M_PLANTBIN', 'IDD_FLOWERR', 'IDS_ROSEBUSH', '60', ''),
 ('S01_PLNTGRNPLANT2','IDV_TMPLPTH4', '1998', '211', '2080', '260', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
 ('S01_PLNTGRNPLANT3','IDV_TMPLPTH4', '178', '190', '250', '240', '2', 'M_PLANTBIN', 'IDD_GLEAFSPT', 'IDS_GRNPLANT', '60', ''),
+
+('S01_PLNTITSIOUS1','IDV_TMPLPTH4', 2570, 160, 2728, 212, '2', 'M_BIN', 'IDD_BLUEBERRY', '', '60', ''),
+('S01_PLNTITSIOUS2','IDV_TMPLPTH4', 322 ,187, 479, 272,  '2', 'M_BIN', 'IDD_REDBERRY', '', '60', ''),
+
 ('S01_PLNTCARFLOWER6', 'IDV_TMPLPTH4', '601', '209', '670', '240', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
 ('S01_PLNTCARFLOWER7', 'IDV_TMPLPTH4', '680', '200', '715', '240', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
 ('S01_PLNTCARFLOWER8', 'IDV_TMPLPTH4', '715', '201', '800', '240', '2', 'M_PLANTBIN', 'IDD_PFLWRSPT', 'IDS_PFLOWER', '60', ''),
