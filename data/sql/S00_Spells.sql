@@ -88,7 +88,10 @@ VALUES
 -- TODO SHOULD THIS BEA A SPELL?? I DON'T THINK SO
 --('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
 
-
+delete from "main"."views" where [view_name] like 'IDV_VIL_HAL%';
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
+('IDV_VIL_HAL', '1', '2', '1', '6', 'surround.vct', 'vil_hal'),
+('IDV_VIL_HAL2', '1', '2', '1', '6', 'surround.vct', 'vil_hal2');
 
 
 delete from spr_names where [name] like 'IDS_PROTECT_TINY%';
@@ -149,7 +152,7 @@ VALUES
 ('NYBREATH_TIMER',    'IDV_MAIN_PANEL', '110',  '225',  '140',  '230', '3', 'M_SPELLTIMER',      '30', 'NYBREATH_ACTIVE', '', ''),
 
 ('TELEKINESIS_ACTIVE','IDV_MAIN_PANEL', '50',  '250',   '70',  '270', '3', 'M_DEFENSESPELL',    'IDS_BRAIN_TINY', 'TELEKINESIS_TIMER', '', ''),
-('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '250',  '250',  '60',  '260', '3', 'M_SPELLTIMER',      '100', 'TELEKINESIS_ACTIVE', '', ''),
+('TELEKINESIS_TIMER', 'IDV_MAIN_PANEL', '250',  '250',  '60',  '260', '3', 'M_SPELLTIMER',      '300', 'TELEKINESIS_ACTIVE', '', ''),
 
 ('INVISIBLE_ACTIVE',  'IDV_MAIN_PANEL', '80',  '250', '100',  '270', '3', 'M_DEFENSESPELL',    'IDS_INVIS_TINY', 'INVISIBLE_TIMER', '', ''),
 ('INVISIBLE_TIMER',   'IDV_MAIN_PANEL', '80',  '250', '90',   '260', '3', 'M_SPELLTIMER',      '100', 'INVISIBLE_ACTIVE', '', ''),
@@ -243,7 +246,7 @@ VALUES
     
 ('M_VIEWSPELL','turntOn','caughtInLoop','Z_EPSILON','','', '
         if(WIP1==ENCHANT){
-            MOV(WPARM,OVIEW); 
+            MOV(WPARM,OVIEW);
             LOADVIEW(WPARM);
         }
         if(WIP1==HOLDING){ 
@@ -258,7 +261,7 @@ VALUES
             LOADVIEW(WPARM);
         }
         if(WIP1==HALUCINATE){ 
-            MOV(WPARM,IDV_BLINDVIEW);
+            MOV(WPARM,IDV_VIL_HAL);
             LOADVIEW(WPARM);
         }
 ', '', ''),
