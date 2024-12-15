@@ -162,21 +162,25 @@ VALUES
 -- view spells
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
-('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '153','110', '170', '127', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', 'IDS_ENCHANT_TINY', ''),
-('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
+('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '110','250', '130', '270', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', 'IDS_ENCHANT_TINY', ''),
+('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '110', '250', '115', '255  ', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
 
-('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '170','110', '187', '127', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', 'IDS_HOLDING_TINY', ''),
-('HOLDING_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
+('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '50','275', '70', '295', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', 'IDS_HOLDING_TINY', ''),
+('HOLDING_TIMER',  'IDV_MAIN_PANEL', '50', '275', '55', '280', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
 
-('STALKING_ACTIVE','IDV_MAIN_PANEL', '187','110', '204', '127', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', 'IDS_STALK_TINY', ''),
-('STALKING_TIMER', 'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'STALKING_ACTIVE', '', ''),
+-- Stalker works - should be EASY to make 
+('STALKING_ACTIVE','IDV_MAIN_PANEL', '71','275', '91', '295', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', 'IDS_STALK_TINY', ''),
+('STALKING_TIMER', 'IDV_MAIN_PANEL', '71', '275', '75', '295', '3', 'M_SPELLTIMER', '100', 'STALKING_ACTIVE', '', ''),
 
-('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '204','110', '221', '127', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', 'IDS_BLINDNESS_TINY', ''),
+-- blindness and halucinate do the same thing -- need something for halucinate
+-- maybe random views or just some freaky view
+
+('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '92','275', '112', '295', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', 'IDS_BLINDNESS_TINY', ''),
 ('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
-('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
+('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '92', '275', '95', '280', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
 
-('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '221','110', '238', '127', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', 'IDS_HALUCINATE_TINY', ''),
-('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '1', '13', '5', '15', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', ''),
+('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '113','275', '133', '295', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', 'IDS_HALUCINATE_TINY', ''),
+('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '113', '275', '115', '280', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', ''),
 
 
 
@@ -309,6 +313,7 @@ VALUES
         }
          if(WIP1 == BANISHMENT){
             MOV(WPARM,IDV_BANISH);
+            SIGNAL(SMP_MAPBUTTON,SIG_RESET);
             LOADVIEW(WPARM);
             SUBI(LKARMA,2);
         }

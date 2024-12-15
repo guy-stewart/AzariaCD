@@ -367,9 +367,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 
 
-('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '
-   
-    
+('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '       
     if(LWISDOM >= 30){
        ASSIGN(WPARM,F3);
     }
@@ -381,8 +379,6 @@ VALUES
     }
 ', '', ''), 
 ('M_ID', '0', 'setId', 'NEQUALi', 'LSEX', '1', '
-   
-
     if(LWISDOM >= 30){
        ASSIGN(WPARM,M3);
     }
@@ -398,8 +394,9 @@ VALUES
     MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
     //--adding refresh code
-    SIGNAL(SID_HALO,SIG_ADD);
-    SIGNAL(SID_AURA,SIG_ADD);
+    // There is a bug here where any add to wisdom maxes out karma
+    //SIGNAL(SID_HALO,SIG_ADD);
+    // SIGNAL(SID_AURA,SIG_ADD);
 
     SHOW(WSPRITE);
 ', '', ''),
@@ -680,8 +677,7 @@ VALUES
 ------------------------------------------------------
 ------------------------------------------------------
 
-delete from "main"."idv" where [name] like 'IDV_TESTPAN%';
-INSERT INTO "main"."idv" ("name", "id") VALUES ('IDV_TESTPAN', '40100');
+
 delete from "main"."views" where [view_name] like 'IDV_TESTPAN%';
 INSERT INTO "main"."views" ( "view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
 VALUES ('IDV_TESTPAN', '1', '3', '1', '1', 'smlpanel.vct', 'testscreen');
