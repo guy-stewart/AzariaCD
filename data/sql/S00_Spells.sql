@@ -11,12 +11,16 @@
 -- some of these also have time limits 
 -- (Enchant(pulls target),Stalker(follows target),blindness,holding(target can't leave view),
 -- some act immediately
--- Transfer (energy,karma,wisdom),death, banishment,Halucinate
+-- Transfer (energy,karma,wisdom),death, banishment,HALLUCINATE
 --
 -- 3.) There are spells that act as an object
 -- lock, unlock,explosion,alarm,recorder?
 
 --Here we centralize all the spells for whatever purpose
+delete from "main"."spr_names" where name = 'IDS_HALUCINATE';
+delete from "main"."spr_names" where name = 'IDS_HALLUCINATE';
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_HALLUCINATE', 'redeye', '30626');
+
 
 delete from objects where class = 'IDC_SPELL';
 
@@ -35,7 +39,7 @@ VALUES
 --alarm
 --record
 ('IDD_TELEKINESIS', 'IDC_SPELL', 'tele', 'tele', 'tele'),
-('IDD_EXPLOSION', 'IDC_SPELL', 'starspl1', 'starspl1', 'starspl1'),
+('IDD_EXPLOSION', 'IDC_BOMB', 'starspl1', 'starspl1', 'starspl1'),
 --lock
 --lockpick
 ('IDD_PROTECT', 'IDC_SPELL', 'protect', 'protect', 'protect'),
@@ -46,7 +50,7 @@ VALUES
 
 ('IDD_INVISIBLE',  'IDC_SPELL', 'spinspel', 'spinspel', 'spinspel'),
 ('IDD_BANISHMENT', 'IDC_SPELL', 'skull', 'skull', 'skull'),
-('IDD_HALUCINATE', 'IDC_SPELL', 'redeye', 'redeye', 'redeye'), 
+('IDD_HALLUCINATE', 'IDC_SPELL', 'redeye', 'redeye', 'redeye'), 
 ('IDD_MINDREAD',   'IDC_SPELL', 'mind', 'mind', 'mind'),
 
 
@@ -87,6 +91,7 @@ VALUES
 
 -- TODO SHOULD THIS BEA A SPELL?? I DON'T THINK SO
 --('IDD_GVIAL', '', 'IDC_SPELL', 'GVIAL', 'GVIAL', 'GVIAL');
+-- it now is a spell - see meflin1.sql
 
 delete from "main"."views" where [view_name] like 'IDV_VIL_HAL%';
 INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
@@ -104,7 +109,7 @@ delete from spr_names where [name] like 'IDS_BLINDNESS_TINY%';
 delete from spr_names where [name] like 'IDS_ENCHANT_TINY%';
 delete from spr_names where [name] like 'IDS_HOLDING_TINY%';
 delete from spr_names where [name] like 'IDS_STALK_TINY%';
-delete from spr_names where [name] like 'IDS_HALUCINATE_TINY%';
+delete from spr_names where [name] like 'IDS_HALLUCINATE_TINY%';
 
 
 insert into spr_names values ('IDS_PROTECT_TINY','protect_tiny','70001');
@@ -115,7 +120,7 @@ insert into spr_names values ('IDS_BRAIN_TINY','brain_tiny','70005');
 
 insert into spr_names values ('IDS_BLINDNESS_TINY','tiny_blindness','70020');
 insert into spr_names values ('IDS_ENCHANT_TINY','tiny_enchant','70021');
-insert into spr_names values ('IDS_HALUCINATE_TINY','tiny_halucinate','70022');
+insert into spr_names values ('IDS_HALLUCINATE_TINY','tiny_HALLUCINATE','70022');
 insert into spr_names values ('IDS_HOLDING_TINY','tiny_holding','70023');
 insert into spr_names values ('IDS_STALK_TINY','tiny_stalk','70024');
 
@@ -136,7 +141,8 @@ delete from "main"."machines" where [name] like 'TRANSFER_%';
 delete from "main"."machines" where [name] like 'DEATH_%';
 delete from "main"."machines" where [name] like 'BANISHMENT_%';
 delete from "main"."machines" where [name] like 'BLINDNESS_%';
-delete from "main"."machines" where [name] like 'HALUCINATE_%';
+delete from "main"."machines" where [name] like 'HALLUCINATE_%';
+delete from "main"."machines" where [name] like 'HALLUCINATE_%';
 delete from "main"."machines" where [name] like 'REVIVE_%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
@@ -175,15 +181,16 @@ VALUES
 ('STALKING_ACTIVE','IDV_MAIN_PANEL', '71','275', '91', '295', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', 'IDS_STALK_TINY', ''),
 ('STALKING_TIMER', 'IDV_MAIN_PANEL', '71', '275', '75', '295', '3', 'M_SPELLTIMER', '100', 'STALKING_ACTIVE', '', ''),
 
--- blindness and halucinate do the same thing -- need something for halucinate
+-- blindness and HALLUCINATE do the same thing -- need something for HALLUCINATE
 -- maybe random views or just some freaky view
 
 ('BLINDNESS_ACTIVE', 'IDV_MAIN_PANEL', '92','275', '112', '295', '3', 'M_VIEWSPELL', 'BLINDNESS', 'BLINDNESS_TIMER', 'IDS_BLINDNESS_TINY', ''),
 ('BLINDNESS_GATE', 'IDV_BLINDVIEW', '2395', '120', '2500', '276', '3', 'M_BLINDVIEW', '', '', '', ''),
 ('BLINDNESS_TIMER',   'IDV_MAIN_PANEL', '92', '275', '95', '280', '3', 'M_SPELLTIMER', '60', 'BLINDNESS_ACTIVE', '', ''),
 
-('HALUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '113','275', '133', '295', '3', 'M_VIEWSPELL', 'HALUCINATE', 'HALUCINATE_TIMER', 'IDS_HALUCINATE_TINY', ''),
-('HALUCINATE_TIMER',  'IDV_MAIN_PANEL', '113', '275', '115', '280', '3', 'M_SPELLTIMER', '20', 'HALUCINATE_ACTIVE', '', ''),
+('HALLUCINATE_ACTIVE', 'IDV_MAIN_PANEL', '113','275', '133', '295', '3', 'M_VIEWSPELL', 'HALLUCINATE', 'HALLUCINATE_TIMER', 'IDS_HALLUCINATE_TINY', ''),
+('HALLUCINATE_GATE', 'IDV_VIL_HAL', '0', '0', '1000', '276', '3', 'M_HALLVIEW', '', '', '', ''),
+('HALLUCINATE_TIMER',  'IDV_MAIN_PANEL', '113', '275', '115', '280', '3', 'M_SPELLTIMER', '20', 'HALLUCINATE_ACTIVE', '', ''),
 
 
 
@@ -209,6 +216,8 @@ delete from "main"."transitions" where [automaton] like 'M_VIEWSPELL%';
 delete from "main"."transitions" where [automaton] like 'M_INSTANTATTACK%';
 delete from "main"."transitions" where [automaton] like 'M_ATTACKSPELL%';
 delete from "main"."transitions" where [automaton] like 'M_BLINDVIEW%';
+delete from "main"."transitions" where [automaton] like 'M_HALLVIEW%';
+delete from "main"."transitions" where [automaton] like 'M26_BANISH%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
@@ -260,7 +269,7 @@ VALUES
             MOV(WPARM,IDV_BLINDVIEW);
             LOADVIEW(WPARM);
         }
-        if(WIP1==HALUCINATE){ 
+        if(WIP1==HALLUCINATE){ 
             MOV(WPARM,IDV_VIL_HAL);
             LOADVIEW(WPARM);
         }
@@ -292,6 +301,7 @@ VALUES
             SIGNAL(SID_HALO,SIG_ADD);
             ASSIGN(LENERGY,WTEMP1);
             SIGNAL(SID_AURA,SIG_SUB);
+            //Now the other guy
             ASSIGN(OWISDOM,WTEMP2);
             SIGNALi(0,SID_ID);
             ASSIGN(OKARMA,WTEMP3);
@@ -306,7 +316,7 @@ VALUES
             SIGNAL(SID_AURA,SIG_SUB);   
         }
         if(WIP1 == REVIVE){ 
-            ASSIGN(LWISDOM,20);
+            ASSIGN(LWISDOM,10);
             ASSIGN(LENERGY,10);
             SIGNAL(SID_AURA,SIG_SUB);
             ASSIGN(LWEALTH,5);SIGNAL(S1_VIALMETER,SIG_SHOW);
@@ -340,7 +350,21 @@ VALUES
 ('M_BLINDVIEW','0','10','CLICK','','', '
       SIGNAL(BLINDNESS_ACTIVE,SIG_STOP);
 ', '', ''),
-('M_BLINDVIEW','10','0','Z_EPSILON','','', '', '', '');
+('M_BLINDVIEW','10','0','Z_EPSILON','','', '', '', ''),
 
 
 --------------------
+('M_HALLVIEW','0','10','CLICK','','', '
+      LOADVIEW(IDV_VIL_HAL2);
+', '', ''),
+('M_HALLVIEW','10','0','Z_EPSILON','','', '', '', '');
+
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+ ('M26_BANISH', '0', '30', 'CLICK', '0', '0', '', '', ''),
+ ('M26_BANISH', '0', '10', 'DRAG', '0', 'IDD_SCOOPF', '', '', ''),
+ ('M26_BANISH', '0', '20', 'DRAGFOCUS', '0', 'TRUE', '', '', ''),
+ ('M26_BANISH', '10', '20', 'HANDOFF', '0', 'IDD_SCOOPE', '', '', ''),
+ ('M26_BANISH', '20', '0', 'PLAYWAVE', '0', 'SOUND_SPIT', '', '', ''),
+ ('M26_BANISH', '30', '70', 'EQUALi', 'LWEALTH', '0', '', '', ''),
+ ('M26_BANISH', '30', '0', 'Z_EPSILON', '', '', '', '', ''),
+ ('M26_BANISH', '70', '0', 'LOADVIEW', 'IDV_CONTINENT', '', '', '', ''); -- was wip1 

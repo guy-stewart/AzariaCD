@@ -1,4 +1,4 @@
-delete from games;
+
 
 -- ALTER TABLE states ADD COLUMN [doc] text;
 create table if not exists automatons 
@@ -79,22 +79,22 @@ delete from objects where [object] like 'IDD_FLOWERPLANT%';
 ---- a change to a spell in objects
 delete from "main"."objects" where [object] like 'IDD_WETB%';
 
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") VALUES 
-('IDD_WETBREATH', '30628', 'IDC_SPELL', 'water', 'water', 'water'),
-('IDD_ROSEBUSH', '40628', 'IDC_NULL', 'roseBush', 'roseBush', 'roseBush'),
-('IDD_FLOWERPLANT', '40629', 'IDC_NULL', 'flowerplant', 'flowerplant', 'flowerplant');
+INSERT INTO "main"."objects" ("object", "class", "icon", "cursor", "actor") VALUES 
+('IDD_WETBREATH',  'IDC_SPELL', 'water', 'water', 'water'),
+('IDD_ROSEBUSH', 'IDC_NULL', 'roseBush', 'roseBush', 'roseBush'),
+('IDD_FLOWERPLANT', 'IDC_NULL', 'flowerplant', 'flowerplant', 'flowerplant');
 
 
-INSERT INTO "main"."objects" ("object", "object_id", "class", "icon", "cursor", "actor") 
+INSERT INTO "main"."objects" ("object","class", "icon", "cursor", "actor") 
 VALUES 
-('IDD_SCR020', '8736', 'IDC_SCROLL', 'SCR020', 'SCR020', 'SCR020'),
-('IDD_SCR021', '8737', 'IDC_SCROLL', 'SCR021', 'SCR021', 'SCR021'),
-('IDD_SCR022', '8738', 'IDC_SCROLL', 'SCR022', 'SCR022', 'SCR022'),
-('IDD_LEAF', '18507', '', 'LEAF', 'LEAF', 'LEAF'),
-('IDD_FLOWERD', '18508', '', 'FLOWERD', 'FLOWERD', 'FLOWERD'),
-('IDD_FLOWERR', '18509', '', 'FLOWERR', 'FLOWERR', 'FLOWERR'),
-('IDD_WILDBERRY', '18527', '', 'blueberry2', 'blueberry2', 'blueberry2'),
-('IDD_ROOTDBL', '18528', '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
+('IDD_SCR020', 'IDC_SCROLL', 'SCR020', 'SCR020', 'SCR020'),
+('IDD_SCR021', 'IDC_SCROLL', 'SCR021', 'SCR021', 'SCR021'),
+('IDD_SCR022', 'IDC_SCROLL', 'SCR022', 'SCR022', 'SCR022'),
+('IDD_LEAF', '', 'LEAF', 'LEAF', 'LEAF'),
+('IDD_FLOWERD','', 'FLOWERD', 'FLOWERD', 'FLOWERD'),
+('IDD_FLOWERR','', 'FLOWERR', 'FLOWERR', 'FLOWERR'),
+('IDD_WILDBERRY', '', 'blueberry2', 'blueberry2', 'blueberry2'),
+('IDD_ROOTDBL',   '', 'ROOTDBL', 'ROOTDBL', 'ROOTDBL');
 
 
 delete from machines where [name] like 'S12_SCR%'; 
@@ -336,7 +336,7 @@ VALUES
 ('S12_ING_LOC','18', '1'),
 ('S12_ING_WRD', '18', '17'),
 ('S12_SCROLL', 'IDD_SCR018', '18'),
-('S12_SCROLLL_MK', '18', 'IDD_HALUCINATE'),
+('S12_SCROLLL_MK', '18', 'IDD_HALLUCINATE'),
 
 --Breath
 ('S12_ING_A', '19', ''), 
@@ -477,7 +477,7 @@ insert into machines
 --strength is 15
 --banishment is 16
 --perception is 17
--- halucinate is 18
+-- HALLUCINATE is 18
 
 
 

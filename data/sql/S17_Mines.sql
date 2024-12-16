@@ -1,4 +1,4 @@
-delete from games;
+
 
 delete from spr_names where name = 'IDS_QUARLOCK_A';
 delete from spr_names where name = 'IDS_QUARLOCK_B';
@@ -278,6 +278,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ('M17_LOCKSOCKET', 'citlockshown', 'citclicklocked', 'CLICK', '0', '0', '', '', ''),
 ('M17_LOCKSOCKET', 'citlockshown', 'citunlocked', 'DRAG', '0', 'IDD_CITKEY', '', '', ''),
+('M17_LOCKSOCKET', 'citlockshown', 'citunlocked', 'DROP', '0', 'IDD_UNLOCK', '', '', ''),
 ('M17_LOCKSOCKET', 'citlockshown', 'bombed', 'DROP', '0', 'IDD_BOMB1', '', '', ''),
 ('M17_LOCKSOCKET', 'citlockshown', 'bombed', 'DROP', '0', 'IDD_BOMB2', '', '', ''),
 ('M17_LOCKSOCKET', 'citunlocked', 'citlockshown', 'SIGNAL', 'WIP1', 'SIG_ENTER_1', '', '', ''),
@@ -301,6 +302,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 ('M17_LOCKSOCKET', 'villockshown', 'vilclicklocked', 'CLICK', '0', '0', '', '', ''),
 ('M17_LOCKSOCKET', 'villockshown', 'vilunlocked', 'DRAG', '0', 'IDD_VILKEY', '', '', ''),
+('M17_LOCKSOCKET', 'villockshown', 'vilunlocked', 'DROP', '0', 'IDD_UNLOCK', '', '', ''),
 ('M17_LOCKSOCKET', 'villockshown', 'bombed', 'DROP', '0', 'IDD_BOMB1', '', '', ''),
 ('M17_LOCKSOCKET', 'villockshown', 'bombed', 'DROP', '0', 'IDD_BOMB2', '', '', ''),
 ('M17_LOCKSOCKET', 'vilunlocked', 'villockshown', 'SIGNAL', 'WIP1', 'SIG_ENTER_1', '', '', ''),
