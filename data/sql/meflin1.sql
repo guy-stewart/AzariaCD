@@ -213,7 +213,7 @@ VALUES
 
 delete from objects where [object] like 'IDD_GVIAL%';
 insert into objects values
-('IDD_GVIAL','IDC_NULL','GVIAL','GVIAL','GVIAL');
+('IDD_GVIAL','IDC_SPELL','GVIAL','GVIAL','GVIAL');
 
 delete from sounds where name = 'SOUND_NEELPQ1';
 insert into sounds values ('SOUND_NEELPQ1','NEELPQ1',26); 

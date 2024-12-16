@@ -382,9 +382,9 @@ of the past.  Hold on to it tightly.'),
 		
 '),
 
-('IDD_HALUCINATE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '		
+('IDD_HALLUCINATE', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '		
 		
-		Spell: HALUCINATE
+		Spell: HALLUCINATE
 		Type: Attack 
 		
 		This spell forces some strange behavior
