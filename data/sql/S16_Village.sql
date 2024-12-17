@@ -60,6 +60,7 @@ VALUES
 ('M_GOPABIN', 'empty', 'askforsun', '', '', '',''),
 
 ('M_GOPABIN', 'grabable', 'berrygrabbed', 'GRAB', '', '','
+    HANDOFF(0,WOBJECT);
     ASSIGN(BFRAME,3);
 '),
 ('M_GOPABIN', 'berrygrabbed', 'askforsun', 'Z_EPSILON', '', '','');
