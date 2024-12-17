@@ -18,7 +18,7 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
         have  found the sacred map of our forefathers
         that grants power over the sky.
         
-        Although their language still comfounds me!
+        Although their language still confounds me!
 
         Now, I shall continue the quest spurred on 
         by our great discovery of a promise written in stone.
