@@ -11,3 +11,13 @@
 🛑 height:1073, width:400, pitch:400, size:429200, frames:10, modulo:3
 🛑 missing_file_name: dig1
 🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/dig1
+🛑 bad frame 9 in ''
+🛑 bad frame 9 in ''
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/dig1.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:1073, width:400, pitch:400, size:429200, frames:10, modulo:3
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/dig1.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:1073, width:400, pitch:400, size:429200, frames:10, modulo:3
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/DIG1.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:1073, width:400, pitch:400, size:429200, frames:10, modulo:3
+🛑 missing_file_name: dig1
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/dig1
