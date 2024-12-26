@@ -1,0 +1,20 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_RECYCLE::M_RECYCLE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>VIDEO(0,IDS_SMBURST)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_RECYCLE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:934, y:387, h:59, w:58)<br align="left"/>SMP_RECYCLE::M_RECYCLE(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wObject:IDD_LOGBOOKBTN Top:387 Left:934 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

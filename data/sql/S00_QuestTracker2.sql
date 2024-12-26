@@ -90,14 +90,15 @@ VALUES
 
 delete from controls where [view] like 'IDV_QUEST%';
 
+--CREATE TABLE q_local_complete (p_0 TEXT,p_1 TEXT,p_2 TEXT,p_3 TEXT, PRIMARY KEY ([p_0],[p_1],[p_2],[p_3]) ON CONFLICT REPLACE);
 insert into controls ([view],[id], [type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
 
-('IDV_QUESTPAN', 19,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 185, 7, 'q_local_active','2','IDS_FONTENG_BIG',14871474,
+('IDV_QUESTPAN', 19,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 185, 7, 'ledger.db.q_local_active','2','IDS_FONTENG_BIG',14871474,
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 '),
 
-('IDV_QUESTPAN', 20,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'q_local_complete','2','IDS_FONTENG_BIG','#e0e0e0',
+('IDV_QUESTPAN', 20,'LISTBOX',  'IDS_BLACKBACK','IDS_BLACKBACK',104, 434, 7, 'ledger.db.q_local_complete','2','IDS_FONTENG_BIG','#e0e0e0',
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 '),
@@ -392,11 +393,11 @@ VALUES
    SHOW();
 ', '', ''),
 ('M_QLBTN', '1', 'logPresent', 'DROP', 'IDD_LOGBOOKBTN', '', '
-        //this is not right for world - do on game start @todo
-        q_world_active("%")~
-        q_world_complete("%")~
+   WRITE("Deleting any entries for this player");
    q_local_active("%")~
    q_local_complete("%")~
+   q_world_active("%")~
+   q_world_complete("%")~
    SHOW(WOBJECT);
    ADDI(LWISDOM,1); SIGNALi(0,SID_ID);
    BPARM = 0;
