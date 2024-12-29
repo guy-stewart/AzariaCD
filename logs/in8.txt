@@ -1,0 +1,742 @@
+🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
+🛑 ERROR COMPILING '    
+ '
+🛑 missing_file_name: IDS_STD_LISTBOXM
+🛑 🛑 SDL_QUIT
+Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_STD_LISTBOXM
+🛑 missing_file_name: IDS_FONTTNB14
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 86 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 86 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 38 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 45 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 38 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 45 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 39 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 39 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 40 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 40 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 45 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 75 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 45 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 75 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 48 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 87 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 48 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 87 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 50 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 50 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 51 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 51 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 52 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 52 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 57 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 57 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 68 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 70 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 70 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 33 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 33 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 66 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 80 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 80 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 72 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 36 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 42 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 42 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 46 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 46 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 83 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 50 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 50 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 75 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 90 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 90 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 82 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 73 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 67 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 75 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 71 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 90 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 90 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 34 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 76 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 85 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 missing_file_name: IDS_STD_EDITBOXM
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_STD_EDITBOXM
+🛑 missing_file_name: IDS_FONTTNB14
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 69 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 84 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 79 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 77 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 65 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 GetBoundingRect() no such frame.
+🛑 bad frame 78 in '/Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_FONTTNB14'
+🛑 missing_file_name: IDS_BTN_OK
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_OK
+🛑 missing_file_name: IDS_BTN_OK
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_OK
+🛑 missing_file_name: IDS_BTN_OK_HI
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_OK_HI
+🛑 missing_file_name: IDS_BTN_SAVE
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_SAVE
+🛑 missing_file_name: IDS_BTN_SAVE
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_SAVE
+🛑 missing_file_name: IDS_BTN_SAVE_HI
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_SAVE_HI
+🛑 missing_file_name: IDS_BTN_LOAD
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_LOAD
+🛑 missing_file_name: IDS_BTN_LOAD
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_LOAD
+🛑 missing_file_name: IDS_BTN_LOAD_HI
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_LOAD_HI
+🛑 missing_file_name: IDS_BTN_DELETE
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_DELETE
+🛑 missing_file_name: IDS_BTN_DELETE
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_DELETE
+🛑 missing_file_name: IDS_BTN_DELETE_HI
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_DELETE_HI
+🛑 missing_file_name: IDS_BTN_NEW
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_NEW
+🛑 missing_file_name: IDS_BTN_NEW
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_NEW
+🛑 missing_file_name: IDS_BTN_NEW_HI
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDS_BTN_NEW_HI

@@ -7,9 +7,12 @@ delete from spr_names where [name] like 'IDS_DIARY1_%';
 delete from sounds where name = 'SOUND_LEVER';
 delete from spr_names where [name] like 'IDS_SPADE%';
 delete from spr_names where [name] like 'IDS_ROCKBINSMALL%';
+delete from spr_names where [name] like 'IDS_CHESTBAK%';
+
 
 insert into spr_names values ('IDS_DIARY1_BIN','DIARY1_BIN',0);
 insert into spr_names values ('IDS_LEVANI','levani',0);
+insert into spr_names values ('IDS_CHESTBAK','chestbak',0);
 insert into sounds values ('SOUND_LEVER', 'lever',0);
 insert into spr_names values ('IDS_MAPOPN','MAPOPN',0);
 insert into spr_names values ('IDS_SPADE','spade',0);
@@ -156,7 +159,7 @@ INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bott
    ( 'S21_MAPTEXT',  'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
    ( 'S21_DIARY1BIN','IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', ''),
 
-  ('S21_HIDDEN_01','IDV_N2D2', '3097', '193', '3194', '230', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
+  ('S21_HIDDEN_01','IDV_N2D2', '2935', '200', '3035', '320', '2', 'M_DIGDIRECT', 'IDD_AMULET', 'IDS_SANDDIRTGRSDK', 'ISA_TOOL_DIGGER', '');
 
 
 
@@ -252,11 +255,23 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
          }   
 ', '', ''),
 ('M_DIGDIRECT', 'fourthWhack', 'moveMe', 'DRAG', '', '', '', '', ''),
-('M_DIGDIRECT', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
+('M_DIGDIRECT', 'moveMe', 'displaychest', 'SET_XOFFSET', 'ADD','10', '
         PLAYWAVE(SOUND_CHIMES);
-        SHOW(WOBJECT);
+        SHOW(0,IDS_CHESTBAK);
+        SIGNALi(S21_HIDDEN_01,S00_HIDERCURRENT);
         ADDI(LWISDOM,1); 
         SIGNALi(0,SID_ID);
 ', '', ''),
-('M_DIGDIRECT', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
-('M_DIGDIRECT', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');
+('M_DIGDIRECT', 'displaychest', 'chestview', 'CLICK', '', '', '', '', ''),
+('M_DIGDIRECT', 'chestview', '0', 'Z_EPSILON', '', '', '
+   MOV(WPARM,LVIEW);
+   SHOW(0);
+   LOADVIEW(IDV_CHESTVIEW);
+   SIGNALi(SIG_SHOW,S00_CHESTWAITER);
+', '', '');
+
+
+
+-- SHOW(WOBJECT);('M_DIGDIRECT', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '
+-- ('M_DIGDIRECT', 'displayItem', 'itemGrabbed', 'GRAB', '', '', '', '', ''),
+-- ('M_DIGDIRECT', 'itemGrabbed', '0', 'Z_EPSILON', '', '', 'SHOW();', '', '');

@@ -1,0 +1,39 @@
+
+// To clean up the database you can use predicates to define a convenient view of a table.
+
+// delete from views where view_name like 'IDV_SLIDE%';
+predicate views(view_name);
+views('IDV_SLIDE%')~
+
+// delete from machines where view_name like 'IDV_SLIDE%';
+predicate machines(view_name);
+machines('IDV_SLIDE%')~
+
+predicate marks(view);
+marks('IDV_SLIDE%')~
+
+predicate transitions(automaton);
+transitions('M_PORTAL%')~
+predicate transitions(automaton,state,new_state,opcode,param_1,param_2,code,guard,doc);
+
+// we can discuss this shortcut later ...
+predicate views(view_name,Z,backgroundAudio,locator_view,behavior_id,portal_filename,surface_filename);
+predicate machines(name, view_name, left, top, right, bottom, local_visible,
+               dfa_name, wip1_name, wip2_name, wip3_name,
+                         wip4_name, wip5_name, wip6_name, z);
+predicate objects(object, class, icon, cursor, actor);
+
+objects('M_88','','88_beetle.png','88_beetle.png','88_beetle.png').
+views('IDV_SLIDE1',1,0,1,1,'iphone_1040x480.png','slide1').
+machines('M_54','IDV_SLIDE1',746,87,910,134,0,'M_SHARE_BUG','share_bug_report','','','','','',1).
+machines('M_55','IDV_SLIDE1',746,187,910,234,0,'M_SHARE_CONNECTION','share_connection_token','','','','','',1).
+
+
+//-- START STATE:0
+transitions('M_SHARE_BUG','0','UNLOCKED','ASHOW','WIP1','','','','').
+//-- STATE: UNLOCKED
+transitions('M_SHARE_BUG','UNLOCKED','UNLOCKED','CLICK','','','share_bug_report();','','').
+
+transitions('M_SHARE_CONNECTION','0','UNLOCKED','ASHOW','WIP1','','','','').
+//-- STATE: UNLOCKED
+transitions('M_SHARE_CONNECTION','UNLOCKED','UNLOCKED','CLICK','','','share_connection_token();','','').

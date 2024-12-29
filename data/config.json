@@ -1,0 +1,16 @@
+{
+    "app_opening_view": "",
+    "app_predicates_ro": {
+        "mefPrize": true,
+        "mefQuest": true,
+        "mefResp": true,
+        "objectInfo": true
+    },
+    "app_teletype": false,
+    "app_title": "in8",
+    "app_version": "0.0",
+    "in8_console": false,
+    "in8_devmode": false,
+    "in8_version": "1.12",
+    "sha256": "214d7641e5987207d114e9c61aa2de6d62db28e490ca69ba05093725874f2f7f"
+}
