@@ -9,7 +9,8 @@
     "app_teletype": false,
     "app_title": "in8",
     "app_version": "0.0",
+    "in8_console": false,
     "in8_devmode": false,
-    "in8_version": "1.11",
-    "sha256": "39cec777285cbeb94a62add870d9a3e56e3e8e9be8c6f77b7e4b340161c01ba8"
+    "in8_version": "1.12",
+    "sha256": "214d7641e5987207d114e9c61aa2de6d62db28e490ca69ba05093725874f2f7f"
 }

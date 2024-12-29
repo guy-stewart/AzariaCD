@@ -1,0 +1,60 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_HIDDEN_01::M_DIGDIRECT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "determinedItem" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WOBJECT,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+	coverActive[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>coverActive<br align="left"/></b></td></tr>
+</table>>];
+"coverActive" -> "firstWhack" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	determinedItem[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>determinedItem<br align="left"/></b></td></tr>
+</table>>];
+"determinedItem" -> "coverActive" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOV(WSPRITE,WIP2)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+	displayItem[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>displayItem<br align="left"/></b></td></tr>
+</table>>];
+"displayItem" -> "itemGrabbed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	firstWhack[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>firstWhack<br align="left"/></b></td></tr>
+</table>>];
+"firstWhack" -> "secondWhack" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(WIP3,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE1);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>         if(WIP3 == ISA_TOOL_STRIKER)&#123;<br align="left"/>            SHOW(0,IDS_SANDSTRIKE);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>          if(WIP3 == ISA_TOOL_PRYER)&#123;<br align="left"/>            SHOW(0,IDS_SANDWOBBLE);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_THUMP);<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	fourthWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>fourthWhack<br align="left"/></b></td></tr>
+</table>>];
+"fourthWhack" -> "moveMe" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	itemGrabbed[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itemGrabbed<br align="left"/></b></td></tr>
+</table>>];
+"itemGrabbed" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SHOW();<br align="left"/></font></td></tr></table>>
+];
+	moveMe[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>moveMe<br align="left"/></b></td></tr>
+</table>>];
+"moveMe" -> "displayItem" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SET_YOFFSET(ADD,50)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        PLAYWAVE(SOUND_CHIMES);<br align="left"/>        SHOW(0,IDS_CHESTBAK);<br align="left"/>      <br align="left"/>        ADDI(LWISDOM,1); <br align="left"/>        SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+	secondWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>secondWhack<br align="left"/></b></td></tr>
+</table>>];
+"secondWhack" -> "thirdWhack" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE2);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>         if(WIP3 == ISA_TOOL_STRIKER)&#123;<br align="left"/>            SHOW(0,IDS_SANDSTRIKE);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>           if(WIP3 == ISA_TOOL_PRYER)&#123;<br align="left"/>            SHOW(0,IDS_SANDFLIP);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_THUMP);<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	thirdWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>thirdWhack<br align="left"/></b></td></tr>
+</table>>];
+"thirdWhack" -> "fourthWhack" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE3);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>         if(WIP3 == ISA_TOOL_STRIKER)&#123;<br align="left"/>            SHOW(0,IDS_SANDSTRIKE);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>         &#125;   <br align="left"/>           if(WIP3 == ISA_TOOL_PRYER)&#123;<br align="left"/>            SHOW(0,IDS_SANDFLIP);<br align="left"/>            ANIMATE();<br align="left"/>            PLAYWAVE(SOUND_THUMP);<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_HIDDEN_01<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_N2D2 @pos(x:3097, y:193, h:97, w:37)<br align="left"/>S21_HIDDEN_01::M_DIGDIRECT(&apos;IDD_AMULET&apos;,&apos;IDS_SANDDIRTGRSDK&apos;,&apos;ISA_TOOL_DIGGER&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;firstWhack&apos;: wObject:IDD_AMULET wSprite:IDS_SANDDIRTGRSDK bFrame:3 Top:193 Left:3097 Z:0<br align="left"/></font></td></tr></table>>
+];
+}
