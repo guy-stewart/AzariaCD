@@ -276,62 +276,37 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 -- HIDER also will pick which machine to hide the object in (BPARM) by starting at 1 and randomizing +1 or +2 for each
 -- of the next machines(hiding places) to 22
 
-('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
-      want("%")~ 
-      want(1). 
-      want(2).
-      want(3).
-      want(4).
-      want(5).
-      want(6).
-      want(7).
-      want(8).
-      want(9).
-      want(10).
-      ASSIGN(WTEMP3,0);
-      ASSIGN(WTEMP2,0);
+('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '  
+      ASSIGN(WTEMP3,0); //number of items hidden
+      ASSIGN(WTEMP2,0); // ref number to hiding place
+      ASSIGN(WTEMP1,0); // ref number for object
       RAND(1,3); 
-      ASSIGN(BPARM,WRAND);  
+      ASSIGN(WPARM,0);
+      ASSIGN(BPARM,WRAND); 
 ', '', ''),
-('M_HIDER', 'topOLoop', '0', 'GT', 'WTEMP3', 9, '
+
+--Select object to hide
+('M_HIDER', 'topOLoop', 'hideItem','LTE', 'WPARM', 10, '
+       ADD(WPARM,1);    
+  ', '', ''),      
+('M_HIDER', 'topOLoop', '0', 'GT', 'WPARM', 9, '
  WRITE('' should be done ''); 
 ', '', ''),
-('M_HIDER', 'topOLoop', 'numberCheck','Z_EPSILON', '', '', '
-         RAND(1,10);
-         ASSIGN(WTEMP1,WRAND);
-         WRITE(''Check to see if we want WTEMP1 ''); 
-         if (want(WTEMP1)) {
-            want(WTEMP1)~   
-            ASSIGN(WPARM,WTEMP1);
-            ADD(WTEMP3,1);
-         } else {
-            ASSIGN(WPARM,0);
-         }
-  ', '', ''),      
-
-('M_HIDER', 'numberCheck', 'hideItem', 'GTEi', 'WPARM', 1, '
- WRITE('' lets hide this ''); 
-', '', ''),
-
---WE'RE GOING TO GET THIS ALOT - NO CHECKING HERE TO SEE IF WE'RE DONE??
-('M_HIDER', 'numberCheck', 'topOLoop','Z_EPSILON', '', '', '
- WRITE('' GOT ONE WE DONT WANT ''); 
-', '', ''),
-
+--Select the machine 
 ('M_HIDER', 'hideItem', 'objectHidden','Z_EPSILON', '', '', '   
          WRITE(''HIDING ITEM ''); 
-         MOV(WTEMP2,BPARM);
+         MOV(WTEMP2,BPARM); //1-3 starting place
          MAPi(WTEMP2,S00_HIDINGPLACE); 
-         SIGNAL(WTEMP2,SIG_OPEN); 
-         RAND(1,4); 
-        //I want to update BPARM by adding 1,2, 3 or 4
-        ASSIGN(WTEMP2,BPARM);
-        ADD(WTEMP2,WRAND); 
-        ASSIGN(BPARM,WTEMP2); //BPARM is now again The new hiding machine
+         SIGNAL(WTEMP2,SIG_OPEN);  //WTEMP2 is a hiding machine and is told to hide WPARM (1-10)
+         RAND(1,3); 
+        //I want to update BPARM by adding 1,2, 3 
+        ADD(BPARM,WRAND); 
+
+
 ', '', ''),
 
   --we need a seperate counter instead of LTE(WPARM,WIP1)!
-('M_HIDER', 'objectHidden', 'topOLoop', 'LTEi', 'WTEMP3', 10, '
+('M_HIDER', 'objectHidden', 'topOLoop', 'LTEi', 'WPARM', 10, '
         WRITE(''Checking to see if we hid all 10  ''); 
 ', '', ''),
 ('M_HIDER', 'objectHidden', 'stopped','Z_EPSILON', '', '', '
@@ -515,3 +490,69 @@ if ( (IFSTATE(firstWhack, S00_HIDDEN_1)) ){WRITE("Place 1 IDV_PATH2");}
       }
 
 ', '', '');
+
+
+-- Original M_HIDER -- going to masively simplify
+
+-- ('M_HIDER', '0', 'topOLoop', 'WAIT', '', 'SIG_OPEN', '
+--       want("%")~ 
+--       want(1). 
+--       want(2).
+--       want(3).
+--       want(4).
+--       want(5).
+--       want(6).
+--       want(7).
+--       want(8).
+--       want(9).
+--       want(10).
+--       ASSIGN(WTEMP3,0);
+--       ASSIGN(WTEMP2,0);
+--       RAND(1,3); 
+--       ASSIGN(BPARM,WRAND);  
+-- ', '', ''),
+-- ('M_HIDER', 'topOLoop', '0', 'GT', 'WTEMP3', 9, '
+--  WRITE('' should be done ''); 
+-- ', '', ''),
+-- ('M_HIDER', 'topOLoop', 'numberCheck','Z_EPSILON', '', '', '
+--          RAND(1,10);
+--          ASSIGN(WTEMP1,WRAND);
+--          WRITE(''Check to see if we want WTEMP1 ''); 
+--          if (want(WTEMP1)) {
+--             want(WTEMP1)~   
+--             ASSIGN(WPARM,WTEMP1);
+--             ADD(WTEMP3,1);
+--          } else {
+--             ASSIGN(WPARM,0);
+--          }
+--   ', '', ''),      
+
+-- ('M_HIDER', 'numberCheck', 'hideItem', 'GTEi', 'WPARM', 1, '
+--  WRITE('' lets hide this ''); 
+-- ', '', ''),
+
+-- --WE'RE GOING TO GET THIS ALOT - NO CHECKING HERE TO SEE IF WE'RE DONE??
+-- ('M_HIDER', 'numberCheck', 'topOLoop','Z_EPSILON', '', '', '
+--  WRITE('' GOT ONE WE DONT WANT ''); 
+-- ', '', ''),
+
+-- ('M_HIDER', 'hideItem', 'objectHidden','Z_EPSILON', '', '', '   
+--          WRITE(''HIDING ITEM ''); 
+--          MOV(WTEMP2,BPARM);
+--          MAPi(WTEMP2,S00_HIDINGPLACE); 
+--          SIGNAL(WTEMP2,SIG_OPEN); 
+--          RAND(1,4); 
+--         //I want to update BPARM by adding 1,2, 3 or 4
+--         ASSIGN(WTEMP2,BPARM);
+--         ADD(WTEMP2,WRAND); 
+--         ASSIGN(BPARM,WTEMP2); //BPARM is now again The new hiding machine
+-- ', '', ''),
+
+--   --we need a seperate counter instead of LTE(WPARM,WIP1)!
+-- ('M_HIDER', 'objectHidden', 'topOLoop', 'LTEi', 'WTEMP3', 10, '
+--         WRITE(''Checking to see if we hid all 10  ''); 
+-- ', '', ''),
+-- ('M_HIDER', 'objectHidden', 'stopped','Z_EPSILON', '', '', '
+--      WRITE(''Finished Hiding Items'');   
+-- ', '', ''),
+-- ('M_HIDER', 'stopped', '0','Z_EPSILON', '', '', '', '', ''),
