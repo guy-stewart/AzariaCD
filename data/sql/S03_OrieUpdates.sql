@@ -129,8 +129,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 delete from transitions where automaton = 'M_ORIESPEAKER';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") VALUES 
- ('M_ORIESPEAKER', '0', '1', 'O_ACCEPT', '0', 'IDD_SPEAKER', ''),
- ('M_ORIESPEAKER', '1', '2', 'DROP', '0', '0', ''),
+ ('M_ORIESPEAKER', '0', '1', 'Z_EPSILON', '', '', ''),
+ ('M_ORIESPEAKER', '1', '2', 'DROP', 'IDD_SPEAKER', '0', ''),
  ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
  ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
  ('M_ORIESPEAKER', '2', '3', 'ASSIGN', 'WOBJECT', 'IDD_SPEAKER', ''),
