@@ -26,16 +26,10 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
         outside of Etnoc, that hideous city of great 
         sadness and tragedy.
 
-        It is the Niret way of spirit that makes us so 
-        much better than those of Etnoc.
-
         ....to take the seed of Azaria and plant it
          on the altar of seven moons.
-        
         I imagine the seed as some relic that existed 
-        before the rains... I must find it! Something that
-        contains this seed.
-
+        before the rains...
         I shall now see for myself and fill my spirit with joy - 
         Searching for something to plant on some altar!'),    
 
@@ -84,7 +78,8 @@ INSERT INTO "main"."objectInfo" ("object", "view", "control", "content") VALUES
 '),
 
 ('IDD_DIARY4', 'IDV_TECHPANBIG', 'ID_TECHBIGTXT', 'There was already a great fear that festered like a wound amongst us. 
-Then, four of our bravest souls took the trial. 
+Then, four of our bravest souls took the trial.
+
 Bathed in visions of beauty and light, they did not evolve as
 our governors had promised.  Instead, their bodies, limp and lifeless, 
 were set to the torch and their families'' unconsolable wailing turned
@@ -96,18 +91,16 @@ may have divided us forever.
 Gray smoke billowed from the grand chemical repository as it burned
  to the ground.
 
-A large crowd carried Armstead to the city square - pulling him by his hair 
-and side coat. There were at least 10 dragging him up the stairs
-to the statuary.  
+A large crowd pulled Armstead to the city square. There were at
+least 10 dragging him up the stairs to the statuary.  
 
-Armstead pleaded with the crowd and a group from the temple formed
-to try and free him from the clutches of the raging crowd to no
-avail.
+Armstead pleaded with the crowd and a group from the temple 
+formed to try and free him to no avail.
 
-This group had been the same citizens - recently admonishing many for our 
-dependence on our governor''s technology.
+This group was angry at our dependence on our governor''s technology.
 
-They were already heading for banishment and now the line was drawn. 
+They drew the line with this and then banished themselves.
+
 Just as the stain of our sin can not be washed away, 
 now too their absence reminds us of our folly.'),
 
@@ -428,23 +421,18 @@ of the past.  Hold on to it tightly.'),
 
 From Onam of Niret, Appointed Archiologist
 
-Alas, I have no choice but to grovel before you and ask for your assistance.
-I ask that you manufacture and  provision my team of humble Niret workers
-with enough shovels and picks to unearth what we believe are ancient 
-monoliths with some powerful form of energy.  Our explosion spells
-work too slowly at this endevour.
+Alas, I have no choice but to grovel before you and ask for 
+your assistance.
+I ask that you manufacture and  provision my team of humble Niret 
+workers with enough shovels and picks to unearth what we
+believe are ancient monoliths with some powerful form of energy.  
 
-Based on found evidence, It is my belief that there are 7 monoliths in the 
-valley.  Each may represent a moon in our system with the power source 
-eminating from the center.
+Based on found evidence, there are 7 monoliths in the 
+valley.  Each may represent a moon in our system with the 
+power source eminating from the center.
 
-I believe that unearthing them will show us truth and we, as has 
-always been the Niret way, will share what treasures there are to be found 
-- from our hard labor
- - to you - of less ...substantive assistance.
-
-As is the custom, we shall use our breath spell and be able to pay you 
-twice value.
+As is the custom, we shall use our breath spell and be 
+able to pay you twice value.
 
 Onam'),
 

@@ -341,7 +341,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
             PLAYWAVE(SOUND_DIG);
          }   
           if(WIP3 == ISA_TOOL_PRYER){
-            SHOW(0,IDS_SANDWOBBLE);
+            SHOW(0,IDS_SANDFLIP);
             ANIMATE();
             PLAYWAVE(SOUND_THUMP);
          }   

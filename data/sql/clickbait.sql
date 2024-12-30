@@ -1,10 +1,10 @@
-delete from games;
+
 
 -- insert into marks values ('mark1', 'idv_path1', '300', '794');
 
 delete from machines where name = 'S3002_PATH1';
 
-insert into machines values (0,'S3002_PATH1',0,'IDV_PATH1',300,120,450,280,0,'M_CLICKBAIT','IDS_BAIT0', '3', '', 'SOUND_LEVER',0 );
+-- insert into machines values (0,'S3002_PATH1',0,'IDV_PATH1',300,120,450,280,0,'M_CLICKBAIT','IDS_BAIT0', '3', '', 'SOUND_LEVER',0 );
 
 delete from transitions where automaton = 'M_CLICKBAIT';
 
