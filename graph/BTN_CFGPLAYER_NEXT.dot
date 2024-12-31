@@ -1,0 +1,21 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_CFGPLAYER_NEXT::M_BTN_2phase<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_BTNPRESS);<br align="left"/>LOADVIEW(WIP1);<br align="left"/>SHOW();<br align="left"/></font></td></tr></table>>
+];
+"0" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAGFOCUS(0,FALSE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">WSPRITE=WIP3;<br align="left"/>SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAGFOCUS(0,TRUE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">WSPRITE=WIP2;<br align="left"/>SHOW(WSPRITE);<br align="left"/>PLAYWAVE(SOUND_BTNDRAG);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_CFGPLAYER_NEXT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_CFGPLAYER @pos(x:536, y:247, h:64, w:53)<br align="left"/>BTN_CFGPLAYER_NEXT::M_BTN_2phase(&apos;IDV_CFGCULTURE&apos;,&apos;IDS_BTN_OK_HI&apos;,&apos;IDS_BTN_OK&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wSprite:IDS_BTN_OK_HI Top:247 Left:536 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

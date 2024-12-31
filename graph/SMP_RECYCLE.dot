@@ -15,6 +15,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_RECYCLE<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:934, y:387, h:59, w:58)<br align="left"/>SMP_RECYCLE::M_RECYCLE(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wObject:IDD_LOGBOOKBTN Top:387 Left:934 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:934, y:387, h:59, w:58)<br align="left"/>SMP_RECYCLE::M_RECYCLE(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:387 Left:934 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }
