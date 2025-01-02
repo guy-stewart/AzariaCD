@@ -3,38 +3,6 @@
 🛑 ERROR COMPILING '    
  '
 🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_select: - Failed to fetch data: no such table: q_world_active
-🛑 select [p_0],[p_1] from q_world_active where p_1 like '2' order by rowid  limit 1 offset 0;
-🛑 sql_exec: SQL error: no such table: q_world_active :: ('insert into q_world_active ([p_0],[p_1],[p_2],[p_3]) values (' Recover the seed of Azarian unity.','2','active',' IDV_SNC10PT0');')
-🛑 ERROR COMPILING '    
- '
-🛑 sql_exec: SQL error: no such table: q_local_active :: ('delete from q_local_active where p_0 like ' Find the ancient map in the wilderness.' and p_1 like '1' and p_2 like 'active' and p_3 like ' IDV_N2A';')
-🛑 ERROR COMPILING '    
- '
-🛑 HELD_OBJECT::LoadObject(object name = ) --> Could not load object.
-🛑 sql_exec: SQL error: no such table: q_local_active :: ('insert into q_local_active ([p_0],[p_1],[p_2],[p_3]) values (' Bring Thaor a rare plant from the nystrom mines.','12','active',' IDV_QUARSA');')
-🛑 ERROR COMPILING '    
- '
-🛑 bad frame 2 in ''
-🛑 ERROR COMPILING '    
- '
-🛑 bad frame 39 in ''
-🛑 ERROR COMPILING '    
- '
-🛑 SetRegVal(TEMP1) Not a register.
-🛑 ERROR COMPILING '    
- '
-🛑 HELD_OBJECT::LoadObject(object name = ) --> Could not load object.
-🛑 bad frame 2 in ''
-🛑 bad frame 2 in ''
+🛑 sql_select: - Failed to fetch data: no such table: player_characters
+🛑 select [name],[viewname],[wealth],[karma],[energy],[strength],[wisdom],[gender],[culture],[knowsparent],[knowsvillage],[knowscity] from player_characters where name like 'GuyGuy' and viewname like 'IDV_CFGCULTURE' and wealth like '10' and karma like '0' and energy like '10' and strength like '10' and wisdom like '10' and gender like '1' and culture like '1' and knowsparent like '0' and knowsvillage like '0' and knowscity like '0' order by rowid  limit 1 offset 0;
 🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')

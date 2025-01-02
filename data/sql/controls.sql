@@ -63,18 +63,19 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
       line three
 and this is line FOUR.','', 'IDS_FONTTNR12', 0xFF8888,''), 
 
-('IDV_CTLTEST1', '2', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50,  60, 0, '','','',0,
-'LOADVIEW(IDV_CTLTEST2);'),
+('IDV_CTLTEST1', '2', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50,  60, 0, '','','',0,'LOADVIEW(IDV_CTLTEST2);'),
 ('IDV_CTLTEST1', '3', 'BUTTON',   'IDS_BTN_DOWN',     'IDS_BTN_OK_HI',       50, 110, 0, '','','',0,''),
 ('IDV_CTLTEST1', '4', 'CHECKBOX', 'IDS_BTN_VILCULT',  'IDS_BTN_VILCULT_HI',  50, 160, 0, '','','',0,''),
-('IDV_CTLTEST1', '5', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',    200,  50, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
+('IDV_CTLTEST1', 'MY_EDIT_BOX', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',    200,  50, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,
+'myvar=get_control_value("IDV_CTLTEST1", "MY_EDIT_BOX");
+write("TEXT==",myvar);'),
 
-('IDV_CTLTEST2', 'B1', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50, 35, 0, '','','',0,''),
-('IDV_CTLTEST2', 'E2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',     150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
-('IDV_CTLTEST2', 'L3', 'LISTBOX',  'cListBxL',       'cListBxL',       50, 90, 7, 'ctltest2','','',0,
-'myvar = LB_SELECTED_ROW_TEXT;
-LOADVIEW(myvar);
-'),
+('IDV_CTLTEST2', 'B1', 'BUTTON',   'IDS_BTN_SAVE',     'IDS_BTN_SAVE_HI', 50, 35, 0, '','','',0,''),
+('IDV_CTLTEST2', 'B2', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',   482, 217, 0, '','','',0,''),
+('IDV_CTLTEST2', 'E2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI', 150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
+('IDV_CTLTEST2', 'L3', 'LISTBOX',  'cListBxL',         'cListBxL',        50, 90, 7, 'ctltest2','','',0,
+'myvar=get_control_value("IDV_CTLTEST2", "L3");
+set_control_value("IDV_CTLTEST2", "E2", myvar);'),
 
 ('IDV_CTLTEST3', '1', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       50, 35, 0, '','','',0,''),
 ('IDV_CTLTEST3', '2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',     150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
