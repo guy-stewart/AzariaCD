@@ -1,0 +1,143 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_ID::M_ID<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_MYID)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     active_character(?BPARM)?<br align="left"/>     predicate player_characters(name,wisdom,gender);<br align="left"/>     player_characters(BPARM,?LWISDOM,?WTEMP1)?<br align="left"/></font></td></tr></table>>
+];
+	100[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>100<br align="left"/></b></td></tr>
+</table>>];
+"100" -> "empty" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW(0);<br align="left"/>    SIGNAL(WIP4,SIG_CLEAR);<br align="left"/></font></td></tr></table>>
+];
+	20[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+</table>>];
+"20" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,happy)<br align="left"/></b></td></tr>
+</table>>
+];
+	21[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>21<br align="left"/></b></td></tr>
+</table>>];
+"21" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,hurt)<br align="left"/></b></td></tr>
+</table>>
+];
+	22[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>22<br align="left"/></b></td></tr>
+</table>>];
+"22" -> "playOnce" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,kiss)<br align="left"/></b></td></tr>
+</table>>
+];
+	23[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>23<br align="left"/></b></td></tr>
+</table>>];
+"23" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,mad)<br align="left"/></b></td></tr>
+</table>>
+];
+	24[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>24<br align="left"/></b></td></tr>
+</table>>];
+"24" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,sad)<br align="left"/></b></td></tr>
+</table>>
+];
+	25[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>25<br align="left"/></b></td></tr>
+</table>>];
+"25" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,surprised)<br align="left"/></b></td></tr>
+</table>>
+];
+	26[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>26<br align="left"/></b></td></tr>
+</table>>];
+"26" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,stress)<br align="left"/></b></td></tr>
+</table>>
+];
+	27[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>27<br align="left"/></b></td></tr>
+</table>>];
+"27" -> "playForward" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,wave)<br align="left"/></b></td></tr>
+</table>>
+];
+	30[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>30<br align="left"/></b></td></tr>
+</table>>];
+"30" -> "playDead" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WSPRITE,dead)<br align="left"/></b></td></tr>
+</table>>
+];
+	50[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>50<br align="left"/></b></td></tr>
+</table>>];
+"50" -> "51" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>VIDEO(0,IDS_EXPLODE1)<br align="left"/></b></td></tr>
+</table>>
+];
+	51[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>51<br align="left"/></b></td></tr>
+</table>>];
+"51" -> "21" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>PLAYWAVE(0,SOUND_EXPLODE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">            SUBI(LENERGY,1);<br align="left"/>            SIGNAL(SID_AURA,SIG_SUB);<br align="left"/></font></td></tr></table>>
+];
+	empty[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>empty<br align="left"/></b></td></tr>
+</table>>];
+"empty" -> "sitting" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+	playDead[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>playDead<br align="left"/></b></td></tr>
+</table>>];
+"playDead" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(BFRAME,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(0,WSPRITE);<br align="left"/>    VIDEO(0,WSPRITE);<br align="left"/>    ANIMATE(0,0);<br align="left"/>    ASSIGN(LENERGY,1);<br align="left"/>    ASSIGN(LWEALTH,0);<br align="left"/>    SIGNAL(SMP_VIAL,SIG_DRAIN);<br align="left"/>    LOADVIEW(IDV_VIL8);<br align="left"/></font></td></tr></table>>
+];
+	playForward[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>playForward<br align="left"/></b></td></tr>
+</table>>];
+"playForward" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(BFRAME,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK<br align="left"/></font></td></tr></table>>
+];
+	playOnce[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>playOnce<br align="left"/></b></td></tr>
+</table>>];
+"playOnce" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(BFRAME,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(0,WSPRITE);<br align="left"/>    ANIMATE(0,0);<br align="left"/></font></td></tr></table>>
+];
+	present[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>present<br align="left"/></b></td></tr>
+</table>>];
+"present" -> "setId" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">       <br align="left"/>  //for back to back &#123;statements&#125; do not use semi-colons between them, <br align="left"/>  //only at the end of the code segment!<br align="left"/>  if(WTEMP1 = fem)&#123;<br align="left"/>    WPARM = F1;<br align="left"/>     if(LWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = F3;<br align="left"/>    &#125;<br align="left"/>     if(LWISDOM &gt;= 20 &amp;&amp; LWISDOM &lt; 30)&#123;<br align="left"/>       WPARM = F2;<br align="left"/>    &#125;<br align="left"/>  &#125;<br align="left"/>  if(WTEMP1 = mas)&#123;<br align="left"/>    WPARM = M1;<br align="left"/>      if(LWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = M3;<br align="left"/>    &#125;<br align="left"/>    if(LWISDOM &gt;= 20 &amp;&amp; LWISDOM &lt; 30)&#123;<br align="left"/>        WPARM = M2;<br align="left"/>    &#125;<br align="left"/>  &#125;; <br align="left"/></font></td></tr></table>>
+];
+	setId[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>setId<br align="left"/></b></td></tr>
+</table>>];
+"setId" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WSPRITE,happy)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    ASSIGN(BFRAME,0);<br align="left"/>    //--adding refresh code<br align="left"/>    // There is a bug here where any add to wisdom maxes out karma<br align="left"/>    //SIGNAL(SID_HALO,SIG_ADD);<br align="left"/>    // SIGNAL(SID_AURA,SIG_ADD);<br align="left"/>    SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+	sitting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
+</table>>];
+"sitting" -> "20" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_HAPPY)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "21" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_HURT)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "22" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_KISS)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "23" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_MAD)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "24" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_SAD)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "25" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_SURPRISED)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "26" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_STRESS)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "27" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_WAVE)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_DEAD)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_BOMB)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     WRITE(&quot;I am S_ID and I receive signals! This one is a SIG_BOMB! &quot;);<br align="left"/></font></td></tr></table>>
+];
+"sitting" -> "100" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_CLEAR)<br align="left"/></b></td></tr>
+</table>>
+];
+"sitting" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_ID<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SID_ID::M_ID(&apos;LWISDOM&apos;,&apos;LSEX&apos;,&apos;0&apos;,&apos;SID_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: wSprite:happy bFrame:0 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

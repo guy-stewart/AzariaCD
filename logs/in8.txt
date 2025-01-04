@@ -2,7 +2,12 @@
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
 🛑 ERROR COMPILING '    
  '
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
-🛑 sql_select: - Failed to fetch data: no such table: player_characters
-🛑 select [name],[viewname],[wealth],[karma],[energy],[strength],[wisdom],[gender],[culture],[knowsparent],[knowsvillage],[knowscity] from player_characters where name like 'GuyGuy' and viewname like 'IDV_CFGCULTURE' and wealth like '10' and karma like '0' and energy like '10' and strength like '10' and wisdom like '10' and gender like '1' and culture like '1' and knowsparent like '0' and knowsvillage like '0' and knowscity like '0' order by rowid  limit 1 offset 0;
-🛑 sql_exec: SQL error: no such table: player_characters :: ('select * from player_characters;')
+🛑 ERROR COMPILING '    
+ '
+🛑 sql_exec: SQL error: no such table: q_world_complete :: ('delete from q_world_complete where p_0 like '%';')
+🛑 Effects::PlaySound(/Users/rickgonzalez/AzariaCD/data/sounds/effects/0.wav) --> file does not exist.
+🛑 ERROR COMPILING '    
+ '
+🛑 ERROR COMPILING '    
+ '
+🛑 sql_exec: SQL error: no such table: q_world_complete :: ('select * from q_world_complete;')

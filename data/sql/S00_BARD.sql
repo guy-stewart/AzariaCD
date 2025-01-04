@@ -13,7 +13,9 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 --inserting hiding stuff and and other one off signals then go to timed loop
 ('M_BARD', 'hideStuff', 'kickOffNature', 'SIGNALi', 'SIG_OPEN', 'S00_HIDER', '', '', ''),
 ('M_BARD', 'kickOffNature', 'kickOffQuests', 'SIGNAL', 'QL_MANAGER', 'Q0_START', '', '', ''),
-('M_BARD', 'kickOffQuests', 'endgame', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', ''),
+-- loading the active character 
+('M_BARD', 'kickOffQuests', 'kickOffCharacter', 'SIGNAL', 'SID_ID', 'SIG_MYID', '', '', ''),
+('M_BARD', 'kickOffCharacter', 'endgame', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', ''),
 ('M_BARD', 'endgame', '0', 'WAIT', '', 'SIG_ENDGAME', '', '', '');
 
 delete from machines where name = 'S01_NATURE';

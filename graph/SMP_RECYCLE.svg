@@ -56,7 +56,7 @@
 <polygon fill="none" stroke="black" points="261,-100.75 261,-145 573,-145 573,-100.75 261,-100.75"/>
 <text text-anchor="start" x="264" y="-132.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:934, y:387, h:59, w:58)</text>
 <text text-anchor="start" x="264" y="-119.75" font-family="Courier New" font-size="10.00" fill="green">SMP_RECYCLE::M_RECYCLE(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="264" y="-107" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:387 Left:934 Z:0</text>
+<text text-anchor="start" x="264" y="-107" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: wObject:IDD_DIARY2 Top:387 Left:934 Z:0</text>
 <polygon fill="none" stroke="black" points="258,-97.75 258,-168.75 576,-168.75 576,-97.75 258,-97.75"/>
 </g>
 </g>
