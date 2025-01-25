@@ -1,0 +1,40 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S_SHEEP_PEN1::M_ANIMALPEN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "idle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(WIP5,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "idle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(WIP5,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+	captured[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>captured<br align="left"/></b></td></tr>
+</table>>];
+"captured" -> "idle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(WIP5,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">STOPWAVE();<br align="left"/>ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+"captured" -> "idle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(WIP5,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">STOPWAVE();<br align="left"/>ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+	idle[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>idle<br align="left"/></b></td></tr>
+</table>>];
+"idle" -> "annoyed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_BAA);<br align="left"/></font></td></tr></table>>
+];
+"idle" -> "annoyed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_BAA);<br align="left"/></font></td></tr></table>>
+];
+"idle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ROOTBLUE,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    PLAYWAVE(SOUND_BAA);<br align="left"/>    SHOW(0);<br align="left"/>    HANDOFF(0,WIP5);<br align="left"/></font></td></tr></table>>
+];
+"idle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ROOTBLUE,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    PLAYWAVE(SOUND_BAA);<br align="left"/>    SHOW(0);<br align="left"/>    HANDOFF(0,WIP5);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S_SHEEP_PEN1<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_VIL4 @pos(x:44, y:150, h:80, w:63)<br align="left"/>S_SHEEP_PEN1::M_ANIMALPEN(&apos;IDS_SHEEPQ&apos;,&apos;IDS_SHEEPR&apos;,&apos;IDS_SHEEPQ&apos;,&apos;IDS_SHEEPRB&apos;,&apos;IDD_SHEEP_I&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;annoyed&apos;: wObject:IDD_SHEEP_I wSprite:IDS_SHEEPQ Top:150 Left:44 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

@@ -2,12 +2,19 @@
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
 🛑 ERROR COMPILING '    
  '
-🛑 ERROR COMPILING '    
- '
-🛑 sql_exec: SQL error: no such table: q_world_complete :: ('delete from q_world_complete where p_0 like '%';')
-🛑 Effects::PlaySound(/Users/rickgonzalez/AzariaCD/data/sounds/effects/0.wav) --> file does not exist.
-🛑 ERROR COMPILING '    
- '
-🛑 ERROR COMPILING '    
- '
-🛑 sql_exec: SQL error: no such table: q_world_complete :: ('select * from q_world_complete;')
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/SHEEPWTS.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 missing_file_name: sheepwts
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 sprite image /Users/rickgonzalez/AzariaCD/data/ones/objects/SHEEPWTS.png ---- (m_hdr.height % m_hdr.frames) != 0
+🛑 height:12800, width:142, pitch:142, size:1817600, frames:120, modulo:80
+🛑 missing_file_name: sheepwts
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/sheepwts
