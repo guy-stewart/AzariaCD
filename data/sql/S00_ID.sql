@@ -66,7 +66,7 @@ INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_FID3WAVE', '
 
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1HAPPY', 'm1hap', '368');
-INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MIDM1HURT', 'm1hurt', '369');
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1HURT', 'm1hurt', '369');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1KISS', 'm1kiss', '370');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1MAD', 'm1mad', '371');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1SAD', 'm1sad', '372');
@@ -221,7 +221,7 @@ INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bo
 VALUES 
 ( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
 ( 'SID_SPELL',  'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
-( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', 'LWISDOM', 'LSEX', '0', 'SID_AURA'),
+( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', '', '', '0', 'SID_AURA'),
 ( 'SID_AURA',   'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
 ( 'SID_DEC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
 ( 'SID_INC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
@@ -254,7 +254,7 @@ VALUES
     SIGNAL(SID_AURA,SIG_SUB);
 ', '', ''),
 
-('M_AURA', '0', 'energyBoost', 'Z_EPSILON', '0', '0', '', '', ''),
+('M_AURA', '0', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
 ('M_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_AURA', '1', 'energyBoost', 'WAIT', '0', '0', '', '', ''),
@@ -273,7 +273,7 @@ VALUES
         if(LENERGY <= 1){
              ASSIGN(LENERGY,1);
        }      
-       ASSIGN(BPARM,LENERGY);
+        ASSIGN(BPARM,LENERGY);
         MOV(WSPRITE,BPARM);
         MAPi(WSPRITE,S00_AURA_MAP);
         SHOW(WSPRITE);
@@ -333,7 +333,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 VALUES 
 --('M_HALO', '0', '1', 'ASHOW', '0', 'IDS_HALO00', '', '', '');
 
-('M_HALO', '0', 'karmaBoost', 'Z_EPSILON', '0', '0', '', '', ''),
+('M_HALO', '0', 'karmaBoost', 'WAIT', '0', 'SIG_MYHALO', '', '', ''),
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_HALO', '1', 'karmaDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', '0', '', '', ''),
@@ -361,46 +361,65 @@ VALUES
 ', '', '');
 
 
+-- for back to back {statements} do not use ';' between them, only at the end of the code segment
+
+
+
 delete from "main"."transitions" where [automaton] = 'M_ID';
 delete from "main"."transitions" where [automaton] = 'M_OID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-
-('M_ID', '0', 'setId', 'EQUALi', 'LSEX', '1', '       
-    if(LWISDOM >= 30){
-       ASSIGN(WPARM,F3);
+('M_ID', '0', 'present', 'WAIT', '0', 'SIG_MYID', '
+     CLEAR(WSPRITE);
+     SHOW(0);
+     predicate active_character(name);
+     active_character(?BPARM)?
+     predicate player_characters(name,viewname, wealth,karma, energy,strength, wisdom, body, culture);
+     player_characters(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     ASSIGN(LENERGY,WTEMP3);
+     SIGNAL(SID_AURA, SIG_MYAURA);
+     SIGNAL(SID_HALO, SIG_MYHALO);
+', '', ''),
+('M_ID', 'present', 'setId', 'Z_EPSILON', '', '', '       
+  //for back to back {statements} do not use semi-colons between them, 
+  //only at the end of the code segment!
+  if(LSEX == 1){
+    WPARM = F1;
+     if(LWISDOM >= 30){
+       WPARM = F3;
     }
      if(LWISDOM >= 20 && LWISDOM < 30){
-        ASSIGN(WPARM,F2);
+       WPARM = F2;
     }
-    if(LWISDOM < 20){
-       ASSIGN(WPARM,F1);
-    }
-', '', ''), 
-('M_ID', '0', 'setId', 'NEQUALi', 'LSEX', '1', '
-    if(LWISDOM >= 30){
-       ASSIGN(WPARM,M3);
+  }
+  if(LSEX == 0){
+    WPARM = M1;
+      if(LWISDOM >= 30){
+       WPARM = M3;
     }
     if(LWISDOM >= 20 && LWISDOM < 30){
-        ASSIGN(WPARM,M2);
+        WPARM = M2;
     }
-    if(LWISDOM < 20){
-       ASSIGN(WPARM,M1);
-    }
+  }; 
 ', '', ''), 
-
 ('M_ID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
     MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
-    //--adding refresh code
-    // There is a bug here where any add to wisdom maxes out karma
-    //SIGNAL(SID_HALO,SIG_ADD);
-    // SIGNAL(SID_AURA,SIG_ADD);
-
     SHOW(WSPRITE);
 ', '', ''),
 
+('M_ID', 'sitting', 'present',  'WAIT', '0', 'SIG_MYID', '
+    CLEAR(WSPRITE);
+     SHOW(0);
+     predicate active_character(name);
+     active_character(?BPARM)?
+     predicate player_characters(name,viewname, wealth,karma, energy,strength, wisdom, body, culture);
+     player_characters(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+   
+     SIGNAL(SID_AURA,SIG_ADD);
+     SIGNAL(SID_HALO,SIG_ADD);
+', '', ''),
 ('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
 ('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
@@ -414,7 +433,7 @@ VALUES
      WRITE("I am S_ID and I receive signals! This one is a SIG_BOMB! ");
 ', '', ''),
 ('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
-('M_ID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
+('M_ID', 'sitting', 'present', 'WAIT', '0', '0', '', '', ''),
 
 
 ('M_ID', '20', 'playForward', 'ASSIGN', 'WSPRITE', 'happy', '', '', ''),
@@ -860,3 +879,23 @@ VALUES
 -- #define OWEALTH     
 -- #define OVIEW       
 
+--  if(LWISDOM >= 30){
+--        ASSIGN(WPARM,F3);
+--     };
+--      if(LWISDOM >= 20 && LWISDOM < 30){
+--         ASSIGN(WPARM,F2);
+--     };
+--     if(LWISDOM < 20){
+--        ASSIGN(WPARM,F1);
+--     };
+
+
+--  if(LWISDOM >= 30){
+--        ASSIGN(WPARM,M3);
+--     };
+--     if(LWISDOM >= 20 && LWISDOM < 30){
+--         ASSIGN(WPARM,M2);
+--     };
+--     if(LWISDOM < 20){
+--        ASSIGN(WPARM,M1);
+--     };

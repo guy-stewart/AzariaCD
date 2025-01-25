@@ -6,6 +6,7 @@ INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view",
 VALUES 
 ('IDV_CFGPLAYER',   '1', '3', '1', '1', 'wdepanel.vct', 'CFGPlayer'),
 ('IDV_CFGPLAYERNEW','1', '0', '1', '1', 'wdepanel.vct', 'CFGPlayerName'),
+('IDV_CFGPLAYEROPTION','1', '0', '1', '1', 'wdepanel.vct', 'CFGPlayerNew'),
 ('IDV_CFGCULTURE',  '1', '0', '1', '1', 'wdepanel.vct', 'cultmen');
 
 -- see topmenu.sql!
@@ -25,24 +26,31 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
 '),
 
 --center this for the new player name
-('IDV_CFGPLAYERNEW', '33', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI', 180, 100, 10, 'Name', 'default','IDS_FONTTNR12',0x44FFFF,'
+('IDV_CFGPLAYERNEW', '33', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI', 180, 150, 10, 'Name', 'default','IDS_FONTTNR16',0x44FFFF,'
   myvar=get_control_value("IDV_CFGPLAYERNEW", "33");
-');
-
+'),
+('IDV_CFGPLAYERNEW', '34', 'LABEL',    'IDS_CLEARBACK',       '', 150, 60, 0,
+'Creating a new character restarts 
+Your energy, wisdom and karma but
+allows you to keep your posessions.','','IDS_FONTTNB14',0xFEFEFE,'');
 
 
 delete from machines where [name] like 'S00_PLAYERMENU%';
 delete from machines where [name] like 'BTN_CFGPLAYER%';
 delete from machines where [name] like 'BTN_CFGCULTUR%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('BTN_CFGPLAYER','IDV_TOPMENU',1916,222,2044,277,2,'M_BTN_1phase','IDV_CFGPLAYER','IDS_BTN_PLAYER','',''),
+('BTN_CFGPLAYER','IDV_TOPMENU',1916,222,2044,277,2,'M_BTN_1phase','IDV_CFGPLAYERNEW','IDS_BTN_PLAYER','',''),
 
--- With list box
-('BTN_CFGPLAYER_OK','IDV_CFGPLAYER',       300,260,350,300, 2,'M_BTN_2phase','IDV_CFGCULTURE','IDS_BTN_OK_HI','IDS_BTN_OK',''),
+-- With list box - depricated
+('BTN_CFGPLAYER_OK','IDV_CFGPLAYER',       300,260,350,300, 2,'M_BTN_CHARSELECTOK','IDV_CFGCULTURE','IDS_BTN_OK_HI','IDS_BTN_OK',''),
 ('BTN_CFGPLAYER_NEW','IDV_CFGPLAYER',      536,260,600,300,2,'M_BTN_2phase','IDV_CFGPLAYERNEW','IDS_BTN_NEW_HI','IDS_BTN_NEW',''),
+-- With option to create new player - depricated
+('BTN_CFGPLAYEROPT_OK','IDV_CFGPLAYEROPTION', 375,160,425,200,2,'M_BTN_2phase','IDV_CFGPLAYERNEW','IDS_BTN_OK_HI','IDS_BTN_OK',''),
+
 
 -- With Name entry (CFGPLAYERNEW)
-('BTN_CFGPLAYERNEW_OK','IDV_CFGPLAYERNEW', 375,160,425,200,2,'M_BTN_ADDNAME','IDV_CFGCULTURE','IDS_BTN_OK_HI','IDS_BTN_OK',''),
+('BTN_CFGPLAYERNEW_OK','IDV_CFGPLAYERNEW', 275,220,325,260,2,'M_BTN_ADDNAME','IDV_CFGCULTURE','IDS_BTN_OK_HI','IDS_BTN_OK',''),
+('BTN_CFGPLAYEROPT_CANCEL','IDV_CFGPLAYERNEW', 350,220,400,260,2,'M_BTN_2phase','IDV_ORIE','IDS_BTN_CANCEL_HI','IDS_BTN_CANCEL',''),
 
 -- with culture and body select for final creation
 
@@ -52,7 +60,7 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 ('BTN_CFGCULTURE_MAL','IDV_CFGCULTURE',   75,170,144,270,   2, 'M_RADIO_2phase','Active','IDS_BTN_MALE_HI','IDS_BTN_MALE','BTN_CFGCULTURE_FEM'),
 
 
-('BTN_CFGCULTURE_CREATE','IDV_CFGCULTURE',  536,247,600,300,2,'M_BTN_PLAYERCREATE','IDV_CFGPLAYER','IDS_BTN_CREATEH','IDS_BTN_CREATE',''),
+('BTN_CFGCULTURE_CREATE','IDV_CFGCULTURE',  536,247,600,300,2,'M_BTN_PLAYERCREATE','IDV_ORIE','IDS_BTN_CREATEH','IDS_BTN_CREATE',''),
 
 
 -------------------------------
@@ -63,6 +71,8 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 delete from transitions where [automaton] like 'M_BEGIN%';
 delete from transitions where [automaton] like 'M_RADIO_2phase%';
 delete from transitions where [automaton] like 'M_BTN_ADDNAME%';
+delete from transitions where [automaton] like 'M_BTN_PLAYERCREATE%';
+delete from transitions where [automaton] like 'M_BTN_CHARSELECT%';
 
 --The Bard is attached to the ID and loaded at startup
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
@@ -76,6 +86,10 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_RADIO_2phase','1','2','CLICK','','','
     PLAYWAVE(SOUND_BTNPRESS);
     SIGNAL(WIP4,SIG_OFF);
+    if(WIP4 == BTN_CFGCULTURE_CIT){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_NIRET);}
+    if(WIP4 == BTN_CFGCULTURE_VIL){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_ETNOC;}
+    if(WIP4 == BTN_CFGCULTURE_MAL){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_FEMALE);}
+    if(WIP4 == BTN_CFGCULTURE_FEM){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_MALE);}
     WPARM = WIP1;
     WSPRITE=WIP2;
     SHOW(WSPRITE);
@@ -97,12 +111,16 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     WSPRITE=WIP3;
     SHOW(WSPRITE);
 ','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_MALE',  'BPARM=0;','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_FEMALE','BPARM=1;','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_NIRET', 'WOBJECT=1;','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_ETNOC', 'WOBJECT=0;','',''),
 ('M_BTN_ADDNAME','1','0','CLICK','','',
-'PLAYWAVE(SOUND_BTNPRESS);
-//This puts the name in the editbox into wparm 
-WPARM=get_control_value("IDV_CFGPLAYERNEW", "33");
-SHOW();
-LOADVIEW(IDV_CFGCULTURE);
+    'PLAYWAVE(SOUND_BTNPRESS);
+    //This puts the name in the editbox into wparm 
+    WPARM=get_control_value("IDV_CFGPLAYERNEW", "33");
+    SHOW();
+    LOADVIEW(IDV_CFGCULTURE);
 ','',''),
 ('M_BTN_ADDNAME','1','1','DRAGFOCUS','0','FALSE','
 WSPRITE=WIP3;
@@ -124,10 +142,13 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
 ('M_BTN_PLAYERCREATE','1','0','CLICK','','','
     PLAYWAVE(SOUND_BTNPRESS);
     //PROCESS PLAYER ATTRIBUTES
-    //check player_characters and if row 1 empty create the table
-    predicate player_characters(name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
-   // player_characters(R_WPARM)~
-    player_characters(R_WPARM,LVIEW,10,0,10,10,10,1,1,0,0,0).
+    predicate player_characters(name,viewname,wealth,karma,energy,strength,wisdom,body,culture);
+    predicate active_character(name);
+    LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM;
+    player_characters(R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT).
+    active_character("%")~
+    active_character(R_WPARM).
+    SIGNAL(SID_ID,SIG_MYID); //Present my id
     LOADVIEW(WIP1);
     SHOW();
 ','',''),
@@ -138,10 +159,36 @@ SHOW(WSPRITE);
 ('M_BTN_PLAYERCREATE','1','1','DRAGFOCUS','0','TRUE',
 'WSPRITE=WIP2;
 SHOW(WSPRITE);
+PLAYWAVE(SOUND_BTNDRAG);','',''),
+
+
+('M_BTN_CHARSELECTOK','0','1','Z_EPSILON','','','
+    WSPRITE=WIP3;
+    SHOW(WSPRITE);
+','',''),
+('M_BTN_CHARSELECTOK','1','0','CLICK','','','
+    PLAYWAVE(SOUND_BTNPRESS);
+    WPARM=get_control_value("IDV_CFGPLAYER", "PLAYERCFG_2");
+    predicate active_character(name);
+    active_character("%")~
+    active_character(WPARM).
+    SIGNAL(SID_ID,SIG_MYID); 
+','',''),
+('M_BTN_CHARSELECTOK','1','1','DRAGFOCUS','0','FALSE','
+WSPRITE=WIP3;
+SHOW(WSPRITE);
+','',''),
+('M_BTN_CHARSELECTOK','1','1','DRAGFOCUS','0','TRUE',
+'WSPRITE=WIP2;
+SHOW(WSPRITE);
 PLAYWAVE(SOUND_BTNDRAG);','','');
-
-
 --   //player_characters(name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
 
-
+--  //check player_characters and if row 1 empty create the table
+--         REF_MACHINE(BTN_CFGCULTURE_FEM);
+--             WTEMP1=1;
+--             if(R_WPARM == ACTIVE){WTEMP1=0};       
+--         REF_MACHINE(BTN_CFGCULTURE_VIL);
+--             WTEMP2=1;
+--             if(R_WPARM == ACTIVE){WTEMP2 = 0};
 

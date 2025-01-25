@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='UTF-8' />
+	<style>
+		input, textarea {border:1px solid #CCC;margin:0px;padding:0px}
+
+        #ip {line-height:20px}
+        #port {line-height:20px}
+		#body {max-width:800px;margin:auto}
+		#log {width:100%;height:400px}
+		#message {width:100%;line-height:20px}
+	</style>
+	<script>
+		var Server;
+
+		function log( text ) {
+			$log = $('#log');
+			//Add text to log
+			$log.append(($log.val()?"\n":'')+text);
+			//Autoscroll
+			$log[0].scrollTop = $log[0].scrollHeight - $log[0].clientHeight;
+		}
+
+		function send( text ) {
+			Server.send( 'message', text );
+		}
+
+        function connect(){
+            log('Connecting...');
+			Server = new FancyWebSocket('ws://' + document.getElementById('ip').value + ':' + document.getElementById('port').value);
+
+			$('#message').keypress(function(e) {
+				if ( e.keyCode == 13 && this.value ) {
+					log( 'You: ' + this.value );
+					send( this.value );
+
+					$(this).val('');
+				}
+			});
+
+			//Let the user know we're connected
+			Server.bind('open', function() {
+                document.getElementById("cntBtn").disabled = true;
+				log( "Connected." );
+			});
+
+			//OH NOES! Disconnection occurred.
+			Server.bind('close', function( data ) {
+                document.getElementById("cntBtn").disabled = false;
+				log( "Disconnected." );
+			});
+
+			//Log any messages sent from server
+			Server.bind('message', function( payload ) {
+				log( payload );
+			});
+
+			Server.connect();
+        }
+
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+		var FancyWebSocket = function(url)
+		{
+			var callbacks = {};
+			var ws_url = url;
+			var conn;
+
+			this.bind = function(event_name, callback){
+				callbacks[event_name] = callbacks[event_name] || [];
+				callbacks[event_name].push(callback);
+				return this;// chainable
+			};
+
+			this.send = function(event_name, event_data){
+				this.conn.send( event_data );
+				return this;
+			};
+
+			this.connect = function() {
+				if ( typeof(MozWebSocket) == 'function' )
+					this.conn = new MozWebSocket(url);
+				else
+					this.conn = new WebSocket(url);
+
+				// dispatch to the right handlers
+				this.conn.onmessage = function(evt){
+					dispatch('message', evt.data);
+				};
+
+				this.conn.onclose = function(){dispatch('close',null)}
+				this.conn.onopen = function(){dispatch('open',null)}
+			};
+
+			this.disconnect = function() {
+				this.conn.close();
+			};
+
+			var dispatch = function(event_name, message){
+				var chain = callbacks[event_name];
+				if(typeof chain == 'undefined') return; // no callbacks for this event
+				for(var i = 0; i < chain.length; i++){
+					chain[i]( message )
+				}
+			}
+		};
+
+	</script>
+</head>
+<body>
+	<div id='body'>
+        Server ip: <input type='text' id='ip' value='localhost' name='ip'>
+        Server port: <input type='text' id='port' value='3006' name='port'>
+        <button type="button" id='cntBtn' onclick="connect();">Connect</button>
+		<textarea id='log' name='log' readonly='readonly'></textarea><br/>
+		<input type='text' id='message' name='message' />
+	</div>
+</body>
+
+</html>

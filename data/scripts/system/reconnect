@@ -1,0 +1,31 @@
+
+write("reconnect");
+
+roomId = getOpenPlay("roomid");
+playerid   = getOpenPlay("playerid");
+
+//get the player json object from the PlayerList table by playerid
+PlayerList(playerid,,?player)?
+
+//pull the reconnectTok from the player object
+reconnectTok = json_element(player, "reconnectTok");
+
+host = "us-atl-3b185468.colyseus.cloud";
+resourcePath = "/matchmake/reconnect/"+roomId;
+postdata = "{reconnectionToken: \""+reconnectTok+"\"}";
+
+write("uri:'"+uri+"'");
+write("resourcePath:'"+resourcePath+"'");
+write("postdata is -->",postdata);
+
+//a correct reconnect returns a room in the reconnection
+reconnection = https_post(host, resourcePath, postdata);
+write("room object:"+reconnection);
+
+//---- I don't think we need to do anything with the reconnection object.
+//--- behind the scenes the client calls setroom - after testing, we could look
+//--- at the reconnection object and see if we need to do anything with it - as joinroom does
+
+mysock = websocket('mysock', publicAddress, resource);
+write('mysock:<'+mysock+'>');
+// wsSend('mysock',message);
