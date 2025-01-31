@@ -1,86 +1,81 @@
-🛑 sql_exec: SQL error: no such table: players :: ('update players set viewname=''')
 🛑 GDBT_MACHINES::Link[S00_PLAYERMENU] - Unknown view named 'IDV_CULTMEN'.
-🛑🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
- Failed to fetch data: no such table: players
-🛑 select [name],[viewname],[wealth],[karma],[energy],[strength],[wisdom],[gender],[culture] from players where name like '' order by rowid  limit 1 offset 0;
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
 🛑 ERROR COMPILING '    
  '
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: PlayerList :: ('DROP TABLE PlayerList')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
+🛑 ERROR COMPILING '    
+ '
+🛑 ERROR COMPILING '    
+ '
+🛑 bad frame 2 in ''
+🛑 ERROR COMPILING '    
+ '
+🛑 missing_file_name: IDD_GVIAL
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDD_GVIAL
+🛑 HELD_OBJECT::LoadObject(object name = IDD_GVIAL) --> Could not load object.
+🛑 ERROR COMPILING '    
+ '
+🛑 sql_select: - Failed to fetch data: no such table: parm
+🛑 select [p_0],[p_1] from parm where p_0 like 'object' order by rowid  limit 1 offset 0;
+🛑 sql_exec: SQL error: no such table: parm :: ('delete from parm where p_0 like 'object';')
+🛑 assert(0. assert(fail) failed.)
+🛑 		MAP failed to locate a mapping for (op:BAIT_POWER, key:IDD_LUNCHCRUMBS)
+🛑 		machine S11_FISHSTATIONa state pole
+🛑 		px1: IDD_LUNCHCRUMBS
+🛑 		px2: BAIT_POWER
+🛑 assert(2. pole missing from stand.S11_POLESTANDb)
+🛑 assert(pole missing from stand.S11_POLESTANDb)
+🛑 assert(failed to getIDD_FISHASH1)
+🛑 		MAP failed to locate a mapping for (op:S12_NATURE_REP, key:IDD_FISHASH2)
+🛑 		machine S12_SHELF_1_ING4 state show_hint
+🛑 		px1: IDD_FISHASH2
+🛑 		px2: S12_NATURE_REP
+🛑 bad frame 6 in ''
+🛑 bad frame 6 in ''
+🛑 		MAP failed to locate a mapping for (op:S12_NATURE_REP, key:IDD_FISHASH2)
+🛑 		machine S12_SHELF_1_ING4 state show_hint
+🛑 		px1: IDD_FISHASH2
+🛑 		px2: S12_NATURE_REP
+🛑 		MAP failed to locate a mapping for (op:S12_SCROLL, key:)
+🛑 		machine S12_SHELF_1_CANDLE state 0
+🛑 		px1: 
+🛑 		px2: S12_SCROLL
+🛑 		MAP failed to locate a mapping for (op:S12_ING_NY, key:)
+🛑 		machine S12_SHELF_1_CANDLE state 0
+🛑 		px1: 
+🛑 		px2: S12_ING_NY
+🛑 		MAP failed to locate a mapping for (op:S12_NATURE_REP, key:IDD_FISHASH1)
+🛑 		machine S12_SHELF_1_ING4 state show_hint
+🛑 		px1: IDD_FISHASH1
+🛑 		px2: S12_NATURE_REP
+🛑 bad frame 13 in ''
+🛑 		MAP failed to locate a mapping for (op:S12_NATURE_REP, key:IDD_FISHASH1)
+🛑 		machine S12_SHELF_1_ING4 state show_hint
+🛑 		px1: IDD_FISHASH1
+🛑 		px2: S12_NATURE_REP
+🛑 sql_exec: SQL error: no such table: q_world_active :: ('delete from q_world_active where p_0 like ' Restore the pyramid of the eyes.' and p_1 like '4' and p_2 like 'active' and p_3 like ' IDV_EYEA';')
+🛑 ERROR COMPILING '    
+ '
+🛑 ERROR COMPILING '    
+ '
+🛑 sql_exec: SQL error: no such table: q_world_active :: ('delete from q_world_active where p_0 like ' Recover the seed of Azarian unity.' and p_1 like '2' and p_2 like 'active' and p_3 like ' IDV_SNC10PT0';')
+🛑 ERROR COMPILING '    
+ '
+🛑 assert(hmmm .... didn't get the seed :()
+🛑 sql_exec: SQL error: no such table: want :: ('delete from want where p_0 like '%';')
+🛑 Script not found: stop
+🛑 SetRegVal(WTEM4) Not a register.
+🛑 missing_file_name: IDD_GVIAL
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDD_GVIAL
+🛑 missing_file_name: IDD_GVIAL
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDD_GVIAL
+🛑 missing_file_name: IDD_GVIAL
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDD_GVIAL
+🛑 missing_file_name: IDD_GVIAL
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/IDD_GVIAL
+🛑 HELD_OBJECT::LoadObject(object name = IDD_GVIAL) --> Could not load object.
+🛑 HELD_OBJECT::LoadObject(object name = IDD_GVIAL) --> Could not load object.
+🛑 ERROR COMPILING '    
+ '
+🛑 ERROR COMPILING '    
+ '
+🛑 SDL_QUIT
