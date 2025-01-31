@@ -13,14 +13,12 @@ for (json_iter(players, ?player)) {
     count = count + 1;
     playerid = json_element(player, "playerId");
     playername = json_element(player, "playerName");
-    reconnectTok = json_element(player, "reconnectTok");
     playerip = json_element(player, "playerIp");
     candidates = json_element(player, "candidates");
     enum_player(playerid, playername, candidates);
+    //write("playerid:",playerid," playerip:",playerip);
     PlayerList(playerid,'ACTIVE',player).
 }  
-
-
 if (count==0) {
     write(response);
 }

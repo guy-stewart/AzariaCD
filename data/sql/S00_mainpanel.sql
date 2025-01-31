@@ -1,7 +1,7 @@
-drop table if exists games;
-drop table if exists players;
-drop table if exists env;
-drop table if exists idv;
+-- drop table if exists games;
+-- drop table if exists players;
+-- drop table if exists env;
+-- drop table if exists idv;
 
 --add network choice sprites IDS_BTN_NW1A,B & C
 

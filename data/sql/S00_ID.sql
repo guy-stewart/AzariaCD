@@ -1,5 +1,33 @@
 
 
+delete from "main"."views" where "view_name" like 'IDV_PLAYERNAME%';
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
+('IDV_PLAYERNAME', 1, 0, 0, 8, 'myname.vct', 'namefill'),
+('IDV_PLAYERNAMENEW', 1, 0, 0, 8, 'myname.vct', 'namefill');
+
+-- From within the message script you can signal 
+
+-- UI Event (click on player) - player_picked , id
+-- send a message to that player — get player details
+-- they recieve it (receive message  — from is who is asking) - place the who is asking on their interested parties list
+-- turn around a message with their details as querried from their ledger
+--       run a script “run(getplayerdetails)”
+-- From within the script, write the data to a table with a predicate
+-- I’m looking at you — add me to your interested parties list
+
+
+--------------------------------
+-- players come in and out of the game system/players script
+-- gets run on each players machine every minute
+-- predicate PlayerList(pid,status, player);
+-- write("send_message ..... ");
+-- for (PlayerList(?to, ?status, ?params)) {
+--     method = "getPlayerDetails";
+--     id = 777;
+--     params = "";
+--     send_message(to, id, method, params);
+-- }
+
 
 --Remove outdated sprites from spr_names
 delete from "main"."spr_names" where "name" like 'IDS_F4%';
@@ -370,13 +398,23 @@ delete from "main"."transitions" where [automaton] = 'M_OID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
+    -- "update" the players attributes anytime there is a change 
+    -- predicate env(account_id, key, value);
+    -- env("0","my_account_id",?address);
+    -- predicate players(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    -- players(address)~
+    -- players(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
+
+
+
+
 ('M_ID', '0', 'present', 'WAIT', '0', 'SIG_MYID', '
      CLEAR(WSPRITE);
      SHOW(0);
      predicate active_character(name);
      active_character(?BPARM)?
-     predicate player_characters(name,viewname, wealth,karma, energy,strength, wisdom, body, culture);
-     player_characters(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+     players(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
      ASSIGN(LENERGY,WTEMP3);
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);
@@ -414,8 +452,8 @@ VALUES
      SHOW(0);
      predicate active_character(name);
      active_character(?BPARM)?
-     predicate player_characters(name,viewname, wealth,karma, energy,strength, wisdom, body, culture);
-     player_characters(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+     players(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
    
      SIGNAL(SID_AURA,SIG_ADD);
      SIGNAL(SID_HALO,SIG_ADD);
