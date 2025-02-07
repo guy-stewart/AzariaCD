@@ -1,21 +1,34 @@
-🛑 getSqlRowCount: Failed: no such table: games
-🛑 getSqlRowCount: - Failed to fetch data: no such table: games
-🛑 sql_select: - Failed to fetch data: no such table: set_control_value
-🛑 select [p_0] from set_control_value where p_0 like 'Rick' order by rowid  limit 1 offset 0;
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE(HIDING ITEM  )
+WRITE: WRITE(Checking to see if we hid all 10   )
+WRITE: WRITE( should be done  )
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
-🛑 ERROR COMPILING '    
+🛑 set_control_value(IDV_PLAYERNAME,...) -> view not active.🛑 sql_select: - Failed to fetch data: no such table: set_control_value
+🛑 select [p_0],[p_1] from set_control_value where p_0 like 'PN' and p_1 like 'Rick' order by rowid  limit 1 offset 0;
+🛑 set_control_value(IDV_PLAYERNAME,...) -> view not active.🛑 sql_select: - Failed to fetch data: no such table: set_control_value
+🛑 select [p_0],[p_1] from set_control_value where p_0 like 'PN' and p_1 like 'Rick' order by rowid  limit 1 offset 0;
+🛑 Compile error(QL_MANAGER::OnTransition) '    
  '
-🛑 sql_select: - Failed to fetch data: no such column: p_0
-🛑 select [p_0],[p_1] from q_world_active where p_1 like '2' order by rowid  limit 1 offset 0;
-🛑 ERROR COMPILING '    
- '
-🛑 sql_select: - Failed to fetch data: no such column: p_0
-🛑 select [p_0],[p_1] from q_world_active where p_1 like '2' order by rowid  limit 1 offset 0;
-🛑 ERROR COMPILING '    
- '
-🛑 ERROR COMPILING '    
- '
-🛑 sql_exec: SQL error: table q_local_active has no column named p_0 :: ('insert into q_local_active ([p_0],[p_1],[p_2],[p_3]) values (' Find the Emerald of light for Rathe.','10','active',' IDV_TMPLPTH9');')
-🛑 ERROR COMPILING '    
- '
-🛑 bad frame 14 in ''
+WRITE:  _______
+WRITE: |__   __|
+WRITE:    | |_ __ __ _  ___ ___
+WRITE:    | | '__/ _` |/ __/ _ \
+WRITE:    | | | | (_| | (_|  __/
+WRITE:    |_|_|  \__,_|\___\___|

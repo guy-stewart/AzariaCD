@@ -16,6 +16,26 @@ insert into controls values
 ('IDV_PLAYERNAME','PN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,''),
 ('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,'');
 
+
+--machine for putting name on players
+delete from "main"."machines" where [name] like 'S_NAME_%';
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
+('S_NAME_PLAYER', 'IDV_PLAYERNAME', '1', '1', '2', '2', '2', 'M_NAMEPLAQUE', '', '', '', ''),
+('S_NAME_OTHER', 'IDV_OTHERNAME', '1', '1', '2', '2', '2', 'M_NAMEPLAQUE', '', '', '', '');
+
+delete from "main"."transitions" where [automaton] = 'M_NAMEPLAQUE';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
+VALUES 
+
+('M_NAMEPLAQUE', '0', 'present', 'Z_EPSILON', '0', '', '
+     predicate active_character(name);
+     active_character(?WPARM)?
+     set_control_value(IDV_PLAYERNAME, PN, WPARM);
+', '', ''),
+('M_NAMEPLAQUE', 'present', '0', 'CLICK', '0', '', '', '', '');
+
+
 -- From within the message script you can signal 
 
 -- UI Event (click on player) - player_picked , id
@@ -426,7 +446,6 @@ VALUES
      active_character(?WPARM)?
      predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
      players(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
-     set_control_value(IDV_PLAYERNAME, PN, WPARM);
      ASSIGN(LENERGY,WTEMP3);
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);
