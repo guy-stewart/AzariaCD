@@ -1,9 +1,20 @@
 
 
 delete from "main"."views" where "view_name" like 'IDV_PLAYERNAME%';
+delete from "main"."views" where "view_name" like 'IDV_OTHERNAME%';
 INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") VALUES 
 ('IDV_PLAYERNAME', 1, 0, 0, 8, 'myname.vct', 'namefill'),
-('IDV_PLAYERNAMENEW', 1, 0, 0, 8, 'myname.vct', 'namefill');
+('IDV_OTHERNAME', 1, 0, 0, 8, 'othrname.vct', 'namefill');
+
+
+
+
+
+delete from controls where id = 'ID_PLAYERNAME';
+delete from controls where id = 'ID_OTHERPLAYERNAME';
+insert into controls values
+('IDV_PLAYERNAME','PN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,''),
+('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,'');
 
 -- From within the message script you can signal 
 
@@ -412,9 +423,10 @@ VALUES
      CLEAR(WSPRITE);
      SHOW(0);
      predicate active_character(name);
-     active_character(?BPARM)?
+     active_character(?WPARM)?
      predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
-     players(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     players(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     set_control_value(IDV_PLAYERNAME, PN, WPARM);
      ASSIGN(LENERGY,WTEMP3);
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);

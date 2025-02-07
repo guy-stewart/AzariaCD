@@ -160,91 +160,108 @@ VALUES
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 0,active,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q1_START', '', '
         BPARM = 1; MAPi(BPARM,S00_QUEST); 
         WPARM = 1; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 1,active,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q2_START', '', '
         BPARM = 2; MAPi(BPARM,S00_QUEST); 
         WPARM = 2; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 2,active,WPARM).
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q3_START', '', '
         BPARM = 3; MAPi(BPARM,S00_QUEST); 
         WPARM = 3; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 3,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q4_START', '', '
         BPARM = 4; MAPi(BPARM,S00_QUEST); 
-        WPARM = 4; MAPi(WPARM,S00_QUESTLOC); 
+        WPARM = 4; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_world_active(quest,num,status,location); 
         q_world_active(BPARM, 4,active,WPARM).
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q5_START', '', '
         BPARM = 5; MAPi(BPARM,S00_QUEST); 
         WPARM = 5; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 5,active,WPARM).
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q6_START', '', '
         BPARM = 6; MAPi(BPARM,S00_QUEST); 
         WPARM = 6; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 6,active,WPARM).
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q7_START', '', '
         BPARM = 7; MAPi(BPARM,S00_QUEST); 
         WPARM = 7; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 7,active,WPARM).
         '),
         
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q8_START', '', '
         BPARM = 8; MAPi(BPARM,S00_QUEST); 
         WPARM = 8; MAPi(WPARM,S00_QUESTLOC); 
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 8,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q9_START', '', '
         BPARM = 9; MAPi(BPARM,S00_QUEST); 
-        WPARM = 9; MAPi(WPARM,S00_QUESTLOC); 
+        WPARM = 9; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_local_active(quest,num,status,location); 
         q_local_active(BPARM, 9,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q10_START', '', '
           BPARM = 10; MAPi(BPARM,S00_QUEST); 
-          WPARM = 10; MAPi(WPARM,S00_QUESTLOC); 
+          WPARM = 10; MAPi(WPARM,S00_QUESTLOC);
+          predicate q_world_active(quest,num,status,location); 
           q_local_active(BPARM,10,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q11_START', '', '
          BPARM = 11; MAPi(BPARM,S00_QUEST); 
           WPARM = 11; MAPi(WPARM,S00_QUESTLOC); 
+          predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,11,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q12_START', '', '
          BPARM = 12; MAPi(BPARM,S00_QUEST); 
           WPARM = 12; MAPi(WPARM,S00_QUESTLOC); 
+          predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,12,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q13_START', '', '
          BPARM = 13; MAPi(BPARM,S00_QUEST); 
           WPARM = 13; MAPi(WPARM,S00_QUESTLOC); 
+          predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,13,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q14_START', '', '
          BPARM = 14; MAPi(BPARM,S00_QUEST); 
-          WPARM = 14; MAPi(WPARM,S00_QUESTLOC); 
+          WPARM = 14; MAPi(WPARM,S00_QUESTLOC);
+          predicate q_local_active(quest,num,status,location); 
           q_local_active(BPARM,14,active,WPARM).
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q15_START', '', '
         BPARM = 15; MAPi(BPARM,S00_QUEST); 
           WPARM = 15; MAPi(WPARM,S00_QUESTLOC); 
+          predicate q_world_active(quest,num,status,location);
           q_world_active(BPARM,15,active,WPARM).
         '), 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q16_START', '', '
          BPARM = 16; MAPi(BPARM,S00_QUEST); 
-          WPARM = 16; MAPi(WPARM,S00_QUESTLOC); 
+          WPARM = 16; MAPi(WPARM,S00_QUESTLOC);
+          predicate q_local_active(quest,num,status,location); 
           q_local_active(BPARM,16,active,WPARM).
         '),
 ---
@@ -255,74 +272,96 @@ VALUES
 ('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q0_STOP', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_local_active(quest,num,status,location); 
         q_local_active(BPARM, 0,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 0,complete,WPARM).
 
 '),
 ('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q1_STOP', '', '
         BPARM = 1; MAPi(BPARM,S00_QUEST); 
         WPARM = 1; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_local_active(quest,num,status,location); 
         q_local_active(BPARM, 1,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 1,complete,WPARM).
 
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q2_STOP', '', '
         BPARM = 2; MAPi(BPARM,S00_QUEST); 
         WPARM = 2; MAPi(WPARM,S00_QUESTLOC);
+         predicate q_world_active(quest,num,status,location); 
         q_world_active(BPARM, 2,active,WPARM)~ 
+        predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 2,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q3_STOP', '', '
         BPARM = 3; MAPi(BPARM,S00_QUEST); 
         WPARM = 3; MAPi(WPARM,S00_QUESTLOC);
+         predicate q_world_active(quest,num,status,location); 
           q_world_active(BPARM, 3,active,WPARM)~ 
+          predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 3,complete,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q4_STOP', '', '
         BPARM = 4; MAPi(BPARM,S00_QUEST); 
         WPARM = 4; MAPi(WPARM,S00_QUESTLOC);
-          q_world_active(BPARM, 4,active,WPARM)~ 
+        predicate q_world_active(quest,num,status,location);
+        q_world_active(BPARM, 4,active,WPARM)~ 
+        predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 4,complete,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q5_STOP', '', '
        BPARM = 5; MAPi(BPARM,S00_QUEST); 
         WPARM = 5; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 5,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location);
+        q_local_active(BPARM, 5,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 5,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q6_STOP', '', '
         BPARM = 6; MAPi(BPARM,S00_QUEST); 
         WPARM = 6; MAPi(WPARM,S00_QUESTLOC);
-          q_world_active(BPARM, 6,active,WPARM)~ 
+        predicate q_world_active(quest,num,status,location); 
+        q_world_active(BPARM, 6,active,WPARM)~ 
+        predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 6,complete,WPARM).
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q7_STOP', '', '
         BPARM = 7; MAPi(BPARM,S00_QUEST); 
         WPARM = 7; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 7,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 7,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 7,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q8_STOP', '', '
         BPARM = 8; MAPi(BPARM,S00_QUEST); 
         WPARM = 8; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 8,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 8,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 8,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q9_STOP', '', '
         BPARM = 9; MAPi(BPARM,S00_QUEST); 
         WPARM = 9; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 9,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 9,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 9,complete,WPARM).
 '),      
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q10_STOP', '', '
         BPARM = 10; MAPi(BPARM,S00_QUEST); 
         WPARM = 10; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 10,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 10,complete,WPARM).
 '),
         
@@ -331,7 +370,9 @@ VALUES
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q11_STOP', '', '
         BPARM = 11; MAPi(BPARM,S00_QUEST); 
         WPARM = 11; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 11,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 11,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 11,complete,WPARM).
 '),
         
@@ -340,36 +381,46 @@ VALUES
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q12_STOP', '', '
         BPARM = 12; MAPi(BPARM,S00_QUEST); 
         WPARM = 12; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 12,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 12,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 12,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q13_STOP', '', '
         BPARM = 13; MAPi(BPARM,S00_QUEST); 
         WPARM = 13; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 13,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 13,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 13,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q14_STOP', '', '
         BPARM = 14; MAPi(BPARM,S00_QUEST); 
         WPARM = 14; MAPi(WPARM,S00_QUESTLOC);
-          q_word_active(BPARM, 14,active,WPARM)~ 
-          q_world_complete(BPARM, 14,complete,WPARM).
+        predicate q_world_active(quest,num,status,location); 
+        q_word_active(BPARM, 14,active,WPARM)~ 
+        predicate q_world_complete(quest,num,status,location);
+        q_world_complete(BPARM, 14,complete,WPARM).
 '),
 
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q15_STOP', '', '
         BPARM = 15; MAPi(BPARM,S00_QUEST); 
         WPARM = 15; MAPi(WPARM,S00_QUESTLOC);
+        predicate q_local_active(quest,num,status,location); 
         q_local_active(BPARM, 15,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 15,complete,WPARM).
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q16_STOP', '', '
         BPARM = 16; MAPi(BPARM,S00_QUEST); 
         WPARM = 16; MAPi(WPARM,S00_QUESTLOC);
-          q_local_active(BPARM, 16,active,WPARM)~ 
+        predicate q_local_active(quest,num,status,location); 
+        q_local_active(BPARM, 16,active,WPARM)~ 
+        predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 16,complete,WPARM).
 '),
 
@@ -396,9 +447,13 @@ VALUES
 ', '', ''),
 ('M_QLBTN', '1', 'logPresent', 'DROP', 'IDD_LOGBOOKBTN', '', '
    WRITE("Deleting any entries for this player");
+  predicate q_local_active(quest,num,status,location);
    q_local_active("%")~
-   q_local_complete("%")~
+  predicate q_world_active(quest,num,status,location);
    q_world_active("%")~
+  predicate q_local_complete(quest,num,status,location);
+    q_local_complete("%")~
+  predicate q_world_complete(quest,num,status,location);
    q_world_complete("%")~
    SHOW(WOBJECT);
    ADDI(LWISDOM,1); SIGNALi(0,SID_ID);

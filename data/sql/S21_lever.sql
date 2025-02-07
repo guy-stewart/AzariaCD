@@ -155,7 +155,7 @@ INSERT INTO "main"."machines"("name", "view_name", "left", "top", "right", "bott
     -- Scene 21 Maproom Map bin
     --8471 ->
 
-   ( 'S21_MAPBIN',   'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BIN', 'IDD_MAPBTN','', '60', ''),
+   ( 'S21_MAPBIN',   'IDV_MAPROOM', '2708', '7', '2926', '179', '2', 'M_BINGRAB', 'IDD_MAPBTN','', '60', ''),
    ( 'S21_MAPTEXT',  'IDV_MAPROOM', '1441', '2', '1810','200', '2', 'M24_EYETEXT', 'IDS_MAPENG','','60', ''),
    ( 'S21_DIARY1BIN','IDV_MAPROOM', '3049', '215', '3110','250', '2', 'M_PLANTBIN', 'IDD_DIARY1','IDS_DIARY1_BIN','60', ''),
 
@@ -195,6 +195,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 
 
 delete from transitions where [automaton] like 'M_DIGDIRECT%';
+
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 
 
@@ -270,6 +271,11 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    SIGNALi(SIG_SHOW,S00_CHESTWAITER);
 ', '', '');
 
+
+
+delete from transitions where [automaton] like 'M_BINGRAB%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES
+ ('M_BINGRAB', 0, 0, 'GRAB', 'WIP1', '', '', NULL, NULL);
 
 
 -- SHOW(WOBJECT);('M_DIGDIRECT', 'moveMe', 'displayItem', 'SET_YOFFSET', 'ADD','50', '

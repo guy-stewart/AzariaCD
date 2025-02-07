@@ -10,10 +10,10 @@
     "app_teletype": false,
     "app_title": "in8",
     "app_version": "0.0",
-    "in8_console": false,
-    "in8_devmode": false,
-    "in8_version": "1.16f",
+    "in8_console": true,
+    "in8_devmode": true,
+    "in8_version": "1.18a",
     "load_player": false,
     "save_player": false,
-    "sha256": "fb4f98950697dfc322829838e3f60cf2bde47bc00850d97b8f06554fe0c77591"
+    "sha256": "c78e9ac05c9f03eb2bdb7190e5c546e129e6896a11919d4fd32cb988b15fd616"
 }

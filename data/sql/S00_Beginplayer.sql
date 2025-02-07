@@ -64,7 +64,7 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 
 
 -------------------------------
-('S00_PLAYERMENU','IDV_CULTMEN', '0', '0', '0', '0', '2', 'M_BEGIN', '', '', '', '');
+('S00_PLAYERMENU','IDV_CFGCULTURE', '0', '0', '0', '0', '2', 'M_BEGIN', '', '', '', '');
 
 
 
