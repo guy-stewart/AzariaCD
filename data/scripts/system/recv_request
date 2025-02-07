@@ -1,0 +1,16 @@
+
+write("Receive Request -------------- START -------------------------");
+write("event == ", event);
+write("id == ", id);
+write("from == ", from);
+write("method == ", method);
+write("params == ", params);
+write("xpkt == ", xpkt);
+
+if (method == 'getPlayerDetails') {
+    result = 'gotPlayerDetails';
+    params = '{"HEALTH":"666"}';
+    send_result(from,result,params,id);
+}
+
+write("Receive Request --------------- END -------------------------");

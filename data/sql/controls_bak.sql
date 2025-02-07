@@ -55,11 +55,9 @@ create table IF NOT EXISTS controls (
 delete from controls where view = 'IDV_CTLTEST1';
 delete from controls where view = 'IDV_CTLTEST2';
 delete from controls where view = 'IDV_CTLTEST3';
-delete from controls where view = 'IDV_CTLTEST4';
-delete from controls where view = 'IDV_CFGSESS';
 
 insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
-('IDV_CTLTEST1', '1', 'LABEL',    'redlabel',       '',                   200, 130, 0,
+('IDV_CTLTEST1', '1', 'LABEL',    'IDS_REDDOT',       '',                   200, 130, 0,
 ' This is a test string
       line two
       line three
@@ -83,33 +81,22 @@ set_control_value("IDV_CTLTEST2", "E2", myvar);'),
 ('IDV_CTLTEST3', '2', 'EDITBOX',  'IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',     150, 30, 10, 'My Edit Box', 'default','IDS_FONTTNR12',0x44FFFF,''),
 ('IDV_CTLTEST3', '3', 'LISTBOX',  'cListBxL',       'cListBxL',       50, 90, 7, 'ctltest2','','',0,
 'myvar = LB_SELECTED_ROW_TEXT;
-LOADVIEW(myvar);'),
+LOADVIEW(myvar);
+');
 
-('IDV_CFGSESS', '1', 'BUTTON','create_session','create_session_hi',400, 30, 0,'','','',0,'call("system/rooms");'),
-('IDV_CFGSESS', '2', 'BUTTON','enum_sessions','enum_sessions_hi',400, 100, 0,'','','',0,
-'call("system/rooms");
-'),
-('IDV_CFGSESS', '3', 'EDITBOX','IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',50, 30, 10, 'MySession', 'default','IDS_FONTTNR12',0x44FFFF,''),
-('IDV_CFGSESS', '4', 'LISTBOX','cListBxL','cListBxL',       50, 90, 7, 'sessions','','',0,
-'myvar = LB_SELECTED_ROW_TEXT;
-LOADVIEW(myvar);');
-
-delete from views where view_name = 'IDV_CFGSESS';
 delete from views where view_name = 'IDV_CTLTEST1';
 delete from views where view_name = 'IDV_CTLTEST2';
 delete from views where view_name = 'IDV_CTLTEST3';
 delete from views where view_name = 'IDV_CTLTEST4';
 insert into views ([view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
-('IDV_CFGSESS',1,3,1,1,'iphone_1040x480.png','blank'),
-('IDV_CTLTEST1',1,3,1,1,'iphone_1040x480.png','blank'),
-('IDV_CTLTEST2',1,3,1,1,'iphone_1040x480.png','blank'),
-('IDV_CTLTEST3',1,3,1,1,'iphone_1040x480.png','blank'),
-('IDV_CTLTEST4',1,3,1,1,'iphone_1040x480.png','blank');
+('IDV_CTLTEST1',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST2',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST3',1,3,1,1,'wdepanel.vct','spacebak'),
+('IDV_CTLTEST4',1,3,1,1,'wdepanel.vct','spacebak');
 
 drop table if exists ctltest2;
 create table if not exists ctltest2 (value text not null, [alt] text, primary key (value) on conflict replace);
 insert into ctltest2 values
 ("IDV_CTLTEST1", "alt one"),
-("IDV_CTLTEST2", "alt two"),
-("IDV_CTLTEST3", "alt three"),
-("IDV_CTLTEST4", "alt three");
+("IDV_PATH1", "alt two"),
+("IDV_FH1PATH", "alt three");

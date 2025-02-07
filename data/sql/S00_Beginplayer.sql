@@ -20,7 +20,7 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
 
 
 --This is the listbox showing the players active characters
-('IDV_CFGPLAYER', 'PLAYERCFG_2', 'LISTBOX',  'cListBxM',       'cListBxM',   200, 50,  7, 'player_characters','2','IDS_FONTENG_BIG',0x44FFFF,
+('IDV_CFGPLAYER', 'PLAYERCFG_2', 'LISTBOX',  'cListBxM',       'cListBxM',   200, 50,  7, 'players','2','IDS_FONTENG_BIG',0x44FFFF,
     'myvar = LB_SELECTED_ROW_TEXT;
     LOADVIEW(myvar);
 '),
@@ -64,7 +64,7 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 
 
 -------------------------------
-('S00_PLAYERMENU','IDV_CULTMEN', '0', '0', '0', '0', '2', 'M_BEGIN', '', '', '', '');
+('S00_PLAYERMENU','IDV_CFGCULTURE', '0', '0', '0', '0', '2', 'M_BEGIN', '', '', '', '');
 
 
 
@@ -142,12 +142,21 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
 ('M_BTN_PLAYERCREATE','1','0','CLICK','','','
     PLAYWAVE(SOUND_BTNPRESS);
     //PROCESS PLAYER ATTRIBUTES
-    predicate player_characters(name,viewname,wealth,karma,energy,strength,wisdom,body,culture);
+   
+    predicate env(account_id, key, value);
+    // get the account id:
+    env("0","my_account_id",?address);
+    env(address,"name")~ // remove the old name in case we lost our primary key
+    env(address,"name",R_WPARM).
+   
+    predicate players(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    players(address)~
     predicate active_character(name);
     LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM;
-    player_characters(R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT).
+    players(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
     active_character("%")~
     active_character(R_WPARM).
+
     SIGNAL(SID_ID,SIG_MYID); //Present my id
     LOADVIEW(WIP1);
     SHOW();
@@ -182,13 +191,3 @@ SHOW(WSPRITE);
 'WSPRITE=WIP2;
 SHOW(WSPRITE);
 PLAYWAVE(SOUND_BTNDRAG);','','');
---   //player_characters(name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
-
---  //check player_characters and if row 1 empty create the table
---         REF_MACHINE(BTN_CFGCULTURE_FEM);
---             WTEMP1=1;
---             if(R_WPARM == ACTIVE){WTEMP1=0};       
---         REF_MACHINE(BTN_CFGCULTURE_VIL);
---             WTEMP2=1;
---             if(R_WPARM == ACTIVE){WTEMP2 = 0};
-

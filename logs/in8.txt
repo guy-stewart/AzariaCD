@@ -1,8 +1,21 @@
-🛑 GDBT_MACHINES::Link[S00_PLAYERMENU] - Unknown view named 'IDV_CULTMEN'.
+🛑 getSqlRowCount: Failed: no such table: games
+🛑 getSqlRowCount: - Failed to fetch data: no such table: games
+🛑 sql_select: - Failed to fetch data: no such table: set_control_value
+🛑 select [p_0] from set_control_value where p_0 like 'Rick' order by rowid  limit 1 offset 0;
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
 🛑 ERROR COMPILING '    
  '
+🛑 sql_select: - Failed to fetch data: no such column: p_0
+🛑 select [p_0],[p_1] from q_world_active where p_1 like '2' order by rowid  limit 1 offset 0;
+🛑 ERROR COMPILING '    
+ '
+🛑 sql_select: - Failed to fetch data: no such column: p_0
+🛑 select [p_0],[p_1] from q_world_active where p_1 like '2' order by rowid  limit 1 offset 0;
 🛑 ERROR COMPILING '    
  '
 🛑 ERROR COMPILING '    
  '
+🛑 sql_exec: SQL error: table q_local_active has no column named p_0 :: ('insert into q_local_active ([p_0],[p_1],[p_2],[p_3]) values (' Find the Emerald of light for Rathe.','10','active',' IDV_TMPLPTH9');')
+🛑 ERROR COMPILING '    
+ '
+🛑 bad frame 14 in ''
