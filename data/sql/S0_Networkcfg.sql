@@ -32,6 +32,26 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
 ('IDV_CFGNW1A', 'NW1A_4', 'BUTTON',   'IDS_BTN_OK',       'IDS_BTN_OK_HI',       536,  247, 0, '','','',0,
 'LOADVIEW(IDV_CTLTEST2);');  
 
+--Recreating a network list and join set
+
+delete from controls where view = 'IDV_CFGNW1C';
+insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
+
+('IDV_CFGNW1C', 'CFGNW1C1', 'BUTTON','IDS_BTN_NEW','IDS_BTN_NEW_HI',400, 30, 0,'','','',0,'call("system/createroom");'),
+('IDV_CFGNW1C', 'CFGNW1C2', 'BUTTON','IDS_BTN_LOAD','IDS_BTN_LOAD_HI',400, 100, 0,'','','',0,'call("system/rooms");'),
+
+('IDV_CFGNW1C', 'CFGNW1C3', 'EDITBOX','IDS_STD_EDITBOXM', 'IDS_BTN_DOWN_HI',50, 30, 10, 'MySession', 'default','IDS_FONTTNR12',0x44FFFF,''),
+('IDV_CFGNW1C', 'CFGNW1C4', 'LISTBOX','cListBxL','cListBxL',       50, 90, 7, 'sessions','','',0,
+'myvar = LB_SELECTED_ROW_TEXT;
+LOADVIEW(myvar);');
+
+
+
+
+
+
+
+
 delete from transitions where automaton = 'M_NW_INDC_NAME';
 delete from transitions where automaton = 'M_NW_INDC_LIGHT';
 
@@ -39,7 +59,7 @@ insert into transitions values
 ('M_NW_INDC_NAME',0,1,'MOV','BFRAME','0','','',''),
 ('M_NW_INDC_NAME',1,2,'SHOW','WIP1', '','','',''),
 ('M_NW_INDC_NAME',2,'launch','CLICK','', '','LOADVIEW(IDV_CFGNW1);','',''),
-
+('M_NW_INDC_NAME','launch','0','Z_EPSILON','', '','','',''),
 
 
 
