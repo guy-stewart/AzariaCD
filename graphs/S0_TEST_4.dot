@@ -1,0 +1,15 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_TEST_4::M_TEST4<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASSIGN(LKARMA,0);<br align="left"/>    SIGNAL(SID_HALO,SIG_ADD);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_TEST_4<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_TESTPAN @pos(x:150, y:70, h:60, w:65)<br align="left"/>S0_TEST_4::M_TEST4(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:70 Left:150 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

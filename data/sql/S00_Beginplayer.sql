@@ -158,6 +158,7 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
     active_character(R_WPARM).
 
     SIGNAL(SID_ID,SIG_MYID); //Present my id
+    SIGNAL(S_NAME_PLAYER,SIG_SETNAME);
     LOADVIEW(WIP1);
     SHOW();
 ','',''),
