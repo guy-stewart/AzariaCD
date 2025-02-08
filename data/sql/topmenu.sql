@@ -48,7 +48,7 @@ delete from machines where view_name = 'IDV_CFGNW1';
 insert into machines ([name],[view_name],[left],[top],[right],[bottom],[local_visible],[dfa_name], [wip1_name],[wip2_name],[wip3_name],[wip4_name]) values
 ('BTN_CFG_NW1A','IDV_CFGNW1', 27,67,195,187,2,'M_BTN_1phase','IDV_CFGNW1A','IDS_BTN_NW1A','',''),
 ('BTN_CFG_NW1B','IDV_CFGNW1',237,67,405,187,2,'M_BTN_1phase','IDV_CFGNW1B','IDS_BTN_NW1B','',''),
-('BTN_CFG_NW1C','IDV_CFGNW1',445,67,614,187,2,'M_BTN_1phase','IDV_CFGSESS','IDS_BTN_NW1C','','');
+('BTN_CFG_NW1C','IDV_CFGNW1',445,67,614,187,2,'M_BTN_1phase','IDV_CFGNW1C','IDS_BTN_NW1C','','');
 
 
 delete from transitions where automaton = 'M_BTN_1phase';

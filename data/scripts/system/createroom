@@ -6,7 +6,7 @@ Response:
 
 roomname = "AzariaRoom";
 roomtype = "public";
-roommaxplayers = 50;
+roommaxplayers = 100;
 fname = "CoolPeople";
 
 // quick hack to get player info ...

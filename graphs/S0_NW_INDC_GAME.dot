@@ -14,12 +14,12 @@ digraph Automaton {
 "1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WIP1,)<br align="left"/></b></td></tr>
 </table>>
 ];
-	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+	2[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
 </table>>];
 "2" -> "launch" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">LOADVIEW(IDV_CFGNW1);<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_NW_INDC_GAME<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:215, h:115, w:44)<br align="left"/>S0_NW_INDC_GAME::M_NW_INDC_NAME(&apos;IDS_INDC_NW_BLANK&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;launch&apos;: wSprite:IDS_INDC_NW_BLANK bFrame:0 Top:215 Left:890 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:215, h:115, w:44)<br align="left"/>S0_NW_INDC_GAME::M_NW_INDC_NAME(&apos;IDS_INDC_NW_BLANK&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;2&apos;: wSprite:IDS_INDC_NW_BLANK bFrame:0 Top:215 Left:890 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }
