@@ -33,7 +33,7 @@ VALUES
      active_character(?WPARM)?
      set_control_value(IDV_PLAYERNAME, PN, WPARM);
 ', '', ''),
-('M_NAMEPLAQUE', 'present', '0', 'CLICK', '0', '', '', '', '');
+('M_NAMEPLAQUE', 'present', '0', 'WAIT', '', 'SIG_SETNAME', '', '', '');
 
 
 -- From within the message script you can signal 
@@ -803,14 +803,17 @@ VALUES
     ', '', ''),
 ('M_TEST4', '0', '0', 'CLICK', '0', '0', '
     ASSIGN(LKARMA,0);
+    playmusic(cavewind,3);
     SIGNAL(SID_HALO,SIG_ADD);
 ', '', ''),
 ('M_TEST5', '0', '0', 'CLICK', '0', '0', '
     ADDI(LKARMA,1);
+     playmusic(kam002aa,3);
     SIGNAL(SID_HALO,SIG_ADD);
     ', '', ''),
 ('M_TEST6', '0', '0', 'CLICK', '0', '0', '
     SUBI(LKARMA,1);
+     playmusic(kam209ba,3);
     SIGNAL(SID_HALO,SIG_SUB);
     ', '', ''),
 ('M_TEST7', '0', '0', 'CLICK', '0', '0', '

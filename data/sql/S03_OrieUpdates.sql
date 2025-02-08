@@ -123,7 +123,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     if(BPARM != " Find the ancient map in the wilderness."){
      SIGNAL(QL_MANAGER,Q1_START);
     }
-   
+     playmusic(kam002aa,3);
  ');
 
 

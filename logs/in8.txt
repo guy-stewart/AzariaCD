@@ -1,3 +1,9 @@
+WRITE:  _______
+WRITE: |__   __|
+WRITE:    | |_ __ __ _  ___ ___
+WRITE:    | | '__/ _` |/ __/ _ \
+WRITE:    | | | | (_| | (_|  __/
+WRITE:    |_|_|  \__,_|\___\___|
 WRITE: WRITE(HIDING ITEM  )
 WRITE: WRITE(Checking to see if we hid all 10   )
 WRITE: WRITE(HIDING ITEM  )
@@ -20,15 +26,95 @@ WRITE: WRITE(HIDING ITEM  )
 WRITE: WRITE(Checking to see if we hid all 10   )
 WRITE: WRITE( should be done  )
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
-🛑 set_control_value(IDV_PLAYERNAME,...) -> view not active.🛑 sql_select: - Failed to fetch data: no such table: set_control_value
-🛑 select [p_0],[p_1] from set_control_value where p_0 like 'PN' and p_1 like 'Rick' order by rowid  limit 1 offset 0;
-🛑 set_control_value(IDV_PLAYERNAME,...) -> view not active.🛑 sql_select: - Failed to fetch data: no such table: set_control_value
-🛑 select [p_0],[p_1] from set_control_value where p_0 like 'PN' and p_1 like 'Rick' order by rowid  limit 1 offset 0;
 🛑 Compile error(QL_MANAGER::OnTransition) '    
  '
-WRITE:  _______
-WRITE: |__   __|
-WRITE:    | |_ __ __ _  ___ ___
-WRITE:    | | '__/ _` |/ __/ _ \
-WRITE:    | | | | (_| | (_|  __/
-WRITE:    |_|_|  \__,_|\___\___|
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'2'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '2' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'1'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '1' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'3'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '3' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'1'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '1' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'4'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '4' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'1'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '1' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'5'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '5' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'1'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '1' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'1'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '1' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'2'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '2' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'3'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '3' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'4'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '4' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'5'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '5' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: no such table: log
+🛑 select [p_0] from log where p_0 like 'turn all the lights off ...' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'6'": syntax error
+🛑 select [p_0] from log where p_0 like 'BPARM==' and  like '6' order by rowid  limit 1 offset 0;
+🛑 sql_select: - Failed to fetch data: near "'7'": syntax error
+🛑 select [p_0] from log where p_0 like 'WPARM==' and  like '7' order by rowid  limit 1 offset 0;
+🛑 		MAP failed to locate a mapping for (op:S00_KARMA_MAP, key:32767)
+🛑 		machine SID_HALO state karmaDrain
+🛑 		px1: 32767
+🛑 		px2: S00_KARMA_MAP
+🛑 missing_file_name: 32767
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/32767
+🛑 		MAP failed to locate a mapping for (op:S00_KARMA_MAP, key:32767)
+🛑 		machine SID_HALO state karmaDrain
+🛑 		px1: 32767
+🛑 		px2: S00_KARMA_MAP
+🛑 missing_file_name: 32767
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/32767
+🛑 		MAP failed to locate a mapping for (op:S00_KARMA_MAP, key:32766)
+🛑 		machine SID_HALO state karmaDrain
+🛑 		px1: 32766
+🛑 		px2: S00_KARMA_MAP
+🛑 missing_file_name: 32766
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/32766
+🛑 		MAP failed to locate a mapping for (op:S00_KARMA_MAP, key:32766)
+🛑 		machine SID_HALO state karmaDrain
+🛑 		px1: 32766
+🛑 		px2: S00_KARMA_MAP
+🛑 missing_file_name: 32766
+🛑 Looked here: /Users/rickgonzalez/AzariaCD/data/ones/objects/32766
