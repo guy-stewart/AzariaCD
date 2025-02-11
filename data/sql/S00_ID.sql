@@ -14,7 +14,7 @@ delete from controls where id = 'ID_PLAYERNAME';
 delete from controls where id = 'ID_OTHERPLAYERNAME';
 insert into controls values
 ('IDV_PLAYERNAME','PN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,''),
-('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,'');
+('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'MooMo', 'default','IDS_FONTTNB14',0x44FFFF,'');
 
 
 --machine for putting name on players

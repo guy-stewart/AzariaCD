@@ -1,35 +1,43 @@
-WRITE:  _______
-WRITE: |__   __|
-WRITE:    | |_ __ __ _  ___ ___
-WRITE:    | | '__/ _` |/ __/ _ \
-WRITE:    | | | | (_| | (_|  __/
-WRITE:    |_|_|  \__,_|\___\___|
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE(HIDING ITEM  )
-WRITE: WRITE(Checking to see if we hid all 10   )
-WRITE: WRITE( should be done  )
+ _______
+|__   __|
+   | |_ __ __ _  ___ ___
+   | | '__/ _` |/ __/ _ \
+   | | | | (_| | (_|  __/
+   |_|_|  \__,_|\___\___|
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE(HIDING ITEM  )
+WRITE(Checking to see if we hid all 10   )
+WRITE( should be done  )
 🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
 🛑 Compile error(QL_MANAGER::OnTransition) '    
  '
-🛑 Compile error(QL_MANAGER::OnTransition) '    
- '
-🛑 SetRegVal(address,'bc7aace7fa277660f20254d08ded0eeed9b417b6') Not a register.
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
-🛑 sql_exec: SQL error: no such table: sessions :: ('select * from sessions;')
+{"rooms":["lobby","AzariaRoom","ClickTaleRoom","Relay"],"roomsByType":{},"roomsById":{}}
+{"rooms":["lobby","AzariaRoom","ClickTaleRoom","Relay"],"roomsByType":{},"roomsById":{}}
+----------------------
+     CREATE ROOM
+----------------------
+ https_post('us-atl-3b185468.colyseus.cloud',/matchmake/create/AzariaRoom','{"playerId":"108.82.186.169:61010","name":"boom","ip":":","candidates":["127.0.0.1:61010","192.168.1.231:61010","108.82.186.169:61010"],"roomName":"AzariaRoom","roomType":"public","roomMaxPlayers":"100","fname":"Rick"}');
+---------------------------
+   CREATE ROOM RESPONSE:
+---------------------------
+{"room":{"clients":1,"locked":false,"private":false,"maxClients":50,"unlisted":false,"createdAt":"2025-02-11T04:04:04.728Z","name":"AzariaRoom","processId":"e5rswZYol","publicAddress":"us-atl-3b185468.colyseus.cloud","roomId":"v0q_cuXuKRick"},"sessionId":"trjz-s8A3"}
+URL=us-atl-3b185468.colyseus.cloud/e5rswZYol/v0q_cuXuKRick?sessionId=trjz-s8A3
+mysock:<colyseus>
+🛑 SDL_QUIT

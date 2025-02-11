@@ -1,0 +1,20 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_ALT_LEVER2::M_PORTAL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "portal" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        LOADVIEW(WIP1, WIP2);<br align="left"/></font></td></tr></table>>
+];
+	portal[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>portal<br align="left"/></b></td></tr>
+</table>>];
+"portal" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_ALT_LEVER2<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_N2C @pos(x:2105, y:159, h:45, w:41)<br align="left"/>S21_ALT_LEVER2::M_PORTAL(&apos;IDV_N2B&apos;,&apos;17400&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:159 Left:2105 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

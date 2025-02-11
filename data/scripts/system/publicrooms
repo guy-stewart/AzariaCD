@@ -1,0 +1,24 @@
+
+
+predicate sessions(name, roomid, clients);
+sessions()~
+
+host = "us-atl-3b185468.colyseus.cloud";
+resourcePath = "/Rooms";
+response = https_get(host, resourcePath);
+write(response);
+roomobjects =  json_element(response, "roomsById");
+
+count = 0;
+for (json_iter(roomobjects, ?room)) {
+    count = count + 1;
+    roomid = json_element(room, "roomId");
+    roomclients = json_element(room, "clients");
+    name = roomid;
+    sessions(name, roomid, roomclients).
+}    
+if (count == 0) {
+    write(response);
+}
+//+ ' [' + roomclients + ']' -- Need substring 
+//enum_room(roomid, roomid);
