@@ -1,0 +1,25 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_BUGBAIT::M_ANIBIN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(WSPRITE,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "2" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(WIP2,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_BUGBAIT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_N2D2 @pos(x:577, y:16, h:168, w:108)<br align="left"/>S21_BUGBAIT::M_ANIBIN(&apos;IDS_BUGTREE&apos;,&apos;IDD_BAIT1&apos;,&apos;60&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;2&apos;: wSprite:IDS_BUGTREE Top:16 Left:577 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

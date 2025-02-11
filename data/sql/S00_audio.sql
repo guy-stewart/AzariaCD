@@ -5,12 +5,18 @@ VALUES
 
 
 delete from machines where [name] like 'BTN_AUDIO_%';
+delete from machines where [name] like 'AUD_MUSIC_%';
+delete from machines where [name] like 'AUD_AMBIENT_%';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
 ('BTN_AUDIO_MDN',   'IDV_MAIN_PANEL', '434',    '142',  '460', '167', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_DN', '',  ''),
 ('BTN_AUDIO_MUP',   'IDV_MAIN_PANEL', '565',    '142',  '590', '167', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_MUSIC_UP', '',  ''),
 ('BTN_AUDIO_EFXDN', 'IDV_MAIN_PANEL', '649',    '142',  '676', '167', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_DN',   '',  ''),
-('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '780',    '142',  '807', '167', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_UP',   '',  '');
+('BTN_AUDIO_EFXUP', 'IDV_MAIN_PANEL', '780',    '142',  '807', '167', '3',  'M_AUDIO_BTN', 'AUDIO_LEVELS','SIG_SFX_UP',   '',  ''),
+
+('AUD_MUSIC_PLAYER', 'IDV_MAIN_PANEL', '4','25','5','26', '3',  'M_PLAYER_MUSIC', '','',   '',  ''),
+('AUD_AMBIENT_PLAYER', 'IDV_MAIN_PANEL', '4','25','5','26', '3',  'M_PLAYER_AMBIENT', '','',   '',  '');
+
 
 delete from machines where [name] like 'POS_AUDIO_%';
 delete from machines where [name] like 'AUDIO_LEVELS%';
@@ -45,10 +51,39 @@ VALUES
 
 delete from transitions where [automaton] like 'M_AUDIO_%';
 delete from transitions where [automaton] like 'M_VOL%';
+delete from transitions where [automaton] like 'M_PLAYER_%';
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
-('M_AUDIO_BTN', '0', '0', 'CLICK','0', '', 'SIGNAL(WIP1,WIP2);}'),
+-- SIGNAL(AUD_MUSIC_PLAYER, SIG_112); 
+
+('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_2', '
+     playmusic(kam002aa,3);
+'),
+('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_INTRO_MIX', '
+     playmusic(kam209ba,3);
+    //playmusic(kam209ba,3); then playmusic(kam210ba,3);
+'),
+('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_NATURE_INTRO', '
+     playmusic(kam112aa,3);
+     //playmusic kam112aa , then playmusic(306ba,3) -- might change to SIG_N2A custom playlist
+'),
+ ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
+
+----------------- Ambient -----------------------------------
+--ocean
+--cavewind
+('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_NAT', '
+    PLAYWAVE(nature1); 
+'),
+('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_CITY', '
+    PLAYWAVE(SOUND_CLICK);
+'),
+ ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
+
+------------------------------------------------------------
+
+('M_AUDIO_BTN', '0', '0', 'CLICK','0', '', 'SIGNAL(WIP1,WIP2);'),
 
 ('M_AUDIO_LEVELS', '0', 'READY', 'Z_EPSILON','0', '', '
      //set initial audio level here 

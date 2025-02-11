@@ -19,7 +19,8 @@ VALUES
 ('IDV_CFGNW1', '1', '3', '1', '1', 'wdepanel.vct', 'NW1'),
 ('IDV_CFGNW1A', '1', '3', '1', '1', 'wdepanel.vct', 'NW1A'),
 ('IDV_CFGNW1B', '1', '3', '1', '1', 'wdepanel.vct', 'NW1B'),
-('IDV_CFGNW1C', '1', '3', '1', '1', 'wdepanel.vct', 'NWback');
+('IDV_CFGNW1C', '1', '3', '1', '1', 'wdepanel.vct', 'NWback'),
+('IDV_CFGNW1C2', '1', '3', '1', '1', 'wdepanel.vct', 'NWback');
 --CFGPROV (original menu)!
 
 
