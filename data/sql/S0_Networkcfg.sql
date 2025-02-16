@@ -88,7 +88,11 @@ delete from "main"."transitions" where [automaton] like 'M_ANI_BULLET%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 ('M_ANI_BULLET', 0, 1, 'MOV', 'WSPRITE', 'WIP1', '', NULL, NULL),
 ('M_ANI_BULLET', 1, 2, 'ASHOW', 'WSPRITE', 'V_LOOP', '', NULL, NULL),
-('M_ANI_BULLET', 2, 0, 'CLICK', '', '', '', NULL, NULL);
+('M_ANI_BULLET', 2, 0, 'WAIT', '', 'SIG_RESET', '
+    predicate sessions(name, roomid, clients);
+    call("system/publicrooms"); 
+    control_refresh("IDV_CFGNW1C","CFGNW1C_4"); 
+', NULL, NULL);
 
 delete from controls where [view] like 'IDV_CFGNW1C%';
 insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
@@ -119,6 +123,7 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
     roomid=getOpenPlay("roomid");
     call("system/publicrooms"); 
     control_refresh("IDV_CFGNW1C","CFGNW1C_4");
+    LoadVIEW(IDV_ORIE);
 '),
 ('IDV_CFGNW1C2', 'CFGNW1C2_1', 'BUTTON',   'IDS_BTN_CANCEL',   'IDS_BTN_CANCEL_HI',  360,    215, 0, '','','',0,
     'LOADVIEW(IDV_CFGNW1);

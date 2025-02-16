@@ -127,7 +127,25 @@ VALUES
 ( 'QL_WORLDEXT',  'IDV_QUESTPAN', '112', '24', '144',  '51', '1','M_QUEST_EXT','','','',''),
 ( 'QL_MYTABEXT', 'IDV_QUESTPANW', '112', '24', '144',  '51', '1','M_QUEST_EXT','','','',''),
 
-('QL_MANAGER', 'IDV_QUESTPAN', '10', '10', '20', '20', '1','M_QUEST_MANAGER','','','','');
+('QL_MANAGER', 'IDV_QUESTPAN', '10', '10', '20', '20', '1','M_QUEST_MANAGER','','','',''),
+
+('QL_Q0_State',    'IDV_QUESTPAN',      '10', '10', '20', '20',     '1',    'M_QUEST_TRACKER','0','','',''),
+('QL_Q1_State',    'IDV_QUESTPAN',      '20', '10', '30', '20',     '1',    'M_QUEST_TRACKER','1','','',''),
+('QL_Q2_State',    'IDV_QUESTPAN',      '30', '10', '40', '20',     '1',    'M_QUEST_TRACKER','2','','',''),
+('QL_Q3_State',    'IDV_QUESTPAN',      '40', '10', '50', '20',     '1',    'M_QUEST_TRACKER','3','','',''),
+('QL_Q4_State',    'IDV_QUESTPAN',      '50', '10', '60', '20',     '1',    'M_QUEST_TRACKER','4','','',''),
+('QL_Q5_State',    'IDV_QUESTPANW',     '60', '10', '70', '20',     '1',    'M_QUEST_TRACKER','5','','',''),
+('QL_Q6_State',    'IDV_QUESTPANW',     '70', '10', '80', '20',     '1',    'M_QUEST_TRACKER','6','','',''),
+('QL_Q7_State',    'IDV_QUESTPANW',     '80', '10', '90','20',      '1',    'M_QUEST_TRACKER','7','','',''),
+('QL_Q8_State',    'IDV_QUESTPANW',     '90', '10', '100','20',     '1',    'M_QUEST_TRACKER','8','','',''),
+('QL_Q9_State' ,   'IDV_QUESTPANW',     '100', '10', '120','20',    '1',    'M_QUEST_TRACKER','9','','',''),
+('QL_Q10_State' ,  'IDV_QUESTPANW',     '110', '10', '120','20',    '1',    'M_QUEST_TRACKER','10','','',''),
+('QL_Q11_State' ,  'IDV_QUESTPANW',     '120', '10', '140','20',    '1',    'M_QUEST_TRACKER','11','','',''),
+('QL_Q12_State' ,  'IDV_QUESTPANW',     '130', '10', '150','20',    '1',    'M_QUEST_TRACKER','12','','',''),
+('QL_Q13_State' ,  'IDV_QUESTPANW' ,    '140', '10' ,'160' ,'20',   '1' ,   'M_QUEST_TRACKER' ,'13','','','' ),
+('QL_Q14_State' ,  'IDV_QUESTPANW' ,    '150', '10' ,'170' ,'20',   '1' ,   'M_QUEST_TRACKER' ,'14','','','' ),
+('QL_Q15_State' ,  'IDV_QUESTPANW' ,    '160', '10' ,'180' ,'20',   '1' ,   'M_QUEST_TRACKER' ,'15','','' ,'');
+
 
 --RECORD WHAT/WHERE EACH QUEST IS PUT
 
@@ -148,7 +166,29 @@ VALUES
        LOADVIEW(R_WPARM);       
 '),
 ('M_QUEST_EXT','exited','0','Z_EPSILON', '', '', ''),
+--------------------------------------
 
+--M_QUEST_TRACKER
+
+-- Holds the state of each quest - the quest manager can be signaled to read each machine and rewrite the quest logs
+('M_QUEST_TRACKER','0','Undiscovered','Z_EPSILON', '', '', '
+       BPARM = ""; 
+       WPARM = "";
+       WTEMP1 = "Undiscovered";          
+'),
+('M_QUEST_TRACKER','Undiscovered','active','WAIT', 'SIG_ACTIVE', '', '
+        BPARM = WIP1; MAPi(BPARM,S00_QUEST); 
+        WPARM = WIP1; MAPi(WPARM,S00_QUESTLOC); 
+        WTEMP1 = "active";     
+'),
+('M_QUEST_TRACKER','active','complete','WAIT', 'SIG_COMPLETE', '', '
+        BPARM = WIP1; MAPi(BPARM,S00_QUEST); 
+        WPARM = WIP1; MAPi(WPARM,S00_QUESTLOC); 
+        WTEMP1 = "complete";     
+'),
+
+
+----------------------------------------
 -- The state of which line is open
 -- the state of each line - what map item is written to it
 
@@ -157,23 +197,71 @@ VALUES
 --M_QUEST_MANAGER
  ('M_QUEST_MANAGER','0','waiting','Z_EPSILON', '', '', '    
  '),
+ ('M_QUEST_MANAGER','waiting','recordstatus','WAIT', 'Q_RESET', '', '
+       predicate q_local_active(quest,num,status,location);
+       q_local_active("%")~
+       predicate q_local_complete(quest,num,status,location);
+       q_local_complete("%")~
+       predicate q_world_active(quest,num,status,location);
+       q_local_active("%")~
+       predicate q_world_complete(quest,num,status,location);
+       q_local_complete("%")~
+
+        REF_MACHINE(QL_Q0_State);
+        if(R_WTEMEP1 == "active"){ q_local_active(R_BPARM,0,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,0,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q1_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q2_State);
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q3_State);
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q4_State);
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q5_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q6_State);       
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q7_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q8_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q9_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q10_State);
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q11_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q12_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q13_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q14_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        REF_MACHINE(QL_Q15_State);
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}      
+'),
+ ('M_QUEST_MANAGER','recordstatus','0','Z_EPSILON', '', '', '    
+ '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q0_START', '', '
         BPARM = 0; MAPi(BPARM,S00_QUEST); 
         WPARM = 0; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 0,active,WPARM).
+        SIGNAL(QL_Q0_State,SIG_ACTIVE);
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q1_START', '', '
         BPARM = 1; MAPi(BPARM,S00_QUEST); 
         WPARM = 1; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 1,active,WPARM).
+        SIGNAL(QL_Q1_State,SIG_ACTIVE);
 '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q2_START', '', '
         BPARM = 2; MAPi(BPARM,S00_QUEST); 
         WPARM = 2; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 2,active,WPARM).
+        SIGNAL(QL_Q2_State,SIG_ACTIVE);
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q3_START', '', '
@@ -181,12 +269,14 @@ VALUES
         WPARM = 3; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 3,active,WPARM).
+        SIGNAL(QL_Q3_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q4_START', '', '
         BPARM = 4; MAPi(BPARM,S00_QUEST); 
         WPARM = 4; MAPi(WPARM,S00_QUESTLOC);
         predicate q_world_active(quest,num,status,location); 
         q_world_active(BPARM, 4,active,WPARM).
+        SIGNAL(QL_Q4_State,SIG_ACTIVE);
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q5_START', '', '
@@ -194,6 +284,7 @@ VALUES
         WPARM = 5; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 5,active,WPARM).
+        SIGNAL(QL_Q5_State,SIG_ACTIVE);
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q6_START', '', '
@@ -201,6 +292,7 @@ VALUES
         WPARM = 6; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_world_active(quest,num,status,location);
         q_world_active(BPARM, 6,active,WPARM).
+        SIGNAL(QL_Q6_State,SIG_ACTIVE);
         '),
 
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q7_START', '', '
@@ -208,6 +300,7 @@ VALUES
         WPARM = 7; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 7,active,WPARM).
+        SIGNAL(QL_Q7_State,SIG_ACTIVE);
         '),
         
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q8_START', '', '
@@ -215,55 +308,57 @@ VALUES
         WPARM = 8; MAPi(WPARM,S00_QUESTLOC); 
         predicate q_local_active(quest,num,status,location);
         q_local_active(BPARM, 8,active,WPARM).
+        SIGNAL(QL_Q8_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q9_START', '', '
         BPARM = 9; MAPi(BPARM,S00_QUEST); 
         WPARM = 9; MAPi(WPARM,S00_QUESTLOC);
         predicate q_local_active(quest,num,status,location); 
         q_local_active(BPARM, 9,active,WPARM).
+        SIGNAL(QL_Q9_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q10_START', '', '
           BPARM = 10; MAPi(BPARM,S00_QUEST); 
           WPARM = 10; MAPi(WPARM,S00_QUESTLOC);
           predicate q_world_active(quest,num,status,location); 
           q_local_active(BPARM,10,active,WPARM).
+          SIGNAL(QL_Q10_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q11_START', '', '
          BPARM = 11; MAPi(BPARM,S00_QUEST); 
           WPARM = 11; MAPi(WPARM,S00_QUESTLOC); 
           predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,11,active,WPARM).
+          SIGNAL(QL_Q11_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q12_START', '', '
          BPARM = 12; MAPi(BPARM,S00_QUEST); 
           WPARM = 12; MAPi(WPARM,S00_QUESTLOC); 
           predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,12,active,WPARM).
+          SIGNAL(QL_Q12_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q13_START', '', '
          BPARM = 13; MAPi(BPARM,S00_QUEST); 
           WPARM = 13; MAPi(WPARM,S00_QUESTLOC); 
           predicate q_local_active(quest,num,status,location);
           q_local_active(BPARM,13,active,WPARM).
+          SIGNAL(QL_Q13_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q14_START', '', '
          BPARM = 14; MAPi(BPARM,S00_QUEST); 
           WPARM = 14; MAPi(WPARM,S00_QUESTLOC);
           predicate q_local_active(quest,num,status,location); 
           q_local_active(BPARM,14,active,WPARM).
+          SIGNAL(QL_Q14_State,SIG_ACTIVE);
         '),
 ('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q15_START', '', '
         BPARM = 15; MAPi(BPARM,S00_QUEST); 
           WPARM = 15; MAPi(WPARM,S00_QUESTLOC); 
           predicate q_world_active(quest,num,status,location);
           q_world_active(BPARM,15,active,WPARM).
+          SIGNAL(QL_Q15_State,SIG_ACTIVE);
         '), 
-('M_QUEST_MANAGER','waiting','startposted','WAIT', 'Q16_START', '', '
-         BPARM = 16; MAPi(BPARM,S00_QUEST); 
-          WPARM = 16; MAPi(WPARM,S00_QUESTLOC);
-          predicate q_local_active(quest,num,status,location); 
-          q_local_active(BPARM,16,active,WPARM).
-        '),
 ---
 ('M_QUEST_MANAGER','startposted','0','Z_EPSILON', '', '', '
         SIGNAL(S0_QL_BTN,SIG_GLOW);
@@ -276,6 +371,7 @@ VALUES
         q_local_active(BPARM, 0,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 0,complete,WPARM).
+        SIGNAL(QL_Q0_State,SIG_COMPLETE);
 
 '),
 ('M_QUEST_MANAGER','waiting', 'postfini','WAIT', 'Q1_STOP', '', '
@@ -285,7 +381,7 @@ VALUES
         q_local_active(BPARM, 1,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 1,complete,WPARM).
-
+        SIGNAL(QL_Q1_State,SIG_COMPLETE);
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q2_STOP', '', '
         BPARM = 2; MAPi(BPARM,S00_QUEST); 
@@ -294,6 +390,7 @@ VALUES
         q_world_active(BPARM, 2,active,WPARM)~ 
         predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 2,complete,WPARM).
+        SIGNAL(QL_Q2_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q3_STOP', '', '
@@ -303,6 +400,7 @@ VALUES
           q_world_active(BPARM, 3,active,WPARM)~ 
           predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 3,complete,WPARM).
+        SIGNAL(QL_Q3_State,SIG_COMPLETE);
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q4_STOP', '', '
         BPARM = 4; MAPi(BPARM,S00_QUEST); 
@@ -311,6 +409,7 @@ VALUES
         q_world_active(BPARM, 4,active,WPARM)~ 
         predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 4,complete,WPARM).
+        SIGNAL(QL_Q4_State,SIG_COMPLETE);
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q5_STOP', '', '
        BPARM = 5; MAPi(BPARM,S00_QUEST); 
@@ -319,6 +418,7 @@ VALUES
         q_local_active(BPARM, 5,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 5,complete,WPARM).
+        SIGNAL(QL_Q5_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q6_STOP', '', '
@@ -328,6 +428,7 @@ VALUES
         q_world_active(BPARM, 6,active,WPARM)~ 
         predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 6,complete,WPARM).
+        SIGNAL(QL_Q6_State,SIG_COMPLETE);
 '),
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q7_STOP', '', '
         BPARM = 7; MAPi(BPARM,S00_QUEST); 
@@ -336,6 +437,7 @@ VALUES
         q_local_active(BPARM, 7,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 7,complete,WPARM).
+        SIGNAL(QL_Q7_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q8_STOP', '', '
@@ -345,6 +447,7 @@ VALUES
         q_local_active(BPARM, 8,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 8,complete,WPARM).
+        SIGNAL(QL_Q8_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q9_STOP', '', '
@@ -354,6 +457,7 @@ VALUES
         q_local_active(BPARM, 9,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 9,complete,WPARM).
+        SIGNAL(QL_Q9_State,SIG_COMPLETE);
 '),      
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q10_STOP', '', '
@@ -363,10 +467,9 @@ VALUES
         q_local_active(BPARM, 10,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 10,complete,WPARM).
+        SIGNAL(QL_Q10_State,SIG_COMPLETE);
 '),
         
-        
-
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q11_STOP', '', '
         BPARM = 11; MAPi(BPARM,S00_QUEST); 
         WPARM = 11; MAPi(WPARM,S00_QUESTLOC);
@@ -374,10 +477,9 @@ VALUES
         q_local_active(BPARM, 11,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 11,complete,WPARM).
+        SIGNAL(QL_Q11_State,SIG_COMPLETE);
 '),
         
-        
-
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q12_STOP', '', '
         BPARM = 12; MAPi(BPARM,S00_QUEST); 
         WPARM = 12; MAPi(WPARM,S00_QUESTLOC);
@@ -385,6 +487,7 @@ VALUES
         q_local_active(BPARM, 12,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 12,complete,WPARM).
+        SIGNAL(QL_Q12_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q13_STOP', '', '
@@ -394,6 +497,7 @@ VALUES
         q_local_active(BPARM, 13,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 13,complete,WPARM).
+        SIGNAL(QL_Q13_State,SIG_COMPLETE);
 '),
 
 ('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q14_STOP', '', '
@@ -403,6 +507,7 @@ VALUES
         q_word_active(BPARM, 14,active,WPARM)~ 
         predicate q_world_complete(quest,num,status,location);
         q_world_complete(BPARM, 14,complete,WPARM).
+        SIGNAL(QL_Q14_State,SIG_COMPLETE);
 '),
 
 
@@ -413,17 +518,8 @@ VALUES
         q_local_active(BPARM, 15,active,WPARM)~ 
         predicate q_local_complete(quest,num,status,location);
         q_local_complete(BPARM, 15,complete,WPARM).
+        SIGNAL(QL_Q15_State,SIG_COMPLETE);
 '),
-
-('M_QUEST_MANAGER','waiting',  'postfini','WAIT', 'Q16_STOP', '', '
-        BPARM = 16; MAPi(BPARM,S00_QUEST); 
-        WPARM = 16; MAPi(WPARM,S00_QUESTLOC);
-        predicate q_local_active(quest,num,status,location); 
-        q_local_active(BPARM, 16,active,WPARM)~ 
-        predicate q_local_complete(quest,num,status,location);
-        q_local_complete(BPARM, 16,complete,WPARM).
-'),
-
 
 ('M_QUEST_MANAGER','postfini','0','Z_EPSILON', '', '', '');
 -----------------------------

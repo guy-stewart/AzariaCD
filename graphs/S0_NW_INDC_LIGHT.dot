@@ -1,0 +1,49 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_NW_INDC_LIGHT::M_NW_INDC_LIGHT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(BFRAME,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	good[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>good<br align="left"/></b></td></tr>
+</table>>];
+"good" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ESTIME(,1)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASHOW(WIP3);<br align="left"/></font></td></tr></table>>
+];
+	off[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>off<br align="left"/></b></td></tr>
+</table>>];
+"off" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ZEPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	on[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>on<br align="left"/></b></td></tr>
+</table>>];
+"on" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ZEPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	waiting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>waiting<br align="left"/></b></td></tr>
+</table>>];
+"waiting" -> "on" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_ON)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;GOT MY SIG_ON&quot;);<br align="left"/>    WRITE(&quot;Waiting in on position&quot;);<br align="left"/>    ASHOW(WIP3);<br align="left"/></font></td></tr></table>>
+];
+"waiting" -> "good" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_UPDATE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;GOT MY SIG_UPDATE&quot;);<br align="left"/>    SHOW(WIP2);<br align="left"/></font></td></tr></table>>
+];
+"waiting" -> "off" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_OFF)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;GOT MY SIG_OFF&quot;);<br align="left"/>    SHOW(WIP4);<br align="left"/></font></td></tr></table>>
+];
+"waiting" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_NW_INDC_LIGHT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:991, y:238, h:14, w:51)<br align="left"/>S0_NW_INDC_LIGHT::M_NW_INDC_LIGHT(&apos;IDS_INDC_NW_WHITE&apos;,&apos;IDS_INDC_NW_GREEN&apos;,&apos;IDS_INDC_BLINK&apos;,&apos;IDS_INDC_NW_RED&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;waiting&apos;: wSprite:IDS_INDC_BLINK bFrame:0 dEtime:0 Top:238 Left:991 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

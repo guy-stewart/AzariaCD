@@ -1,0 +1,53 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_SPELL::M_IDSPELL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "checkObject" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    CLEAR(WVIEWID);<br align="left"/>    WRITE(&quot;Item Dropped on ID&quot;);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_CLEAR)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW();<br align="left"/></font></td></tr></table>>
+];
+	checkObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>checkObject<br align="left"/></b></td></tr>
+</table>>];
+"checkObject" -> "itsAbomb" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IS_A(WOBJECT,IDC_BOMB)<br align="left"/></b></td></tr>
+</table>>
+];
+"checkObject" -> "itsAspell" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IS_A(WOBJECT,IDC_SPELL)<br align="left"/></b></td></tr>
+</table>>
+];
+"checkObject" -> "itsAspell" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IS_A(WOBJECT,IDD_GVIAL)<br align="left"/></b></td></tr>
+</table>>
+];
+"checkObject" -> "regularObject" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;M_IDSPELL has detected a regular object drop from me or other&quot;);<br align="left"/>    SHOW(WOBJECT);<br align="left"/></font></td></tr></table>>
+];
+	itsAbomb[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itsAbomb<br align="left"/></b></td></tr>
+</table>>];
+"itsAbomb" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>IFSTATE(active,PROTECT_ACTIVE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue"> <br align="left"/>    PLAYWAVE(SOUND_SUCK);<br align="left"/></font></td></tr></table>>
+];
+"itsAbomb" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SPELL_ME(WOBJECT,SIG_BOMB)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     WRITE(&quot;M_IDSPELL says ITS A BOMB&quot;);<br align="left"/>     SIGNAL(SID_ID, SIG_BOMB);<br align="left"/></font></td></tr></table>>
+];
+	itsAspell[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itsAspell<br align="left"/></b></td></tr>
+</table>>];
+"itsAspell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>IFSTATE(active,PROTECT_ACTIVE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue"> <br align="left"/>  PLAYWAVE(SOUND_SUCK);<br align="left"/></font></td></tr></table>>
+];
+"itsAspell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if(WOBJECT == IDD_PROTECT)&#123;SHOW();SIGNAL(PROTECT_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_NYBREATH)&#123;SHOW();SIGNAL(NYBREATH_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_WETBREATH)&#123;SHOW();SIGNAL(WETBREATH_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_TELEKINESIS)&#123;SHOW();SIGNAL(TELEKINESIS_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_INVISIBLE)&#123;SHOW();SIGNAL(INVISIBLE_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_ENCHANT)&#123;SHOW(WOBJECT);SIGNAL(ENCHANT_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_HOLDING)&#123;SHOW(WOBJECT);SIGNAL(HOLDING_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_STALKER)&#123;SHOW(WOBJECT);SIGNAL(STALKING_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_TRANSFER)&#123;SHOW();SIGNAL(TRANSFER_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_DEATH)&#123;SHOW();SIGNAL(DEATH_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_BANISHMENT)&#123;SHOW();SIGNAL(BANISHMENT_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_BLINDNESS)&#123;SHOW();SIGNAL(BLINDNESS_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_HALLUCINATE)&#123;SHOW();SIGNAL(HALLUCINATE_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_GVIAL)&#123;SHOW();SIGNAL(GOPA_ACTIVE,SIG_SPELLME);&#125;<br align="left"/>    if(WOBJECT == IDD_REVIAL)&#123;SHOW();SIGNAL(REVIVE_ACTIVE,SIG_SPELLME);&#125;<br align="left"/></font></td></tr></table>>
+];
+	regularObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>regularObject<br align="left"/></b></td></tr>
+</table>>];
+"regularObject" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    CLEAR(WOBJECT);<br align="left"/>    SHOW();<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_SPELL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:10, y:50, h:70, w:100)<br align="left"/>SID_SPELL::M_IDSPELL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:50 Left:10 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

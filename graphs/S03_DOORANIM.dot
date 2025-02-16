@@ -35,7 +35,7 @@ digraph Automaton {
 	30[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>30<br align="left"/></b></td></tr>
 </table>>];
 "30" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>LOADVIEW(WIP3,)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    ASSIGN(LTHETA,WIP4);<br align="left"/>    q_local_active(?BPARM, &quot;1&quot;);<br align="left"/>    if(BPARM != &quot; Find the ancient map in the wilderness.&quot;)&#123;<br align="left"/>     SIGNAL(QL_MANAGER,Q1_START);<br align="left"/>    &#125;<br align="left"/>     playmusic(kam002aa,3);<br align="left"/> <br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    ASSIGN(LTHETA,WIP4);<br align="left"/>    q_local_active(?BPARM, &quot;1&quot;);<br align="left"/>    if(BPARM != &quot; Find the ancient map in the wilderness.&quot;)&#123;<br align="left"/>     SIGNAL(QL_MANAGER,Q1_START);<br align="left"/>    &#125;<br align="left"/>    SIGNAL(AUD_MUSIC_PLAYER, SIG_112);<br align="left"/> <br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S03_DOORANIM<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="green">VIEW::IDV_ORIE @pos(x:305, y:55, h:101, w:205)<br align="left"/>S03_DOORANIM::M_QANIPORTAL(&apos;IDS_DOORANIM&apos;,&apos;&apos;,&apos;IDV_N2A&apos;,&apos;9300&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: wSprite:IDS_DOORANIM Top:55 Left:305 Z:0<br align="left"/></font></td></tr></table>>
