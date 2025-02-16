@@ -1,43 +1,50 @@
- _______
-|__   __|
-   | |_ __ __ _  ___ ___
-   | | '__/ _` |/ __/ _ \
-   | | | | (_| | (_|  __/
-   |_|_|  \__,_|\___\___|
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE(HIDING ITEM  )
-WRITE(Checking to see if we hid all 10   )
-WRITE( should be done  )
-🛑 Effects::PlaySound(/lever.wav) --> file does not exist.
-🛑 Compile error(QL_MANAGER::OnTransition) '    
- '
+🛑 wsServer::startServer(3006) -> bind failed
+🛑 wsServer::startServer(3007) -> bind failed
+SETTING EVENT
+WRITE(RESETTING INDC LIGHT )
 {"rooms":["lobby","AzariaRoom","ClickTaleRoom","Relay"],"roomsByType":{},"roomsById":{}}
 {"rooms":["lobby","AzariaRoom","ClickTaleRoom","Relay"],"roomsByType":{},"roomsById":{}}
-----------------------
-     CREATE ROOM
-----------------------
- https_post('us-atl-3b185468.colyseus.cloud',/matchmake/create/AzariaRoom','{"playerId":"108.82.186.169:61010","name":"boom","ip":":","candidates":["127.0.0.1:61010","192.168.1.231:61010","108.82.186.169:61010"],"roomName":"AzariaRoom","roomType":"public","roomMaxPlayers":"100","fname":"Rick"}');
----------------------------
-   CREATE ROOM RESPONSE:
----------------------------
-{"room":{"clients":1,"locked":false,"private":false,"maxClients":50,"unlisted":false,"createdAt":"2025-02-11T04:04:04.728Z","name":"AzariaRoom","processId":"e5rswZYol","publicAddress":"us-atl-3b185468.colyseus.cloud","roomId":"v0q_cuXuKRick"},"sessionId":"trjz-s8A3"}
-URL=us-atl-3b185468.colyseus.cloud/e5rswZYol/v0q_cuXuKRick?sessionId=trjz-s8A3
-mysock:<colyseus>
-🛑 SDL_QUIT
+🛑 Effects::PlayS{"rooms":["lobby","AzariaRoom","ClickTaleRoom","Relay"],"roomsByType":{"AzariaRoom":1},"roomsById":{"G-ttkXDuuName":{"clients":1,"locked":false,"private":false,"maxClients":50,"unlisted":false,"createdAt":"2025-02-16T03:43:00.256Z","name":"AzariaRoom","processId":"e5rswZYol","publicAddress":"us-atl-3b185468.colyseus.cloud","roomId":"G-ttkXDuuName"}}}
+joinroom
+uri:'uri'
+resourcePath:'/matchmake/joinById/G-ttkXDuuName'
+postdata is -->{"playerId":"108.82.186.169:61872","name":"Jammer","ip":":","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"fname":"Jammer"}
+reservation:{"room":{"clients":2,"locked":false,"private":false,"maxClients":50,"unlisted":false,"createdAt":"2025-02-16T03:43:00.256Z","name":"AzariaRoom","processId":"e5rswZYol","publicAddress":"us-atl-3b185468.colyseus.cloud","roomId":"G-ttkXDuuName"},"sessionId":"PqNha-cZZ"}
+URL=us-atl-3b185468.colyseus.cloud//e5rswZYol/G-ttkXDuuName?sessionId=PqNha-cZZ
+mysock:<mysock>
+WRITE(GOT MY SIG_UPDATE )
+NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254d08ded0eeed9b417b6","candidates":["127.0.0.1:49574","192.168.1.231:49574","108.82.186.169:49574"],"ip":":","name":"Tom","pid":"108.82.186.169:49574"}}
+NetEvent:DPSYS_ADDPLAYER
+Params:"pid":"108.82.186.169:49574","ip":"127.0.0.1:49574","account_id":"bc7aace7fa277660f20254d08ded0eeed9b417b6","name":"Tom","candidates":["127.0.0.1:49574","192.168.1.231:49574","108.82.186.169:49574"]
+NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"192.168.1.231","ipto":"192.168.1.231","player":{"account_id":"bc7aace7fa277660f20254d08ded0eeed9b417b6","candidates":["127.0.0.1:49574","192.168.1.231:49574","108.82.186.169:49574"],"ip":":","name":"Tom","pid":"108.82.186.169:49574"}}
+NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254d08ded0eeed9b417b6","candidates":["127.0.0.1:49574","192.168.1.231:49574","108.82.186.169:49574"],"ip":":","name":"Tom","pid":"108.82.186.169:49574"}}
+WRITE(GOT MY SIG_ON )
+WRITE(Waiting in on position )
+WRITE(GOT MY SIG_UPDATE )
+player tagged: ---->108.82.186.169:49574
+player ----> {"candidates":["127.0.0.1:49574","192.168.1.231:49574","108.82.186.169:49574"],"connected":true,"playerId":"108.82.186.169:49574","playerIp":":","playerName":"Tom","reconnectTok":"HkkbEnw9w"}
+🛑 SetRegVal(otherName,'Tom') Not a register.
+send_request for other player info ..... 
+🛑 /Users/guy/projects/kamioza/Azaria/Source/Net/directplay.h:126 Error nlohmann::json::parse("{"id":2,"tbl":4,"result":"gotPlayerDetails","from":"108.82.186.169:49574","to":"108.82.186.169:61872", "params":{params:{"name":"Tom","viewname":"","wealth":4,"karma":0,"energy":4,"strength":10,"wisdom":4,"gender":1,"culture":0,"knowsparent":0,"knowsvillage":0,"knowscity":0,}}}") --> type_error: [json.exception.parse_error.101] parse error at line 1, column 114: syntax error while parsing object key - invalid literal; last read: '"params":{p'; expected string literal
+NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aacNetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"ip":":","name":"JNetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7faNetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"ip":":","nameNetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa2776NetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"ip":":","NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f2NetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"ip":"NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254NetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"iNetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254d08dNetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254d08ded0eNetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61NetEvent:DPSYS_PONG
+Params:{"creator":true,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"bc7aace7fa277660f20254d08ded0eeed9NetEvent:DPSYS_PONG
+Params:{"creator":false,"echoip":"127.0.0.1","ipto":"127.0.0.1","player":{"account_id":"32cb8320babaf50aa5b52c4f96794e5db5da9e41","candidates":["127.0.0.1:61872","192.168.1.231:61872","108.82.186.169:61872"],"ip":":","name":"Jammer","pid":"108.82.186.169:61872"}}
+WRITE(GOT MY SIG_ON )
+WRITE(Waiting in on position )

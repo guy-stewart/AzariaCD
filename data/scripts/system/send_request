@@ -1,0 +1,9 @@
+
+predicate otherplayer(pid,status, player);
+write("send_request for other player info ..... ");
+for (otherplayer(?to, ?status, ?params)) {
+    method = "getPlayerDetails";
+    params = "";
+    future = "write('** FUTURE ** result:',result, 'params:',params);";
+    send_request(to, method, params, future);
+}

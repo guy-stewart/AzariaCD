@@ -44,9 +44,9 @@
 <text text-anchor="start" x="939" y="-1406.75" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;CLEAR(WSPRITE);</text>
 <text text-anchor="start" x="939" y="-1394" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;SHOW(0);</text>
 <text text-anchor="start" x="939" y="-1381.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;predicate active_character(name);</text>
-<text text-anchor="start" x="939" y="-1368.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;active_character(?BPARM)?</text>
+<text text-anchor="start" x="939" y="-1368.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;active_character(?WPARM)?</text>
 <text text-anchor="start" x="939" y="-1355.75" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);</text>
-<text text-anchor="start" x="939" y="-1343" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;players(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?</text>
+<text text-anchor="start" x="939" y="-1343" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;players(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?</text>
 <text text-anchor="start" x="939" y="-1330.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;ASSIGN(LENERGY,WTEMP3);</text>
 <text text-anchor="start" x="939" y="-1317.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;SIGNAL(SID_AURA, SIG_MYAURA);</text>
 <text text-anchor="start" x="939" y="-1304.75" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;SIGNAL(SID_HALO, SIG_MYHALO);</text>
@@ -477,14 +477,14 @@
 <!-- status -->
 <g id="node22" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="978,-1461.5 978,-1540.5 1528,-1540.5 1528,-1461.5 978,-1461.5"/>
-<polygon fill="none" stroke="black" points="989,-1514.75 989,-1533.5 1517,-1533.5 1517,-1514.75 989,-1514.75"/>
-<text text-anchor="start" x="1235" y="-1522" font-family="Courier New" font-weight="bold" font-size="10.00">SID_ID</text>
-<polygon fill="none" stroke="black" points="989,-1468.5 989,-1512.75 1517,-1512.75 1517,-1468.5 989,-1468.5"/>
+<polygon fill="none" stroke="black" points="978,-1461.5 978,-1540.5 1450,-1540.5 1450,-1461.5 978,-1461.5"/>
+<polygon fill="none" stroke="black" points="989,-1514.75 989,-1533.5 1439,-1533.5 1439,-1514.75 989,-1514.75"/>
+<text text-anchor="start" x="1196" y="-1522" font-family="Courier New" font-weight="bold" font-size="10.00">SID_ID</text>
+<polygon fill="none" stroke="black" points="989,-1468.5 989,-1512.75 1439,-1512.75 1439,-1468.5 989,-1468.5"/>
 <text text-anchor="start" x="992" y="-1500.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:0, y:0, h:101, w:171)</text>
 <text text-anchor="start" x="992" y="-1487.5" font-family="Courier New" font-size="10.00" fill="green">SID_ID::M_ID(&#39;&#39;,&#39;&#39;,&#39;0&#39;,&#39;SID_AURA&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="992" y="-1474.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: bParm:junior wParm:M1 wSprite:IDS_MID1HAPPY bFrame:0 Top:0 Left:0 Z:0</text>
-<polygon fill="none" stroke="black" points="986,-1465.5 986,-1536.5 1520,-1536.5 1520,-1465.5 986,-1465.5"/>
+<text text-anchor="start" x="992" y="-1474.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: wParm:F1 wSprite:IDS_FID1HAPPY bFrame:0 Top:0 Left:0 Z:0</text>
+<polygon fill="none" stroke="black" points="986,-1465.5 986,-1536.5 1442,-1536.5 1442,-1465.5 986,-1465.5"/>
 </g>
 </g>
 </svg>

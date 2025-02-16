@@ -550,8 +550,19 @@ VALUES
 ---------------------
 ---------------------
 ---------------------
+('M_OID', '0', 'present', 'WAIT', '', 'SIG_OTID', '
+    CLEAR(WSPRITE);
+     SHOW(0);
+     predicate otherplayer(pid,status,player);
+     otherplayer(?BPARM, "ACTIVE", ?WPARM)?
+        otherName = json_element(WPARM, "playerName");
+        set_control_value(IDV_OTHERNAME, OTHN, otherName);
+        call("system/send_request"); 
 
-('M_OID', '0', 'setId', 'EQUALi', 'OSEX', '1', '
+', '', ''), 
+-- so here we need to message the other player to get
+-- their player attributes - wont depend on OSEX as below - maybe to get?
+('M_OID', 'present', 'setId', 'EQUALi', 'OSEX', '1', '
     if(OWISDOM >= 30){
        ASSIGN(WPARM,F3);
     }
@@ -562,7 +573,7 @@ VALUES
        ASSIGN(WPARM,F1);
     }
 ', '', ''), 
-('M_OID', '0', 'setId', 'NEQUALi', 'OSEX', '1', '
+('M_OID', 'present', 'setId', 'NEQUALi', 'OSEX', '1', '
     if(OWISDOM >= 30){
        ASSIGN(WPARM,M3);
     }
@@ -579,7 +590,15 @@ VALUES
     ASSIGN(BFRAME,0);
     SHOW(WSPRITE);
 ', '', ''),
-
+('M_OID', 'sitting', 'present', 'WAIT', '', 'SIG_OTID', '
+    CLEAR(WSPRITE);
+     SHOW(0);
+     predicate otherplayer(pid,status,player);
+     otherplayer(?BPARM, "ACTIVE", ?WPARM)?
+        otherName = json_element(WPARM, "playerName");
+        set_control_value(IDV_OTHERNAME, OTHN, otherName);
+        call("system/send_request"); 
+', '', ''), 
 ('M_OID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_OID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
 ('M_OID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
@@ -592,6 +611,8 @@ VALUES
 ('M_OID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '', '', ''),
 ('M_OID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
 ('M_OID', 'sitting', '0', 'WAIT', '0', '0', '', '', ''),
+
+
 
 ('M_OID', '20', 'playForward', 'ASSIGN', 'WSPRITE', 'happy', '', '', ''),
 ('M_OID', '21', 'playForward', 'ASSIGN', 'WSPRITE', 'hurt', '', '', ''),

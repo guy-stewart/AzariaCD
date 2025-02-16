@@ -121,7 +121,7 @@
 <text text-anchor="start" x="25.91" y="-216.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;if(BPARM != &quot; Find the ancient map in the wilderness.&quot;){</text>
 <text text-anchor="start" x="25.91" y="-203.75" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;SIGNAL(QL_MANAGER,Q1_START);</text>
 <text text-anchor="start" x="25.91" y="-191" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;}</text>
-<text text-anchor="start" x="25.91" y="-178.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;&#160;playmusic(kam002aa,3);</text>
+<text text-anchor="start" x="25.91" y="-178.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;SIGNAL(AUD_MUSIC_PLAYER, SIG_112);</text>
 <text text-anchor="start" x="25.91" y="-165.5" font-family="Courier New" font-size="10.00" fill="blue"> </text>
 <polygon fill="none" stroke="black" points="19.91,-156.25 19.91,-278.25 391.91,-278.25 391.91,-156.25 19.91,-156.25"/>
 </g>

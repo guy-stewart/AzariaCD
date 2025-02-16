@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_MAPBUTTON::M_MAPBUTTON<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   CLEAR(WOBJECT);<br align="left"/>   SHOW();<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "mapPresent" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_MAPBTN,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   SIGNAL(QL_MANAGER,Q1_STOP);<br align="left"/>   SHOW(WOBJECT);<br align="left"/>   ADDI(LWISDOM,1); SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+	mapPresent[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>mapPresent<br align="left"/></b></td></tr>
+</table>>];
+"mapPresent" -> "requested" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">      SIGNAL(MEFPAN_CLOSER,SIG_SET);<br align="left"/>      SIGNAL(S27_DEATHMANAGER,SIG_CLEAR);<br align="left"/>      SIGNAL(S17_aFOULWIND,SIG_CLEAR);<br align="left"/>      SIGNAL(S17_bFOULWIND,SIG_CLEAR);<br align="left"/>      SIGNAL(S17_cFOULWIND,SIG_CLEAR);<br align="left"/>      SIGNAL(S17_dFOULWIND,SIG_CLEAR);<br align="left"/>      SIGNAL(S17_eFOULWIND,SIG_CLEAR);<br align="left"/>   PLAYWAVE(SOUND_POPUP);<br align="left"/></font></td></tr></table>>
+];
+"mapPresent" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(SIG_RESET,)<br align="left"/></b></td></tr>
+</table>>
+];
+	requested[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>requested<br align="left"/></b></td></tr>
+</table>>];
+"requested" -> "mapPresent" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>LOADVIEW(IDV_CONTINENT,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_MAPBUTTON<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:107, y:11, h:35, w:36)<br align="left"/>SMP_MAPBUTTON::M_MAPBUTTON(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: Top:11 Left:107 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

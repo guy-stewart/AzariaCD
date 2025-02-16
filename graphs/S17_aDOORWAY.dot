@@ -1,0 +1,59 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S17_aDOORWAY::M17_DOORWAY<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "caveNoLockEntry" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"0" -> "Lock" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_CLOSE)<br align="left"/></b></td></tr>
+</table>>
+];
+	Lock[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>Lock<br align="left"/></b></td></tr>
+</table>>];
+"Lock" -> "forcefieldUp" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_ON)<br align="left"/></b></td></tr>
+</table>>
+];
+	LockBombed[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>LockBombed<br align="left"/></b></td></tr>
+</table>>];
+"LockBombed" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_OFF)<br align="left"/></b></td></tr>
+</table>>
+];
+	caveNoLockEntry[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>caveNoLockEntry<br align="left"/></b></td></tr>
+</table>>];
+"caveNoLockEntry" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>LOADVIEW(WIP1,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;No Lock entry - &quot;);<br align="left"/></font></td></tr></table>>
+];
+	forcefieldUp[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>forcefieldUp<br align="left"/></b></td></tr>
+</table>>];
+"forcefieldUp" -> "LockBombed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_OPEN)<br align="left"/></b></td></tr>
+</table>>
+];
+"forcefieldUp" -> "keyUsed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_ENTER_1)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ADDI(LWISDOM,1);<br align="left"/>    SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+	keyUsed[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>keyUsed<br align="left"/></b></td></tr>
+</table>>];
+"keyUsed" -> "tempOpen" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_OFF)<br align="left"/></b></td></tr>
+</table>>
+];
+	letInOne[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>letInOne<br align="left"/></b></td></tr>
+</table>>];
+"letInOne" -> "Lock" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>LOADVIEW(WIP1,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   WRITE(&quot;unlocked &quot;);<br align="left"/></font></td></tr></table>>
+];
+	tempOpen[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>tempOpen<br align="left"/></b></td></tr>
+</table>>];
+"tempOpen" -> "letInOne" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"tempOpen" -> "Lock" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_CLOSE)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S17_aDOORWAY<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_aMINEPAN @pos(x:280, y:75, h:200, w:199)<br align="left"/>S17_aDOORWAY::M17_DOORWAY(&apos;IDV_aCV1aPAN&apos;,&apos;S17_aFFIELD1&apos;,&apos;S17_aFOULWIND&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:75 Left:280 Z:0<br align="left"/></font></td></tr></table>>
+];
+}
