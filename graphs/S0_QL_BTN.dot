@@ -1,0 +1,38 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_QL_BTN::M_QLBTN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   CLEAR(WOBJECT);<br align="left"/>   SHOW();<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "logPresent" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_LOGBOOKBTN,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   WRITE(&quot;Deleting any entries for this player&quot;);<br align="left"/>  predicate q_local_active(quest,num,status,location);<br align="left"/>   q_local_active(&quot;%&quot;)~<br align="left"/>  predicate q_world_active(quest,num,status,location);<br align="left"/>   q_world_active(&quot;%&quot;)~<br align="left"/>  predicate q_local_complete(quest,num,status,location);<br align="left"/>    q_local_complete(&quot;%&quot;)~<br align="left"/>  predicate q_world_complete(quest,num,status,location);<br align="left"/>   q_world_complete(&quot;%&quot;)~<br align="left"/>   SHOW(WOBJECT);<br align="left"/>   ADDI(LWISDOM,1); SIGNALi(0,SID_ID);<br align="left"/>   BPARM = 0;<br align="left"/></font></td></tr></table>>
+];
+	logPresent[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>logPresent<br align="left"/></b></td></tr>
+</table>>];
+"logPresent" -> "open" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if((LVIEW == &quot;IDV_QUESTPANW&quot;) \|\| (LVIEW == &quot;IDV_QUESTPAN&quot;))&#123;<br align="left"/>      BPARM = 1;<br align="left"/>      WRITE(&quot;We are clicking the log button on the log button - stop that!&quot;);<br align="left"/>    &#125;<br align="left"/>    if(BPARM == 0)&#123;<br align="left"/>        MOV(WOBJECT,IDD_LOGBOOKBTN);<br align="left"/>        SHOW(WOBJECT);<br align="left"/>        MOV(WPARM,LVIEW);<br align="left"/>    &#125;<br align="left"/>    LOADVIEW(IDV_QUESTPAN);<br align="left"/>    BPARM = 0;<br align="left"/></font></td></tr></table>>
+];
+"logPresent" -> "newQuest" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_GLOW)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        WRITE(&quot;GOT THE SIG_GLOW SIGNAL&quot;);<br align="left"/>        PLAYWAVE(SOUND_POP);<br align="left"/>        MOV(WSPRITE,IDS_QL_GLOW);<br align="left"/>        ASHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+	newQuest[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>newQuest<br align="left"/></b></td></tr>
+</table>>];
+"newQuest" -> "logPresent" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	open[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>open<br align="left"/></b></td></tr>
+</table>>];
+"open" -> "logPresent" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_QL_BTN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:150, y:11, h:36, w:36)<br align="left"/>S0_QL_BTN::M_QLBTN(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;logPresent&apos;: bParm:0 wParm:IDV_ORIE wObject:IDD_LOGBOOKBTN wSprite:LOG Top:11 Left:150 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

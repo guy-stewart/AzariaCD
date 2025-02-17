@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Parse error</h1>
+</p>
+<pre><code>
+//predicate otherplayer(pid,status, player, account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+//This is confusing but we're getting parameters back in the future - not the ones being looped through.
+
+
+write("send_request for other player info ..... ");
+for (otherplayer(?to, ?status, ?params,'','','','','','','','','','','','','')) {
+    method = "getPlayerDetails";
+    params = "";
+    future = 'if (result == "gotPlayerDetails") {
+                    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+                    otherplayer(?pid,?status,?player,'','','','','','','','','','','','','')?<font color="blue"> <-- Parse error: expected ';'. encountered ',' ... continuing ...</font>
+<font color="blue"> <-- Parse error: expected '}'. encountered ',' ... continuing ...</font>
+</code></pre>
+</body>
+</html>

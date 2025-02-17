@@ -1,9 +1,39 @@
 
-predicate otherplayer(pid,status, player);
+//predicate otherplayer(pid,status, player, account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+//This is confusing but we're getting parameters back in the future - not the ones being looped through.
+
+
 write("send_request for other player info ..... ");
-for (otherplayer(?to, ?status, ?params)) {
+for (otherplayer(?to, ?status, ?params,?account_id,?name,?viewname,?wealth,?karma,?energy,?strength,?wisdom,?gender,?culture,?knowsparent,?knowsvillage,?knowscity)) {
     method = "getPlayerDetails";
     params = "";
-    future = "write('** FUTURE ** result:',result, 'params:',params);";
+    future = 'if (result == "gotPlayerDetails") {
+                    write("returned params ====> ",params);
+                    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+                    otherplayer(?pid,?status,?player,,,,,,,,,,,,,)?
+                    culture = json_element(params, "culture");
+                    energy = json_element(params, "energy");
+                    gender = json_element(params, "gender");
+                    karma = json_element(params, "karma");
+                    knowscity = json_element(params, "knowscity");
+                    knowsparent = json_element(params, "knowsparent");
+                    knowsvillage = json_element(params, "knowsvillage");
+                    name = json_element(params, "name");
+                    strength = json_element(params, "strength");
+                    viewname = json_element(params, "viewname");    
+                    wealth = json_element(params, "wealth");
+                    wisdom = json_element(params, "wisdom");
+                    otherplayer("%")~
+                    otherplayer(pid,status,player,"",name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity).
+                    SIGNAL("SOD_ID","SIG_OTID");
+                }';
+    
     send_request(to, method, params, future);
 }
+
+//params:{"culture":0,"energy":4,"gender":1,"karma":0,"knowscity":0,"knowsparent":0,"knowsvillage":0,"name":"Tom","strength":10,"viewname":"","wealth":4,"wisdom":4}
+//
+
+
+
+                

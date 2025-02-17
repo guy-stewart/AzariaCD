@@ -1,0 +1,77 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>AUD_MUSIC_PLAYER::M_PLAYER_MUSIC<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_2)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam002aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_INTRO_MIX)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam209ba,3);<br align="left"/>    //playmusic(kam209ba,3); then playmusic(kam210ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_NATURE_INTRO)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam112aa,3);<br align="left"/>     //playmusic kam112aa , then playmusic(306ba,3) -- might change to SIG_N2A custom playlist<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_204)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam204aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_206)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam206aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_207)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam207ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_208)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam208ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_209)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam209ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_210)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam210ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_306)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam306ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_310)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam310ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_311)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam311ba,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_312)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam312aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_313)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam313aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_314)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam314aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_316)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam316aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_317)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam317aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_318)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam318aa,3);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "playing" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_319)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     playmusic(kam319aa,3);<br align="left"/></font></td></tr></table>>
+];
+	playing[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>playing<br align="left"/></b></td></tr>
+</table>>];
+"playing" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"playing" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>AUD_MUSIC_PLAYER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:4, y:25, h:1, w:1)<br align="left"/>AUD_MUSIC_PLAYER::M_PLAYER_MUSIC(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:25 Left:4 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

@@ -17,6 +17,7 @@ loadview(IDV_OTHERID);
 loadview(IDV_S_TELETYPE); // the small teletype.
 loadview(IDV_TOPMENU);
 
+SIGNAL('S0_NW_INDC_LIGHT','SIG_RESET');
 
 write("SETTING EVENT");
 on_event_future("onPlayerTagged", "{
@@ -24,11 +25,14 @@ on_event_future("onPlayerTagged", "{
     predicate PlayerList(pid,status,player);
     PlayerList(player_pid,?mystatus,?myplayer)?
     write('player ----> ',myplayer);
-    predicate otherplayer(pid,status,player);
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
     otherplayer('%')~
-    otherplayer(player_pid, mystatus, myplayer).
-    SIGNAL('SOD_ID','SIG_OTID');
+    otherplayer(player_pid, mystatus, myplayer,'account_id','name','viewname','0','0','0','0','0','0','0','0','0','0').
+    replay('system/send_request'); 
 }");
+
+
+
 
 //on_event_future("onPlayerTagged", "write('player tagged: ',player_pid);");
 //on_event_future("onPlayerTagged", "replay('system/viewother');");
