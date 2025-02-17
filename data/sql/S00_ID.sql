@@ -444,8 +444,8 @@ VALUES
      SHOW(0);
      predicate active_character(name);
      active_character(?WPARM)?
-     predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
-     players(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+     localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
      ASSIGN(LENERGY,WTEMP3);
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);
@@ -483,8 +483,8 @@ VALUES
      SHOW(0);
      predicate active_character(name);
      active_character(?BPARM)?
-     predicate players(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
-     players(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+     localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
    
      SIGNAL(SID_AURA,SIG_ADD);
      SIGNAL(SID_HALO,SIG_ADD);
@@ -553,12 +553,11 @@ VALUES
 ('M_OID', '0', 'present', 'WAIT', '', 'SIG_OTID', '
     CLEAR(WSPRITE);
      SHOW(0);
-     predicate otherplayer(pid,status,player);
-     otherplayer(?BPARM, "ACTIVE", ?WPARM)?
-        otherName = json_element(WPARM, "playerName");
-        set_control_value(IDV_OTHERNAME, OTHN, otherName);
-        call("system/send_request"); 
-
+     predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+     otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
+     set_control_value(IDV_OTHERNAME, OTHN, ONAME);
+     SIGNAL(SOD_AURA,SIG_ADD);
+     SIGNAL(SOD_HALO,SIG_ADD);
 ', '', ''), 
 -- so here we need to message the other player to get
 -- their player attributes - wont depend on OSEX as below - maybe to get?
@@ -593,11 +592,11 @@ VALUES
 ('M_OID', 'sitting', 'present', 'WAIT', '', 'SIG_OTID', '
     CLEAR(WSPRITE);
      SHOW(0);
-     predicate otherplayer(pid,status,player);
-     otherplayer(?BPARM, "ACTIVE", ?WPARM)?
-        otherName = json_element(WPARM, "playerName");
-        set_control_value(IDV_OTHERNAME, OTHN, otherName);
-        call("system/send_request"); 
+     predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+     otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
+     set_control_value(IDV_OTHERNAME, OTHN, ONAME);
+     SIGNAL(SOD_AURA,SIG_ADD);
+     SIGNAL(SOD_HALO,SIG_ADD);
 ', '', ''), 
 ('M_OID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_OID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),

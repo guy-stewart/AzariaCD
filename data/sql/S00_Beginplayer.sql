@@ -87,7 +87,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     PLAYWAVE(SOUND_BTNPRESS);
     SIGNAL(WIP4,SIG_OFF);
     if(WIP4 == BTN_CFGCULTURE_CIT){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_NIRET);}
-    if(WIP4 == BTN_CFGCULTURE_VIL){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_ETNOC;}
+    if(WIP4 == BTN_CFGCULTURE_VIL){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_ETNOC);}
     if(WIP4 == BTN_CFGCULTURE_MAL){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_FEMALE);}
     if(WIP4 == BTN_CFGCULTURE_FEM){SIGNAL(BTN_CFGPLAYERNEW_OK,SIG_MALE);}
     WPARM = WIP1;
@@ -149,11 +149,11 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
     env(address,"name")~ // remove the old name in case we lost our primary key
     env(address,"name",R_WPARM).
    
-    predicate players(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
-    players(address)~
+    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    localplayer(address)~
     predicate active_character(name);
     LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM;
-    players(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
+    localplayer(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
     active_character("%")~
     active_character(R_WPARM).
 
