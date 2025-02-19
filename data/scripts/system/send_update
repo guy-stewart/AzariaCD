@@ -1,0 +1,41 @@
+write("Get Watchers -------------- START -------------------------");
+// write("event == ", event);
+// write("id == ", id);
+// write("from == ", from);
+// write("method == ", method);
+// write("params == ", params);
+// write("xpkt == ", xpkt);
+
+
+write(" --------------------SEND UPDATES--------------------");
+predicate watchers(address);
+for (watchers(?to)) {
+
+    method = "updateFromOther";
+    predicate active_character(name);
+    active_character(?myname)?
+    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    localplayer(?account_id,myname,?viewname,?wealth,?karma,?energy,?strength,?wisdom,?gender,?culture,?knowsparent,?knowsvillage,?knowscity)?
+    write("sending updates to ====> ", to);
+   
+    params = '{' 
+        +'"name":"'+ myname +'",'
+        +'"viewname":"'+ viewname +'",'
+        +'"wealth":'+ wealth +','
+        +'"karma":'+ karma  +','
+        +'"energy":'+ energy  +','
+        +'"strength":'+ strength  +','
+        +'"wisdom":'+ wisdom  +','
+        +'"gender":'+ gender  +','
+        +'"culture":'+ culture  +','
+        +'"knowsparent":'+ knowsparent  +','
+        +'"knowsvillage":'+ knowsvillage  +','
+        +'"knowscity":'+ knowscity  
+        + '}';
+   
+    send_request(to, method, params, future);
+}
+
+
+
+write("Receive Request --------------- END -------------------------");

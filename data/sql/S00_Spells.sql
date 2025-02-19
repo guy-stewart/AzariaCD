@@ -317,11 +317,13 @@ VALUES
         }
         if(WIP1 == REVIVE){ 
             ASSIGN(LWISDOM,10);
+            SIGNALi(0,SID_ID);
             ASSIGN(LENERGY,10);
             SIGNAL(SID_AURA,SIG_SUB);
             ASSIGN(LWEALTH,5);SIGNAL(S1_VIALMETER,SIG_SHOW);
             SIGNAL(SID_ID,SIG_SURPRISED);
             SUBI(LKARMA,6);
+            SIGNAL(SID_HALO,SIG_SUB);
              SIGNALi(0,SID_ID);
         }
          if(WIP1 == BANISHMENT){
@@ -329,6 +331,7 @@ VALUES
             SIGNAL(SMP_MAPBUTTON,SIG_RESET);
             LOADVIEW(WPARM);
             SUBI(LKARMA,2);
+            SIGNAL(SID_HALO,SIG_SUB);
         }
          if(WIP1 == GOPA){
             WRITE("ADDING TO LENERGY");

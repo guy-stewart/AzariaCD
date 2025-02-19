@@ -41,7 +41,8 @@ insert into transitions values
 
 
 ('M_ANIMALPEN',0,'idle','DROP','WIP2','','
-    ADDI(LWISDOM,1); 
+    ADDI(LWISDOM,1);
+    SIGNALi(0,SID_ID); 
     ASHOW(WIP1);
 ','',''),
 ('M_ANIMALPEN','idle','annoyed','CLICK','','',
@@ -69,6 +70,7 @@ ASHOW(WIP1);','',''),
  ASHOW(WIP2);','',''),
 ('M_PESTER','rightidle','captured','DROP','IDD_ENCHANT','','
     ADDI(LWISDOM,1); 
+    SIGNALi(0,SID_ID);
     PLAYWAVE(SOUND_BAA);
     SHOW(0);
     HANDOFF(0,WIP5);

@@ -1,0 +1,11 @@
+
+
+
+write(" --------------------SEND UNSUBSCRIBE--------------------");
+ predicate otherplayer(pid,status);
+ otherplayer(?to,"ACTIVE")?
+ write("id unsubscribing to ===> ", to);
+     method = "unsubscribe";
+     send_request(to, method, params, future);
+ 
+write("Send Unsubscribe -------------- END -------------------------");

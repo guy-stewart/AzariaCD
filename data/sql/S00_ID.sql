@@ -278,7 +278,7 @@ VALUES
 delete from "main"."machines" where [name] like 'SID_%';
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
+( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', 'SID_ID', '', '', ''),
 ( 'SID_SPELL',  'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
 ( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', '', '', '0', 'SID_AURA'),
 ( 'SID_AURA',   'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
@@ -286,12 +286,17 @@ VALUES
 ( 'SID_INC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
 --58 - 63 avail
 ( 'SID_DEC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', ''),
-( 'SID_INC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', '');
+( 'SID_INC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', ''),
+
+-- this is signalled by SID_HALO, SID_AURA, and Wealth machines to persist the player's stats in realtime
+-- called with SIGNAL(SID_PERSIST,SIG_UPDATE);
+( 'SID_PERSIST', 'IDV_ID', '0', '0', '1', '1', '3', 'M_ID_PERSIST', '', '', '', '');
+
 
 delete from "main"."machines" where [name] like 'SOD_%';
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_HALO', '', '', '', ''),
+('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_O_HALO', 'SOD_ID', '', '', ''),
 ('SOD_SPELL','IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
 ('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
 ('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
@@ -301,12 +306,32 @@ VALUES
 --You can send just and object, just a signal, or both. The objects are dropped on the SID_ID, signals are sent to SID_SPELL …. Iirc
 
 
-
+delete from "main"."transitions" where [automaton] like 'M_ID_P%';
 delete from "main"."transitions" where [automaton] like 'M_DEC_E%';
 delete from "main"."transitions" where [automaton] like 'M_AURA%';
 delete from "main"."transitions" where [automaton] like 'M_O_AURA%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
+
+('M_ID_PERSIST', '0', 'updated', 'WAIT', '', 'SIG_UPDATE', '
+    predicate env(account_id, key, value);
+    env("0","my_account_id",?address);
+    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    localplayer(?address,?name,?viewname,?wealth,?karma,?energy,?strength,?wisdom,?gender,?BPARM,?knowsparent,?knowsvillage,?knowscity)?
+    localplayer(address)~
+    predicate active_character(name);
+    active_character(?WPARM)?
+    localplayer(address,WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,BPARM,knowsparent,knowsvillage,knowscity).
+', '', ''),
+-- track everyone looking at me and then solicitly tell them to update
+('M_ID_PERSIST', 'updated', 'toldEveryone', 'Z_EPSILON', '', '', '
+    write("telling everyone");
+    replay(system/send_update);
+
+', '', ''),
+('M_ID_PERSIST', 'toldEveryone', '0', 'Z_EPSILON', '', '', '', '', ''),
+
+
 ('M_DEC_ENERGY', '0', 'drain', 'WAIT', '', 'SIG_DEC', '', '', ''),
 ('M_DEC_ENERGY', 'drain', '0', 'Z_EPSILON', '0', '0', '
     SUBI(LENERGY,1);
@@ -327,6 +352,7 @@ VALUES
         SHOW(WSPRITE);
         ANIMATE(WPARM);
         SIGNALi(0,SID_ID);
+       
 ', '', ''),
 ('M_AURA', 'energyDrain', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
         if(LENERGY <= 1){
@@ -337,17 +363,19 @@ VALUES
         MAPi(WSPRITE,S00_AURA_MAP);
         SHOW(WSPRITE);
         ANIMATE(WPARM);
-       // SIGNALi(0,SID_ID);
+        SIGNALi(0,SID_ID);
         
         if(LENERGY <= 1){
              ASSIGN(LENERGY,1);
+             SIGNAL(SID_PERSIST,SIG_UPDATE);
              SIGNAL(SID_ID,SIG_DEAD);
        }   
 ', '', '');
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_O_AURA', '0', 'energyBoost', 'Z_EPSILON', '0', '0', '', '', ''),
+('M_O_AURA', '0', '1', 'Z_EPSILON', '', '', '', '', ''),
+('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
 ('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_O_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_O_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
@@ -388,16 +416,18 @@ VALUES
 
 delete from "main"."transitions" where [automaton] like 'M_PED%';
 delete from "main"."transitions" where [automaton] like 'M_HALO%';
+delete from "main"."transitions" where [automaton] like 'M_O_HALO%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc")
 VALUES 
 --('M_HALO', '0', '1', 'ASHOW', '0', 'IDS_HALO00', '', '', '');
 
 ('M_HALO', '0', 'karmaBoost', 'WAIT', '0', 'SIG_MYHALO', '', '', ''),
+('M_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_MYHALO', '', '', ''),
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_HALO', '1', 'karmaDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', '0', '', '', ''),
 ('M_HALO', 'karmaBoost', '1', 'ASSIGN', 'WPARM', '', '
-       if(LKARMA > (MAX_KARMA - 1)){
+       if(WIP2 > (MAX_KARMA - 1)){
              ASSIGN(LKARMA,(MAX_KARMA));
        }
         ASSIGN(BPARM,LKARMA);
@@ -405,7 +435,7 @@ VALUES
         DIV(WSPRITE,2);
         MAPi(WSPRITE,S00_KARMA_MAP);
         ASHOW(WSPRITE);
-        SIGNALi(0,SID_ID);
+        SIGNALi(0,WIP1);
 ', '', ''),
 ('M_HALO', 'karmaDrain', '1', 'ASSIGN', 'WPARM', '', '
         if(LKARMA <= 0){
@@ -416,8 +446,38 @@ VALUES
         DIV(WSPRITE,2);
         MAPi(WSPRITE,S00_KARMA_MAP);
         ASHOW(WSPRITE);
-        SIGNALi(0,SID_ID);
+        SIGNALi(0,WIP1);
+', '', ''),
+
+
+('M_O_HALO', '0', '1', 'Z_EPSILON', '0', '', '', '', ''),
+('M_O_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_MYHALO', '', '', ''),
+('M_O_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
+('M_O_HALO', '1', 'karmaDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
+('M_O_HALO', '1', 'karmaBoost', 'WAIT', '0', '0', '', '', ''),
+('M_O_HALO', 'karmaBoost', '1', 'ASSIGN', 'WPARM', '', '
+       if(WIP2 > (MAX_KARMA - 1)){
+             ASSIGN(OKARMA,(MAX_KARMA));
+       }
+        ASSIGN(BPARM,OKARMA);
+        MOV(WSPRITE,BPARM);
+        DIV(WSPRITE,2);
+        MAPi(WSPRITE,S00_KARMA_MAP);
+        ASHOW(WSPRITE);
+        SIGNALi(0,WIP1);
+', '', ''),
+('M_O_HALO', 'karmaDrain', '1', 'ASSIGN', 'WPARM', '', '
+        if(OKARMA <= 0){
+             ASSIGN(OKARMA,1);
+       }      
+        ASSIGN(BPARM,OKARMA);
+        MOV(WSPRITE,BPARM);
+        DIV(WSPRITE,2);
+        MAPi(WSPRITE,S00_KARMA_MAP);
+        ASHOW(WSPRITE);
+        SIGNALi(0,WIP1);
 ', '', '');
+
 
 
 -- for back to back {statements} do not use ';' between them, only at the end of the code segment
@@ -429,15 +489,6 @@ delete from "main"."transitions" where [automaton] = 'M_OID';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 
-    -- "update" the players attributes anytime there is a change 
-    -- predicate env(account_id, key, value);
-    -- env("0","my_account_id",?address);
-    -- predicate players(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
-    -- players(address)~
-    -- players(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
-
-
-
 
 ('M_ID', '0', 'present', 'WAIT', '0', 'SIG_MYID', '
      CLEAR(WSPRITE);
@@ -447,8 +498,6 @@ VALUES
      predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
      localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
      ASSIGN(LENERGY,WTEMP3);
-     SIGNAL(SID_AURA, SIG_MYAURA);
-     SIGNAL(SID_HALO, SIG_MYHALO);
 ', '', ''),
 ('M_ID', 'present', 'setId', 'Z_EPSILON', '', '', '       
   //for back to back {statements} do not use semi-colons between them, 
@@ -476,8 +525,12 @@ VALUES
     MAP(WSPRITE,WPARM);
     ASSIGN(BFRAME,0);
     SHOW(WSPRITE);
+    SIGNAL(SID_AURA, SIG_MYAURA);
+    SIGNAL(SID_HALO, SIG_MYHALO);
+    SIGNAL(SID_PERSIST,SIG_UPDATE);
 ', '', ''),
 
+-- this sitting to present reads from  localplayer repainting the whole id
 ('M_ID', 'sitting', 'present',  'WAIT', '0', 'SIG_MYID', '
     CLEAR(WSPRITE);
      SHOW(0);
@@ -485,9 +538,8 @@ VALUES
      active_character(?BPARM)?
      predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
      localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
-   
-     SIGNAL(SID_AURA,SIG_ADD);
-     SIGNAL(SID_HALO,SIG_ADD);
+     SIGNAL(SID_AURA, SIG_MYAURA);
+     SIGNAL(SID_HALO, SIG_MYHALO);
 ', '', ''),
 ('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
@@ -502,6 +554,7 @@ VALUES
      WRITE("I am S_ID and I receive signals! This one is a SIG_BOMB! ");
 ', '', ''),
 ('M_ID', 'sitting', '100', 'WAIT', '0', 'SIG_CLEAR', '', '', ''),
+--this is where an update signal is recieved (no SIG_XXXX)
 ('M_ID', 'sitting', 'present', 'WAIT', '0', '0', '', '', ''),
 
 
@@ -519,6 +572,7 @@ VALUES
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '
             SUBI(LENERGY,1);
             SIGNAL(SID_AURA,SIG_SUB);
+            SIGNAL(SID_PERSIST,SIG_UPDATE);
 ', '', ''),
 
 ('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
@@ -538,7 +592,9 @@ VALUES
     ANIMATE(0,0);
     ASSIGN(LENERGY,1);
     ASSIGN(LWEALTH,0);
+    SIGNAL(SID_PERSIST,SIG_UPDATE);
     SIGNAL(SMP_VIAL,SIG_DRAIN);
+    SIGNAL(SID_PERSIST,SIG_UPDATE);
     LOADVIEW(IDV_VIL8);
 ', '', ''),
 ('M_ID', '100', 'empty', 'Z_EPSILON', '', '', '
@@ -556,32 +612,30 @@ VALUES
      predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
      otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
      set_control_value(IDV_OTHERNAME, OTHN, ONAME);
-     SIGNAL(SOD_AURA,SIG_ADD);
-     SIGNAL(SOD_HALO,SIG_ADD);
+     SIGNAL(SOD_AURA,SIG_MYAURA);
+     SIGNAL(SOD_HALO, SIG_MYHALO);
 ', '', ''), 
 -- so here we need to message the other player to get
 -- their player attributes - wont depend on OSEX as below - maybe to get?
-('M_OID', 'present', 'setId', 'EQUALi', 'OSEX', '1', '
-    if(OWISDOM >= 30){
-       ASSIGN(WPARM,F3);
+('M_OID', 'present', 'setId', 'Z_EPSILON', '', '', '
+    if(OSEX == 1){
+    WPARM = F1;
+     if(OWISDOM >= 30){
+       WPARM = F3;
     }
-     if(OWISDOM >= 20 && LWISDOM < 30){
-        ASSIGN(WPARM,F2);
+     if(OWISDOM >= 20 && OWISDOM < 30){
+       WPARM = F2;
     }
-    if(OWISDOM < 20){
-       ASSIGN(WPARM,F1);
-    }
-', '', ''), 
-('M_OID', 'present', 'setId', 'NEQUALi', 'OSEX', '1', '
-    if(OWISDOM >= 30){
-       ASSIGN(WPARM,M3);
+  }
+  if(OSEX == 0){
+    WPARM = M1;
+      if(OWISDOM >= 30){
+       WPARM = M3;
     }
     if(OWISDOM >= 20 && OWISDOM < 30){
-        ASSIGN(WPARM,M2);
+        WPARM = M2;
     }
-    if(OWISDOM < 20){
-       ASSIGN(WPARM,M1);
-    }
+  }; 
 ', '', ''), 
 
 ('M_OID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
@@ -595,8 +649,8 @@ VALUES
      predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
      otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
      set_control_value(IDV_OTHERNAME, OTHN, ONAME);
-     SIGNAL(SOD_AURA,SIG_ADD);
-     SIGNAL(SOD_HALO,SIG_ADD);
+     SIGNAL(SOD_AURA,SIG_MYAURA);
+     SIGNAL(SOD_HALO, SIG_MYHALO);
 ', '', ''), 
 ('M_OID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_OID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
