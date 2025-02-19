@@ -12,8 +12,8 @@
     "app_version": "0.0",
     "in8_console": true,
     "in8_devmode": true,
-    "in8_version": "1.24",
+    "in8_version": "1.24b",
     "load_player": false,
     "save_player": false,
-    "sha256": "69fa1f6bf70c5d17823701b413d1b559b5fd86285cb9db716fecccea09ed54fe"
+    "sha256": "808d85dd7852d8c086ca01570704b20cd00ee5a3c6b335364acb801a4fab1a6b"
 }

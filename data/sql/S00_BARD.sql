@@ -8,7 +8,11 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     WRITE("RESETTING INDC LIGHT");
 ', '', ''),
 -- also need to remove sessions from previous network games
-('M_BARD', '2', '10', 'SIGNAL', 'S_CFGNWSERVER', 'SIG_RESET', '', '', ''),
+('M_BARD', '2', '3', 'SIGNAL', 'S_CFGNWSERVER', 'SIG_RESET', '', '', ''),
+('M_BARD', '3', '10', 'Z_EPSILON', '', '', '
+    predicate watchers (address,name);
+    watchers("%")~
+', '', ''),
 ('M_BARD', '10', 'kickOffNature', 'Z_EPSILON', '', '', '', '', ''),
 
 ('M_BARD', '10', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
