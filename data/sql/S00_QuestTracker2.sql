@@ -208,37 +208,42 @@ VALUES
        q_local_complete("%")~
 
         REF_MACHINE(QL_Q0_State);
-        if(R_WTEMEP1 == "active"){ q_local_active(R_BPARM,0,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,0,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMEP1 == "active"){ 
+                q_local_active(R_BPARM,0,R_WTEMP1,R_WPARM).
+                        } else if(R_WTEMP1 == "complete"){
+                                 q_local_complete(R_BPARM,0,R_WTEMP1,R_WPARM).
+                                 }
+       
         REF_MACHINE(QL_Q1_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q2_State);
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q3_State);
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q4_State);
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q5_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q6_State);       
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q7_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q8_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q9_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q10_State);
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q11_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q12_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q13_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q14_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
         REF_MACHINE(QL_Q15_State);
-        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).;} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).;}      
+        if(R_WTEMP1 == "active"){ q_world_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_world_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}      
 '),
  ('M_QUEST_MANAGER','recordstatus','0','Z_EPSILON', '', '', '    
  '),

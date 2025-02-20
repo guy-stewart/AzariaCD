@@ -4,18 +4,25 @@
 <h1>Parse error</h1>
 </p>
 <pre><code>
-//predicate otherplayer(pid,status, player, account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
-//This is confusing but we're getting parameters back in the future - not the ones being looped through.
+       predicate q_local_active(quest,num,status,location);
+       q_local_active("%")~
+       predicate q_local_complete(quest,num,status,location);
+       q_local_complete("%")~
+       predicate q_world_active(quest,num,status,location);
+       q_local_active("%")~
+       predicate q_world_complete(quest,num,status,location);
+       q_local_complete("%")~
 
-
-write("send_request for other player info ..... ");
-for (otherplayer(?to, ?status, ?params,'','','','','','','','','','','','','')) {
-    method = "getPlayerDetails";
-    params = "";
-    future = 'if (result == "gotPlayerDetails") {
-                    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
-                    otherplayer(?pid,?status,?player,'','','','','','','','','','','','','')?<font color="blue"> <-- Parse error: expected ';'. encountered ',' ... continuing ...</font>
-<font color="blue"> <-- Parse error: expected '}'. encountered ',' ... continuing ...</font>
+        REF_MACHINE(QL_Q0_State);
+        if(R_WTEMEP1 == "active"){ 
+                q_local_active(R_BPARM,0,R_WTEMP1,R_WPARM).
+                        } else if(R_WTEMP1 == "complete"){
+                                 q_local_complete(R_BPARM,0,R_WTEMP1,R_WPARM).
+                                 }
+       
+        REF_MACHINE(QL_Q1_State);
+        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
+        REF_MACHINE(QL_Q2_State)<font color="blue"> <-- Parse error: expected ';'. encountered 'if' ... continuing ...</font>
 </code></pre>
 </body>
 </html>

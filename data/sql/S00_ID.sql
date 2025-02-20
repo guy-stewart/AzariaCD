@@ -14,7 +14,7 @@ delete from controls where id = 'ID_PLAYERNAME';
 delete from controls where id = 'ID_OTHERPLAYERNAME';
 insert into controls values
 ('IDV_PLAYERNAME','PN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'Name', 'default','IDS_FONTTNB14',0x44FFFF,''),
-('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, 'MooMo', 'default','IDS_FONTTNB14',0x44FFFF,'');
+('IDV_OTHERNAME','OTHN','EDITBOX','namefill', 'IDS_BTN_DOWN_HI', 0, 0, 2, '', 'default','IDS_FONTTNB14',0x44FFFF,'');
 
 
 --machine for putting name on players
@@ -374,8 +374,7 @@ VALUES
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_O_AURA', '0', '1', 'Z_EPSILON', '', '', '', '', ''),
-('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_O_AURA', '0', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
 ('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_O_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_O_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
@@ -403,7 +402,7 @@ VALUES
         MAPi(WSPRITE,S00_AURA_MAP);
         SHOW(WSPRITE);
         ANIMATE(WPARM);
-       // SIGNALi(0,SID_ID);
+        SIGNALi(0,SOD_ID);
         
         if(OENERGY <= 1){
              ASSIGN(OENERGY,1);
@@ -571,8 +570,8 @@ VALUES
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '
             SUBI(LENERGY,1);
-            SIGNAL(SID_AURA,SIG_SUB);
             SIGNAL(SID_PERSIST,SIG_UPDATE);
+            SIGNAL(SID_AURA,SIG_SUB);
 ', '', ''),
 
 ('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '

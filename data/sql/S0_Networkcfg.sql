@@ -11,6 +11,12 @@
 
 */
 
+
+delete from views where view_name = 'IDV_ROOMRELOADER';
+insert into views ([view_name],[Z],[backgroundAudio],[locator_view],[behavior_id],[portal_filename],[surface_filename] ) values
+('IDV_ROOMRELOADER',1,3,1,1,'wdepanel.vct','blankpan');
+
+
 delete from spr_names where [name] like 'IDS_BTN_CREATE%';
 delete from spr_names where [name] like 'IDS_BTN_REFRESH%';
 delete from spr_names where [name] like 'IDS_BTN_NEW2%';
@@ -82,17 +88,27 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
 --Recreating a network list and join set ----------------------------
 delete from machines where [name] like 'S_CFGNWSERVER%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
-('S_CFGNWSERVER','IDV_CFGNW1C',30,70,40,70,2,'M_ANI_BULLET','IDS_SPRINGS','','','');
+('S_CFGNWSERVER','IDV_CFGNW1C',30,70,80,120,2,'M_ANI_BULLET','IDS_SPRINGS','','','');
+--('S_CFGNWSERVERLOADER','IDV_ROOMRELOADER',400,200,550,300,2,'M_LOADERVIEW','IDS_SPRINGS','IDV_CFGNW1C','1','');
 
 delete from "main"."transitions" where [automaton] like 'M_ANI_BULLET%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 ('M_ANI_BULLET', 0, 1, 'MOV', 'WSPRITE', 'WIP1', '', NULL, NULL),
 ('M_ANI_BULLET', 1, 2, 'ASHOW', 'WSPRITE', 'V_LOOP', '', NULL, NULL),
 ('M_ANI_BULLET', 2, 0, 'WAIT', '', 'SIG_RESET', '
-    predicate sessions(name, roomid, clients);
     call("system/publicrooms"); 
     control_refresh("IDV_CFGNW1C","CFGNW1C_4"); 
 ', NULL, NULL);
+
+delete from "main"."transitions" where [automaton] like 'M_LOADERVIEW%';
+INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
+('M_LOADERVIEW', 0, 1, 'WAIT', '', 'SIG_LOAD', '', '', ''),
+('M_LOADERVIEW', 1, 2, 'ASHOW', '', 'WIP1', '', '', ''),
+('M_LOADERVIEW', 2, 3, 'ESTIME', '', 'WIP3', '', '', ''),
+('M_LOADERVIEW', 3, 0, 'Z_EPSILON', '', '', '
+    LOADVIEW(WIP2);
+', '', '');
+
 
 delete from controls where [view] like 'IDV_CFGNW1C%';
 insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
@@ -123,6 +139,7 @@ insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[bord
     roomid=getOpenPlay("roomid");
     call("system/publicrooms"); 
     control_refresh("IDV_CFGNW1C","CFGNW1C_4");
+    set_control_value("IDV_MAIN_PANEL", "NW_PLAQUE1", roomid);
     LoadVIEW(IDV_ORIE);
 '),
 ('IDV_CFGNW1C2', 'CFGNW1C2_1', 'BUTTON',   'IDS_BTN_CANCEL',   'IDS_BTN_CANCEL_HI',  360,    215, 0, '','','',0,
@@ -139,10 +156,14 @@ delete from transitions where automaton = 'M_NW_INDC_LIGHT';
 insert into transitions values
 ('M_NW_INDC_NAME',0,1,'MOV','BFRAME','0','','',''),
 ('M_NW_INDC_NAME',1,2,'SHOW','WIP1', '','','',''),
-('M_NW_INDC_NAME',2,'launch','CLICK','', '','LOADVIEW(IDV_CFGNW1);','',''),
-('M_NW_INDC_NAME','launch','0','Z_EPSILON','', '','','',''),
+('M_NW_INDC_NAME',2,'share','CLICK','', '','
+     roomId = getOpenPlay("roomid");
+     share(roomId, "share.txt");
+','',''),
+('M_NW_INDC_NAME','share',2,'Z_EPSILON','', '','','',''),
 
-
+('M_NW_INDC_BTN',0,'launch','CLICK','', '','LOADVIEW(IDV_CFGNW1);','',''),
+('M_NW_INDC_BTN','launch',0,'Z_EPSILON','', '','','',''),
 
 --wips  'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_BLINK', 'IDS_INDC_NW_RED'
 

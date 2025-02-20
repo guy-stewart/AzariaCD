@@ -151,9 +151,9 @@
 <polygon fill="none" stroke="black" points="527.19,-391.75 527.19,-410.5 1223.19,-410.5 1223.19,-391.75 527.19,-391.75"/>
 <text text-anchor="start" x="827.19" y="-399" font-family="Courier New" font-weight="bold" font-size="10.00">S0_NW_INDC_LIGHT</text>
 <polygon fill="none" stroke="black" points="527.19,-345.5 527.19,-389.75 1223.19,-389.75 1223.19,-345.5 527.19,-345.5"/>
-<text text-anchor="start" x="530.19" y="-377.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:991, y:238, h:14, w:51)</text>
+<text text-anchor="start" x="530.19" y="-377.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:235, h:25, w:9)</text>
 <text text-anchor="start" x="530.19" y="-364.5" font-family="Courier New" font-size="10.00" fill="green">S0_NW_INDC_LIGHT::M_NW_INDC_LIGHT(&#39;IDS_INDC_NW_WHITE&#39;,&#39;IDS_INDC_NW_GREEN&#39;,&#39;IDS_INDC_BLINK&#39;,&#39;IDS_INDC_NW_RED&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="530.19" y="-351.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;waiting&#39;: wSprite:IDS_INDC_BLINK bFrame:0 dEtime:0 Top:238 Left:991 Z:0</text>
+<text text-anchor="start" x="530.19" y="-351.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;waiting&#39;: wSprite:IDS_INDC_BLINK bFrame:0 dEtime:0 Top:235 Left:890 Z:0</text>
 <polygon fill="none" stroke="black" points="524.19,-342.5 524.19,-413.5 1226.19,-413.5 1226.19,-342.5 524.19,-342.5"/>
 </g>
 </g>

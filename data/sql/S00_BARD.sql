@@ -4,26 +4,27 @@ delete from transitions where [automaton] like 'M_BARD%';
 --The Bard is attached to the ID and loaded at startup
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
 ('M_BARD', '0', '1', 'ASSIGN', 'DETIME', '1500', '', '', ''),
-('M_BARD', '1', '2', 'SIGNAL', 'S0_NW_INDC_LIGHT', 'SIG_RESET', '
-    WRITE("RESETTING INDC LIGHT");
-', '', ''),
+('M_BARD', '1', '3', 'ESTIME', '', '1', '', '', ''),
 -- also need to remove sessions from previous network games
-('M_BARD', '2', '3', 'SIGNAL', 'S_CFGNWSERVER', 'SIG_RESET', '', '', ''),
-('M_BARD', '3', '10', 'Z_EPSILON', '', '', '
+('M_BARD', '3', '4', 'SIGNAL', 'S_CFGNWSERVER', 'SIG_RESET', '', '', ''),
+('M_BARD', '4', '10', 'Z_EPSILON', '', '', '
     predicate watchers (address,name);
     watchers("%")~
 ', '', ''),
 ('M_BARD', '10', 'kickOffNature', 'Z_EPSILON', '', '', '', '', ''),
 
-('M_BARD', '10', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
-('M_BARD', 'FWcountdown', 'summonFoulWind', 'ESTIME', '0', '1500', '', '', ''),
-('M_BARD', 'summonFoulWind', 'FWcountdown', 'SIGNALi', '0', 'S17_aFOULWIND', '', '', ''),
+-- ('M_BARD', '10', 'FWcountdown', 'SYNCPOINT', 'DETIME', 'SYNC_FOULWIND', '', '', ''),
+-- ('M_BARD', 'FWcountdown', 'summonFoulWind', 'ESTIME', '0', '1500', '', '', ''),
+-- ('M_BARD', 'summonFoulWind', 'FWcountdown', 'SIGNALi', '0', 'S17_aFOULWIND', '', '', ''),
 
 --inserting hiding stuff and and other one off signals then go to timed loop
 ('M_BARD', 'kickOffNature', 'rewriteQuests', 'SIGNAL', 'QL_MANAGER', 'Q_RESET', '', '', ''),
 -- loading the active character 
 ('M_BARD', 'rewriteQuests', 'kickOffCharacter', 'SIGNAL', 'SID_ID', 'SIG_MYID', '', '', ''),
-('M_BARD', 'kickOffCharacter', 'endgame', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', ''),
+('M_BARD', 'kickOffCharacter', 'reset_light', 'SIGNAL', 'S0_NW_INDC_LIGHT', 'SIG_RESET', '
+    WRITE("RESETTING INDC LIGHT");
+', '', ''),
+('M_BARD', 'reset_light', 'endgame', 'SIGNALi', 'SIG_OPEN', 'S01_NATURE', '', '', ''),
 ('M_BARD', 'endgame', '0', 'WAIT', '', 'SIG_ENDGAME', '', '', '');
 
 

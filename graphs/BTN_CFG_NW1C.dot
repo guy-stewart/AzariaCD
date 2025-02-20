@@ -16,6 +16,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">WSPRITE=WIP2;<br align="left"/>SHOW(WSPRITE);<br align="left"/>PLAYWAVE(SOUND_BTNDRAG);<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_CFG_NW1C<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_CFGNW1 @pos(x:445, y:67, h:169, w:120)<br align="left"/>BTN_CFG_NW1C::M_BTN_1phase(&apos;IDV_CFGSESS&apos;,&apos;IDS_BTN_NW1C&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wSprite:IDS_BTN_NW1C Top:67 Left:445 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_CFGNW1 @pos(x:445, y:67, h:169, w:120)<br align="left"/>BTN_CFG_NW1C::M_BTN_1phase(&apos;IDV_CFGNW1C&apos;,&apos;IDS_BTN_NW1C&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wSprite:IDS_BTN_NW1C Top:67 Left:445 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }
