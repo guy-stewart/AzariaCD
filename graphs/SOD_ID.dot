@@ -89,17 +89,17 @@ digraph Automaton {
 "playOnce" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(BFRAME,0)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(0,WSPRITE);<br align="left"/>    ANIMATE(0,0);<br align="left"/></font></td></tr></table>>
 ];
-	present[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>present<br align="left"/></b></td></tr>
+	present[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>present<br align="left"/></b></td></tr>
 </table>>];
-"present" -> "setId" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>EQUALi(OSEX,1)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">     if(OSEX == 1)&#123;<br align="left"/>    WPARM = F1;<br align="left"/>     if(OWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = F3;<br align="left"/>    &#125;<br align="left"/>     if(OWISDOM &gt;= 20 &amp;&amp; OWISDOM &lt; 30)&#123;<br align="left"/>       WPARM = F2;<br align="left"/>    &#125;<br align="left"/>  &#125;<br align="left"/>  if(OSEX == 0)&#123;<br align="left"/>    WPARM = M1;<br align="left"/>      if(OWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = M3;<br align="left"/>    &#125;<br align="left"/>    if(OWISDOM &gt;= 20 &amp;&amp; OWISDOM &lt; 30)&#123;<br align="left"/>        WPARM = M2;<br align="left"/>    &#125;<br align="left"/>  &#125;; <br align="left"/></font></td></tr></table>>
+"present" -> "setId" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if(OSEX == 1)&#123;<br align="left"/>    WPARM = F1;<br align="left"/>     if(OWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = F3;<br align="left"/>    &#125;<br align="left"/>     if(OWISDOM &gt;= 20 &amp;&amp; OWISDOM &lt; 30)&#123;<br align="left"/>       WPARM = F2;<br align="left"/>    &#125;<br align="left"/>  &#125;<br align="left"/>  if(OSEX == 0)&#123;<br align="left"/>    WPARM = M1;<br align="left"/>      if(OWISDOM &gt;= 30)&#123;<br align="left"/>       WPARM = M3;<br align="left"/>    &#125;<br align="left"/>    if(OWISDOM &gt;= 20 &amp;&amp; OWISDOM &lt; 30)&#123;<br align="left"/>        WPARM = M2;<br align="left"/>    &#125;<br align="left"/>  &#125;; <br align="left"/></font></td></tr></table>>
 ];
 	setId[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>setId<br align="left"/></b></td></tr>
 </table>>];
 "setId" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WSPRITE,happy)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    ASSIGN(BFRAME,0);<br align="left"/>    SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
 ];
-	sitting[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
+	sitting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
 </table>>];
 "sitting" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_OTID)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    CLEAR(WSPRITE);<br align="left"/>     SHOW(0);<br align="left"/>     predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);<br align="left"/>     otherplayer(?BPARM, &quot;ACTIVE&quot;, ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?<br align="left"/>     set_control_value(IDV_OTHERNAME, OTHN, ONAME);<br align="left"/>     SIGNAL(SOD_AURA,SIG_MYAURA);<br align="left"/>     SIGNAL(SOD_HALO, SIG_MYHALO);<br align="left"/></font></td></tr></table>>
@@ -141,6 +141,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_ID<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SOD_ID::M_OID(&apos;OWISDOM&apos;,&apos;OSEX&apos;,&apos;0&apos;,&apos;SOD_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;present&apos;: bParm:108.82.186.169:50782 wParm:&#123;&quot;candidates&quot;:[&quot;127.0.0.1:50782&quot;,&quot;192.168.1.231:50782&quot;,&quot;108.82.186.169:50782&quot;],&quot;connected&quot;:true,&quot;playerId&quot;:&quot;108.82.186.169:50782&quot;,&quot;playerIp&quot;:&quot;:&quot;,&quot;playerName&quot;:&quot;ProBro&quot;,&quot;reconnectTok&quot;:&quot;AOLmWWTzi&quot;&#125; Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SOD_ID::M_OID(&apos;OWISDOM&apos;,&apos;OSEX&apos;,&apos;0&apos;,&apos;SOD_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: bParm:108.82.186.169:54570 wParm:M1 wSprite:IDS_MID1HAPPY bFrame:0 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

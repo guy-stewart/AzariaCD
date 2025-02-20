@@ -86,9 +86,9 @@
 <polygon fill="none" stroke="black" points="315,-366.25 315,-385 723,-385 723,-366.25 315,-366.25"/>
 <text text-anchor="start" x="474" y="-373.5" font-family="Courier New" font-weight="bold" font-size="10.00">S0_NW_INDC_GAME</text>
 <polygon fill="none" stroke="black" points="315,-320 315,-364.25 723,-364.25 723,-320 315,-320"/>
-<text text-anchor="start" x="318" y="-351.75" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:235, h:115, w:54)</text>
+<text text-anchor="start" x="318" y="-351.75" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:265, h:121, w:55)</text>
 <text text-anchor="start" x="318" y="-339" font-family="Courier New" font-size="10.00" fill="green">S0_NW_INDC_GAME::M_NW_INDC_NAME(&#39;IDS_INDC_NW_BLANK&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="318" y="-326.25" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;2&#39;: wSprite:IDS_INDC_NW_BLANK bFrame:0 Top:235 Left:890 Z:0</text>
+<text text-anchor="start" x="318" y="-326.25" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;2&#39;: wSprite:IDS_INDC_NW_BLANK bFrame:0 Top:265 Left:890 Z:0</text>
 <polygon fill="none" stroke="black" points="312,-317 312,-388 726,-388 726,-317 312,-317"/>
 </g>
 </g>

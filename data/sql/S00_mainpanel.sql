@@ -42,13 +42,14 @@ VALUES
 delete from "main"."machines" where [name] like 'S0_NW_INDC%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
 VALUES 
-('S0_NW_INDC_LIGHT',    'IDV_MAIN_PANEL',991,238,1005,289, 0, 'M_NW_INDC_LIGHT', 'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_BLINK', 'IDS_INDC_NW_RED'),
-('S0_NW_INDC_GAME',     'IDV_MAIN_PANEL',890,235,1005,289, 0, 'M_NW_INDC_NAME', 'IDS_INDC_NW_BLANK', '', '', '');
+('S0_NW_INDC_GAME',     'IDV_MAIN_PANEL',890,265,1011,288, 0, 'M_NW_INDC_NAME', 'IDS_INDC_NW_BLANK', '', '', ''),
+('S0_NW_INDC_GAMEBTN',  'IDV_MAIN_PANEL',890,290,1011,320, 0, 'M_NW_INDC_BTN', '', '', '', ''),
+('S0_NW_INDC_LIGHT',    'IDV_MAIN_PANEL',890,235,915,244, 0, 'M_NW_INDC_LIGHT', 'IDS_INDC_NW_WHITE', 'IDS_INDC_NW_GREEN', 'IDS_INDC_BLINK', 'IDS_INDC_NW_RED');
 
 delete from controls where [id] like 'NW_PLAQUE1%';
 insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
 
-('IDV_MAIN_PANEL', 'NW_PLAQUE1', 'EDITBOX',  'IDS_STD_EDITBOXMBLANK', 'IDS_BTN_DOWN_HI',   898,239, 3, '', 'default','IDS_FONTTNR12',0x44FFFF,'');
+('IDV_MAIN_PANEL', 'NW_PLAQUE1', 'EDITBOX',  'IDS_STD_EDITBOXMBLANK', 'IDS_BTN_DOWN_HI',   898,270, 3, '', 'default','IDS_FONTTNR12',0x44FFFF,'');
 
 
 

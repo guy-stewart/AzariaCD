@@ -181,14 +181,14 @@
 <!-- status -->
 <g id="node8" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="897.05,-513.25 897.05,-592.25 1207.05,-592.25 1207.05,-513.25 897.05,-513.25"/>
-<polygon fill="none" stroke="black" points="908.05,-566.5 908.05,-585.25 1196.05,-585.25 1196.05,-566.5 908.05,-566.5"/>
-<text text-anchor="start" x="1025.05" y="-573.75" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_SPELL</text>
-<polygon fill="none" stroke="black" points="908.05,-520.25 908.05,-564.5 1196.05,-564.5 1196.05,-520.25 908.05,-520.25"/>
+<polygon fill="none" stroke="black" points="897.05,-513.25 897.05,-592.25 1243.05,-592.25 1243.05,-513.25 897.05,-513.25"/>
+<polygon fill="none" stroke="black" points="908.05,-566.5 908.05,-585.25 1232.05,-585.25 1232.05,-566.5 908.05,-566.5"/>
+<text text-anchor="start" x="1043.05" y="-573.75" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_SPELL</text>
+<polygon fill="none" stroke="black" points="908.05,-520.25 908.05,-564.5 1232.05,-564.5 1232.05,-520.25 908.05,-520.25"/>
 <text text-anchor="start" x="911.05" y="-552" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_OTHERID @pos(x:10, y:50, h:70, w:100)</text>
 <text text-anchor="start" x="911.05" y="-539.25" font-family="Courier New" font-size="10.00" fill="green">SOD_SPELL::M_O_IDSPELL(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="911.05" y="-526.5" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:50 Left:10 Z:0</text>
-<polygon fill="none" stroke="black" points="905.05,-517.25 905.05,-588.25 1199.05,-588.25 1199.05,-517.25 905.05,-517.25"/>
+<text text-anchor="start" x="911.05" y="-526.5" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: wObject:IDD_BANISHMENT Top:50 Left:10 Z:0</text>
+<polygon fill="none" stroke="black" points="905.05,-517.25 905.05,-588.25 1235.05,-588.25 1235.05,-517.25 905.05,-517.25"/>
 </g>
 </g>
 </svg>

@@ -71,7 +71,7 @@
 <text text-anchor="start" x="948" y="-61" font-family="Courier New" font-weight="bold" font-size="10.00">BTN_CFG_NW1C</text>
 <polygon fill="none" stroke="black" points="777,-7.5 777,-51.75 1191,-51.75 1191,-7.5 777,-7.5"/>
 <text text-anchor="start" x="780" y="-39.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_CFGNW1 @pos(x:445, y:67, h:169, w:120)</text>
-<text text-anchor="start" x="780" y="-26.5" font-family="Courier New" font-size="10.00" fill="green">BTN_CFG_NW1C::M_BTN_1phase(&#39;IDV_CFGSESS&#39;,&#39;IDS_BTN_NW1C&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
+<text text-anchor="start" x="780" y="-26.5" font-family="Courier New" font-size="10.00" fill="green">BTN_CFG_NW1C::M_BTN_1phase(&#39;IDV_CFGNW1C&#39;,&#39;IDS_BTN_NW1C&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
 <text text-anchor="start" x="780" y="-13.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: wSprite:IDS_BTN_NW1C Top:67 Left:445 Z:0</text>
 <polygon fill="none" stroke="black" points="774,-4.5 774,-75.5 1194,-75.5 1194,-4.5 774,-4.5"/>
 </g>

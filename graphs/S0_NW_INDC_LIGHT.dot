@@ -44,6 +44,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S0_NW_INDC_LIGHT<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:991, y:238, h:14, w:51)<br align="left"/>S0_NW_INDC_LIGHT::M_NW_INDC_LIGHT(&apos;IDS_INDC_NW_WHITE&apos;,&apos;IDS_INDC_NW_GREEN&apos;,&apos;IDS_INDC_BLINK&apos;,&apos;IDS_INDC_NW_RED&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;waiting&apos;: wSprite:IDS_INDC_BLINK bFrame:0 dEtime:0 Top:238 Left:991 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:890, y:235, h:25, w:9)<br align="left"/>S0_NW_INDC_LIGHT::M_NW_INDC_LIGHT(&apos;IDS_INDC_NW_WHITE&apos;,&apos;IDS_INDC_NW_GREEN&apos;,&apos;IDS_INDC_BLINK&apos;,&apos;IDS_INDC_NW_RED&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;waiting&apos;: wSprite:IDS_INDC_BLINK bFrame:0 dEtime:0 Top:235 Left:890 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }
