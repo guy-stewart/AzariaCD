@@ -35,9 +35,12 @@ on_event_future("onPlayerTagged", "{
     replay('system/send_request'); 
 }");
 
-
+on_event_future("onMachinesInitComplete", "{
+    signal('S01_NEWSESSION','SIG_NEWSESSION');
+}");
 
 
 //on_event_future("onPlayerTagged", "write('player tagged: ',player_pid);");
 //on_event_future("onPlayerTagged", "replay('system/viewother');");
 // loadview(IDV_ckeyvend);
+

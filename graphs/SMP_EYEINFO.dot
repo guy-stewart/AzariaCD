@@ -1,0 +1,50 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_EYEINFO::M_EYEINFO<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "checkObject" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_POPUP);ASHOW(WOBJECT);<br align="left"/>MOV(BPARM,LVIEW);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "replacedView" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">      SHOW(0);<br align="left"/></font></td></tr></table>>
+];
+	checkObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>checkObject<br align="left"/></b></td></tr>
+</table>>];
+"checkObject" -> "viewSpell" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>IS_A(WOBJECT,IDC_SCROLL)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,WOBJECT);<br align="left"/>        MAPi(WPARM,S12_SCROLL);<br align="left"/>        SIGNALi(SIG_SHOW,S12_SHIELD);<br align="left"/>        SIGNALi(SIG_SHOW,S12_WORD);<br align="left"/>        SIGNALi(SIG_SHOW,S12_ING1);<br align="left"/>        SIGNALi(SIG_SHOW,S12_ING2);<br align="left"/>        SIGNALi(SIG_SHOW,S12_ING3);<br align="left"/>        SIGNALi(SIG_SHOW,S12_ING4);<br align="left"/>        SIGNALi(SIG_SHOW,S12_NYST);<br align="left"/>       <br align="left"/>       <br align="left"/></font></td></tr></table>>
+];
+"checkObject" -> "viewEnchantment" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>IS_A(WOBJECT,ISA_ENCHANTEDSTONE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,WOBJECT);      <br align="left"/>        <br align="left"/></font></td></tr></table>>
+];
+"checkObject" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>IS_A(WOBJECT,ISA_DIARY)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,WOBJECT);<br align="left"/>        if((WOBJECT == IDD_DIARY1 ))&#123;<br align="left"/>                 SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);<br align="left"/>                   q_world_active(?TEMP1, &quot;2&quot;);<br align="left"/>                        if(TEMP1 != &quot; Recover the seed of Azarian unity.&quot;)&#123;<br align="left"/>                                SIGNAL(QL_MANAGER,Q2_START);<br align="left"/>                        &#125;<br align="left"/>        &#125;<br align="left"/>        if((WOBJECT == IDD_DIARY2 ))&#123;<br align="left"/>                 SIGNAL(ORIE_DIARY_WAITER,SIG_DIARY);<br align="left"/>        &#125;<br align="left"/>         if((WOBJECT == IDD_DIARY3 ))&#123;<br align="left"/>                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);<br align="left"/>        &#125;<br align="left"/>         if((WOBJECT == IDD_DIARY4 ))&#123;<br align="left"/>                 SIGNAL(ETNOC_DIARY_WAITER,SIG_DIARY);<br align="left"/>        &#125;<br align="left"/>         if((WOBJECT == IDD_DIARY5 ))&#123;<br align="left"/>                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);<br align="left"/>                  q_world_active(?TEMP1, &quot;6&quot;);<br align="left"/>                        if(TEMP1 != &quot; Perform the ritual of the 7 moons.&quot;)&#123;<br align="left"/>                                SIGNAL(QL_MANAGER,Q6_START);<br align="left"/>                        &#125;<br align="left"/>        &#125;<br align="left"/>        if((WOBJECT == IDD_DIARY8 ))&#123;<br align="left"/>                 SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);<br align="left"/>                   q_world_active(?TEMP1, &quot;4&quot;);<br align="left"/>                        if(TEMP1 != &quot; Restore the pyramid of the eyes.&quot;)&#123;<br align="left"/>                                SIGNAL(QL_MANAGER,Q4_START);<br align="left"/>                        &#125;<br align="left"/>        &#125;<br align="left"/>         if((WOBJECT == IDD_DIARY9 ))&#123;<br align="left"/>                 SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);<br align="left"/>        &#125;<br align="left"/>        <br align="left"/></font></td></tr></table>>
+];
+"checkObject" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">       <br align="left"/>if(IS_A(WOBJECT,IDD_SCOOPE) \|\| IS_A(WOBJECT,IDD_SCOOPF))&#123;<br align="left"/>                MOV(WPARM,WOBJECT);<br align="left"/>                SIGNAL(NYSTROM_WAITER,SIG_NYSTROM);<br align="left"/>                &#125;<br align="left"/>       if(IS_A(WOBJECT,IDC_NULL) \|\| IS_A(WOBJECT,IDC_BOMB) \|\| IS_A(WOBJECT,IDC_FISH) \|\| IS_A(WOBJECT,IDC_SPELL) \|\| IS_A(WOBJECT,IDC_BAIT) \|\| IS_A(WOBJECT,IDC_TOKEN)\|\| IS_A(WOBJECT,ISA_TOOL_DIGGER)\|\| IS_A(WOBJECT,ISA_TOOL_STRIKER)\|\| IS_A(WOBJECT,ISA_TOOL_PRYER))&#123;<br align="left"/>                MOV(WPARM,WOBJECT);<br align="left"/>                SIGNAL(OBJECT_WAITER,SIG_OBJECT);<br align="left"/>                &#125;<br align="left"/></font></td></tr></table>>
+];
+"checkObject" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	replacedView[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>replacedView<br align="left"/></b></td></tr>
+</table>>];
+"replacedView" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        LOADVIEW(BPARM);<br align="left"/></font></td></tr></table>>
+];
+	viewEnchantment[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>viewEnchantment<br align="left"/></b></td></tr>
+</table>>];
+"viewEnchantment" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>LOADVIEW(IDV_ENCHANTPAN,)<br align="left"/></b></td></tr>
+</table>>
+];
+	viewSpell[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>viewSpell<br align="left"/></b></td></tr>
+</table>>];
+"viewSpell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>LOADVIEW(IDV_SPELLPAN,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_EYEINFO<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:152, y:75, h:68, w:57)<br align="left"/>SMP_EYEINFO::M_EYEINFO(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: bParm:IDV_EYEB wParm:IDD_PFLWRSPT Top:75 Left:152 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

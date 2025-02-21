@@ -1,0 +1,14 @@
+
+
+
+write(" --------------------SEND ITEM--------------------");
+predicate otherplayer(pid,status);
+otherplayer(?to,"ACTIVE")?
+predicate dropitem(object,id);
+method = "dropItem";        
+dropitem(?object,?id)?
+params = '{' +'"object":"'+ object +'",' +'"id":"'+ id +'"' +'}';
+dropItem('%')~
+     send_request(to, method, params, future);
+ 
+write("Send Unsubscribe -------------- END -------------------------");
