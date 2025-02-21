@@ -65,8 +65,16 @@ if (method == 'getPlayerDetails') {
     write("unsubscribing =====> ", from, " from my watchers");
     predicate watchers(address);
     watchers(from)~
+}else if(method == 'dropItem') {
+    write("a player: =====> ", from, " is dropping an item on me");
+    object = json_element(params, "object");
+    id = json_element(params, "id");
+    result = 'gotItem';
+    predicate inboundItem(object,id);
+    inboundItem('%')~
+    inboundItem(object,id).
+    SIGNAL("SID_SPELL","SIG_DROPPED");
 }
-
 
 
 write("Receive Request --------------- END -------------------------");

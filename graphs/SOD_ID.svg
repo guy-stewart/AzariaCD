@@ -467,7 +467,7 @@
 <polygon fill="none" stroke="black" points="759.31,-1332.75 759.31,-1377 1371.31,-1377 1371.31,-1332.75 759.31,-1332.75"/>
 <text text-anchor="start" x="762.31" y="-1364.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:101, w:171)</text>
 <text text-anchor="start" x="762.31" y="-1351.75" font-family="Courier New" font-size="10.00" fill="green">SOD_ID::M_OID(&#39;OWISDOM&#39;,&#39;OSEX&#39;,&#39;0&#39;,&#39;SOD_AURA&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="762.31" y="-1339" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: bParm:108.82.186.169:54570 wParm:M1 wSprite:IDS_MID1HAPPY bFrame:0 Top:0 Left:0 Z:0</text>
+<text text-anchor="start" x="762.31" y="-1339" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: bParm:108.82.186.169:55232 wParm:M3 wSprite:IDS_MID3HAPPY bFrame:0 Top:0 Left:0 Z:0</text>
 <polygon fill="none" stroke="black" points="756.31,-1329.75 756.31,-1400.75 1374.31,-1400.75 1374.31,-1329.75 756.31,-1329.75"/>
 </g>
 </g>

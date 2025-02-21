@@ -375,6 +375,7 @@ VALUES
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
 ('M_O_AURA', '0', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
 ('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_O_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_O_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
@@ -721,8 +722,19 @@ VALUES
 ----------------------------
 -- This is where bombs and spells get processed for effect
 -- for both local and other players
+-- spell_..ou creates a drop here
+-- new approach is to signal the drop here instead from a recieved message
 
 ('M_IDSPELL','0','checkObject','DROP','','', '
+    CLEAR(WVIEWID);
+    WRITE("Item Dropped on ID");
+
+', '', ''),
+('M_IDSPELL','0','checkObject','WAIT','','SIG_DROPPED', '
+    //NEED TO SHOW OBJECT HERE OR AT LEAST SET WOJBJECT
+    predicate inboundItem(object,id);
+    inboundItem(?WOBJECT,?BPARM)?
+
     CLEAR(WVIEWID);
     WRITE("Item Dropped on ID");
 
@@ -746,6 +758,7 @@ VALUES
 
 -- Need to check to see if protection is active and if it is 
 -- ignore bombs and spells (PROTECT_ACTIVE in state active)
+-- Not sure why SPELL_..E is even needed at all - could just signal the id.
 
 ('M_IDSPELL','itsAbomb','0','IFSTATE','active','PROTECT_ACTIVE', ' 
     PLAYWAVE(SOUND_SUCK);
@@ -779,7 +792,7 @@ VALUES
 ----------------------------
 ----------------------------
 -->>> Local player drops an object on M_O_IDSPELL and then
---  SPELL_YOU(WOBJECT); creates a DROP over in the other players M_IDSPELL by calling  SPELL_YOU(WOBJECT,SIG_OBJECT);
+--  SPELL_..OU(WOBJECT); creates a DROP over in the other players M_IDSPELL by calling  SPELL_..OU(WOBJECT,SIG_OBJECT);
 --  The object is again looked at on the M_IDSPELL
 
 
@@ -798,40 +811,56 @@ VALUES
         SHOW();
     }
    if(R_BPARM == 0){
-        REF_MACHINE(CHAR_DROPTARGET); 
+        REF_MACHINE(CHAR_DROPTARGET); //written in case machines overlap meflin machine is in the way
         MOV(WOBJECT,R_WOBJECT);
             //Deduct for all the bad or good things local player can drop 
                 ADDI(LKARMA,1); 
                 SIGNAL(SID_HALO,SIG_ADD);
         //Assuming this would create the spell over on the other player
-        SPELL_YOU(WOBJECT);
+        //SPELL_YOU(WOBJECT);
+        predicate dropitem(object,id);
+        dropitem("%")~
+        dropitem(WOBJECT,"id").
+        replay(system/send_item);
         SHOW();
     } 
 ', '', ''),
 
 ('M_O_IDSPELL','postProcessObject','0','Z_EPSILON','0','0', '', '', ''),
-
+-- I think this should be dumber and just pass whatever
 --from 0 drop
 ('M_O_IDSPELL','checkObject','itsAbomb','IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDC_SPELL', '', '', ''),
 ('M_O_IDSPELL','checkObject','itsAspell','IS_A','WOBJECT','IDD_GVIAL', '', '', ''),
 ('M_O_IDSPELL','checkObject','regularObject','Z_EPSILON','0','0', '
     SHOW(WOBJECT);
-    SPELL_YOU(WOBJECT,SIG_OBJECT);
+     predicate dropitem(object,id);
+        dropitem("%")~
+        dropitem(WOBJECT,"id").
+        replay(system/send_item);
 ', '', ''),
 ('M_O_IDSPELL','regularObject','0','ZEPSILON','','', '
     CLEAR(WOBJECT);
     SHOW();
 ', '', ''),
 
--- This SPELL_YOU needs to pass the WOBJECT and the SIG_BOMB (M_IDSPELL needs to look at the WOBJECT to determine it a bomb)
+-- This SPELL_..OU needs to pass the WOBJECT and the SIG_BOMB (M_IDSPELL needs to look at the WOBJECT to determine it a bomb)
 -- M_IDSPELL will process it locally
-('M_O_IDSPELL','itsAbomb','0','SPELL_YOU','WOBJECT','SIG_BOMB', '
+('M_O_IDSPELL','itsAbomb','0','Z_EPSILON','','', '
     WRITE("M_O_IDSPELL says ITS A BOMB");
     SIGNALi(SOD_ID,SIG_BOMB);
+     predicate dropitem(object,id);
+        dropitem("%")~
+        dropitem(WOBJECT,"id").
+        replay(system/send_item);
+        SHOW();
     ', '', ''),
 ('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
-   SPELL_YOU(WOBJECT);
+    predicate dropitem(object,id);
+        dropitem("%")~
+        dropitem(WOBJECT,"id").
+        replay(system/send_item);
+        SHOW();
 ', '', '');
 
 
@@ -928,7 +957,7 @@ VALUES
 
 
 -- ('M_IDSPELL',0,100,'DROP','0','0', '', '', ''),
--- ('M_IDSPELL',1,2,'SPELL_ME','WOBJECT','SIG_OBJECT', '', '', ''),
+-- ('M_IDSPELL',1,2,'SPELL_..E','WOBJECT','SIG_OBJECT', '', '', ''),
 -- ('M_IDSPELL',2,3,'PLAYWAVE','0','SOUND_POPUP', '', '', ''),
 -- ('M_IDSPELL',3,4,'ASHOW','WOBJECT','', '', '', ''),
 -- ('M_IDSPELL',4,100,'DROP','0','0', '', '', ''),
@@ -939,7 +968,7 @@ VALUES
 -- ('M_IDSPELL',10,11,'LOADVIEW','WVIEWID','', '', '', ''),
 -- ('M_IDSPELL',11,12,'CLEAR','WVIEWID','', '', '', ''),
 -- ('M_IDSPELL',12,13,'SHOW','0','0', '', '', ''),
--- ('M_IDSPELL',13,0,'SPELL_ME','WOBJECT','SIG_CLEAR', '', '', ''),
+-- ('M_IDSPELL',13,0,'SPELL_..E','WOBJECT','SIG_CLEAR', '', '', ''),
 -- ('M_IDSPELL',20,21,'CLEAR','WOBJECT','', '', '', ''),
 -- ('M_IDSPELL',21,22,'SHOW','0','0', '', '', ''),
 -- ('M_IDSPELL',22,0,'VIDEO','0','IDS_SMBURST', '', '', ''),
@@ -947,7 +976,7 @@ VALUES
 -- ('M_IDSPELL',101,102,'IS_A','WOBJECT','IDC_BOMB', '', '', ''),
 -- ('M_IDSPELL',101,120,'IS_A','WOBJECT','IDC_SCROLL', '', '', ''),
 -- ('M_IDSPELL',101,1,'Z_EPSILON','0','0', '', '', ''),
--- ('M_IDSPELL',102,0,'SPELL_ME','0','SIG_BOMB', '', '', ''),
+-- ('M_IDSPELL',102,0,'SPELL_..E','0','SIG_BOMB', '', '', ''),
 -- ('M_IDSPELL',120,121,'MOV','WTEMP1','WOBJECT', '', '', ''),
 -- ('M_IDSPELL',121,122,'MOV','WVIEWID','LVIEW', '', '', ''),
 -- ('M_IDSPELL',122,1,'LOADVIEW','0','IDV_PARCHPAN', '', '', ''),

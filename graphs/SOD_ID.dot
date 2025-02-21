@@ -141,6 +141,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_ID<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SOD_ID::M_OID(&apos;OWISDOM&apos;,&apos;OSEX&apos;,&apos;0&apos;,&apos;SOD_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: bParm:108.82.186.169:54570 wParm:M1 wSprite:IDS_MID1HAPPY bFrame:0 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SOD_ID::M_OID(&apos;OWISDOM&apos;,&apos;OSEX&apos;,&apos;0&apos;,&apos;SOD_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: bParm:108.82.186.169:55232 wParm:M3 wSprite:IDS_MID3HAPPY bFrame:0 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

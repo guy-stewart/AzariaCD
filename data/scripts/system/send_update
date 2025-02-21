@@ -33,6 +33,7 @@ for (watchers(?to)) {
         +'"knowscity":'+ knowscity  
         + '}';
    
+    write("sending params == ", params);   
     send_request(to, method, params, future);
 }
 

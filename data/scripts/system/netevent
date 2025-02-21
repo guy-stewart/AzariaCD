@@ -16,6 +16,6 @@ if (NetEvent == 'DPSYS_PING') {
 
 
 } else {
-    write("NetEvent:",NetEvent);
-    write("Params:"+Params);
+   write("NetEvent:",NetEvent);
+   write("Params:"+Params);
 }
