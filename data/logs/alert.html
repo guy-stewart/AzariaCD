@@ -3,26 +3,14 @@
 <body>
 <h1>Parse error</h1>
 </p>
-<pre><code>
-       predicate q_local_active(quest,num,status,location);
-       q_local_active("%")~
-       predicate q_local_complete(quest,num,status,location);
-       q_local_complete("%")~
-       predicate q_world_active(quest,num,status,location);
-       q_local_active("%")~
-       predicate q_world_complete(quest,num,status,location);
-       q_local_complete("%")~
-
-        REF_MACHINE(QL_Q0_State);
-        if(R_WTEMEP1 == "active"){ 
-                q_local_active(R_BPARM,0,R_WTEMP1,R_WPARM).
-                        } else if(R_WTEMP1 == "complete"){
-                                 q_local_complete(R_BPARM,0,R_WTEMP1,R_WPARM).
-                                 }
-       
-        REF_MACHINE(QL_Q1_State);
-        if(R_WTEMP1 == "active"){ q_local_active(R_BPARM,1,R_WTEMP1,R_WPARM).} else if(R_WTEMP1 == "complete"){ q_local_complete(R_BPARM,1,R_WTEMP1,R_WPARM).}
-        REF_MACHINE(QL_Q2_State)<font color="blue"> <-- Parse error: expected ';'. encountered 'if' ... continuing ...</font>
-</code></pre>
-</body>
+<pre><code>event=IN8_RPC;
+from='108.82.186.169:50368';
+to='108.82.186.169:52570';
+type=0;
+id=71;
+tbl=4;
+method='';
+result='unsubscribe';
+params='{"culture":1,"energy":6,"gender":1,"karma":1,"knowscity":0,"knowsparent":0,"knowsvillage":0,"name":"Tommy","strength":10,"viewname":"IDV_TESTPAN","wealth":10,"wisdom":25}';
+future<font color="blue"> <-- Parse error: expected '=' or '(' after ID:future</body>
 </html>

@@ -30,16 +30,18 @@ INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bot
 -- called by the future onMachinesInitComplete in config
 delete from transitions where [automaton] like 'M_NEWSESSION%';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") VALUES 
-('M_NEWSESSION', '0', '1', 'WAIT', '', 'SIG_NEWSESSION', '
+('M_NEWSESSION', '0', '1', 'WAIT', '', 'SIG_NEWSESSION', '', '', ''),
+('M_NEWSESSION', '1', '2', 'ESTIME', '1', '', '
     predicate watchers (address,name);
     watchers()~
     predicate otherplayer(pid,status);
     otherplayer()~
+    SIGNAL(SOD_ID, SIG_CLEAR);
     SIGNAL(S_CFGNWSERVER, SIG_RESET);
     SIGNAL(S0_NW_INDC_LIGHT, SIG_RESET);
     WRITE("RESETTING INDC LIGHT and cleaning up previous session data");
 ', '', ''),
-('M_NEWGAME', '1', '0', 'Z_EPSILON', '', '', '', '', '');
+('M_NEWGAME', '2', '0', 'Z_EPSILON', '', '', '', '', '');
 
 
 

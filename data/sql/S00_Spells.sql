@@ -317,14 +317,15 @@ VALUES
         }
         if(WIP1 == REVIVE){ 
             ASSIGN(LWISDOM,10);
-            SIGNALi(0,SID_ID);
-            ASSIGN(LENERGY,10);
-            SIGNAL(SID_AURA,SIG_SUB);
+            ASSIGN(LENERGY,4);
+            ASSIGN(LKARMA,1);
+            SIGNALi(SID_ID,SIG_REVIVE);
+            SIGNAL(SID_PERSIST,SIG_UPDATE);
             ASSIGN(LWEALTH,5);SIGNAL(S1_VIALMETER,SIG_SHOW);
             SIGNAL(SID_ID,SIG_SURPRISED);
-            SUBI(LKARMA,6);
+            SIGNAL(SID_AURA,SIG_SUB);
             SIGNAL(SID_HALO,SIG_SUB);
-             SIGNALi(0,SID_ID);
+            loadview(IDV_ORIE);
         }
          if(WIP1 == BANISHMENT){
             MOV(WPARM,IDV_BANISH);

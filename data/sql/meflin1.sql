@@ -38,7 +38,7 @@ delete from views where view_name = 'IDV_VILLIBA';
 
 
 insert into views values 
-('IDV_MEFID',2,0,0,1,'otherid.vct','you');
+('IDV_MEFID',2,0,0,1,'meflinid.vct','you');
 
 
 
@@ -651,11 +651,31 @@ CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
 ');
 
 
+--set_control_value(IDV_OTHERNAME, OTHN, ONAME);
+
 
 delete from transitions where automaton =  'M_MEF_TALK';
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code")
 VALUES 
-('M_MEF_TALK','0','gotPlaySignal','WAIT','','SIG_PLAY',''),
+('M_MEF_TALK','0','gotPlaySignal','WAIT','','SIG_PLAY','
+    REF_MACHINE(MEFCURRENT);
+   if(R_BPARM == S33_NEELP || R_BPARM == S11_NEELP || R_BPARM == S30_NEELP){
+         set_control_value(IDV_OTHERNAME, OTHN, "NEELP");
+   }
+   if(R_BPARM == S24_RATHE || R_BPARM == S25_RATHE)
+         set_control_value(IDV_OTHERNAME, OTHN, "RATHE");
+   }
+   if(R_BPARM == S10_THAOR || R_BPARM == S19_THAOR){
+         set_control_value(IDV_OTHERNAME, OTHN, "THAOR");
+   }
+   if(R_BPARM == S16_PERST || R_BPARM == S12_PERST){
+         set_control_value(IDV_OTHERNAME, OTHN, "PERST");
+   }
+   if(R_BPARM == S09_AMBLE) {
+        set_control_value(IDV_OTHERNAME, OTHN, "AMBLE");
+   }
+      
+'),
 
 ('M_MEF_TALK','gotPlaySignal', 'prepLongTalk', 'MOV', 'WSPRITE', 'WIP1', ''), -- long dialogue loop wip1
 ('M_MEF_TALK','prepLongTalk', 'startPlayingTalkFile', 'ASHOW',  'WSPRITE', '',  '
@@ -681,6 +701,7 @@ PLAYWAVE(WIP3);
     STOPWAVE();
     CLEAR(WSPRITE);
     SHOW();
+    SIGNAL(SOD_ID,SIG_OTID);
 '),
 ('M_MEF_TALK','closed', '0', 'Z_EPSILON', '0', '0', ''),
 -- Examine and react to items -------------------------

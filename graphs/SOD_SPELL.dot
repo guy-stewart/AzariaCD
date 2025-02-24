@@ -10,7 +10,7 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">    CLEAR(WVIEWID);<br align="left"/>    WRITE(&quot;I dropped an item on another player&quot;);<br align="left"/></font></td></tr></table>>
 ];
 "0" -> "postProcessObject" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_DROP)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    WRITE(&quot;M_O_IDSPELL says an item dropped... check if there is a meflin&quot;);<br align="left"/>    REF_MACHINE(MEFPAN_VIEWCAP);<br align="left"/>    MOV(BPARM,R_BPARM);<br align="left"/>    if(R_BPARM == 1)&#123;  //Theres a meflin up<br align="left"/>        REF_MACHINE(MEFCURRENT); //Who is it?<br align="left"/>        MOV(WPARM,R_WPARM);<br align="left"/>        SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject<br align="left"/>        SHOW();<br align="left"/>    &#125;<br align="left"/>   if(R_BPARM == 0)&#123;<br align="left"/>        REF_MACHINE(CHAR_DROPTARGET); <br align="left"/>        MOV(WOBJECT,R_WOBJECT);<br align="left"/>            //Deduct for all the bad or good things local player can drop <br align="left"/>                ADDI(LKARMA,1); <br align="left"/>                SIGNAL(SID_HALO,SIG_ADD);<br align="left"/>        //Assuming this would create the spell over on the other player<br align="left"/>        SPELL_YOU(WOBJECT);<br align="left"/>        SHOW();<br align="left"/>    &#125; <br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;M_O_IDSPELL says an item dropped... check if there is a meflin&quot;);<br align="left"/>    REF_MACHINE(MEFPAN_VIEWCAP);<br align="left"/>    MOV(BPARM,R_BPARM);<br align="left"/>    if(R_BPARM == 1)&#123;  //Theres a meflin up<br align="left"/>        REF_MACHINE(MEFCURRENT); //Who is it?<br align="left"/>        MOV(WPARM,R_WPARM);<br align="left"/>        SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject<br align="left"/>        SHOW();<br align="left"/>    &#125;<br align="left"/>   if(R_BPARM == 0)&#123;<br align="left"/>        REF_MACHINE(CHAR_DROPTARGET); //written in case machines overlap meflin machine is in the way<br align="left"/>        MOV(WOBJECT,R_WOBJECT);<br align="left"/>            //Deduct for all the bad or good things local player can drop <br align="left"/>                ADDI(LKARMA,1); <br align="left"/>                SIGNAL(SID_HALO,SIG_ADD);<br align="left"/>        //Assuming this would create the spell over on the other player<br align="left"/>        //SPELL_YOU(WOBJECT);<br align="left"/>        predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/>        SHOW();<br align="left"/>    &#125; <br align="left"/></font></td></tr></table>>
 ];
 	checkObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>checkObject<br align="left"/></b></td></tr>
 </table>>];
@@ -24,17 +24,17 @@ digraph Automaton {
 </table>>
 ];
 "checkObject" -> "regularObject" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(0,0)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    SHOW(WOBJECT);<br align="left"/>    SPELL_YOU(WOBJECT,SIG_OBJECT);<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    SHOW(WOBJECT);<br align="left"/>     predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/></font></td></tr></table>>
 ];
 	itsAbomb[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itsAbomb<br align="left"/></b></td></tr>
 </table>>];
-"itsAbomb" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SPELL_YOU(WOBJECT,SIG_BOMB)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    WRITE(&quot;M_O_IDSPELL says ITS A BOMB&quot;);<br align="left"/>    SIGNALi(SOD_ID,SIG_BOMB);<br align="left"/>    <br align="left"/></font></td></tr></table>>
+"itsAbomb" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WRITE(&quot;M_O_IDSPELL says ITS A BOMB&quot;);<br align="left"/>    SIGNALi(SOD_ID,SIG_BOMB);<br align="left"/>     predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/>        SHOW();<br align="left"/>    <br align="left"/></font></td></tr></table>>
 ];
 	itsAspell[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itsAspell<br align="left"/></b></td></tr>
 </table>>];
 "itsAspell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">   SPELL_YOU(WOBJECT);<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/>        SHOW();<br align="left"/></font></td></tr></table>>
 ];
 	postProcessObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>postProcessObject<br align="left"/></b></td></tr>
 </table>>];
@@ -47,6 +47,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">    CLEAR(WOBJECT);<br align="left"/>    SHOW();<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_SPELL<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:10, y:50, h:70, w:100)<br align="left"/>SOD_SPELL::M_O_IDSPELL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wObject:IDD_BANISHMENT Top:50 Left:10 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:10, y:50, h:70, w:100)<br align="left"/>SOD_SPELL::M_O_IDSPELL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wObject:IDD_REVIAL Top:50 Left:10 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }
