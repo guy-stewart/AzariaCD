@@ -298,7 +298,7 @@ INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bo
 VALUES 
 ('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_O_HALO', 'SOD_ID', '', '', ''),
 ('SOD_SPELL','IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
-('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', '0', 'SOD_AURA'),
+('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', 'SOD_HALO', 'SOD_AURA'),
 ('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
 
 
@@ -338,13 +338,18 @@ VALUES
     SIGNAL(SID_AURA,SIG_SUB);
 ', '', ''),
 
-('M_AURA', '0', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
-('M_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
-('M_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
-('M_AURA', '1', 'energyBoost', 'WAIT', '0', '0', '', '', ''),
-('M_AURA', 'energyBoost', '1', 'ASSIGN', 'WPARM', '', '
-       if(LENERGY > (MAX_AURAS - 1)){
-             ASSIGN(LENERGY,(MAX_AURAS -1));
+('M_AURA', '0', 'energyChange', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_ADD', '', '', ''),
+('M_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_SUB', '', '', ''),
+('M_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
+  WRITE("Clear the aura");  
+  SHOW(0);
+', '', ''),
+('M_AURA', '1', 'energyChange', 'WAIT', '0', '0', '', '', ''),
+('M_AURA', 'energyChange', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
+       if(LENERGY > 23){
+             ASSIGN(LENERGY,23);
        }
         ASSIGN(BPARM,LENERGY);
         MOV(WSPRITE,BPARM);
@@ -352,64 +357,47 @@ VALUES
         SHOW(WSPRITE);
         ANIMATE(WPARM);
         SIGNALi(0,SID_ID);
-       
-', '', ''),
-('M_AURA', 'energyDrain', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
-        if(LENERGY <= 1){
-             ASSIGN(LENERGY,1);
-       }      
-        ASSIGN(BPARM,LENERGY);
-        MOV(WSPRITE,BPARM);
-        MAPi(WSPRITE,S00_AURA_MAP);
-        SHOW(WSPRITE);
-        ANIMATE(WPARM);
-        SIGNALi(0,SID_ID);
-        
-        if(LENERGY <= 1){
-             ASSIGN(LENERGY,1);
-             SIGNAL(SID_PERSIST,SIG_UPDATE);
-             SIGNAL(SID_ID,SIG_DEAD);
-       }   
+         if(LENERGY < 1){
+            ASSIGN(LENERGY,0);
+            SIGNAL(SID_ID,SIG_DEAD);
+            }
+        if(OENERGY > 0){
+            SIGNALi(0,SID_ID);
+            };  
 ', '', '');
+
+
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code", "guard", "doc") 
 VALUES 
-('M_O_AURA', '0', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
-('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
-('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
-('M_O_AURA', '1', 'energyDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
+('M_O_AURA', '0', 'energyChange', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_O_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_MYAURA', '', '', ''),
+('M_O_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_ADD', '', '', ''),
+('M_O_AURA', '1', 'energyChange', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_O_AURA', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
   WRITE("Clear the aura");  
   SHOW(0);
 ', '', ''),
-('M_O_AURA', '1', 'energyBoost', 'WAIT', '0', '0', '', '', ''),
-('M_O_AURA', 'energyBoost', '1', 'ASSIGN', 'WPARM', '', '
-       if(OENERGY > (MAX_AURAS - 1)){
-             ASSIGN(OENERGY,(MAX_AURAS -1));
+('M_O_AURA', '1', 'energyChange', 'WAIT', '0', '0', '', '', ''),
+('M_O_AURA', 'energyChange', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
+       if(OENERGY > 23){
+             ASSIGN(OENERGY,23);
        }
         ASSIGN(BPARM,OENERGY);
         MOV(WSPRITE,BPARM);
         MAPi(WSPRITE,S00_AURA_MAP);
         SHOW(WSPRITE);
         ANIMATE(WPARM);
-        SIGNALi(0,SOD_ID);
-', '', ''),
-('M_O_AURA', 'energyDrain', '1', 'ASSIGN', 'WPARM', 'V_REVERSE', '
-        if(OENERGY <= 1){
-             ASSIGN(OENERGY,1);
-       }      
-       ASSIGN(BPARM,OENERGY);
-        MOV(WSPRITE,BPARM);
-        MAPi(WSPRITE,S00_AURA_MAP);
-        SHOW(WSPRITE);
-        ANIMATE(WPARM);
-        SIGNALi(0,SOD_ID);
-        
-        if(OENERGY <= 1){
-             ASSIGN(OENERGY,1);
-             SIGNAL(SOD_ID,SIG_DEAD);
-       }   
+       
+        if(OENERGY < 1){
+            ASSIGN(OENERGY,0);
+            SIGNAL(SOD_ID,SIG_DEAD);
+            }
+        if(OENERGY > 0){
+            SIGNALi(0,SOD_ID);
+            }; 
 ', '', '');
+
 
 
 
@@ -426,6 +414,10 @@ VALUES
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_HALO', '1', 'karmaDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_HALO', '1', 'karmaBoost', 'WAIT', '0', '0', '', '', ''),
+('M_HALO', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
+  WRITE("Clear the Halo");  
+  SHOW(0);
+', '', ''),
 ('M_HALO', 'karmaBoost', '1', 'ASSIGN', 'WPARM', '', '
        if(WIP2 > (MAX_KARMA - 1)){
              ASSIGN(LKARMA,(MAX_KARMA));
@@ -455,6 +447,10 @@ VALUES
 ('M_O_HALO', '1', 'karmaBoost', 'WAIT', '0', 'SIG_ADD', '', '', ''),
 ('M_O_HALO', '1', 'karmaDrain', 'WAIT', '0', 'SIG_SUB', '', '', ''),
 ('M_O_HALO', '1', 'karmaBoost', 'WAIT', '0', '0', '', '', ''),
+('M_O_HALO', '1', '1', 'WAIT', '0', 'SIG_CLEAR', '
+  WRITE("Clear the Halo");  
+  SHOW(0);
+', '', ''),
 ('M_O_HALO', 'karmaBoost', '1', 'ASSIGN', 'WPARM', '', '
        if(WIP2 > (MAX_KARMA - 1)){
              ASSIGN(OKARMA,(MAX_KARMA));
@@ -571,8 +567,10 @@ VALUES
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '
             SUBI(LENERGY,1);
-            SIGNAL(SID_PERSIST,SIG_UPDATE);
             SIGNAL(SID_AURA,SIG_SUB);
+            SIGNALi(0,SID_ID);
+            SIGNAL(SID_PERSIST,SIG_UPDATE);
+            
 ', '', ''),
 
 ('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
@@ -585,30 +583,33 @@ VALUES
     SHOW(0,WSPRITE);
     ANIMATE(0,0);
 ', '', ''),
-('M_ID', 'playDead', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+('M_ID', 'playDead', 'dead', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
     SHOW(0,WSPRITE);
     VIDEO(0,WSPRITE);
     ANIMATE(0,0);
-    ASSIGN(LENERGY,1);
+    ASSIGN(LENERGY,0);
     ASSIGN(LWEALTH,0);
-    SIGNAL(SID_PERSIST,SIG_UPDATE);
     SIGNAL(SMP_VIAL,SIG_DRAIN);
     SIGNAL(SID_PERSIST,SIG_UPDATE);
     LOADVIEW(IDV_VIL8);
 ', '', ''),
+('M_ID', 'dead', 'present', 'WAIT', '', 'SIG_REVIVE', '', '', ''),
+('M_ID', 'dead', '0', 'WAIT', '', 'SIG_MYID', '', '', ''),
 ('M_ID', '100', 'empty', 'Z_EPSILON', '', '', '
     SHOW(0);
+    SIGNAL(WIP3,SIG_CLEAR);
     SIGNAL(WIP4,SIG_CLEAR);
 ', '', ''),
-('M_ID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', ''),
+('M_ID', 'empty', '0', 'WAIT', '', 'SIG_SHOW', '', '', ''),
 
 ---------------------
 ---------------------
 ---------------------
 ('M_OID', '0', 'present', 'WAIT', '', 'SIG_OTID', '
+    loadview(IDV_OTHERID);
     CLEAR(WSPRITE);
-     SHOW(0);
+     SHOW();
      predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
      otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
      set_control_value(IDV_OTHERNAME, OTHN, ONAME);
@@ -644,13 +645,15 @@ VALUES
     SHOW(WSPRITE);
 ', '', ''),
 ('M_OID', 'sitting', 'present', 'WAIT', '', 'SIG_OTID', '
+    loadview(IDV_OTHERID);
     CLEAR(WSPRITE);
-     SHOW(0);
+     SHOW();
      predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
      otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
      set_control_value(IDV_OTHERNAME, OTHN, ONAME);
-     SIGNAL(SOD_AURA,SIG_MYAURA);
+     SIGNAL(SOD_AURA,SIG_SUB);
      SIGNAL(SOD_HALO, SIG_MYHALO);
+
 ', '', ''), 
 ('M_OID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
 ('M_OID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
@@ -690,23 +693,24 @@ VALUES
     SHOW(0,WSPRITE);
     ANIMATE(0,0);
 ', '', ''),
-('M_OID', 'playDead', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+('M_OID', 'playDead', 'dead', 'ASSIGN', 'BFRAME', '0', '
     MAP(WSPRITE,WPARM);
     SHOW(0,WSPRITE);
     VIDEO(0,WSPRITE);
     ANIMATE(0,0);
-    ASSIGN(OENERGY,1);
+    ASSIGN(OENERGY,0);
     ASSIGN(OWEALTH,0);
-    SIGNAL(SMP_VIAL,SIG_DRAIN);
-    LOADVIEW(IDV_VIL8);
 ', '', ''),
+('M_OID', 'dead', 'present', 'WAIT', '', 'SIG_OTID', '', '', ''),
+('M_OID', 'dead', '0', 'WAIT', '', 'SIG_MYID', '', '', ''),
 --this clears the id and the aura (wip4)
-('M_OID', '100', 'empty', 'Z_EPSILON', '', '', '
+('M_OID', '100', '0', 'Z_EPSILON', '', '', '
     SHOW(0);
     SIGNAL(WIP4,SIG_CLEAR);
-', '', ''),
+    SIGNAL(WIP3,SIG_CLEAR);
+', '', '');
 --The to state below should prob be setid not sitting
-('M_OID', 'empty', 'sitting', 'WAIT', '', 'SIG_SHOW', '', '', '');
+--('M_OID', 'empty', '0', 'WAIT', '', 'SIG_SHOW', '', '', '');
 
 
 
@@ -766,7 +770,7 @@ VALUES
 ('M_IDSPELL','itsAspell','0','IFSTATE','active','PROTECT_ACTIVE', ' 
   PLAYWAVE(SOUND_SUCK);
 ', '', ''),
-('M_IDSPELL','itsAbomb','0','SPELL_ME','WOBJECT','SIG_BOMB', '
+('M_IDSPELL','itsAbomb','0','Z_EPSILON','','', '
      WRITE("M_IDSPELL says ITS A BOMB");
      SIGNAL(SID_ID, SIG_BOMB);
 ', '', ''),
@@ -894,14 +898,17 @@ VALUES
 ('M_TEST1', '0', '0', 'CLICK', '0', '0', '
     ASSIGN(LENERGY,4);
     SIGNAL(SID_AURA,SIG_ADD);
+    SIGNALi(0,SID_ID);
 ', '', ''),
 ('M_TEST2', '0', '0', 'CLICK', '0', '0', '
     ADDI(LENERGY,1);
     SIGNAL(SID_AURA,SIG_ADD);
+    SIGNALi(0,SID_ID);
     ', '', ''),
 ('M_TEST3', '0', '0', 'CLICK', '0', '0', '
     SUBI(LENERGY,1);
     SIGNAL(SID_AURA,SIG_SUB);
+    SIGNALi(0,SID_ID);
     ', '', ''),
 ('M_TEST4', '0', '0', 'CLICK', '0', '0', '
     ASSIGN(LKARMA,0);
@@ -914,6 +921,9 @@ VALUES
     SIGNAL(SID_HALO,SIG_ADD);
     ', '', ''),
 ('M_TEST6', '0', '0', 'CLICK', '0', '0', '
+    if (LKARMA < 0){
+        ASSIGN(LKARMA,1);
+    }
     SUBI(LKARMA,1);
      playmusic(kam209ba,3);
     SIGNAL(SID_HALO,SIG_SUB);

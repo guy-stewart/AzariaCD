@@ -11,6 +11,9 @@ digraph Automaton {
 ];
 	1[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
 </table>>];
+"1" -> "energyBoost" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_MYAURA)<br align="left"/></b></td></tr>
+</table>>
+];
 "1" -> "energyBoost" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_ADD)<br align="left"/></b></td></tr>
 </table>>
 ];
@@ -34,6 +37,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">        if(OENERGY &lt;= 1)&#123;<br align="left"/>             ASSIGN(OENERGY,1);<br align="left"/>       &#125;      <br align="left"/>       ASSIGN(BPARM,OENERGY);<br align="left"/>        MOV(WSPRITE,BPARM);<br align="left"/>        MAPi(WSPRITE,S00_AURA_MAP);<br align="left"/>        SHOW(WSPRITE);<br align="left"/>        ANIMATE(WPARM);<br align="left"/>        SIGNALi(0,SOD_ID);<br align="left"/>        <br align="left"/>        if(OENERGY &lt;= 1)&#123;<br align="left"/>             ASSIGN(OENERGY,1);<br align="left"/>             SIGNAL(SOD_ID,SIG_DEAD);<br align="left"/>       &#125;   <br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_AURA<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:10, w:10)<br align="left"/>SOD_AURA::M_O_AURA(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: bParm:4 wSprite:IDS_AURA4 bFrame:4 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:0, y:0, h:10, w:10)<br align="left"/>SOD_AURA::M_O_AURA(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: bParm:2 wSprite:IDS_AURA2 bFrame:4 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

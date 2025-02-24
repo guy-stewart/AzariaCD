@@ -1,0 +1,42 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_HALO::M_O_HALO<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "karmaBoost" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_MYHALO)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "karmaBoost" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_ADD)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "karmaDrain" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_SUB)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "karmaBoost" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_CLEAR)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">  WRITE(&quot;Clear the Halo&quot;);  <br align="left"/>  SHOW(0);<br align="left"/></font></td></tr></table>>
+];
+	karmaBoost[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>karmaBoost<br align="left"/></b></td></tr>
+</table>>];
+"karmaBoost" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WPARM,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">       if(WIP2 &gt; (MAX_KARMA - 1))&#123;<br align="left"/>             ASSIGN(OKARMA,(MAX_KARMA));<br align="left"/>       &#125;<br align="left"/>        ASSIGN(BPARM,OKARMA);<br align="left"/>        MOV(WSPRITE,BPARM);<br align="left"/>        DIV(WSPRITE,2);<br align="left"/>        MAPi(WSPRITE,S00_KARMA_MAP);<br align="left"/>        ASHOW(WSPRITE);<br align="left"/>        SIGNALi(0,WIP1);<br align="left"/></font></td></tr></table>>
+];
+	karmaDrain[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>karmaDrain<br align="left"/></b></td></tr>
+</table>>];
+"karmaDrain" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WPARM,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(OKARMA &lt;= 0)&#123;<br align="left"/>             ASSIGN(OKARMA,1);<br align="left"/>       &#125;      <br align="left"/>        ASSIGN(BPARM,OKARMA);<br align="left"/>        MOV(WSPRITE,BPARM);<br align="left"/>        DIV(WSPRITE,2);<br align="left"/>        MAPi(WSPRITE,S00_KARMA_MAP);<br align="left"/>        ASHOW(WSPRITE);<br align="left"/>        SIGNALi(0,WIP1);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_HALO<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:30, y:0, h:40, w:40)<br align="left"/>SOD_HALO::M_O_HALO(&apos;SOD_ID&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: bParm:4 wSprite:IDS_HALO02 Top:0 Left:30 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

@@ -1,0 +1,28 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>CHAR_DROPTARGET::M_CHARACTER_DROP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "postProcessObject" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW(WOBJECT);<br align="left"/>    REF_MACHINE(MEFPAN_VIEWCAP);<br align="left"/>    MOV(BPARM,R_BPARM);<br align="left"/>    if(BPARM == 1)&#123;  <br align="left"/>        WRITE(&quot;MEFLIN INSPECTION&quot;);<br align="left"/>        REF_MACHINE(MEFCURRENT); //Who is it?<br align="left"/>        MOV(WPARM,R_WPARM);<br align="left"/>        SIGNAL(WPARM,SIG_DROP); //so the meflin mef_talk can look at the wobject<br align="left"/>        SHOW();<br align="left"/>    &#125;<br align="left"/>    if(BPARM == 0)&#123; <br align="left"/>        SHOW();<br align="left"/>        SIGNAL(SOD_SPELL,SIG_DROP);<br align="left"/>    &#125;<br align="left"/></font></td></tr></table>>
+];
+	clear[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>clear<br align="left"/></b></td></tr>
+</table>>];
+"clear" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	postProcessObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>postProcessObject<br align="left"/></b></td></tr>
+</table>>];
+"postProcessObject" -> "clear" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    CLEAR(WOBJECT);<br align="left"/>    SHOW();<br align="left"/></font></td></tr></table>>
+];
+"postProcessObject" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>CHAR_DROPTARGET<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MEFID @pos(x:0, y:0, h:80, w:100)<br align="left"/>CHAR_DROPTARGET::M_CHARACTER_DROP(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

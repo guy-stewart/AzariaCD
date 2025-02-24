@@ -55,8 +55,11 @@ if (method == 'getPlayerDetails') {
         wisdom = json_element(params, "wisdom");
         otherplayer("%")~
         otherplayer(pid,status,player,"",name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity).
-        SIGNAL("SOD_ID","SIG_OTID");
-        //dont need to send a response
+            if (energy < 1){
+                SIGNAL("SOD_ID","SIG_DEAD");
+            }else{
+                SIGNAL("SOD_ID","SIG_OTID");
+            }
     }else {
         result = 'unsubscribe';
         send_result(from,result,params,id);  
