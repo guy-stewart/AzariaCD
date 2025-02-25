@@ -171,13 +171,19 @@ VALUES
 -- view spells
 
 --you cant cast a spell on someone being attacked or maybe you can but it takes the place of the first
+('ENCHANT_POSTER', 'IDV_MAIN_PANEL', '110','250', '120', '260', '3', 'M_VIEWSPELL', 'POSTENCHANT', 'ENCHANT_POSTER_TIMER', 'IDS_ENCHANT_TINY', ''),
+('ENCHANT_POSTER_TIMER',  'IDV_MAIN_PANEL', '110', '250', '115', '255  ', '3', 'M_SPELLTIMER', '100', 'ENCHANT_POSTER', '', ''),
+
 ('ENCHANT_ACTIVE', 'IDV_MAIN_PANEL', '110','250', '130', '270', '3', 'M_VIEWSPELL', 'ENCHANT', 'ENCHANT_TIMER', 'IDS_ENCHANT_TINY', ''),
-('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '110', '250', '115', '255  ', '3', 'M_SPELLTIMER', '45', 'ENCHANT_ACTIVE', '', ''),
+('ENCHANT_TIMER',  'IDV_MAIN_PANEL', '110', '250', '115', '255  ', '3', 'M_SPELLTIMER', '100', 'ENCHANT_ACTIVE', '', ''),
 
 ('HOLDING_ACTIVE', 'IDV_MAIN_PANEL', '50','275', '70', '295', '3', 'M_VIEWSPELL', 'HOLDING', 'HOLDING_TIMER', 'IDS_HOLDING_TINY', ''),
 ('HOLDING_TIMER',  'IDV_MAIN_PANEL', '50', '275', '55', '280', '3', 'M_SPELLTIMER', '45', 'HOLDING_ACTIVE', '', ''),
 
 -- Stalker works - should be EASY to make 
+('STALKING_READER','IDV_MAIN_PANEL', '71','275', '91', '295', '3', 'M_VIEWSPELL', 'STALKINGREADER', 'STALKING_READER_TIMER', 'IDS_STALK_TINY', ''),
+('STALKING_READER_TIMER', 'IDV_MAIN_PANEL', '71', '275', '75', '295', '3', 'M_SPELLTIMER', '100', 'STALKING_READER', '', ''),
+
 ('STALKING_ACTIVE','IDV_MAIN_PANEL', '71','275', '91', '295', '3', 'M_VIEWSPELL', 'STALKING', 'STALKING_TIMER', 'IDS_STALK_TINY', ''),
 ('STALKING_TIMER', 'IDV_MAIN_PANEL', '71', '275', '75', '295', '3', 'M_SPELLTIMER', '100', 'STALKING_ACTIVE', '', ''),
 
@@ -247,22 +253,46 @@ VALUES
     //start the timer
      WRITE("A VIEW SPELL ACTIVATED");
      SIGNAL(WIP2,SIG_START);
-     MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM
-     MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER
+     MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM <-- not true
+     MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER <-- not nec true
      SHOW(WIP3);
 ', '', ''),
 
     
 ('M_VIEWSPELL','turntOn','caughtInLoop','Z_EPSILON','','', '
+      
+        // change localplayers view to otherplayer
         if(WIP1==ENCHANT){
-            MOV(WPARM,OVIEW);
-            LOADVIEW(WPARM);
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo("ACTIVE",?caster,?victim,?object,?view,)? 
+            LOADVIEW(view);
         }
-        if(WIP1==HOLDING){ 
-            LOADVIEW(WPARM);
+        if(WIP1==POSTENCHANT){
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo(?status,?caster,?victim,?object,,)?
+            spellinfo("%")~
+            spellinfo(status,caster,victim,object,LVIEW,"EMPTY").
+            replay(system/send_view);
+        }
+        if(WIP1==STALKINGREADER){
+            //from M_O_IDSPELL
+            //Im going to follow by reading victim_view 
+            //which will be sent back to me via spellinfo
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo("ACTIVE",?caster,?victim,?object,,?view)? 
+            LOADVIEW(view);
         }
          if(WIP1==STALKING){
-            MOV(WPARM,LVIEW);
+            //I the victim am being stalked 
+            //so I must post my views to the caster
+            predicate inboundItem(object,id,from);
+            inboundItem("IDD_STALKER",,?caster);
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo("%")~
+            spellinfo("ACTIVE",caster,"",IDD_STALKER,"EMPTY",LVIEW).
+            replay(system/send_view);
+        }
+        if(WIP1==HOLDING){ 
             LOADVIEW(WPARM);
         }
         if(WIP1==BLINDNESS){
@@ -278,7 +308,11 @@ VALUES
     SIGNAL(SID_SPELL,SIG_CLEAR); 
     SHOW();
 ', '', ''),
-('M_VIEWSPELL','caughtInLoop','turntOn','ESTIME','0','1', '', '', ''),
+('M_VIEWSPELL','caughtInLoop','turntOn','ESTIME','1','', '', '', '
+      WRITE("IN LOOP of view spell");
+       MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM
+       MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER
+'),
 
 ('M_VIEWSPELL','ended','0','Z_EPSILON','','', '', '', ''),
 

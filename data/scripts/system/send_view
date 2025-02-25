@@ -1,0 +1,19 @@
+
+
+
+write(" --------------------SEND VIEW--------------------");
+
+predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+
+spellinfo("ACTIVE",?caster,?victim,?object,?caster_view,?victim_view)?
+method = "viewUpdate";   
+
+if(victim_view == "EMPTY"){
+     params = '{' +'"object":"'+ object +'",' +'"view":"'+ caster_view +'"' +'}';
+     send_request(caster, method, params, future);
+}else if(caster_view == "EMPTY"){
+     params = '{' +'"object":"'+ object +'",' +'"view":"'+ victim_view +'"' +'}';
+     send_request(victim, method, params, future);
+}
+ 
+write("Send view -------------- END -------------------------");

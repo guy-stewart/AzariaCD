@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>STALKING_ACTIVE::M_VIEWSPELL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "turntOn" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_SPELLME)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    //start the timer<br align="left"/>     WRITE(&quot;A VIEW SPELL ACTIVATED&quot;);<br align="left"/>     SIGNAL(WIP2,SIG_START);<br align="left"/>     MOV(WPARM,LVIEW); //THE VIEW OF THE VICTIM<br align="left"/>     MOV(BPARM,OVIEW); //THE VIEW OF THE SPELL CASTER<br align="left"/>     SHOW(WIP3);<br align="left"/></font></td></tr></table>>
+];
+	caughtInLoop[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>caughtInLoop<br align="left"/></b></td></tr>
+</table>>];
+"caughtInLoop" -> "turntOn" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ESTIME(1,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">      WRITE(&quot;IN LOOP of view spell&quot;);<br align="left"/></font></td></tr></table>>
+];
+"caughtInLoop" -> "ended" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_STOP)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SIGNAL(SID_SPELL,SIG_CLEAR); <br align="left"/>    SHOW();<br align="left"/></font></td></tr></table>>
+];
+	ended[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>ended<br align="left"/></b></td></tr>
+</table>>];
+"ended" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	turntOn[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>turntOn<br align="left"/></b></td></tr>
+</table>>];
+"turntOn" -> "caughtInLoop" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP1==ENCHANT)&#123;<br align="left"/>            LOADVIEW(OVIEW);<br align="left"/>        &#125;<br align="left"/>        if(WIP1==HOLDING)&#123; <br align="left"/>            LOADVIEW(WPARM);<br align="left"/>        &#125;<br align="left"/>         if(WIP1==STALKING)&#123;<br align="left"/>            LOADVIEW(LVIEW);<br align="left"/>        &#125;<br align="left"/>        if(WIP1==BLINDNESS)&#123;<br align="left"/>            MOV(WPARM,IDV_BLINDVIEW);<br align="left"/>            LOADVIEW(WPARM);<br align="left"/>        &#125;<br align="left"/>        if(WIP1==HALLUCINATE)&#123; <br align="left"/>            MOV(WPARM,IDV_VIL_HAL);<br align="left"/>            LOADVIEW(WPARM);<br align="left"/>        &#125;<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>STALKING_ACTIVE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:71, y:275, h:20, w:20)<br align="left"/>STALKING_ACTIVE::M_VIEWSPELL(&apos;STALKING&apos;,&apos;STALKING_TIMER&apos;,&apos;IDS_STALK_TINY&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;caughtInLoop&apos;: wParm:IDV_FA1PAN wSprite:IDS_STALK_TINY dEtime:561 Top:275 Left:71 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

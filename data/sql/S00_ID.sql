@@ -736,8 +736,8 @@ VALUES
 ', '', ''),
 ('M_IDSPELL','0','checkObject','WAIT','','SIG_DROPPED', '
     //NEED TO SHOW OBJECT HERE OR AT LEAST SET WOJBJECT
-    predicate inboundItem(object,id);
-    inboundItem(?WOBJECT,?BPARM)?
+    predicate inboundItem(object,id,from);
+    inboundItem(?WOBJECT,?BPARM,?from)?
 
     CLEAR(WVIEWID);
     WRITE("Item Dropped on ID");
@@ -865,6 +865,22 @@ VALUES
         dropitem(WOBJECT,"id").
         replay(system/send_item);
         SHOW();
+        if(WOBJECT == IDD_ENCHANT){
+            predicate otherplayer(pid,status);
+            otherplayer(?to,"ACTIVE")?
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo()~
+            spellinfo("ACTIVE",,to,WOBJECT,LVIEW,"EMPTY").
+            SIGNAL(ENCHANT_POSTER,SIG_SPELLME);
+        }
+        if(WOBJECT == IDD_STALKER){
+            predicate otherplayer(pid,status);
+            otherplayer(?to,"ACTIVE")?
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            spellinfo()~
+            spellinfo("ACTIVE",,to,WOBJECT,"EMPTY",OVIEW).
+            SIGNAL(STALKING_READER,SIG_SPELLME);
+        }
 ', '', '');
 
 
