@@ -73,10 +73,23 @@ if (method == 'getPlayerDetails') {
     object = json_element(params, "object");
     id = json_element(params, "id");
     result = 'gotItem';
-    predicate inboundItem(object,id);
+    predicate inboundItem(object,id,from);
     inboundItem('%')~
-    inboundItem(object,id).
-    SIGNAL("SID_SPELL","SIG_DROPPED");
+    inboundItem(object,id,from).
+    SIGNAL("SID_SPELL","SIG_DROPPED"); 
+}else if(method == 'viewUpdate') {
+    write("a player: =====> ", from, " is sending a view update");
+    object = json_element(params, "object");
+    view = json_element(params, "view");
+    result = 'gotView';
+    predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+    spellinfo('%')~
+    if(object == 'IDD_ENCHANT'){
+        spellinfo("ACTIVE",from,"",object,view,"EMPTY").
+    }else if (object == 'IDD_STALKER'){
+        spellinfo("ACTIVE","",from,object,"EMPTY",view). 
+    }
+   
 }
 
 
