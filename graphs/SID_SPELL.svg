@@ -65,8 +65,8 @@
 <text text-anchor="start" x="687.14" y="-454.75" font-family="Courier New" font-weight="bold" font-size="10.00" fill="orange">WAIT(,SIG_DROPPED)</text>
 <polygon fill="none" stroke="black" points="573.14,-375.75 573.14,-445.5 909.14,-445.5 909.14,-375.75 573.14,-375.75"/>
 <text text-anchor="start" x="576.14" y="-433" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;//NEED TO SHOW OBJECT HERE OR AT LEAST SET WOJBJECT</text>
-<text text-anchor="start" x="576.14" y="-420.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;predicate inboundItem(object,id);</text>
-<text text-anchor="start" x="576.14" y="-407.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;inboundItem(?WOBJECT,?BPARM)?</text>
+<text text-anchor="start" x="576.14" y="-420.25" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;predicate inboundItem(object,id,from);</text>
+<text text-anchor="start" x="576.14" y="-407.5" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;inboundItem(?WOBJECT,?BPARM,?from)?</text>
 <text text-anchor="start" x="576.14" y="-394.75" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;CLEAR(WVIEWID);</text>
 <text text-anchor="start" x="576.14" y="-382" font-family="Courier New" font-size="10.00" fill="blue"> &#160;&#160;&#160;WRITE(&quot;Item Dropped on ID&quot;);</text>
 <polygon fill="none" stroke="black" points="570.14,-372.75 570.14,-469.25 912.14,-469.25 912.14,-372.75 570.14,-372.75"/>
@@ -201,14 +201,14 @@
 <!-- status -->
 <g id="node7" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="750.14,-487.75 750.14,-566.75 1030.14,-566.75 1030.14,-487.75 750.14,-487.75"/>
-<polygon fill="none" stroke="black" points="761.14,-541 761.14,-559.75 1019.14,-559.75 1019.14,-541 761.14,-541"/>
-<text text-anchor="start" x="863.14" y="-548.25" font-family="Courier New" font-weight="bold" font-size="10.00">SID_SPELL</text>
-<polygon fill="none" stroke="black" points="761.14,-494.75 761.14,-539 1019.14,-539 1019.14,-494.75 761.14,-494.75"/>
+<polygon fill="none" stroke="black" points="750.14,-487.75 750.14,-566.75 1120.14,-566.75 1120.14,-487.75 750.14,-487.75"/>
+<polygon fill="none" stroke="black" points="761.14,-541 761.14,-559.75 1109.14,-559.75 1109.14,-541 761.14,-541"/>
+<text text-anchor="start" x="908.14" y="-548.25" font-family="Courier New" font-weight="bold" font-size="10.00">SID_SPELL</text>
+<polygon fill="none" stroke="black" points="761.14,-494.75 761.14,-539 1109.14,-539 1109.14,-494.75 761.14,-494.75"/>
 <text text-anchor="start" x="764.14" y="-526.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:10, y:50, h:70, w:100)</text>
 <text text-anchor="start" x="764.14" y="-513.75" font-family="Courier New" font-size="10.00" fill="green">SID_SPELL::M_IDSPELL(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="764.14" y="-501" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:50 Left:10 Z:0</text>
-<polygon fill="none" stroke="black" points="758.14,-491.75 758.14,-562.75 1022.14,-562.75 1022.14,-491.75 758.14,-491.75"/>
+<text text-anchor="start" x="764.14" y="-501" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: bParm:id wObject:IDD_BOMB2 Top:50 Left:10 Z:0</text>
+<polygon fill="none" stroke="black" points="758.14,-491.75 758.14,-562.75 1112.14,-562.75 1112.14,-491.75 758.14,-491.75"/>
 </g>
 </g>
 </svg>

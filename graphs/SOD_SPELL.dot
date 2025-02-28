@@ -34,7 +34,7 @@ digraph Automaton {
 	itsAspell[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>itsAspell<br align="left"/></b></td></tr>
 </table>>];
 "itsAspell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/>        SHOW();<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    predicate dropitem(object,id);<br align="left"/>        dropitem(&quot;%&quot;)~<br align="left"/>        dropitem(WOBJECT,&quot;id&quot;).<br align="left"/>        replay(system/send_item);<br align="left"/>        SHOW();<br align="left"/>        if(WOBJECT == IDD_ENCHANT)&#123;<br align="left"/>            predicate otherplayer(pid,status);<br align="left"/>            otherplayer(?to,&quot;ACTIVE&quot;)?<br align="left"/>            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);<br align="left"/>            spellinfo()~<br align="left"/>            spellinfo(&quot;ACTIVE&quot;,,to,WOBJECT,LVIEW,&quot;EMPTY&quot;).<br align="left"/>            SIGNAL(ENCHANT_POSTER,SIG_SPELLME);<br align="left"/>        &#125;<br align="left"/>        if(WOBJECT == IDD_STALKER)&#123;<br align="left"/>            predicate otherplayer(pid,status);<br align="left"/>            otherplayer(?to,&quot;ACTIVE&quot;)?<br align="left"/>            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);<br align="left"/>            spellinfo()~<br align="left"/>            spellinfo(&quot;ACTIVE&quot;,,to,WOBJECT,&quot;EMPTY&quot;,OVIEW).<br align="left"/>            SIGNAL(STALKING_READER,SIG_SPELLME);<br align="left"/>        &#125;<br align="left"/></font></td></tr></table>>
 ];
 	postProcessObject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>postProcessObject<br align="left"/></b></td></tr>
 </table>>];
@@ -47,6 +47,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">    CLEAR(WOBJECT);<br align="left"/>    SHOW();<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SOD_SPELL<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:10, y:50, h:70, w:100)<br align="left"/>SOD_SPELL::M_O_IDSPELL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wObject:IDD_REVIAL Top:50 Left:10 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_OTHERID @pos(x:10, y:50, h:70, w:100)<br align="left"/>SOD_SPELL::M_O_IDSPELL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:50 Left:10 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

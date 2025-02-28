@@ -256,7 +256,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
    REF_MACHINE(S00_HIDERCURRENT);
 ', '', ''),
 ('M_CHESTWAITER', 'ready', 'objectshown', 'Z_EPSILON', '', '',  '
-   SHOW(R_BPARM)
+   SHOW(R_BPARM);
 ', '', ''),
 ('M_CHESTWAITER', 'objectshown', 'empty', 'GRAB', '', '',  '
    HANDOFF(0,R_BPARM);
