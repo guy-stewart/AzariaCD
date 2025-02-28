@@ -586,7 +586,7 @@ VALUES
     SHOW(0);
 '),
 ('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', '
-CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
+unloadview(IDV_OTHERID);CLEAR(WPARM);CLEAR(WSPRITE);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
 --WIP2 = fixed number for a meflin
 --WIP3 = specific meflin coordinator
 --BPARM becomes the specific primary quest machine to play from the DB or for interogs/pendings too

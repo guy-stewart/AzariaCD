@@ -359,9 +359,10 @@ VALUES
         SIGNALi(0,SID_ID);
          if(LENERGY < 1){
             ASSIGN(LENERGY,0);
+            WRITE("SHOULD BE DEAD!!!");
             SIGNAL(SID_ID,SIG_DEAD);
             }
-        if(OENERGY > 0){
+        if(LENERGY > 0){
             SIGNALi(0,SID_ID);
             };  
 ', '', '');
@@ -530,10 +531,10 @@ VALUES
 ('M_ID', 'sitting', 'present',  'WAIT', '0', 'SIG_MYID', '
     CLEAR(WSPRITE);
      SHOW(0);
-     predicate active_character(name);
-     active_character(?BPARM)?
-     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
-     localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+    predicate active_character(name);
+    active_character(?BPARM)?
+    predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+    localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);
 ', '', ''),
@@ -567,13 +568,18 @@ VALUES
 ('M_ID', '50', '51', 'VIDEO', '0', 'IDS_EXPLODE1', '', '', ''),
 ('M_ID', '51', '21', 'PLAYWAVE', '0', 'SOUND_EXPLODE', '
             SUBI(LENERGY,1);
-            SIGNAL(SID_AURA,SIG_SUB);
-            SIGNALi(0,SID_ID);
             SIGNAL(SID_PERSIST,SIG_UPDATE);
-            
+            SIGNAL(SID_AURA,SIG_SUB);
 ', '', ''),
 
-('M_ID', 'playForward', 'sitting', 'ASSIGN', 'BFRAME', '0', '
+('M_ID', 'playForward', 'sitting', 'NEQUALi', 'LENERGY', '0', '
+    ASSIGN(BFRAME, 0);
+    MAP(WSPRITE,WPARM);
+    SHOW(WSPRITE);
+    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK
+', '', ''),
+('M_ID', 'playForward', 'playDead', 'EQUALi', 'LENERGY', '0', '
+    ASSIGN(WSPRITE, dead);
     MAP(WSPRITE,WPARM);
     SHOW(WSPRITE);
     ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK
@@ -584,6 +590,7 @@ VALUES
     ANIMATE(0,0);
 ', '', ''),
 ('M_ID', 'playDead', 'dead', 'ASSIGN', 'BFRAME', '0', '
+    WRITE("HERE I DIE");
     MAP(WSPRITE,WPARM);
     SHOW(0,WSPRITE);
     VIDEO(0,WSPRITE);
@@ -607,6 +614,7 @@ VALUES
 ---------------------
 ---------------------
 ('M_OID', '0', 'present', 'WAIT', '', 'SIG_OTID', '
+    unloadview(IDV_MEFID);
     loadview(IDV_OTHERID);
     CLEAR(WSPRITE);
      SHOW();

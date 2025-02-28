@@ -1,0 +1,25 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_PERSIST::M_ID_PERSIST<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "updated" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_UPDATE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate env(account_id, key, value);<br align="left"/>    env(&quot;0&quot;,&quot;my_account_id&quot;,?address);<br align="left"/>    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);<br align="left"/>    localplayer(?address,?name,?viewname,?wealth,?karma,?energy,?strength,?wisdom,?gender,?BPARM,?knowsparent,?knowsvillage,?knowscity)?<br align="left"/>    localplayer(address)~<br align="left"/>    predicate active_character(name);<br align="left"/>    active_character(?WPARM)?<br align="left"/>    localplayer(address,WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,BPARM,knowsparent,knowsvillage,knowscity).<br align="left"/></font></td></tr></table>>
+];
+	toldEveryone[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>toldEveryone<br align="left"/></b></td></tr>
+</table>>];
+"toldEveryone" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	updated[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>updated<br align="left"/></b></td></tr>
+</table>>];
+"updated" -> "toldEveryone" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    write(&quot;telling everyone&quot;);<br align="left"/>    replay(system/send_update);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_PERSIST<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, h:1, w:1)<br align="left"/>SID_PERSIST::M_ID_PERSIST(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: bParm:1 wParm:Tommy Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+];
+}
