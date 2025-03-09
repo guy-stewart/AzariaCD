@@ -1,0 +1,50 @@
+// THEME:0, NATURE:1, VILLAGE:2, CITY:3,
+
+on_event_future("onBackgroundAudioChanged",
+'
+    write("================================================");
+    write("onBackgroundAudioChanged old:",old, " new:",new);
+    audio_pause(old);
+    audio_play(new);
+    write("================================================");
+');
+
+// set the main output volume to 70%:
+audio_volume(7);
+
+// confiture the ambiance channel ...
+audio_gain('ambiance',5);
+audio_repeat('ambiance',1);
+audio_path('ambiance', 'sounds/22k16bst');
+
+// configure the theme channel ...
+write("CONFIGURE THEME ==================================================================");
+audio_gain(0,10);
+audio_repeat(0,1);
+audio_shuffle(0,1);
+audio_path(0, 'sounds/22k16bst');
+audio_schedule(0,'["kam002aa","kam003aa","kam004aa","kam005aa","kam006aa","kam007aa","kam008aa","kam009aa","kam010aa","kam011aa"]', 'write(">>>>> playlist THEME ended with event ",event);');
+
+// configure the nature channel ...
+write("CONFIGURE NATURE ==================================================================");
+audio_gain(1,10);
+audio_repeat(1,1);
+audio_shuffle(1,1);
+audio_path(1, 'sounds/22k16bst');
+audio_schedule(1,'["kam102ca","kam103aa","kam104aa","kam105aa","kam107aa","kam112aa"]', 'write(">>>>> playlist NATURE ended with event ",event);');
+
+// configure the village channel ...
+write("CONFIGURE VILLAGE ==================================================================");
+audio_gain(2,10);
+audio_repeat(2,1);
+audio_shuffle(2,1);
+audio_path(2, 'sounds/22k16bst');
+audio_schedule(2,'["kam204aa","kam206aa","kam207ba","kam208ba","kam209ba","kam210ba"]', 'write(">>>>> playlist VILLAGE ended with event ",event);');
+
+// configure the city channel ...
+write("CONFIGURE CITY (3) ==================================================================");
+audio_gain(3,5);
+audio_repeat(3,1);
+audio_shuffle(3,1);
+audio_path(3, 'sounds/22k16bst');
+audio_schedule(3,'["kam306ba","kam310ba","kam311ba","kam312aa","kam313aa","kam314aa","kam316aa","kam317aa","kam210ba", "kam207ba"]', 'write(">>>>> playlist CITY ended with event ",event);');

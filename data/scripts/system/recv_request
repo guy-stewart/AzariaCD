@@ -81,13 +81,14 @@ if (method == 'getPlayerDetails') {
     write("a player: =====> ", from, " is sending a view update");
     object = json_element(params, "object");
     view = json_element(params, "view");
+    leader_heading = json_element(params, "leader_heading");
     result = 'gotView';
-    predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+    predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
     spellinfo('%')~
     if(object == 'IDD_ENCHANT'){
-        spellinfo("ACTIVE",from,"",object,view,"EMPTY").
+        spellinfo("ACTIVE",from,"",object,view,"EMPTY",leader_heading).
     }else if (object == 'IDD_STALKER'){
-        spellinfo("ACTIVE","",from,object,"EMPTY",view). 
+        spellinfo("ACTIVE","",from,object,"EMPTY",view,leader_heading). 
     }
    
 }

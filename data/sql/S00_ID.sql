@@ -876,17 +876,18 @@ VALUES
         if(WOBJECT == IDD_ENCHANT){
             predicate otherplayer(pid,status);
             otherplayer(?to,"ACTIVE")?
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            marker = get_theta(); 
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
             spellinfo()~
-            spellinfo("ACTIVE",,to,WOBJECT,LVIEW,"EMPTY").
+            spellinfo("ACTIVE",,to,WOBJECT,LVIEW,"EMPTY",marker).
             SIGNAL(ENCHANT_POSTER,SIG_SPELLME);
         }
         if(WOBJECT == IDD_STALKER){
             predicate otherplayer(pid,status);
             otherplayer(?to,"ACTIVE")?
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
             spellinfo()~
-            spellinfo("ACTIVE",,to,WOBJECT,"EMPTY",OVIEW).
+            spellinfo("ACTIVE",,to,WOBJECT,"EMPTY",OVIEW,0).
             SIGNAL(STALKING_READER,SIG_SPELLME);
         }
 ', '', '');

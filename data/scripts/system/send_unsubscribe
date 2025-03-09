@@ -6,6 +6,5 @@ write(" --------------------SEND UNSUBSCRIBE--------------------");
  otherplayer(?to,"ACTIVE")?
  write("id unsubscribing to ===> ", to);
      method = "unsubscribe";
-     send_request(to, method, params, future);
- 
+     send_request(to, method, params, '');
 write("Send Unsubscribe -------------- END -------------------------");

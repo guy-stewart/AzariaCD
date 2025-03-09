@@ -5,7 +5,8 @@
         "mefPrize": true,
         "mefQuest": true,
         "mefResp": true,
-        "objectInfo": true
+        "objectInfo": true,
+        "views": true
     },
     "app_teletype": false,
     "app_title": "in8",
@@ -15,5 +16,5 @@
     "in8_version": "1.26c",
     "load_player": false,
     "save_player": false,
-    "sha256": "5902da3a251e371c3aea41544a22a9ab04ac3135584aa4f805229ca52985daf4"
+    "sha256": "8318603f804173e52a70c08494e39e8aaa3c803bf54d55d7833026c90efe3eae"
 }
