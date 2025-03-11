@@ -40,6 +40,7 @@ on_event_future("onMachinesInitComplete", "{
 }");
 
 
+
 //on_event_future("onPlayerTagged", "write('player tagged: ',player_pid);");
 //on_event_future("onPlayerTagged", "replay('system/viewother');");
 // loadview(IDV_ckeyvend);

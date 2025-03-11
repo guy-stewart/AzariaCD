@@ -123,7 +123,7 @@
 <polygon fill="none" stroke="black" points="511.79,-447.82 511.79,-492.07 943.79,-492.07 943.79,-447.82 511.79,-447.82"/>
 <text text-anchor="start" x="514.79" y="-479.57" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:0, y:0, h:112, w:100)</text>
 <text text-anchor="start" x="514.79" y="-466.82" font-family="Courier New" font-size="10.00" fill="green">SID_AURA::M_AURA(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="514.79" y="-454.07" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: bParm:0 wParm:8 wSprite:IDS_AURA0 bFrame:0 Top:0 Left:0 Z:0</text>
+<text text-anchor="start" x="514.79" y="-454.07" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: bParm:4 wParm:8 wSprite:IDS_AURA4 bFrame:0 Top:0 Left:0 Z:0</text>
 <polygon fill="none" stroke="black" points="508.79,-444.82 508.79,-515.82 946.79,-515.82 946.79,-444.82 508.79,-444.82"/>
 </g>
 </g>

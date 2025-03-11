@@ -3,14 +3,16 @@
 <body>
 <h1>Parse error</h1>
 </p>
-<pre><code>event=IN8_RPC;
-from='108.82.186.169:57077';
-to='108.82.186.169:64171';
-type=0;
-id=35;
-tbl=4;
-method='';
-result='unsubscribe';
-params='{"culture":1,"energy":4,"gender":1,"karma":1,"knowscity":0,"knowsparent":0,"knowsvillage":0,"name":"Tommy","strength":10,"viewname":"IDV_VIL8","wealth":5,"wisdom":10}';
-future<font color="blue"> <-- Parse error: expected '=' or '(' after ID:future</body>
+<pre><code>view='IDV_FA1PAN';
+old_view='IDV_TOPMENU';
+{
+    write('Name of the new view: ----> ',view);
+    write('Name of the old view: ----> ',old_view);
+    predicate localViewScape(viewname, audioTrack, ambiance);
+    localViewScape(view,empty,empty).
+    SIGNAL(<font color="blue"> <-- Parse error: expected ')'. encountered '' ... continuing ...</font>
+<font color="blue"> <-- Parse error: expected ';'. encountered '' ... continuing ...</font>
+<font color="blue"> <-- Parse error: expected '}'. encountered '' ... continuing ...</font>
+</code></pre>
+</body>
 </html>

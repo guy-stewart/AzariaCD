@@ -69,7 +69,7 @@ digraph Automaton {
 "51" -> "21" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>PLAYWAVE(0,SOUND_EXPLODE)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">            SUBI(LENERGY,1);<br align="left"/>            SIGNAL(SID_PERSIST,SIG_UPDATE);<br align="left"/>            SIGNAL(SID_AURA,SIG_SUB);<br align="left"/></font></td></tr></table>>
 ];
-	dead[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>dead<br align="left"/></b></td></tr>
+	dead[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>dead<br align="left"/></b></td></tr>
 </table>>];
 "dead" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_REVIVE)<br align="left"/></b></td></tr>
 </table>>
@@ -89,8 +89,8 @@ digraph Automaton {
 ];
 	playForward[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>playForward<br align="left"/></b></td></tr>
 </table>>];
-"playForward" -> "playDead" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>EQUAL(LENERGY,0)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK<br align="left"/></font></td></tr></table>>
+"playForward" -> "playDead" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>EQUALi(LENERGY,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASSIGN(WSPRITE, dead);<br align="left"/>    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK<br align="left"/></font></td></tr></table>>
 ];
 "playForward" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>NEQUALi(LENERGY,0)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    ASSIGN(BFRAME, 0);<br align="left"/>    MAP(WSPRITE,WPARM);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    ANIMATE(0,V_REWIND); //PLAY FORWARD THEN BACK<br align="left"/></font></td></tr></table>>
@@ -110,7 +110,7 @@ digraph Automaton {
 "setId" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WSPRITE,happy)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    ASSIGN(BFRAME,0);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    SIGNAL(SID_AURA, SIG_MYAURA);<br align="left"/>    SIGNAL(SID_HALO, SIG_MYHALO);<br align="left"/>    SIGNAL(SID_PERSIST,SIG_UPDATE);<br align="left"/></font></td></tr></table>>
 ];
-	sitting[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
+	sitting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
 </table>>];
 "sitting" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_MYID)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    CLEAR(WSPRITE);<br align="left"/>     SHOW(0);<br align="left"/>    predicate active_character(name);<br align="left"/>    active_character(?BPARM)?<br align="left"/>    predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);<br align="left"/>    localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?<br align="left"/>     SIGNAL(SID_AURA, SIG_MYAURA);<br align="left"/>     SIGNAL(SID_HALO, SIG_MYHALO);<br align="left"/></font></td></tr></table>>
@@ -152,6 +152,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_ID<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SID_ID::M_ID(&apos;&apos;,&apos;&apos;,&apos;0&apos;,&apos;SID_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;dead&apos;: wParm:F1 wSprite:IDS_FID1HURT bFrame:9 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, h:101, w:171)<br align="left"/>SID_ID::M_ID(&apos;&apos;,&apos;&apos;,&apos;0&apos;,&apos;SID_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: wParm:F1 wSprite:IDS_FID1HAPPY bFrame:0 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

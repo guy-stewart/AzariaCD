@@ -263,33 +263,37 @@ VALUES
       
         // change localplayers view to otherplayer
         if(WIP1==ENCHANT){
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
-            spellinfo("ACTIVE",?caster,?victim,?object,?view,)? 
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
+            spellinfo("ACTIVE",?caster,?victim,?object,?view,,?leader_heading)? 
             LOADVIEW(view);
+            set_theta(leader_heading); 
         }
         if(WIP1==POSTENCHANT){
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
-            spellinfo(?status,?caster,?victim,?object,,)?
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
+            spellinfo(?status,?caster,?victim,?object,,,?leader_heading)?
             spellinfo("%")~
-            spellinfo(status,caster,victim,object,LVIEW,"EMPTY").
+            marker = get_theta();
+            spellinfo(status,caster,victim,object,LVIEW,"EMPTY",marker).
             replay(system/send_view);
         }
         if(WIP1==STALKINGREADER){
             //from M_O_IDSPELL
             //Im going to follow by reading victim_view 
             //which will be sent back to me via spellinfo
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
-            spellinfo("ACTIVE",?caster,?victim,?object,,?view)? 
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
+            spellinfo("ACTIVE",?caster,?victim,?object,,?view,?leader_heading)? 
             LOADVIEW(view);
+            set_theta(leader_heading);
         }
          if(WIP1==STALKING){
             //I the victim am being stalked 
             //so I must post my views to the caster
             predicate inboundItem(object,id,from);
             inboundItem("IDD_STALKER",,?caster);
-            predicate spellinfo(status,caster,victim,object,caster_view,victim_view);
+            predicate spellinfo(status,caster,victim,object,caster_view,victim_view,leader_heading);
             spellinfo("%")~
-            spellinfo("ACTIVE",caster,"",IDD_STALKER,"EMPTY",LVIEW).
+            marker = get_theta();
+            spellinfo("ACTIVE",caster,"",IDD_STALKER,"EMPTY",LVIEW,marker).
             replay(system/send_view);
         }
         if(WIP1==HOLDING){ 
