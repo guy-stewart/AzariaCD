@@ -2,71 +2,34 @@ on_event_future("onBackgroundAudioChanged",
 '
     write("================================================");
     write("onBackgroundAudioChanged old:",old, " new:",new);
-    audio_pause(old);
-    audio_play(new);
+    // You might want audioBackground with no audio ...
+    if (old>=0 && old<=6)  audio_pause(old);
+    if (new>=0 && new<=6)  audio_play(new);
     write("================================================");
 ');
 
 // set the main output volume to 70%:
 audio_volume(7);
 
+// configure all channel settings ...
+ch = 0;
+while (ch<=6) {
+    audio_gain(ch,10);
+    audio_repeat(ch,1);
+    audio_shuffle(ch,1);
+    audio_path(ch, 'sounds/22k16bst');
+    ch = ch + 1;
+}
+
 // confiture the ambiance channel ...
 audio_gain('ambiance',5);
 audio_repeat('ambiance',1);
 audio_path('ambiance', 'sounds/22k16bst');
 
-// configure the theme channel ...
-write("CONFIGURE THEME ==================================================================");
-audio_gain(0,10);
-audio_repeat(0,1);
-audio_shuffle(0,1);
-audio_path(0, 'sounds/22k16bst');
-audio_schedule(0,'["kam310ba"]', 'write(">>>>> playlist THEME ended with event ",event);');
-
-// configure the nature channel ...
-write("CONFIGURE NATURE ==================================================================");
-audio_gain(1,10);
-audio_repeat(1,1);
-audio_shuffle(1,1);
-audio_path(1, 'sounds/22k16bst');
-audio_schedule(1,'["kam306ba","kam102ca","kam204aa","kam206aa"]', 'write(">>>>> playlist NATURE ended with event ",event);');
-
-// configure the village channel ...
-write("CONFIGURE VILLAGE ==================================================================");
-audio_gain(2,10);
-audio_repeat(2,1);
-audio_shuffle(2,1);
-audio_path(2, 'sounds/22k16bst');
-audio_schedule(2,'["kam107aa","kam210ba","kam310ba"]', 'write(">>>>> playlist VILLAGE ended with event ",event);');
-
-// configure the city channel ...
-write("CONFIGURE CITY (3) ==================================================================");
-audio_gain(3,5);
-audio_repeat(3,1);
-audio_shuffle(3,1);
-audio_path(3, 'sounds/22k16bst');
-audio_schedule(3,'["kam207ba","kam208ba","kam209ba","kam311ba"]', 'write(">>>>> playlist CITY ended with event ",event);');
-
-// configure the Manufacturing channel ...
-write("CONFIGURE Manufac (4) ==================================================================");
-audio_gain(4,5);
-audio_repeat(4,1);
-audio_shuffle(4,1);
-audio_path(4, 'sounds/22k16bst');
-audio_schedule(4,'["kam306ba","kam102ca","kam204aa","kam206aa"]', 'write(">>>>> playlist Manufac ended with event ",event);');
-
-// configure the Mystery channel ...
-write("CONFIGURE Mystery (5) ==================================================================");
-audio_gain(5,5);
-audio_repeat(5,1);
-audio_shuffle(5,1);
-audio_path(5, 'sounds/22k16bst');
-audio_schedule(5,'["kam312aa","kam112aa"]', 'write(">>>>> playlist Mystery ended with event ",event);');
-
-// configure the Monk channel ...
-write("CONFIGURE Mystery (6) ==================================================================");
-audio_gain(6,5);
-audio_repeat(6,1);
-audio_shuffle(6,1);
-audio_path(6, 'sounds/22k16bst');
-audio_schedule(6,'["kam0011aa","kam009aa"]', 'write(">>>>> playlist Monk ended with event ",event);');
+audio_schedule(0,'["kam310ba","null100.mp3"]');
+audio_schedule(1,'["kam306ba","null30.mp3","kam102ca","null60.mp3","kam204aa","null90.mp3","kam206aa","null30.mp3"]');
+audio_schedule(2,'["kam107aa","null30.mp3","kam210ba","null60.mp3","kam310ba","null90.mp3"]');
+audio_schedule(3,'["kam207ba","null30.mp3","kam208ba","null60.mp3","kam209ba","null90.mp3"]');
+audio_schedule(4,'["kam306ba","null30.mp3","kam102ca","null60.mp3","kam204aa","null90.mp3","kam206aa","null30.mp3"]');
+audio_schedule(5,'["kam312aa","null30.mp3","kam112aa","null30.mp3"]');
+audio_schedule(6,'["kam011aa","null30.mp3","kam009aa","null30.mp3"]');
