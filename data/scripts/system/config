@@ -7,6 +7,8 @@ settrace(S04_KEYCLAMP_2, 1);
 settrace(S04_KEYCLAMP_3, 1);
 */
 
+run(system/audio);
+
 loadview(IDV_COMPASS);
 loadview(IDV_MAIN_PANEL);
 loadview(IDV_PLAYERNAME);
