@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>MEFPAN_VIEWCAP::M_MEFPAN_VIEWCAP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(BPARM,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	viewGrabbed[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>viewGrabbed<br align="left"/></b></td></tr>
+</table>>];
+"viewGrabbed" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">      MOV(BPARM,1); // A Meflin is presently up<br align="left"/>      MOV(WPARM,LVIEW);<br align="left"/></font></td></tr></table>>
+];
+	viewReloaded[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>viewReloaded<br align="left"/></b></td></tr>
+</table>>];
+"viewReloaded" -> "waiting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">      MOV(BPARM,0);// A Meflin is no longer there<br align="left"/>      LOADVIEW(WPARM);<br align="left"/></font></td></tr></table>>
+];
+	waiting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>waiting<br align="left"/></b></td></tr>
+</table>>];
+"waiting" -> "viewGrabbed" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_VIEWCAP)<br align="left"/></b></td></tr>
+</table>>
+];
+"waiting" -> "viewReloaded" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_VIEWRETURN)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>MEFPAN_VIEWCAP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MEFPAN @pos(x:5, y:20, h:5, w:10)<br align="left"/>MEFPAN_VIEWCAP::M_MEFPAN_VIEWCAP(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;waiting&apos;: bParm:0 wParm:IDV_N2B Top:20 Left:5 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

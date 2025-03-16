@@ -144,7 +144,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_BACKBUTTON', '0', '1', 'CLICK', '0', '0', '', '', ''),
 ('M_BACKBUTTON', '1', '0', 'PLAYWAVE', '0', 'SOUND_POPUP', '
     if(LVIEW != IDV_BANISH){
-        LOADVIEW(IDV_TOPMENU);
+        LOADVIEW(IDV_MAINMENU);
         SIGNAL(AUD_MUSIC_PLAYER, SIG_INTRO_MIX);
     }
 ', '', '');

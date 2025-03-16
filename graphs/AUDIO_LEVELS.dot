@@ -1,0 +1,34 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>AUDIO_LEVELS::M_AUDIO_LEVELS<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "READY" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     //set initial audio level here <br align="left"/>     ASSIGN(WPARM,1+music_volume()); SIGNAL(POS_AUDIO_M2,SIG_ON); //MUSIC<br align="left"/>     ASSIGN(BPARM,1+effects_volume()); SIGNAL(POS_AUDIO_SFX2,SIG_ON); //SFX<br align="left"/></font></td></tr></table>>
+];
+	CHANGED[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>CHANGED<br align="left"/></b></td></tr>
+</table>>];
+"CHANGED" -> "READY" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    log(&quot;turn all the lights off ...&quot;);<br align="left"/>    SIGNAL(POS_AUDIO_M1,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_M2,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_M3,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_M4,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_M5,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_M6,SIG_OFF); <br align="left"/>    SIGNAL(POS_AUDIO_M7,SIG_OFF); <br align="left"/>    SIGNAL(POS_AUDIO_SFX1,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_SFX2,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_SFX3,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_SFX4,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_SFX5,SIG_OFF);<br align="left"/>    SIGNAL(POS_AUDIO_SFX6,SIG_OFF); <br align="left"/>    SIGNAL(POS_AUDIO_SFX7,SIG_OFF); <br align="left"/>    // turn on just the ones we want ...<br align="left"/>    SIGNAL(&quot;POS_AUDIO_M&quot;+WPARM, SIG_ON);<br align="left"/>    SIGNAL(&quot;POS_AUDIO_SFX&quot;+BPARM, SIG_ON);<br align="left"/>    log(&quot;BPARM==&quot;, BPARM);<br align="left"/>    log(&quot;WPARM==&quot;, WPARM);<br align="left"/>    effects_volume(BPARM);<br align="left"/>    music_volume(WPARM);<br align="left"/></font></td></tr></table>>
+];
+	READY[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>READY<br align="left"/></b></td></tr>
+</table>>];
+"READY" -> "CHANGED" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_MUSIC_UP)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if (WPARM&lt;7) ADD(WPARM,1);<br align="left"/></font></td></tr></table>>
+];
+"READY" -> "CHANGED" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_MUSIC_DN)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if (WPARM&gt;0) SUB(WPARM,1);<br align="left"/></font></td></tr></table>>
+];
+"READY" -> "CHANGED" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_SFX_UP)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if (BPARM&lt;7) ADD(BPARM,1);<br align="left"/></font></td></tr></table>>
+];
+"READY" -> "CHANGED" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_SFX_DN)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    if (BPARM&gt;0) SUB(BPARM,1);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>AUDIO_LEVELS<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:53, y:207, h:8, w:15)<br align="left"/>AUDIO_LEVELS::M_AUDIO_LEVELS(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;READY&apos;: bParm:1 wParm:7 Top:207 Left:53 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

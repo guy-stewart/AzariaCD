@@ -3,16 +3,21 @@
 <body>
 <h1>Parse error</h1>
 </p>
-<pre><code>view='IDV_FA1PAN';
-old_view='IDV_TOPMENU';
-{
-    write('Name of the new view: ----> ',view);
-    write('Name of the old view: ----> ',old_view);
-    predicate localViewScape(viewname, audioTrack, ambiance);
-    localViewScape(view,empty,empty).
-    SIGNAL(<font color="blue"> <-- Parse error: expected ')'. encountered '' ... continuing ...</font>
-<font color="blue"> <-- Parse error: expected ';'. encountered '' ... continuing ...</font>
-<font color="blue"> <-- Parse error: expected '}'. encountered '' ... continuing ...</font>
+<pre><code>
+    REF_MACHINE(MEFCURRENT);
+    PLAYWAVE(SOUND_POPUP);
+    SIGNAL(R_WPARM,SIG_CLOSE);
+    SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
+    SIGNAL(MEFPAN_WAITER,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_B,SIG_RESET);
+    SIGNAL(MEFPAN_PRIZE_C,SIG_RESET);
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
+   if(ONAME){
+     SIGNAL(SOD_ID,SIG_SHOW); 
+   }else{
+      SIGNAL(SOD_ID,SIG_CLEAR; <font color="blue"> <-- Parse error: expected ')'. encountered ';' ... continuing ...</font>
 </code></pre>
 </body>
 </html>
