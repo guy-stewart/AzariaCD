@@ -326,7 +326,7 @@ VALUES
 -- track everyone looking at me and then solicitly tell them to update
 ('M_ID_PERSIST', 'updated', 'toldEveryone', 'Z_EPSILON', '', '', '
     write("telling everyone");
-    replay(system/send_update);
+    replay("system/send_update");
 
 ', '', ''),
 ('M_ID_PERSIST', 'toldEveryone', '0', 'Z_EPSILON', '', '', '', '', ''),
@@ -620,9 +620,9 @@ VALUES
      SHOW();
      predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
      otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
-     set_control_value(IDV_OTHERNAME, OTHN, ONAME);
-     SIGNAL(SOD_AURA,SIG_MYAURA);
-     SIGNAL(SOD_HALO, SIG_MYHALO);
+      set_control_value(IDV_OTHERNAME, OTHN, ONAME);
+      SIGNAL(SOD_AURA,SIG_MYAURA);
+      SIGNAL(SOD_HALO, SIG_MYHALO);
 ', '', ''), 
 -- so here we need to message the other player to get
 -- their player attributes - wont depend on OSEX as below - maybe to get?
@@ -648,9 +648,9 @@ VALUES
 ', '', ''), 
 
 ('M_OID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
-    MAP(WSPRITE,WPARM);
-    ASSIGN(BFRAME,0);
-    SHOW(WSPRITE);
+        MAP(WSPRITE,WPARM);
+        ASSIGN(BFRAME,0);
+        SHOW(WSPRITE);
 ', '', ''),
 ('M_OID', 'sitting', 'present', 'WAIT', '', 'SIG_OTID', '
     loadview(IDV_OTHERID);
@@ -833,7 +833,7 @@ VALUES
         predicate dropitem(object,id);
         dropitem("%")~
         dropitem(WOBJECT,"id").
-        replay(system/send_item);
+        replay("system/send_item");
         SHOW();
     } 
 ', '', ''),
@@ -849,7 +849,7 @@ VALUES
      predicate dropitem(object,id);
         dropitem("%")~
         dropitem(WOBJECT,"id").
-        replay(system/send_item);
+        replay("system/send_item");
 ', '', ''),
 ('M_O_IDSPELL','regularObject','0','ZEPSILON','','', '
     CLEAR(WOBJECT);
@@ -864,14 +864,14 @@ VALUES
      predicate dropitem(object,id);
         dropitem("%")~
         dropitem(WOBJECT,"id").
-        replay(system/send_item);
+        replay("system/send_item");
         SHOW();
     ', '', ''),
 ('M_O_IDSPELL','itsAspell','0','Z_EPSILON','','', '
     predicate dropitem(object,id);
         dropitem("%")~
         dropitem(WOBJECT,"id").
-        replay(system/send_item);
+        replay("system/send_item");
         SHOW();
         if(WOBJECT == IDD_ENCHANT){
             predicate otherplayer(pid,status);

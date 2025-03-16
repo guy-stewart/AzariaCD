@@ -7,7 +7,7 @@ settrace(S04_KEYCLAMP_2, 1);
 settrace(S04_KEYCLAMP_3, 1);
 */
 
-run(system/audio);
+run('system/audio');
 
 loadview(IDV_COMPASS);
 loadview(IDV_MAIN_PANEL);
@@ -31,7 +31,7 @@ on_event_future("onPlayerTagged", "{
     otherplayer(?to,'ACTIVE')?
     write('id unsubscribing to ===> ', to);
     method = 'unsubscribe';
-    send_request(to, method,'', future);
+    send_request(to, method,'', '');
     otherplayer('%')~
     otherplayer(player_pid, mystatus, myplayer,'account_id','name','viewname','0','0','0','0','0','0','0','0','0','0').
     replay('system/send_request'); 

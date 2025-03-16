@@ -1,0 +1,25 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>MEFPAN_OK::M_MEFPAN_OK<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SHOW(0,IDS_BTN_OK)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    CLEAR(WPARM);<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    REF_MACHINE(MEFCURRENT);<br align="left"/>    PLAYWAVE(SOUND_POPUP);<br align="left"/>    SIGNAL(R_WPARM,SIG_CLOSE);<br align="left"/>    SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);<br align="left"/>    SIGNAL(SOD_ID,SIG_SHOW);<br align="left"/>    SIGNAL(MEFPAN_WAITER,SIG_RESET);<br align="left"/>    SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);<br align="left"/>    SIGNAL(MEFPAN_PRIZE_B,SIG_RESET);<br align="left"/>    SIGNAL(MEFPAN_PRIZE_C,SIG_RESET);<br align="left"/></font></td></tr></table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>MEFPAN_OK<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MEFPAN @pos(x:490, y:215, h:65, w:45)<br align="left"/>MEFPAN_OK::M_MEFPAN_OK(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: wSprite:IDS_BTN_OK Top:215 Left:490 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

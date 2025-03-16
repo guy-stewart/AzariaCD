@@ -38,7 +38,7 @@ delete from views where view_name = 'IDV_VILLIBA';
 
 
 insert into views values 
-('IDV_MEFID',2,0,0,1,'meflinid.vct','you');
+('IDV_MEFID',2,0,0,1,'meflinid.vct','you','');
 
 
 
@@ -47,10 +47,10 @@ insert into views values
 -- ('IDV_MEFPAN', '9802'),
 -- ('IDV_VILLIBA', '9803'),
 -- ('IDV_VILLIB', '9804');
-INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename") 
-VALUES ('IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN'),
-       ('IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib'),
-       ('IDV_VILLIBA', '1', '2', '1', '6', 'surround.vct', 'villiba');
+INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename", "ambients") 
+VALUES ('IDV_MEFPAN', '1', '3', '1', '1', 'wdepanel.vct', 'PARCHPAN',''),
+       ('IDV_VILLIB', '1', '2', '1', '6', 'surround.vct', 'villib',''),
+       ('IDV_VILLIBA', '1', '2', '1', '6', 'surround.vct', 'villiba','');
 
 delete from cardinals where [from] = 'IDV_VIL6';
 delete from cardinals where [from] = 'IDV_VHB3';
@@ -586,7 +586,7 @@ VALUES
     SHOW(0);
 '),
 ('M_MEF_APPROACH', 'chillin', 'mef_bothered', 'CLICK', '0', '0', '
-unloadview(IDV_OTHERID);CLEAR(WPARM);CLEAR(WSPRITE);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
+unloadview(IDV_OTHERID);CLEAR(WPARM);CLEAR(BPARM);SIGNAL(SOD_ID,SIG_CLEAR);LOADVIEW(IDV_MEFID);'),
 --WIP2 = fixed number for a meflin
 --WIP3 = specific meflin coordinator
 --BPARM becomes the specific primary quest machine to play from the DB or for interogs/pendings too
@@ -649,9 +649,6 @@ unloadview(IDV_OTHERID);CLEAR(WPARM);CLEAR(WSPRITE);CLEAR(BPARM);SIGNAL(SOD_ID,S
     if(IFSTATE(Q1Started,WIP3)){ SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWCAP);LOADVIEW(IDV_MEFPAN);SIGNAL(MEFPAN_WAITER,SIG_Q1S); SIGNAL(BPARM,SIG_PLAY); SIGNAL(WIP3,SIG_Q1_GIVEN);}
    
 ');
-
-
---set_control_value(IDV_OTHERNAME, OTHN, ONAME);
 
 
 delete from transitions where automaton =  'M_MEF_TALK';
@@ -978,7 +975,7 @@ VALUES
     REF_MACHINE(MEFCURRENT);
     PLAYWAVE(SOUND_POPUP);
     SIGNAL(R_WPARM,SIG_CLOSE);
-     SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
+    SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
     SIGNAL(SOD_ID,SIG_SHOW);
     SIGNAL(MEFPAN_WAITER,SIG_RESET);
 
@@ -997,14 +994,20 @@ VALUES
     REF_MACHINE(MEFCURRENT);
     PLAYWAVE(SOUND_POPUP);
     SIGNAL(R_WPARM,SIG_CLOSE);
-
     SIGNAL(MEFPAN_VIEWCAP,SIG_VIEWRETURN);
-    SIGNAL(SOD_ID,SIG_SHOW);
     SIGNAL(MEFPAN_WAITER,SIG_RESET);
-
     SIGNAL(MEFPAN_PRIZE_A,SIG_RESET);
     SIGNAL(MEFPAN_PRIZE_B,SIG_RESET);
     SIGNAL(MEFPAN_PRIZE_C,SIG_RESET);
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
+    otherplayer(?BPARM, "ACTIVE", ?WPARM,?acntid,?ONAME,?OVIEW,?OWEALTH,?OKARMA,?OENERGY, ?OSTRENGTH,?OWISDOM,?OSEX,?OCULTURE,?OKNOWSPARENT,?OKNOWSVILLSAGE,?OKNOWSCITY)?
+   if(ONAME){
+     SIGNAL(SOD_ID,SIG_OTID); 
+   }else{
+      set_control_value(IDV_OTHERNAME, OTHN, "");
+      SIGNAL(SOD_ID,SIG_CLEAR); 
+      
+   };
 '),
 ('M_MEFPAN_OK', '2', '1', 'Z_EPSILON', '', '', ''),
 

@@ -274,7 +274,7 @@ VALUES
             spellinfo("%")~
             marker = get_theta();
             spellinfo(status,caster,victim,object,LVIEW,"EMPTY",marker).
-            replay(system/send_view);
+            replay("system/send_view");
         }
         if(WIP1==STALKINGREADER){
             //from M_O_IDSPELL
@@ -294,7 +294,7 @@ VALUES
             spellinfo("%")~
             marker = get_theta();
             spellinfo("ACTIVE",caster,"",IDD_STALKER,"EMPTY",LVIEW,marker).
-            replay(system/send_view);
+            replay("system/send_view");
         }
         if(WIP1==HOLDING){ 
             LOADVIEW(WPARM);
