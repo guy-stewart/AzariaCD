@@ -17,7 +17,7 @@ loadview(IDV_INVENTORY);
 loadview(IDV_ID);
 loadview(IDV_OTHERID);
 loadview(IDV_S_TELETYPE); // the small teletype.
-loadview(IDV_TOPMENU);
+loadview(IDV_MAINMENU);
 
 SIGNAL('S0_NW_INDC_LIGHT','SIG_RESET');
 

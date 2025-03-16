@@ -61,7 +61,7 @@
 <polygon fill="none" stroke="black" points="297,-210 297,-228.75 597,-228.75 597,-210 297,-210"/>
 <text text-anchor="start" x="405" y="-217.25" font-family="Courier New" font-weight="bold" font-size="10.00">SMP_BACKBUTTON</text>
 <polygon fill="none" stroke="black" points="297,-163.75 297,-208 597,-208 597,-163.75 297,-163.75"/>
-<text text-anchor="start" x="300" y="-195.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:61, y:10, h:39, w:36)</text>
+<text text-anchor="start" x="300" y="-195.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:61, y:10, w:36, h:39)</text>
 <text text-anchor="start" x="300" y="-182.75" font-family="Courier New" font-size="10.00" fill="green">SMP_BACKBUTTON::M_BACKBUTTON(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
 <text text-anchor="start" x="300" y="-170" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:10 Left:61 Z:0</text>
 <polygon fill="none" stroke="black" points="294,-160.75 294,-231.75 600,-231.75 600,-160.75 294,-160.75"/>
