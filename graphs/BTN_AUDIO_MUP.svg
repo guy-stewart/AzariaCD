@@ -44,7 +44,7 @@
 <polygon fill="none" stroke="black" points="423,-53.75 423,-72.5 843,-72.5 843,-53.75 423,-53.75"/>
 <text text-anchor="start" x="594" y="-61" font-family="Courier New" font-weight="bold" font-size="10.00">BTN_AUDIO_MUP</text>
 <polygon fill="none" stroke="black" points="423,-7.5 423,-51.75 843,-51.75 843,-7.5 423,-7.5"/>
-<text text-anchor="start" x="426" y="-39.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:565, y:142, h:25, w:25)</text>
+<text text-anchor="start" x="426" y="-39.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:565, y:142, w:25, h:25)</text>
 <text text-anchor="start" x="426" y="-26.5" font-family="Courier New" font-size="10.00" fill="green">BTN_AUDIO_MUP::M_AUDIO_BTN(&#39;AUDIO_LEVELS&#39;,&#39;SIG_MUSIC_UP&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
 <text text-anchor="start" x="426" y="-13.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:142 Left:565 Z:0</text>
 <polygon fill="none" stroke="black" points="420,-4.5 420,-75.5 846,-75.5 846,-4.5 420,-4.5"/>

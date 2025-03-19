@@ -48,16 +48,7 @@ VALUES
 
 
 --------------------------------
--- players come in and out of the game system/players script
--- gets run on each players machine every minute
--- predicate PlayerList(pid,status, player);
--- write("send_message ..... ");
--- for (PlayerList(?to, ?status, ?params)) {
---     method = "getPlayerDetails";
---     id = 777;
---     params = "";
---     send_message(to, id, method, params);
--- }
+
 
 
 --Remove outdated sprites from spr_names

@@ -24,8 +24,8 @@ SIGNAL('S0_NW_INDC_LIGHT','SIG_RESET');
 write("SETTING EVENT");
 on_event_future("onPlayerTagged", "{
     write('player tagged: ---->',player_pid);
-    predicate PlayerList(pid,status,player);
-    PlayerList(player_pid,?mystatus,?myplayer)?
+    predicate PlayerList(name,pid,status,player);
+    PlayerList('',player_pid,?mystatus,?myplayer)?
     write('player ----> ',myplayer);
     predicate otherplayer(pid,status);
     otherplayer(?to,'ACTIVE')?
