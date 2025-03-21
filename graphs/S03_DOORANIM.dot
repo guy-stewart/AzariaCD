@@ -9,7 +9,7 @@ digraph Automaton {
 "0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
 </table>>
 ];
-	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+	1[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
 </table>>];
 "1" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_UNLOCK)<br align="left"/></b></td></tr>
 </table>>
@@ -19,7 +19,7 @@ digraph Automaton {
 "10" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASHOW(WSPRITE,V_LOOP)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">  PLAYWAVE(SOUND_PORTAL);<br align="left"/> <br align="left"/></font></td></tr></table>>
 ];
-	20[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+	20[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
 </table>>];
 "20" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
 </table>>
@@ -38,6 +38,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">    ASSIGN(LTHETA,WIP4);<br align="left"/>    q_local_active(?BPARM, &quot;1&quot;);<br align="left"/>    if(BPARM != &quot; Find the ancient map in the wilderness.&quot;)&#123;<br align="left"/>     SIGNAL(QL_MANAGER,Q1_START);<br align="left"/>    &#125;<br align="left"/>    SIGNAL(AUD_MUSIC_PLAYER, SIG_112);<br align="left"/> <br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S03_DOORANIM<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_ORIE @pos(x:305, y:55, w:205, h:101)<br align="left"/>S03_DOORANIM::M_QANIPORTAL(&apos;IDS_DOORANIM&apos;,&apos;&apos;,&apos;IDV_N2A&apos;,&apos;9300&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;20&apos;: wSprite:IDS_DOORANIM Top:55 Left:305 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ORIE @pos(x:305, y:55, w:205, h:101)<br align="left"/>S03_DOORANIM::M_QANIPORTAL(&apos;IDS_DOORANIM&apos;,&apos;&apos;,&apos;IDV_N2A&apos;,&apos;9300&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: wSprite:IDS_DOORANIM Top:55 Left:305<br align="left"/></font></td></tr></table>>
 ];
 }

@@ -267,30 +267,30 @@ VALUES
 
 
 delete from "main"."machines" where [name] like 'SID_%';
-INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name",Z) 
 VALUES 
-( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', 'SID_ID', '', '', ''),
-( 'SID_SPELL',  'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', ''),
-( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', '', '', '0', 'SID_AURA'),
-( 'SID_AURA',   'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', ''),
-( 'SID_DEC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', ''),
-( 'SID_INC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', ''),
+( 'SID_HALO',   'IDV_ID', '30', '0', '70', '40', '3', 'M_HALO', 'SID_ID', '', '', '',8),
+( 'SID_SPELL',  'IDV_ID', '10', '50', '80', '150', '3', 'M_IDSPELL', '', '', '', '',7),
+( 'SID_ID',     'IDV_ID', '0', '0', '101', '171', '3', 'M_ID', '', '', '0', 'SID_AURA',6),
+( 'SID_AURA',   'IDV_ID', '0', '0', '112', '100', '3', 'M_AURA', '', '', '', '',5),
+( 'SID_DEC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_WEALTH', '', '', '', '',4),
+( 'SID_INC_WEALTH', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_WEALTH', '', '', '', '',3),
 --58 - 63 avail
-( 'SID_DEC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', ''),
-( 'SID_INC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', ''),
+( 'SID_DEC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_DEC_ENERGY', '', '', '', '',2),
+( 'SID_INC_ENERGY', 'IDV_ID', '0', '0', '0', '0', '3', 'M_INC_ENERGY', '', '', '', '',1),
 
 -- this is signalled by SID_HALO, SID_AURA, and Wealth machines to persist the player's stats in realtime
 -- called with SIGNAL(SID_PERSIST,SIG_UPDATE);
-( 'SID_PERSIST', 'IDV_ID', '0', '0', '1', '1', '3', 'M_ID_PERSIST', '', '', '', '');
+( 'SID_PERSIST', 'IDV_ID', '0', '0', '1', '1', '3', 'M_ID_PERSIST', '', '', '', '',0);
 
 
 delete from "main"."machines" where [name] like 'SOD_%';
-INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name",Z) 
 VALUES 
-('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_O_HALO', 'SOD_ID', '', '', ''),
-('SOD_SPELL','IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', ''),
-('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', 'SOD_HALO', 'SOD_AURA'),
-('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '');
+('SOD_HALO', 'IDV_OTHERID', '30', '0', '70', '40', '3', 'M_O_HALO', 'SOD_ID', '', '', '',4),
+('SOD_SPELL','IDV_OTHERID', '10', '50', '80', '150', '3', 'M_O_IDSPELL', '', '', '', '',3),
+('SOD_ID',   'IDV_OTHERID', '0', '0', '101', '171', '3', 'M_OID', 'OWISDOM', 'OSEX', 'SOD_HALO', 'SOD_AURA',2),
+('SOD_AURA', 'IDV_OTHERID', '0', '0', '10', '10', '3', 'M_O_AURA', '', '', '', '',1);
 
 
 

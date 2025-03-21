@@ -28,7 +28,17 @@ INSERT INTO "main"."panel_nav" ("from", "forward", "back") VALUES
 delete from controls where [view] like 'IDV_STRATMON%';
 insert into controls ([view],[id], [type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
 
-('IDV_STRATMON', 19,'LISTBOX','IDS_STRATMONBGRND','IDS_STRATMONBGRND',148, 23, 3, 'playerList','2','IDS_FONTENG_BIG',14871474,'');
+('IDV_STRATMON', 19,'LISTBOX','IDS_STRATMONBGRND','IDS_STRATMONBGRND',148, 23, 3, 'playerList(name)','2','IDS_FONTENG_BIG',14871474,'
+    predicate PlayerList(name,pid,status,player);
+    PlayerList(name,?player_pid,?mystatus,?myplayer)?
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
+    otherplayer(?to,"ACTIVE")?
+    method = "unsubscribe";
+    send_request(to, "unsubscribe",'', '');
+    otherplayer("%")~
+    otherplayer(player_pid, mystatus, myplayer,,,,,,,,,,,,,).
+    replay("system/send_requestDetails"); 
+');
 
 
 

@@ -214,14 +214,14 @@
 <!-- status -->
 <g id="node8" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="1141.86,-844.75 1141.86,-923.75 1457.86,-923.75 1457.86,-844.75 1141.86,-844.75"/>
-<polygon fill="none" stroke="black" points="1152.86,-898 1152.86,-916.75 1446.86,-916.75 1446.86,-898 1152.86,-898"/>
-<text text-anchor="start" x="1272.86" y="-905.25" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_SPELL</text>
-<polygon fill="none" stroke="black" points="1152.86,-851.75 1152.86,-896 1446.86,-896 1446.86,-851.75 1152.86,-851.75"/>
+<polygon fill="none" stroke="black" points="1141.86,-844.75 1141.86,-923.75 1451.86,-923.75 1451.86,-844.75 1141.86,-844.75"/>
+<polygon fill="none" stroke="black" points="1152.86,-898 1152.86,-916.75 1440.86,-916.75 1440.86,-898 1152.86,-898"/>
+<text text-anchor="start" x="1269.86" y="-905.25" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_SPELL</text>
+<polygon fill="none" stroke="black" points="1152.86,-851.75 1152.86,-896 1440.86,-896 1440.86,-851.75 1152.86,-851.75"/>
 <text text-anchor="start" x="1155.86" y="-883.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_OTHERID @pos(x:10, y:50, w:100, h:70)</text>
 <text text-anchor="start" x="1155.86" y="-870.75" font-family="Courier New" font-size="10.00" fill="green">SOD_SPELL::M_O_IDSPELL(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="1155.86" y="-858" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: wObject:IDD_BOMB2 Top:50 Left:10 Z:0</text>
-<polygon fill="none" stroke="black" points="1149.86,-848.75 1149.86,-919.75 1449.86,-919.75 1449.86,-848.75 1149.86,-848.75"/>
+<text text-anchor="start" x="1155.86" y="-858" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:50 Left:10 Z:3</text>
+<polygon fill="none" stroke="black" points="1149.86,-848.75 1149.86,-919.75 1443.86,-919.75 1443.86,-848.75 1149.86,-848.75"/>
 </g>
 </g>
 </svg>

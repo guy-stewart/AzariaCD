@@ -470,14 +470,14 @@
 <!-- status -->
 <g id="node22" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="1555,-1351.25 1555,-1430.25 2183,-1430.25 2183,-1351.25 1555,-1351.25"/>
-<polygon fill="none" stroke="black" points="1566,-1404.5 1566,-1423.25 2172,-1423.25 2172,-1404.5 1566,-1404.5"/>
-<text text-anchor="start" x="1851" y="-1411.75" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_ID</text>
-<polygon fill="none" stroke="black" points="1566,-1358.25 1566,-1402.5 2172,-1402.5 2172,-1358.25 1566,-1358.25"/>
+<polygon fill="none" stroke="black" points="1555,-1351.25 1555,-1430.25 2027,-1430.25 2027,-1351.25 1555,-1351.25"/>
+<polygon fill="none" stroke="black" points="1566,-1404.5 1566,-1423.25 2016,-1423.25 2016,-1404.5 1566,-1404.5"/>
+<text text-anchor="start" x="1773" y="-1411.75" font-family="Courier New" font-weight="bold" font-size="10.00">SOD_ID</text>
+<polygon fill="none" stroke="black" points="1566,-1358.25 1566,-1402.5 2016,-1402.5 2016,-1358.25 1566,-1358.25"/>
 <text text-anchor="start" x="1569" y="-1390" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_OTHERID @pos(x:0, y:0, w:171, h:101)</text>
 <text text-anchor="start" x="1569" y="-1377.25" font-family="Courier New" font-size="10.00" fill="green">SOD_ID::M_OID(&#39;OWISDOM&#39;,&#39;OSEX&#39;,&#39;SOD_HALO&#39;,&#39;SOD_AURA&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="1569" y="-1364.5" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: bParm:108.82.186.169:53735 wParm:F3 wSprite:IDS_FID3HURT bFrame:0 Top:0 Left:0 Z:0</text>
-<polygon fill="none" stroke="black" points="1563,-1355.25 1563,-1426.25 2175,-1426.25 2175,-1355.25 1563,-1355.25"/>
+<text text-anchor="start" x="1569" y="-1364.5" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;sitting&#39;: wParm:M3 wSprite:IDS_MID3HAPPY bFrame:0 Top:0 Left:0 Z:2</text>
+<polygon fill="none" stroke="black" points="1563,-1355.25 1563,-1426.25 2019,-1426.25 2019,-1355.25 1563,-1355.25"/>
 </g>
 </g>
 </svg>
