@@ -55,49 +55,55 @@ delete from transitions where [automaton] like 'M_PLAYER_%';
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
 VALUES 
--- SIGNAL(AUD_MUSIC_PLAYER, SIG_112); 
+-- -- SIGNAL(AUD_MUSIC_PLAYER, SIG_112); 
 
-('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_2', '
-     playmusic(kam002aa,3);
-'),
-('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_INTRO_MIX', '
-     playmusic(kam209ba,3);
-    //playmusic(kam209ba,3); then playmusic(kam210ba,3);
-'),
-('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_NATURE_INTRO', '
-     playmusic(kam112aa,3);
-     //playmusic kam112aa , then playmusic(306ba,3) -- might change to SIG_N2A custom playlist
-'),
- ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
+-- ('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_2', '
+--      playmusic(kam002aa,3);
+-- '),
+-- ('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_INTRO_MIX', '
+--      playmusic(kam209ba,3);
+--     //playmusic(kam209ba,3); then playmusic(kam210ba,3);
+-- '),
+-- ('M_PLAYER_MUSIC', '0', 'playing', 'WAIT','', 'SIG_NATURE_INTRO', '
+--      playmusic(kam112aa,3);
+--      //playmusic kam112aa , then playmusic(306ba,3) -- might change to SIG_N2A custom playlist
+-- '),
+--  ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
 
------------------ Ambient -----------------------------------
---ocean
---cavewind
-('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_NAT', '
-    PLAYWAVE(nature1); 
-'),
-('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_CITY', '
-    PLAYWAVE(SOUND_CLICK);
-'),
- ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
+-- ----------------- Ambient -----------------------------------
+-- --ocean
+-- --cavewind
+-- ('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_NAT', '
+--     PLAYWAVE(nature1); 
+-- '),
+-- ('M_PLAYER_AMBIENT', '0', 'playing', 'WAIT','', 'SIG_CITY', '
+--     PLAYWAVE(SOUND_CLICK);
+-- '),
+--  ('M_PLAYER_MUSIC', 'playing', '0', 'Z_EPSILON','', '', ''),
 
 ------------------------------------------------------------
 
 ('M_AUDIO_BTN', '0', '0', 'CLICK','0', '', 'SIGNAL(WIP1,WIP2);'),
 
-('M_AUDIO_LEVELS', '0', 'READY', 'Z_EPSILON','0', '', '
+('M_AUDIO_LEVELS', '0', 'CHANGED', 'Z_EPSILON','0', '', '
      //set initial audio level here 
-     ASSIGN(WPARM,1+music_volume()); SIGNAL(POS_AUDIO_M2,SIG_ON); //MUSIC
+     ASSIGN(WPARM,3); SIGNAL(POS_AUDIO_M5,SIG_ON); //MUSIC
      ASSIGN(BPARM,1+effects_volume()); SIGNAL(POS_AUDIO_SFX2,SIG_ON); //SFX
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_MUSIC_UP', '
-    if (WPARM<7) ADD(WPARM,1);
+    if (WPARM<10) ADD(WPARM,1);
+    
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_MUSIC_DN', '
     if (WPARM>0) SUB(WPARM,1);
+     while (WTEMP1<=6) {
+       WRITE("upping audio gain");
+       audio_gain(WTEMP1,WPARM);
+        WTEMP1 = WTEMP1 + 1;
+    }
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_SFX_UP', '
-    if (BPARM<7) ADD(BPARM,1);
+    if (BPARM<10) ADD(BPARM,1);
 '),
 ('M_AUDIO_LEVELS', 'READY', 'CHANGED', 'WAIT','', 'SIG_SFX_DN', '
     if (BPARM>0) SUB(BPARM,1);
@@ -111,6 +117,9 @@ VALUES
     SIGNAL(POS_AUDIO_M5,SIG_OFF);
     SIGNAL(POS_AUDIO_M6,SIG_OFF); 
     SIGNAL(POS_AUDIO_M7,SIG_OFF); 
+    SIGNAL(POS_AUDIO_M8,SIG_OFF); 
+    SIGNAL(POS_AUDIO_M9,SIG_OFF); 
+    SIGNAL(POS_AUDIO_M10,SIG_OFF); 
     SIGNAL(POS_AUDIO_SFX1,SIG_OFF);
     SIGNAL(POS_AUDIO_SFX2,SIG_OFF);
     SIGNAL(POS_AUDIO_SFX3,SIG_OFF);
@@ -118,14 +127,24 @@ VALUES
     SIGNAL(POS_AUDIO_SFX5,SIG_OFF);
     SIGNAL(POS_AUDIO_SFX6,SIG_OFF); 
     SIGNAL(POS_AUDIO_SFX7,SIG_OFF); 
+    SIGNAL(POS_AUDIO_SFX8,SIG_OFF); 
+    SIGNAL(POS_AUDIO_SFX9,SIG_OFF); 
+    SIGNAL(POS_AUDIO_SFX10,SIG_OFF); 
     // turn on just the ones we want ...
     SIGNAL("POS_AUDIO_M"+WPARM, SIG_ON);
     SIGNAL("POS_AUDIO_SFX"+BPARM, SIG_ON);
-
     log("BPARM==", BPARM);
     log("WPARM==", WPARM);
     effects_volume(BPARM);
-    music_volume(WPARM);
+   
+    audio_gain(0,WPARM);
+    audio_gain(1,WPARM);
+    audio_gain(2,WPARM);
+    audio_gain(3,WPARM);
+    audio_gain(4,WPARM);
+    audio_gain(5,WPARM);
+    audio_gain(6,WPARM);
+   
 ');
 
 INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "param_1", "param_2", "code") 
@@ -135,3 +154,11 @@ VALUES
 ('M_VOL', 'READY', 'OFF', 'WAIT','', 'SIG_OFF', 'SHOW();'),
 ('M_VOL', 'ON', '0', 'Z_EPSILON','0', '', ''),
 ('M_VOL', 'OFF', '0','Z_EPSILON','0', '', '');
+
+
+--   while (WTEMP1 <= 6) {
+--         log("ch"+WTEMP1);
+--         ch = WTEMP1;
+--         audio_gain(ch,WPARM);
+--         WTEMP1 = WTEMP1 + 1;
+--     };

@@ -10,6 +10,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">SIGNAL(WIP1,WIP2);<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_AUDIO_MUP<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:565, y:142, h:25, w:25)<br align="left"/>BTN_AUDIO_MUP::M_AUDIO_BTN(&apos;AUDIO_LEVELS&apos;,&apos;SIG_MUSIC_UP&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:142 Left:565 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:565, y:142, w:25, h:25)<br align="left"/>BTN_AUDIO_MUP::M_AUDIO_BTN(&apos;AUDIO_LEVELS&apos;,&apos;SIG_MUSIC_UP&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:142 Left:565 Z:0<br align="left"/></font></td></tr></table>>
 ];
 }

@@ -30,3 +30,17 @@ insert into machines ([name],[view_name],[left],[top],[right],[bottom],[local_vi
 ('BTN_CFGGAME','IDV_MAINMENU',          290,  98,     495,  139,  2,'M_BTN_1phase','IDV_CFGGAME',  'IDS_CFG_HL_NEWGM','',''),
 ('BTN_CFGPLAYERNEW','IDV_MAINMENU',     290,  154,    495,  192,  2,'M_BTN_1phase','IDV_CFGPLAYERNEW',       'IDS_CFG_HL_NEWCHAR','',''),
 ('BTN_CFGPROVIDER','IDV_MAINMENU',      290,  207,    495,  246,  2,'M_BTN_1phase','IDV_CFGNW1',        'IDS_CFG_HL_NETWORK','','');
+
+delete from transitions where automaton = 'M_BTN_ContGame';
+insert into transitions ([automaton], [state], [new_state], [opcode], [param_1], [param_2], [code], [guard], [doc]) values
+('M_BTN_ContGame','0','0','CLICK','','',
+'PLAYWAVE(SOUND_BTNPRESS);
+predicate localplayer(account_id,name,viewname);
+localplayer(,,?LVIEW);
+LOADVIEW(LVIEW);
+SHOW();','',''),
+('M_BTN_ContGame','0','0','DRAGFOCUS','0','FALSE','SHOW();','',''),
+('M_BTN_ContGame','0','0','DRAGFOCUS','0','TRUE',
+'WSPRITE=WIP2;
+SHOW(WSPRITE);
+PLAYWAVE(SOUND_BTNDRAG);','','');

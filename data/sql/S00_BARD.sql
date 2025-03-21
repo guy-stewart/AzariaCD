@@ -34,7 +34,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_NEWSESSION', '1', '2', 'ESTIME', '1', '', '
     predicate watchers (address,name);
     watchers()~
-    predicate otherplayer(pid,status);
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
     otherplayer()~
     SIGNAL(SOD_ID, SIG_CLEAR);
     SIGNAL(S_CFGNWSERVER, SIG_RESET);

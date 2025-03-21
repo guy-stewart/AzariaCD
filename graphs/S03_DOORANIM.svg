@@ -144,9 +144,9 @@
 <polygon fill="none" stroke="black" points="447.91,-620.75 447.91,-639.5 861.91,-639.5 861.91,-620.75 447.91,-620.75"/>
 <text text-anchor="start" x="618.91" y="-628" font-family="Courier New" font-weight="bold" font-size="10.00">S03_DOORANIM</text>
 <polygon fill="none" stroke="black" points="447.91,-574.5 447.91,-618.75 861.91,-618.75 861.91,-574.5 447.91,-574.5"/>
-<text text-anchor="start" x="450.91" y="-606.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ORIE @pos(x:305, y:55, h:101, w:205)</text>
+<text text-anchor="start" x="450.91" y="-606.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ORIE @pos(x:305, y:55, w:205, h:101)</text>
 <text text-anchor="start" x="450.91" y="-593.5" font-family="Courier New" font-size="10.00" fill="green">S03_DOORANIM::M_QANIPORTAL(&#39;IDS_DOORANIM&#39;,&#39;&#39;,&#39;IDV_N2A&#39;,&#39;9300&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="450.91" y="-580.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: wSprite:IDS_DOORANIM Top:55 Left:305 Z:0</text>
+<text text-anchor="start" x="450.91" y="-580.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: wSprite:IDS_DOORANIM Top:55 Left:305</text>
 <polygon fill="none" stroke="black" points="444.91,-571.5 444.91,-642.5 864.91,-642.5 864.91,-571.5 444.91,-571.5"/>
 </g>
 </g>

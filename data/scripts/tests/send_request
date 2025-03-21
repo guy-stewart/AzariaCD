@@ -1,7 +1,7 @@
 
-predicate PlayerList(pid,status, player);
+predicate PlayerList(name,pid,status, player);
 write("send_request ..... ");
-for (PlayerList(?to, ?status, ?params)) {
+for (PlayerList( ,?to, ?status, ?params)) {
     method = "getPlayerDetails";
     params = "";
     future = "write('** FUTURE ** result:',result, 'params:',params);";

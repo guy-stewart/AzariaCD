@@ -36,7 +36,7 @@ allows you to keep your posessions.','','IDS_FONTTNB14',0xFEFEFE,'');
 
 
 delete from machines where [name] like 'S00_PLAYERMENU%';
-delete from machines where [name] like 'BTN_CFGPLAYER%';
+delete from machines where [name] like 'BTN_CFGPLAYER_%';
 delete from machines where [name] like 'BTN_CFGCULTUR%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 ('BTN_CFGPLAYER','IDV_TOPMENU',1916,222,2044,277,2,'M_BTN_1phase','IDV_CFGPLAYERNEW','IDS_BTN_PLAYER','',''),
@@ -113,8 +113,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ','',''),
 ('M_BTN_ADDNAME','1','1','WAIT','','SIG_MALE',  'BPARM=0;','',''),
 ('M_BTN_ADDNAME','1','1','WAIT','','SIG_FEMALE','BPARM=1;','',''),
-('M_BTN_ADDNAME','1','1','WAIT','','SIG_NIRET', 'WOBJECT=1;','',''),
-('M_BTN_ADDNAME','1','1','WAIT','','SIG_ETNOC', 'WOBJECT=0;','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_NIRET', 'WTEMP1=1;','',''),
+('M_BTN_ADDNAME','1','1','WAIT','','SIG_ETNOC', 'WTEMP1=0;','',''),
 ('M_BTN_ADDNAME','1','0','CLICK','','',
     'PLAYWAVE(SOUND_BTNPRESS);
     //This puts the name in the editbox into wparm 
@@ -140,6 +140,7 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
     REF_MACHINE(BTN_CFGPLAYERNEW_OK);
 ','',''),
 ('M_BTN_PLAYERCREATE','1','0','CLICK','','','
+    REF_MACHINE(BTN_CFGPLAYERNEW_OK);
     PLAYWAVE(SOUND_BTNPRESS);
     //PROCESS PLAYER ATTRIBUTES
    
@@ -149,14 +150,14 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
     env(address,"name")~ // remove the old name in case we lost our primary key
     env(address,"name",R_WPARM).
    
-    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
-    localplayer(address)~
+    predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
+    localplayer("%")~
     predicate active_character(name);
-    LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM;
-    localplayer(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,R_WOBJECT,0,0,0).
+    LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM; 
+    //I have hardcoded this until guy fixes wtemp
+    localplayer(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,1,0,0,0).
     active_character("%")~
     active_character(R_WPARM).
-
     SIGNAL(SID_ID,SIG_MYID); //Present my id
     SIGNAL(S_NAME_PLAYER,SIG_SETNAME);
     LOADVIEW(WIP1);

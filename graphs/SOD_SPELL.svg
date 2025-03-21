@@ -220,7 +220,7 @@
 <polygon fill="none" stroke="black" points="1152.86,-851.75 1152.86,-896 1440.86,-896 1440.86,-851.75 1152.86,-851.75"/>
 <text text-anchor="start" x="1155.86" y="-883.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_OTHERID @pos(x:10, y:50, w:100, h:70)</text>
 <text text-anchor="start" x="1155.86" y="-870.75" font-family="Courier New" font-size="10.00" fill="green">SOD_SPELL::M_O_IDSPELL(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="1155.86" y="-858" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:50 Left:10 Z:0</text>
+<text text-anchor="start" x="1155.86" y="-858" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: Top:50 Left:10 Z:3</text>
 <polygon fill="none" stroke="black" points="1149.86,-848.75 1149.86,-919.75 1443.86,-919.75 1443.86,-848.75 1149.86,-848.75"/>
 </g>
 </g>

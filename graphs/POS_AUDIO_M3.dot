@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>POS_AUDIO_M3::M_VOL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "READY" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	OFF[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>OFF<br align="left"/></b></td></tr>
+</table>>];
+"OFF" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	ON[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>ON<br align="left"/></b></td></tr>
+</table>>];
+"ON" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	READY[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>READY<br align="left"/></b></td></tr>
+</table>>];
+"READY" -> "ON" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_ON)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+"READY" -> "OFF" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_OFF)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SHOW();<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>POS_AUDIO_M3<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:483, y:149, w:12, h:8)<br align="left"/>POS_AUDIO_M3::M_VOL(&apos;IDS_YELLOWDOT&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;READY&apos;: Top:149 Left:483 Z:0<br align="left"/></font></td></tr></table>>
+];
+}

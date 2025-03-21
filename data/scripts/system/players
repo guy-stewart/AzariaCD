@@ -1,4 +1,4 @@
-predicate PlayerList(pid,status,player);
+predicate PlayerList(name,pid,status,player);
 PlayerList()~
 // players.
 // called by OpenPlay to enumerate all of the players in a room.
@@ -17,7 +17,7 @@ for (json_iter(players, ?player)) {
     candidates = json_element(player, "candidates");
     enum_player(playerid, playername, candidates);
     //write("playerid:",playerid," playerip:",playerip);
-    PlayerList(playerid,'ACTIVE',player).
+    PlayerList(playername,playerid,'ACTIVE',player).
 }  
 if (count==0) {
     write(response);

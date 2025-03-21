@@ -5,7 +5,8 @@ roomId = getOpenPlay("roomid");
 playerid   = getOpenPlay("playerid");
 
 //get the player json object from the PlayerList table by playerid
-PlayerList(playerid,,?player)?
+predicate PlayerList(name,pid,status,player);
+PlayerList(,playerid,,?player)?
 
 //pull the reconnectTok from the player object
 reconnectTok = json_element(player, "reconnectTok");

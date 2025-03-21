@@ -24,17 +24,17 @@ SIGNAL('S0_NW_INDC_LIGHT','SIG_RESET');
 write("SETTING EVENT");
 on_event_future("onPlayerTagged", "{
     write('player tagged: ---->',player_pid);
-    predicate PlayerList(pid,status,player);
-    PlayerList(player_pid,?mystatus,?myplayer)?
+    predicate PlayerList(name,pid,status,player);
+    PlayerList(?myname,player_pid,?mystatus,?myplayer)?
     write('player ----> ',myplayer);
-    predicate otherplayer(pid,status);
+    predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
     otherplayer(?to,'ACTIVE')?
     write('id unsubscribing to ===> ', to);
     method = 'unsubscribe';
     send_request(to, method,'', '');
     otherplayer('%')~
-    otherplayer(player_pid, mystatus, myplayer,'account_id','name','viewname','0','0','0','0','0','0','0','0','0','0').
-    replay('system/send_request'); 
+    otherplayer(player_pid,mystatus, myplayer,,myname,,'0','0','0','0','0','0','0','0','0','0').
+    replay('system/send_requestDetails'); 
 }");
 
 on_event_future("onMachinesInitComplete", "{

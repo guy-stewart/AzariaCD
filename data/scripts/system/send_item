@@ -9,6 +9,8 @@ method = "dropItem";
 dropitem(?object,?id)?
 params = '{' +'"object":"'+ object +'",' +'"id":"'+ id +'"' +'}';
 dropItem('%')~
-     send_request(to, method, params, future);
+     send_request(to, method, params, '');
  
-write("Send Unsubscribe -------------- END -------------------------");
+write(" ---------Send ITEM----- END -------------------------");
+
+// predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);

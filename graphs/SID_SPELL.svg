@@ -201,14 +201,14 @@
 <!-- status -->
 <g id="node7" class="node">
 <title>status</title>
-<polygon fill="none" stroke="black" points="750.14,-487.75 750.14,-566.75 1132.14,-566.75 1132.14,-487.75 750.14,-487.75"/>
-<polygon fill="none" stroke="black" points="761.14,-541 761.14,-559.75 1121.14,-559.75 1121.14,-541 761.14,-541"/>
-<text text-anchor="start" x="914.14" y="-548.25" font-family="Courier New" font-weight="bold" font-size="10.00">SID_SPELL</text>
-<polygon fill="none" stroke="black" points="761.14,-494.75 761.14,-539 1121.14,-539 1121.14,-494.75 761.14,-494.75"/>
-<text text-anchor="start" x="764.14" y="-526.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:10, y:50, h:70, w:100)</text>
+<polygon fill="none" stroke="black" points="750.14,-487.75 750.14,-566.75 1120.14,-566.75 1120.14,-487.75 750.14,-487.75"/>
+<polygon fill="none" stroke="black" points="761.14,-541 761.14,-559.75 1109.14,-559.75 1109.14,-541 761.14,-541"/>
+<text text-anchor="start" x="908.14" y="-548.25" font-family="Courier New" font-weight="bold" font-size="10.00">SID_SPELL</text>
+<polygon fill="none" stroke="black" points="761.14,-494.75 761.14,-539 1109.14,-539 1109.14,-494.75 761.14,-494.75"/>
+<text text-anchor="start" x="764.14" y="-526.5" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:10, y:50, w:100, h:70)</text>
 <text text-anchor="start" x="764.14" y="-513.75" font-family="Courier New" font-size="10.00" fill="green">SID_SPELL::M_IDSPELL(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="764.14" y="-501" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: bParm:id wObject:IDD_ENCHANT Top:50 Left:10 Z:0</text>
-<polygon fill="none" stroke="black" points="758.14,-491.75 758.14,-562.75 1124.14,-562.75 1124.14,-491.75 758.14,-491.75"/>
+<text text-anchor="start" x="764.14" y="-501" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;0&#39;: bParm:id wObject:IDD_BOMB2 Top:50 Left:10 Z:0</text>
+<polygon fill="none" stroke="black" points="758.14,-491.75 758.14,-562.75 1112.14,-562.75 1112.14,-491.75 758.14,-491.75"/>
 </g>
 </g>
 </svg>
