@@ -6,8 +6,8 @@ digraph Automaton {
 ];
 	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
 </table>>];
-"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(BFRAME,0)<br align="left"/></b></td></tr>
-</table>>
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOV(BFRAME,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue"> BPARM = WIP6 + &quot;1&quot;;<br align="left"/> WPARM = WIP6 + &quot;2&quot;;<br align="left"/></font></td></tr></table>>
 ];
 	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
 </table>>];
@@ -16,36 +16,36 @@ digraph Automaton {
 ];
 	captured[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>captured<br align="left"/></b></td></tr>
 </table>>];
-"captured" -> "rightidle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_SHEEP_I,)<br align="left"/></b></td></tr>
+"captured" -> "rightidle" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(WIP5,)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
 ];
-	leftidle[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>leftidle<br align="left"/></b></td></tr>
+	leftidle[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>leftidle<br align="left"/></b></td></tr>
 </table>>];
 "leftidle" -> "runback" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_BAA);<br align="left"/>PLAYWAVE(SOUND_GALLOP);<br align="left"/> ASHOW(WIP4);<br align="left"/></font></td></tr></table>>
 ];
-"leftidle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ROOTBLUE,)<br align="left"/></b></td></tr>
+"leftidle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ENCHANT,)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    PLAYWAVE(SOUND_BAA);<br align="left"/>    SHOW(0);<br align="left"/>    HANDOFF(0,WIP5);<br align="left"/></font></td></tr></table>>
 ];
-	rightidle[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>rightidle<br align="left"/></b></td></tr>
+	rightidle[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>rightidle<br align="left"/></b></td></tr>
 </table>>];
 "rightidle" -> "startled" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_BAA);<br align="left"/> ASHOW(WIP2);<br align="left"/></font></td></tr></table>>
 ];
-"rightidle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ROOTBLUE,)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    PLAYWAVE(SOUND_BAA);<br align="left"/>    SHOW(0);<br align="left"/>    HANDOFF(0,WIP5);<br align="left"/></font></td></tr></table>>
+"rightidle" -> "captured" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ENCHANT,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ADDI(LWISDOM,1); <br align="left"/>    SIGNALi(0,SID_ID);<br align="left"/>    PLAYWAVE(SOUND_BAA);<br align="left"/>    SHOW(0);<br align="left"/>    HANDOFF(0,WIP5);<br align="left"/></font></td></tr></table>>
 ];
 	runback[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>runback<br align="left"/></b></td></tr>
 </table>>];
-"runback" -> "rightidle" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOVETO(mark1,2500)<br align="left"/></b></td></tr>
+"runback" -> "rightidle" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOVETO(BPARM,2500)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">STOPWAVE();<br align="left"/>ASHOW(WIP1);<br align="left"/></font></td></tr></table>>
 ];
 	startled[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>startled<br align="left"/></b></td></tr>
 </table>>];
-"startled" -> "leftidle" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOVETO(mark2,4000)<br align="left"/></b></td></tr>
+"startled" -> "leftidle" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOVETO(WPARM,4000)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">STOPWAVE();<br align="left"/> ASHOW(WIP3);<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S_SHEEP_2<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MOON1 @pos(x:1205, y:186, h:100, w:100)<br align="left"/>S_SHEEP_2::M_PESTER(&apos;IDS_SHEEP_WTS&apos;,&apos;IDS_SHEEP_WRL&apos;,&apos;IDS_SHEEP_WTS&apos;,&apos;IDS_SHEEP_WRR&apos;,&apos;IDD_SHEEP_WTS&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;rightidle&apos;: wSprite:IDS_SHEEP_WTS bFrame:0 Top:186 Left:1205 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MOON1 @pos(x:838, y:204, w:100, h:100)<br align="left"/>S_SHEEP_2::M_PESTER(&apos;IDS_SHEEP_WTS&apos;,&apos;IDS_SHEEP_WRL&apos;,&apos;IDS_SHEEP_WTS&apos;,&apos;IDS_SHEEP_WRR&apos;,&apos;IDD_SHEEP_WTS&apos;,&apos;markw&apos;)<br align="left"/>			&#123;state:&apos;leftidle&apos;: bParm:markw1 wParm:markw2 wSprite:IDS_SHEEP_WTS bFrame:0 dEtime:0 Top:204 Left:838<br align="left"/></font></td></tr></table>>
 ];
 }

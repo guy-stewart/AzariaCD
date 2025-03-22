@@ -1,0 +1,36 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_EYETEXT::M24_EYETEXT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DRAG(0,IDD_EYEWAND)<br align="left"/></b></td></tr>
+</table>>
+];
+"0" -> "20" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DRAGFOCUS(0,FALSE)<br align="left"/></b></td></tr>
+</table>>
+];
+"0" -> "20" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_INIT)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "11" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+	11[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>11<br align="left"/></b></td></tr>
+</table>>];
+"11" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WSPRITE,)<br align="left"/></b></td></tr>
+</table>>
+];
+	20[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+</table>>];
+"20" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_EYETEXT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_EYEC1P @pos(x:54, y:155, w:38, h:499)<br align="left"/>S24_EYETEXT::M24_EYETEXT(&apos;IDS_EYENGLSH&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:155 Left:54<br align="left"/></font></td></tr></table>>
+];
+}

@@ -34,7 +34,7 @@ for (watchers(?to)) {
         + '}';
    
     write("sending params == ", params);   
-    send_request(to, method, params, future);
+    send_request(to, method, params, '');
 }
 
 

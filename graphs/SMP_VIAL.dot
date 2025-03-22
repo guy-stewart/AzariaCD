@@ -1,0 +1,113 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_VIAL::M_VIAL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>LTEi(WPARM,20)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ASSIGN(LWEALTH,10);ASSIGN(WPARM,MAX_VIAL_STORAGE);MOV(BPARM,LWEALTH);SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "12" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DRAG(0,IDD_SCOOPE)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "16" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(0,IDD_SCOOPF)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ADDI(BPARM,1);<br align="left"/></font></td></tr></table>>
+];
+"10" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,IDD_SCOOPE)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "19" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,IDD_SCOOPF)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "40" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,IDD_VIAL1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,IDD_VIAL2)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(0,IDD_SCOOPE)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_DRAIN)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(BPARM,0);SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+	12[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>12<br align="left"/></b></td></tr>
+</table>>];
+"12" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>EQUALi(LWEALTH,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"12" -> "13" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SUBI(LWEALTH,1);MOV(BPARM,LWEALTH);SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+	13[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>13<br align="left"/></b></td></tr>
+</table>>];
+"13" -> "14" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_SLURP)<br align="left"/></b></td></tr>
+</table>>
+];
+	14[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>14<br align="left"/></b></td></tr>
+</table>>];
+"14" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>HANDOFF(0,IDD_SCOOPF)<br align="left"/></b></td></tr>
+</table>>
+];
+	16[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>16<br align="left"/></b></td></tr>
+</table>>];
+"16" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GTE(BPARM,WPARM)<br align="left"/></b></td></tr>
+</table>>
+];
+"16" -> "17" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ADDI(LWEALTH,1);MOV(BPARM,LWEALTH);SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+	17[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>17<br align="left"/></b></td></tr>
+</table>>];
+"17" -> "18" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_SPIT)<br align="left"/></b></td></tr>
+</table>>
+];
+	18[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>18<br align="left"/></b></td></tr>
+</table>>];
+"18" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>HANDOFF(0,IDD_SCOOPE)<br align="left"/></b></td></tr>
+</table>>
+];
+	19[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>19<br align="left"/></b></td></tr>
+</table>>];
+"19" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GTE(BPARM,WPARM)<br align="left"/></b></td></tr>
+</table>>
+];
+"19" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOV(BPARM,LWEALTH)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+	20[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+</table>>];
+"20" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ADDi(LWEALTH,1)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(BPARM,LWEALTH);SIGNALi(SIG_SHOW,S1_VIALMETER);<br align="left"/></font></td></tr></table>>
+];
+	40[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>40<br align="left"/></b></td></tr>
+</table>>];
+"40" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WPARM,40)<br align="left"/></b></td></tr>
+</table>>
+];
+	50[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>50<br align="left"/></b></td></tr>
+</table>>];
+"50" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASSIGN(WPARM,80)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_VIAL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:74, y:315, w:59, h:62)<br align="left"/>SMP_VIAL::M_VIAL(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;10&apos;: bParm:10 wParm:20 Top:315 Left:74<br align="left"/></font></td></tr></table>>
+];
+}

@@ -1,0 +1,80 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_EYEPLATE1::M24_EYEPLATE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_EYEFUSE,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ADDI(LWISDOM,2); SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(0,S24_BIGEYE)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "3" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	3[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>3<br align="left"/></b></td></tr>
+</table>>];
+"3" -> "4" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(0,IDS_EYEPLATE)<br align="left"/></b></td></tr>
+</table>>
+];
+	4[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>4<br align="left"/></b></td></tr>
+</table>>];
+"4" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP1,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+	5[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>5<br align="left"/></b></td></tr>
+</table>>];
+"5" -> "6" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+	50[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>50<br align="left"/></b></td></tr>
+</table>>];
+"50" -> "51" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>VIDEO(0,IDS_EXPLODE1)<br align="left"/></b></td></tr>
+</table>>
+];
+	51[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>51<br align="left"/></b></td></tr>
+</table>>];
+"51" -> "52" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_EXPLODE)<br align="left"/></b></td></tr>
+</table>>
+];
+	52[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>52<br align="left"/></b></td></tr>
+</table>>];
+"52" -> "53" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	53[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>53<br align="left"/></b></td></tr>
+</table>>];
+"53" -> "54" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP1,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+	54[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>54<br align="left"/></b></td></tr>
+</table>>];
+"54" -> "55" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+	55[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>55<br align="left"/></b></td></tr>
+</table>>];
+"55" -> "56" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	56[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>56<br align="left"/></b></td></tr>
+</table>>];
+"56" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_BOMB,S24_BIGEYE)<br align="left"/></b></td></tr>
+</table>>
+];
+	6[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>6<br align="left"/></b></td></tr>
+</table>>];
+"6" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDC_BOMB,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SUBI(LKARMA,1); SIGNAL(SID_HALO,SIG_ADD);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_EYEPLATE1<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_EYEC1P @pos(x:200, y:28, w:35, h:60)<br align="left"/>S24_EYEPLATE1::M24_EYEPLATE(&apos;S24_ALTa_EYEPLATE1&apos;,&apos;S24_ALTb_EYEPLATE1&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;6&apos;: wObject:IDD_EYEFUSE wSprite:IDS_EYEPLATE Top:28 Left:200<br align="left"/></font></td></tr></table>>
+];
+}
