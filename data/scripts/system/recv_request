@@ -77,6 +77,12 @@ if (method == 'getPlayerDetails') {
     inboundItem('%')~
     inboundItem(object,id,from).
     SIGNAL("SID_SPELL","SIG_DROPPED"); 
+}else if(method == 'gesture') {
+    write("a player: =====> ", from, " is gesturing to me");
+    machine = json_element(params, "machine");
+    signal = json_element(params, "signal");
+    result = 'gotGesture';
+    SIGNAL(machine,signal);     
 }else if(method == 'viewUpdate') {
     write("a player: =====> ", from, " is sending a view update");
     object = json_element(params, "object");

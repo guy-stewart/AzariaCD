@@ -1,0 +1,205 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_BIGEYE::M24_BIGEYE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP1)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(WSPRITE,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(WSPRITE,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(WSPRITE,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE2)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE2)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE2)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYEPLATE3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL1)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(0,S24_EYESPELL3)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ANIMATE(0,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+"2" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ANIMATE(0,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+"2" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ANIMATE(0,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+	20[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+</table>>];
+"20" -> "30" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(0,IDS_BIGEYE1)<br align="left"/></b></td></tr>
+</table>>
+];
+"20" -> "30" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(0,IDS_BIGEYE1)<br align="left"/></b></td></tr>
+</table>>
+];
+"20" -> "30" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(0,IDS_BIGEYE1)<br align="left"/></b></td></tr>
+</table>>
+];
+	30[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>30<br align="left"/></b></td></tr>
+</table>>];
+"30" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(0,IDD_EYEWAND)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SIGNALi(SIG_COMPLETE,REC_EYEOG);<br align="left"/></font></td></tr></table>>
+];
+"30" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(0,IDD_EYEWAND)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ADDI(LWISDOM,2); SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+"30" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(0,IDD_EYEWAND)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ADDI(LWISDOM,2);<br align="left"/>    SIGNALi(0,SID_ID);<br align="left"/>      q_local_active(?BPARM, &quot;5&quot;);<br align="left"/>            if(BPARM != &quot; Read the signs of the ancients.&quot;)&#123;<br align="left"/>               SIGNAL(QL_MANAGER,Q5_START);<br align="left"/>            &#125;<br align="left"/></font></td></tr></table>>
+];
+"30" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_BOMB)<br align="left"/></b></td></tr>
+</table>>
+];
+"30" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_BOMB)<br align="left"/></b></td></tr>
+</table>>
+];
+"30" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_BOMB)<br align="left"/></b></td></tr>
+</table>>
+];
+	5[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>5<br align="left"/></b></td></tr>
+</table>>];
+"5" -> "6" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+"5" -> "6" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+"5" -> "6" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+	50[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>50<br align="left"/></b></td></tr>
+</table>>];
+"50" -> "51" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"50" -> "51" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"50" -> "51" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	51[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>51<br align="left"/></b></td></tr>
+</table>>];
+"51" -> "52" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+"51" -> "52" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+"51" -> "52" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+	52[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>52<br align="left"/></b></td></tr>
+</table>>];
+"52" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+"52" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+"52" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_HIDE)<br align="left"/></b></td></tr>
+</table>>
+];
+	6[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>6<br align="left"/></b></td></tr>
+</table>>];
+"6" -> "7" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+"6" -> "7" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+"6" -> "7" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP3,SIG_SHOW)<br align="left"/></b></td></tr>
+</table>>
+];
+	7[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>7<br align="left"/></b></td></tr>
+</table>>];
+"7" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"7" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"7" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+</table>>
+];
+"7" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"7" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"7" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S24_BIGEYE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_EYEC1P @pos(x:295, y:60, w:52, h:73)<br align="left"/>S24_BIGEYE::M24_BIGEYE(&apos;IDS_BIGEYE1&apos;,&apos;S24_ALTa_EYESPELL2&apos;,&apos;S24_ALTb_EYESPELL2&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;7&apos;: wSprite:IDS_BIGEYE1 Top:60 Left:295<br align="left"/></font></td></tr></table>>
+];
+}

@@ -424,16 +424,21 @@ VALUES
 
 ('S12_PERST', 'IDV_TMPLPTH9', '1481', '68', '1637', '200',  '3','M_MEF_APPROACH','IDS_M2FIDDLE',4,'PERST_COORD', ''),
 ('S12_PERST_Q2', 'IDV_MEFID', '0', '0', '8', '10',          '3','M_MEF_TALK','IDS_M2T10000','5', 'SOUND_PERSTQ2', 'IDS_M2P10000'),
-('PERST_I2','IDV_MEFID', '0', '0', '8', '10',               '3','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000'),
+('PERST_I2','IDV_MEFID', '0', '0', '8', '10',               '3','M_MEF_TALK','IDS_M2T10000','2', 'SOUND_PERSTI2', 'IDS_M2S10000');
 
 
 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name", "Z") 
+VALUES 
 -------------------------------------
 -- --AMBLE  
-('AMBLE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '3','MEFLIN_COORD','','','',''),
-('S09_AMBLE_DESK', 'IDV_VHB3', '2653','180','2699','200',   '3','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', ''),
-('S09_AMBLE', 'IDV_VHB3', '2653', '40', '2753', '300',      '3','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD',''),
+('AMBLE_COORD', 'IDV_MEFID', '1', '1', '1', '1',            '3','MEFLIN_COORD','','','','',1),
+('S09_AMBLE_DESK', 'IDV_VHB3', '2653','180','2699','200',   '3','M_BIN', 'IDD_GVIAL', 'IDS_MSDESK', '30', '',2),
+('S09_AMBLE', 'IDV_VHB3', '2653', '40', '2753', '300',      '3','M_MEF_APPROACH','IDS_MSSQUAT',5,'AMBLE_COORD','',1);
 
+
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+VALUES 
 ('S09_AMBLE_Q1','IDV_MEFID', '0', '0', '8', '10',           '3','M_MEF_TALK','IDS_MST01','6','SOUND_AMBLEQ1', 'IDS_MSI10001'),
 ('AMBLE_I1', 'IDV_MEFID', '0', '0', '8', '10',              '3','M_MEF_TALK','IDS_MST01','2', 'SOUND_AMBLEI1', 'IDS_MSH10001'),
 -- --('15522', 'S09_AMBLE_alt1','4865', 'IDV_VIL3', '2515', '115', '2600', '200', '1','M_ANIBIN','IDS_M2FIDDLEsm1','', '',  '');

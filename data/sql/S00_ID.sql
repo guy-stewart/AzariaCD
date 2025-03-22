@@ -529,15 +529,60 @@ VALUES
      SIGNAL(SID_AURA, SIG_MYAURA);
      SIGNAL(SID_HALO, SIG_MYHALO);
 ', '', ''),
-('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '', '', ''),
-('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '', '', ''),
-('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '', '', ''),
-('M_ID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '', '', ''),
-('M_ID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '', '', ''),
-('M_ID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '', '', ''),
-('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '', '', ''),
-('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '', '', ''),
-('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '', '', ''),
+('M_ID', 'sitting', '20', 'WAIT', '0', 'SIG_HAPPY', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_HAPPY).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '21', 'WAIT', '0', 'SIG_HURT', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_HURT).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '22', 'WAIT', '0', 'SIG_KISS', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_KISS).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '23', 'WAIT', '0', 'SIG_MAD', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_MAD).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '24', 'WAIT', '0', 'SIG_SAD', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_SAD).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '25', 'WAIT', '0', 'SIG_SURPRISED', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_SURPRISED).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '26', 'WAIT', '0', 'SIG_STRESS', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_STRESS).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '27', 'WAIT', '0', 'SIG_WAVE', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_WAVE).
+    replay("system/send_gesture");
+', '', ''),
+('M_ID', 'sitting', '30', 'WAIT', '0', 'SIG_DEAD', '
+    predicate machinesignal(machine,signal);
+    machinesignal()~
+    machinesignal(SOD_ID,SIG_DEAD).
+    replay("system/send_gesture");
+', '', ''),
 ('M_ID', 'sitting', '50', 'WAIT', '0', 'SIG_BOMB', '
      WRITE("I am S_ID and I receive signals! This one is a SIG_BOMB! ");
 ', '', ''),

@@ -1,0 +1,16 @@
+
+
+
+write(" --------------------SEND Gesture--------------------");
+predicate otherplayer(pid,status);
+otherplayer(?to,"ACTIVE")?
+predicate machinesignal(machine,signal);
+method = "gesture";        
+machinesignal(?machine,?signal)?
+params = '{' +'"machine":"'+ machine +'",' +'"signal":"'+ signal +'"' +'}';
+machinesignal('%')~
+     send_request(to, method, params, '');
+ 
+write(" ---------Send Gesture----- END -------------------------");
+
+// predicate otherplayer(pid,status,player,account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture, knowsparent, knowsvillage,knowscity);
