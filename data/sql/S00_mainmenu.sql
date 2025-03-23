@@ -16,9 +16,6 @@ INSERT INTO "main"."spr_names" ("name", "value") VALUES
 
 
 
-delete from views where [view_name] like 'IDV_MAINMENU%';
-INSERT INTO "main"."views" ("view_name", "Z", "backgroundAudio", "locator_view", "behavior_id", "portal_filename", "surface_filename", "ambients") VALUES 
- ('IDV_MAINMENU',      1,      0, 1, 1, 'wdepanel.vct', 'cfg_MainMenu',        '' );
 
 --old main
 delete from machines where view_name = 'IDV_MAINMENU'; 

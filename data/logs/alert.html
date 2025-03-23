@@ -3,14 +3,34 @@
 <body>
 <h1>Parse error</h1>
 </p>
-<pre><code>event=IN8_RPC;
-from='108.82.186.169:52083';
-to='108.82.186.169:65353';
-type=0;
-id=261;
-tbl=4;
-method='';
-result='unsubscribe';
-params='{"culture":1,"energy":1,"gender":1,"karma":1,"knowscity":0,"knowsparent":0,"knowsvillage":0,"name":"Jam","strength":10,"viewname":"IDV_GRNDCNT1","wealth":0,"wisdom":12}';
-future<font color="blue"> <-- Parse error: expected '=' or '(' after ID:future</body>
+<pre><code>on_event_future("onBackgroundAudioChanged",
+'
+    write("================================================");
+    write("onBackgroundAudioChanged old:",old, " new:",new);
+    // You might want audioBackground with no audio ...
+    if (old>=0 && old<=6)  audio_pause(old);
+    if (new>=0 && new<=6)  audio_play(new);
+    write("================================================");
+');
+
+// set the main output volume to 70%:
+audio_volume(7);
+
+// configure all channel settings ...
+ch = 0;
+while (ch<=6) {
+    audio_gain(ch,10);
+    audio_repeat(ch,1);
+    audio_shuffle(ch,1);
+    audio_path(ch, 'sounds/22k16bst');
+    ch = ch + 1;
+}
+
+// configure the ambiance channel ...
+audio_gain('ambiance',2);
+audio_repeat('ambiance',1);
+audio_path('ambiance', 'sounds/22k16bst');
+audio_play('ambiance')<font color="blue"> <-- Parse error: expected ';'. encountered 'audio_schedule' ... continuing ...</font>
+</code></pre>
+</body>
 </html>

@@ -137,13 +137,14 @@ VALUES
     log("WPARM==", WPARM);
     effects_volume(BPARM);
    
-    audio_gain(0,WPARM);
+
     audio_gain(1,WPARM);
     audio_gain(2,WPARM);
     audio_gain(3,WPARM);
     audio_gain(4,WPARM);
     audio_gain(5,WPARM);
     audio_gain(6,WPARM);
+
    
 ');
 

@@ -153,9 +153,9 @@ PLAYWAVE(SOUND_BTNDRAG);','',''),
     predicate localplayer(account_id,name,viewname,wealth,karma,energy,strength,wisdom,gender,culture,knowsparent,knowsvillage,knowscity);
     localplayer("%")~
     predicate active_character(name);
-    LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM; 
+    LWEALTH = 4;LENERGY = 4;LKARMA = 0;LWISDOM = 4;LSEX = R_BPARM; CULT=R_WTEMP1;
     //I have hardcoded this until guy fixes wtemp
-    localplayer(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,1,0,0,0).
+    localplayer(address,R_WPARM,LVIEW,LWEALTH,LKARMA,LENERGY,10,LWISDOM,LSEX,CULT,0,0,0).
     active_character("%")~
     active_character(R_WPARM).
     SIGNAL(SID_ID,SIG_MYID); //Present my id
