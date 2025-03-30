@@ -1,4 +1,7 @@
 {
+    "16_9": false,
+    "19_9": true,
+    "4_3": false,
     "app_opening_view": "",
     "app_predicates_ro": {
         "ctltest2": true,
@@ -13,8 +16,10 @@
     "app_version": "0.0",
     "in8_console": false,
     "in8_devmode": true,
-    "in8_version": "1.35",
+    "in8_version": "1.36b",
+    "landscape": true,
     "load_player": false,
+    "portrait": false,
     "save_player": false,
-    "sha256": "293e3ba3c769b2e7d912f797bcfe26eda4bb69e717524f44b9b249b67b6409f2"
+    "sha256": "501223c2e3eabc8490ca43f8ace7a1708c0b5247c12dda71ca6d655a9b960c2c"
 }

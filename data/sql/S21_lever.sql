@@ -25,11 +25,11 @@ delete from machines where name = 'S21_LEVER';
 
 
 
-INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") 
+INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name","Z") 
 VALUES 
-('S21_LEVSTOP', 'IDV_LEVERCU', '295', '210', '360', '260', '1', 'M_LEVSTOP', '','S21_LEVER','',''),
-('S21_LEVER',   'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER'),
-('S21_MAPOPEN', 'IDV_MAPBOX1', '40', '0', '227', '177', '1', 'M_LEVDOOR', 'IDS_MAPOPN','IDV_MAPROOM','','');
+('S21_LEVSTOP', 'IDV_LEVERCU', '295', '210', '360', '260', '1', 'M_LEVSTOP', '','S21_LEVER','','','2'),
+('S21_LEVER',   'IDV_LEVERCU', '32', '42', '300', '187', '1', 'M_LEVER', 'IDS_LEVANI','2', 'S21_LEVSTOP', 'SOUND_LEVER','1'),
+('S21_MAPOPEN', 'IDV_MAPBOX1', '40', '0', '227', '177', '1', 'M_LEVDOOR', 'IDS_MAPOPN','IDV_MAPROOM','','','');
 
 
 /*
@@ -259,16 +259,16 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGDIRECT', 'moveMe', 'displaychest', 'SET_XOFFSET', 'ADD','10', '
         PLAYWAVE(SOUND_CHIMES);
         SHOW(0,IDS_CHESTBAK);
-        SIGNALi(S21_HIDDEN_01,S00_HIDERCURRENT);
+        SIGNAL(S00_HIDERCURRENT,S21_HIDDEN_01);
         ADDI(LWISDOM,1); 
-        SIGNALi(0,SID_ID);
+        SIGNAL(SID_ID,0);
 ', '', ''),
 ('M_DIGDIRECT', 'displaychest', 'chestview', 'CLICK', '', '', '', '', ''),
 ('M_DIGDIRECT', 'chestview', '0', 'Z_EPSILON', '', '', '
    MOV(WPARM,LVIEW);
    SHOW(0);
    LOADVIEW(IDV_CHESTVIEW);
-   SIGNALi(SIG_SHOW,S00_CHESTWAITER);
+   SIGNAL(S00_CHESTWAITER,SIG_SHOW);
 ', '', '');
 
 

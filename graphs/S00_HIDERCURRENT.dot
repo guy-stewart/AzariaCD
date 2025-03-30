@@ -1,0 +1,115 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S00_HIDERCURRENT::M_HIDECURRENT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S21_HIDDEN_01)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S21_HIDDEN_01;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_1)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_1;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_2)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_2;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_3)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_3;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_4)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_4;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_5)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_5;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_6)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_6;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_7)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_7;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_8)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_8;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_9)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_9;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_10)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_10;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_11)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_11;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_12)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_12;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_13)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_13;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_14)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_14;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_15)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_15;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_16)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_16;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_17)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_17;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_18)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_18;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_19)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_19;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_20)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_20;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_21)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_21;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_22)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_22;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_23)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_23;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_24)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_24;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_25)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_25;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_26)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_26;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_27)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_27;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_28)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_28;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_29)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_29;<br align="left"/></font></td></tr></table>>
+];
+"0" -> "holdItem" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,S00_HIDDEN_30)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">BPARM = S00_HIDDEN_30;<br align="left"/></font></td></tr></table>>
+];
+	holdItem[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>holdItem<br align="left"/></b></td></tr>
+</table>>];
+"holdItem" -> "returnobject" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   REF_MACHINE(BPARM);<br align="left"/>   MOV(BPARM,R_WOBJECT);<br align="left"/>   MOV(WPARM,LVIEW);//MAYBE R_WPARM<br align="left"/></font></td></tr></table>>
+];
+	returnobject[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>returnobject<br align="left"/></b></td></tr>
+</table>>];
+"returnobject" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S00_HIDERCURRENT<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_PATH2 @pos(x:3, y:3, w:2, h:2)<br align="left"/>S00_HIDERCURRENT::M_HIDECURRENT(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:3 Left:3<br align="left"/></font></td></tr></table>>
+];
+}

@@ -41,7 +41,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     SIGNAL(S0_NW_INDC_LIGHT, SIG_RESET);
     WRITE("RESETTING INDC LIGHT and cleaning up previous session data");
 ', '', ''),
-('M_NEWGAME', '2', '0', 'Z_EPSILON', '', '', '', '', '');
+('M_NEWSESSION', '2', '0', 'Z_EPSILON', '', '', '', '', '');
 
 
 

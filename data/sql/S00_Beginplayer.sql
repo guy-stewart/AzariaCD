@@ -35,9 +35,9 @@ Your energy, wisdom and karma but
 allows you to keep your posessions.','','IDS_FONTTNB14',0xFEFEFE,'');
 
 
-delete from machines where [name] like 'S00_PLAYERMENU%';
-delete from machines where [name] like 'BTN_CFGPLAYER_%';
-delete from machines where [name] like 'BTN_CFGCULTUR%';
+delete from machines where [view_name] like 'IDV_CFGCULTURE%';
+delete from machines where [view_name] like 'IDV_CFGPLAYERNEW%';
+delete from machines where [view_name] like 'IDV_CFGPLAYER%';
 INSERT INTO "main"."machines" ("name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name") VALUES 
 ('BTN_CFGPLAYER','IDV_TOPMENU',1916,222,2044,277,2,'M_BTN_1phase','IDV_CFGPLAYERNEW','IDS_BTN_PLAYER','',''),
 

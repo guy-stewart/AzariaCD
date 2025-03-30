@@ -1,0 +1,93 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_LEVER::M_LEVER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(BFRAME,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "9" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>IFSTATEi(60,S21_LEVSTOP)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "11" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	11[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>11<br align="left"/></b></td></tr>
+</table>>];
+"11" -> "12" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SUBI(BFRAME,1)<br align="left"/></b></td></tr>
+</table>>
+];
+	12[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>12<br align="left"/></b></td></tr>
+</table>>];
+"12" -> "13" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_CLOSE,S21_MAPOPEN)<br align="left"/></b></td></tr>
+</table>>
+];
+	13[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>13<br align="left"/></b></td></tr>
+</table>>];
+"13" -> "14" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_HIDE,S21_ALT_MAPBOX)<br align="left"/></b></td></tr>
+</table>>
+];
+	14[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>14<br align="left"/></b></td></tr>
+</table>>];
+"14" -> "15" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_HIDE,S21_ALT_LEVER)<br align="left"/></b></td></tr>
+</table>>
+];
+	15[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>15<br align="left"/></b></td></tr>
+</table>>];
+"15" -> "16" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_LEVER)<br align="left"/></b></td></tr>
+</table>>
+];
+	16[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>16<br align="left"/></b></td></tr>
+</table>>];
+"16" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "3" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLICK(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	3[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>3<br align="left"/></b></td></tr>
+</table>>];
+"3" -> "4" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_LEVER)<br align="left"/></b></td></tr>
+</table>>
+];
+	4[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>4<br align="left"/></b></td></tr>
+</table>>];
+"4" -> "6" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ADDI(BFRAME,1)<br align="left"/></b></td></tr>
+</table>>
+];
+	6[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>6<br align="left"/></b></td></tr>
+</table>>];
+"6" -> "7" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_OPEN,S21_MAPOPEN)<br align="left"/></b></td></tr>
+</table>>
+];
+	7[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>7<br align="left"/></b></td></tr>
+</table>>];
+"7" -> "8" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_SHOW,S21_ALT_MAPBOX)<br align="left"/></b></td></tr>
+</table>>
+];
+	8[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>8<br align="left"/></b></td></tr>
+</table>>];
+"8" -> "9" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNALi(SIG_SHOW,S21_ALT_LEVER)<br align="left"/></b></td></tr>
+</table>>
+];
+	9[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>9<br align="left"/></b></td></tr>
+</table>>];
+"9" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ESTIME(,3)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_LEVER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_LEVERCU @pos(x:32, y:42, w:145, h:268)<br align="left"/>S21_LEVER::M_LEVER(&apos;IDS_LEVANI&apos;,&apos;2&apos;,&apos;S21_LEVSTOP&apos;,&apos;SOUND_LEVER&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;9&apos;: wSprite:IDS_LEVANI bFrame:1 dEtime:1556 Top:42 Left:32<br align="left"/></font></td></tr></table>>
+];
+}

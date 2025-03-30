@@ -6,7 +6,8 @@ settrace(S04_KEYCLAMP_1, 1);
 settrace(S04_KEYCLAMP_2, 1);
 settrace(S04_KEYCLAMP_3, 1);
 */
-
+settrace("S00_HIDERCURRENT");
+settrace("S00_CHESTWAITER");
 run('system/audio');
 
 loadview(IDV_COMPASS);

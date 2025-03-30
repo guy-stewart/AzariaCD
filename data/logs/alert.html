@@ -3,34 +3,13 @@
 <body>
 <h1>Parse error</h1>
 </p>
-<pre><code>on_event_future("onBackgroundAudioChanged",
-'
-    write("================================================");
-    write("onBackgroundAudioChanged old:",old, " new:",new);
-    // You might want audioBackground with no audio ...
-    if (old>=0 && old<=6)  audio_pause(old);
-    if (new>=0 && new<=6)  audio_play(new);
-    write("================================================");
-');
-
-// set the main output volume to 70%:
-audio_volume(7);
-
-// configure all channel settings ...
-ch = 0;
-while (ch<=6) {
-    audio_gain(ch,10);
-    audio_repeat(ch,1);
-    audio_shuffle(ch,1);
-    audio_path(ch, 'sounds/22k16bst');
-    ch = ch + 1;
-}
-
-// configure the ambiance channel ...
-audio_gain('ambiance',2);
-audio_repeat('ambiance',1);
-audio_path('ambiance', 'sounds/22k16bst');
-audio_play('ambiance')<font color="blue"> <-- Parse error: expected ';'. encountered 'audio_schedule' ... continuing ...</font>
+<pre><code>
+     predicate env(account_id, key, value);
+    // get the account id:
+    env("0","my_account_id",?address);
+    //check for name in env
+    env(address,"name",?player);
+    if(!player){WPARM = 1;}<font color="blue"> <-- Parse error: expression expected</font>
 </code></pre>
 </body>
 </html>

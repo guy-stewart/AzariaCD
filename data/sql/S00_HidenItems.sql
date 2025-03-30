@@ -384,16 +384,16 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ('M_DIGGABLE', 'moveMe', 'displaychest', 'SET_XOFFSET', 'ADD','10', '
       PLAYWAVE(SOUND_CHIMES);
       SHOW(0,IDS_CHESTBAK);
-      SIGNALi(WIP4,S00_HIDERCURRENT);
+      SIGNAL(S00_HIDERCURRENT,WIP4);
       ADDI(LWISDOM,1); 
-      SIGNALi(0,SID_ID);
+      SIGNAL(SID_ID,0);
 ', '', ''),
 ('M_DIGGABLE', 'displaychest', 'chestview', 'CLICK', '', '', '', '', ''),
 ('M_DIGGABLE', 'chestview', '0', 'Z_EPSILON', '', '', '
    MOV(WPARM,LVIEW);
    SHOW(0);
    LOADVIEW(IDV_CHESTVIEW);
-   SIGNALi(SIG_SHOW,S00_CHESTWAITER);
+   SIGNAL(S00_CHESTWAITER,SIG_SHOW);
 ', '', ''),
 
 
