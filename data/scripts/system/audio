@@ -43,10 +43,6 @@ while (ch<=10) {
     ch = ch + 1;
 }
 
-
-
-
-
 // //configure the ambiance channel ...
 // audio_gain('ambiance',4);
 // audio_repeat('ambiance',1);

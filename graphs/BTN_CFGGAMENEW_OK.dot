@@ -1,0 +1,34 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_CFGGAMENEW_OK::M_BTN_GAMECREATE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WSPRITE=WIP3;<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    WPARM = 0;<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">  PLAYWAVE(SOUND_BTNPRESS);<br align="left"/>  SIGNAL(S01_NEWGAME,SIG_NEW);<br align="left"/>  gamename = get_control_value(&quot;IDV_CFGNEWGAME&quot;, &quot;NEWGM1&quot;);<br align="left"/>  predicate gamestats(name,view);<br align="left"/>  gamestats(gamename,&quot;IDV_ORIE&quot;).<br align="left"/> <br align="left"/></font></td></tr></table>>
+];
+"1" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAGFOCUS(0,FALSE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WSPRITE=WIP3;<br align="left"/>    SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+"1" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAGFOCUS(0,TRUE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    WSPRITE=WIP2;<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    PLAYWAVE(SOUND_BTNDRAG);<br align="left"/></font></td></tr></table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "CHAR_CHECK" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>(0,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     predicate env(account_id, key, value);<br align="left"/>    // get the account id:<br align="left"/>    env(&quot;0&quot;,&quot;my_account_id&quot;,?address);<br align="left"/>    //check for name in env<br align="left"/>    env(&quot;0&quot;,&quot;name&quot;,?player);<br align="left"/></font></td></tr></table>>
+];
+"2" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_OFF)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>BTN_CFGGAMENEW_OK<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_CFGNEWGAME @pos(x:275, y:220, w:40, h:50)<br align="left"/>BTN_CFGGAMENEW_OK::M_BTN_GAMECREATE(&apos;IDV_CFGCULTURE&apos;,&apos;IDS_BTN_OK_HI&apos;,&apos;IDS_BTN_OK&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;CHAR_CHECK&apos;: wParm:0 wSprite:IDS_BTN_OK_HI Top:220 Left:275<br align="left"/></font></td></tr></table>>
+];
+}

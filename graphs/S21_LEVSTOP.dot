@@ -1,0 +1,45 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_LEVSTOP::M_LEVSTOP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_ROCK,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ADDI(LWISDOM,1); SIGNALi(0,SID_ID);<br align="left"/></font></td></tr></table>>
+];
+	30[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>30<br align="left"/></b></td></tr>
+</table>>];
+"30" -> "40" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WOBJECT,)<br align="left"/></b></td></tr>
+</table>>
+];
+	40[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>40<br align="left"/></b></td></tr>
+</table>>];
+"40" -> "50" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_CLICK)<br align="left"/></b></td></tr>
+</table>>
+];
+	50[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>50<br align="left"/></b></td></tr>
+</table>>];
+"50" -> "60" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SIGNAL(WIP2,)<br align="left"/></b></td></tr>
+</table>>
+];
+	60[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>60<br align="left"/></b></td></tr>
+</table>>];
+"60" -> "70" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	70[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>70<br align="left"/></b></td></tr>
+</table>>];
+"70" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S21_LEVSTOP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_LEVERCU @pos(x:295, y:210, w:50, h:65)<br align="left"/>S21_LEVSTOP::M_LEVSTOP(&apos;&apos;,&apos;S21_LEVER&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;10&apos;: Top:210 Left:295<br align="left"/></font></td></tr></table>>
+];
+}

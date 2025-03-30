@@ -1,0 +1,30 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S00_CHESTWAITER::M_CHESTWAITER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "ready" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(SIG_SHOW,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   REF_MACHINE(S00_HIDERCURRENT);<br align="left"/></font></td></tr></table>>
+];
+	empty[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>empty<br align="left"/></b></td></tr>
+</table>>];
+"empty" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   LOADVIEW(R_WPARM);<br align="left"/></font></td></tr></table>>
+];
+	objectshown[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>objectshown<br align="left"/></b></td></tr>
+</table>>];
+"objectshown" -> "empty" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   HANDOFF(0,R_BPARM);<br align="left"/>   SHOW(0);<br align="left"/></font></td></tr></table>>
+];
+	ready[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>ready<br align="left"/></b></td></tr>
+</table>>];
+"ready" -> "objectshown" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   SHOW(R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S00_CHESTWAITER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_CHESTVIEW @pos(x:200, y:100, w:100, h:100)<br align="left"/>S00_CHESTWAITER::M_CHESTWAITER(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;objectshown&apos;: Top:100 Left:200<br align="left"/></font></td></tr></table>>
+];
+}
