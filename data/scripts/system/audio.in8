@@ -1,0 +1,72 @@
+on_event_future("onBackgroundAudioChanged",
+'
+    write("================================================");
+    write("onBackgroundAudioChanged old:",old, " new:",new);
+    // You might want audioBackground with no audio ...
+    if (old>=0 && old<=6)  audio_pause(old);
+    if (new>=1 && new<=6)  audio_play(new);
+    write("================================================");
+');
+
+on_event_future("onAmbientsChanged",
+    '
+        write("================================================");
+        write("onAmbientsChanged old:",old, " new:",new);
+        audio_gain(7,2);
+        audio_gain(8,2);
+        audio_gain(9,2);
+        audio_gain(10,2);
+        // You might want audioBackground with no audio ...
+           if (old>=0 && old<=10)  audio_pause(old);
+           if (new>=7 && new<=10)  audio_play(new);
+
+        write("================================================");
+    ');
+
+    write("================================================");
+    write("====>Initializing Audio <=======================");
+    audio_volume(3);
+    
+   // configure all channel settings ...
+    ch = 0;
+    while (ch<=6) {
+        audio_gain(ch,3);
+        audio_repeat(ch,1);
+        audio_shuffle(ch,1);
+        audio_path(ch, 'sounds/22k16bst');
+        ch = ch + 1;
+    }
+    
+    // //configure the ambiance channel ...
+    // audio_gain('ambiance',4);
+    // audio_repeat('ambiance',1);
+    // audio_path('ambiance', 'sounds/22k16bst');
+    
+    //audio_schedule(0,'[""]');
+    audio_schedule(1,'["kam310ba","null90.mp3","kam306ba","null30.mp3","kam102ca","null60.mp3","kam204aa","null90.mp3","kam206aa","null30.mp3"]');
+    //village
+    audio_schedule(2,'["kam107aa","null90.mp3","kam210ba","null60.mp3","kam310ba","null90.mp3"]');
+    //3 and 4 are city
+    audio_schedule(3,'["kam207ba","null90.mp3","kam208ba","null60.mp3","kam209ba","null90.mp3"]');
+    audio_schedule(4,'["kam306ba","null90.mp3","kam102ca","null60.mp3","kam204aa","null90.mp3","kam206aa","null30.mp3"]');
+    //5 is mystery 6 is temple
+    audio_schedule(5,'["kam312aa","null90.mp3","kam112aa","null30.mp3"]');
+    audio_schedule(6,'["kam011aa","null90.mp3","kam009aa","null30.mp3"]');
+    //ambients
+    audio_schedule(7,'["amb_ocean1"]');
+    audio_schedule(8,'["amb_nature1"]');
+    audio_schedule(9,'["amb_cavewind1"]');
+    audio_schedule(10,'["amb_ctnoise1"]');
+    
+    // ch = 0;
+    // while (ch<=6) {
+    //     audio_gain(ch,3);
+    //     audio_repeat(ch,1);
+    //     audio_shuffle(ch,1);
+    //     audio_path(ch, 'sounds/22k16bst');
+    //     ch = ch + 1;
+    // }
+    
+    write("================================================");
+    
+    

@@ -1,0 +1,232 @@
+// escapes.in8 - Test script for escape sequences and Unicode characters in in8
+// Created: April 1, 2025
+
+// =============================================================================
+// Test basic escape sequences
+// =============================================================================
+write("========== BASIC ESCAPE SEQUENCE TESTS ==========");
+
+// Newline \n test
+newline_test = "This string has a\nnewline character";
+write("Newline test: '" + newline_test + "'");
+
+// Tab \t test
+tab_test = "This string has a\ttab character";
+write("Tab test: '" + tab_test + "'");
+
+// Carriage return \r test 
+cr_test = "This string has a\rcarriage return";
+write("Carriage return test: '" + cr_test + "'");
+
+// Null character \0 test
+null_test = "This string has a\0null character";
+write("Null character test: '" + null_test + "'");
+
+// Backslash \\ test
+backslash_test = "This string has a\\backslash";
+write("Backslash test: '" + backslash_test + "'");
+
+// Single quote \' test
+single_quote_test = "This string has a \'single quote\'";
+write("Single quote test: '" + single_quote_test + "'");
+
+// Double quote \" test
+double_quote_test = "This string has a \"double quote\"";
+write("Double quote test: '" + double_quote_test + "'");
+
+// Multiple escape sequences in a single string
+multiple_test = "Line1\nLine2\tTabbed\rCR\0Null\\Backslash\'Single\"Double";
+write("Multiple escapes test: '" + multiple_test + "'");
+
+// =============================================================================
+// Test hex escape sequences (\xHH)
+// =============================================================================
+write("\n========== HEX ESCAPE SEQUENCE TESTS ==========");
+
+// Basic ASCII characters via hex
+hex_A = "\x41"; // 'A'
+hex_Z = "\x5A"; // 'Z'
+hex_a = "\x61"; // 'a'
+hex_z = "\x7A"; // 'z'
+write("Hex A: '" + hex_A + "'");
+write("Hex Z: '" + hex_Z + "'");
+write("Hex a: '" + hex_a + "'");
+write("Hex z: '" + hex_z + "'");
+
+// Special ASCII characters via hex
+hex_space = "\x20"; // space
+hex_exclamation = "\x21"; // !
+hex_at = "\x40"; // @
+write("Hex space: '" + hex_space + "'");
+write("Hex !: '" + hex_exclamation + "'");
+write("Hex @: '" + hex_at + "'");
+
+// Extended ASCII characters via hex
+hex_copyright = "\xA9"; // ©
+hex_degree = "\xB0"; // °
+hex_pm = "\xB1"; // ±
+write("Hex copyright: '" + hex_copyright + "'");
+write("Hex degree: '" + hex_degree + "'");
+write("Hex plus-minus: '" + hex_pm + "'");
+
+// Hex sequences in longer strings
+hex_mixed = "ASCII with \x48\x65\x78 values";  // "ASCII with Hex values"
+write("Hex in string: '" + hex_mixed + "'");
+
+// =============================================================================
+// Test Unicode escape sequences (\uHHHH)
+// =============================================================================
+write("\n========== UNICODE ESCAPE SEQUENCE TESTS ==========");
+
+// Basic Unicode characters
+unicode_copyright = "\u00A9"; // ©
+unicode_euro = "\u20AC"; // €
+unicode_trademark = "\u2122"; // ™
+unicode_heart = "\u2764"; // ❤
+write("Unicode copyright: '" + unicode_copyright + "'");
+write("Unicode euro: '" + unicode_euro + "'");
+write("Unicode trademark: '" + unicode_trademark + "'");
+write("Unicode heart: '" + unicode_heart + "'");
+
+// International characters
+unicode_alpha = "\u03B1"; // α (Greek alpha)
+unicode_beta = "\u03B2"; // β (Greek beta)
+unicode_yen = "\u00A5"; // ¥ (Yen symbol)
+unicode_eszett = "\u00DF"; // ß (German eszett)
+unicode_ntilde = "\u00F1"; // ñ (Spanish n with tilde)
+write("Unicode alpha: '" + unicode_alpha + "'");
+write("Unicode beta: '" + unicode_beta + "'");
+write("Unicode yen: '" + unicode_yen + "'");
+write("Unicode eszett: '" + unicode_eszett + "'");
+write("Unicode n-tilde: '" + unicode_ntilde + "'");
+
+// Emoji and symbols
+unicode_smile = "\u263A"; // ☺ (smiley face)
+unicode_music = "\u266B"; // ♫ (music note)
+unicode_umbrella = "\u2602"; // ☂ (umbrella)
+unicode_telephone = "\u260E"; // ☎ (telephone)
+unicode_snowman = "\u2603"; // ☃ (snowman)
+write("Unicode smile: '" + unicode_smile + "'");
+write("Unicode music: '" + unicode_music + "'");
+write("Unicode umbrella: '" + unicode_umbrella + "'");
+write("Unicode telephone: '" + unicode_telephone + "'");
+write("Unicode snowman: '" + unicode_snowman + "'");
+
+// Unicode in longer strings
+greeting = "Hello \u03B1\u03B2\u03B3! How are you \u263A?"; // "Hello αβγ! How are you ☺?"
+write("Unicode greeting: '" + greeting + "'");
+
+// =============================================================================
+// Test direct Unicode characters
+// =============================================================================
+write("\n========== DIRECT UNICODE CHARACTER TESTS ==========");
+
+// Direct 2-byte UTF-8 sequences
+direct_euro = "€"; // Euro symbol - direct unicode character
+direct_copyright = "©"; // Copyright symbol - direct unicode character
+direct_pound = "£"; // Pound symbol - direct unicode character
+write("Direct euro: '" + direct_euro + "'");
+write("Direct copyright: '" + direct_copyright + "'");
+write("Direct pound: '" + direct_pound + "'");
+
+// Direct 3-byte UTF-8 sequences
+direct_cjk = "語"; // CJK character for "language"
+direct_heart = "❤"; // Heart symbol
+direct_chess = "♞"; // Chess knight
+write("Direct CJK: '" + direct_cjk + "'");
+write("Direct heart: '" + direct_heart + "'");
+write("Direct chess: '" + direct_chess + "'");
+
+// Direct emoji (4-byte UTF-8)
+direct_emoji1 = "😀"; // Grinning face
+direct_emoji2 = "🚀"; // Rocket
+direct_emoji3 = "🌍"; // Earth globe
+write("Direct emoji (grinning): '" + direct_emoji1 + "'");
+write("Direct emoji (rocket): '" + direct_emoji2 + "'");
+write("Direct emoji (globe): '" + direct_emoji3 + "'");
+
+// Mixed direct Unicode in sentences
+mixed_sentence1 = "I ❤ in8 programming with € symbols!";
+mixed_sentence2 = "Weather: ☀ Temperature: 22°C";
+mixed_sentence3 = "I'd like a 🍕 with a 🍺, please";
+write("Mixed direct Unicode 1: '" + mixed_sentence1 + "'");
+write("Mixed direct Unicode 2: '" + mixed_sentence2 + "'");
+write("Mixed direct Unicode 3: '" + mixed_sentence3 + "'");
+
+// =============================================================================
+// Mixed escape sequences and direct Unicode
+// =============================================================================
+write("\n========== MIXED ESCAPE AND UNICODE TESTS ==========");
+
+// Mix of different escape types
+mixed_escapes = "ASCII: A\nHex: \x42\nUnicode: \u0043";  // "ASCII: A\nHex: B\nUnicode: C"
+write("Mixed escapes: '" + mixed_escapes + "'");
+
+// Mix of escapes and direct Unicode
+complex_string = "ASCII (A) + Hex (\x42) + Unicode escape (\u0043) + Direct Unicode (Д) + Emoji (😊)";
+write("Complex string: '" + complex_string + "'");
+
+// Pathological cases - nested escapes in strings
+nested_string = "Nested: \\\\n is not a newline, but \\n is";
+write("Nested escapes: '" + nested_string + "'");
+
+// =============================================================================
+// Edge cases and error testing
+// =============================================================================
+write("\n========== EDGE CASES ==========");
+
+// Empty string
+empty_string = "";
+write("Empty string: '" + empty_string + "'");
+
+// String with only escape sequences
+only_escapes = "\n\t\r\0";
+write("Only escapes: '" + only_escapes + "'");
+
+// Escape at beginning, middle, and end
+escape_positions = "\nText\nMore\n";
+write("Escape positions: '" + escape_positions + "'");
+
+// Multiple adjacent escapes
+adjacent_escapes = "\n\n\t\t\\\\";
+write("Adjacent escapes: '" + adjacent_escapes + "'");
+
+// Long strings with escapes
+long_string = "This is a very long string with multiple lines.\nEach line has its own content.\nSome lines have special characters like tabs (\t) or unicode symbols (€ © ❤).\nThe goal is to test how well the lexer handles long strings with mixed content.";
+write("Long string with escapes: '" + long_string + "'");
+
+// Test the assert_match function to verify string handling
+write("\n========== VERIFICATION TESTS ==========");
+
+/* TODO:
+function assert_match(actual, expected, test_name) {
+    if (actual === expected) {
+        write("PASS: " + test_name);
+    } else {
+        write("FAIL: " + test_name);
+        write("  Expected: '" + expected + "'");
+        write("  Actual:   '" + actual + "'");
+    }
+}
+
+// Verify basic escapes
+assert_match("a\nb", "a\nb", "Basic newline");
+assert_match("a\tb", "a\tb", "Basic tab");
+assert_match("a\\b", "a\\b", "Basic backslash");
+
+// Verify hex escapes
+assert_match("\x41", "A", "Hex A");
+assert_match("\x61", "a", "Hex a");
+
+// Verify unicode escapes
+assert_match("\u00A9", "©", "Unicode copyright");
+assert_match("\u20AC", "€", "Unicode euro");
+
+// Verify direct unicode
+assert_match("©", "©", "Direct copyright");
+assert_match("€", "€", "Direct euro");
+
+// Summary
+write("\n========== TEST COMPLETE ==========");
+write("All escape sequence and Unicode tests completed!");
+*/
