@@ -1035,8 +1035,7 @@ VALUES
 
 ('M_MEFPAN_WAITER','0', 'waiting', 'Z_EPSILON', '', '', '
     REF_MACHINE(MEFCURRENT); //what mef are we hittin up
-     PLAYWAVE(SOUND_POPUP);
-     CLEAR(WPARM);
+    CLEAR(WPARM);
  '),
 ----
 ('M_MEFPAN_WAITER', 'waiting', '0', 'GRAB', 'WOBJECT', '', 'SHOW(0);'),

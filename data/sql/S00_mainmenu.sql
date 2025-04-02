@@ -21,7 +21,7 @@ delete from machines where view_name = 'IDV_MAINMENU';
 delete from machines where view_name = 'IDV_MAINMENU';
 insert into machines ([name],[view_name],[left],[top],[right],[bottom],[local_visible],[dfa_name], [wip1_name],[wip2_name],[wip3_name],[wip4_name]) values
 ('BTN_CFGCONTINUE','IDV_MAINMENU',      290,  45,     495,  85,   2,'M_BTN_1phase','IDV_ORIE',          'IDS_CFG_HL_CONTINUE','',''),
-('BTN_CFGGAME','IDV_MAINMENU',          290,  98,     495,  139,  2,'M_BTN_1phase','IDV_CFGNEWGAME',  'IDS_CFG_HL_NEWGM','',''),
+('BTN_CFGGAME','IDV_MAINMENU',          290,  98,     495,  139,  2,'M_GAMECREATE','',                  'IDS_CFG_HL_NEWGM','',''),
 ('BTN_CFGPLAYERNEW','IDV_MAINMENU',     290,  154,    495,  192,  2,'M_BTN_1phase','IDV_CFGPLAYERNEW',       'IDS_CFG_HL_NEWCHAR','',''),
 ('BTN_CFGPROVIDER','IDV_MAINMENU',      290,  207,    495,  246,  2,'M_BTN_1phase','IDV_CFGNW1',        'IDS_CFG_HL_NETWORK','','');
 
@@ -73,6 +73,26 @@ WSPRITE=WIP3;
 SHOW(WSPRITE);
 ','',''),
 ('M_BTN_2phase','1','1','DRAGFOCUS','0','TRUE',
+'WSPRITE=WIP2;
+SHOW(WSPRITE);
+PLAYWAVE(SOUND_BTNDRAG);','',''),
+
+
+('M_GAMECREATE','0','0','CLICK','','',
+'PLAYWAVE(SOUND_BTNPRESS);
+ WPARM = 0;
+ SIGNAL(S01_NEWGAME,SIG_NEW);
+ predicate gamestats(name,view);
+ gamestats("game1","IDV_ORIE").
+ replay("system/creategame");
+    predicate localplayer(account_id, name);
+    localplayer(,?name)?
+    if(name == ""){LOADVIEW(IDV_CFGPLAYERNEW);}
+    if(name != ""){LOADVIEW(IDV_ORIE);}
+
+SHOW();','',''),
+('M_GAMECREATE','0','0','DRAGFOCUS','0','FALSE','SHOW();','',''),
+('M_GAMECREATE','0','0','DRAGFOCUS','0','TRUE',
 'WSPRITE=WIP2;
 SHOW(WSPRITE);
 PLAYWAVE(SOUND_BTNDRAG);','','');
