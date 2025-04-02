@@ -40,6 +40,8 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
     SIGNAL(S_CFGNWSERVER, SIG_RESET);
     SIGNAL(S0_NW_INDC_LIGHT, SIG_RESET);
     WRITE("RESETTING INDC LIGHT and cleaning up previous session data");
+    SIGNAL(AUDIO_LEVELS,SIG_MUSIC_DN);
+    SIGNAL(AUDIO_LEVELS,SIG_SFX_DN);
 ', '', ''),
 ('M_NEWSESSION', '2', '0', 'Z_EPSILON', '', '', '', '', '');
 
