@@ -1,0 +1,6 @@
+predicate gamestats(name,view);
+gamestats(?gamename,?view)?
+load_game_state(gamename);
+
+// host = "https://timeapi.io";
+// resourcePath = "/api/time/current/zone?timeZone=America/New_York";

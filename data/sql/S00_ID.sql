@@ -77,12 +77,14 @@ delete from "main"."spr_names" where "name" like 'IDS_MID1%';
 delete from "main"."spr_names" where "name" like 'IDS_MID2%';
 delete from "main"."spr_names" where "name" like 'IDS_MID3%';
 
---add the death sprites for ids
+delete from "main"."spr_names" where "name" like 'IDS_VOID%';
+
+--add the death sprites and void for ids
 
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID1EX', 'm1ex', '253');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID2EX', 'm2ex', '254');
 INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_MID3EX', 'm3ex', '255');
-
+INSERT INTO "main"."spr_names" ("name", "value", "id") VALUES ('IDS_VOID',   'void', '2550');
 --fix female and male id sprites - all caps separate from other sprites (moons and meflins...)
 --Feminine sprites
 
@@ -262,9 +264,9 @@ VALUES
 ('M3','stress','IDS_MID3STRESS'),
 ('M3','surprised','IDS_MID3SURPRISED'),
 ('M3','wave','IDS_MID3WAVE'),
-('M3','dead','IDS_MID3EX');
+('M3','dead','IDS_MID3EX'),
 
-
+('V0','void','IDS_VOID');
 
 delete from "main"."machines" where [name] like 'SID_%';
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name", "wip3_name", "wip4_name",Z) 
@@ -483,9 +485,12 @@ VALUES
      SHOW(0);
      predicate active_character(name);
      active_character(?WPARM)?
-     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
-     localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
-     ASSIGN(LENERGY,WTEMP3);
+         predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);
+         localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?
+         ASSIGN(LENERGY,WTEMP3);
+         if(WPARM == ""){
+            ASSIGN(WTEMP4,"VOID");
+         };
 ', '', ''),
 ('M_ID', 'present', 'setId', 'Z_EPSILON', '', '', '       
   //for back to back {statements} do not use semi-colons between them, 
@@ -510,18 +515,25 @@ VALUES
   }; 
 ', '', ''), 
 ('M_ID', 'setId', 'sitting', 'ASSIGN', 'WSPRITE', 'happy', '
-    MAP(WSPRITE,WPARM);
-    ASSIGN(BFRAME,0);
-    SHOW(WSPRITE);
-    SIGNAL(SID_AURA, SIG_MYAURA);
-    SIGNAL(SID_HALO, SIG_MYHALO);
-    SIGNAL(SID_PERSIST,SIG_UPDATE);
+    if(WTEMP4 == "VOID"){
+         ASHOW(IDS_VOID);
+    }
+    if(WTEMP4 != "VOID"){
+        ASSIGN(WSPRITE,happy);
+        MAP(WSPRITE,WPARM);
+        ASSIGN(BFRAME,0);
+        SHOW(WSPRITE);
+        SIGNAL(SID_AURA, SIG_MYAURA);
+        SIGNAL(SID_HALO, SIG_MYHALO);
+        SIGNAL(SID_PERSIST,SIG_UPDATE);
+    };
 ', '', ''),
 
 -- this sitting to present reads from  localplayer repainting the whole id
 ('M_ID', 'sitting', 'present',  'WAIT', '0', 'SIG_MYID', '
     CLEAR(WSPRITE);
      SHOW(0);
+     WTEMP4 = 0;//clear void flag
     predicate active_character(name);
     active_character(?BPARM)?
     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);

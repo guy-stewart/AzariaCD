@@ -37,6 +37,6 @@ digraph Automaton {
 <tr><td><font point-size="10" color ="blue">        if(LKARMA &lt;= 0)&#123;<br align="left"/>             ASSIGN(LKARMA,1);<br align="left"/>       &#125;      <br align="left"/>        ASSIGN(BPARM,LKARMA);<br align="left"/>        MOV(WSPRITE,BPARM);<br align="left"/>        DIV(WSPRITE,2);<br align="left"/>        MAPi(WSPRITE,S00_KARMA_MAP);<br align="left"/>        ASHOW(WSPRITE);<br align="left"/>        SIGNALi(0,WIP1);<br align="left"/></font></td></tr></table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_HALO<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:30, y:0, h:40, w:40)<br align="left"/>SID_HALO::M_HALO(&apos;SID_ID&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: bParm:1 wSprite:IDS_HALO00 Top:0 Left:30 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:30, y:0, w:40, h:40)<br align="left"/>SID_HALO::M_HALO(&apos;SID_ID&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: bParm:0 wSprite:IDS_HALO00 Top:0 Left:30 Z:8<br align="left"/></font></td></tr></table>>
 ];
 }

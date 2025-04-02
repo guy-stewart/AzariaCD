@@ -139,9 +139,9 @@
 <polygon fill="none" stroke="black" points="425.64,-608.75 425.64,-627.5 767.64,-627.5 767.64,-608.75 425.64,-608.75"/>
 <text text-anchor="start" x="572.64" y="-616" font-family="Courier New" font-weight="bold" font-size="10.00">SID_HALO</text>
 <polygon fill="none" stroke="black" points="425.64,-562.5 425.64,-606.75 767.64,-606.75 767.64,-562.5 425.64,-562.5"/>
-<text text-anchor="start" x="428.64" y="-594.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:30, y:0, h:40, w:40)</text>
+<text text-anchor="start" x="428.64" y="-594.25" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_ID @pos(x:30, y:0, w:40, h:40)</text>
 <text text-anchor="start" x="428.64" y="-581.5" font-family="Courier New" font-size="10.00" fill="green">SID_HALO::M_HALO(&#39;SID_ID&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="428.64" y="-568.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: bParm:1 wSprite:IDS_HALO00 Top:0 Left:30 Z:0</text>
+<text text-anchor="start" x="428.64" y="-568.75" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: bParm:0 wSprite:IDS_HALO00 Top:0 Left:30 Z:8</text>
 <polygon fill="none" stroke="black" points="422.64,-559.5 422.64,-630.5 770.64,-630.5 770.64,-559.5 422.64,-559.5"/>
 </g>
 </g>

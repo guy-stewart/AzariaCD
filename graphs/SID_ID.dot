@@ -7,7 +7,7 @@ digraph Automaton {
 	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
 </table>>];
 "0" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_MYID)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">     CLEAR(WSPRITE);<br align="left"/>     SHOW(0);<br align="left"/>     predicate active_character(name);<br align="left"/>     active_character(?WPARM)?<br align="left"/>     predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);<br align="left"/>     localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?<br align="left"/>     ASSIGN(LENERGY,WTEMP3);<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">     CLEAR(WSPRITE);<br align="left"/>     SHOW(0);<br align="left"/>     predicate active_character(name);<br align="left"/>     active_character(?WPARM)?<br align="left"/>         predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);<br align="left"/>         localplayer(WPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?WTEMP3,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?<br align="left"/>         ASSIGN(LENERGY,WTEMP3);<br align="left"/>         if(WPARM == &quot;&quot;)&#123;<br align="left"/>            ASSIGN(WTEMP4,&quot;VOID&quot;);<br align="left"/>         &#125;;<br align="left"/></font></td></tr></table>>
 ];
 	100[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>100<br align="left"/></b></td></tr>
 </table>>];
@@ -69,7 +69,7 @@ digraph Automaton {
 "51" -> "21" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>PLAYWAVE(0,SOUND_EXPLODE)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">            SUBI(LENERGY,1);<br align="left"/>            SIGNAL(SID_PERSIST,SIG_UPDATE);<br align="left"/>            SIGNAL(SID_AURA,SIG_SUB);<br align="left"/></font></td></tr></table>>
 ];
-	dead[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>dead<br align="left"/></b></td></tr>
+	dead[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>dead<br align="left"/></b></td></tr>
 </table>>];
 "dead" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_REVIVE)<br align="left"/></b></td></tr>
 </table>>
@@ -108,39 +108,39 @@ digraph Automaton {
 	setId[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>setId<br align="left"/></b></td></tr>
 </table>>];
 "setId" -> "sitting" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>ASSIGN(WSPRITE,happy)<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="blue">    MAP(WSPRITE,WPARM);<br align="left"/>    ASSIGN(BFRAME,0);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    SIGNAL(SID_AURA, SIG_MYAURA);<br align="left"/>    SIGNAL(SID_HALO, SIG_MYHALO);<br align="left"/>    SIGNAL(SID_PERSIST,SIG_UPDATE);<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="blue">    if(WTEMP4 == &quot;VOID&quot;)&#123;<br align="left"/>         ASHOW(IDS_VOID);<br align="left"/>    &#125;<br align="left"/>    if(WTEMP4 != &quot;VOID&quot;)&#123;<br align="left"/>        ASSIGN(WSPRITE,happy);<br align="left"/>        MAP(WSPRITE,WPARM);<br align="left"/>        ASSIGN(BFRAME,0);<br align="left"/>        SHOW(WSPRITE);<br align="left"/>        SIGNAL(SID_AURA, SIG_MYAURA);<br align="left"/>        SIGNAL(SID_HALO, SIG_MYHALO);<br align="left"/>        SIGNAL(SID_PERSIST,SIG_UPDATE);<br align="left"/>    &#125;;<br align="left"/></font></td></tr></table>>
 ];
-	sitting[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
+	sitting[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>sitting<br align="left"/></b></td></tr>
 </table>>];
 "sitting" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_MYID)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">    CLEAR(WSPRITE);<br align="left"/>     SHOW(0);<br align="left"/>    predicate active_character(name);<br align="left"/>    active_character(?BPARM)?<br align="left"/>    predicate localplayer(name,viewname, wealth,karma, energy,strength, wisdom, gender, culture);<br align="left"/>    localplayer(BPARM, ?WTEMP1, ?LWEALTH, ?LKARMA,?LENERGY,?LSTRENGTH, ?LWISDOM, ?LSEX, ?WTEMP2)?<br align="left"/>     SIGNAL(SID_AURA, SIG_MYAURA);<br align="left"/>     SIGNAL(SID_HALO, SIG_MYHALO);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "20" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_HAPPY)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "20" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_HAPPY)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_HAPPY).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "21" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_HURT)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "21" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_HURT)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_HURT).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "22" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_KISS)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "22" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_KISS)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_KISS).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "23" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_MAD)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "23" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_MAD)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_MAD).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "24" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_SAD)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "24" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_SAD)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_SAD).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "25" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_SURPRISED)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "25" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_SURPRISED)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_SURPRISED).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "26" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_STRESS)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "26" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_STRESS)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_STRESS).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "27" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_WAVE)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "27" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_WAVE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_WAVE).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
-"sitting" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_DEAD)<br align="left"/></b></td></tr>
-</table>>
+"sitting" -> "30" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_DEAD)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    predicate machinesignal(machine,signal);<br align="left"/>    machinesignal()~<br align="left"/>    machinesignal(SOD_ID,SIG_DEAD).<br align="left"/>    replay(&quot;system/send_gesture&quot;);<br align="left"/></font></td></tr></table>>
 ];
 "sitting" -> "50" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_BOMB)<br align="left"/></b></td></tr>
 <tr><td><font point-size="10" color ="blue">     WRITE(&quot;I am S_ID and I receive signals! This one is a SIG_BOMB! &quot;);<br align="left"/></font></td></tr></table>>
@@ -152,6 +152,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SID_ID<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, w:171, h:101)<br align="left"/>SID_ID::M_ID(&apos;&apos;,&apos;&apos;,&apos;0&apos;,&apos;SID_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;dead&apos;: wParm:F3 wSprite:IDS_FID3EX bFrame:32 Top:0 Left:0 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_ID @pos(x:0, y:0, w:171, h:101)<br align="left"/>SID_ID::M_ID(&apos;&apos;,&apos;&apos;,&apos;0&apos;,&apos;SID_AURA&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;sitting&apos;: bParm:boom wParm:F1 wSprite:IDS_VOID Top:0 Left:0 Z:6<br align="left"/></font></td></tr></table>>
 ];
 }
