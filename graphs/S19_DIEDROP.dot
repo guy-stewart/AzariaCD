@@ -1,0 +1,30 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_DIEDROP::M16_DIEROLL<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "EMPTY" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	8[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>8<br align="left"/></b></td></tr>
+</table>>];
+"8" -> "EMPTY" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">CLEAR(WOBJECT);SHOW();<br align="left"/></font></td></tr></table>>
+];
+	EMPTY[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>EMPTY<br align="left"/></b></td></tr>
+</table>>];
+"EMPTY" -> "ROLLING" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(IDD_DICE,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ASHOW(IDS_DICE,V_LOOP);<br align="left"/>PLAYWAVE(SOUND_ONEDIEROLL);<br align="left"/></font></td></tr></table>>
+];
+	ROLLING[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>ROLLING<br align="left"/></b></td></tr>
+</table>>];
+"ROLLING" -> "8" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SYNCPOINT(2,SYNC_ROLL)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">RAND(1,6);<br align="left"/>BFRAME=WRAND;<br align="left"/>MAPi(BFRAME,S16_DICE_MAP);<br align="left"/>SHOW(BFRAME);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_DIEDROP<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:520, y:200, w:100, h:100)<br align="left"/>S19_DIEDROP::M16_DIEROLL(&apos;IDS_DICE&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;EMPTY&apos;: bFrame:IDS_DICE_4 wRand:4 Seed:204954975 Top:200 Left:520 Z:2<br align="left"/></font></td></tr></table>>
+];
+}

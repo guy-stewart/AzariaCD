@@ -1,0 +1,389 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_PLAYERWATCHER::M19_PLAYERWATCHER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_1T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,1);REF_MACHINE(sq_1_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_1B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,1);REF_MACHINE(sq_1_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_2T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,2);REF_MACHINE(sq_2_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_2B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,2);REF_MACHINE(sq_2_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_3T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,3);REF_MACHINE(sq_3_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_3B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,3);REF_MACHINE(sq_3_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_4T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,4);REF_MACHINE(sq_4_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_4B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,4);REF_MACHINE(sq_4_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_5T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,5);REF_MACHINE(sq_5_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_5B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,5);REF_MACHINE(sq_5_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_6T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,6);REF_MACHINE(sq_6_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_6B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,6);REF_MACHINE(sq_6_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_7T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,7);REF_MACHINE(sq_7_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_7B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,7);REF_MACHINE(sq_7_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_8T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,8);REF_MACHINE(sq_8_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_8B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,8);REF_MACHINE(sq_8_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_9T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,9);REF_MACHINE(sq_9_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_9B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,9);REF_MACHINE(sq_9_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_10T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,10);REF_MACHINE(sq_10_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_10B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,10);REF_MACHINE(sq_10_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_11T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,11);REF_MACHINE(sq_11_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_11B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,11);REF_MACHINE(sq_11_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_12T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,12);REF_MACHINE(sq_12_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_12B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,12);REF_MACHINE(sq_12_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_13T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,13);REF_MACHINE(sq_13_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_13B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,13);REF_MACHINE(sq_13_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_14T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,14);REF_MACHINE(sq_14_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_14B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,14);REF_MACHINE(sq_14_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_15T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,15);REF_MACHINE(sq_15_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_15B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,15);REF_MACHINE(sq_15_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_16T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,16);REF_MACHINE(sq_16_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_16B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,16);REF_MACHINE(sq_16_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_17T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,17);REF_MACHINE(sq_17_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_17B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,17);REF_MACHINE(sq_17_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_18T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,18);REF_MACHINE(sq_18_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_18B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,18);REF_MACHINE(sq_18_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_19T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,19);REF_MACHINE(sq_19_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_19B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,19);REF_MACHINE(sq_19_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_20T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,20);REF_MACHINE(sq_20_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_20B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,20);REF_MACHINE(sq_20_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_21T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,21);REF_MACHINE(sq_21_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_21B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,21);REF_MACHINE(sq_21_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_22T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,22);REF_MACHINE(sq_22_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_22B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,22);REF_MACHINE(sq_22_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_23T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,23);REF_MACHINE(sq_23_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_23B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,23);REF_MACHINE(sq_23_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_24T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,24);REF_MACHINE(sq_24_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_24B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,24);REF_MACHINE(sq_24_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_25T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,25);REF_MACHINE(sq_25_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_25B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,25);REF_MACHINE(sq_25_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_26T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,26);REF_MACHINE(sq_26_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_26B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,26);REF_MACHINE(sq_26_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_27T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,27);REF_MACHINE(sq_27_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_27B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,27);REF_MACHINE(sq_27_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_28T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,28);REF_MACHINE(sq_28_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_28B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,28);REF_MACHINE(sq_28_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_29T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,29);REF_MACHINE(sq_29_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_29B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,29);REF_MACHINE(sq_29_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_30T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,30);REF_MACHINE(sq_30_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_30B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,30);REF_MACHINE(sq_30_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_31T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,31);REF_MACHINE(sq_31_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_31B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,31);REF_MACHINE(sq_31_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_32T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,32);REF_MACHINE(sq_32_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_32B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,32);REF_MACHINE(sq_32_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_33T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,33);REF_MACHINE(sq_33_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_33B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,33);REF_MACHINE(sq_33_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_34T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,34);REF_MACHINE(sq_34_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_34B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,34);REF_MACHINE(sq_34_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_35T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,35);REF_MACHINE(sq_35_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_35B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,35);REF_MACHINE(sq_35_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_36T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,36);REF_MACHINE(sq_36_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_36B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,36);REF_MACHINE(sq_36_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_37T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,37);REF_MACHINE(sq_37_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_37B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,37);REF_MACHINE(sq_37_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_38T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,38);REF_MACHINE(sq_38_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_38B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,38);REF_MACHINE(sq_38_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_39T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,39);REF_MACHINE(sq_39_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_39B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,39);REF_MACHINE(sq_39_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_40T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,40);REF_MACHINE(sq_40_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_40B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,40);REF_MACHINE(sq_40_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_41T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,41);REF_MACHINE(sq_41_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_41B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,41);REF_MACHINE(sq_41_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_42T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,42);REF_MACHINE(sq_42_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_42B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,42);REF_MACHINE(sq_42_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_43T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,43);REF_MACHINE(sq_43_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_43B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,43);REF_MACHINE(sq_43_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_44T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,44);REF_MACHINE(sq_44_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_44B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,44);REF_MACHINE(sq_44_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_45T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,45);REF_MACHINE(sq_45_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_45B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,45);REF_MACHINE(sq_45_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_46T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,46);REF_MACHINE(sq_46_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_46B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,46);REF_MACHINE(sq_46_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_47T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,47);REF_MACHINE(sq_47_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_47B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,47);REF_MACHINE(sq_47_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_48T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,48);REF_MACHINE(sq_48_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_48B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,48);REF_MACHINE(sq_48_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_49T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,49);REF_MACHINE(sq_49_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_49B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,49);REF_MACHINE(sq_49_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_50T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,50);REF_MACHINE(sq_50_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_50B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,50);REF_MACHINE(sq_50_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_51T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,51);REF_MACHINE(sq_51_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_51B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,51);REF_MACHINE(sq_51_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_52T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,52);REF_MACHINE(sq_52_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_52B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,52);REF_MACHINE(sq_52_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_53T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,53);REF_MACHINE(sq_53_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_53B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,53);REF_MACHINE(sq_53_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_54T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,54);REF_MACHINE(sq_54_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_54B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,54);REF_MACHINE(sq_54_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_55T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,55);REF_MACHINE(sq_55_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_55B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,55);REF_MACHINE(sq_55_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_56T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,56);REF_MACHINE(sq_56_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_56B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,56);REF_MACHINE(sq_56_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_57T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,57);REF_MACHINE(sq_57_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_57B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,57);REF_MACHINE(sq_57_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_58T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,58);REF_MACHINE(sq_58_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_58B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,58);REF_MACHINE(sq_58_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_59T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,59);REF_MACHINE(sq_59_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_59B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,59);REF_MACHINE(sq_59_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_60T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,60);REF_MACHINE(sq_60_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_60B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,60);REF_MACHINE(sq_60_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_61T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,61);REF_MACHINE(sq_61_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_61B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,61);REF_MACHINE(sq_61_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_62T)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,62);REF_MACHINE(sq_62_t);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_62B)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">MOV(WPARM,62);REF_MACHINE(sq_62_b);MOV(BPARM,R_BPARM);<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>PLAYWAVE(0,SOUND_CLICK)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_PLAYERWATCHER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:3, y:33, w:27, h:42)<br align="left"/>S19_PLAYERWATCHER::M19_PLAYERWATCHER(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: bParm:IDD_PLAYER_W wParm:60 Top:33 Left:3<br align="left"/></font></td></tr></table>>
+];
+}

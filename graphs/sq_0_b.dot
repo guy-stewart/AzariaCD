@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>sq_0_b::M19_HOLDER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    MOV(WOBJECT,WIP2);<br align="left"/>    SHOW(WOBJECT);<br align="left"/></font></td></tr></table>>
+];
+	empty[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>empty<br align="left"/></b></td></tr>
+</table>>];
+"empty" -> "present" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW(WOBJECT);<br align="left"/></font></td></tr></table>>
+];
+"empty" -> "resetting" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+</table>>
+];
+	present[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>present<br align="left"/></b></td></tr>
+</table>>];
+"present" -> "empty" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SHOW();<br align="left"/></font></td></tr></table>>
+];
+	resetting[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>resetting<br align="left"/></b></td></tr>
+</table>>];
+"resetting" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>sq_0_b<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:264, y:237, w:19, h:17)<br align="left"/>sq_0_b::M19_HOLDER(&apos;&apos;,&apos;IDD_PLAYER_B&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;empty&apos;: Top:237 Left:264<br align="left"/></font></td></tr></table>>
+];
+}

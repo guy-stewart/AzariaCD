@@ -5,7 +5,8 @@ delete from "main"."constants" where name = 'IDS_DIARY8_BIN';
 INSERT INTO "main"."spr_names" ("name", "value", "id") 
 VALUES 
 ('IDS_DIARY8_BIN', 'DIARY8_BIN', '0'),
-('IDS_DIARY9_BIN', 'crumple', '0');
+('IDS_DIARY9_BIN', 'crumple', '0'),
+('IDS_DIARY10_BIN', 'parchflt', '0');
 
 ----RESOURCES 
 delete from objects where [object] like 'IDD_DIARY%';
@@ -18,7 +19,8 @@ insert into objects values
 ('IDD_DIARY6','IDC_NULL','DIARY4','DIARY4','DIARY4'),
 ('IDD_DIARY7','IDC_NULL','DIARY4','DIARY4','DIARY4'),
 ('IDD_DIARY8','IDC_NULL','DIARY1','DIARY1','DIARY1'),
-('IDD_DIARY9','IDC_NULL','DIARY9','DIARY9','DIARY9');
+('IDD_DIARY9','IDC_NULL','DIARY9','DIARY9','DIARY9'),
+('IDD_DIARY10','IDC_NULL','DIARY1','DIARY1','DIARY1');
 
 delete from views where [view_name] like 'IDV_PARCHBIG%';
 delete from views where [view_name] like 'IDV_PARCHSMALL%';
@@ -89,8 +91,8 @@ delete from machines where [name] like 'S09_DIARYBIN';
 INSERT INTO "main"."machines" ("name","view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES 
 ('S08_DIARYBIN', 'IDV_EYEB', '2684', '198', '2720', '250', '2',  'M_PLANTBIN', 'IDD_DIARY8', 'IDS_DIARY8_BIN', '60', ''),
-('S09_DIARYBIN', 'IDV_VIL2', '295', '215', '330', '280', '2',  'M_PLANTBIN', 'IDD_DIARY9', 'IDS_DIARY9_BIN', '60', '');
-
+('S09_DIARYBIN', 'IDV_VIL2', '295', '215', '330', '280', '2',  'M_PLANTBIN', 'IDD_DIARY9', 'IDS_DIARY9_BIN', '60', ''),
+('S10_DIARYBIN', 'IDV_TM5PAN', '1365', '200', '1433', '250', '2',  'M_PLANTBIN', 'IDD_DIARY10', 'IDS_DIARY10_BIN', '60', '');
 
 
 
@@ -153,7 +155,7 @@ INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY6');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY7');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY8');
 INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY9');
-
+INSERT INTO "main"."isa" ("class", "member") VALUES ('ISA_DIARY', 'IDD_DIARY10');
 
 delete from views where [view_name] like 'IDV_ENCHANTP%';
 
@@ -282,6 +284,9 @@ MOV(BPARM,LVIEW);
                         }
         }
          if((WOBJECT == IDD_DIARY9 )){
+                 SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
+        }
+         if((WOBJECT == IDD_DIARY10 )){
                  SIGNAL(NIRET_DIARY_WAITER,SIG_DIARY);
         }
         '),           

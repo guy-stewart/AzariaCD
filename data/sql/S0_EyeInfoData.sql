@@ -484,6 +484,35 @@ I hear my father coming in.  He would take this letter and thro
 
 '),
 
+('IDD_DIARY10', 'IDV_PARCHBIG', 'ID_PARCHBIGTXT', '
+
+Kamioza, traveler from a past forgotten
+Took up the sword 
+
+- We begin with power
+
+with purpose drove itself to destroy and replace
+In fire
+	
+ - All things end in fire
+
+beget Azaria in the birth of new moons
+Its Nysrtrom spoils 
+
+Now worships its chosen star - still holding life liquid
+
+- Let it rain for us
+
+For rain creates growth  
+
+
+I have removed the banishment spell from the temple 
+leaving it to rot in the wilderness.  These foolish children
+continue to admonish each other for performing the very 
+tasks that their governors provided to them.
+
+'),
+
 ('IDD_GOPASEED', 'IDV_PARCHSMALL', 'ID_PARCHSMALLTXT', '
 Gopa is grown from its seed stage by only watering once per week.
 After it sprouts Gopa requires daily water until fruit shows up.

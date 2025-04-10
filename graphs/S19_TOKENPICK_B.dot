@@ -1,0 +1,25 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENPICK_B::M19_TOKENRECORDER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "token_available" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+</table>>
+];
+	token_available[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>token_available<br align="left"/></b></td></tr>
+</table>>];
+"token_available" -> "token_selected" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">       predicate active_character(name);<br align="left"/>       active_character(?myname)?<br align="left"/>       predicate PlayerList(name,pid);<br align="left"/>       PlayerList(myname,?player_pid)?<br align="left"/>     predicate compete(name,token,address,partner,square);<br align="left"/>     compete(&quot;%&quot;)~<br align="left"/>     compete(myname,WIP1,player_pid,&quot;&quot;,&quot;&quot;).<br align="left"/>    if(WIP1 == IDD_PLAYER_W)&#123;<br align="left"/>         SIGNAL(S19_TOKENSHOW_W,SIG_HIDE);<br align="left"/>        // SIGNAL(sq_0_t,SIG_RESET);<br align="left"/>    &#125;<br align="left"/>    if(WIP1 == IDD_PLAYER_B)&#123;<br align="left"/>         SIGNAL(S19_TOKENSHOW_B,SIG_HIDE);<br align="left"/>        // SIGNAL(sq_0_b,SIG_RESET);<br align="left"/>    &#125; <br align="left"/></font></td></tr></table>>
+];
+	token_selected[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>token_selected<br align="left"/></b></td></tr>
+</table>>];
+"token_selected" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENPICK_B<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:76, y:21, w:31, h:30)<br align="left"/>S19_TOKENPICK_B::M19_TOKENRECORDER(&apos;IDD_PLAYER_B&apos;,&apos;IDS_CHOOSETOKEN_B&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:21 Left:76 Z:3<br align="left"/></font></td></tr></table>>
+];
+}

@@ -1,0 +1,20 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_RACEGATE::M_RACEGATE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>CLICK(0,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    REF_MACHINE(S19_COVER1);<br align="left"/>    if( (IFSTATE(done,S19_COVER1)) <br align="left"/>     &amp;&amp; ( IFSTATE(done,S19_COVER2)) <br align="left"/>     &amp;&amp; ( IFSTATE(done,S19_COVER3)) )&#123;<br align="left"/>        LOADVIEW(WIP1);<br align="left"/>        SIGNAL(S16_CONTINENTPOINT,SIG_UNLOCK);<br align="left"/>     &#125;<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_RACEGATE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_NAT1D @pos(x:2710, y:112, w:113, h:245)<br align="left"/>S19_RACEGATE::M_RACEGATE(&apos;IDV_RACEPAN&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:112 Left:2710<br align="left"/></font></td></tr></table>>
+];
+}

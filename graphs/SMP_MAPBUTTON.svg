@@ -111,9 +111,9 @@
 <polygon fill="none" stroke="black" points="285,-543.25 285,-562 591,-562 591,-543.25 285,-543.25"/>
 <text text-anchor="start" x="399" y="-550.5" font-family="Courier New" font-weight="bold" font-size="10.00">SMP_MAPBUTTON</text>
 <polygon fill="none" stroke="black" points="285,-497 285,-541.25 591,-541.25 591,-497 285,-497"/>
-<text text-anchor="start" x="288" y="-528.75" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:107, y:11, h:35, w:36)</text>
+<text text-anchor="start" x="288" y="-528.75" font-family="Courier New" font-size="10.00" fill="green">VIEW::IDV_MAIN_PANEL @pos(x:107, y:11, w:36, h:35)</text>
 <text text-anchor="start" x="288" y="-516" font-family="Courier New" font-size="10.00" fill="green">SMP_MAPBUTTON::M_MAPBUTTON(&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;)</text>
-<text text-anchor="start" x="288" y="-503.25" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: Top:11 Left:107 Z:0</text>
+<text text-anchor="start" x="288" y="-503.25" font-family="Courier New" font-size="10.00" fill="green">{state:&#39;1&#39;: Top:11 Left:107</text>
 <polygon fill="none" stroke="black" points="282,-494 282,-565 594,-565 594,-494 282,-494"/>
 </g>
 </g>

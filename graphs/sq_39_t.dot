@@ -1,0 +1,33 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>sq_39_t::M19_SQUARE<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "squareempty" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ASSIGN(BPARM,0);CLEAR(WOBJECT);<br align="left"/></font></td></tr></table>>
+];
+	resetting[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>resetting<br align="left"/></b></td></tr>
+</table>>];
+"resetting" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	squareempty[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>squareempty<br align="left"/></b></td></tr>
+</table>>];
+"squareempty" -> "squareholding" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DROP(ISA_PLAYTOKEN,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW(WOBJECT);<br align="left"/>    MOV(BPARM,WOBJECT); //IDD_PLAYER_W..<br align="left"/>    SIGNALi(WIP2,S19_PLAYERWATCHER); <br align="left"/></font></td></tr></table>>
+];
+"squareempty" -> "resetting" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+</table>>
+];
+	squareholding[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>squareholding<br align="left"/></b></td></tr>
+</table>>];
+"squareholding" -> "squareempty" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">SHOW();<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>sq_39_t<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:291, y:74, w:18, h:14)<br align="left"/>sq_39_t::M19_SQUARE(&apos;BROWN_SQUARE&apos;,&apos;SIG_39T&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;squareempty&apos;: bParm:IDD_PLAYER_B Top:74 Left:291<br align="left"/></font></td></tr></table>>
+];
+}

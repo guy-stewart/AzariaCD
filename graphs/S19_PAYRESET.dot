@@ -1,0 +1,38 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_PAYRESET::M19_PAYBUCKET<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "setup" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOV(BFRAME,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ASSIGN(WSPRITE,WIP1);<br align="left"/>    SHOW(WSPRITE);<br align="left"/>    /* BPARM = what you payed<br align="left"/>    WPARM = Total owed <br align="left"/>    */<br align="left"/>    ASSIGN(BPARM,0); <br align="left"/>    ASSIGN(WPARM,WIP2);<br align="left"/></font></td></tr></table>>
+];
+	accept_pay[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>accept_pay<br align="left"/></b></td></tr>
+</table>>];
+"accept_pay" -> "check_scoop" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(IDD_SCOOPF,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    HANDOFF(0,IDD_SCOOPE);<br align="left"/>    PLAYWAVE(0,SOUND_SPIT);<br align="left"/>    ADDI(BPARM,1); <br align="left"/></font></td></tr></table>>
+];
+	check_scoop[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>check_scoop<br align="left"/></b></td></tr>
+</table>>];
+"check_scoop" -> "paid_in_full" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>EQUAL(BPARM,WPARM)<br align="left"/></b></td></tr>
+</table>>
+];
+"check_scoop" -> "accept_pay" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	paid_in_full[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>paid_in_full<br align="left"/></b></td></tr>
+</table>>];
+"paid_in_full" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    PLAYWAVE(0,SOUND_LEVER);<br align="left"/>     SIGNAL(S19_DICEHOLD,SIG_RESET);<br align="left"/>        SIGNAL(S19_TOKENPICK,SIG_RESET); <br align="left"/>             SIGNAL(S19_TOKENPICK_W,SIG_RESET); <br align="left"/>             SIGNAL(S19_TOKENPICK_B,SIG_RESET); <br align="left"/>    SUBI(BFRAME,1);<br align="left"/></font></td></tr></table>>
+];
+	setup[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>setup<br align="left"/></b></td></tr>
+</table>>];
+"setup" -> "accept_pay" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    ADDI(BFRAME,1);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_PAYRESET<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:9, y:217, w:70, h:60)<br align="left"/>S19_PAYRESET::M19_PAYBUCKET(&apos;IDS_SPITTOON&apos;,&apos;2&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;accept_pay&apos;: bParm:0 wParm:2 wSprite:IDS_SPITTOON bFrame:1 Top:217 Left:9<br align="left"/></font></td></tr></table>>
+];
+}

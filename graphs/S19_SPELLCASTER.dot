@@ -1,0 +1,35 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_SPELLCASTER::M19_SPELLCASTER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "collectingColor" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>WAIT(0,SIG_START)<br align="left"/></b></td></tr>
+</table>>
+];
+	castspell[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>castspell<br align="left"/></b></td></tr>
+</table>>];
+"castspell" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(0,)<br align="left"/></b></td></tr>
+</table>>
+];
+	collectingColor[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>collectingColor<br align="left"/></b></td></tr>
+</table>>];
+"collectingColor" -> "collectingEvent" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>REF_MACHINE(WIP1,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    //Top spinner frame<br align="left"/>   // WTEMP1=R_WPARM;<br align="left"/>    MOV(WPARM,R_WPARM);<br align="left"/>    //WPARM wil be color to attack violet,GREEN_SQUARE, or brown square<br align="left"/>    MAPi(WPARM,WIP3); <br align="left"/></font></td></tr></table>>
+];
+	collectingEvent[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>collectingEvent<br align="left"/></b></td></tr>
+</table>>];
+"collectingEvent" -> "findVictimOne" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>REF_MACHINE(WIP2,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    //Bottom spinner frame<br align="left"/>    WTEMP2=R_WPARM;<br align="left"/>    MOV(BPARM,WTEMP2);<br align="left"/>    //BPARM will be spell<br align="left"/>    MAPi(BPARM,WIP4); //BPARM will be IDD_GVIAL,IDD_BOMB2...<br align="left"/></font></td></tr></table>>
+];
+	findVictimOne[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>findVictimOne<br align="left"/></b></td></tr>
+</table>>];
+"findVictimOne" -> "castspell" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>REF_MACHINE(0,S19_PLAYERWATCHER)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    //R_WPARM is the squre last signaled by local landing,<br align="left"/>    //R_BPARM is either player token: IDD_PLAYER_B or W in that square<br align="left"/>    MOV(WTEMP2,R_BPARM);<br align="left"/>    //map the square theyre on to a color , then if it matches WPARM execute the event in BPARM<br align="left"/>    //WTEMP1 is now something like VIOLET_SQUARE, BLANK...<br align="left"/>    MOV(WTEMP1,R_WPARM);<br align="left"/>    MAPi(WTEMP1,S19_SQUARE_MAP);<br align="left"/>        //We assess for the local player<br align="left"/>        predicate active_character(name);<br align="left"/>        active_character(?myname)?<br align="left"/>        predicate compete(name,token,address,partner,square);<br align="left"/>        compete(myname,?token,,,);<br align="left"/>        if(token == WTEMP2)&#123;<br align="left"/>            if(WTEMP1 == WPARM)&#123;<br align="left"/>                //if the last triggered square has the color to attack<br align="left"/>                predicate dropitem(object,id);<br align="left"/>                dropitem(&quot;%&quot;)~<br align="left"/>                dropitem(BPARM,&quot;id&quot;).<br align="left"/>                replay(&quot;system/send_item_self&quot;);<br align="left"/>            &#125;<br align="left"/>        &#125;<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_SPELLCASTER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:8, y:150, w:50, h:12)<br align="left"/>S19_SPELLCASTER::M19_SPELLCASTER(&apos;S19_SPINNER_TOP_PICK&apos;,&apos;S19_SPINNER_BOTTOM_PICK&apos;,&apos;S19_COLOR_MAP&apos;,&apos;S19_EVENT_MAP&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: bParm:IDD_GVIAL wParm:GREEN_SQUARE Top:150 Left:8<br align="left"/></font></td></tr></table>>
+];
+}
