@@ -28,6 +28,6 @@ digraph Automaton {
 </table>>
 ];
 	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>SMP_MAPBUTTON<br align="left"/></b></td></tr>
-<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:107, y:11, h:35, w:36)<br align="left"/>SMP_MAPBUTTON::M_MAPBUTTON(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: Top:11 Left:107 Z:0<br align="left"/></font></td></tr></table>>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_MAIN_PANEL @pos(x:107, y:11, w:36, h:35)<br align="left"/>SMP_MAPBUTTON::M_MAPBUTTON(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;1&apos;: Top:11 Left:107<br align="left"/></font></td></tr></table>>
 ];
 }

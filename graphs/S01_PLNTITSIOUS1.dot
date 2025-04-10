@@ -1,0 +1,28 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S01_PLNTITSIOUS1::M_BIN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>O_ACCEPT(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "10" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WIP2,)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DROP(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+"10" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S01_PLNTITSIOUS1<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_TMPLPTH4 @pos(x:2570, y:160, w:52, h:158)<br align="left"/>S01_PLNTITSIOUS1::M_BIN(&apos;IDD_BLUEBERRY&apos;,&apos;&apos;,&apos;60&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;10&apos;: wAccept:IDD_BLUEBERRY Top:160 Left:2570<br align="left"/></font></td></tr></table>>
+];
+}

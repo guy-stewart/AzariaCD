@@ -1,0 +1,45 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_COVER3::M_DIG_UNCOVER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "coverActive" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>MOV(WSPRITE,WIP2)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        SHOW(WSPRITE);<br align="left"/></font></td></tr></table>>
+];
+	coverActive[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>coverActive<br align="left"/></b></td></tr>
+</table>>];
+"coverActive" -> "firstWhack" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>Z_EPSILON(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	firstWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>firstWhack<br align="left"/></b></td></tr>
+</table>>];
+"firstWhack" -> "secondWhack" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(WIP3,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE1);<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>            ANIMATE();<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	moveMe[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>moveMe<br align="left"/></b></td></tr>
+</table>>];
+"moveMe" -> "oncovered" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+</table>>
+];
+	oncovered[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>oncovered<br align="left"/></b></td></tr>
+</table>>];
+"oncovered" -> "done" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SET_YOFFSET(ADD,50)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        PLAYWAVE(SOUND_CHIMES);<br align="left"/>        SHOW();<br align="left"/></font></td></tr></table>>
+];
+	secondWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>secondWhack<br align="left"/></b></td></tr>
+</table>>];
+"secondWhack" -> "thirdWhack" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE2);<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>            ANIMATE();<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	thirdWhack[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>thirdWhack<br align="left"/></b></td></tr>
+</table>>];
+"thirdWhack" -> "moveMe" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>DRAG(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">        if(WIP3 == ISA_TOOL_DIGGER)&#123;<br align="left"/>            SHOW(0,IDS_SANDPILE3);<br align="left"/>            PLAYWAVE(SOUND_DIG);<br align="left"/>            ANIMATE();<br align="left"/>         &#125;   <br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_COVER3<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_NAT1D @pos(x:2762, y:205, w:95, h:38)<br align="left"/>S19_COVER3::M_DIG_UNCOVER(&apos;&apos;,&apos;IDS_SANDDIRTGRS&apos;,&apos;ISA_TOOL_DIGGER&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;done&apos;: bFrame:2 Top:205 Left:2762<br align="left"/></font></td></tr></table>>
+];
+}

@@ -1,0 +1,45 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENSHOW_W::M_PLANTBIN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP2)<br align="left"/></b></td></tr>
+</table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WSPRITE,)<br align="left"/></b></td></tr>
+</table>>
+];
+	10[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>10<br align="left"/></b></td></tr>
+</table>>];
+"10" -> "20" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+</table>>
+];
+	20[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>20<br align="left"/></b></td></tr>
+</table>>];
+"20" -> "30" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ESTIME(WIP3,)<br align="left"/></b></td></tr>
+</table>>
+];
+	30[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>30<br align="left"/></b></td></tr>
+</table>>];
+"30" -> "40" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>MOV(WSPRITE,WIP2)<br align="left"/></b></td></tr>
+</table>>
+];
+	40[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>40<br align="left"/></b></td></tr>
+</table>>];
+"40" -> "5" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>SHOW(WSPRITE,)<br align="left"/></b></td></tr>
+</table>>
+];
+	5[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>5<br align="left"/></b></td></tr>
+</table>>];
+"5" -> "10" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>GRAB(WIP1,)<br align="left"/></b></td></tr>
+</table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENSHOW_W<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:39, y:21, w:31, h:34)<br align="left"/>S19_TOKENSHOW_W::M_PLANTBIN(&apos;IDD_PLAYER_W&apos;,&apos;IDS_CHOOSETOKEN_W&apos;,&apos;360&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;20&apos;: dEtime:25055 Top:21 Left:39 Z:2<br align="left"/></font></td></tr></table>>
+];
+}

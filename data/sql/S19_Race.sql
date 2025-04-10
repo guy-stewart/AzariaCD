@@ -4,12 +4,23 @@
 delete from spr_names where [name] like 'IDS_TOPSPIN%';
 delete from spr_names where [name] like 'IDS_BOTSPIN%';
 delete from spr_names where [name] like 'IDS_SPITTOON';
+delete from spr_names where [name] like 'IDS_TOKENPICK';
+delete from spr_names where [name] like 'IDS_CHOOSETOKEN_B';
+delete from spr_names where [name] like 'IDS_CHOOSETOKEN_W';
 delete from sounds where [name] like 'SOUND_SPIN%';
+delete from spr_names where name = 'IDS_BLACKBACK_SM';
+INSERT INTO "main"."spr_names" ("name", "value") 
+VALUES 
+('IDS_BLACKBACK_SM', 'blackback_sm');
+
 
 insert into spr_names values ('IDS_TOPSPIN','tspin','40600');
 insert into spr_names values ('IDS_BOTSPIN','bspin','40601');
 insert into spr_names values ('IDS_TOPSPINFST','tspinfast','40602');
 insert into spr_names values ('IDS_SPITTOON','spittoon','40610');
+insert into spr_names values ('IDS_TOKENPICK','choosetoken','40799');
+insert into spr_names values ('IDS_CHOOSETOKEN_B','choosetoken_B','40798');
+insert into spr_names values ('IDS_CHOOSETOKEN_W','choosetoken_w','40797');
 insert into sounds values ('SOUND_SPIN', 'spin',0);
 
 delete from objects where object = 'IDD_PLAYER_W';
@@ -17,6 +28,15 @@ delete from objects where object = 'IDD_PLAYER_B';
 insert into objects values
 ('IDD_PLAYER_W','IDC_NULL','player_w','player_w','player_w'),
 ('IDD_PLAYER_B','IDC_NULL','player_b','player_b','player_b');
+
+delete from controls where [view] like 'IDV_RACEPAN%';
+
+insert into controls ([view], [id],[type],[image],[image_selected],[x],[y],[border],[values],[default],[ids_font],[font_color],[code]) values
+
+('IDV_RACEPAN', '200', 'EDITBOX',  'IDS_BLACKBACK_SM', 'IDS_BTN_DOWN_HI', 486, 172, 10, 'Inst', 'default','IDS_FONTTNR16',0x44FFFF,'');
+
+
+
 
 delete from isa where [class] like 'ISA_PLAYTOKEN%';
 INSERT INTO "main"."isa" ("class", "member")
@@ -94,14 +114,14 @@ VALUES
 --KEY is the frame, value is the spell or color landed
 -- frozen could be the loose a turn spell
 -- 
-('S19_EVENT_MAP',2, 'bomb1'),
-('S19_EVENT_MAP',5, 'frozen'), 
-('S19_EVENT_MAP',8, 'banish'),
-('S19_EVENT_MAP',11,'gopa'),
-('S19_EVENT_MAP',14,'bomb3'),
-('S19_EVENT_MAP',17,'back5'),
-('S19_EVENT_MAP',20,'bomb2'),
-('S19_EVENT_MAP',0, 'wealth'),
+('S19_EVENT_MAP',2, 'IDD_BOMB2'),
+('S19_EVENT_MAP',5, 'IDD_GVIAL'), 
+('S19_EVENT_MAP',8, 'IDD_BOMB2'),
+('S19_EVENT_MAP',11,'IDD_GVIAL'),
+('S19_EVENT_MAP',14,'IDD_BOMB2'),
+('S19_EVENT_MAP',17,'IDD_TRANSFER'),
+('S19_EVENT_MAP',20,'IDD_BANISHMENT'),
+('S19_EVENT_MAP',0, 'IDD_GVIAL'),
 
 ('S19_COLOR_MAP',1,'GREEN_SQUARE'),
 ('S19_COLOR_MAP',4,'VIOLET_SQUARE'), 
@@ -110,70 +130,9 @@ VALUES
 ('S19_COLOR_MAP',6,'BROWN_SQUARE'),
 ('S19_COLOR_MAP',7,'BROWN_SQUARE'),
 ('S19_COLOR_MAP',3,'VIOLET_SQUARE'),
-('S19_COLOR_MAP',4,'VIOLET_SQUARE'),
+('S19_COLOR_MAP',4,'VIOLET_SQUARE');
 
-('S19_SQUARE_MAP',1,'BLANK'),
-('S19_SQUARE_MAP',2,'BLANK'),
-('S19_SQUARE_MAP',3,'BLANK'),
-('S19_SQUARE_MAP',4,'BLANK'),
-('S19_SQUARE_MAP',5,'BLANK'),
-('S19_SQUARE_MAP',6,'BLANK'),
-('S19_SQUARE_MAP',7,'BLANK'),
-('S19_SQUARE_MAP',8,'BLANK'),
-('S19_SQUARE_MAP',9,'BLANK'),
-('S19_SQUARE_MAP',10,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',11,'BLANK'),
-('S19_SQUARE_MAP',12,'BLANK'),
-('S19_SQUARE_MAP',13,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',14,'BLANK'),
-('S19_SQUARE_MAP',15,'BLANK'),
-('S19_SQUARE_MAP',16,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',17,'BLANK'),
-('S19_SQUARE_MAP',18,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',19,'BLANK'),
-('S19_SQUARE_MAP',20,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',21,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',22,'BLANK'),
-('S19_SQUARE_MAP',23,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',24,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',25,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',26,'BLANK'),
-('S19_SQUARE_MAP',27,'BLANK'),
-('S19_SQUARE_MAP',28,'BLANK'),
-('S19_SQUARE_MAP',29,'BLANK'),
-('S19_SQUARE_MAP',30,'BLANK'),
-('S19_SQUARE_MAP',31,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',32,'BLANK'),
-('S19_SQUARE_MAP',33,'BLANK'),
-('S19_SQUARE_MAP',34,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',35,'BLANK'),
-('S19_SQUARE_MAP',36,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',37,'BLANK'),
-('S19_SQUARE_MAP',38,'BLANK'),
-('S19_SQUARE_MAP',39,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',40,'BLANK'),
-('S19_SQUARE_MAP',41,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',42,'BLANK'),
-('S19_SQUARE_MAP',43,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',44,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',45,'BLANK'),
-('S19_SQUARE_MAP',46,'GREEN_SQUARE'),
-('S19_SQUARE_MAP',47,'BLANK'),
-('S19_SQUARE_MAP',48,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',49,'GREEN_SQUARE'),
-('S19_SQUARE_MAP',50,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',51,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',52,'BLANK'),
-('S19_SQUARE_MAP',53,'GREEN_SQUARE'),
-('S19_SQUARE_MAP',54,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',55,'BROWN_SQUARE'),
-('S19_SQUARE_MAP',56,'BLANK'),
-('S19_SQUARE_MAP',57,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',58,'GREEN_SQUARE'),
-('S19_SQUARE_MAP',59,'BLANK'),
-('S19_SQUARE_MAP',60,'VIOLET_SQUARE'),
-('S19_SQUARE_MAP',61,'GREEN_SQUARE'),
-('S19_SQUARE_MAP',62,'BROWN_SQUARE');
+
 
 
 delete from views where view_name = 'IDV_RACEPAN';
@@ -185,23 +144,41 @@ delete from machines where [name] like 'S19_%';
 delete from machines where [name] like 'spinner%';
 delete from machines where [name] like 'sq_%';
 
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name","Z") 
+VALUES
+('S19_DIEDROP',            'IDV_RACEPAN',520,200,620,300,'0','M16_DIEROLL','IDS_DICE','','', '',2),
+('S19_TOKENPICK',          'IDV_RACEPAN',25,25,150,75,   '0','M19_TOKENPICK','IDS_TOKENPICK','','', '',1),
+-- ('S19_TOKENPICK_W',          'IDV_RACEPAN',39,21,73,52,  '0','M19_TOKENRECORDER','IDD_PLAYER_W','IDS_CHOOSETOKEN_W','', '',3),
+-- ('S19_TOKENPICK_B',          'IDV_RACEPAN',76,21,106,52, '0','M19_TOKENRECORDER','IDD_PLAYER_B','IDS_CHOOSETOKEN_B','', '',3),
+
+('S19_TOKENSHOW_W',          'IDV_RACEPAN',39,21,73,52,  '0','M_PLANTBIN', 'IDD_PLAYER_W', 'IDS_CHOOSETOKEN_W', '360', '','2'),
+('S19_TOKENSHOW_B',          'IDV_RACEPAN',76,21,106,52, '0','M_PLANTBIN', 'IDD_PLAYER_B', 'IDS_CHOOSETOKEN_B', '360', '','2');
+
+
+
+INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name","Z") 
+VALUES
+('S19_SPINNER_BUTTON',     'IDV_RACEPAN',557,41,589,72,'0','M19_BUTTON','S19_SPINNER_BOTTOM_PICK','S19_SPINNER_BOTTOM_SPIN','S19_SPINNER_TOP_PICK','S19_SPINNER_TOP_SPIN','5'),
+('S19_SPINNER_TOP_SPIN',   'IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_TOPSPIN','','','','4'),
+('S19_SPINNER_TOP_PICK',   'IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_TOPSPIN',3,'S19_TOPSPIN_MAP','','2'),
+('S19_SPINNER_BOTTOM_SPIN','IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_BOTSPIN','','','','5'),
+('S19_SPINNER_BOTTOM_PICK','IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP','','1');
+
+
+
 INSERT INTO "main"."machines" ( "name", "view_name", "left", "top", "right", "bottom", "local_visible", "dfa_name", "wip1_name", "wip2_name","wip3_name",  "wip4_name") 
 VALUES
-('S19_DIEDROP',            'IDV_RACEPAN',497,144,604,260, '0','M16_DIEROLL','IDS_DICE','','', ''),
-('S19_SPINNER_BUTTON',     'IDV_RACEPAN',557,41,589,72,'0','M19_BUTTON','S19_SPINNER_BOTTOM_PICK','S19_SPINNER_BOTTOM_SPIN','S19_SPINNER_TOP_PICK','S19_SPINNER_TOP_SPIN'),
-('S19_SPINNER_TOP_SPIN',   'IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_TOPSPIN','','',''),
-('S19_SPINNER_TOP_PICK',   'IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_TOPSPIN',3,'S19_TOPSPIN_MAP',''),
-('S19_SPINNER_BOTTOM_SPIN','IDV_RACEPAN',435,0,552,30,'0','M19_SPIN','IDS_BOTSPIN','','',''),
-('S19_SPINNER_BOTTOM_PICK','IDV_RACEPAN',435,0,552,30,'0','M19_PICK','IDS_BOTSPIN',8,'S19_BOTSPIN_MAP',''),
-('S19_SPELLCASTER',        'IDV_RACEPAN',8,150,20,200,'0','M19_SPELLCASTER','S19_SPINNER_TOP_PICK','S19_SPINNER_BOTTOM_PICK','S19_COLOR_MAP','S19_EVENT_MAP'),
-('S19_PLAYERWATCHER',      'IDV_RACEPAN',3,33,45,60,'0','M19_PLAYERWATCHER','','','',''),
+('S19_SPELLCASTER',        'IDV_RACEPAN',8,150,20,200,'2','M19_SPELLCASTER','S19_SPINNER_TOP_PICK','S19_SPINNER_BOTTOM_PICK','S19_COLOR_MAP','S19_EVENT_MAP'),
+
+--playerwatcher can't be local as it is signaled by global squares
+('S19_PLAYERWATCHER',      'IDV_RACEPAN',3,33,45,60,  '0','M19_PLAYERWATCHER','','','',''),
 ('S19_PAYRESET',           'IDV_RACEPAN',9,217,69,287,'0','M19_PAYBUCKET','IDS_SPITTOON',2,'', ''),
 
 
 --did not need to put the colors here - squares don't need to pass their color anywhere - map is used
 -- this is better if we want to vary the squares
-( 'sq_0_b',      'IDV_RACEPAN',264,237,281,256,'0','M19_HOLDER','','IDD_PLAYER_B','',''),
-( 'sq_0_t',      'IDV_RACEPAN',264,221,281,236,'0','M19_HOLDER','','IDD_PLAYER_W','',''),
+( 'sq_0_b',      'IDV_RACEPAN',264,237,281,256,'2','M19_HOLDER','','IDD_PLAYER_B','',''),
+( 'sq_0_t',      'IDV_RACEPAN',264,221,281,236,'2','M19_HOLDER','','IDD_PLAYER_W','',''),
 ( 'S19_DICEHOLD','IDV_RACEPAN',293,232,346,278,'0','M19_DICEHOLD','','','',''),
 ( 'sq_1_t',      'IDV_RACEPAN',240,217,253,235,'0','M19_SQUARE','','SIG_1T','',''),
 ( 'sq_1_b',      'IDV_RACEPAN',240,237,253,256,'0','M19_SQUARE','','SIG_1B','',''),
@@ -342,90 +319,75 @@ VALUES
 ('M19_SPELLCASTER', '0', 'collectingColor', 'WAIT', '0', 'SIG_START', '', ''),
 ('M19_SPELLCASTER', 'collectingColor', 'collectingEvent', 'REF_MACHINE', 'WIP1','', '
     //Top spinner frame
-    WTEMP1=R_WPARM;
-    MOV(WPARM,WTEMP1);
-    //WPARM wil be color to attack violet,green, or brown square
-    MAPi(WPARM,WIP3);
+    MOV(WPARM,R_WPARM);
+    //WPARM wil be color chosen to attack: violet,GREEN_SQUARE, or brown square
+    MAPi(WPARM,WIP3); 
 ', ''),
 ('M19_SPELLCASTER', 'collectingEvent', 'findVictimOne', 'REF_MACHINE', 'WIP2','', '
     //Bottom spinner frame
     WTEMP2=R_WPARM;
     MOV(BPARM,WTEMP2);
-    //BPARM will be the event or spell to cast
-    MAPi(BPARM,WIP4);
+    //BPARM will be spell
+    MAPi(BPARM,WIP4); //BPARM will be IDD_GVIAL,IDD_BOMB2...
 ', ''),
-('M19_SPELLCASTER', 'findVictimOne', 'castspell', 'REF_MACHINE', '0', 'S19_PLAYERWATCHER', '
-    //R_WPARM is the squre theyre on,
-    //R_BPARM is either player object like IDD_PLAYER_B or W
-    //map the square theyre on to a color , then if it matches WPARM execute the event in BPARM
-    MOV(WTEMP1,R_WPARM);
-    MAPi(WTEMP1,S19_SQUARE_MAP);', ''),
-('M19_SPELLCASTER', 'castspell', 'pickspell', 'EQUAL', 'WTEMP1', 'WPARM', '', ''),   
+('M19_SPELLCASTER', 'findVictimOne', 'castspell', 'Z_EPSILON', '', '', '
+    //get the color from the player compete table
+     predicate active_character(name);
+        active_character(?myname)?
+        predicate compete(name,token,address,partner,square);
+        compete(myname,?token,,,?WTEMP1);
+        //WTEMP1 is the color the player is on: now something like VIOLET_SQUARE, BLANK...
+            if(WTEMP1 == WPARM){
+                //if the last triggered square has the color to attack
+                predicate dropitem(object,id);
+                dropitem("%")~
+                dropitem(BPARM,"id").
+                replay("system/send_item_self");
+            }
+        ', ''),  
 ('M19_SPELLCASTER', 'castspell', '0', 'Z_EPSILON', '0', '', '', ''), 
-
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb1', '
-    WRITE(someone is bomb1ed!);
-    SIGNAL(SID_ID,SIG_BOMB);
-    SUBI(LENERGY,1);
-    SIGNAL(SID_AURA,SIG_SUB);
-', ''),        
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb2', '
-    WRITE(someone is bomb2ed!);
-    SIGNAL(SID_ID,SIG_BOMB);
-    SUBI(LENERGY,2);
-    SIGNAL(SID_AURA,SIG_SUB);
-', ''), 
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'bomb3', '
-    WRITE(someone is bomb3ed!);
-    SIGNAL(SID_ID,SIG_BOMB);
-    SUBI(LENERGY,3);
-    SIGNAL(SID_AURA,SIG_SUB);
-', ''), 
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'wealth', '
-    WRITE(someone is given nystrom!);
-    SIGNAL(SID_ID,SIG_HAPPY);
-    ADDI(LWEALTH,10);
-', ''), 
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'banish', '
-    WRITE(someone is banished!);
-    LOADVIEW(0,IDV_BANISH);
-', ''), 
-('M19_SPELLCASTER', 'pickspell', 'done', 'EQUAL', 'BPARM', 'gopa', '
-     WRITE(someone is given gopa!);
-    ADDI(LENERGY,5);
-    SIGNAL(SID_AURA,SIG_ADD);
-', ''), 
-('M19_SPELLCASTER', 'pickspell', '0', 'Z_EPSILON', '', '', '', ''), 
-('M19_SPELLCASTER', 'done', '0', 'Z_EPSILON', '', '', '', ''),
-
-
 
 
 
 ('M19_SQUARE', '0', 'squareempty', 'Z_EPSILON', '', '','ASSIGN(BPARM,0);CLEAR(WOBJECT);',''),
 ('M19_SQUARE', 'squareempty', 'squareholding', 'DROP', 'ISA_PLAYTOKEN', '','
     SHOW(WOBJECT);
-    MOV(BPARM,WOBJECT);
-    SIGNALi(WIP2,S19_PLAYERWATCHER); 
+    MOV(BPARM,WOBJECT); //IDD_PLAYER_W..
+      predicate compete(name,token,address,partner,square);
+      compete(,?token,,,)?
+        if(token == BPARM){
+            predicate active_character(name);
+            active_character(?myname)?
+            predicate PlayerList(name,pid);
+            PlayerList(myname,?player_pid)?
+            predicate compete(name,token,address,partner,square);
+            compete("%")~
+            compete(myname,BPARM,player_pid,"",WIP1).  
+        }
+    SIGNALi(S19_PLAYERWATCHER, WIP2); 
 ',''),
 ('M19_SQUARE', 'squareholding', 'squareempty', 'GRAB', '', '', 'SHOW();',''),
-('M19_SQUARE', 'squareempty', 'resetting', 'WAIT', '','SIG_RESET', '',''),
-('M19_SQUARE', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+('M19_SQUARE', 'squareempty', '0', 'WAIT', '','SIG_RESET', '',''),
 
 
 
 
 
-
-
-('M19_HOLDER', '0', 'present', 'ACCEPT', '', 'WIP2', '
-    MOV(WOBJECT,WIP2);
+('M19_HOLDER', '0', 'present', 'DROP', '', '', '
     SHOW(WOBJECT);
+      predicate active_character(name);
+       active_character(?myname)?
+       predicate PlayerList(name,pid);
+       PlayerList(myname,?player_pid)?
+     predicate compete(name,token,address,partner,square);
+     compete("%")~
+     compete(myname,WOBJECT,player_pid,"","").
+
 ',''),
-('M19_HOLDER', 'present', 'empty', 'GRAB', '', '', 'SHOW();',''),
-('M19_HOLDER', 'empty', '0', 'DROP', '', '', '',''),
-('M19_HOLDER', 'empty', 'resetting', 'WAIT', '', 'SIG_RESET', '',''),
-('M19_HOLDER', 'resetting', '0', 'Z_EPSILON', '', '', '',''),
+('M19_HOLDER', 'present', '0', 'GRAB', '', '', 'SHOW();',''),
+
+
+
 
 ('M19_DICEHOLD', '0', 'presentdie', 'WAIT', '', 'SIG_RESET', '
      MOV(WOBJECT,IDD_DICE);
@@ -444,7 +406,7 @@ VALUES
     ASSIGN(BPARM,0); 
     ASSIGN(WPARM,WIP2);
 ',''),
-('M19_PAYBUCKET', 'setup', 'accept_pay', 'CLICK', '', '', '
+('M19_PAYBUCKET', 'setup', 'accept_pay', 'Z_EPSILON', '', '', '
     ADDI(BFRAME,1);
 ',''),
 ('M19_PAYBUCKET', 'accept_pay', 'check_scoop', 'DRAG', 'IDD_SCOOPF', '', '
@@ -456,160 +418,10 @@ VALUES
 ('M19_PAYBUCKET', 'check_scoop', 'accept_pay', 'Z_EPSILON', '', '', '',''),
 ('M19_PAYBUCKET', 'paid_in_full', '0', 'Z_EPSILON', '', '', '
     PLAYWAVE(0,SOUND_LEVER);
-    SIGNAL(sq_0_t,SIG_RESET);
-    SIGNAL(sq_0_b,SIG_RESET);
-     SIGNAL(S19_DICEHOLD,SIG_RESET);
+    SIGNAL(S19_DICEHOLD,SIG_RESET);
     SUBI(BFRAME,1);
 ',''),
 
-
-
---playerwatcher - the last square machine to signal will set state (need to differentiate by BPARM for multiplayer)
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_1T', 'MOV(WPARM,1);REF_MACHINE(sq_1_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_1B', 'MOV(WPARM,1);REF_MACHINE(sq_1_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_2T', 'MOV(WPARM,2);REF_MACHINE(sq_2_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_2B', 'MOV(WPARM,2);REF_MACHINE(sq_2_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_3T', 'MOV(WPARM,3);REF_MACHINE(sq_3_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_3B', 'MOV(WPARM,3);REF_MACHINE(sq_3_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_4T', 'MOV(WPARM,4);REF_MACHINE(sq_4_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_4B', 'MOV(WPARM,4);REF_MACHINE(sq_4_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_5T', 'MOV(WPARM,5);REF_MACHINE(sq_5_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_5B', 'MOV(WPARM,5);REF_MACHINE(sq_5_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_6T', 'MOV(WPARM,6);REF_MACHINE(sq_6_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_6B', 'MOV(WPARM,6);REF_MACHINE(sq_6_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_7T', 'MOV(WPARM,7);REF_MACHINE(sq_7_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_7B', 'MOV(WPARM,7);REF_MACHINE(sq_7_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_8T', 'MOV(WPARM,8);REF_MACHINE(sq_8_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_8B', 'MOV(WPARM,8);REF_MACHINE(sq_8_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_9T', 'MOV(WPARM,9);REF_MACHINE(sq_9_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_9B', 'MOV(WPARM,9);REF_MACHINE(sq_9_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_10T', 'MOV(WPARM,10);REF_MACHINE(sq_10_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_10B', 'MOV(WPARM,10);REF_MACHINE(sq_10_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_11T', 'MOV(WPARM,11);REF_MACHINE(sq_11_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_11B', 'MOV(WPARM,11);REF_MACHINE(sq_11_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_12T', 'MOV(WPARM,12);REF_MACHINE(sq_12_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_12B', 'MOV(WPARM,12);REF_MACHINE(sq_12_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_13T', 'MOV(WPARM,13);REF_MACHINE(sq_13_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_13B', 'MOV(WPARM,13);REF_MACHINE(sq_13_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_14T', 'MOV(WPARM,14);REF_MACHINE(sq_14_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_14B', 'MOV(WPARM,14);REF_MACHINE(sq_14_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_15T', 'MOV(WPARM,15);REF_MACHINE(sq_15_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_15B', 'MOV(WPARM,15);REF_MACHINE(sq_15_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_16T', 'MOV(WPARM,16);REF_MACHINE(sq_16_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_16B', 'MOV(WPARM,16);REF_MACHINE(sq_16_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_17T', 'MOV(WPARM,17);REF_MACHINE(sq_17_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_17B', 'MOV(WPARM,17);REF_MACHINE(sq_17_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_18T', 'MOV(WPARM,18);REF_MACHINE(sq_18_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_18B', 'MOV(WPARM,18);REF_MACHINE(sq_18_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_19T', 'MOV(WPARM,19);REF_MACHINE(sq_19_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_19B', 'MOV(WPARM,19);REF_MACHINE(sq_19_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_20T', 'MOV(WPARM,20);REF_MACHINE(sq_20_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_20B', 'MOV(WPARM,20);REF_MACHINE(sq_20_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_21T', 'MOV(WPARM,21);REF_MACHINE(sq_21_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_21B', 'MOV(WPARM,21);REF_MACHINE(sq_21_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_22T', 'MOV(WPARM,22);REF_MACHINE(sq_22_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_22B', 'MOV(WPARM,22);REF_MACHINE(sq_22_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_23T', 'MOV(WPARM,23);REF_MACHINE(sq_23_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_23B', 'MOV(WPARM,23);REF_MACHINE(sq_23_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_24T', 'MOV(WPARM,24);REF_MACHINE(sq_24_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_24B', 'MOV(WPARM,24);REF_MACHINE(sq_24_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_25T', 'MOV(WPARM,25);REF_MACHINE(sq_25_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_25B', 'MOV(WPARM,25);REF_MACHINE(sq_25_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_26T', 'MOV(WPARM,26);REF_MACHINE(sq_26_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_26B', 'MOV(WPARM,26);REF_MACHINE(sq_26_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_27T', 'MOV(WPARM,27);REF_MACHINE(sq_27_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_27B', 'MOV(WPARM,27);REF_MACHINE(sq_27_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_28T', 'MOV(WPARM,28);REF_MACHINE(sq_28_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_28B', 'MOV(WPARM,28);REF_MACHINE(sq_28_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_29T', 'MOV(WPARM,29);REF_MACHINE(sq_29_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_29B', 'MOV(WPARM,29);REF_MACHINE(sq_29_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_30T', 'MOV(WPARM,30);REF_MACHINE(sq_30_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_30B', 'MOV(WPARM,30);REF_MACHINE(sq_30_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_31T', 'MOV(WPARM,31);REF_MACHINE(sq_31_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_31B', 'MOV(WPARM,31);REF_MACHINE(sq_31_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_32T', 'MOV(WPARM,32);REF_MACHINE(sq_32_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_32B', 'MOV(WPARM,32);REF_MACHINE(sq_32_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_33T', 'MOV(WPARM,33);REF_MACHINE(sq_33_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_33B', 'MOV(WPARM,33);REF_MACHINE(sq_33_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_34T', 'MOV(WPARM,34);REF_MACHINE(sq_34_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_34B', 'MOV(WPARM,34);REF_MACHINE(sq_34_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_35T', 'MOV(WPARM,35);REF_MACHINE(sq_35_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_35B', 'MOV(WPARM,35);REF_MACHINE(sq_35_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_36T', 'MOV(WPARM,36);REF_MACHINE(sq_36_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_36B', 'MOV(WPARM,36);REF_MACHINE(sq_36_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_37T', 'MOV(WPARM,37);REF_MACHINE(sq_37_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_37B', 'MOV(WPARM,37);REF_MACHINE(sq_37_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_38T', 'MOV(WPARM,38);REF_MACHINE(sq_38_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_38B', 'MOV(WPARM,38);REF_MACHINE(sq_38_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_39T', 'MOV(WPARM,39);REF_MACHINE(sq_39_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_39B', 'MOV(WPARM,39);REF_MACHINE(sq_39_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_40T', 'MOV(WPARM,40);REF_MACHINE(sq_40_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_40B', 'MOV(WPARM,40);REF_MACHINE(sq_40_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_41T', 'MOV(WPARM,41);REF_MACHINE(sq_41_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_41B', 'MOV(WPARM,41);REF_MACHINE(sq_41_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_42T', 'MOV(WPARM,42);REF_MACHINE(sq_42_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_42B', 'MOV(WPARM,42);REF_MACHINE(sq_42_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_43T', 'MOV(WPARM,43);REF_MACHINE(sq_43_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_43B', 'MOV(WPARM,43);REF_MACHINE(sq_43_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_44T', 'MOV(WPARM,44);REF_MACHINE(sq_44_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_44B', 'MOV(WPARM,44);REF_MACHINE(sq_44_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_45T', 'MOV(WPARM,45);REF_MACHINE(sq_45_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_45B', 'MOV(WPARM,45);REF_MACHINE(sq_45_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_46T', 'MOV(WPARM,46);REF_MACHINE(sq_46_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_46B', 'MOV(WPARM,46);REF_MACHINE(sq_46_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_47T', 'MOV(WPARM,47);REF_MACHINE(sq_47_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_47B', 'MOV(WPARM,47);REF_MACHINE(sq_47_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_48T', 'MOV(WPARM,48);REF_MACHINE(sq_48_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_48B', 'MOV(WPARM,48);REF_MACHINE(sq_48_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_49T', 'MOV(WPARM,49);REF_MACHINE(sq_49_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_49B', 'MOV(WPARM,49);REF_MACHINE(sq_49_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_50T', 'MOV(WPARM,50);REF_MACHINE(sq_50_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_50B', 'MOV(WPARM,50);REF_MACHINE(sq_50_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_51T', 'MOV(WPARM,51);REF_MACHINE(sq_51_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_51B', 'MOV(WPARM,51);REF_MACHINE(sq_51_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_52T', 'MOV(WPARM,52);REF_MACHINE(sq_52_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_52B', 'MOV(WPARM,52);REF_MACHINE(sq_52_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_53T', 'MOV(WPARM,53);REF_MACHINE(sq_53_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_53B', 'MOV(WPARM,53);REF_MACHINE(sq_53_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_54T', 'MOV(WPARM,54);REF_MACHINE(sq_54_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_54B', 'MOV(WPARM,54);REF_MACHINE(sq_54_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_55T', 'MOV(WPARM,55);REF_MACHINE(sq_55_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_55B', 'MOV(WPARM,55);REF_MACHINE(sq_55_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_56T', 'MOV(WPARM,56);REF_MACHINE(sq_56_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_56B', 'MOV(WPARM,56);REF_MACHINE(sq_56_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_57T', 'MOV(WPARM,57);REF_MACHINE(sq_57_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_57B', 'MOV(WPARM,57);REF_MACHINE(sq_57_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_58T', 'MOV(WPARM,58);REF_MACHINE(sq_58_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_58B', 'MOV(WPARM,58);REF_MACHINE(sq_58_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_59T', 'MOV(WPARM,59);REF_MACHINE(sq_59_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_59B', 'MOV(WPARM,59);REF_MACHINE(sq_59_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_60T', 'MOV(WPARM,60);REF_MACHINE(sq_60_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_60B', 'MOV(WPARM,60);REF_MACHINE(sq_60_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_61T', 'MOV(WPARM,61);REF_MACHINE(sq_61_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_61B', 'MOV(WPARM,61);REF_MACHINE(sq_61_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_62T', 'MOV(WPARM,62);REF_MACHINE(sq_62_t);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '0', '1', 'WAIT', '0', 'SIG_62B', 'MOV(WPARM,62);REF_MACHINE(sq_62_b);MOV(BPARM,R_BPARM);',''),
-('M19_PLAYERWATCHER', '1', '0', 'PLAYWAVE', '0', 'SOUND_CLICK', '',''),
-
--- The bottom spinner, as the final spinner, should signal the spell to be cast 
--- a machine called spell caster gets
--- the signal.  Spell caster looks at the picker which should have the mapped 
--- result in WPARM in terms of frame shown
--- spell caster will map the frames to colors and spells via the event and color map
--- then needs to hit every relevant square where there is a player sitting
--- with the spell.  
--- The squares now signal to report their latest holding to the playerwatcher so that
--- the spellcaster can just check the playerwatcher to find victims
-
-
-
-
-
--- ....
-
-
-
----------------SPINNERS Below - but don't talk to them, they're pretty dumb
 
 
 ('M19_PICK', '0', 'setup', 'MOV', 'WSPRITE', 'WIP1', '
@@ -621,6 +433,8 @@ VALUES
     MOV(BFRAME,WTEMP1);
     SHOW(WSPRITE);
     MOV(WPARM,WTEMP1);
+   
+
 ',''),
 ('M19_PICK', 'frameMapped', '0', 'WAIT', '0', 'SIG_SPIN', '', ''),
 
@@ -630,17 +444,28 @@ VALUES
 ('M19_SPIN', '2', '3', 'ESTIME', '', '4', '',''),
 ('M19_SPIN', '3', 'reveal', 'CLEAR', 'WSPRITE', '', '',''),
 ('M19_SPIN', 'reveal', '0', 'SHOW', '0', '0', '
+   
     if(WIP1 == IDS_BOTSPIN){
-        SIGNALi(SIG_START,S19_SPELLCASTER);
+        REF_MACHINE(S19_SPINNER_BOTTOM_PICK);
+        if(R_WPARM == 2){WPARM = "Bomb";}
+        if(R_WPARM == 5){WPARM = "Gopa Vial";}
+        if(R_WPARM == 8){WPARM = "Bomb";}
+        if(R_WPARM == 11){WPARM = "Wealth";}
+        if(R_WPARM == 14){WPARM = "Bomb";}
+        if(R_WPARM == 17){WPARM = "Transfer";}
+        if(R_WPARM == 20){WPARM = "Banish";}
+        if(R_WPARM == 0){WPARM = "Gopa";}
+        set_control_value(IDV_RACEPAN, 200,WPARM);
+        SIGNALi(S19_SPELLCASTER,SIG_START);
     }
 ',''),
 
-
+--('S19_SPINNER_BUTTON',     'IDV_RACEPAN',557,41,589,72,'0','M19_BUTTON','S19_SPINNER_BOTTOM_PICK','S19_SPINNER_BOTTOM_SPIN','S19_SPINNER_TOP_PICK','S19_SPINNER_TOP_SPIN'),
 ('M19_BUTTON', '0', '1','CLICK', '0', '', '
     SIGNAL(WIP4, SIG_SPIN);
     SIGNAL(WIP3, SIG_SPIN);
-     SIGNAL(WIP2, SIG_SPIN);
-     SIGNAL(WIP1, SIG_SPIN);
+    SIGNAL(WIP2, SIG_SPIN);
+    SIGNAL(WIP1, SIG_SPIN);
 ', ''),
 ('M19_BUTTON', '1', '0', 'Z_EPSILON', '', '', '','');
 

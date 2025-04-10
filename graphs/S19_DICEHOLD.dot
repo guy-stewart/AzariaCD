@@ -1,0 +1,20 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_DICEHOLD::M19_DICEHOLD<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "presentdie" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_RESET)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     MOV(WOBJECT,IDD_DICE);<br align="left"/>     SHOW(WOBJECT);<br align="left"/></font></td></tr></table>>
+];
+	presentdie[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>presentdie<br align="left"/></b></td></tr>
+</table>>];
+"presentdie" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,IDD_DICE)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW();<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_DICEHOLD<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:293, y:232, w:46, h:53)<br align="left"/>S19_DICEHOLD::M19_DICEHOLD(&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;presentdie&apos;: wObject:IDD_DICE wSprite:die Top:232 Left:293<br align="left"/></font></td></tr></table>>
+];
+}

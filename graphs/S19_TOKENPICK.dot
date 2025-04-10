@@ -1,0 +1,10 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENPICK::<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENPICK<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:25, y:25, w:50, h:125)<br align="left"/>S19_TOKENPICK::M19_TOKENPICK(&apos;IDS_TOKENPICK&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:25 Left:25 Z:1<br align="left"/></font></td></tr></table>>
+];
+}

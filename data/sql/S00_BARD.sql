@@ -45,7 +45,7 @@ INSERT INTO "main"."transitions" ("automaton", "state", "new_state", "opcode", "
 ', '', ''),
 ('M_NEWSESSION', '2', '0', 'Z_EPSILON', '', '', '', '', '');
 
-
+  --SIGNAL(SID_ID,SIG_MYID); 
 
 
 delete from transitions where [automaton] like 'M_NEWGAME%';

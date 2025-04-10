@@ -1,0 +1,34 @@
+digraph AbstractSyntaxTree {
+    node [shape=record, fontsize="10"];
+
+	filename[label="file:astt_rules", fontsize=12];
+	ast_node[style="filled", fillcolor="#D0F0F0" label="{<A>STMTS&#92;n | { <L> L | <R> R}}"];
+	ast_nodeL[style="filled", fillcolor="#D0F0F0" label="{<A>CALL&#92;nCLEAR | { <L> L | <R> R}}"];
+	ast_nodeLL[style="filled", fillcolor="#D0F0F0" label="{<A>ID&#92;nCLEAR}"];
+	ast_nodeL:<L> -> ast_nodeLL:<A>;
+	ast_nodeLR[style="filled", fillcolor="#DFFFDF" label="{<A>PARMS&#92;n | { <L> L | <R> R}}"];
+	ast_nodeLRL[style="filled", fillcolor="#D0F0F0" label="{<A>ID&#92;nWOBJECT}"];
+	ast_nodeLR:<L> -> ast_nodeLRL:<A>;
+	ast_nodeL:<R> -> ast_nodeLR:<A>;
+	ast_node:<L> -> ast_nodeL:<A>;
+	ast_nodeR[style="filled", fillcolor="#D0F0F0" label="{<A>STMTS&#92;n | { <L> L | <R> R}}"];
+	ast_nodeRL[style="filled", fillcolor="#D0F0F0" label="{<A>CALL&#92;nCLEAR | { <L> L | <R> R}}"];
+	ast_nodeRLL[style="filled", fillcolor="#D0F0F0" label="{<A>ID&#92;nCLEAR}"];
+	ast_nodeRL:<L> -> ast_nodeRLL:<A>;
+	ast_nodeRLR[style="filled", fillcolor="#DFFFDF" label="{<A>PARMS&#92;n | { <L> L | <R> R}}"];
+	ast_nodeRLRL[style="filled", fillcolor="#D0F0F0" label="{<A>ID&#92;nWPARM}"];
+	ast_nodeRLR:<L> -> ast_nodeRLRL:<A>;
+	ast_nodeRL:<R> -> ast_nodeRLR:<A>;
+	ast_nodeR:<L> -> ast_nodeRL:<A>;
+	ast_nodeRR[style="filled", fillcolor="#D0F0F0" label="{<A>STMTS&#92;n | { <L> L | <R> R}}"];
+	ast_nodeRRL[style="filled", fillcolor="#D0F0F0" label="{<A>CALL&#92;nSHOW | { <L> L | <R> R}}"];
+	ast_nodeRRLL[style="filled", fillcolor="#D0F0F0" label="{<A>ID&#92;nSHOW}"];
+	ast_nodeRRL:<L> -> ast_nodeRRLL:<A>;
+	ast_nodeRR:<L> -> ast_nodeRRL:<A>;
+	ast_nodeR:<R> -> ast_nodeRR:<A>;
+	ast_node:<R> -> ast_nodeR:<A>;
+
+	code[label=< <table border="1"><tr><td><b>code<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">ASTT_STMTS<br align="left"/></font></td></tr></table>>
+];
+}

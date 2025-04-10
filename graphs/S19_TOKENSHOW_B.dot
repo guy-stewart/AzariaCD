@@ -1,0 +1,20 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENSHOW_B::M19_TOKENSHOWER<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "presented" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(,SIG_SHOW)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">    SHOW(WIP1);<br align="left"/></font></td></tr></table>>
+];
+	presented[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>presented<br align="left"/></b></td></tr>
+</table>>];
+"presented" -> "0" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>GRAB(,)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">     HANDOFF(0,WOBJECT);<br align="left"/>     SHOW(0);<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_TOKENSHOW_B<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:76, y:21, w:31, h:30)<br align="left"/>S19_TOKENSHOW_B::M19_TOKENSHOWER(&apos;IDD_PLAYER_B&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: Top:21 Left:76 Z:2<br align="left"/></font></td></tr></table>>
+];
+}

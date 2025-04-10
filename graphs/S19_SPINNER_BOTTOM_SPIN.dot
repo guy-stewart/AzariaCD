@@ -1,0 +1,35 @@
+digraph Automaton {
+ fontname="Courier New"
+	node [shape=oval, fontname="Courier New"];
+	filename[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_SPINNER_BOTTOM_SPIN::M19_SPIN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="brown">start state = 0<br align="left"/></font></td></tr></table>>
+];
+	0[shape = none, fontsize=14, label=< <table border="3" color="darkred" style="rounded"><tr><td sides="b"><b>0<br align="left"/></b></td></tr>
+</table>>];
+"0" -> "1" [fontcolor=orange,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>WAIT(0,SIG_SPIN)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">PLAYWAVE(SOUND_SPIN);<br align="left"/></font></td></tr></table>>
+];
+	1[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>1<br align="left"/></b></td></tr>
+</table>>];
+"1" -> "2" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ASHOW(WIP1,V_LOOP)<br align="left"/></b></td></tr>
+</table>>
+];
+	2[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>2<br align="left"/></b></td></tr>
+</table>>];
+"2" -> "3" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>ESTIME(,4)<br align="left"/></b></td></tr>
+</table>>
+];
+	3[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>3<br align="left"/></b></td></tr>
+</table>>];
+"3" -> "reveal" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="0"><tr><td><b>CLEAR(WSPRITE,)<br align="left"/></b></td></tr>
+</table>>
+];
+	reveal[shape = none, fontsize=14, label=< <table border="1" color="darkred" style="rounded"><tr><td sides="b"><b>reveal<br align="left"/></b></td></tr>
+</table>>];
+"reveal" -> "0" [fontcolor=blue,fontsize=10,fontname="Courier New", label=< <table border="1"><tr><td><b>SHOW(0,0)<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="blue">   <br align="left"/>    if(WIP1 == IDS_BOTSPIN)&#123;<br align="left"/>        REF_MACHINE(S19_SPINNER_BOTTOM_PICK);<br align="left"/>        if(R_WPARM == 2)&#123;WPARM = &quot;Bomb&quot;;&#125;<br align="left"/>        if(R_WPARM == 5)&#123;WPARM = &quot;Gopa Vial&quot;;&#125;<br align="left"/>        if(R_WPARM == 8)&#123;WPARM = &quot;Bomb&quot;;&#125;<br align="left"/>        if(R_WPARM == 11)&#123;WPARM = &quot;Wealth&quot;;&#125;<br align="left"/>        if(R_WPARM == 14)&#123;WPARM = &quot;Bomb&quot;;&#125;<br align="left"/>        if(R_WPARM == 17)&#123;WPARM = &quot;Transfer&quot;;&#125;<br align="left"/>        if(R_WPARM == 20)&#123;WPARM = &quot;Banish&quot;;&#125;<br align="left"/>        if(R_WPARM == 0)&#123;WPARM = &quot;Gopa&quot;;&#125;<br align="left"/>        set_control_value(IDV_RACEPAN, 200,WPARM);<br align="left"/>        SIGNALi(S19_SPELLCASTER,SIG_START);<br align="left"/>    &#125;<br align="left"/></font></td></tr></table>>
+];
+	status[shape = record, fontsize=10, label=< <table border="1"><tr><td><b>S19_SPINNER_BOTTOM_SPIN<br align="left"/></b></td></tr>
+<tr><td><font point-size="10" color ="green">VIEW::IDV_RACEPAN @pos(x:435, y:0, w:30, h:117)<br align="left"/>S19_SPINNER_BOTTOM_SPIN::M19_SPIN(&apos;IDS_BOTSPIN&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;,&apos;&apos;)<br align="left"/>			&#123;state:&apos;0&apos;: wParm:Wealth dEtime:0 Top:0 Left:435 Z:5<br align="left"/></font></td></tr></table>>
+];
+}
